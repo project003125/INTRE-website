@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3章 框架总览：INTRE核心资产与子系统 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第3章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第3章 框架总览：INTRE核心资产与子系统</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)列举INTRE六大核心资产并按方法论/工程化/研究纲领三档分级；(2)描述UPLS/PSE/UNIS三个核心基础设施的分工与协作关系，以及REVER伦理层的独立定位；(3)解释四阶范式转变框架及INTRE在其中的定位；(4)阐述框架的三层主张结构和版本演化协议；(5)识别IET v3.0的八级证据分类体系及其标注原则。</p></blockquote>
+<hr class="section-divider">
+<h3>3.1 资产分级：方法论、工程化与研究纲领</h3>
+<p>INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。</p>
+<p><strong>第一项资产：功能层定位</strong>。这是INTRE最具诊断价值的贡献——它明确指出心理学需要一个介于神经层与现象层之间的功能描述层。这一判断即使未来M-R-D-S的具体版本被大幅修订也仍然成立，因为它是对学科结构性缺口的识别，而非某一具体理论的命题。功能层定位的稳健性来源于三条独立路径的收敛（系统科学、认知科学、工程实践）。</p>
+<p><strong>第二项资产：M-R-D-S状态语法</strong>。这是功能层的具体描述语言——六个模块(M1-M6)、三个维度(资源R、调度D、结构S)、42个子单元。M-R-D-S提供了将模糊的临床构念（如“焦虑”“抑郁”）分解为可定位的功能组件组合。然而，M-R-D-S的具体维数、模块边界和维度划分是<strong>可修订的工程选择</strong>，而非不可动摇的本体论真理。它的实证成熟度有待A/B/C三类子单元的测量工具开发和校准验证。</p>
+<p><strong>第三项资产：G-M-A-R操作语法</strong>。这是从M-R-D-S的状态空间中推导出的原子干预操作集——门控(GATE)、调制(MODULATE)、校准(ALIGN)、重联(RELINK)。每类操作对应状态空间中一个特定的、不可相互替代的功能靶点。G-M-A-R是INTRE作为“操作语法生成层”的核心竞争力。在23个中间层候选架构的遍历比较中，只有INTRE满足操作语法生成层的全部条件（靶点特异性、操作可区分性、执行可转译性、反馈可校准性、跨流派翻译≥80/100）。</p>
+<p><strong>第四项资产：UPLS（统一心理语言系统）</strong>。UPLS是INTRE的知识基础设施层，包含PCUI（概念唯一标识）、PSA（语义架构）、PSL（专家词典）三个组件，其结构类比于医学领域的UMLS。UPLS的核心功能是为跨流派概念映射提供标准化平台。它的价值在于将“跨流派整合”从一个哲学口号转化为可操作的工程任务。</p>
+<p><strong>第五项资产：PSE（心理系统工程引擎）</strong>。PSE是INTRE的计算核心，包含五层架构（架构层、算法层、参数层、方法论层、协议层）、心智六论（MCT/MTT/MKT/MDT/MPT/MET）、四阶段仿真管线（PSE-I/M/P/C）。PSE的目标是将功能层状态向量转化为可计算、可预测、可校准的动力学系统。当前，PSE处于<strong>概念蓝图阶段</strong>——其理论规范完整，但大规模参数校准和实证验证尚未完成。PSE不是“已经工作的引擎”，而是“值得建造的引擎”的设计图纸。</p>
+<p><strong>第六项资产：UNIS（统一神经接口系统）</strong>。UNIS是INTRE的神经输入基础设施，与UPLS、PSE并列FLP三大工程支柱。它解决的核心问题是：如何将原始神经信号（EEG、fNIRS、PPG等）转换为功能层状态向量的神经似然 \( p(y_n \mid \Psi_t) \)。UNIS采用六层递进架构——L1采集规范(NAP)、L2信号校准(SCL)、L3神经特征定义(NFD)、L4神经-功能映射(NFM)、L5神经先验库(NPL)、L6实时引擎(RTE)——为PSE的多模态贝叶斯融合提供标准化的神经输入通道。UNIS与PSE之间通过双向通信协议（<code>/func_likelihood</code>、<code>/state_estimate</code>、<code>/calibration_feedback</code>）形成增强闭环：PSE的状态估计反馈回UNIS，用于实时个体化校准神经映射模型。当前UNIS同样处于<strong>规范设计阶段</strong>，其种子NFI（神经特征标识符）和NFM模型库的社区填充是后续工程化的核心任务。</p>
+<p><strong>资产分级与嵌套关系</strong>：这六项资产并不在同一层级上。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>档次</th>
+<th>资产</th>
+<th>说明</th>
+<th>可修订性</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>第一档：方法论资产</strong></td>
+<td>功能层定位</td>
+<td>即使M-R-D-S被大幅修订，功能层作为分析层级的必要性仍然成立</td>
+<td>极难修订（范式级）</td>
+</tr>
+<tr>
+<td><strong>第二档：工程化资产</strong></td>
+<td>M-R-D-S、G-M-A-R</td>
+<td>具体维数、模块边界和操作分类是可修订的工程选择</td>
+<td>可修订（需强反例）</td>
+</tr>
+<tr>
+<td><strong>第三档：研究纲领资产</strong></td>
+<td>UPLS、PSE、UNIS</td>
+<td>潜在价值高，但依赖后续验证和社区采纳</td>
+<td>常规科学活动</td>
+</tr>
+</tbody>
+</table></div>
+<p>UPLS封装了M-R-D-S和G-M-A-R（前者是状态语法，后者是操作语法，UPLS将二者纳入统一的知识基础设施），因此后两者也作为独立资产列出，以示其可独立评估的工程价值。</p>
+<hr class="section-divider">
+<h3>3.2 四大基础设施：UPLS描述、PSE预测、UNIS输入与REVER伦理</h3>
+<p>INTRE框架的工程功能可以分解为三个相互依赖的核心基础设施，外加一个独立的伦理约束层。三者一体的关系可概括为：<strong>UPLS是本体地图，UNIS是神经天线，PSE是动力学引擎，REVER是安全护栏</strong>。</p>
+<p><strong>UPLS：统一描述子系统</strong>。UPLS的任务是提供功能层的静态描述语法。它回答“心理系统由哪些功能组件构成，当前处于什么状态”。UPLS的核心产出是M-R-D-S状态向量和PCUI概念映射库。UPLS本身不回答“状态如何随时间变化”（那是PSE的任务），也不回答“干预应如何设计”（那是G-M-A-R的任务）。它是PSE和G-M-A-R的<strong>本体论基础</strong>——没有UPLS定义的状态空间，PSE的动力学方程没有操作对象，G-M-A-R的操作没有靶点。</p>
+<p><strong>PSE：仿真预测子系统</strong>。PSE的任务是将UPLS的静态状态空间转化为动态演化模型。它回答“给定当前状态和环境输入，系统未来会怎样演化”。PSE的核心能力包括：通过MKT微分方程计算状态轨迹，通过MTT分析级联传播路径，通过MDT优化干预序列，通过PSE-C贝叶斯校准将群体先验更新为个体后验。PSE是INTRE从“描述”走向“预测”的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第18-21章。）</p>
+<p><strong>UNIS：神经输入子系统</strong>。UNIS的任务是将神经层观测信号转换为功能层状态向量的神经似然。它回答“在当前神经信号下，功能状态向量各个分量的概率分布是什么”。UNIS的核心产出是实时神经似然 \( p(y_n \mid \Psi_t) \)、置信度区间以及赋能信号（信号质量、同步等级、人群覆盖等）。UNIS是PSE多模态贝叶斯融合的三个输入通道（行为、语义、神经）之一。它与PSE之间通过双向通信协议形成增强闭环：PSE将状态估计和校准残差反馈给UNIS，UNIS据此进行在线个体化模型微调。UNIS不回答“功能状态如何演化”（那是PSE的任务），也不回答“如何改变状态”（那是G-M-A-R的任务）。（详见第22.6节及UNIS专项文档。）</p>
+<p><strong>REVER：伦理约束子系统</strong>。REVER的任务是在AI拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答“在保证功能效用的前提下，如何设计伦理上安全的AI系统”。REVER的核心设计包括：非人格性公理（AI不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER不是独立于UPLS和PSE的另一套语言，而是同一套语法在伦理维度的扩展应用——它将“结构伦理”从哲学原则转化为可执行的门控协议。（详见第25-26章。）</p>
+<p><strong>四者的关系</strong>：UPLS是<strong>静态地图</strong>，UNIS是<strong>神经观测接口</strong>，PSE是<strong>动力学引擎</strong>，REVER是<strong>安全护栏</strong>。前三者共享同一套M-R-D-S/G-M-A-R语法，使得描述、输入、预测和干预可以在同一个形式化框架内无缝衔接。</p>
+<hr class="section-divider">
+<h3>3.3 知识基建：PCUI、PSA与PSL概览</h3>
+<p>UPLS的知识基础设施借鉴了医学领域统一医学语言系统(UMLS)的成功经验，由三个组件构成。</p>
+<p><strong>PCUI：心理概念唯一标识符</strong>。PCUI为每个心理概念分配唯一的标准化编码，将所有流派对同一功能现象的术语映射到同一个规范条目。例如，CBT的“核心信念（无价值感）”、精神分析的“负性自我表征”、人本主义的“自我概念贬低”都被映射到同一个PCUI条目，其M-R-D-S坐标被标注为<code>M2-STR-R</code>。PCUI解决了心理学长期存在的同义词问题（不同术语同一现象）和一词多义问题（同一术语在不同流派中含义不同）。每个PCUI条目包含：规范定义、流派术语映射、M-R-D-S坐标、参数先验分布、版本号和证据等级标注。（详见第14章。）</p>
+<p><strong>PSA：心理语义架构</strong>。PSA定义了PCUI概念之间的形式关系——模块依赖权重、级联路径模板、操作-组件映射（哪些G-M-A-R操作适用于哪些M-R-D-S组件）。PSA是UPLS的<strong>推理引擎</strong>：给定一个状态向量，PSA可以计算级联风险、识别枢纽节点、推荐优先干预靶点。PSA的依赖矩阵是PSE中MTT（心智拓扑理论）的输入。（详见第15章。）</p>
+<p><strong>PSL：心理专家词典</strong>。PSL提供自然语言到PCUI的映射接口。它包含：临床口语到PCUI的映射（“我心慌”→<code>M4-DSP-B↑</code>）、文化特定习语的映射（东亚文化中的“神经衰弱”→PCUI条目）、语境消歧规则（同一短语在不同上下文中映射到不同PCUI）。PSL使得MCT（心智编译理论）能够将非结构化的临床叙述编译为结构化的M-R-D-S状态向量。PSL是INTRE从学术语言下沉到临床应用的关键基础设施。（详见第15章。）</p>
+<p>三者的关系可以类比为：PCUI是<strong>词典</strong>（概念的定义和编码），PSA是<strong>语法书</strong>（概念之间的关系规则），PSL是<strong>翻译器</strong>（自然语言到形式语言的转换接口）。</p>
+<hr class="section-divider">
+<h3>3.4 层级与开放：可修订性声明与版本演化</h3>
+<p>INTRE框架在设计上区分了不同层级的主张，并为每一层级设置了不同的修订门槛。这一设计防止了理论在面对反例时的两种病态反应：要么僵化地否认一切反例（教条主义），要么在每次反例后随意修改核心主张（机会主义）。</p>
+<p><strong>三层主张结构</strong>。INTRE的核心主张分为三个层级：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>内容</th>
+<th>修订门槛</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>公理层</strong></td>
+<td>A0-A5：心智化智能体公理、N-S-R、模块化公理等</td>
+<td>范式级，需极强反例</td>
+<td>若N-S-R被证伪</td>
+</tr>
+<tr>
+<td><strong>架构层</strong></td>
+<td>M1-M6、R-D-S、G-M-A-R</td>
+<td>需三个独立领域系统性反例</td>
+<td>若发现不可归入M1-M6的新功能</td>
+</tr>
+<tr>
+<td><strong>参数与映射层</strong></td>
+<td>阈值、常数、权重、概念映射坐标</td>
+<td>常规科学活动</td>
+<td>M3-RES-D恢复速率校准</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>版本演化与构念降级协议</strong>。INTRE采用分级构念状态管理体系：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>状态</th>
+<th>含义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Normative Core</strong></td>
+<td>当前规范核心，参与主模型</td>
+</tr>
+<tr>
+<td><strong>Provisional Construct</strong></td>
+<td>暂定构念，理论上必要但实证未完成</td>
+</tr>
+<tr>
+<td><strong>Derived/Dependent Construct</strong></td>
+<td>派生构念，不宣称独立</td>
+</tr>
+<tr>
+<td><strong>Deprecated Construct</strong></td>
+<td>经强反例评估后被降级或进入历史附录</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>强反例触发条件</strong>。框架为核心主张设置了明确的强反例触发条件。例如：(1)若发现稳定、可重复、具增量预测力的新心理功能无法归入M1-M6，则模块完备性主张被挑战；(2)若发现新的不可由R/D/S组合描述的心理状态变化维度，则状态语法完备性被挑战；(3)若发现公认有效且不可被G-M-A-R分解的新干预机制，则操作语法完备性被挑战。（完整清单见第29章。）</p>
+<hr class="section-divider">
+<h3>3.5 主张治理：IET v3.0证据分类学</h3>
+<p>INTRE最独特的元科学贡献之一，是其对理论主张进行系统化证据等级标注的治理协议——IET v3.0（INTRE证据分类学）。这一协议将理论主张分为八个等级，明确区分了定义、推导、事实、解释、预测、规范、证据和关系，防止将逻辑推导与经验验证混为一谈。</p>
+<p><strong>八级证据体系</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>代码</th>
+<th>名称</th>
+<th>含义</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>D</strong></td>
+<td>定义类</td>
+<td>框架内部的概念定义、公理、术语规定</td>
+<td>“M3-RES-D指意志模块的可调度资源”</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td>推导类</td>
+<td>从公理或定义出发的逻辑推论</td>
+<td>“从R-D-S三维独立共存可推导出G-M-A-R四操作的正交性”</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>事实/历史规律类</td>
+<td>已有经验研究确认的事实</td>
+<td>“DMN与FPN在静息态下呈反相关”</td>
+</tr>
+<tr>
+<td><strong>X</strong></td>
+<td>解释类</td>
+<td>对现象提供机制性解释框架</td>
+<td>“反刍是M2-DSP-B失控导致的”</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>预测类</td>
+<td>产生可检验的前瞻性预测</td>
+<td>“M3-RES-D消耗速率在抑郁组比对照组高30%”</td>
+</tr>
+<tr>
+<td><strong>N</strong></td>
+<td>规范类</td>
+<td>方法论规范、工程协议、伦理准则</td>
+<td>“干预应遵循GATE→MODULATE→ALIGN序列”</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>证据类</td>
+<td>经实证检验且获得支持的发现</td>
+<td>“PSE-C校准后预测误差降低40%（预注册RCT）”</td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>关系类</td>
+<td>概念之间、理论之间的映射或兼容性关系</td>
+<td>“依恋安全感映射到M4-RES-B和M2-STR-R的组合”</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>标注密度原则</strong>：IET v3.0不对每个句子进行标注，而是<strong>仅标注“铰链主张”</strong>——那些如果被证伪会显著影响框架核心结构的命题。目标密度为每千字符1-3个标签。非铰链位置依靠语言本身的诚实性（如使用“可以”“可能”“理论上”等限定词），避免标签过载。</p>
+<p><strong>分层治理的价值</strong>：IET v3.0使INTRE区别于那些将所有主张以同等确定性陈述的宏大理论。读者可以一眼看出：目前框架的大部分主张处于F级（与既有事实相容）或L级（逻辑推导），部分核心预测处于P级（有待检验），而E级（直接实证验证）的积累仍是未来的任务。这种透明性本身就是科学诚信的体现。</p>
+<p><strong>可证伪性声明</strong>：INTRE五条核心主张均被操作化为可检验的预测，并提供了具体的证伪路径。框架最脆弱的实证节点是M3-RES-D（意志资源）作为独立功能构念的存在性——其证伪需通过三通道收敛效度研究（生理指标、主观疲劳、行为表现的收敛性检验）。如果这一节点被证伪，RES-D的跨模块统一性将连锁崩塌，MODULATE操作的独立靶点将被动摇，但框架的其他部分（如STR三分法、DSP二分法）仍可能成立。框架预期自身的不完美，并内建了从这些证伪中学习、修正的演化机制。（完整可证伪性论述见第29章。）</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：INTRE框架包含六大核心资产，按方法论/工程化/研究纲领分为三档：功能层定位属于第一档方法论资产，M-R-D-S和G-M-A-R属于第二档工程化资产，UPLS、PSE和UNIS属于第三档研究纲领资产。三个核心基础设施——UPLS（描述）、PSE（预测）、UNIS（神经输入）——加上REVER伦理层，形成从静态地图到动力学引擎再到多模态观测接口的完整链路。知识基础设施PCUI、PSA、PSL为跨流派翻译和临床编译提供了可操作的平台。框架的层级性和开放性通过三层主张结构、版本演化协议和强反例触发条件得到保障。IET v3.0证据分类学将理论主张的治理从哲学倡导转化为可执行的标注协议。五条核心主张均设有明确的证伪路径，框架最脆弱的节点是M3-RES-D的独立存在性。</p>
+<blockquote><p>**关键术语**：UPLS，PSE，UNIS，REVER，PCUI，PSA，PSL，IET v3.0，铰链主张，构念降级</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “IET证据治理是事后审计” → ✅ IET在主张提出时即标注证据等级，是事前的诚实声明。<br>- ❌ “UPLS只是一个概念字典” → ✅ UPLS通过PSA的推理系统、共识工程的质量控制、和逻辑指纹的差异治理，构成了完整的知识基础设施（见第14-17章）。<br>- ❌ “UNIS是脑机接口的另一种说法” → ✅ UNIS不是采集硬件或BCI系统，而是一个**知识工程规范**——它定义如何将神经信号标准化、特征化、映射为功能似然，对接PSE。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 列举INTRE的六个核心资产并归入方法论/工程化/研究纲领三档。<br>2. 用IET v3.0八级体系为两个主张标注证据等级。<br>3. UNIS被定位为FLP三大基础设施之一，与UPLS、PSE并列。你认为这个定位是否恰当？理由是什么？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch02.html" class="nav-link prev">‹ 2 层次定位：本体论、认识论与合法性</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch04.html" class="nav-link next">4 范式批判：变量范式的边界与吸纳 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

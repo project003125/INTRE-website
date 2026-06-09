@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录M：数学速成——函数、微分、概率与滤波 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录M：数学速成——函数、微分、概率与滤波</h1>
+<blockquote><p>**目标读者**：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
+<blockquote><p>**学习路线**：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
+<pre><code class="language-text">
+函数与导数 → 微分方程 → 线性代数基础 → 概率与贝叶斯 → 状态估计思想 → 粒子滤波 → 非线性动力学
+    ↓            ↓           ↓              ↓              ↓               ↓            ↓
+  第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章
+</code></pre>
+<hr class="section-divider">
+<h2>M.1 函数与导数（高中回顾）</h2>
+<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是随时间变化的函数；导数描述“变化快慢”。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>通俗解释</th>
+<th>数学形式</th>
+<th>心理学例子</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>函数</strong></td>
+<td>一个量随另一个量变化的规则</td>
+<td>\(y = f(x)\)</td>
+<td>意志资源 \(R\) 随时间 \(t\) 变化：\(R(t)\)</td>
+</tr>
+<tr>
+<td><strong>导数</strong></td>
+<td>函数在某点的瞬时变化率</td>
+<td>\(\frac{dy}{dt}\) 或 \(y'\)</td>
+<td>意志资源的消耗速率 \(dR/dt\)</td>
+</tr>
+<tr>
+<td><strong>指数衰减</strong></td>
+<td>按当前值的固定比例减少</td>
+<td>\(\frac{dR}{dt} = -\alpha R\)</td>
+<td>资源消耗速率与当前资源量成正比</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。</p>
+<blockquote><p>📌 你不需要会推导，只需知道：指数衰减意味着“越剩越少，减少得越慢”。</p></blockquote>
+<hr class="section-divider">
+<h2>M.2 微分方程基础</h2>
+<p><strong>为什么需要</strong>：第8、19章用微分方程描述心理状态如何随时间演化。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>解释</th>
+<th>第19章对应</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>常微分方程（ODE）</strong></td>
+<td>包含未知函数及其导数的方程</td>
+<td>\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\)</td>
+</tr>
+<tr>
+<td><strong>解</strong></td>
+<td>满足方程的函数 \(R(t)\)</td>
+<td>资源随时间变化的轨迹</td>
+</tr>
+<tr>
+<td><strong>初始条件</strong></td>
+<td>\(t=0\) 时的状态值 \(R(0)\)</td>
+<td>初始评估时的资源水平</td>
+</tr>
+<tr>
+<td><strong>参数</strong></td>
+<td>方程中不变的常数（如 \(\alpha\)）</td>
+<td>消耗速率、恢复速率</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>核心思想</strong>：给定初始状态和演化规则，计算机可以通过数值积分（如欧拉方法）近似算出未来轨迹——<strong>你不必手工解方程</strong>，只需理解输入输出。</p>
+<p><strong>欧拉方法直观</strong>：\(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\)，一步接一步，像动画片逐帧播放。</p>
+<hr class="section-divider">
+<h2>M.3 线性代数基础（第8章必备）</h2>
+<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>通俗解释</th>
+<th>数学形式</th>
+<th>心理学例子</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>向量</strong></td>
+<td>一组有序的数字列表</td>
+<td>\(\vec{v} = (v_1, v_2, \dots, v_n)\)</td>
+<td>42维状态向量 \(\Psi\)</td>
+</tr>
+<tr>
+<td><strong>向量的模长（范数）</strong></td>
+<td>向量的长度</td>
+<td>\(\</td>
+<td>\vec{v}\</td>
+<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
+<td>状态向量的“总偏离”程度</td>
+</tr>
+<tr>
+<td><strong>向量点积（内积）</strong></td>
+<td>两向量对应分量乘积之和</td>
+<td>\(\vec{u} \cdot \vec{v} = \sum u_i v_i\)</td>
+<td>用于计算相似度</td>
+</tr>
+<tr>
+<td><strong>欧氏距离</strong></td>
+<td>两向量之间的直线距离</td>
+<td>\(d = \sqrt{\sum (u_i - v_i)^2}\)</td>
+<td>两个心理状态的相似性</td>
+</tr>
+<tr>
+<td><strong>正交</strong></td>
+<td>两向量点积为零，互相垂直</td>
+<td>\(\vec{u} \cdot \vec{v} = 0\)</td>
+<td>R、D、S维度功能独立</td>
+</tr>
+<tr>
+<td><strong>矩阵</strong></td>
+<td>二维数字表格</td>
+<td>\(A_{m \times n}\)</td>
+<td>依赖矩阵（42×42）</td>
+</tr>
+<tr>
+<td><strong>转置</strong></td>
+<td>行列互换</td>
+<td>\(A^T\)</td>
+<td>用于计算协方差</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>📌 你不需要手算高维向量，只需理解：状态向量是心理系统在42个坐标轴上的读数；两个状态之间的距离越短，越相似。</p></blockquote>
+<hr class="section-divider">
+<h2>M.4 概率与贝叶斯定理</h2>
+<p><strong>为什么需要</strong>：第20章用贝叶斯校准融合观测数据，更新对状态的不确定性。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>通俗解释</th>
+<th>符号</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>概率</strong></td>
+<td>事件发生的可能性（0到1）</td>
+<td>\(P(A)\)</td>
+</tr>
+<tr>
+<td><strong>条件概率</strong></td>
+<td>在B发生下A的概率</td>
+<td>\(P(A \mid B)\)</td>
+</tr>
+<tr>
+<td><strong>贝叶斯定理</strong></td>
+<td>已知 \(P(B \mid A)\) 求 \(P(A \mid B)\)</td>
+<td>\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>心理学解释</strong>：</p>
+<ul>
+<li><strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验）</li>
+<li><strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性</li>
+<li><strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</li>
+</ul>
+<p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
+<hr class="section-divider">
+<h2>M.5 状态估计的思想</h2>
+<p><strong>为什么需要</strong>：第20章的粒子滤波是卡尔曼滤波的推广。先理解核心思想。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>解释</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>状态</strong></td>
+<td>你关心的隐藏量（如真实意志资源水平）</td>
+</tr>
+<tr>
+<td><strong>观测</strong></td>
+<td>你能测到的量（如量表分数），但含噪声</td>
+</tr>
+<tr>
+<td><strong>状态估计</strong></td>
+<td>利用历史观测和动力学模型，猜出当前状态的最佳值</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>卡尔曼滤波的四个步骤</strong>（只需记逻辑）：</p>
+<ol>
+<li><strong>预测</strong>：用动力学方程推测下一时刻状态</li>
+<li><strong>观测</strong>：获得带噪声的读数</li>
+<li><strong>更新</strong>：结合预测和观测，按不确定性加权平均</li>
+<li><strong>重复</strong></li>
+</ol>
+<blockquote><p>📌 类比：开车进隧道前知道速度（预测），隧道内推算位置（预测），出隧道后GPS恢复（观测），结合修正（更新）。</p></blockquote>
+<hr class="section-divider">
+<h2>M.6 粒子滤波概念</h2>
+<p><strong>为什么需要</strong>：当系统是非线性、非高斯时（心理系统正是如此），卡尔曼滤波失效。粒子滤波是通用替代方法。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>通俗解释</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>粒子</strong></td>
+<td>一个“假设”——某个可能的状态值</td>
+</tr>
+<tr>
+<td><strong>粒子群</strong></td>
+<td>成千上万个假设，覆盖各种可能性</td>
+</tr>
+<tr>
+<td><strong>权重</strong></td>
+<td>每个粒子与观测数据的符合程度</td>
+</tr>
+<tr>
+<td><strong>重采样</strong></td>
+<td>删掉低权重粒子，复制高权重粒子</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>粒子滤波循环</strong>：</p>
+<pre><code class="language-">
+初始粒子群（均匀散布）
+    ↓
+预测：根据动力学方程移动每个粒子
+    ↓
+观测：计算每个粒子的权重（与数据符合度）
+    ↓
+重采样：高权重粒子繁殖，低权重淘汰
+    ↓
+（循环）
+</code></pre>
+<p><strong>最终输出</strong>：粒子群聚集区 = 状态最佳估计；分散程度 = 不确定性。</p>
+<blockquote><p>📌 类比：用一群侦探分头追踪嫌疑人，每步用新线索淘汰不靠谱侦探，让靠谱侦探繁殖。</p></blockquote>
+<hr class="section-divider">
+<h2>M.7 集合预报与CRPS（第20章）</h2>
+<p><strong>为什么需要</strong>：PSE输出概率预测，需要评估预测质量。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>解释</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>集合预报</strong></td>
+<td>用多个粒子（成员）的轨迹集合表示预测分布</td>
+<td>类似气象学中的“台风路径集合”</td>
+</tr>
+<tr>
+<td><strong>中位数轨迹</strong></td>
+<td>集合中排在中间的那条轨迹</td>
+<td>最可能的估计</td>
+</tr>
+<tr>
+<td><strong>预测区间</strong></td>
+<td>2.5%和97.5%百分位数之间的区域</td>
+<td>95%置信区间</td>
+</tr>
+<tr>
+<td><strong>CRPS（连续排序概率得分）</strong></td>
+<td>评估整个预测分布与真实观测的吻合度</td>
+<td>越小越好，完美预测=0</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>📌 CRPS惩罚过宽（太保守）和过窄（太自信）的预测区间。</p></blockquote>
+<hr class="section-divider">
+<h2>M.8 非线性动力学基本概念（第29章）</h2>
+<p><strong>为什么需要</strong>：第29章讨论混沌、吸引子、非线性系统。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>通俗解释</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>非线性系统</strong></td>
+<td>输出不与输入成正比，叠加原理不成立</td>
+<td>心理系统常见（如阈值效应）</td>
+</tr>
+<tr>
+<td><strong>相空间</strong></td>
+<td>状态向量 \(\Psi\) 所在的虚拟空间</td>
+<td>42维空间，每个点代表一种心理状态</td>
+</tr>
+<tr>
+<td><strong>吸引子</strong></td>
+<td>系统长期趋向的“偏好区域”</td>
+<td>健康状态是一种吸引子，抑郁症是另一种</td>
+</tr>
+<tr>
+<td><strong>混沌</strong></td>
+<td>确定性但不可预测：初始微小差异导致巨大不同</td>
+<td>“蝴蝶效应”</td>
+</tr>
+<tr>
+<td><strong>临界慢化</strong></td>
+<td>系统靠近临界点（相变前）的恢复速度变慢</td>
+<td>心理崩溃前兆</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>📌 这些概念只需定性理解，帮助读懂第29章的研究展望。</p></blockquote>
+<hr class="section-divider">
+<h2>M.9 高级统计计算概念（第28章，可选）</h2>
+<p>第28章涉及一些更专业的概念，对于理解PSE原理不是必须的。下表供好奇读者参考：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>概念</th>
+<th>简短说明</th>
+<th>出现在第28章</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>马尔可夫链蒙特卡罗（MCMC）</strong></td>
+<td>从复杂分布中采样的通用算法</td>
+<td>28.3节</td>
+</tr>
+<tr>
+<td><strong>变分贝叶斯（VB）</strong></td>
+<td>用简单分布近似复杂后验，速度更快</td>
+<td>28.3节</td>
+</tr>
+<tr>
+<td><strong>高斯过程（GP）</strong></td>
+<td>对未知函数进行非参数建模的贝叶斯方法</td>
+<td>28.3节</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>📌 初学阶段可跳过这些内容。PSE的实际校准使用粒子滤波，不要求掌握MCMC或VB。</p></blockquote>
+<hr class="section-divider">
+<h2>M.10 总结：各章需要的数学知识速查表</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>章节</th>
+<th>需要的概念</th>
+<th>掌握要求</th>
+<th>本附录对应节</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>第8章</td>
+<td>函数、导数、向量、矩阵、欧氏距离、正交</td>
+<td>理解含义</td>
+<td>M.1, M.3</td>
+</tr>
+<tr>
+<td>第19章</td>
+<td>微分方程、参数、数值积分</td>
+<td>会读方程</td>
+<td>M.1, M.2</td>
+</tr>
+<tr>
+<td>第20章</td>
+<td>贝叶斯公式、先验/后验、粒子滤波逻辑、集合预报、CRPS</td>
+<td>理解流程</td>
+<td>M.4, M.5, M.6, M.7</td>
+</tr>
+<tr>
+<td>第28章</td>
+<td>分层贝叶斯、MCMC（可选）</td>
+<td>知道存在即可</td>
+<td>M.9</td>
+</tr>
+<tr>
+<td>第29章</td>
+<td>非线性、吸引子、混沌</td>
+<td>定性理解</td>
+<td>M.8</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>你不需要</strong>：</p>
+<ul>
+<li>手工解微分方程 → 计算机数值积分</li>
+<li>手工做贝叶斯积分 → 粒子滤波自动完成</li>
+<li>推导MCMC算法 → 本书不要求</li>
+<li>计算高维向量内积 → 理解概念即可</li>
+</ul>
+<hr class="section-divider">
+<h2>M.11 推荐自学资源（免费中文）</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>资源</th>
+<th>适合部分</th>
+<th>获取方式</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>可汗学院《微分方程》</td>
+<td>M.1, M.2</td>
+<td>网易公开课</td>
+</tr>
+<tr>
+<td>3Blue1Brown《贝叶斯定理》</td>
+<td>M.4</td>
+<td>B站搜索</td>
+</tr>
+<tr>
+<td>3Blue1Brown《线性代数本质》</td>
+<td>M.3</td>
+<td>B站有中文字幕</td>
+</tr>
+<tr>
+<td>《统计之都》粒子滤波科普</td>
+<td>M.6</td>
+<td>公众号搜索</td>
+</tr>
+<tr>
+<td>王梓坤《概率论基础》</td>
+<td>M.4</td>
+<td>图书馆借阅</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**学习策略**：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。**目标不是学会数学，而是能读懂PSE的输入输出逻辑**。</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 附L：架构速查——推导链与公理体系</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-n.html" class="nav-link next">附N：概念速查——心理学、神经科学与系统论 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第24章 边界修订：从信号检测到概念修订 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第24章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第24章 边界修订：从信号检测到概念修订</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)列举INTRE已识别的边界张力和未决问题；(2)描述自我修正决策树的运行流程；(3)理解M4-RES-B映射修正作为闭环运作的典型案例；(4)使用神经证据地位分层和工具地图评估不同功能组件的实证成熟度；(5)了解UNIS仲裁合约如何实现自动化边界修订。</p></blockquote>
+<hr class="section-divider">
+<h3>24.1 张力盘点：概念缺口、实证冲突与方法挑战</h3>
+<p>一个成熟的理论框架不仅应展示其与现有证据的兼容之处，更应诚实记录其边界、张力和未解决的挑战。INTRE的神经层对接体系通过04-A-08系统归档了当前已识别的所有未决张力。</p>
+<p><strong>概念缺口（框架结构本身的不完备）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>缺口</th>
+<th>描述</th>
+<th>威胁等级</th>
+<th>处理策略</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>递归自我建模的缺失</td>
+<td>DMN不仅参与M2-DSP-B，还深度参与心理理论、情景模拟和自我投射。功能层当前没有显式位置承载“模型监控自身”的递归结构</td>
+<td>中</td>
+<td>标记为框架扩展需求，暂归入M5-STR-R扩展功能</td>
+</tr>
+<tr>
+<td>时间尺度参数的显式编码缺失</td>
+<td>RES-D、RES-B、STR-C等隐含时间尺度，但未在UPLS语法中显式参数化</td>
+<td>中</td>
+<td>列为PSE下一阶段开发任务</td>
+</tr>
+<tr>
+<td>预测误差参数化的缺失</td>
+<td>计算精神病学的预测编码框架（精度加权预测误差）在INTRE中尚无直接对应</td>
+<td>低</td>
+<td>视为未来扩展方向</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>实证张力（框架主张与神经证据之间的摩擦）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>张力</th>
+<th>描述</th>
+<th>威胁等级</th>
+<th>处理策略</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>自我损耗效应的复制争议</td>
+<td>M3-RES-D的部分启发来自自我损耗理论，但多实验室预注册复制发现效应显著减弱</td>
+<td>中</td>
+<td>INTRE已采取防御性定位——M3-RES-D不绑定于“葡萄糖耗竭”机制</td>
+</tr>
+<tr>
+<td>消退学习与RELINK的机制争议</td>
+<td>当前神经科学支持抑制性学习理论——消退是新建抑制连接而非衰减旧连接</td>
+<td>低</td>
+<td>修改RELINK表述为“建立新的抑制性连接以竞争原有连接”</td>
+</tr>
+<tr>
+<td>DMN功能广度超出当前映射</td>
+<td>DMN参与情景模拟、未来想象等功能，超出M2-DSP-B和M5-STR-R的当前映射范围</td>
+<td>中</td>
+<td>标记为框架扩展需求</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>方法论挑战（检验条件的不充分）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>挑战</th>
+<th>描述</th>
+<th>威胁等级</th>
+<th>处理策略</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>跨文化神经科学检验缺失</td>
+<td>大部分兼容性证据来自WEIRD人群</td>
+<td>中</td>
+<td>列为长期优先验证任务</td>
+</tr>
+<tr>
+<td>发展视角的检验缺失</td>
+<td>STR-C和STR-R的发展敏感期假设尚无直接的纵向神经科学验证</td>
+<td>中</td>
+<td>在发展认知神经科学中寻找可用证据</td>
+</tr>
+<tr>
+<td>生态效度检验缺失</td>
+<td>大部分证据来自高度控制的实验室</td>
+<td>低</td>
+<td>推进软测量和数字表型技术</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>张力升级规则</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>当前状态</th>
+<th>触发条件</th>
+<th>升级后状态</th>
+<th>升级后动作</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>标记</td>
+<td>该张力的独立支持性研究数量增至一项以上</td>
+<td>需响应</td>
+<td>启动对应威胁等级的处理策略</td>
+</tr>
+<tr>
+<td>标记</td>
+<td>来自三个以上独立实验室、两种以上神经模态的证据持续确认</td>
+<td>紧急</td>
+<td>暂停下游文档更新，启动概念层重审</td>
+</tr>
+<tr>
+<td>需响应</td>
+<td>两项独立前瞻性检验以预注册、高统计功效设计否证原假设</td>
+<td>升级</td>
+<td>重新评估威胁等级</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>沉默条款</strong>：若一项被标记的张力在三年内未被任何研究者跟进或提供新的独立证据，框架有权声明“此张力目前处于未激活状态”。</p>
+<hr class="section-divider">
+<h3>24.2 修正决策树：从信号确认到映射层重审</h3>
+<p>当反向约束信号积累到触发阈值时，INTRE通过一套标准化的自我修正决策树来处理偏差。</p>
+<pre><code class="language-text">
+信号检测（来自神经层反馈或PSE-C残差）
+    ↓
+信号确认（三项原则检查）
+    ├── 原则1：至少两个独立研究团队报告
+    ├── 原则2：至少两种不同神经测量模态
+    └── 原则3：可绑定到具体M-R-D-S组件
+    ├── 任一不满足 → 登记为“待观察”，进入观察期（1年）
+    └── 全部满足 → 进入决策评估
+           ↓
+    分层诊断：优先在参数层寻找解释
+           ↓
+    ┌──────────────────────────────────────┐
+    │ 参数层校准（30天内）                  │
+    │ → 更新贝叶斯后验分布                  │
+    │ → 残差是否消除？                      │
+    │   ├── 是 → 归档，闭环完成             │
+    │   └── 否 → 升级到模型层               │
+    └──────────────────────────────────────┘
+           ↓
+    ┌──────────────────────────────────────┐
+    │ 模型层调整（90天内）                  │
+    │ → 调整模型形式（如线性→非线性）       │
+    │ → 残差是否消除？                      │
+    │   ├── 是 → 归档，闭环完成             │
+    │   └── 否 → 检查是否满足强反例条件     │
+    └──────────────────────────────────────┘
+           ↓
+    ┌──────────────────────────────────────┐
+    │ 强反例条件检查                         │
+    │ 条件：(1)稳定性（≥3项预注册独立研究）  │
+    │      (2)不可归约性（低层修正无效）     │
+    │      (3)增量预测力（RMSE降低≥10%）   │
+    │   ├── 不满足 → 继续观察，不触发重审   │
+    │   └── 满足 → 触发概念映射层重审       │
+    └──────────────────────────────────────┘
+           ↓
+    ┌──────────────────────────────────────┐
+    │ 概念映射层重审（180天内）              │
+    │ → UPLS多视角共识评审（PCF-P+PCV-P）   │
+    │ → 可能结果：修订映射/降级构念/废弃构念│
+    │ → 版本记录，下游文档追溯更新          │
+    └──────────────────────────────────────┘
+</code></pre>
+<p><strong>UNIS仲裁合约：自动化的边界修订</strong></p>
+<p>在上述决策树中，参数层校准和模型层调整阶段可以由人工或自动化系统执行。UNIS的跨层仲裁合约提供了一个<strong>运行时自动边界修正</strong>的工程案例——它不需要等待人类专家介入，而是在推理过程中实时执行约束检查与裁剪。</p>
+<p>UNIS L5（神经先验库）存储了两类约束：</p>
+<ul>
+<li><strong>生理硬约束</strong>（分子/突触级）：违反即裁剪，记入仲裁日志</li>
+<li><strong>统计规律约束</strong>（环路/系统级）：以软先验注入，不强制裁剪</li>
+</ul>
+<p>当L4（神经-功能映射模型）的输出违反硬约束时，仲裁合约自动执行：</p>
+<ol>
+<li>将输出值裁剪至约束边界</li>
+<li>生成<code>arbitration_event</code>记录（含触发条件、涉及模型版本、裁剪结果）</li>
+<li>将事件推送至审计日志，供下游分析和社区评审</li>
+</ol>
+<p>这一机制对应决策树中的“参数层校准”阶段，但其执行是<strong>实时的、自动的</strong>，而非事后的人工修正。当同一功能维度的两个独立L4模型输出方向相反时（差异>2σ），仲裁合约不进行融合，而是输出冲突信号供PSE动力学分析——这对应决策树中的“强反例条件检查”阶段的前置信号。</p>
+<p><strong>工程意义</strong>：UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制。它不替代UPLS的概念映射层重审（那是慢变层），而是在参数层和模型层提供了实时自动化修正能力。</p>
+<p><strong>决策树的关键设计原则</strong>：</p>
+<ol>
+<li><strong>优先低层修正</strong>：先在参数层尝试，避免不必要的高层修订</li>
+<li><strong>假阳性保护</strong>：单次异常不触发高层修正；需要独立复现、跨模态稳健、低层修正无效三重条件</li>
+<li><strong>时间约束</strong>：每层有明确的响应时限</li>
+<li><strong>追溯更新义务</strong>：任何层级修正完成后，依赖被修正组件的下游文档有义务在60天内更新</li>
+</ol>
+<hr class="section-divider">
+<h3>24.3 案例示范：M4-RES-B的单点改组合映射</h3>
+<p>本节展示一个闭环修正案例——依恋安全感从单点映射到组合映射的演化过程。</p>
+<p><strong>初始映射（v1.0）</strong>：“依恋安全感”被单点映射为M4-RES-B（长期情绪安全基底）。</p>
+<p><strong>第一步：PSE-C发现系统性偏差</strong>。在长期治疗轨迹的贝叶斯校准中，对于经历显著关系修复的患者，模型系统性<strong>低估</strong>了长期情绪稳定改善的幅度。</p>
+<p><strong>第二步：参数层调整（失败）</strong>。尝试提高M4-RES-B的学习率参数，但在新样本上仍然存在类似偏差。</p>
+<p><strong>第三步：模型层调整（失败）</strong>。将线性恢复模型改为带非线性跃迁的双指数模型，残差仍然存在。</p>
+<p><strong>第四步：触发概念映射层重审</strong>。偏差在至少3个独立样本中复现（N=45, 62, 38），跨不同治疗师和临床情境，且参数层和模型层调整均无效——满足强反例触发条件。</p>
+<p><strong>第五步：多视角共识评审</strong>。专家团队重新审视“依恋安全感”的功能定位。共识结论：依恋安全感实际上包含三个可区分的功能成分：</p>
+<ul>
+<li><strong>M4-RES-B</strong>：深层安全基底——被爱、被接纳的原始感受</li>
+<li><strong>M2-STR-R</strong>：关于他人可信度的关系信念——“大多数人是善意的”</li>
+<li><strong>M5-STR-C</strong>：社会支持连接的叙事强度——可被述说的支持网络</li>
+</ul>
+<p><strong>第六步：修正为组合映射（v2.0）</strong>：<code>M4-RES-B (primary) + M2-STR-R (secondary) + M5-STR-C (context)</code>。PSE-C在新数据上验证：组合映射的预测残差比单点映射降低了62%（RMSE从12.4降至4.7）。</p>
+<p><strong>方法论的教训</strong>：闭环修正不是框架的“失败”，而是从实证反馈中学习的成功案例。</p>
+<hr class="section-divider">
+<h3>24.4 证据分层：L1-L4与M1-M3的分级体系</h3>
+<p>并非所有功能组件都有同等的神经科学证据支持。INTRE按42个功能子单元提供证据地位分层：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>名称</th>
+<th>判定标准</th>
+<th>工程意义</th>
+<th>占比</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>L1</strong></td>
+<td>强锚定</td>
+<td>已有至少一个独立神经标记物；至少两个独立研究团队确认</td>
+<td>可直接进入PSE-C校准</td>
+<td>33% (14/42)</td>
+</tr>
+<tr>
+<td><strong>L2</strong></td>
+<td>部分整合</td>
+<td>碎片化证据分布于多个研究传统</td>
+<td>需开发多模态融合测量协议</td>
+<td>36% (15/42)</td>
+</tr>
+<tr>
+<td><strong>L3</strong></td>
+<td>窄带代理</td>
+<td>仅有一条神经线索支持</td>
+<td>需优先开发原生测量工具</td>
+<td>19% (8/42)</td>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td>几乎空白</td>
+<td>当前无独立神经证据</td>
+<td>需从基础行为指标开始</td>
+<td>12% (5/42)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>代表性示例</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>组件</th>
+<th>证据层级</th>
+<th>核心证据</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M2-RES-D（注意带宽）</td>
+<td>L1</td>
+<td>n-back任务+DLPFC BOLD线性关系</td>
+</tr>
+<tr>
+<td>M4-DSP-B（自动情绪）</td>
+<td>L1</td>
+<td>恐惧条件化+杏仁核快速通路</td>
+</tr>
+<tr>
+<td>M4-STR-C（情感连接）</td>
+<td>L2</td>
+<td>恐惧条件化+消退学习机制</td>
+</tr>
+<tr>
+<td>M6-RES-D（启动能量）</td>
+<td>L3</td>
+<td>帕金森病双重分离+准备电位</td>
+</tr>
+<tr>
+<td>M5-RES-D（叙事连贯感）</td>
+<td>L4</td>
+<td>无独立神经标记物</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>测量范式成熟度三级分级</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>名称</th>
+<th>判定标准</th>
+<th>占比</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td>可直接复用</td>
+<td>已有成熟标准化范式，信效度经多次独立验证</td>
+<td>40% (17/42)</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>需组合验证</td>
+<td>多个分散范式，需整合为统一测量协议</td>
+<td>43% (18/42)</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td>需从零开发</td>
+<td>无成熟标准化工具</td>
+<td>17% (7/42)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A/B/C类与M1/M2/M3的对应关系</strong>：</p>
+<ul>
+<li>M1（可直接复用）与A类（实证锚定）高度重叠</li>
+<li>M2（需组合验证）与B类（整合性）高度重叠</li>
+<li>M3（需从零开发）与C类（预测性）高度重叠</li>
+</ul>
+<p><strong>工程建议</strong>：</p>
+<ul>
+<li>优先使用M1工具进行PSE-C冷启动校准</li>
+<li>M2组件设计多模态融合方案，通过潜变量建模提取共同因子</li>
+<li>M3组件以理论推演和行为代理为主，明确标注高不确定性</li>
+</ul>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：INTRE已识别的边界张力包括递归自我建模缺失（概念缺口）、自我损耗复制争议（实证张力）、跨文化检验缺失（方法论挑战）等。自我修正决策树规定从信号确认→参数层校准→模型层调整→概念映射层重审的完整流程。UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制，在参数层和模型层提供了实时自动化修正能力。M4-RES-B从单点映射修正为组合映射的案例展示了闭环的实际运作。神经证据地位分层（L1-L4）和工具成熟度分级（M1-M3）为功能组件的实证基础提供了透明的诚实地图——L1/M1组件可进入PSE-C校准；L3-4/M3组件是框架最脆弱的实证节点，应优先接受独立检验。</p>
+<blockquote><p>**关键术语**：边界张力，概念缺口，实证张力，方法论挑战，自我修正决策树，强反例触发条件，证据地位分层（L1-L4），工具成熟度分级（M1-M3），UNIS，仲裁合约，运行时自动修正</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “L4证据地位意味着组件是虚构的” → ✅ L4标记的是“当前无独立神经证据”，是理论创新的自然产物，非组件不存在的证明。<br>- ❌ “张力清单意味着框架有缺陷” → ✅ 诚实记录张力是科学诚信的标志。<br>- ❌ “自我修正决策树只有在失败时才使用” → ✅ 参数层校准是每次PSE-C更新时的常规操作。<br>- ❌ “UNIS仲裁合约替代了UPLS的概念评审” → ✅ 仲裁合约处理运行时自动裁剪（参数层），UPLS概念评审处理慢变的概念映射修订（映射层），两者是互补关系。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 列举INTRE已识别的三类边界张力各一例。<br>2. 描述自我修正决策树从信号检测到概念修订的完整流程。<br>3. M4-RES-B的映射修正案例说明了闭环修正的什么方法论原则？<br>4. UNIS仲裁合约与UPLS的概念映射层重审在时间尺度和职能上有何区别？</p></blockquote>
+<hr class="section-divider">
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch23.html" class="nav-link prev">‹ 23 双向约束：正向预测与反向信号</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch25.html" class="nav-link next">25 REVER：结构伦理、依赖雷达与门控 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

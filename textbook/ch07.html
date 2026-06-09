@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7章 功能模块：M1至M6划分与级联 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第7章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第7章 功能模块：M1至M6划分与级联</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)陈述M1-M6六模块的划分依据与否定性特异崩溃论证；(2)描述每个核心模块的功能定义、典型失调和干预接口；(3)识别三类模块间耦合机制；(4)解释枢纽模块概念及其在级联干预中的杠杆作用；(5)理解边界模糊的必然性及其管理策略。</p></blockquote>
+<hr class="section-divider">
+<h3>7.1 划分依据：否定性特异崩溃论证</h3>
+<p>INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对<strong>功能角色</strong>的分解。</p>
+<p><strong>划分的逻辑依据</strong>。六个模块的划分源于一个进化上的功能性追问：一个需要在不确定环境中生存、适应并繁衍的生物有机体，其心理系统至少需要具备哪些不可相互替代的功能能力？答案指向六个基本功能：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模块</th>
+<th>核心功能</th>
+<th>进化逻辑</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong> 具身</td>
+<td>能量与稳态调控</td>
+<td>没有能量摄入，其他功能都无法运行</td>
+</tr>
+<tr>
+<td><strong>M2</strong> 认知</td>
+<td>世界建模与预测</td>
+<td>需要预测环境因果关系以指导行为</td>
+</tr>
+<tr>
+<td><strong>M3</strong> 意志</td>
+<td>目标选择与执行控制</td>
+<td>需要在多方案中决策并维持长期目标</td>
+</tr>
+<tr>
+<td><strong>M4</strong> 情绪</td>
+<td>价值评估与动机</td>
+<td>需要对刺激进行快速好坏评估</td>
+</tr>
+<tr>
+<td><strong>M5</strong> 言语</td>
+<td>符号化与社会协调</td>
+<td>需要传递复杂信息、形成文化积累</td>
+</tr>
+<tr>
+<td><strong>M6</strong> 行为</td>
+<td>行动执行与习惯化</td>
+<td>需要将决策转化为物理动作并自动化</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>否定性特异崩溃论证</strong>。这是模块划分最核心的论证方式：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统性崩溃模式。例如：</p>
+<ul>
+<li><strong>M1严重受损</strong>（慢性疲劳）→ 资源基线全面下降，表现为“能量崩溃”，但信念、连接可能基本完好</li>
+<li><strong>M3严重受损</strong>（意志瘫痪）→ 目标维持能力丧失，但情绪体验和理解可能正常</li>
+<li><strong>M4严重受损</strong>（情绪麻木）→ 价值评估信号缺失，决策困难，但理性推理可能正常</li>
+</ul>
+<p>这些崩溃模式的可分离性是检验模块独立性的关键实证路径。<strong>双分离</strong>——不同病因导致同一现象，不同干预产生不同效果——是验证模块功能独立性的核心方法。</p>
+<p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性担保，不适用于所有智能体类型。</p>
+<p><strong>完备性的三重担保</strong>（工程合理性支撑，而非公理证明）：(1)逻辑推导——六模块展开并承载N-S-R循环的关键功能节点；(2)工程验证——每模块缺失导致独特的不可补偿崩溃模式；(3)进化启发性支持——六模块对应功能地层的逐层叠加（启发性支持）。</p>
+<p><strong>边界模糊的预告</strong>：M1-M6的模块边界在某些边缘案例中存在模糊（如内部言语同时涉及M2和M5）。这些模糊不是设计缺陷，而是心理系统作为高维非线性复杂系统的本质属性在形式化模型中的必然投影。INTRE的策略是通过工程机制<strong>管理不可消除的模糊</strong>（见第9章局部映射协议）。</p>
+<hr class="section-divider">
+<h3>7.2 M1具身：能量调控、稳态与内感受</h3>
+<p><strong>功能定义</strong>。M1是心理系统的物理基座与能量引擎。它负责：生物能量的获取、储存和分配；内部稳态的维持（体温、pH值）；内感受信号的生成与处理（内脏感觉、疲劳感、饥饿感）；生理节律的调控（睡眠-觉醒周期）。</p>
+<blockquote><p>**临床锚定**：连续熬夜三天后，连起床都困难——M1-RES-D枯竭。</p></blockquote>
+<p><strong>核心子维度</strong>（M1在R-D-S上的投射）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>时间尺度</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M1-RES-D</td>
+<td>当前生理能量水平</td>
+<td>分钟-小时</td>
+<td>MODULATE+（睡眠、运动、营养）</td>
+</tr>
+<tr>
+<td>M1-RES-B</td>
+<td>长期健康根基</td>
+<td>月-年</td>
+<td>结构性操作间接建设</td>
+</tr>
+<tr>
+<td>M1-DSP-F</td>
+<td>需意识参与的生理调节</td>
+<td>秒-分</td>
+<td>GATE+（深呼吸、放松）</td>
+</tr>
+<tr>
+<td>M1-DSP-B</td>
+<td>自主神经系统运行</td>
+<td>秒-分</td>
+<td>GATE–（通过生物反馈调节）</td>
+</tr>
+<tr>
+<td>M1-STR-S</td>
+<td>生理节律脚本</td>
+<td>天</td>
+<td>MODULATE+（睡眠锚定）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：慢性疲劳（M1-RES-D↓）、失眠（M1-STR-S紊乱）、躯体化障碍（M1-DSP-B信号误归因）。</p>
+<p><strong>测量候选</strong>：可穿戴设备（HRV、睡眠结构、活动量）、主观疲劳量表（A类）。</p>
+<hr class="section-divider">
+<h3>7.3 M2认知：世界模型、推理与知识表征</h3>
+<p><strong>功能定义</strong>。M2是心理系统的建模引擎与知识库。它负责：从感官输入中提取模式并构建世界模型；存储和检索陈述性知识；执行推理、判断和问题解决；生成对过去、现在和未来的表征。</p>
+<blockquote><p>**临床锚定**：明知道明天有考试，脑子里却全是“我肯定不及格”——M2-DSP-B反刍。</p></blockquote>
+<p><strong>核心子维度</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M2-RES-D</td>
+<td>当前认知资源（注意带宽、工作记忆）</td>
+<td>MODULATE+（认知休息）</td>
+</tr>
+<tr>
+<td>M2-RES-B</td>
+<td>长期知识库（晶体智力）</td>
+<td>结构性建设</td>
+</tr>
+<tr>
+<td>M2-DSP-F</td>
+<td>受控推理、逻辑分析</td>
+<td>GATE+</td>
+</tr>
+<tr>
+<td>M2-DSP-B</td>
+<td>自动化联想、心智游移</td>
+<td>GATE–（正念打断）</td>
+</tr>
+<tr>
+<td>M2-STR-R</td>
+<td>认知规则与信念</td>
+<td>ALIGN（认知重构）</td>
+</tr>
+<tr>
+<td>M2-STR-C</td>
+<td>语义联想网络</td>
+<td>RELINK（间接）</td>
+</tr>
+<tr>
+<td>M2-STR-S</td>
+<td>认知程序（问题解决脚本）</td>
+<td>GATE（反复训练）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：工作记忆容量下降（M2-RES-D↓）、闯入性反刍（M2-DSP-B失控）、僵化规则（M2-STR-R扭曲）。</p>
+<p><strong>测量候选</strong>：n-back任务、Stroop、自动思维问卷（A类）。</p>
+<hr class="section-divider">
+<h3>7.4 M3意志：目标选择、执行控制与价值</h3>
+<p><strong>功能定义</strong>。M3是心理系统的中央调度器。它负责：在多目标间进行优先级排序和资源分配；启动、维持或终止目标导向行为（意志力）；抑制与当前目标冲突的冲动或习惯；在不确定情境下做出承诺性决策。</p>
+<blockquote><p>**临床锚定**：明明知道重要，就是启动不了——M3-RES-D耗竭或M3-DSP-F失灵。</p></blockquote>
+<p><strong>核心子维度</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M3-RES-D</td>
+<td>当前意志资源（自我控制能量）</td>
+<td>MODULATE+（休息、任务分段）</td>
+</tr>
+<tr>
+<td>M3-RES-B</td>
+<td>长期意志韧性</td>
+<td>结构性建设</td>
+</tr>
+<tr>
+<td>M3-DSP-F</td>
+<td>前景执行控制（抑制、切换）</td>
+<td>GATE+</td>
+</tr>
+<tr>
+<td>M3-DSP-B</td>
+<td>自动放弃倾向（C类预测性子单元）</td>
+<td>GATE–（间接）</td>
+</tr>
+<tr>
+<td>M3-STR-R</td>
+<td>价值与决策规则</td>
+<td>ALIGN（价值观澄清）</td>
+</tr>
+<tr>
+<td>M3-STR-C</td>
+<td>目标-行动-自我连接</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td>M3-STR-S</td>
+<td>自我管理程序（拖延脚本）</td>
+<td>GATE（行为排练）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：拖延（M3-DSP-F启动困难）、决策疲劳（M3-RES-D耗竭）、习得性无助（M3-DSP-B被动放弃固化）。</p>
+<p><strong>测量候选</strong>：自我控制量表、Stroop任务、主观疲劳量表（A类）；M3-DSP-B为C类。</p>
+<p><strong>实证节点警告</strong>：M3-RES-D是INTRE框架最脆弱的实证节点（“阿喀琉斯之踵”）。若三通道收敛效度研究证伪其独立存在性，将连锁影响RES-D跨模块统一性及MODULATE操作靶点，但框架其他部分仍可能成立。</p>
+<hr class="section-divider">
+<h3>7.5 M4情绪：威胁评估、奖赏与动机</h3>
+<p><strong>功能定义</strong>。M4是心理系统的价值评估中心与动机引擎。它负责：对内外刺激进行快速的情感标记（好/坏、安全/危险）；生成动机信号（趋近/回避）；调节情绪反应的强度和持续时间。</p>
+<blockquote><p>**临床锚定**：一听到关门声就心慌——M4-DSP-B条件化恐惧。</p></blockquote>
+<p><strong>核心子维度</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M4-RES-D</td>
+<td>当前情绪容限</td>
+<td>MODULATE+（情绪调节技能）</td>
+</tr>
+<tr>
+<td>M4-RES-B</td>
+<td>长期情绪安全基底（依恋安全感）</td>
+<td>RELINK（间接建设）</td>
+</tr>
+<tr>
+<td>M4-DSP-F</td>
+<td>前景情绪调节（重评、标签化）</td>
+<td>GATE+</td>
+</tr>
+<tr>
+<td>M4-DSP-B</td>
+<td>自动情绪激活（恐惧、情绪传染）</td>
+<td>GATE–（暴露、正念）</td>
+</tr>
+<tr>
+<td>M4-STR-R</td>
+<td>情绪评价规则</td>
+<td>ALIGN</td>
+</tr>
+<tr>
+<td>M4-STR-C</td>
+<td>情绪连接网络（创伤连接、依恋模式）</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td>M4-STR-S</td>
+<td>情绪应对程序（回避-压抑脚本）</td>
+<td>GATE</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：焦虑障碍（M4-DSP-B过度激活）、抑郁症（M4-RES-D枯竭）、PTSD（M4-STR-C异常高权重）。</p>
+<p><strong>测量候选</strong>：情绪Stroop、皮肤电导、情绪调节问卷（A类）。</p>
+<hr class="section-divider">
+<h3>7.6 M5言语：符号化、叙事与社会沟通</h3>
+<p><strong>功能定义</strong>。M5是心理系统的符号接口与社会协调器。它负责：将内部状态编码为可共享的符号；接收和解析他人发出的符号信息；构建和维持自我叙事；进行内在独白和言语思维。</p>
+<blockquote><p>**临床锚定**：心里乱糟糟的，但说不出来——M5-STR-C情感-语言映射断裂。</p></blockquote>
+<p><strong>核心子维度</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M5-RES-D</td>
+<td>当前叙事整合资源</td>
+<td>MODULATE+（叙事写作）</td>
+</tr>
+<tr>
+<td>M5-RES-B</td>
+<td>长期叙事资本（身份连贯性）</td>
+<td>结构性建设</td>
+</tr>
+<tr>
+<td>M5-DSP-F</td>
+<td>前景叙事加工（有意识讲述）</td>
+<td>GATE+</td>
+</tr>
+<tr>
+<td>M5-DSP-B</td>
+<td>内在独白、自动叙事流</td>
+<td>GATE–</td>
+</tr>
+<tr>
+<td>M5-STR-R</td>
+<td>叙事规则与身份框架</td>
+<td>ALIGN（叙事重构）</td>
+</tr>
+<tr>
+<td>M5-STR-C</td>
+<td>事件-意义连接网络</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td>M5-STR-S</td>
+<td>人际语言脚本</td>
+<td>GATE（角色扮演）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：失语症（M5表达障碍）、述情障碍（M5-STR-C映射断裂）、自我叙事碎片化。</p>
+<p><strong>测量候选</strong>：叙事连贯性评分、语言流畅性任务（B类）。</p>
+<hr class="section-divider">
+<h3>7.7 M6行为：动作序列、习惯与技能执行</h3>
+<p><strong>功能定义</strong>。M6是心理系统的执行终端。它负责：将意志决策和情绪驱动力转化为外显的动作输出；通过重复练习将行为序列固化为习惯和技能；在习惯与目标导向控制之间切换。</p>
+<blockquote><p>**临床锚定**：不知不觉又刷了2小时手机——M6-DSP-B习惯自动化。</p></blockquote>
+<p><strong>核心子维度</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>功能定义</th>
+<th>干预接口</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M6-RES-D</td>
+<td>当前行为启动能量（C类预测性子单元）</td>
+<td>MODULATE+（微动作预热）</td>
+</tr>
+<tr>
+<td>M6-RES-B</td>
+<td>长期行为可执行基底</td>
+<td>结构性建设</td>
+</tr>
+<tr>
+<td>M6-DSP-F</td>
+<td>前景行为调度（目标动作）</td>
+<td>GATE+（行为激活）</td>
+</tr>
+<tr>
+<td>M6-DSP-B</td>
+<td>习惯性行为、自动化回避</td>
+<td>GATE–（刺激控制）</td>
+</tr>
+<tr>
+<td>M6-STR-R</td>
+<td>行为规则与执行准则</td>
+<td>ALIGN</td>
+</tr>
+<tr>
+<td>M6-STR-C</td>
+<td>行为-情境触发网络</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td>M6-STR-S</td>
+<td>习惯脚本、动作序列</td>
+<td>GATE（反复训练）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>典型失调</strong>：启动困难（M6-RES-D↓）、习惯成瘾（M6-DSP-B过度支配）、行为僵化。</p>
+<p><strong>测量候选</strong>：行为日志、加速度计数（B类）；M6-RES-D为C类。</p>
+<hr class="section-divider">
+<h3>7.8 耦合机制：模块间三类约束关系</h3>
+<p>六个模块并非孤立运行。它们通过三类核心机制相互耦合，形成级联效应。</p>
+<p><strong>第一类耦合：资源供给阻断</strong>。M1-RES-D的下降会通过供给关系影响M3-RES-D和M2-RES-D。例如，睡眠不足(M1-RES-D↓)导致意志力下降(M3-RES-D↓)和注意涣散(M2-RES-D↓)。</p>
+<p><strong>第二类耦合：调度权限降级</strong>。当M3-RES-D低于阈值时，M3-DSP-F失效，调度权限降级给M6-DSP-B和M4-DSP-B。这导致了“明知不该做却停不下来”的现象。</p>
+<p><strong>第三类耦合：结构约束</strong>。STR层的结构参数对调度层和资源层施加约束。例如，M2-STR-R中的完美主义规则会增加M3-RES-D的消耗速率。</p>
+<p><strong>级联路径示例（拖延行为逆向追溯）</strong>：</p>
+<pre><code class="language-text">
+M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务-威胁连接）
+→ M2-STR-R（完美主义规则）→ M3-RES-D耗竭 → M1-RES-D不足（睡眠不足）
+</code></pre>
+<p>每向上追溯一层，就获得一个潜在干预靶点——行为激活(M6)、暴露(M4)、认知重构(M2)、睡眠锚定(M1)。</p>
+<p><strong>枢纽模块识别</strong>。在依赖矩阵中，M4（情绪模块）的出度和入度均较高——M4→M3（情绪消耗意志力）、M4→M6（恐惧驱动回避）、M2→M4（认知触发情绪）、M1→M4（能量基底影响情绪容限）。在焦虑和抑郁谱系中，M4通常具有最高的枢纽度，是级联传播的核心节点。这意味着，在复杂病例中，稳定M4可能是中断级联扩散的关键杠杆点。</p>
+<hr class="section-divider">
+<h3>7.9 边界模糊：计算不可约性与工程管理</h3>
+<p><strong>观察到的边界模糊</strong>。M1-M6的模块边界在边缘案例中存在模糊：内部言语同时具有M5的符号化属性和M2的推理属性；情绪生理唤醒既属于M1的能量代谢，也是M4情绪自动激活的产物；习惯性回避既是M6的行为序列，也携带M4的情感连接。</p>
+<p><strong>理论基础：计算不可约性</strong>。在一个计算不可约的系统中，不存在一组有限、互斥、完备的功能类别，使得每个心理过程可被唯一归入其中且不丢失信息。心理系统满足计算不可约系统的全部特征：极高自由度、非线性耦合、混沌动力学、历史与学习依赖。</p>
+<p><strong>INTRE的工程管理机制</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>机制</th>
+<th>作用</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>局部映射协议</td>
+<td>允许一个构念有多个落点</td>
+<td>“内部言语”主映射M5-DSP-B，次映射M2-DSP-B</td>
+</tr>
+<tr>
+<td>可信度分级</td>
+<td>将不确定性显式化</td>
+<td>M6-RES-D映射可信度7/10</td>
+</tr>
+<tr>
+<td>边界注释</td>
+<td>主动告知“在哪里会失真”</td>
+<td>“不含惊恐发作的躯体崩溃”</td>
+</tr>
+<tr>
+<td>功能解耦</td>
+<td>将复合现象分解为子单元组合</td>
+<td>“拖延”分解为M6-RES-D、M3-STR-R、M4-DSP-B</td>
+</tr>
+<tr>
+<td>闭环演化</td>
+<td>允许映射在偏差累积后修正</td>
+<td>M4-RES-B从单点映射修正为组合映射（见第24章）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>科学姿态的转变</strong>：INTRE的边界模糊管理标志着心理学从“追求虚幻的绝对精确”转向“在认知极限内逼近有用模型”的成熟科学姿态。边界模糊不是需要被修复的bug，而是需要被接受并管理的feature。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：六模块(M1-M6)是对人类心智功能层的工程化分解，依据进化必需性和否定性特异崩溃论证。M1提供能量基底，M2构建世界模型，M3执行意志控制，M4生成价值评估，M5提供符号化接口，M6执行行为序列。每个模块在R-D-S三维上投射出具体的子单元，各有典型失调模式和G-M-A-R干预接口。模块间通过资源供给阻断、调度权限降级和结构约束三类机制相互耦合，形成可追踪的级联路径。枢纽模块（如M4）的识别为复杂病例的干预杠杆点选择提供了理论依据。边界模糊通过计算不可约性论证被确认为不可消除的固有属性，INTRE通过工程机制对其进行管理而非徒劳地追求绝对精确。</p>
+<blockquote><p>**关键术语**：M1-M6，否定性特异崩溃，依赖矩阵，枢纽节点，级联效应，功能接口，计算不可约性</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “M1-M6必须满足福多模块论的信息封装标准” → ✅ INTRE的模块是工程学导向的**功能接口**，接受模块间的高交互性并将其作为可追踪、可干预的耦合路径。<br>- ❌ “边界模糊是设计缺陷” → ✅ 边界模糊是计算不可约系统的固有属性，INTRE通过局部映射协议等机制进行管理而非消除。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 什么是否定性特异崩溃论证？用它来为M3（意志模块）的独立性辩护。<br>2. 内部言语同时涉及M2和M5，这是否证伪了模块划分的互斥性？请运用边界模糊的必然性论述回应。<br>3. 福多论证了中央系统的不可模块化性。INTRE以功能接口重新定义模块，你认为这是诚实的工程策略还是回避了福多挑战的核心？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch06.html" class="nav-link prev">‹ 6 状态维度：资源、调度与结构三轴</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch08.html" class="nav-link next">8 状态向量：42维表示与动力学 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

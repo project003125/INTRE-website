@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第8章 状态向量：42维表示与动力学 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第8章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第8章 状态向量：42维表示与动力学</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)描述42维状态向量的构成并区分各分量的时间尺度；(2)解释状态空间几何性质；(3)理解微分方程框架的一般形式；(4)陈述恢复不对称定律及其临床意义；(5)描述S-P外感架构的六层环境来源与P-层模式编码；(6)了解多模态融合中神经似然的来源。</p></blockquote>
+<hr class="section-divider">
+<h3>8.1 完整列表：42子维度的符号与定义</h3>
+<p>在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。每个分量代表某一特定功能模块在某一特定状态维度上的取值（通常归一化到0-100区间或-1到+1区间，视维度性质而定）。</p>
+<p><strong>42维状态向量的数学表示</strong>：</p>
+<p>$$ \Psi(t) = \begin{pmatrix} \psi_{1,RES-D}(t) \\ \psi_{1,RES-B}(t) \\ \psi_{1,DSP-F}(t) \\ \psi_{1,DSP-B}(t) \\ \psi_{1,STR-R}(t) \\ \psi_{1,STR-C}(t) \\ \psi_{1,STR-S}(t) \\ \psi_{2,RES-D}(t) \\ \vdots \\ \psi_{6,STR-S}(t) \end{pmatrix} $$</p>
+<p><strong>各分量的功能定义速查表</strong>（完整操作化定义见附录A）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模块</th>
+<th>子维度</th>
+<th>符号</th>
+<th>功能定义（简）</th>
+<th>时间尺度</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td>RES-D</td>
+<td>M1-RES-D</td>
+<td>当前生理能量（精力）</td>
+<td>小时-天</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M1-RES-B</td>
+<td>长期健康根基</td>
+<td>月-年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M1-DSP-F</td>
+<td>主动生理调节（如深呼吸）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M1-DSP-B</td>
+<td>自主神经活动（HRV等）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M1-STR-S</td>
+<td>生理节律脚本（睡眠-觉醒）</td>
+<td>天</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>RES-D</td>
+<td>M2-RES-D</td>
+<td>注意带宽/工作记忆容量</td>
+<td>分-小时</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M2-RES-B</td>
+<td>长期知识库/晶体智力</td>
+<td>年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M2-DSP-F</td>
+<td>受控推理/分析思维</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M2-DSP-B</td>
+<td>自动化联想/心智游移</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-R</td>
+<td>M2-STR-R</td>
+<td>信念规则/图式</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C</td>
+<td>M2-STR-C</td>
+<td>语义联想网络权重</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M2-STR-S</td>
+<td>认知程序/问题解决脚本</td>
+<td>混合</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td>RES-D</td>
+<td>M3-RES-D</td>
+<td>当前意志资源（自我控制能量）</td>
+<td>小时-天</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M3-RES-B</td>
+<td>长期意志韧性</td>
+<td>月-年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M3-DSP-F</td>
+<td>前景执行控制（抑制/切换）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M3-DSP-B</td>
+<td>背景意志调度（放弃倾向）</td>
+<td>混合</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-R</td>
+<td>M3-STR-R</td>
+<td>价值规则/决策优先级</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C</td>
+<td>M3-STR-C</td>
+<td>目标-行动-自我连接</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M3-STR-S</td>
+<td>自我管理程序（如拖延脚本）</td>
+<td>混合</td>
+</tr>
+<tr>
+<td><strong>M4</strong></td>
+<td>RES-D</td>
+<td>M4-RES-D</td>
+<td>当前情绪容限</td>
+<td>小时-天</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M4-RES-B</td>
+<td>长期安全感/依恋安全</td>
+<td>月-年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M4-DSP-F</td>
+<td>前景情绪调节（重评等）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M4-DSP-B</td>
+<td>自动情绪激活（恐惧等）</td>
+<td>秒</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-R</td>
+<td>M4-STR-R</td>
+<td>情绪评价规则</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C</td>
+<td>M4-STR-C</td>
+<td>情绪联想网络（如创伤连接）</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M4-STR-S</td>
+<td>情绪应对程序（回避-压抑链）</td>
+<td>混合</td>
+</tr>
+<tr>
+<td><strong>M5</strong></td>
+<td>RES-D</td>
+<td>M5-RES-D</td>
+<td>当前叙事整合资源</td>
+<td>小时-天</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M5-RES-B</td>
+<td>长期叙事资本/身份连贯性</td>
+<td>月-年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M5-DSP-F</td>
+<td>前景叙事加工（有意识讲述）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M5-DSP-B</td>
+<td>内在独白/自动叙事流</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-R</td>
+<td>M5-STR-R</td>
+<td>身份叙事规则/语法规则</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C</td>
+<td>M5-STR-C</td>
+<td>事件-意义连接网络</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M5-STR-S</td>
+<td>人际语言脚本（请求/争辩）</td>
+<td>混合</td>
+</tr>
+<tr>
+<td><strong>M6</strong></td>
+<td>RES-D</td>
+<td>M6-RES-D</td>
+<td>当前行为启动能量</td>
+<td>分-小时</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B</td>
+<td>M6-RES-B</td>
+<td>长期行为可执行基底</td>
+<td>月-年</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-F</td>
+<td>M6-DSP-F</td>
+<td>前景行为调度（目标动作）</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B</td>
+<td>M6-DSP-B</td>
+<td>习惯/自动化行为</td>
+<td>秒-分</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-R</td>
+<td>M6-STR-R</td>
+<td>行为规则/执行准则</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C</td>
+<td>M6-STR-C</td>
+<td>行为-情境触发网络</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S</td>
+<td>M6-STR-S</td>
+<td>习惯脚本/动作序列</td>
+<td>混合</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**注**：M1的STR-R和STR-C当前为理论空位（待后续细化）。STR-C在简化表示中可投影为平均连接强度（标量），STR-S可投影为序列僵化程度评分。完整表示保留矩阵或序列结构用于高精度仿真。</p></blockquote>
+<p><strong>42维的必要性</strong>：降维测试表明，任何将模块合并（如将M1、M3、M4的资源层合并）或子维度合并（如将STR-R/C/S合并）的简化框架，都会导致关键功能区分的丢失。例如，将M3-RES-D与M4-RES-D合并为单一“心理能量”，就无法解释为什么休息可以恢复意志资源但未必能恢复安全感。</p>
+<hr class="section-divider">
+<h3>8.2 几何解释：正交轴、可行子空间与吸引子</h3>
+<p>42维状态向量\(\Psi(t)\)位于高维空间\(\mathbb{R}^{42}\)的子集中。该状态空间具有几个重要的几何性质。</p>
+<p><strong>正交轴假设</strong>。R、D、S三个维度被假设为<strong>功能正交</strong>——它们描述的是心理系统中不同类型的属性，在概念上相互独立。“正交性”是在功能定义层面上的概念独立性，不承诺在测量数据中彼此不相关。实际上，由于系统动力学，三个维度在数据中往往呈现相关，但这不违反概念正交性——正如物理学中的位置和动量在概念上正交，但在相空间中通过哈密顿方程耦合。</p>
+<p><strong>可行状态子空间</strong>。并非42维空间中的所有点都是心理系统可达的。生理、解剖和动力学约束限制了系统实际能够占据的子空间。例如，M3-RES-D不能高于M1-RES-D的供给上限（资源约束）；M4-DSP-B的过度激活往往伴随着M4-RES-D的消耗。可行状态子空间是一个低维流形，嵌入在42维空间中。PSE仿真的任务之一就是学习这个流形的结构。</p>
+<p><strong>高维流形与临床状态</strong>。不同的心理障碍对应状态空间中不同的区域或吸引子：</p>
+<ul>
+<li>重度抑郁（迟滞型）→ 低M3-RES-D + 低M4-RES-D + 低M1-RES-D + M2-STR-R负性偏向</li>
+<li>广泛性焦虑 → 高M4-DSP-B + 高M2-DSP-B + 中等M3-RES-D消耗</li>
+<li>创伤后应激 → M4-STR-C异常高权重 + M4-RES-B低 + M4-DSP-B易触发</li>
+</ul>
+<p><strong>状态空间的距离与相似性</strong>。两个状态向量之间的欧氏距离可以定义心理状态的相似性。在实际应用中，通常先对维度进行标准化（z-score），并考虑马氏距离作为欧氏距离的替代方案。</p>
+<hr class="section-divider">
+<h3>8.3 时间演化：微分方程框架的一般形式</h3>
+<blockquote><p>**符号约定**：\(\Psi(t)\)表示42维状态向量，\(\psi_i(t)\)表示其第\(i\)个分量；\(\theta\)表示参数向量；\(E(t)\)表示环境输入向量（来自S-P外感架构）；\(u(t)\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
+<p>状态向量\(\Psi(t)\)随时间的变化由一组耦合的常微分方程(ODEs)描述。这些方程构成了PSE中心智动力学理论(MKT)的数学核心。</p>
+<p><strong>一般形式</strong>：</p>
+<p>$$ \frac{d\psi_i}{dt} = f_i(\Psi(t), E(t), u(t); \theta_i) $$</p>
+<p><strong>资源动力学（RES-D）</strong>。RES-D分量的典型方程形式为：</p>
+<p>$$ \frac{dR}{dt} = \text{供给}(t) - \alpha \cdot R - \text{消耗率}(\Psi, E) $$</p>
+<p><strong>简化示例：M3-RES-D的动力学方程</strong></p>
+<p>$$ \frac{dR_{\text{M3}}}{dt} = S_0 - \alpha R_{\text{M3}} - \beta \cdot \text{DSP-F负荷} - \gamma \cdot \text{M4-DSP-B} $$</p>
+<p>其中\(S_0\)是来自M1-RES-D的供给，\(\alpha\)是基线消耗速率（约0.1-0.2/h），\(\beta\)是执行控制消耗系数，\(\gamma\)是情绪干扰消耗系数。当\(R_{\text{M3}}\)低于阈值\(\theta\)时，DSP-F自动失效，系统降级到DSP-B模式。</p>
+<p><strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率，导致资源耗竭比恢复更快。这一不对称性在心理疲劳研究和临床观察中得到支持。</p>
+<p><strong>调度动力学（DSP-F/B）</strong>。DSP-F和DSP-B之间的切换通常建模为阈值触发模型：</p>
+<p>$$ \text{DSP-F激活} = \begin{cases} 1, & \text{if } \text{冲突/新异性} > \theta_{\text{novel}} \text{ 且 } \text{RES-D} > \theta_{\text{res}} \\ 0, & \text{otherwise} \end{cases} $$</p>
+<p>当DSP-F因资源枯竭而失效时，DSP-B过程可能“劫持”控制权。</p>
+<p><strong>结构动力学（STR）</strong>。STR层分量的变化通常较慢，由学习规则驱动：</p>
+<ul>
+<li><strong>STR-C权重更新</strong>（赫布学习）：\(\frac{dW_{ij}}{dt} = \eta \cdot (x_i x_j - \lambda W_{ij})\)</li>
+<li><strong>STR-R规则修正</strong>：\(\frac{dR_r}{dt} = \eta \cdot \text{证据积累} \cdot (\text{信念更新})\)</li>
+<li><strong>STR-S强化</strong>：\(\frac{dS_k}{dt} = \eta \cdot \text{强化信号} \cdot \text{序列执行频率}\)</li>
+</ul>
+<p><strong>模块间耦合项</strong>。不同模块的状态分量通过耦合函数相互影响。例如：</p>
+<p>$$ \frac{d \text{M3-RES-D}}{dt} = \text{供给}_{\text{M1→M3}} - \alpha_{\text{M3}} \cdot \text{M3-RES-D} - \beta \cdot \text{M4-DSP-B} $$</p>
+<p>其中\(\beta\)是耦合系数（从依赖矩阵获得，如M4→M3权重0.75）。</p>
+<hr class="section-divider">
+<h3>8.4 环境耦合：S-P外感架构与生态位</h3>
+<p>状态向量\(\Psi(t)\)的演化不仅依赖于内部动力学，还持续受到外部环境的调制。INTRE通过<strong>S-P外感架构</strong>对环境进行结构化描述。</p>
+<p><strong>S-层：环境来源的分类</strong>。S-层借鉴并拓展了布朗芬布伦纳的生态系统理论：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>名称</th>
+<th>定义</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>S-微系统</td>
+<td>直接互动环境</td>
+<td>个体直接参与的、有即时双向互动的环境</td>
+<td>家庭、职场团队、治疗关系</td>
+</tr>
+<tr>
+<td>S-中系统</td>
+<td>微系统间关系</td>
+<td>多个微系统之间的互动和协调</td>
+<td>家校沟通、工作-家庭平衡</td>
+</tr>
+<tr>
+<td>S-外系统</td>
+<td>间接影响系统</td>
+<td>个体未直接参与但影响其发展环境</td>
+<td>父母的工作场所政策</td>
+</tr>
+<tr>
+<td>S-宏系统</td>
+<td>文化价值观与意识形态</td>
+<td>广泛的文化、社会、经济条件</td>
+<td>个人主义/集体主义</td>
+</tr>
+<tr>
+<td>S-时间系统</td>
+<td>历史变迁与生命历程</td>
+<td>随时间变化的环境事件</td>
+<td>历史事件、生命转折点</td>
+</tr>
+<tr>
+<td>S-数字系统</td>
+<td>数字与算法环境</td>
+<td>虚拟环境、社交媒体、算法推送</td>
+<td>推荐算法、在线社群</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>P-层：环境影响的模式</strong>。P-层描述环境输入以何种模式作用于M-R-D-S系统。其命名规则与M-R-D-S同构：</p>
+<ul>
+<li><code>P-M3-RES-D-</code>：环境输入导致意志资源消耗</li>
+<li><code>P-M4-RES-B+</code>：环境输入补充安全感基底</li>
+<li><code>P-M2-DSP-B+</code>：环境输入激活自动化认知过程</li>
+</ul>
+<p><strong>S-P与M-R-D-S的耦合</strong>。环境输入通过以下方式进入状态演化方程：</p>
+<p>$$ \frac{d\Psi}{dt} = f_{\text{int}}(\Psi) + f_{\text{ext}}(\Psi, SP(t)) + u(t) $$</p>
+<p><strong>生态位定义</strong>。个体的<strong>生态位</strong>是其典型S-P环境配置与M-R-D-S基线状态的联合分布。PSE-P为每个主要生态位（如“高压知识工作者”“退休老年人”）维护一组先验参数分布，解决冷启动问题。</p>
+<p><strong>环境工程干预</strong>。治疗师可以通过修改S-P架构来间接改变M-R-D-S状态。G-M-A-R四操作不仅适用于个体内部，也适用于环境层的S-P架构调整——同一套语法贯穿个体内部和外部环境。</p>
+<hr class="section-divider">
+<h3>8.5 多模态融合与神经似然</h3>
+<p>PSE是一个多模态贝叶斯融合引擎，其状态估计依赖于三个输入通道的观测数据。这三个通道及其对应的基础设施为：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>通道</th>
+<th>观测类型</th>
+<th>基础设施</th>
+<th>输出形式</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>行为通道</strong></td>
+<td>心理量表、行为任务、EMA</td>
+<td>传统心理测量学</td>
+<td>行为似然 \( p(y_b \mid \Psi) \)</td>
+</tr>
+<tr>
+<td><strong>语义通道</strong></td>
+<td>自然语言、临床访谈、叙事</td>
+<td>UPLS（PCUI/PSL）</td>
+<td>语义似然 \( p(y_s \mid \Psi) \)</td>
+</tr>
+<tr>
+<td><strong>神经通道</strong></td>
+<td>EEG、fNIRS、PPG、可穿戴</td>
+<td>UNIS（六层架构）</td>
+<td>神经似然 \( p(y_n \mid \Psi) \)</td>
+</tr>
+</tbody>
+</table></div>
+<p>PSE在每一时间步接收这三个通道的似然，通过贝叶斯更新计算状态后验分布：</p>
+<p>$$ p(\Psi_t \mid y_{b,t}, y_{s,t}, y_{n,t}) \propto p(y_{b,t} \mid \Psi_t) \cdot p(y_{s,t} \mid \Psi_t) \cdot p(y_{n,t} \mid \Psi_t) \cdot p(\Psi_t \mid \Psi_{t-1}) $$</p>
+<p>其中 \( p(y_n \mid \Psi_t) \) 由UNIS的L6（RTE引擎）实时输出。UNIS将原始神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
+<p><strong>多模态融合的临床意义</strong>：当三个通道的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。PSE不强制融合所有通道，而是在UNIS仲裁合约（§24.2）和PSE内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S同构的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLS）和神经（UNIS）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
+<blockquote><p>**关键术语**：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。<br>- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S同构的编码格式，使环境输入可直接进入动力学方程。<br>- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 写出状态向量的数学表示形式并解释各符号的含义。<br>2. 选择拖延和焦虑两个现象，在42维表格中标注它们最可能涉及的核心子维度。<br>3. 恢复不对称定律声称消耗快于恢复。如果对称律成立，人类的心理生活会有什么不同？<br>4. PSE的三个输入通道分别是什么？每个通道由哪个基础设施提供？当神经通道与语义通道的似然方向相反时，可能提示什么临床现象？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-06-04</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 7 功能模块：M1至M6划分与级联</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch09.html" class="nav-link next">9 测量方法：ABC分类与桥接校准 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

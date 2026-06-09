@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录J：PCUI规范——角色标签、映射与消歧 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录J：PCUI规范——角色标签、映射与消歧</h1>
+<p><strong>定位</strong>：第14章（概念标识）的配套速查手册，供研究者和开发者日常查阅。</p>
+<p><strong>学习目标</strong>：能够独立完成一个心理概念的PCUI编码（含ModuleSignature和元数据标注）；能够快速查阅同义词映射表和一词多义消歧规则。</p>
+<hr class="section-divider">
+<h2>J.1 PCUI编码格式</h2>
+<p>PCUI（Psychological Concept Unique Identifier）为每个心理概念分配唯一的结构化编码。完整格式如下：</p>
+<pre><code class="language-">
+[CONCEPT_NAME].[DOMAIN].v[VERSION].[SEQUENCE]#[MODULE_SIGNATURE]
+</code></pre>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>字段</th>
+<th>说明</th>
+<th>示例</th>
+<th>必填</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>CONCEPT_NAME</code></td>
+<td>概念规范英文名称（全大写下划线分隔）</td>
+<td><code>CORE_BELIEF_NEGATIVE</code></td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>DOMAIN</code></td>
+<td>固定为<code>UPLS</code></td>
+<td><code>UPLS</code></td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>VERSION</code></td>
+<td>主版本号.次版本号</td>
+<td><code>v3.0</code></td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>SEQUENCE</code></td>
+<td>同一版本内的顺序号（三位数字）</td>
+<td><code>007</code></td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>MODULE_SIGNATURE</code></td>
+<td>模块角色签名（见J.2）</td>
+<td><code>#M2-STR-R</code></td>
+<td>是</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>简化格式</strong>（日常使用、内部文档、快速标注）： <code>CONCEPT_NAME#MODULE_SIGNATURE</code> 示例：<code>PROCRASTINATION#M3C+M2I+M6I</code></p>
+<hr class="section-divider">
+<h2>J.2 ModuleSignature角色标签速查表</h2>
+<p>ModuleSignature使用角色标签标注概念涉及哪些模块及其功能角色。标签组合格式：<code>M1C+M2I+M3S</code>（模块号+角色，多个用<code>+</code>连接）。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>标签</th>
+<th>名称</th>
+<th>含义</th>
+<th>用法示例</th>
+<th>互斥规则</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>C</strong></td>
+<td>Core</td>
+<td>核心失调位点</td>
+<td><code>M4C</code> = M4是该概念的核心模块</td>
+<td>每个PCUI至少1个C，通常不超过2个</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>Impact</td>
+<td>次级受冲击模块</td>
+<td><code>M2I</code> = M2受冲击</td>
+<td>不能与C同时用于同一模块</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>Support</td>
+<td>支撑/资源供给模块</td>
+<td><code>M1S</code> = M1提供能量支撑</td>
+<td>不能与C同时用于同一模块</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>Trigger</td>
+<td>触发条件模块</td>
+<td><code>M4T</code> = M4状态变化触发</td>
+<td>可选</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>Output</td>
+<td>行为/体验输出通道</td>
+<td><code>M6O</code> = M6是行为输出通道</td>
+<td>可选</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>完整示例</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>PCUI编码</th>
+<th>ModuleSignature</th>
+<th>解读</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>CORE_BELIEF_NEGATIVE.UPLS.v3.0.007#M2C</code></td>
+<td><code>M2C</code></td>
+<td>负性核心信念：M2认知模块为核心</td>
+</tr>
+<tr>
+<td><code>CHRONIC_ANXIETY.UPLS.v2.0.001#M4C+M2I+M3I+M1S+M6O</code></td>
+<td><code>M4C+M2I+M3I+M1S+M6O</code></td>
+<td>慢性焦虑：M4为核心；M2/M3受冲击；M1支撑；M6输出</td>
+</tr>
+<tr>
+<td><code>PROCRASTINATION.UPLS.v3.0.102#M3C+M2I+M6I</code></td>
+<td><code>M3C+M2I+M6I</code></td>
+<td>拖延：M3意志为核心；M2/M6受冲击</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>拖延的亚型细分</strong>（同一PCUI条目内）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>亚型</th>
+<th>M-R-D-S指纹</th>
+<th>ModuleSignature变体</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>资源枯竭型</td>
+<td>M3-RES-D↓</td>
+<td><code>M3C</code></td>
+</tr>
+<tr>
+<td>规则扭曲型</td>
+<td>M2-STR-R（完美主义）</td>
+<td><code>M2C+M6I</code></td>
+</tr>
+<tr>
+<td>情绪驱动型</td>
+<td>M4-STR-C（任务-威胁连接）</td>
+<td><code>M4C+M6I</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h2>J.3 多流派同义词映射速查表</h2>
+<p>下列映射基于PCV-P多流派共识，可信度评分反映功能等价性的稳定程度（0-10分）。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>PCUI</th>
+<th>流派A术语</th>
+<th>流派B术语</th>
+<th>流派C术语</th>
+<th>M-R-D-S坐标</th>
+<th>可信度</th>
+<th>IET</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>CORE_BELIEF_NEGATIVE.v3.0.007</code></td>
+<td>CBT“核心信念”</td>
+<td>精神分析“负性自我表征”</td>
+<td>人本“自我概念贬低”</td>
+<td>M2-STR-R</td>
+<td>9/10</td>
+<td>F</td>
+</tr>
+<tr>
+<td><code>AUTOMATIC_NEGATIVE_THOUGHT.v3.0.012</code></td>
+<td>CBT“自动负性思维”</td>
+<td>精神分析“前意识内容”</td>
+<td>ACT“认知融合”</td>
+<td>M2-DSP-B</td>
+<td>9/10</td>
+<td>F</td>
+</tr>
+<tr>
+<td><code>CONDITIONED_FEAR.v3.0.023</code></td>
+<td>行为“条件化恐惧”</td>
+<td>精神分析“创伤连接”</td>
+<td>CBT“过度警觉”</td>
+<td>M4-STR-C + M4-DSP-B</td>
+<td>9/10</td>
+<td>F</td>
+</tr>
+<tr>
+<td><code>DEFENSE_MECHANISM.v3.0.034</code></td>
+<td>精神分析“防御机制”</td>
+<td>CBT“认知回避”</td>
+<td>DBT“经验性回避”</td>
+<td>M4-STR-S + M3-STR-S</td>
+<td>8/10</td>
+<td>X</td>
+</tr>
+<tr>
+<td><code>POSITIVE_REINFORCEMENT.v3.0.045</code></td>
+<td>行为“正强化”</td>
+<td>CBT“行为激活”</td>
+<td>积极心理学“奖励接触”</td>
+<td>S-P-P+ → M6-STR-C</td>
+<td>8/10</td>
+<td>F</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**使用说明**：可信度≥8/10的映射可直接用于MCT编译；6-7/10需额外验证；&lt;6/10建议标注“暂定”。</p></blockquote>
+<hr class="section-divider">
+<h2>J.4 一词多义消歧规则</h2>
+<p>同一术语在不同语境中可能映射到不同的PCUI条目。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>术语</th>
+<th>语境关键词/条件</th>
+<th>PCUI映射</th>
+<th>置信度</th>
+<th>缺省行为</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>防御机制</strong></td>
+<td>“无意识”“焦虑”“压抑”</td>
+<td><code>DEFENSE_MECHANISM</code></td>
+<td>高(≥0.8)</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>“回避想法”“分心”“逃避思考”</td>
+<td><code>COGNITIVE_AVOIDANCE</code></td>
+<td>中(0.6-0.7)</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>无明确上下文</td>
+<td>—</td>
+<td><0.5</td>
+<td>返回备选项，要求人工确认</td>
+</tr>
+<tr>
+<td><strong>抑郁</strong></td>
+<td>“情绪低落”“没劲”“快感缺失”</td>
+<td><code>DEPRESSED_MOOD</code></td>
+<td>高</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>“PHQ-9≥10”或“诊断为MDD”</td>
+<td><code>DEPRESSION_SYMPTOMS</code></td>
+<td>高</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>“抑郁型人格”“长期负性”</td>
+<td><code>DEPRESSIVE_PERSONALITY</code></td>
+<td>中</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>焦虑</strong></td>
+<td>“担心未来”“灾难化思维”</td>
+<td><code>ANXIETY_COGNITIVE</code></td>
+<td>高</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>“心慌、出汗、发抖”</td>
+<td><code>ANXIETY_SOMATIC</code></td>
+<td>高</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>“回避行为”“不敢出门”</td>
+<td><code>ANXIETY_BEHAVIORAL</code></td>
+<td>高</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>消歧流程</strong>：术语进入 → 提取语境关键词 → 匹配规则 → 置信度>0.7直接映射；0.5-0.7输出候选列表；<0.5要求人工确认。</p>
+<hr class="section-divider">
+<h2>J.5 PCUI条目元数据标注模板</h2>
+<p>一个完整的PCUI条目应包含以下元数据。带\*号为必填项。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>元数据字段</th>
+<th>类型</th>
+<th>说明</th>
+<th>示例</th>
+<th>必填</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>规范名称</td>
+<td>字符串</td>
+<td>概念英文全大写，下划线分隔</td>
+<td><code>PROCRASTINATION</code></td>
+<td>\*</td>
+</tr>
+<tr>
+<td>PCUI编码</td>
+<td>字符串</td>
+<td>完整编码（含版本和模块签名）</td>
+<td><code>PROCRASTINATION.UPLS.v3.0.102#M3C+M2I+M6I</code></td>
+<td>\*</td>
+</tr>
+<tr>
+<td>版本</td>
+<td>语义版本号</td>
+<td>vMAJOR.MINOR.PATCH</td>
+<td>v3.0.102</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>创建日期</td>
+<td>ISO日期</td>
+<td>YYYY-MM-DD</td>
+<td>2024-06-15</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>最后修订</td>
+<td>ISO日期</td>
+<td>YYYY-MM-DD</td>
+<td>2026-03-10</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>核心定义</td>
+<td>文本</td>
+<td>功能层定义，≤300字</td>
+<td>“拖延是指个体在明知延迟会导致更差结果的情况下，仍自愿延迟计划行动的行为模式。”</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>M-R-D-S指纹</td>
+<td>列表</td>
+<td>亚型 → M-R-D-S坐标</td>
+<td>见J.2拖延亚型表</td>
+<td>如有多亚型则必填</td>
+</tr>
+<tr>
+<td>ModuleSignature</td>
+<td>字符串</td>
+<td>C/I/S/T/O标签组合</td>
+<td><code>M3C+M2I+M6I</code></td>
+<td>\*</td>
+</tr>
+<tr>
+<td>多流派解释</td>
+<td>键值对</td>
+<td>流派名 → 解释文本</td>
+<td>CBT: “自动负性思维…”; ACT: “经验性回避…”</td>
+<td>至少2个流派</td>
+</tr>
+<tr>
+<td>G-M-A-R映射</td>
+<td>列表</td>
+<td>亚型 → 推荐操作序列</td>
+<td>资源枯竭型：<code>MODULATE+</code>优先</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>可信度</td>
+<td>0-10整数</td>
+<td>多专家共识评分</td>
+<td>8</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>IET等级</td>
+<td>枚举</td>
+<td>D/L/F/X/P/N/E/R</td>
+<td>F</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>边界注释</td>
+<td>文本</td>
+<td>不包括什么、争议点</td>
+<td>“排除ADHD执行功能障碍导致的启动困难”</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>强反例条件</td>
+<td>文本</td>
+<td>触发修订的证据条件</td>
+<td>“若发现第四种不可被现有指纹解释的拖延亚型，且在≥3个独立样本中复现，则条目需扩展”</td>
+<td>\*</td>
+</tr>
+<tr>
+<td>异议档案</td>
+<td>文本/链接</td>
+<td>PCV-P反对意见记录</td>
+<td>评审记录#PCV-P-2024-102</td>
+<td>否</td>
+</tr>
+<tr>
+<td>文化变体</td>
+<td>键值对</td>
+<td>文化 → 权重/基线调整</td>
+<td>东亚：M1-DSP-B权重×1.3</td>
+<td>否</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h2>J.6 快速编译检查清单</h2>
+<p>研究人员在创建新PCUI条目时，请逐项确认：</p>
+<ol>
+<li><strong>唯一性检查</strong>：是否检索了现有PCUI库避免重复？□</li>
+<li><strong>模块签名</strong>：ModuleSignature是否至少包含1个C标签？□</li>
+<li><strong>多流派覆盖</strong>：是否至少有2个流派的术语映射或解释？□</li>
+<li><strong>证据标注</strong>：可信度（0-10）和IET等级是否已标注？□</li>
+<li><strong>边界声明</strong>：边界注释是否明确排除了不适用范围？□</li>
+<li><strong>可证伪性</strong>：强反例触发条件是否可检验（含具体阈值或统计标准）？□</li>
+<li><strong>数值诚实</strong>：所有数值是否标注了“示意性示例”或提供了实证来源？□</li>
+</ol>
+<p><strong>通过标准</strong>：以上7项全部勾选，方可提交PCF-P编译流程。</p>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-i.html" class="nav-link prev">‹ 附I：家教案例——学生拖延的INTRE干预</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-k.html" class="nav-link next">附K：PSA依赖——矩阵、级联模板与文化参数 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

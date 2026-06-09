@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第16章 共识工程：三阶段知识生产流水线 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第16章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第16章 共识工程：三阶段知识生产流水线</h1>
+<blockquote><p>**学习目标**：完成本章后，你应能够：(1)描述UPLS三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
+<blockquote><p>**本章定位**：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLS的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
+<hr class="section-divider">
+<h3>16.1 全景流程：PCC-P→PCF-P→PCV-P</h3>
+<p>PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套<strong>三阶段知识生产流水线</strong>——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>阶段</th>
+<th>名称</th>
+<th>核心任务</th>
+<th>参与方</th>
+<th>通过率目标</th>
+<th>时间估计</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>PCC-P</strong></td>
+<td>心理概念采集协议</td>
+<td>广度优先采集概念原材料</td>
+<td>自动化工具 + 人工审核</td>
+<td>~95%</td>
+<td>1-2周</td>
+</tr>
+<tr>
+<td><strong>PCF-P</strong></td>
+<td>心理概念形式化协议</td>
+<td>多学科专家编译为标准化草案</td>
+<td>15-20人跨流派专家团队</td>
+<td>~60%</td>
+<td>2-4周</td>
+</tr>
+<tr>
+<td><strong>PCV-P</strong></td>
+<td>心理概念验证协议</td>
+<td>跨流派同行评议与共识判定</td>
+<td>25-35人多样化评议团</td>
+<td>~75%</td>
+<td>4-6周</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>核心设计理念</strong>：</p>
+<ul>
+<li><strong>阶段分离</strong>：采集、编译、验证由不同团队执行，避免利益冲突</li>
+<li><strong>通过率递减</strong>：从采集（宽松）到验证（严格）逐步提高标准</li>
+<li><strong>可追溯性</strong>：每个阶段的决策、争议、修改都记录在案</li>
+<li><strong>失败友好</strong>：未通过的条目有明确的修订通道，不意味着“失败”而是“暂未成熟”</li>
+</ul>
+<blockquote><p>**微案例**：如果让一位CBT专家直接撰写“焦虑”的PCUI条目，他很可能会将其定位为M2-STR-R（认知规则扭曲），忽略M4-STR-C的贡献。三阶段流水线强制跨流派参与：PCC-P采集精神分析和行为主义的文献，PCF-P由多流派专家编译，PCV-P由独立评议团审查。最终条目会包含多流派视角的注解。</p></blockquote>
+<hr class="section-divider">
+<h3>16.2 采集协议：广度优先与五重质量门</h3>
+<p>PCC-P是流水线的第一阶段，遵循“<strong>广度优先</strong>”原则：先广泛覆盖各流派、各文化、各来源类型，容忍模糊和不一致。</p>
+<p><strong>四类输入源</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>来源类型</th>
+<th>具体内容</th>
+<th>采集方法</th>
+<th>特殊要求</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>理论文献</td>
+<td>INTRE、CBT、精神分析、神经科学等核心著作</td>
+<td>半自动化（LLM辅助提取）</td>
+<td>各流派均衡覆盖</td>
+</tr>
+<tr>
+<td>临床实践</td>
+<td>去标识化的临床案例、督导记录</td>
+<td>结构化案例报告模板</td>
+<td>严格隐私保护</td>
+</tr>
+<tr>
+<td>社区与新兴</td>
+<td>患者社区讨论、社交媒体话题</td>
+<td>网络爬虫+人工筛选</td>
+<td>标注“非专业来源”</td>
+</tr>
+<tr>
+<td>多语言与跨文化</td>
+<td>中文、日文、韩文、西班牙文等文献</td>
+<td>翻译+文化适配审核</td>
+<td>非西方来源≥30%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>自动化采集六步流程</strong>：文献获取 → 文本预处理 → 术语识别 → 概念提取 → 元数据标注 → 质量初筛</p>
+<p><strong>五重质量门</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>质量门</th>
+<th>标准</th>
+<th>不通过处理</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>基础验证</td>
+<td>至少1个定义，1个来源</td>
+<td>退回补充</td>
+</tr>
+<tr>
+<td>唯一性检查</td>
+<td>与现有PCUI无完全重复</td>
+<td>标记为“已有概念的同义词”</td>
+</tr>
+<tr>
+<td>可信度检查</td>
+<td>来源可信度评分≥0.3</td>
+<td>标注“低可信度来源”，不阻断但降权</td>
+</tr>
+<tr>
+<td>理论多样性检查</td>
+<td>跨理论概念需至少2个流派来源</td>
+<td>退回补充</td>
+</tr>
+<tr>
+<td>文化敏感性检查</td>
+<td>非西方来源需本地文化审核</td>
+<td>强制人工审核</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>通过率目标</strong>：约95%。未通过的5%主要是低质量、无来源或高度重复的条目。</p>
+<hr class="section-divider">
+<h3>16.3 编译协议：多学科强制形式化</h3>
+<p>PCF-P将PCC-P采集的概念原材料编译为符合PSA规范的标准化PCUI条目草案。与PCC-P的“广度优先”不同，PCF-P是“<strong>精度优先</strong>”。</p>
+<p><strong>编译专家团队配置（15-20人）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>领域</th>
+<th>人数</th>
+<th>职责</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>INTRE架构</td>
+<td>2-3人</td>
+<td>确保M-R-D-S坐标和G-M-A-R映射准确</td>
+</tr>
+<tr>
+<td>CBT</td>
+<td>2-3人</td>
+<td>提供认知流派的概念定义</td>
+</tr>
+<tr>
+<td>精神分析</td>
+<td>2-3人</td>
+<td>提供动力流派的概念定义</td>
+</tr>
+<tr>
+<td>人本主义</td>
+<td>2-3人</td>
+<td>提供体验流派的概念定义</td>
+</tr>
+<tr>
+<td>神经科学</td>
+<td>2-3人</td>
+<td>确保与神经层映射兼容</td>
+</tr>
+<tr>
+<td>文化心理学</td>
+<td>2-3人</td>
+<td>审核文化变体参数</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>五个形式化编译阶段</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>阶段</th>
+<th>任务</th>
+<th>输出</th>
+<th>质量检查</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>阶段1：理论中立化</td>
+<td>提取功能共识核心</td>
+<td>中立化定义草案</td>
+<td>至少4个流派评分≥4.0/5</td>
+</tr>
+<tr>
+<td>阶段2：参数化定义</td>
+<td>定性描述转为概率分布</td>
+<td>参数表</td>
+<td>自动化逻辑检查无矛盾</td>
+</tr>
+<tr>
+<td>阶段3：M-R-D-S映射</td>
+<td>精确定位坐标</td>
+<td>ModuleSignature</td>
+<td>PSA合规性分数≥0.9</td>
+</tr>
+<tr>
+<td>阶段4：多流派解释</td>
+<td>配备多视角注释</td>
+<td>多视角注释</td>
+<td>每流派评分≥3.5/5</td>
+</tr>
+<tr>
+<td>阶段5：逻辑一致性检查</td>
+<td>五维自动化检查</td>
+<td>合规报告</td>
+<td>全部通过</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>冲突解决机制</strong>（三级递进）：</p>
+<ol>
+<li>专家小组内部讨论（2-3天）</li>
+<li>扩大会议（1周），引入额外专家仲裁</li>
+<li>指导委员会仲裁（72小时），记录异议档案</li>
+</ol>
+<p>所有异议——无论是否被采纳——都被结构化记录，存入PCUI条目的“异议档案”中。</p>
+<p><strong>通过率目标</strong>：约60%。未通过的40%包括争议过大、参数化不充分或架构映射模糊的条目。</p>
+<hr class="section-divider">
+<h3>16.4 验证协议：五重共识标准与异议档案</h3>
+<p>PCV-P通过跨流派同行评议和共识判定，将PCF-P草案确立为正式发布的PCUI条目。PCV-P是“<strong>权威性优先</strong>”阶段。</p>
+<p><strong>评议团配置（25-35人）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>维度</th>
+<th>强制要求</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>流派覆盖</td>
+<td>≥5个主要流派</td>
+<td>INTRE、CBT、精神分析、人本、神经科学为必选</td>
+</tr>
+<tr>
+<td>职业阶段</td>
+<td>早期20%，中期50%，资深30%</td>
+<td>平衡经验与新鲜视角</td>
+</tr>
+<tr>
+<td>性别平衡</td>
+<td>任何性别≥40%</td>
+<td>防止性别偏见</td>
+</tr>
+<tr>
+<td>文化多样性</td>
+<td>非西方背景≥30%</td>
+<td>对抗WEIRD偏见</td>
+</tr>
+<tr>
+<td>机构多样性</td>
+<td>同一机构≤20%</td>
+<td>防止“学派近亲繁殖”</td>
+</tr>
+<tr>
+<td>地理分布</td>
+<td>≥8个国家</td>
+<td>全球化视角</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>两阶段评议流程</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>阶段</th>
+<th>时长</th>
+<th>内容</th>
+<th>评分维度</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>结构化评议</td>
+<td>14天</td>
+<td>五维度独立评分（1-5分）</td>
+<td>逻辑严密性、跨理论相容性、操作化清晰度、知识一致性、临床适用性</td>
+</tr>
+<tr>
+<td>公开评议</td>
+<td>14天</td>
+<td>社区实名或匿名反馈</td>
+<td>开放性意见，不计入量化共识</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>五重共识标准</strong>（必须同时满足）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>标准</th>
+<th>阈值</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>流派覆盖</td>
+<td>≥4个流派参与评议</td>
+<td>确保不是“单流派自娱自乐”</td>
+</tr>
+<tr>
+<td>总体支持率</td>
+<td>≥80%</td>
+<td>核心量化指标</td>
+</tr>
+<tr>
+<td>各流派最低支持率</td>
+<td>≥60%</td>
+<td>防止“多数支持但某一流派强烈反对”</td>
+</tr>
+<tr>
+<td>临床工作者支持率</td>
+<td>≥70%</td>
+<td>确保条目对临床实践有用</td>
+</tr>
+<tr>
+<td>原则性冲突</td>
+<td>无</td>
+<td>无不可调和的理论分歧</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>失败分级处理</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>支持率区间</th>
+<th>处理方式</th>
+<th>修订通道</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>75-80%</td>
+<td>中等修订后重审</td>
+<td>2-3周快速通道</td>
+</tr>
+<tr>
+<td>60-75%</td>
+<td>重大修订后重审</td>
+<td>1-2个月完整重审</td>
+</tr>
+<tr>
+<td>40-60%</td>
+<td>暂行存档，每年重审一次</td>
+<td>存档标记，不发布为正式条目</td>
+</tr>
+<tr>
+<td><40%</td>
+<td>拒绝（保留60天上诉通道）</td>
+<td>退回PCF-P重编译</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>异议档案</strong>：PCV-P阶段的所有反对意见、争议点、未决问题被结构化记录并永久保存在PCUI条目的元数据中。包含：反对者姓名和机构、反对的具体内容、支持证据、评审团回应、未采纳的理由。</p>
+<hr class="section-divider">
+<h3>16.5 版本治理：双轨发布与追溯更新</h3>
+<p><strong>异议档案的价值</strong>：</p>
+<ol>
+<li><strong>学术诚信</strong>：公开记录分歧，不掩盖不同观点</li>
+<li><strong>知识演化</strong>：为未来修订提供起点——新证据出现时可从异议档案快速定位争议点</li>
+<li><strong>教育价值</strong>：新人可看到学科内部的真实争议</li>
+</ol>
+<p><strong>版本治理</strong>：PCUI条目的版本管理遵循双轨发布协议：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>变更类型</th>
+<th>通道</th>
+<th>触发条件</th>
+<th>决策层级</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>数值精化</strong></td>
+<td>Type-1自动通道</td>
+<td>均值偏移<1σ，方差变化<30%，样本量≥500</td>
+<td>自动化系统</td>
+</tr>
+<tr>
+<td><strong>概念修订</strong></td>
+<td>Type-2评审通道</td>
+<td>概念定义变更、机制描述变更、显著数值偏移(≥1σ)</td>
+<td>PCV-P评审委员会</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>版本号语义</strong>：<code>vMAJOR.MINOR.PATCH</code></p>
+<ul>
+<li>MAJOR：架构级变更（如模块重定义）</li>
+<li>MINOR：概念修订（Type-2触发）</li>
+<li>PATCH：数值精化（Type-1触发）</li>
+</ul>
+<p>每个PCUI条目的完整变更历史可通过其DOI追溯。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：UPLS的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
+<blockquote><p>**关键术语**：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率&lt;60%），即使总体支持率90%，条目也不能发布。<br>- ❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。<br>- ❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 如果一个PCUI条目在PCV-P中获得总体支持率85%，但精神分析流派支持率仅为55%，应如何处理？<br>2. 判断“将M3-RES-D的恢复速率从0.12/h更新为0.11/h（基于新元分析）”属于Type-1还是Type-2变更？为什么？<br>3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch15.html" class="nav-link prev">‹ 15 语义架构：PSA推理与PSL编译</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch17.html" class="nav-link next">17 逻辑指纹：解析差异的标准化治理 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

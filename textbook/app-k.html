@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录K：PSA依赖——矩阵、级联模板与文化参数 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录K：PSA依赖——矩阵、级联模板与文化参数</h1>
+<p><strong>定位</strong>：第15章（语义架构）的配套速查手册，提供可直接用于仿真、教学和临床推理的标准依赖矩阵与级联模板。</p>
+<p><strong>学习目标</strong>：能够查阅六模块标准依赖矩阵进行级联推理；能够识别一个症状属于哪类级联模板；能够判断操作-组件映射是否合法。</p>
+<hr class="section-divider">
+<h2>K.1 六模块标准依赖矩阵（完整版）</h2>
+<p>以下依赖矩阵定义M1-M6模块之间的因果影响强度（0-1）。权重含义：0=无直接影响，1=完全决定。数据来源为理论推导（F级）结合文献元分析，最终权重有待PSE-C大规模校准。</p>
+<h3>6×6依赖矩阵</h3>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>从↓ / 到→</th>
+<th>M1</th>
+<th>M2</th>
+<th>M3</th>
+<th>M4</th>
+<th>M5</th>
+<th>M6</th>
+<th><strong>出度总和</strong></th>
+<th><strong>最高出度靶点</strong></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td>—</td>
+<td>0.65</td>
+<td><strong>0.85</strong></td>
+<td>0.70</td>
+<td>0.30</td>
+<td>0.60</td>
+<td>3.10</td>
+<td>M3 (0.85)</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>0.20</td>
+<td>—</td>
+<td>0.55</td>
+<td><strong>0.65</strong></td>
+<td>0.50</td>
+<td>0.45</td>
+<td>2.35</td>
+<td>M4 (0.65)</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td>0.15</td>
+<td>0.50</td>
+<td>—</td>
+<td>0.40</td>
+<td>0.35</td>
+<td><strong>0.75</strong></td>
+<td>2.15</td>
+<td>M6 (0.75)</td>
+</tr>
+<tr>
+<td><strong>M4</strong></td>
+<td>0.40</td>
+<td><strong>0.68</strong></td>
+<td><strong>0.75</strong></td>
+<td>—</td>
+<td>0.55</td>
+<td><strong>0.70</strong></td>
+<td>3.08</td>
+<td>M3 (0.75)</td>
+</tr>
+<tr>
+<td><strong>M5</strong></td>
+<td>0.10</td>
+<td>0.45</td>
+<td>0.30</td>
+<td>0.45</td>
+<td>—</td>
+<td>0.50</td>
+<td>1.80</td>
+<td>M2/M4 (0.45)</td>
+</tr>
+<tr>
+<td><strong>M6</strong></td>
+<td>0.25</td>
+<td>0.20</td>
+<td>0.15</td>
+<td>0.30</td>
+<td>0.25</td>
+<td>—</td>
+<td>1.15</td>
+<td>M4 (0.30)</td>
+</tr>
+<tr>
+<td><strong>入度总和</strong></td>
+<td>1.10</td>
+<td>2.48</td>
+<td>2.60</td>
+<td>2.50</td>
+<td>1.95</td>
+<td>3.00</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>最高入度来源</strong></td>
+<td>M1(0.40)</td>
+<td>M4(0.68)</td>
+<td>M4(0.75)</td>
+<td>M1(0.70)</td>
+<td>M4(0.55)</td>
+<td>M4(0.70)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**矩阵脚注**：<br>- 加粗数值为强依赖（≥0.65），代表临床中最显著的跨模块影响<br>- “出度总和”反映该模块对其他模块的整体影响强度（M4和M1最高）<br>- “入度总和”反映该模块受其他模块影响的整体强度（M6和M3最高）<br>- 当前版本为F级（理论推导+文献元分析），尚未经过PSE-C大规模校准</p></blockquote>
+<p><strong>关键依赖速查表（权重≥0.65）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>源模块</th>
+<th>靶模块</th>
+<th>权重</th>
+<th>临床直觉</th>
+<th>干预含义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>M3</td>
+<td>0.85</td>
+<td>睡眠不足 → 意志力下降</td>
+<td>先补充M1资源再要求意志控制</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>M3</td>
+<td>0.75</td>
+<td>焦虑/恐惧消耗意志资源</td>
+<td>情绪稳定后才能进行意志挑战任务</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>M2</td>
+<td>0.68</td>
+<td>情绪驱动认知（反刍、灾难化）</td>
+<td>先调节情绪再挑战认知内容</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>M6</td>
+<td>0.70</td>
+<td>恐惧驱动回避行为</td>
+<td>暴露前先做好情绪容限准备</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>M6</td>
+<td>0.75</td>
+<td>意志控制行为执行</td>
+<td>意志枯竭时行为自动化接管</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>M4</td>
+<td>0.65</td>
+<td>认知触发情绪（如灾难化信念引发焦虑）</td>
+<td>信念修正可作为情绪干预的上游</td>
+</tr>
+<tr>
+<td>M1</td>
+<td>M4</td>
+<td>0.70</td>
+<td>生理状态影响情绪容限</td>
+<td>疲劳/低血糖时情绪调节效果差</td>
+</tr>
+<tr>
+<td>M1</td>
+<td>M2</td>
+<td>0.65</td>
+<td>疲劳降低认知资源（注意、工作记忆）</td>
+<td>认知任务前先恢复生理能量</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h2>K.2 四类级联路径模板</h2>
+<p>级联路径模板描述失调从起始模块到下游模块的典型传播模式。每类模板包含：识别口诀、级联方向、典型症状指纹、最高杠杆靶点、误判风险。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模板名称</th>
+<th>口诀</th>
+<th>级联方向</th>
+<th>典型症状指纹</th>
+<th>最高杠杆干预靶点</th>
+<th>误判风险</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>资源崩溃型</strong></td>
+<td>“先累后拖再冲动”</td>
+<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
+<td>拖延、冲动消费、决策疲劳</td>
+<td>MODULATE+ M1-RES-D（睡眠/营养）</td>
+<td>易与情绪驱动型混淆，区别在M4-STR-C是否激活</td>
+</tr>
+<tr>
+<td><strong>情绪驱动型</strong></td>
+<td>“先怕后累再反刍”</td>
+<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
+<td>焦虑、反刍、回避行为</td>
+<td>RELINK M4-STR-C 或 GATE– M4-DSP-B</td>
+<td>易与资源崩溃型混淆，区别在级联起点（M4 vs M1）</td>
+</tr>
+<tr>
+<td><strong>习惯固化型</strong></td>
+<td>“先做后忘再失控”</td>
+<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
+<td>成瘾、强迫行为、习惯性拖延</td>
+<td>GATE– S-P触发 + GATE+替代行为</td>
+<td>易与资源崩溃型混淆，区别在M1资源是否正常</td>
+</tr>
+<tr>
+<td><strong>规则扭曲型</strong></td>
+<td>“先信后怕再逃避”</td>
+<td>M2-STR-R错误规则 → M4-STR-R威胁评估扭曲 → M4-DSP-B↑ → 回避行为</td>
+<td>完美主义、灾难化、社交焦虑</td>
+<td>ALIGN M2-STR-R（认知重构）</td>
+<td>易与情绪驱动型混淆，区别在M2-STR-R是否为根源</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>级联路径示例（正向追踪）</strong>：</p>
+<p><strong>情绪驱动型级联（创伤后应激）</strong>：</p>
+<pre><code class="language-">
+S-P触发（环境线索）
+    ↓
+M4-STR-C创伤连接激活
+    ↓
+M4-DSP-B恐惧自动激活
+    ↓
+M4-RES-D消耗
+    ↓
+M3-RES-D被消耗（情绪调节努力）
+    ↓
+M3-DSP-F失效
+    ↓
+M6-DSP-B回避行为接管
+</code></pre>
+<p><strong>资源崩溃型级联（职业倦怠）</strong>：</p>
+<pre><code class="language-">
+持续高负荷工作
+    ↓
+M1-RES-D持续消耗（睡眠不足、疲劳）
+    ↓
+M3-RES-D供给不足
+    ↓
+M3-DSP-F门控能力下降
+    ↓
+M6-DSP-B（自动化拖延）接管
+    ↓
+负反馈：未完成工作增加 → M1-RES-D进一步消耗
+</code></pre>
+<hr class="section-divider">
+<h2>K.3 反向溯源速查表</h2>
+<p>给定末端症状，反向匹配最可能的级联模板（用于临床快速定位）。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>末端症状</th>
+<th>最可能模板（按概率降序）</th>
+<th>关键区分指标</th>
+<th>快速验证方法</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>拖延</strong></td>
+<td>资源崩溃型 > 情绪驱动型 > 规则扭曲型</td>
+<td>M3-RES-D vs M4-STR-C vs M2-STR-R</td>
+<td>问“是累、怕、还是觉得必须完美？”</td>
+</tr>
+<tr>
+<td><strong>反刍</strong></td>
+<td>情绪驱动型 > 资源崩溃型</td>
+<td>M4-DSP-B vs M3-RES-D</td>
+<td>问“是焦虑触发还是疲劳后失控？”</td>
+</tr>
+<tr>
+<td><strong>冲动消费/进食</strong></td>
+<td>习惯固化型 > 资源崩溃型</td>
+<td>M6-STR-S vs M3-RES-D</td>
+<td>问“是习惯动作还是自控力耗尽？”</td>
+</tr>
+<tr>
+<td><strong>回避社交</strong></td>
+<td>情绪驱动型 > 规则扭曲型</td>
+<td>M4-STR-C vs M2-STR-R</td>
+<td>问“是怕被伤害还是觉得自己不行？”</td>
+</tr>
+<tr>
+<td><strong>失眠</strong></td>
+<td>资源崩溃型 > 情绪驱动型</td>
+<td>M1-RES-D节律 vs M4-DSP-B</td>
+<td>问“是身体不累还是脑子停不下来？”</td>
+</tr>
+<tr>
+<td><strong>完美主义</strong></td>
+<td>规则扭曲型</td>
+<td>M2-STR-R</td>
+<td>问“是否认为不完美就是失败？”</td>
+</tr>
+<tr>
+<td><strong>成瘾复发</strong></td>
+<td>习惯固化型 > 资源崩溃型</td>
+<td>S-P触发 vs M3-RES-D</td>
+<td>问“是看到线索就自动做，还是意志薄弱时做？”</td>
+</tr>
+<tr>
+<td><strong>惊恐发作（急性）</strong></td>
+<td>情绪驱动型</td>
+<td>M4-DSP-B</td>
+<td>问“是否有突然的恐惧反应，无前兆？”</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>溯源决策树</strong>：</p>
+<ol>
+<li>是否存在明显的环境触发（S-P）？是 → 优先考虑习惯固化型或情绪驱动型</li>
+<li>资源水平（M1/M3-RES-D）是否低于30？是 → 优先考虑资源崩溃型</li>
+<li>是否存在稳定的错误信念（M2-STR-R）？是 → 优先考虑规则扭曲型</li>
+<li>是否存在创伤性连接（M4-STR-C高权重）？是 → 优先考虑情绪驱动型</li>
+</ol>
+<hr class="section-divider">
+<h2>K.4 操作-组件映射合法性矩阵</h2>
+<p>本矩阵规定G-M-A-R四类操作的合法靶点、常见误用及替代方案。违反合法性将导致干预无效或医源性损害。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>常见误用</th>
+<th>误用后果</th>
+<th>替代操作</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>GATE</strong></td>
+<td>DSP-F, DSP-B（运行中的过程）；运行中的STR-S序列</td>
+<td>GATE STR-R（“门控一个信念”）</td>
+<td>无效，信念不是进程</td>
+<td>ALIGN</td>
+</tr>
+<tr>
+<td></td>
+<td>同上</td>
+<td>GATE STR-C（“门控一个连接”）</td>
+<td>无效，连接不是进程</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td></td>
+<td>同上</td>
+<td>GATE未被触发的STR-S（存储态序列）</td>
+<td>无效，序列未运行</td>
+<td>反复GATE–执行触发过程来削弱</td>
+</tr>
+<tr>
+<td><strong>MODULATE</strong></td>
+<td>RES-D（所有模块）</td>
+<td>MODULATE RES-B</td>
+<td>无效，基底资源不能直接补充</td>
+<td>长期RELINK/ALIGN + 环境输入</td>
+</tr>
+<tr>
+<td></td>
+<td>同上</td>
+<td>MODULATE STR</td>
+<td>无效，结构不能通过资源补充直接改变</td>
+<td>ALIGN/RELINK</td>
+</tr>
+<tr>
+<td><strong>ALIGN</strong></td>
+<td>STR-R（所有模块）</td>
+<td>ALIGN STR-C</td>
+<td>“道理都懂但感觉不变”</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td></td>
+<td>同上</td>
+<td>ALIGN STR-S</td>
+<td>无法直接改写程序性知识</td>
+<td>GATE+重复 + 行为排练</td>
+</tr>
+<tr>
+<td><strong>RELINK</strong></td>
+<td>STR-C（所有模块）</td>
+<td>RELINK STR-R</td>
+<td>“体验了但无法概括”</td>
+<td>ALIGN</td>
+</tr>
+<tr>
+<td></td>
+<td>同上</td>
+<td>RELINK STR-S</td>
+<td>无法直接改写序列</td>
+<td>GATE+重复 + 消退</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**临床快速判断**：<br>- 问题表现为“我做不到”且资源充足 → 查GATE/RELINK<br>- 问题表现为“我不信”且资源充足 → 查ALIGN<br>- 问题表现为“我太累” → 先查MODULATE，勿跳级</p></blockquote>
+<hr class="section-divider">
+<h2>K.5 PSL-L文化变体参数速查表</h2>
+<p>文化变体参数在PSL-L和PCUI层注入，用于调整MCT编译和PSE生态位先验。以下参数为F级（跨文化心理学文献推导），有待PSE-C多文化样本校准（P级）。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>参数</th>
+<th>东亚</th>
+<th>南亚</th>
+<th>拉美</th>
+<th>西欧/北美（基线）</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>焦虑躯体化权重</strong>（M1-DSP-B）</td>
+<td>×1.30</td>
+<td>×1.15</td>
+<td>×1.10</td>
+<td>×1.00</td>
+<td>焦虑更多表现为躯体不适</td>
+</tr>
+<tr>
+<td><strong>情绪表达权重</strong>（M4-DSP-F）</td>
+<td>×0.85</td>
+<td>×0.90</td>
+<td>×1.10</td>
+<td>×1.00</td>
+<td>内敛 vs 外放的文化规范</td>
+</tr>
+<tr>
+<td><strong>依恋安全感基线</strong>（M4-RES-B均值偏移）</td>
+<td>-5</td>
+<td>-3</td>
+<td>+2</td>
+<td>0</td>
+<td>集体主义中安全感更多来自关系</td>
+</tr>
+<tr>
+<td><strong>自我叙事独立性</strong>（M5-STR-R）</td>
+<td>互依型</td>
+<td>混合型</td>
+<td>独立型</td>
+<td>独立型</td>
+<td>自我构念差异</td>
+</tr>
+<tr>
+<td><strong>求助行为权重</strong>（M5-DSP-F）</td>
+<td>×0.70</td>
+<td>×0.80</td>
+<td>×0.90</td>
+<td>×1.00</td>
+<td>文化对心理求助的污名化程度</td>
+</tr>
+<tr>
+<td><strong>社会赞许性偏差</strong>（观测噪声）</td>
+<td>高</td>
+<td>中高</td>
+<td>中</td>
+<td>中低</td>
+<td>自陈量表中的偏差程度</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>使用说明</strong>：</p>
+<ul>
+<li>文化变体参数在PSE-I阶段注入，影响生态位匹配和MCT编译</li>
+<li>当个体文化背景与生态位库默认文化不匹配时，系统自动应用相应调整</li>
+<li>若个体具有多重文化身份，需使用加权组合或单独校准</li>
+<li>所有参数为初始先验，实际应用时应随个体数据逐步校准后移</li>
+</ul>
+<blockquote><p>**文化变体使用的伦理警示**：文化参数不得用于刻板印象推断。仅当个体明确认同该文化背景时才应用；当信息不足时，使用更宽的先验分布而非强制应用文化调整。</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-j.html" class="nav-link prev">‹ 附J：PCUI规范——角色标签、映射与消歧</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-l.html" class="nav-link next">附L：架构速查——推导链与公理体系 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

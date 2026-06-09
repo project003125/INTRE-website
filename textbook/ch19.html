@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第19章 系统动力学：资源、调度与结构方程 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第19章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第19章 系统动力学：资源、调度与结构方程</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)掌握RES-D的耗竭-恢复方程的基本形式及参数含义；(2)理解DSP-F/B切换的阈值模型；(3)描述STR-C权重更新和STR-R信念更新的学习规则；(4)理解模块间耦合的数学表达及其在依赖矩阵中的体现。</p></blockquote>
+<hr class="section-divider">
+<h3>19.1 资源动力学：耗竭-恢复与不对称定律</h3>
+<p>资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是<strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率。</p>
+<p><strong>基本方程</strong>。单个RES-D分量的基本动力学方程为：</p>
+<p>$$ \frac{dR}{dt} = \text{Supply}(t) - \alpha \cdot R - \text{Demand}(\Psi, u, E) $$</p>
+<p>其中\(R\)是当前资源水平（0-100），\(\text{Supply}(t)\)是来自上游模块的资源供给率，\(\alpha \cdot R\)是基线消耗项，\(\text{Demand}\)是任务或环境驱动的额外消耗。</p>
+<p>在简化临床模型中，常用指数衰减+恢复的形式：</p>
+<p>$$ \frac{dR}{dt} = \beta (R_{\text{max}} - R) - \gamma \cdot A(t) \cdot R $$</p>
+<p>其中\(\beta\)是恢复速率常数，\(\gamma\)是消耗速率常数，\(A(t)\)是当前活动强度。恢复不对称定律体现为\(\gamma > \beta\)。</p>
+<blockquote><p>**⚠️ 工程判断声明**：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
+<p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
+<p>$$ \text{Supply}_i(t) = \frac{w_i \cdot \text{Demand}_i(t)}{\sum_j w_j \cdot \text{Demand}_j(t)} \cdot \text{TotalSupply}(t) $$</p>
+<p><strong>资源恢复的时间常数</strong>（理论占位符）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>资源类型</th>
+<th>典型恢复时间常数</th>
+<th>临床意义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M1-RES-D</td>
+<td>6-8小时（睡眠后完全恢复）</td>
+<td>睡眠锚定是最有效的资源补充</td>
+</tr>
+<tr>
+<td>M2-RES-D</td>
+<td>10-30分钟（短暂休息）</td>
+<td>番茄钟工作法</td>
+</tr>
+<tr>
+<td>M3-RES-D</td>
+<td>30-90分钟（部分恢复），过夜（完全）</td>
+<td>高决策负荷任务应安排在上午</td>
+</tr>
+<tr>
+<td>M4-RES-D</td>
+<td>20-60分钟（情绪平复）</td>
+<td>情绪激动后需恢复窗口</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>恢复不对称定律的经验基础</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\(\gamma / \beta > 1\)，典型比值2-5。</p>
+<hr class="section-divider">
+<h3>19.2 调度动力学：阈值切换与DSP-B劫持</h3>
+<p>调度动力学描述DSP-F和DSP-B之间的竞争与切换（秒到分钟尺度）。</p>
+<p><strong>双过程竞争的Lotka-Volterra模型</strong>：</p>
+<p>$$ \frac{dF}{dt} = r_F F \left(1 - \frac{F + \theta_{FB} B}{K_F}\right) - \delta_F F $$ $$ \frac{dB}{dt} = r_B B \left(1 - \frac{B + \theta_{BF} F}{K_B}\right) - \delta_B B + \text{AutoTrigger}(E) $$</p>
+<p>其中\(F\)和\(B\)是激活强度（0-1），\(\theta_{FB}, \theta_{BF}\)是交叉抑制系数（通常\(\theta_{BF} > \theta_{FB}\)），\(\text{AutoTrigger}(E)\)是环境自动触发部分。</p>
+<p><strong>切换阈值模型</strong>（临床更常用）：</p>
+<p>$$ F_{\text{active}} = \mathbf{1}\left[ (\text{Novelty}(t) + \text{Conflict}(t) > \theta_{\text{switch}}) \land (R_{\text{res}} > \theta_{\text{res}}) \right] $$</p>
+<p>其中\(\theta_{\text{switch}}\)是切换阈值，\(\theta_{\text{res}}\)是资源门槛（通常30-40/100）。在PSE仿真中用sigmoid函数平滑近似。</p>
+<p><strong>DSP-B“劫持”的动力学</strong>：当资源枯竭(\(R_{\text{res}} < \theta_{\text{res}}\))时，DSP-F被迫让出控制权，DSP-B自由运行：</p>
+<p>$$ \frac{dB}{dt} = \lambda \cdot (B_{\text{max}} - B) \quad \text{when } F=0 \text{ and AutoTrigger present} $$</p>
+<p><strong>GATE操作的动力学效应</strong>：GATE–操作瞬时降低F或B的激活强度：</p>
+<p>$$ B(t^+) = \max(0, B(t^-) - \Delta_{\text{GATE}}) $$</p>
+<p>单次GATE–效应短暂，需要反复应用才能降低DSP-B的基线激活水平。</p>
+<hr class="section-divider">
+<h3>19.3 结构动力学：学习规则与塑性窗口</h3>
+<p>结构动力学描述STR层分量的变化——慢变量，时间尺度从周到年。</p>
+<p><strong>STR-R的信念更新规则</strong>（贝叶斯式）：</p>
+<p>$$ \frac{dW_r}{dt} = \eta_r \cdot (\text{PE}) \cdot (\text{Salience}) $$</p>
+<p>其中\(\eta_r\)是信念更新学习率，PE是预测误差（预期与实际之差），Salience是证据显著性。</p>
+<p><strong>STR-C的连接权重更新（赫布学习）</strong>：</p>
+<p>$$ \frac{dW_{ij}}{dt} = \eta_c \cdot (x_i x_j - \lambda W_{ij}) \cdot g(\text{arousal}) $$</p>
+<p>其中\(x_i, x_j\)是节点激活强度，\(\lambda\)是遗忘项，\(g(\text{arousal})\)是情绪唤醒调制函数（高唤醒加速学习）。</p>
+<p><strong>STR-S的习惯巩固</strong>：</p>
+<p>$$ \frac{dS_k}{dt} = \eta_s \cdot (\text{Frequency}_k - \lambda S_k) \cdot \text{Reinforcement}_k $$</p>
+<p><strong>塑性窗口原则</strong>。结构修改需要依次经历三阶段：</p>
+<ol>
+<li><strong>去稳定化/塑性窗口开放</strong>：现有结构被扰动到不稳定状态</li>
+<li><strong>修改期</strong>：在窗口内通过新体验修改结构</li>
+<li><strong>巩固期</strong>：修改后结构需要时间稳定，避免干扰</li>
+</ol>
+<p><strong>能量-塑性耦合</strong>：</p>
+<p>$$ \frac{dW_{ij}}{dt} \propto \mathbf{1}[R_{\text{M4-RES-D}} > \theta_{\text{emotion}} \land R_{\text{M3-RES-D}} > \theta_{\text{volition}}] \cdot \text{LearningRule} $$</p>
+<p>资源枯竭的患者无法从深度结构干预中充分受益。</p>
+<hr class="section-divider">
+<h3>19.4 拓扑网络：MTT依赖矩阵与级联路径</h3>
+<p>MTT将心理系统建模为有向加权图，节点是M-R-D-S子单元（42个），边是功能依赖关系。</p>
+<p><strong>依赖矩阵的关键边</strong>（示例，完整见附录K）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>源 → 靶</th>
+<th>权重</th>
+<th>含义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M1-RES-D → M3-RES-D</td>
+<td>0.85</td>
+<td>生理能量供给意志资源</td>
+</tr>
+<tr>
+<td>M4-DSP-B → M3-RES-D</td>
+<td>0.75</td>
+<td>情绪消耗意志资源</td>
+</tr>
+<tr>
+<td>M3-DSP-F → M6-DSP-B</td>
+<td>0.75</td>
+<td>意志控制行为执行</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>枢纽节点与级联路径</strong>。MTT计算三种中心性：</p>
+<ul>
+<li><strong>出度</strong>：节点影响他人的广度</li>
+<li><strong>入度</strong>：节点受他人影响的广度</li>
+<li><strong>介数中心性</strong>：节点在级联传播路径中出现的频率</li>
+</ul>
+<p>在焦虑和抑郁谱系中，M4节点（尤其是M4-DSP-B和M4-STR-C）介数中心性最高。</p>
+<p><strong>典型级联模式</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模式</th>
+<th>级联路径</th>
+<th>最高杠杆靶点</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>资源崩溃型</td>
+<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
+<td>MODULATE+ M1-RES-D</td>
+</tr>
+<tr>
+<td>情绪驱动型</td>
+<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
+<td>RELINK M4-STR-C 或 GATE– M4-DSP-B</td>
+</tr>
+<tr>
+<td>习惯固化型</td>
+<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
+<td>GATE– S-P触发 + GATE+替代行为</td>
+</tr>
+<tr>
+<td>规则扭曲型</td>
+<td>M2-STR-R错误规则 → M4-STR-R扭曲 → M4-DSP-B↑ → 回避</td>
+<td>ALIGN M2-STR-R</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>反馈环路分析</strong>。正反馈回路（环路增益\(G>1\)）维持精神病理。例如反刍-失眠-情绪脆弱回路：M2-DSP-B↑ → M1-STR-S↓ → M1-RES-D↓ → M4-RES-D↓ → M4-DSP-B↑ → M2-DSP-B↑。打断任何一条边可瓦解回路。</p>
+<p><strong>从依赖矩阵到干预选择</strong>：MTT输出为MDT提供约束。应选择介数中心性最高的节点——虽不一定是病因源，但能最有效阻断级联扩散。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：PSE的状态动力学模型由三组方程构成。资源动力学描述RES-D的消耗与恢复，特征是恢复不对称定律（消耗快于恢复）。调度动力学描述DSP-F与DSP-B的竞争与切换，阈值模型解释资源枯竭时自动化过程的“劫持”。结构动力学描述STR-R、STR-C和STR-S的慢速更新，塑性窗口原则和能量-塑性耦合共同制约结构性改变的发生条件。模块间耦合的拓扑网络(MTT)定义42节点之间的有向依赖关系，通过枢纽节点识别、级联路径分析和反馈环路检测，为干预靶点选择提供量化依据。这三组动力学模型以不同的时间尺度协同工作，共同决定心理系统的演化轨迹。</p>
+<blockquote><p>**关键术语**：恢复不对称定律，Lotka-Volterra模型，塑性窗口，再巩固窗口，依赖矩阵，耦合权重</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “动力学方程是虚构的” → ✅ 方程形式是理论假设，但参数通过PSE-C贝叶斯校准从数据中估计。<br>- ❌ “恢复不对称定律已被充分证实” → ✅ 它在多个领域有支持，但具体参数仍需PSE-C校准。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 写出M3-RES-D的标准资源动力学方程并解释每个参数的含义。<br>2. 模块间耦合通过什么数学形式进入动力学方程？以M4到M3的级联为例说明。<br>3. 当某个参数在现有数据中不可唯一辨识时，PSE应如何处理？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-31</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch18.html" class="nav-link prev">‹ 18 PSE架构：五层引擎与心智六论</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch20.html" class="nav-link next">20 仿真校准：蒙特卡罗与贝叶斯 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

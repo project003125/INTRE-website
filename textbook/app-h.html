@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录H：形式审查——压力测试与替代测试结果摘要 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录H：形式审查——压力测试与替代测试结果摘要</h1>
+<p>本附录汇总INTRE框架在理论建构阶段经历的系统性压力测试与替代测试结果。这些测试旨在检验框架的逻辑自洽性、可证伪性、核心组件的必要性以及在功能层中间层候选架构中的竞争定位。所有测试均由INTRE内部团队完成，部分测试已通过预注册方式公开。</p>
+<hr class="section-divider">
+<h3>H.1 内部理论压力测试（17项）</h3>
+<p><strong>测试范围</strong>：覆盖公理层、模块层、R-D-S维度层、诊断逻辑层、干预操作层、环境架构层及整体架构。</p>
+<p><strong>总体结果</strong>：17项测试中，<strong>12项完全通过，5项条件性通过，0项失败</strong>。所有未完全通过的项目均指向<strong>形式化不完整或边界声明缺失</strong>，可通过补充规则修复，无需修改核心架构。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>测试数</th>
+<th>✓通过</th>
+<th>条件/部分通过</th>
+<th>关键缺口摘要</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>公理层</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>N-S-R缺内源性调整机制</td>
+</tr>
+<tr>
+<td>模块层</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>范式边界、功能层/实现层边界需澄清</td>
+</tr>
+<tr>
+<td>R-D-S维度层</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>无</td>
+</tr>
+<tr>
+<td>诊断逻辑层</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>多模块并发瓶颈缺优先级仲裁算法</td>
+</tr>
+<tr>
+<td>干预操作层</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>无</td>
+</tr>
+<tr>
+<td>环境架构层</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>S-P内化归因缺量化规则</td>
+</tr>
+<tr>
+<td>整体架构</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>无</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>17</strong></td>
+<td><strong>12</strong></td>
+<td><strong>5</strong></td>
+<td><strong>全部为形式化不足，无致命逻辑矛盾</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>核心可证伪性测试（#17）</strong>：框架五条核心主张（C1-M1-M6完备性、C2-R-D-S完备性、C3-G-M-A-R完备性、C4-D→R→S序列必然性、C5-M3-RES-D独立存在性）均被操作化为可检验预测。<strong>最脆弱实证节点为C5（M3-RES-D独立存在性）</strong>，其证伪将连锁影响RES-D跨模块统一性及MODULATE操作靶点。</p>
+<hr class="section-divider">
+<h3>H.2 外部兼容性压力测试（10篇既有论文）</h3>
+<p><strong>测试方法</strong>：在每篇论文分析前预设可能削弱INTRE核心区分的失败条件，再核对原论文结果是否触发。</p>
+<p><strong>结果</strong>：<strong>10篇论文均未触发预设主要失败条件</strong>。若干跨论文发现与INTRE核心功能区分形成高度相容，包括：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>论文主题</th>
+<th>关键发现</th>
+<th>INTRE对应区分</th>
+<th>兼容性等级</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>敬畏感元分析</td>
+<td>自我消解与自我超越为并行中介</td>
+<td>GATE与RELINK独立操作区分</td>
+<td>A</td>
+</tr>
+<tr>
+<td>健康焦虑iCBM-I</td>
+<td>灾难化解释纵向中介</td>
+<td>ALIGN M2-STR-R → M4-DSP-B路径</td>
+<td>A/B</td>
+</tr>
+<tr>
+<td>社会排斥实验</td>
+<td>时序分离：事前接纳保护，事后接纳无效</td>
+<td>RES-D快速补充 vs RES-B慢修复</td>
+<td>B</td>
+</tr>
+<tr>
+<td>亲子孝道冲突</td>
+<td>冲突方向非对称效应（父母>子女）</td>
+<td>外部规则压迫内部自主规则</td>
+<td>B/C</td>
+</tr>
+<tr>
+<td>职场佛系</td>
+<td>绩效无显著相关、创造力↓、幸福感↑</td>
+<td>低功耗三分结构假说</td>
+<td>C</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>总体裁决</strong>：INTRE在当前第一轮外部文献压力测试中维持未证伪状态，具备跨领域功能层转译潜力，值得进入高风险前瞻性检验。</p>
+<hr class="section-divider">
+<h3>H.3 核心组件替代测试（460个替代方案）</h3>
+<p>对16项核心组件分别设计20–40个替代方案，遍历检验是否存在功能等价或更优的替代架构。</p>
+<p><strong>累计结果</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>统计项</th>
+<th>数值</th>
+<th>百分比</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>总替代方案数</td>
+<td>460</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>完全替代</strong></td>
+<td><strong>0</strong></td>
+<td><strong>0%</strong></td>
+</tr>
+<tr>
+<td>部分覆盖/互补</td>
+<td>231</td>
+<td>50.2%</td>
+</tr>
+<tr>
+<td>替代失败</td>
+<td>228</td>
+<td>49.6%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>各组件替代测试关键裁决</strong>（完整总表见05-V-17）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>核心组件</th>
+<th>测试方案数</th>
+<th>完全替代</th>
+<th>部分/互补</th>
+<th>替代失败</th>
+<th>关键裁决</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>N-S-R元公理</td>
+<td>20</td>
+<td>0</td>
+<td>6</td>
+<td>14</td>
+<td>分析框架稳健，“结构”中介角色未被超越</td>
+</tr>
+<tr>
+<td>2</td>
+<td>M-R-P通用架构</td>
+<td>20</td>
+<td>0</td>
+<td>6</td>
+<td>14</td>
+<td>三组件不可删除，宽边界设计吸收复杂性</td>
+</tr>
+<tr>
+<td>3</td>
+<td>M1-M6六模块</td>
+<td>40</td>
+<td>0</td>
+<td>8</td>
+<td>32</td>
+<td>中等粒度最优，更粗则模糊、更细则冗余</td>
+</tr>
+<tr>
+<td>5</td>
+<td>R-D-S三维语法</td>
+<td>40</td>
+<td>0</td>
+<td>7</td>
+<td>33</td>
+<td>存量-流量-结构是描述动态系统的正交充分维度</td>
+</tr>
+<tr>
+<td>7</td>
+<td>RES资源二分法</td>
+<td>40</td>
+<td>0</td>
+<td>19</td>
+<td>21</td>
+<td>沿MODULATE vs ALIGN/RELINK断层线自然形成</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DSP调度二分法</td>
+<td>40</td>
+<td>0</td>
+<td>28</td>
+<td>12</td>
+<td>基于“意识可调控性”的临床判据稳健</td>
+</tr>
+<tr>
+<td>9</td>
+<td>STR结构三分法</td>
+<td>40</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+<td>规则-连接-序列不可互相化约，STR-C创新未被消除</td>
+</tr>
+<tr>
+<td>11</td>
+<td>G-M-A-R操作架构</td>
+<td>20</td>
+<td>0</td>
+<td>11</td>
+<td>9</td>
+<td>“恰好四个”在覆盖充分性和简洁性间最优平衡</td>
+</tr>
+<tr>
+<td>12</td>
+<td>D→R→S干预优先级</td>
+<td>20</td>
+<td>0</td>
+<td>13</td>
+<td>7</td>
+<td>序列由功能依赖关系强制担保，刚性随失调程度调整</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>结论</strong>：在“现象层与神经层之间建立功能上可操作的中间抽象层次”这一明确工程约束下，该架构的16项核心组件<strong>无一被任何替代方案完全替代</strong>。</p>
+<hr class="section-divider">
+<h3>H.4 角色化替代测试（23个中间层候选架构）</h3>
+<p>按照《心理系统中间层架构比较测试标准v2.0》，将INTRE功能层与23个其他中间层候选架构（计算层、动力层+、意义层、冲突层、网络层、表征层、控制层等）进行角色化比较，评估各架构在六类职能上的表现。</p>
+<p><strong>核心结论</strong>：</p>
+<ul>
+<li><strong>通用状态描述层</strong>：INTRE是<strong>最强</strong>候选。计算层和动力层+在预测和编码可靠性上更优，但描述颗粒度显著低于INTRE（5 vs 3/4）。</li>
+<li><strong>操作语法生成层</strong>：INTRE是<strong>唯一</strong>满足全部条件的候选（控制能力≥4/5、跨流派翻译≥80/100、靶点特异性等四项子标准全满足）。最接近的控制层因跨流派翻译未达标（<60）而被排除。</li>
+<li><strong>动力预测引擎</strong>：最强候选为动力层+（5/5），INTRE（3/5）不在此职能上竞争。</li>
+<li><strong>意义组织层</strong>：意义层和现象学层在深层意义解释上优于INTRE，应作为互补增强层。</li>
+<li><strong>深层结构视角</strong>：冲突层在症状换形解释上有独特优势，需补齐编码可靠性后可作为增强层。</li>
+<li><strong>元科学治理层</strong>：INTRE是唯一建立分层证据管理和可证伪性声明的架构。</li>
+</ul>
+<p><strong>最终裁决</strong>：<strong>没有替代者，只有互补层</strong>。INTRE不声称在所有职能上最优，但它是唯一同时通过“通用状态描述层”和“操作语法生成层”双核心角色准入条件的架构。</p>
+<hr class="section-divider">
+<h3>H.5 总体结论：结构稳健性与实证债务</h3>
+<p><strong>已完成的逻辑与结构验证</strong>：</p>
+<ul>
+<li>内部理论压力测试：17项通过（含条件通过），无致命逻辑矛盾。</li>
+<li>外部兼容性压力测试：10篇论文未触发主要失败条件。</li>
+<li>核心组件替代测试：460个替代方案中0个完全替代。</li>
+<li>角色化替代测试：在双核心职能上保持不可替代的结构优势。</li>
+</ul>
+<p><strong>尚待跨越的三道实证关卡</strong>：</p>
+<ol>
+<li><strong>编码可靠性</strong>：M-R-D-S状态语法的编码员间一致性（κ ≥ 0.60）。</li>
+<li><strong>干预匹配增量效度</strong>：基于G-M-A-R的靶点匹配干预优于常规治疗。</li>
+<li><strong>PSE预测表现</strong>：动力学仿真对个体轨迹的预测精度与校准度。</li>
+</ol>
+<p><strong>框架的可证伪性承诺</strong>：五条核心主张均有明确的证伪路径，其中最脆弱的节点是 <strong>M3-RES-D的三通道收敛效度研究</strong>。框架已内建版本演化与强反例触发协议，承诺在证据面前有序修正或降级。</p>
+<hr class="section-divider">
+<p><em>本附录基于以下文档编制：05-R-01、05-R-02、05-R-03、05-V-00至05-V-19。详细数据请参见各原始报告。</em></p>
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-g.html" class="nav-link prev">‹ 附G：术语对照——中英文约500条</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-i.html" class="nav-link next">附I：家教案例——学生拖延的INTRE干预 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

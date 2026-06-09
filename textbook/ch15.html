@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第15章 语义架构：PSA推理与PSL编译 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第15章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
+<blockquote><p>**学习目标**：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
+<hr class="section-divider">
+<h3>15.1 PSA定位：从词典到推理系统</h3>
+<p>如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要<strong>推理</strong>的问题。</p>
+<p>PSA（Psychological Semantic Architecture，心理语义架构）正是为了解决这一问题而设计的。PSA定义了PCUI概念之间的形式化关系——模块依赖权重、级联路径模板、操作-组件映射规则——将UPLS从<strong>静态词典</strong>升级为<strong>推理系统</strong>。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>回答的问题</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>PCUI</td>
+<td>“是什么”</td>
+<td>慢性焦虑 = M4C+M2I+M3I+M1S+M6O</td>
+</tr>
+<tr>
+<td>PSA</td>
+<td>“怎样关联”</td>
+<td>M4-DSP-B↑ → M3-RES-D消耗速率+30%，预计72h内跌破阈值</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**微案例**：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
+<hr class="section-divider">
+<h3>15.2 核心编码：依赖矩阵、级联模板与操作映射</h3>
+<p>PSA的核心编码包含三类信息：<strong>模块依赖权重</strong>、<strong>级联路径模板</strong>和<strong>操作-组件映射规则</strong>。</p>
+<h4>15.2.1 模块依赖权重</h4>
+<p>模块依赖权重定义了M1-M6之间因果影响的强度（0-1）。以下为理论推导的标准矩阵（权重≥0.65加粗）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>从↓ / 到→</th>
+<th>M1</th>
+<th>M2</th>
+<th>M3</th>
+<th>M4</th>
+<th>M5</th>
+<th>M6</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td>—</td>
+<td>0.65</td>
+<td><strong>0.85</strong></td>
+<td>0.70</td>
+<td>0.30</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>0.20</td>
+<td>—</td>
+<td>0.55</td>
+<td><strong>0.65</strong></td>
+<td>0.50</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td>0.15</td>
+<td>0.50</td>
+<td>—</td>
+<td>0.40</td>
+<td>0.35</td>
+<td><strong>0.75</strong></td>
+</tr>
+<tr>
+<td><strong>M4</strong></td>
+<td>0.40</td>
+<td><strong>0.68</strong></td>
+<td><strong>0.75</strong></td>
+<td>—</td>
+<td>0.55</td>
+<td><strong>0.70</strong></td>
+</tr>
+<tr>
+<td><strong>M5</strong></td>
+<td>0.10</td>
+<td>0.45</td>
+<td>0.30</td>
+<td>0.45</td>
+<td>—</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td><strong>M6</strong></td>
+<td>0.25</td>
+<td>0.20</td>
+<td>0.15</td>
+<td>0.30</td>
+<td>0.25</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键依赖解读</strong>：</p>
+<ul>
+<li><strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据</li>
+<li><strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗</li>
+<li><strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加</li>
+<li><strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</li>
+</ul>
+<h4>15.2.2 级联路径模板</h4>
+<p>级联路径模板描述失调从起始模块到下游模块的典型传播模式：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模板名称</th>
+<th>级联方向</th>
+<th>典型症状指纹</th>
+<th>最高杠杆干预靶点</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>资源崩溃型</strong></td>
+<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
+<td>疲劳、拖延、冲动</td>
+<td>MODULATE+ M1-RES-D</td>
+</tr>
+<tr>
+<td><strong>情绪驱动型</strong></td>
+<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
+<td>焦虑、反刍、回避</td>
+<td>RELINK M4-STR-C / GATE– M4-DSP-B</td>
+</tr>
+<tr>
+<td><strong>习惯固化型</strong></td>
+<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
+<td>成瘾、强迫行为</td>
+<td>GATE– S-P触发 + GATE+替代行为</td>
+</tr>
+<tr>
+<td><strong>规则扭曲型</strong></td>
+<td>M2-STR-R错误规则 → M4-STR-R威胁评估扭曲 → M4-DSP-B↑ → 回避行为</td>
+<td>完美主义、灾难化</td>
+<td>ALIGN M2-STR-R</td>
+</tr>
+</tbody>
+</table></div>
+<h4>15.2.3 操作-组件映射规则</h4>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接靶点</th>
+<th>间接影响</th>
+<th>操作合法性的充分必要条件</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>GATE</strong></td>
+<td>DSP-F, DSP-B, 运行中的STR-S</td>
+<td>RES-D消耗速率；STR-S长期削弱/强化</td>
+<td>靶点是运行中的过程，非静态结构</td>
+</tr>
+<tr>
+<td><strong>MODULATE</strong></td>
+<td>RES-D</td>
+<td>DSP稳定性</td>
+<td>靶点是RES-D，非RES-B、非STR</td>
+</tr>
+<tr>
+<td><strong>ALIGN</strong></td>
+<td>STR-R</td>
+<td>STR-C情绪权重</td>
+<td>靶点是STR-R的规则内容，非连接</td>
+</tr>
+<tr>
+<td><strong>RELINK</strong></td>
+<td>STR-C</td>
+<td>RES-B（涌现）</td>
+<td>靶点是STR-C的连接权重，非规则</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>临床意义</strong>：如果一个干预方案声称“用认知辩论治疗创伤连接”，PSA会标记为操作-组件错配（ALIGN不能直接替代RELINK），并推荐修正方案。</p>
+<hr class="section-divider">
+<h3>15.3 PSL设计：自然语言到PCUI的映射接口</h3>
+<p>PSL（Psychological Specialist Lexicon，心理专项词汇库）是UPLS的自然语言接口层。它的任务是：将临床口语、患者主诉、文化隐喻等非结构化的语言输入，映射为标准化的PCUI标识符和M-R-D-S坐标。</p>
+<p><strong>PSL-L五层结构</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>内容</th>
+<th>功能</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>术语主表</td>
+<td>核心术语条目（5-10万）</td>
+<td>存储术语的规范形式、变体、定义</td>
+</tr>
+<tr>
+<td>语义映射层</td>
+<td>术语 ↔ PCUI + 置信度权重</td>
+<td>连接自然语言与PCUI</td>
+</tr>
+<tr>
+<td>形态变体层</td>
+<td>同义词、缩写、词形变化</td>
+<td>归一化处理</td>
+</tr>
+<tr>
+<td>上下文规则层</td>
+<td>消歧规则、共现模式</td>
+<td>一词多义消歧</td>
+</tr>
+<tr>
+<td>多语言对齐层</td>
+<td>中文 ↔ 英文 ↔ 其他</td>
+<td>跨语言映射</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>临床口语到PCUI的映射示例</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>患者主诉（中文）</th>
+<th>可能的PCUI映射</th>
+<th>M-R-D-S坐标</th>
+<th>消歧规则</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>“心慌”</td>
+<td>焦虑语境→<code>ANXIETY_SOMATIC</code></td>
+<td>M1-DSP-B↑ + M4-DSP-B↑</td>
+<td>若同时有“担心”→M4优先；仅躯体不适→M1优先</td>
+</tr>
+<tr>
+<td>“心里堵得慌”</td>
+<td>东亚文化躯体化→<code>SOMATIC_ANXIETY_EASTASIA</code></td>
+<td>M1-DSP-B权重×1.3</td>
+<td>文化变体自动应用</td>
+</tr>
+<tr>
+<td>“脑子里停不下来”</td>
+<td><code>RUMINATION</code></td>
+<td>M2-DSP-B↑ + M4-DSP-B↑</td>
+<td>默认M2-DSP-B，伴情绪痛苦则加M4</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h3>15.4 文化变体：参数化对抗WEIRD偏见</h3>
+<p>心理学的一个重大挑战是<strong>WEIRD偏见</strong>（研究基于西方、教育程度高、工业化、富裕、民主的人口）。UPLS通过<strong>文化变体参数</strong>在架构层面对抗这一偏见。</p>
+<p><strong>文化变体的三层处理策略</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>处理方式</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>PSL层</strong></td>
+<td>文化特定表达映射到标准PCUI，附带权重调整</td>
+<td>“神经衰弱”在东亚优先映射到<code>SOMATIC_ANXIETY</code>，M1权重×1.3</td>
+</tr>
+<tr>
+<td><strong>PCUI层</strong></td>
+<td>同一PCUI条目下存储多个文化的参数分布</td>
+<td><code>ATTACHMENT_SECURITY</code>的东亚版本M4-RES-B基线低于西方版本</td>
+</tr>
+<tr>
+<td><strong>PSE层</strong></td>
+<td>文化变体在PSE-I阶段注入</td>
+<td>文化变体标签自动匹配生态位参数</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>文化变体参数示例（东亚 vs 西方）</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>参数</th>
+<th>东亚版本</th>
+<th>西方版本（基线）</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>焦虑躯体化权重（M1-DSP-B）</td>
+<td>×1.30</td>
+<td>×1.00</td>
+<td>东亚文化中焦虑更多表现为躯体不适</td>
+</tr>
+<tr>
+<td>情绪表达权重（M4-DSP-F）</td>
+<td>×0.85</td>
+<td>×1.00</td>
+<td>情绪表达内敛</td>
+</tr>
+<tr>
+<td>依恋安全感基线（M4-RES-B）</td>
+<td>均值-5</td>
+<td>均值+0</td>
+<td>集体主义文化中安全感更多来自关系</td>
+</tr>
+<tr>
+<td>自我叙事独立性（M5-STR-R）</td>
+<td>互依型权重高</td>
+<td>独立型权重高</td>
+<td>文化自我构念差异</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**重要声明**：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
+<hr class="section-divider">
+<h3>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h3>
+<p>UPLS静态三层与PSE动态引擎之间的接口关系，构成了从“静态知识”到“动态计算”的完整链路。</p>
+<pre><code class="language-text">
+┌─────────────────────────────────────────────────────────────┐
+│                      自然语言输入                            │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PSL-L：分词、术语识别、上下文消歧、文化变体匹配             │
+│  → 输出：候选PCUI列表 + 置信度权重                          │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PCUI-L：聚合为唯一PCUI，加载M-R-D-S坐标、参数分布、边界注释 │
+│  → 输出：初始M-R-D-S状态向量（概率分布）                     │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PSA-L：加载依赖矩阵和级联模板，计算级联预测、推荐干预靶点   │
+│  → 输出：状态演化预测 + 干预优化建议                         │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PSE：MCT编译状态向量，MKT动力学积分，MDT干预序列优化        │
+│  → 输出：个体化轨迹预测 + 干预处方                           │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>关键接口协议</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>接口</th>
+<th>方向</th>
+<th>数据格式</th>
+<th>触发条件</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>PSL → PCUI</td>
+<td>映射</td>
+<td><code>(term, context) → list of (PCUI, confidence)</code></td>
+<td>每次MCT编译时</td>
+</tr>
+<tr>
+<td>PCUI → PSA</td>
+<td>加载</td>
+<td>PCUI编码 → M-R-D-S坐标 + 参数分布</td>
+<td>状态向量初始化时</td>
+</tr>
+<tr>
+<td>PSA → PSE</td>
+<td>约束</td>
+<td>依赖权重、级联模板、操作-组件映射</td>
+<td>动力学积分和干预规划时</td>
+</tr>
+<tr>
+<td>PSE → PCUI</td>
+<td>反馈</td>
+<td>后验参数分布、校准后的权重</td>
+<td>PSE-C每轮更新后</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h3>15.6 微案例：从主诉到PCUI的完整编译</h3>
+<p><strong>主诉</strong>：“我最近老是心慌，尤其是晚上一个人在家的时候。心跳得特别快，觉得要出事了，但去医院查了心脏没问题。”</p>
+<p><strong>Step 1 – PSL分词与术语识别</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>词元</th>
+<th>候选PCUI</th>
+<th>置信度</th>
+<th>消歧依据</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>“心慌”</td>
+<td><code>ANXIETY_SOMATIC</code></td>
+<td>0.65</td>
+<td>焦虑躯体化</td>
+</tr>
+<tr>
+<td></td>
+<td><code>CARDIAC_PALPITATION</code></td>
+<td>0.20</td>
+<td>但下文“心脏没问题”降低此权重</td>
+</tr>
+<tr>
+<td>“晚上一个人在家”</td>
+<td><code>CONTEXTUAL_TRIGGER_ISOLATION</code></td>
+<td>0.70</td>
+<td>情境触发</td>
+</tr>
+<tr>
+<td>“觉得要出事了”</td>
+<td><code>CATASTROPHIZING</code></td>
+<td>0.80</td>
+<td>灾难化思维</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Step 2 – PCUI加载与M-R-D-S坐标</strong>：最终确定主PCUI为<code>ANXIETY_PANIC</code>，坐标：M4-DSP-B↑（78），M4-STR-R灾难化权重（0.72），M1-DSP-B↑（82），M2-STR-R威胁评估偏置（0.65）。</p>
+<p><strong>Step 3 – PSA推理</strong>：加载依赖矩阵后自动计算：M4-DSP-B↑ → M3-RES-D消耗速率+30%（预计3天后跌破40）；M4-DSP-B↑ → M2-DSP-B↑（反刍风险+25%）；推荐干预：先GATE– M4-DSP-B（接地技术）+ MODULATE+ M1-RES-D（睡眠锚定），待资源稳定后再ALIGN M4-STR-R（灾难化信念挑战）。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLS静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使UPLS不仅是一个术语词典，更是一个可运行的、支持临床推理的知识基础设施。</p>
+<blockquote><p>**关键术语**：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。<br>- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。<br>- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？<br>2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。<br>3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 14 概念标识：PCUI编码与同义词映射</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch16.html" class="nav-link next">16 共识工程：三阶段知识生产流水线 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

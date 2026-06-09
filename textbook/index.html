@@ -1,44 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTRE · 导论教材</title>
+    <title>INTRE · 导论教材 · 目录</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --accent: #163A5F;
+            --accent-light: #2b6390;
+            --bg: #ffffff;
+            --bg-secondary: #f7f8fa;
+            --text: #1d1d1f;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border: #e5e7eb;
+            --border-light: #f0f0f0;
+            --font: 'Inter', -apple-system, sans-serif;
+        }
+
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Inter',sans-serif; background:#f4f7fc; color:#1e293b; line-height:1.6; }
-        .container { max-width:1400px; margin:0 auto; padding:2rem; }
-        nav { background:#163A5F; color:white; padding:.8rem 2rem; }
-        .nav-container { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-        .logo a { color:white; text-decoration:none; font-size:1.8rem; font-weight:700; }
-        .nav-links { display:flex; gap:2rem; flex-wrap:wrap; }
-        .nav-links a { color:rgba(255,255,255,.85); text-decoration:none; font-weight:500; font-size:1rem; padding:.3rem 0; border-bottom:2px solid transparent; }
-        .nav-links a:hover, .nav-links a.active { color:white; border-bottom-color:white; }
-        h1 { font-size:3rem; font-weight:700; color:#163A5F; margin:1rem 0 .5rem; }
-        .subhead { font-size:1.3rem; font-weight:400; color:#2b6390; margin-bottom:2rem; }
-        .intro-box { background:white; border-radius:1.2rem; padding:2rem; border-left:6px solid #2b6390; margin:2rem 0; }
-        .section-label { font-size:1.8rem; font-weight:600; color:#163A5F; margin:2.5rem 0 1rem; border-left:6px solid #2b6390; padding-left:1rem; display:flex; align-items:center; gap:.8rem; }
-        .section-label i { color:#2b6390; font-size:2rem; width:2rem; }
-        .chapter-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1rem; margin:1.5rem 0; }
-        .chapter-card { background:white; border-radius:1rem; border:1px solid #e2e8f0; padding:1rem 1.2rem; transition:box-shadow .2s; }
-        .chapter-card:hover { box-shadow:0 8px 20px -5px rgba(0,0,0,.1); }
-        .chapter-card .ch-num { display:inline-block; background:#163A5F; color:white; padding:.15rem .5rem; border-radius:20px; font-size:.75rem; font-weight:600; margin-right:.4rem; }
-        .chapter-card .ch-title { font-weight:500; color:#1e293b; font-size:.95rem; }
-        .chapter-card .ch-desc { color:#64748b; font-size:.85rem; margin-top:.3rem; }
-        .phase-tag { display:inline-block; background:#163A5F; color:white; padding:.2rem .8rem; border-radius:30px; font-size:.8rem; margin-bottom:.5rem; }
-        .appendices { background:#eef4fc; border-radius:1.2rem; padding:1.5rem 2rem; margin:2rem 0; }
-        .appendix-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:.8rem; margin-top:1rem; }
-        .appendix-item { font-size:.9rem; color:#334155; }
-        .appendix-item strong { color:#163A5F; }
-        footer { background:#163A5F; color:rgba(255,255,255,.8); text-align:center; padding:2.5rem 2rem; margin-top:4rem; font-size:.95rem; }
-        footer a { color:white; text-decoration:none; border-bottom:1px dotted rgba(255,255,255,.5); }
-        footer a:hover { border-bottom-color:white; }
-        .footer-links { margin:1rem 0; }
-        @media (max-width:768px) { .chapter-grid{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:2.4rem} }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--accent);
+            color: white;
+            padding: 0 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 3.4rem;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255,255,255,0.10);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: white;
+            font-weight: 600;
+        }
+
+        /* HERO */
+        .toc-hero {
+            background: linear-gradient(165deg, var(--accent) 0%, #0f2b47 100%);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toc-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .toc-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .toc-hero .label {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .toc-hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+        }
+
+        .toc-hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .toc-hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .toc-hero .stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .toc-hero .stats i {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+        }
+
+        /* TOC CONTENT */
+        .toc-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3rem;
+        }
+
+        .toc-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 2.5rem 0 0.5rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.65rem 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.15s ease;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .toc-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .toc-item .num {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            min-width: 2.4rem;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .toc-item .title-text {
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .toc-item .toc-arrow {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+        }
+
+        .toc-item:hover .toc-arrow {
+            opacity: 1;
+        }
+
+        /* APPENDIX */
+        .toc-item.appendix .num {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            min-width: 1.8rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--accent);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+        }
+
+        footer a { color: rgba(255,255,255,0.8); }
+        footer a:hover { color: white; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .toc-hero h1 { font-size: 1.7rem; }
+            .toc-hero .subtitle { font-size: 0.95rem; }
+            .toc-hero { padding: 2.5rem 1rem 2rem; }
+            .toc-container { padding: 1.5rem 1rem 2rem; }
+            .nav-links { gap: 0.1rem; }
+            .nav-links a { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+            .logo a { font-size: 1.2rem; }
+            .toc-item { padding: 0.55rem 0.6rem; }
+            .toc-item .num { min-width: 1.8rem; font-size: 0.75rem; }
+            .toc-item .title-text { font-size: 0.88rem; }
+            .toc-hero .stats { gap: 1rem; font-size: 0.78rem; flex-wrap: wrap; }
+        }
+
+        @media (max-width: 480px) {
+            .toc-hero h1 { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -56,82 +281,76 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <h1>📖 导论教材</h1>
-        <div class="subhead">功能层心理学：基于 UPLS 与 PSE 的结构范式导论</div>
 
-        <div class="intro-box">
-            <p><strong>29 章正文 · 14 篇附录</strong></p>
-            <p style="margin-top:.5rem;">本教材是 INTRE 框架的完整学习入口，覆盖项目 95-98% 的核心内容。从范式演变到未来方向，从状态向量到伦理引擎，从仿真校到心理 AI，提供由浅入深的系统化知识体系。</p>
-        </div>
-
-        <!-- 正文 -->
-        <div class="section-label"><i class="fas fa-book"></i> 正文（第1章 - 第29章）</div>
-
-        <div class="chapter-grid">
-            <div class="chapter-card"><div><span class="ch-num">1</span><span class="ch-title">范式演变：从变量到功能层诞生</span></div><div class="ch-desc">心理学范式演变史，变量范式的危机与功能层的提出</div></div>
-            <div class="chapter-card"><div><span class="ch-num">2</span><span class="ch-title">层次定位：本体论、认识论与合法性</span></div><div class="ch-desc">功能层的本体论与认识论定位及合法性辩护</div></div>
-            <div class="chapter-card"><div><span class="ch-num">3</span><span class="ch-title">框架总览：INTRE核心资产与子系统</span></div><div class="ch-desc">六大核心资产·三大基础设施·四阶范式转变框架</div></div>
-            <div class="chapter-card"><div><span class="ch-num">4</span><span class="ch-title">范式批判：变量范式的边界与吸纳</span></div><div class="ch-desc">变量范式的边界分析及对其合理成分的吸纳</div></div>
-            <div class="chapter-card"><div><span class="ch-num">5</span><span class="ch-title">架构推导：从元公理到操作系统</span></div><div class="ch-desc">从 N-S-R 元公理推导至 M-R-D-S 操作系统的完整过程</div></div>
-            <div class="chapter-card"><div><span class="ch-num">6</span><span class="ch-title">状态维度：资源、调度与结构三轴</span></div><div class="ch-desc">RES/DSP/STR 三轴状态维度体系及相互约束</div></div>
-            <div class="chapter-card"><div><span class="ch-num">7</span><span class="ch-title">功能模块：M1至M6划分与级联</span></div><div class="ch-desc">六大模块的划分依据、功能边界与级联依赖关系</div></div>
-            <div class="chapter-card"><div><span class="ch-num">8</span><span class="ch-title">状态向量：42维表示与动力学</span></div><div class="ch-desc">42维状态向量表示方法、动力学方程与多模态融合</div></div>
-            <div class="chapter-card"><div><span class="ch-num">9</span><span class="ch-title">测量方法：ABC分类与桥接校准</span></div><div class="ch-desc">A/B/C三类测量成熟度分类；桥接-校准-原生三阶段优化路径</div></div>
-            <div class="chapter-card"><div><span class="ch-num">10</span><span class="ch-title">原子操作：GMAR语法与临床直觉</span></div><div class="ch-desc">GATE/MODULATE/ALIGN/RELINK 四种原子操作的语法定义</div></div>
-            <div class="chapter-card"><div><span class="ch-num">11</span><span class="ch-title">干预序列：DRS深度法则与例外</span></div><div class="ch-desc">D-R-S 诊断深度法则及其已知例外与边界条件</div></div>
-            <div class="chapter-card"><div><span class="ch-num">12</span><span class="ch-title">流派分解：六大流派的GMAR映射</span></div><div class="ch-desc">六大心理治疗流派（CBT/DBT/ACT/EFT/精神分析/人本）的映射</div></div>
-            <div class="chapter-card"><div><span class="ch-num">13</span><span class="ch-title">流派生成：从语法空位到预测疗法</span></div><div class="ch-desc">通过语法空位发现预测新疗法的生成机制</div></div>
-            <div class="chapter-card"><div><span class="ch-num">14</span><span class="ch-title">概念标识：PCUI编码与同义词映射</span></div><div class="ch-desc">PCUI 概念唯一标识编码与跨流派同义词消歧映射</div></div>
-            <div class="chapter-card"><div><span class="ch-num">15</span><span class="ch-title">语义架构：PSA推理与PSL编译</span></div><div class="ch-desc">PSA 心理语义推理引擎与 PSL 编译管线</div></div>
-            <div class="chapter-card"><div><span class="ch-num">16</span><span class="ch-title">共识工程：三阶段知识生产流水线</span></div><div class="ch-desc">PCC/PCF/PCV 三阶段共识工程知识生产流水线</div></div>
-            <div class="chapter-card"><div><span class="ch-num">17</span><span class="ch-title">逻辑指纹：解析差异的标准化治理</span></div><div class="ch-desc">逻辑指纹方法论及解析差异的标准化治理机制</div></div>
-            <div class="chapter-card"><div><span class="ch-num">18</span><span class="ch-title">PSE架构：五层引擎与心智六论</span></div><div class="ch-desc">PSE 五层计算引擎架构（架构/算法/参数/方法/协议）与心智六论</div></div>
-            <div class="chapter-card"><div><span class="ch-num">19</span><span class="ch-title">系统动力学：资源、调度与结构方程</span></div><div class="ch-desc">系统动力学微分方程：资源消耗/恢复、调度分配、结构塑性</div></div>
-            <div class="chapter-card"><div><span class="ch-num">20</span><span class="ch-title">仿真校准：蒙特卡罗与贝叶斯</span></div><div class="ch-desc">蒙特卡罗仿真与贝叶斯校准方法；三通道贝叶斯融合</div></div>
-            <div class="chapter-card"><div><span class="ch-num">21</span><span class="ch-title">临床案例：焦虑、创伤与抑郁</span></div><div class="ch-desc">三种典型临床案例（王梅·倦怠；林芳·暴食；张薇·焦虑）的完整走查</div></div>
-            <div class="chapter-card"><div><span class="ch-num">22</span><span class="ch-title">神经对接：翻译与约束的根本差异</span></div><div class="ch-desc">现象层对接 vs 神经层约束——两种对接类型的本质区别</div></div>
-            <div class="chapter-card"><div><span class="ch-num">23</span><span class="ch-title">双向约束：正向预测与反向信号</span></div><div class="ch-desc">功能层→神经层正向预测与神经层→功能层反向信号的双向闭环</div></div>
-            <div class="chapter-card"><div><span class="ch-num">24</span><span class="ch-title">边界修订：从信号检测到概念修订</span></div><div class="ch-desc">从边界信号检测到 ABC 类概念修订的完整决策路径</div></div>
-            <div class="chapter-card"><div><span class="ch-num">25</span><span class="ch-title">REVER：结构伦理、依赖雷达与门控</span></div><div class="ch-desc">REVER 伦理引擎：四层架构·依赖雷达 Dₛ·四点式伦理门控</div></div>
-            <div class="chapter-card"><div><span class="ch-num">26</span><span class="ch-title">心理AI：功能层驱动的智能交互</span></div><div class="ch-desc">PSE+UPLS+UNIS 三层架构的心理AI；三通道融合在AI中的实现</div></div>
-            <div class="chapter-card"><div><span class="ch-num">27</span><span class="ch-title">跨学科接口：学科映射与范式协作</span></div><div class="ch-desc">跨学科接口设计：变量范式+结构范式的互补协作框架</div></div>
-            <div class="chapter-card"><div><span class="ch-num">28</span><span class="ch-title">研究方法：从N-of-1到状态空间建模</span></div><div class="ch-desc">从个体化 N-of-1 研究到状态空间模型的方法论体系</div></div>
-            <div class="chapter-card"><div><span class="ch-num">29</span><span class="ch-title">未来方向：挑战、争议与计算愿景</span></div><div class="ch-desc">实证挑战·术语争议·计算愿景·开放问题</div></div>
-        </div>
-
-        <!-- 附录 -->
-        <div class="section-label"><i class="fas fa-paperclip"></i> 附录</div>
-        <div class="appendices">
-            <div class="appendix-grid">
-                <div class="appendix-item"><strong>A</strong> — 42 子维度列表：符号·定义·分类·测量</div>
-                <div class="appendix-item"><strong>B</strong> — G-M-A-R 速查：按临床问题索引</div>
-                <div class="appendix-item"><strong>C</strong> — PSE 快速入门：代码示例与仿真模板</div>
-                <div class="appendix-item"><strong>D</strong> — REVER 审计：四子协议模板</div>
-                <div class="appendix-item"><strong>E</strong> — 跨学校概念映射汇编</div>
-                <div class="appendix-item"><strong>F</strong> — 逻辑指纹：编码协议与 PCUI JSON 示例</div>
-                <div class="appendix-item"><strong>G</strong> — 术语对照：中英文约 500 条</div>
-                <div class="appendix-item"><strong>H</strong> — 形式审查：压力测试与替代测试摘要</div>
-                <div class="appendix-item"><strong>I</strong> — 抽象·中文版</div>
-                <div class="appendix-item"><strong>J</strong> — 完整目录</div>
-                <div class="appendix-item"><strong>K</strong> — 完整合并稿</div>
-                <div class="appendix-item"><strong>L</strong> — 后记</div>
+    <div class="toc-hero">
+        <div class="toc-hero-content">
+            <div class="label"><i class="fas fa-book-open" style="margin-right:0.3rem;"></i> 开放教材</div>
+            <h1>导论教材</h1>
+            <p class="subtitle">功能层心理学：基于 UPLS 与 PSE 的结构范式导论</p>
+            <div class="stats">
+                <span><i class="fas fa-layer-group"></i> 29 章正文</span>
+                <span><i class="fas fa-paperclip"></i> 14 篇附录</span>
+                <span><i class="fas fa-file-alt"></i> 约 5,200 行</span>
             </div>
-            <p style="margin-top:1.5rem;font-size:.9rem;color:#475569;">
-                <i class="fas fa-info-circle"></i> 教材所有章节存储于 INTRE 知识库 <code>08-导论教材/</code> 目录。当前仅供查阅，在线浏览功能开发中。
-            </p>
         </div>
     </div>
 
+    <div class="toc-container">
+
+        <div class="toc-section-title"><i class="fas fa-book" style="margin-right:0.4rem;"></i> 正文</div>
+
+        <a href="ch01.html" class="toc-item"><span class="num">第 1 章</span><span class="title-text">范式演变：从变量到功能层诞生</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch02.html" class="toc-item"><span class="num">第 2 章</span><span class="title-text">层次定位：本体论、认识论与合法性</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch03.html" class="toc-item"><span class="num">第 3 章</span><span class="title-text">框架总览：INTRE 核心资产与子系统</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch04.html" class="toc-item"><span class="num">第 4 章</span><span class="title-text">范式批判：变量范式的边界与吸纳</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch05.html" class="toc-item"><span class="num">第 5 章</span><span class="title-text">架构推导：从元公理到操作系统</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch06.html" class="toc-item"><span class="num">第 6 章</span><span class="title-text">状态维度：资源、调度与结构三轴</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch07.html" class="toc-item"><span class="num">第 7 章</span><span class="title-text">功能模块：M1 至 M6 划分与级联</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch08.html" class="toc-item"><span class="num">第 8 章</span><span class="title-text">状态向量：42 维表示与动力学</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch09.html" class="toc-item"><span class="num">第 9 章</span><span class="title-text">测量方法：ABC 分类与桥接校准</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch10.html" class="toc-item"><span class="num">第 10 章</span><span class="title-text">原子操作：GMAR 语法与临床直觉</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch11.html" class="toc-item"><span class="num">第 11 章</span><span class="title-text">干预序列：DRS 深度法则与例外</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch12.html" class="toc-item"><span class="num">第 12 章</span><span class="title-text">流派分解：六大流派的 GMAR 映射</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch13.html" class="toc-item"><span class="num">第 13 章</span><span class="title-text">流派生成：从语法空位到预测疗法</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch14.html" class="toc-item"><span class="num">第 14 章</span><span class="title-text">概念标识：PCUI 编码与同义词映射</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch15.html" class="toc-item"><span class="num">第 15 章</span><span class="title-text">语义架构：PSA 推理与 PSL 编译</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch16.html" class="toc-item"><span class="num">第 16 章</span><span class="title-text">共识工程：三阶段知识生产流水线</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch17.html" class="toc-item"><span class="num">第 17 章</span><span class="title-text">逻辑指纹：解析差异的标准化治理</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch18.html" class="toc-item"><span class="num">第 18 章</span><span class="title-text">PSE 架构：五层引擎与心智六论</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch19.html" class="toc-item"><span class="num">第 19 章</span><span class="title-text">系统动力学：资源、调度与结构方程</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch20.html" class="toc-item"><span class="num">第 20 章</span><span class="title-text">仿真校准：蒙特卡罗与贝叶斯</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch21.html" class="toc-item"><span class="num">第 21 章</span><span class="title-text">临床案例：焦虑、创伤与抑郁</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch22.html" class="toc-item"><span class="num">第 22 章</span><span class="title-text">神经对接：翻译与约束的根本差异</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch23.html" class="toc-item"><span class="num">第 23 章</span><span class="title-text">双向约束：正向预测与反向信号</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch24.html" class="toc-item"><span class="num">第 24 章</span><span class="title-text">边界修订：从信号检测到概念修订</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch25.html" class="toc-item"><span class="num">第 25 章</span><span class="title-text">REVER：结构伦理、依赖雷达与门控</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch26.html" class="toc-item"><span class="num">第 26 章</span><span class="title-text">心理 AI：功能层驱动的智能交互</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch27.html" class="toc-item"><span class="num">第 27 章</span><span class="title-text">跨学科接口：学科映射与范式协作</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch28.html" class="toc-item"><span class="num">第 28 章</span><span class="title-text">研究方法：从 N-of-1 到状态空间建模</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="ch29.html" class="toc-item"><span class="num">第 29 章</span><span class="title-text">未来方向：挑战、争议与计算愿景</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+
+        <div class="toc-section-title"><i class="fas fa-paperclip" style="margin-right:0.4rem;"></i> 附录</div>
+
+        <a href="app-a.html" class="toc-item appendix"><span class="num">A</span><span class="title-text">42 子维度列表：符号·定义·分类·测量</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-b.html" class="toc-item appendix"><span class="num">B</span><span class="title-text">G-M-A-R 速查：按临床问题索引</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-c.html" class="toc-item appendix"><span class="num">C</span><span class="title-text">PSE 快速入门：代码示例与仿真模板</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-d.html" class="toc-item appendix"><span class="num">D</span><span class="title-text">REVER 审计：四子协议模板</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-e.html" class="toc-item appendix"><span class="num">E</span><span class="title-text">10 大流派的功能签名与操作分解</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-f.html" class="toc-item appendix"><span class="num">F</span><span class="title-text">逻辑指纹：编码协议与 PCUI JSON 示例</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-g.html" class="toc-item appendix"><span class="num">G</span><span class="title-text">术语对照：中英文约 500 条</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-h.html" class="toc-item appendix"><span class="num">H</span><span class="title-text">压力测试与替代测试结果摘要</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-i.html" class="toc-item appendix"><span class="num">I</span><span class="title-text">家教案例：学生拖延的 INTRE 干预</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-j.html" class="toc-item appendix"><span class="num">J</span><span class="title-text">PCUI 规范：角色标签、映射与消歧</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-k.html" class="toc-item appendix"><span class="num">K</span><span class="title-text">PSA 依赖：矩阵、级联模板与文化参数</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-l.html" class="toc-item appendix"><span class="num">L</span><span class="title-text">架构速查：推导链与公理体系</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-m.html" class="toc-item appendix"><span class="num">M</span><span class="title-text">数学速成：函数、微分、概率与滤波</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+        <a href="app-n.html" class="toc-item appendix"><span class="num">N</span><span class="title-text">概念速查：心理学、神经科学与系统论</span><span class="toc-arrow"><i class="fas fa-chevron-right"></i></span></a>
+
+    </div>
+
     <footer>
-        <p>INTRE 心理学功能层工程框架 · 开放知识入口</p>
-        <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
-        </div>
-        <p style="font-size:.8rem;margin-top:1rem;">版本 v2.0 (2026-06-09) · CC0 1.0 · 保留部分权利</p>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
     </footer>
 </body>
 </html>

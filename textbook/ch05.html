@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第5章 架构推导：从元公理到操作系统 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第5章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第5章 架构推导：从元公理到操作系统</h1>
+<blockquote><p>**本章定位**：本章展示推导链的逻辑骨架。完整的论证材料、替代方案比较和数学细节见**附录L**。建议读者先通读本章获得整体图景，再根据需要查阅附录。</p></blockquote>
+<blockquote><p>**学习目标**：完成本章后，你应能够：(1) 画出从 N-S-R 元公理到 G-M-A-R 操作语法的完整推导链；(2) 解释每一步推导中“上位概念如何被操作化定义为下位概念”；(3) 陈述 R-D-S 三维作为存量-流量-结构在系统动力学中的数学对应；(4) 理解 G-M-A-R 四操作的靶点合法性矩阵是如何从 R-D-S 状态空间自然导出的；(5) 说明为什么 INTRE 的组件不是“被发明”的，而是“被推导”的。</p></blockquote>
+<hr class="section-divider">
+<h3>5.1 推导链总览：五大架构的生成逻辑</h3>
+<p>INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的<strong>下行推导</strong>过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>架构</th>
+<th>符号</th>
+<th>层级定位</th>
+<th>核心追问</th>
+<th>推导来源</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>N-S-R</strong></td>
+<td>Need-Structure-Realization</td>
+<td>道（元公理）</td>
+<td>智能系统如何存在与运作？</td>
+<td>第一性原理（起点）</td>
+</tr>
+<tr>
+<td><strong>M-R-P</strong></td>
+<td>Module-Ring-Playbook</td>
+<td>法（通用架构）</td>
+<td>目标驱动智能体的通用蓝图是什么？</td>
+<td>N-S-R的S被操作化定义</td>
+</tr>
+<tr>
+<td><strong>M-R-D-S</strong></td>
+<td>Module-Resource-Dispatch-Structure</td>
+<td>术（诊断侧）</td>
+<td>心智系统此刻的内部状态如何？</td>
+<td>M-R-P在人类心智上的特化</td>
+</tr>
+<tr>
+<td><strong>G-M-A-R</strong></td>
+<td>Gate-Modulate-Align-Relink</td>
+<td>术（干预侧）</td>
+<td>如何修正心智系统的非理想状态？</td>
+<td>从R-D-S状态空间自然导出</td>
+</tr>
+<tr>
+<td><strong>S-P</strong></td>
+<td>Source-Pattern</td>
+<td>境（环境参照系）</td>
+<td>系统在什么样的环境中运行？</td>
+<td>补全M-R-D-S缺失的环境维度</td>
+</tr>
+</tbody>
+</table></div>
+<p>这个推导链的关键特征在于：<strong>每一步都是操作化定义，而非经验归纳。</strong> INTRE不声称“通过研究大量心理现象，我们发现恰好有三个维度”——它声称“从N-S-R元公理出发，如果我们要求描述语言满足存量-流量-结构的系统动力学完备性，则R-D-S三维是逻辑必然的”。</p>
+<pre><code class="language-mermaid">
+flowchart TD
+    A[&quot;N-S-R 元公理&lt;br&gt;需要→结构→实现循环&quot;]
+    A -- &quot;S 被操作化定义为&quot; --&gt; B[&quot;M-R-P 通用架构&lt;br&gt;模块 + 调度环 + 剧本&quot;]
+    B -- &quot;特化到人类心智&quot; --&gt; C[&quot;M1-M6 六功能模块&quot;]
+    B -- &quot;状态描述需求&quot; --&gt; D[&quot;M-R-D-S 状态语法&lt;br&gt;资源·调度·结构 三维&quot;]
+    D -- &quot;干预需求自然导出&quot; --&gt; E[&quot;G-M-A-R 操作语法&lt;br&gt;门控·调制·校准·重联&quot;]
+    B -- &quot;环境完整性&quot; --&gt; F[&quot;S-P 外感架构&lt;br&gt;源·模式 六层次&quot;]
+    E &lt;--&gt; F
+    D &lt;--&gt; F
+</code></pre>
+<hr class="section-divider">
+<h3>5.2 元公理：N-S-R与所有智能系统的存在逻辑</h3>
+<p><strong>公理陈述</strong>。N-S-R 是 INTRE 体系的逻辑起点：</p>
+<blockquote><p>智能系统通过感知内在或外在的“需要”（Need, N），调用或构建相应的“结构”（Structure, S），并通过该结构的运作，达成目标的“实现”（Realization, R）。</p></blockquote>
+<p>三者关系可形式化表述为 <strong>R = f(N, S)</strong>。</p>
+<ul>
+<li><strong>N（需要）</strong>：系统当前状态与理想状态之间的偏差。</li>
+<li><strong>S（结构）</strong>：系统为实现需要所构建或调用的内部因果通路与运行机制。在此公理层面，S 是一个<strong>内容开放的概念槽</strong>。</li>
+<li><strong>R（实现）</strong>：结构运作后产生的实际效果，反馈给需要感知，形成闭环。</li>
+</ul>
+<p><strong>为什么 N-S-R 是公理而不是假设</strong>。N-S-R 不来自经验归纳，而是<strong>逻辑分析</strong>的产物：在 INTRE 所定义的目标驱动、自适应、可反馈调节系统中，其运作逻辑上必须包含三个功能组件——目标识别（N）、手段提供（S）、效果评估（R）。缺失任一环节，系统将无法完成从“感知需要”到“实现目标”的完整闭环。</p>
+<p><strong>强反例触发条件</strong>：若发现某一完整的自适应系统层级的运作模式无法被合理地映射为 N→S→R 的闭环，则 N-S-R 的跨层级普适性主张需要被修正或限定。</p>
+<p><strong>关键区分——N-S-R 与 M-R-D-S 中 S 的双重含义</strong>：</p>
+<ul>
+<li>N-S-R 的 S = Structure（概念槽），跨域通用的结构形态</li>
+<li>M-R-D-S 的 S = Structure（实例化），领域特化为 STR-R/C/S 三分法</li>
+</ul>
+<p>具体而言，N-S-R 中的 S 是一个跨域通用的<strong>概念槽</strong>。在后续推导中，这个 S 被逐步实例化：在 M-R-P 层，S 被操作化定义为“模块+调度环+剧本”；在 M-R-D-S 层，S 进一步被特化为 STR-R、STR-C 和 STR-S。三者是“上位概念 → 实例化”的推导关系。</p>
+<hr class="section-divider">
+<h3>5.3 通用架构：M-R-P作为S的操作化定义</h3>
+<p><strong>从公理到架构的关键一跃</strong>。N-S-R 是一个哲学公理。但要让它成为可操作的工程框架，必须回答：公理中的 S（结构）具体是什么？</p>
+<p>INTRE 的回答是一个<strong>规定性定义</strong>：在 INTRE 体系内部，公理中的“结构（S）”被操作化定义为 <strong>M-R-P 通用架构</strong>。</p>
+<p><strong>M-R-P 的三组件</strong>：</p>
+<ul>
+<li><strong>M（Module 模块）</strong>：系统的功能组件集与能力边界。回答“用什么来做”的问题。</li>
+<li><strong>R（Ring 调度环）</strong>：R1→R5 负反馈控制流程。回答“如何持续调整”的问题。</li>
+<li><strong>P（Playbook 剧本）</strong>：可配置的具体策略与价值协议。回答“具体怎么做”的问题。</li>
+</ul>
+<p><strong>普适性论证</strong>。M-R-P 的强大之处在于“结构与内容的分离”：</p>
+<ul>
+<li><strong>人类心理</strong>：M = M1-M6 功能模块，P = CBT 或 ACT 等治疗剧本</li>
+<li><strong>L4 级自动驾驶</strong>：M = 感知/定位/规划/控制模块，P = 高速公路巡航剧本</li>
+<li><strong>工业机器人</strong>：M = 传感/机械臂，P = 装配序列</li>
+</ul>
+<p><strong>符号消歧</strong>：M-R-P 中的 R 指 Ring（调度环），与 N-S-R 中的 R（Realization）和 M-R-D-S 中的 R（Resource）含义不同。</p>
+<blockquote><p>**符号消歧（三 R 总览）**：INTRE 体系中有三个 R，含义各不相同：<br>- N-S-R 中的 R = Realization（实现），指行为输出<br>- M-R-P 中的 R = Ring（调度环），指模块间的信息调度环路<br>- M-R-D-S 中的 R = Resource（资源），指能耗与时间预算</p></blockquote>
+<hr class="section-divider">
+<h3>5.4 心智特化：M1-M6六功能模块的导出</h3>
+<p>M-R-P 是“万能容器”。但 INTRE 的目标是为<strong>人类心智</strong>提供功能层描述语法。因此，下一步是将 M-R-P 中的 M（模块）特化为人类心智的具体功能模块。</p>
+<p><strong>否定性特异崩溃论证</strong>是模块划分的核心工程验证：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统崩溃模式。例如，M1（具身）缺损导致全局能量崩溃（如重度抑郁的躯体症状），M3（意志）缺损导致决策瘫痪（如刺激-反应模式），M4（情绪）缺损导致价值盲（如精神分裂症阴性症状）。这些特异性崩溃模式为模块的独立功能角色提供了间接的工程验证。</p>
+<p>基于此，INTRE 将人类心智在功能层分解为六个模块（M1-M6）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模块</th>
+<th>名称</th>
+<th>核心功能</th>
+<th>在 N-S-R 中的角色</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td>具身</td>
+<td>能量与稳态基底</td>
+<td>为所有心理活动提供生物能量边界</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>认知</td>
+<td>世界建模与预测</td>
+<td>构建关于世界、自我和未来的内部模型</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td>意志</td>
+<td>中央调度与决策</td>
+<td>M-R-P 中调度环（Ring）的核心载体</td>
+</tr>
+<tr>
+<td><strong>M4</strong></td>
+<td>情绪</td>
+<td>价值评估与动机</td>
+<td>识别需要（N）的价值信号</td>
+</tr>
+<tr>
+<td><strong>M5</strong></td>
+<td>言语</td>
+<td>符号化与社会协调</td>
+<td>内部叙事和外部沟通</td>
+</tr>
+<tr>
+<td><strong>M6</strong></td>
+<td>行为</td>
+<td>行动执行与习惯</td>
+<td>将决策转化为物理行动（R 的执行端）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>完备性的三重担保</strong>：</p>
+<ol>
+<li><strong>逻辑推导</strong>：六模块分别展开并承载 N-S-R 循环在人类心智中的关键功能节点。</li>
+<li><strong>工程验证</strong>：否定性特异崩溃论证——每个模块的缺失导致独特的、不可补偿的系统崩溃模式。</li>
+<li><strong>进化启发性支持</strong>：六模块大致对应生命进化史上功能地层的逐层叠加（启发性支持，非严格系统发生学断言）。</li>
+</ol>
+<p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性担保，不适用于所有智能体类型。它是当前最优的工程选择，而非逻辑上唯一可能的分解方式。</p>
+<hr class="section-divider">
+<h3>5.5 状态语法：R-D-S三维的推导</h3>
+<p>确立了功能实体后，如何精确描述这些模块在任一时刻的状态？</p>
+<p>INTRE 的答案是 <strong>R-D-S 三维状态语法</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>维度</th>
+<th>核心追问</th>
+<th>数学对应</th>
+<th>功能属性</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>R（资源）</strong></td>
+<td>系统此刻拥有什么？</td>
+<td>存量（积分量）</td>
+<td>系统的瞬时状态属性</td>
+</tr>
+<tr>
+<td><strong>D（调度）</strong></td>
+<td>系统此刻正在如何变化？</td>
+<td>流量（微分量）</td>
+<td>系统的过程动态属性</td>
+</tr>
+<tr>
+<td><strong>S（结构）</strong></td>
+<td>系统为何以此方式运行？</td>
+<td>控制方程与拓扑</td>
+<td>系统的因果配置属性</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>为什么恰好是这三个维度？</strong> 答案在系统动力学的基本范畴中：任何动态系统要完整描述其状态和演化，都需要回答三个问题——存量、流量、结构。R-D-S 正是这一存量-流量-结构框架在心理功能层的实例化。</p>
+<p><strong>每个维度的内部细分</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子维度</th>
+<th>名称</th>
+<th>关键区分</th>
+<th>干预逻辑</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>RES-D</td>
+<td>调度资源</td>
+<td>分钟至天级，即时运营资本</td>
+<td>MODULATE（战术补充）</td>
+</tr>
+<tr>
+<td>RES-B</td>
+<td>基底资源</td>
+<td>月至年级，长期核心资本</td>
+<td>ALIGN/RELINK/GATE（战略建设）</td>
+</tr>
+<tr>
+<td>DSP-F</td>
+<td>前台调度</td>
+<td>需意识参与，高能耗</td>
+<td>GATE+/GATE-</td>
+</tr>
+<tr>
+<td>DSP-B</td>
+<td>后台调度</td>
+<td>自动化运行，低能耗</td>
+<td>GATE-（需间接调控）</td>
+</tr>
+<tr>
+<td>STR-R</td>
+<td>规则结构</td>
+<td>陈述性知识（“是什么”）</td>
+<td>ALIGN（逻辑修正）</td>
+</tr>
+<tr>
+<td>STR-C</td>
+<td>连接结构</td>
+<td>关联性知识（“什么与什么相连”）</td>
+<td>RELINK（体验重塑）</td>
+</tr>
+<tr>
+<td>STR-S</td>
+<td>序列结构</td>
+<td>程序性知识（“怎么做”）</td>
+<td>GATE（反复训练）</td>
+</tr>
+</tbody>
+</table></div>
+<p>M1-M6（6个模块）与 R-D-S 的7个子维度构成笛卡尔积，生成 <strong>42维状态空间</strong>——这就是INTRE为心理状态的精确诊断提供的统一坐标系。</p>
+<hr class="section-divider">
+<h3>5.6 操作语法：G-M-A-R四操作的导出</h3>
+<p>有了精确的状态空间后，一个自然的问题是：针对这个状态空间的每个维度，我们可以执行什么操作来改变它？</p>
+<p>G-M-A-R 是从 R-D-S 状态空间的拓扑结构中<strong>自然导出</strong>的。每个操作对应状态空间中一个特定的、不可相互替代的功能靶点：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>问题本质</th>
+<th>导出逻辑</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>MODULATE</strong></td>
+<td>RES-D</td>
+<td>即时燃料失衡（数量问题）</td>
+<td>R 维度的存量特性 → 需要数量调节操作</td>
+</tr>
+<tr>
+<td><strong>GATE</strong></td>
+<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
+<td>过程/序列失控（过程问题）</td>
+<td>D 维度的流量特性 → 需要通道开关操作</td>
+</tr>
+<tr>
+<td><strong>ALIGN</strong></td>
+<td>STR-R</td>
+<td>内部规则错误（内容问题）</td>
+<td>S-R 的命题性 → 需要逻辑修正操作</td>
+</tr>
+<tr>
+<td><strong>RELINK</strong></td>
+<td>STR-C</td>
+<td>价值连接断裂（关系问题）</td>
+<td>S-C 的关联性 → 需要体验重塑操作</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>靶点合法性矩阵</strong>——G-M-A-R 形式语法的核心规则：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>禁止表述</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>GATE</strong></td>
+<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
+<td>GATE STR-R, GATE STR-C</td>
+</tr>
+<tr>
+<td><strong>MODULATE</strong></td>
+<td>RES-D</td>
+<td>MODULATE RES-B, MODULATE STR</td>
+</tr>
+<tr>
+<td><strong>ALIGN</strong></td>
+<td>STR-R</td>
+<td>ALIGN STR-C, ALIGN STR-S</td>
+</tr>
+<tr>
+<td><strong>RELINK</strong></td>
+<td>STR-C</td>
+<td>RELINK STR-R, RELINK STR-S</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>D→R→S 干预序列</strong>——从状态空间拓扑自然导出的推论：</p>
+<ul>
+<li>在调度失控（D 层）时补充资源（R 层）是低效的</li>
+<li>在资源枯竭（R 层）时进行结构重建（S 层）是高风险的</li>
+<li>因此，默认干预序列为 <strong>D 层稳定 → R 层恢复 → S 层重建</strong></li>
+</ul>
+<hr class="section-divider">
+<h3>5.7 环境参照：S-P外感架构的补全</h3>
+<p>M-R-D-S 描述内部状态，G-M-A-R 定义干预操作，但还缺少一个关键维度：<strong>系统在什么样的环境中运行？</strong></p>
+<p>S-P（源-模式）外感架构补全了这个缺失的维度：</p>
+<ul>
+<li><strong>S-层（Source）</strong>：环境的层级分类。采用并拓展布朗芬布伦纳的生态系统理论——微系统、中系统、外系统、宏系统、时间系统、数字系统。</li>
+<li><strong>P-层（Pattern）</strong>：环境影响的模式化描述。采用与 M-R-D-S 同构的标记法——例如 <code>P-M4-RES-D-</code> 表示环境对 M4 的调度资源产生消耗效应。</li>
+</ul>
+<p>S-P 架构不改变 G-M-A-R 原子操作的功能定义，但作为<strong>战略上下文注入器</strong>，决定其执行优先级、时序和风险阈值。</p>
+<p><strong>S-P与UNIS的互补</strong>。S-P外感架构描述的是环境信息的<strong>类别和模式</strong>（"什么环境因素在影响系统"），而UNIS神经接口系统描述的是环境信息通过神经通道的<strong>测量和转化</strong>（"如何将环境对神经系统的客观影响转化为功能似然"）。两者的关系是：S-P定义了环境输入的来源分类（微系统到数字系统、P-分量方向），UNIS提供了其中一类——神经生理信号——的标准化采集、校准和映射管道。例如，S-P标注"数字系统环境→M4-DSP-B（情绪唤醒）"这一环境输入路径，UNIS则通过EEG→NFD→NFM→RTE管道将其转化为可量化的神经似然，传入PSE。S-P是<strong>语义框架</strong>（"什么在发生"），UNIS是<strong>测量实现</strong>（"如何量化检测"）。两者共同构成功能层的环境感知体系。</p>
+<hr class="section-divider">
+<h3>5.8 方法论意义：从观点集合到演绎系统</h3>
+<p><strong>从“观点集合”到“演绎系统”</strong>。INTRE 的组件不是被“发明”的，而是被“推导”的。如果你接受 N-S-R 元公理，接受 M-R-P 作为 S 的操作化定义，接受存量-流量-结构作为动态系统描述的必要范畴，那么 M1-M6、R-D-S、G-M-A-R 和 S-P 就是从这些前提中<strong>必然导出</strong>的结构。</p>
+<p><strong>可证伪性的精确锚定</strong>。推导链使 INTRE 的可证伪性从模糊变为精确。要证伪 INTRE，你不需要攻击整个框架——你只需要攻击推导链中的某一环：</p>
+<ul>
+<li>攻击元公理层：证明 N-S-R 不是适应性系统的必要逻辑</li>
+<li>攻击架构公理层：证明 M-R-P 不是目标驱动智能体的最优通用架构</li>
+<li>攻击特化推论层：证明 M1-M6 不是人类心智功能分解的最优工程选择</li>
+<li>攻击形式充分性：证明存量-流量-结构不适用于心理功能层</li>
+<li>攻击操作推论：证明 G-M-A-R 的四操作集不覆盖已知的有效干预机制</li>
+</ul>
+<p><strong>模块化可修正性</strong>。推导链的层级结构使框架可以<strong>局部修正而不整体崩塌</strong>。如果实证证明 M3-RES-D 不是独立的意志资源池，这不会影响 N-S-R 元公理、M-R-P 通用架构和 R-D-S 的形式充分性——修正只发生在参数层和模型层。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：INTRE 的五大核心架构不是孤立的发明，而是从一个简洁的元公理出发，经过层层操作化定义被推导出来的完整演绎系统。N-S-R 元公理确立了“需要→结构→实现”的元逻辑；M-R-P 将 S 操作化定义为“模块+调度环+剧本”；M1-M6 将 M 特化为人类心智的六个功能模块；R-D-S 在存量-流量-结构的系统动力学框架下为每个模块提供三维状态描述语法；G-M-A-R 从 R-D-S 的状态空间拓扑中自然导出四个原子干预操作；S-P 补全了环境参照系。这个推导链使 INTRE 区别于“观点集合”，升级为“演绎系统”。</p>
+<blockquote><p>**关键术语**：N-S-R 元公理，M-R-P 通用架构，推导链，操作化定义，存量-流量-结构，靶点合法性矩阵，S-P与UNIS互补</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “INTRE 的组件是从心理学经验中归纳出来的” → ✅ 组件是从 N-S-R 元公理出发，经过层层操作化定义被**推导**出来的。经验数据的作用是校准参数和检验预测，而非生成架构。<br>- ❌ “R-D-S 的三个维度是‘恰好发现’的” → ✅ R-D-S 来自存量-流量-结构的系统动力学框架——任何动态系统描述都必然需要这三个范畴。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 画出从 N-S-R 到 G-M-A-R 的完整推导链，标注每一步推导中的“上位概念”和“操作化定义”。<br>2. R-D-S 三维被论证为存量-流量-结构的实例化。选择一个非心理学的动态系统（如湖泊生态系统），尝试用 R-D-S 的范畴描述它。<br>3. 如果未来实证研究证明存量-流量-结构框架不适用于心理功能层，INTRE 的哪些组件会受影响？哪些可能幸存？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch04.html" class="nav-link prev">‹ 4 范式批判：变量范式的边界与吸纳</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch06.html" class="nav-link next">6 状态维度：资源、调度与结构三轴 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

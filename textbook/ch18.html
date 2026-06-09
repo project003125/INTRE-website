@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第18章 PSE架构：五层引擎与心智六论 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第18章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第18章 PSE架构：五层引擎与心智六论</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLS语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIS的神经似然输入。</p></blockquote>
+<blockquote><p>**⚠️ 实证成熟度声明**：PSE当前处于**概念设计阶段**（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，**不可用于临床决策**。</p></blockquote>
+<hr class="section-divider">
+<h3>18.1 五层架构：架构、算法、参数、方法论与协议</h3>
+<p><strong>心理系统工程引擎(PSE)</strong> 是INTRE框架的计算核心。它将功能层的静态描述语法(M-R-D-S)和操作语法(G-M-A-R)转化为可运行、可校准、可预测的动力学仿真系统。PSE采用五层架构，每一层承担不同的工程职责。</p>
+<p><strong>第一层：架构层(Architecture Layer)</strong>——PSE的静态本体论基础。包含：</p>
+<ul>
+<li><strong>M-R-D-S内感架构</strong>：42维状态空间的定义</li>
+<li><strong>G-M-A-R操作语法</strong>：四个原子操作的定义</li>
+<li><strong>S-P外感架构</strong>：环境输入的六层来源分类</li>
+<li><strong>N-S-R元架构</strong>：最高阶组织原则，在MDT优化目标函数中体现为长期功能完整性指数\(O_i(T)\)的驱动</li>
+</ul>
+<p>架构层变化最慢，只在INTRE框架版本升级时修改。</p>
+<p><strong>第二层：算法层(Algorithm Layer)</strong>——PSE的“物理引擎”，由<strong>心智六论</strong>构成（详见18.2节）。算法层只包含函数形式、拓扑关系和约束规则，不包含具体参数值。</p>
+<p><strong>第三层：参数层(Parameter Layer)</strong>——为算法层的方程提供具体的<strong>概率分布</strong>（先验），编码既有知识的不确定性。由五个标准知识库构成：</p>
+<ul>
+<li><strong>SPMC-L</strong>：PCUI映射的参数分布</li>
+<li><strong>SPER-L</strong>：S-P典型模式与生态位的参数配置</li>
+<li><strong>SPSM-L</strong>：因果路径模板、动力学参数先验</li>
+<li><strong>SPDC-L</strong>：G-M-A-R操作的执行成本、预期收益的先验</li>
+<li><strong>SPOT-L</strong>：抽象操作转译为具体情景化任务的规则库</li>
+</ul>
+<p>参数层变化最快，每次新个体数据进入PSE-C校准都会更新。</p>
+<p><strong>第四层：方法论层(Methodology Layer)</strong>——规定PSE如何被实际运行，包含四个阶段：</p>
+<ul>
+<li><strong>PSE-I（理论注入）</strong>：将算法层、架构层、参数层编译为可执行仿真代码</li>
+<li><strong>PSE-M（大规模蒙特卡罗仿真）</strong>：在参数空间中采样，运行数百万虚拟智能体的状态演化</li>
+<li><strong>PSE-P（先验参数提取）</strong>：从PSE-M输出中为每个生态位提取参数分布</li>
+<li><strong>PSE-C（真实世界贝叶斯校准）</strong>：将个体观测数据注入，通过贝叶斯更新实现个体化状态估计</li>
+</ul>
+<p><strong>第五层：协议层(Protocol Layer)</strong>——PSE与临床实践之间的接口，将计算输出转化为标准化工作流程：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>协议</th>
+<th>名称</th>
+<th>功能</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>VTS-P</td>
+<td>变量-结构协议</td>
+<td>临床评估数据 → M-R-D-S状态向量</td>
+</tr>
+<tr>
+<td>ETS-P</td>
+<td>环境-结构协议</td>
+<td>环境信息 → S-P影响向量</td>
+</tr>
+<tr>
+<td>SID-P</td>
+<td>系统集成诊断协议</td>
+<td>状态向量+S-P向量 → 系统优化蓝图</td>
+</tr>
+<tr>
+<td>MMD-P</td>
+<td>多维度元调度协议</td>
+<td>优化蓝图 → 五维调度指令</td>
+</tr>
+<tr>
+<td>STO-P</td>
+<td>结构-操作协议</td>
+<td>抽象操作 → 情景化操作清单</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道：</p>
+<ul>
+<li><strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)</li>
+<li><strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布</li>
+<li><strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</li>
+</ul>
+<p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIS，实现神经模型的在线个体化微调。</p>
+<p><strong>层间依赖关系</strong>：架构层 → 算法层 → 参数层 → 方法论层 → 协议层（单向）。下层变化影响上层，但上层变化不应波及下层。这实现了<strong>关注点分离</strong>：测量工具改进只影响参数层，不会迫使架构层修改。</p>
+<hr class="section-divider">
+<h3>18.2 心智六论：MCT至MET的职责分工</h3>
+<p>心智六论是PSE算法层的核心，每个理论模块规定一类动力学规则。</p>
+<p><strong>MCT：心智编译理论(Mental Compilation Theory)</strong>——解决“输入问题”：将非结构化临床叙述编译为M-R-D-S状态向量。编译流程：词法分析（PSL切分）→ 概念映射（PCUI匹配）→ 语境消歧 → 状态向量填充 → 不确定性量化（输出概率分布\(p(\Psi_0)\)）。</p>
+<p><strong>MTT：心智拓扑理论(Mental Topology Theory)</strong>——解决“结构问题”：状态空间中各分量之间的依赖关系。将心理系统建模为有向加权图\(G=(V,E)\)，节点是M-R-D-S子单元，边是有向依赖关系。核心输出：</p>
+<ul>
+<li><strong>依赖矩阵</strong>：42×42的权重矩阵</li>
+<li><strong>枢纽节点识别</strong>：计算出度、入度、介数中心性（M4通常最高）</li>
+<li><strong>级联路径分析</strong>：识别典型传播路径</li>
+<li><strong>反馈环路检测</strong>：识别正/负反馈回路</li>
+</ul>
+<p><strong>MKT：心智动力理论(Mental Kinetics Theory)</strong>——解决“速率问题”：状态分量以什么速率、遵循什么函数形式变化。一般形式： \[ \frac{d\Psi_i}{dt} = f_i(\Psi, E, u; \theta) \] 区分三类动力学：资源动力学（消耗+恢复，恢复不对称定律）、调度动力学（阈值切换）、结构动力学（学习规则，慢变量）。</p>
+<p><strong>MDT：心智调度理论(Mental Dispatch Theory)</strong>——解决“干预规划问题”：在给定当前状态、目标状态和资源约束下，选择最优G-M-A-R操作序列。形式化为约束优化问题： \[ \max_{O} \; \mathbb{E}[\Delta O_i(T) \mid \Psi(t), E(t), \text{约束}] \] 考虑资源约束、前置条件约束、时序约束。输出优先级排序的操作序列及预期收益、成本、成功概率。</p>
+<p><strong>MPT：心智塑性理论(Mental Plasticity Theory)</strong>——解决“结构改变的动力学”：STR层在什么条件下、以什么速率发生持久变化。三个核心原则：</p>
+<ul>
+<li><strong>塑性窗口原则</strong>：结构改变需要去稳定化→修改→巩固三阶段</li>
+<li><strong>能量-塑性耦合</strong>：结构改变深度受可用资源限制</li>
+<li><strong>巩固不稳定原则</strong>：新修改的结构在初始巩固期内不稳定</li>
+</ul>
+<p><strong>MET：心智生态理论(Mental Ecology Theory)</strong>——解决“环境-系统耦合问题”：S-P环境输入如何调制M-R-D-S状态演化。定义两种耦合方向：</p>
+<ul>
+<li><strong>下行耦合（环境→系统）</strong>：S-P向量作为强制输入进入状态演化方程</li>
+<li><strong>上行耦合（系统→环境）</strong>：系统状态影响个体如何选择和修改环境（生态位建构）</li>
+</ul>
+<p>MET还定义<strong>生态位(ecological niche)</strong>：个体典型S-P环境配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。</p>
+<hr class="section-divider">
+<h3>18.2.1 定律速查：26条核心命题</h3>
+<blockquote><p>**说明**：以下26条定律构成心智六论的形式化核心。完整推导及数学细节见01-X-03（心智六论形式化规范）。验证状态分为：**F**=已有实证支持；**X**=理论推导/待验证；**P**=预测性子单元/前瞻性实证待完成。</p></blockquote>
+<p><strong>MCT（心智编译理论）——5条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MCT-1</td>
+<td>编译保真界</td>
+<td>现象层主诉到功能层状态向量的编译保真度不超过PSL词法分析×PCUI映射×语境消歧三阶段精度的乘积</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MCT-2</td>
+<td>不确定性单调性</td>
+<td>编译输出的后验不确定性不低于前序阶段中最大不确定性</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MCT-3</td>
+<td>语境消歧优先</td>
+<td>当多义词存在语境关键词匹配时，优先采用高置信度消歧规则，仅在置信度<0.5时退回人工确认</td>
+<td>F</td>
+</tr>
+<tr>
+<td>MCT-4</td>
+<td>主映射收敛</td>
+<td>同一构念经多源观测（行为/生理/自陈）独立编译后，M-R-D-S坐标的主映射应趋于收敛</td>
+<td>P</td>
+</tr>
+<tr>
+<td>MCT-5</td>
+<td>次映射衰减</td>
+<td>次映射对状态估计的贡献权重随层级距离指数衰减</td>
+<td>X</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MTT（心智拓扑理论）——4条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MTT-1</td>
+<td>依赖有向性</td>
+<td>M-R-D-S子单元之间的功能依赖关系构成有向无环图（DAG），不存在循环依赖</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MTT-2</td>
+<td>枢纽集中度</td>
+<td>在42维依赖矩阵中，枢纽节点的出度+入度之和与介数中心性呈正相关，M4（情绪模块）通常具有最高枢纽度</td>
+<td>P</td>
+</tr>
+<tr>
+<td>MTT-3</td>
+<td>级联深度约束</td>
+<td>任意两个非相邻子单元之间的功能影响最多经3个枢纽节点即可完成传递（小世界特性）</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MTT-4</td>
+<td>拓扑鲁棒性</td>
+<td>依赖矩阵的全局结构在个体间高度保守（跨个体相关系数>0.85），局部权重可调</td>
+<td>P</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MKT（心智动力理论）——5条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MKT-1</td>
+<td>恢复不对称</td>
+<td>RES-D的恢复速率显著慢于消耗速率，恢复半衰期约为消耗半衰期的3-5倍</td>
+<td>F</td>
+</tr>
+<tr>
+<td>MKT-2</td>
+<td>调度阈值切换</td>
+<td>DSP-F与DSP-B之间的控制权切换遵循滞后阈值函数，切换阈值为资源存量的非线性函数</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MKT-3</td>
+<td>结构慢变</td>
+<td>STR层的有效变化速率比RES层慢1-2个数量级，比DSP层慢2-3个数量级</td>
+<td>F</td>
+</tr>
+<tr>
+<td>MKT-4</td>
+<td>耦合刚度分级</td>
+<td>R→D耦合（资源影响调度）> D→S耦合（调度影响结构）> S→R耦合（结构影响资源）</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MKT-5</td>
+<td>基线回归弹性</td>
+<td>系统在扰动后向个体基线回归的速率与偏离幅度成正比（弹性系数因人而异）</td>
+<td>P</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MDT（心智调度理论）——4条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MDT-1</td>
+<td>D→R→S序列刚性</td>
+<td>在Oᵢ<50的低功能系统中，违反D→R→S序列的干预预期收益为负（预期伤害>预期增益）</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MDT-2</td>
+<td>操作不可互换</td>
+<td>GATE、MODULATE、ALIGN、RELINK四操作不可相互替代——每个操作对应一个不可被其他操作补偿的功能靶点</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MDT-3</td>
+<td>时序匹配</td>
+<td>操作的效果时间尺度（GATE秒-时、MODULATE时-天、ALIGN天-月、RELINK月-年）须与问题的自然恢复周期匹配，否则干预效率<最优效率的50%</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MDT-4</td>
+<td>边际递减</td>
+<td>同一操作在同一靶点上的累积收益呈对数递减，连续应用超过3次后增量效果低于首次的20%</td>
+<td>P</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MPT（心智塑性理论）——4条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MPT-1</td>
+<td>塑性三阶段</td>
+<td>结构改变必须依次经历去稳定化（destabilization）→ 修改（modification）→ 巩固（consolidation），不可跳过</td>
+<td>F</td>
+</tr>
+<tr>
+<td>MPT-2</td>
+<td>能量-塑性耦合</td>
+<td>结构改变的深度与可用RES-D水平正相关，RES-D低于基线60%时塑性窗口关闭</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MPT-3</td>
+<td>巩固不稳定</td>
+<td>新修改的STR连接在初始巩固期（约4-12周）内不稳定，易被应激事件回弹</td>
+<td>F</td>
+</tr>
+<tr>
+<td>MPT-4</td>
+<td>塑性窗口时间锁</td>
+<td>重大结构改变（RELINK）需匹配睡眠依赖的再巩固时间窗，脱离该时间窗的效率降低>50%</td>
+<td>F</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MET（心智生态理论）——4条定律</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>定律名称</th>
+<th>核心陈述</th>
+<th>验证状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MET-1</td>
+<td>生态位匹配</td>
+<td>个体的M-R-D-S基线状态与S-P环境配置之间存在非随机匹配，匹配度预测长期功能稳定性</td>
+<td>P</td>
+</tr>
+<tr>
+<td>MET-2</td>
+<td>下行耦合优先</td>
+<td>在低功能系统（Oᵢ<50）中，环境→系统的下行耦合效应显著强于系统→环境的上行耦合效应</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MET-3</td>
+<td>生态位建构滞后</td>
+<td>系统状态改善后，个体主动选择和修改环境的行为（上行耦合）滞后于状态恢复约2-8周</td>
+<td>X</td>
+</tr>
+<tr>
+<td>MET-4</td>
+<td>多系统嵌套</td>
+<td>微系统（日常环境）对短期RES-D波动的影响权重>中系统>宏系统；宏系统对长期RES-B的影响权重>中系统>微系统</td>
+<td>X</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**链接**：完整的形式化推导、数学定义及参数先验参见01-X-03（心智六论形式化规范）。本章仅提供速查，不可替代原文。</p></blockquote>
+<hr class="section-divider">
+<h3>18.3 理论注入：PSE-I与文化变体编译</h3>
+<p>PSE-I是将抽象理论规范转化为可运行计算机代码的编译阶段。</p>
+<p><strong>输入</strong>：架构层（42维状态空间定义、操作合法性矩阵）、算法层（依赖矩阵、微分方程形式、优化目标函数）、参数层（先验分布）。</p>
+<p><strong>编译过程</strong>转换为：</p>
+<ol>
+<li>状态空间声明（数据结构）</li>
+<li>动力学函数库（\(f_i\)的代码实现）</li>
+<li>依赖矩阵初始化</li>
+<li>参数采样器（用于PSE-M）</li>
+<li>观测函数（将状态映射到观测空间）</li>
+<li>协议模板（VTS-P等决策树骨架）</li>
+</ol>
+<p><strong>输出</strong>：可执行的PSE仿真环境（Docker容器或Python库），以及标准API供PSE-M/PSE-P/PSE-C调用。</p>
+<p><strong>文化变体的注入</strong>：UPLS的PSL-L中的文化变体参数在PSE-I阶段被注入，使仿真可针对不同文化背景调整。文化变体参数初始值基于跨文化文献（F级），跨文化等值性有待PSE-C验证（P级）。</p>
+<p><strong>验证与测试</strong>：PSE-I输出需通过单元测试、集成测试、回归测试。PSE开源引擎快速入门见附录C。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：PSE是INTRE框架的计算核心，采用五层架构将功能层静态描述转化为可运行的动力学仿真系统。架构层定义坐标系统，算法层提供演化规则（心智六论），参数层提供先验分布，方法论层规定四阶段仿真流程（I/M/P/C），协议层提供临床接口。PSE的输入来自三个通道：行为、语义（UPLS）和神经（UNIS），通过贝叶斯融合实现多模态状态估计。心智六论分工明确：MCT编译输入，MTT描述拓扑，MKT提供速率方程，MDT规划干预，MPT约束结构改变，MET耦合环境。PSE-I是将理论规范编译为可执行代码的注入阶段，文化变体在此纳入。PSE的设计类比于数值天气预报——它不是在已有数据上拟合统计规律，而是从理论方程出发，通过同化观测数据来逼近个体真实状态。</p>
+<blockquote><p>**关键术语**：PSE，五层架构，心智六论，MCT/MTT/MKT/MDT/MPT/MET，PSE-I/M/P/C，三通道输入，UNIS</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLS）和神经（UNIS）三个通道的输入。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些基础设施提供？UNIS在其中扮演什么角色？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-31</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch17.html" class="nav-link prev">‹ 17 逻辑指纹：解析差异的标准化治理</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch19.html" class="nav-link next">19 系统动力学：资源、调度与结构方程 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

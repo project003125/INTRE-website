@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第23章 双向约束：正向预测与反向信号 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第23章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第23章 双向约束：正向预测与反向信号</h1>
+<blockquote><p>**学习目标**：完成本章后，你应能够：(1)描述双向约束闭环的正反两条路径及其运行逻辑；(2)区分硬约束、软约束、兼容性信号三类反馈信号及其处理规则；(3)理解分层响应机制（参数层/模型层/映射层）的设计原理；(4)陈述级联失效预测命题及其证伪条件；(5)了解UNIS RTE-Cal如何实现反向约束的工程闭环。</p></blockquote>
+<hr class="section-divider">
+<h3>23.1 闭环架构：功能层→神经层→功能层</h3>
+<p>双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。</p>
+<pre><code class="language-text">
+┌─────────────────────────────────────────────────────────────────┐
+│                      双向约束闭环                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐                      ┌─────────────┐          │
+│  │  功能层     │ ──── 正向路径 ────→ │  神经层     │          │
+│  │  (INTRE)    │   • 级联预测        │  (神经科学)  │          │
+│  │             │   • 整合坐标系      │             │          │
+│  └─────────────┘                      └─────────────┘          │
+│         ↑                                    │                  │
+│         └──────── 反向路径 ──────────────────┘                  │
+│              • 硬约束（物理极限）                                │
+│              • 软约束（测量极限）                                │
+│              • 兼容性信号（结构对应）                            │
+│                                                                 │
+│  分层响应机制：参数层快变 → 模型层中速变 → 概念映射层慢变         │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>正向路径（功能层→神经层）</strong>：功能层基于自身动力学结构生成可检验的级联预测，并为神经科学提供统一的功能坐标系。</li>
+<li><strong>反向路径（神经层→功能层）</strong>：神经层的反馈被分类为三级信号，功能层按分层响应规则处理。</li>
+<li><strong>迭代</strong>：处理后的信号反馈到功能层，精化参数和模型形式，产生更精确的预测。</li>
+</ul>
+<p><strong>神经科学在闭环中的三重角色</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>角色</th>
+<th>描述</th>
+<th>对应路径</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>边界条件校准者</td>
+<td>提供硬约束（物理极限）</td>
+<td>反向路径</td>
+</tr>
+<tr>
+<td>异常检测器</td>
+<td>功能层预测与神经观测产生系统性偏差时提示调整</td>
+<td>反向路径</td>
+</tr>
+<tr>
+<td>测量效度验证者</td>
+<td>提供兼容性信号，增强对功能构念的信心</td>
+<td>反向路径（兼容性信号）</td>
+</tr>
+</tbody>
+</table></div>
+<p>功能层同样承担主动角色——通过级联预测向神经科学提问，从“下游接收者”转变为“问题定义者”。</p>
+<hr class="section-divider">
+<h3>23.2 正向路径：级联预测与整合坐标系</h3>
+<p><strong>级联预测的生成机制</strong>。级联预测从功能层的先验结构中演绎而来：</p>
+<ol>
+<li>从MTT依赖矩阵中识别上下游关系（如M1→M3依赖边权重0.85）</li>
+<li>从MKT中引入时序约束（M1-RES-D消耗速率约0.15/h）</li>
+<li>推导出包含滞后参数的时序假说：M1-RES-D枯竭后约3-6小时，M3-RES-D将跌破功能阈值</li>
+</ol>
+<p><strong>整合框架：将零散神经发现组织进统一坐标系</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>神经发现</th>
+<th>功能层坐标</th>
+<th>整合价值</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>恐惧条件化（CS-US联结）</td>
+<td>M4-STR-C</td>
+<td>纳入情感连接结构话语</td>
+</tr>
+<tr>
+<td>杏仁核快速通路</td>
+<td>M4-DSP-B</td>
+<td>为“后台调度”提供神经参照</td>
+</tr>
+<tr>
+<td>DMN/FPN反相关</td>
+<td>DSP-F/B资源竞争</td>
+<td>连接脑网络发现与双过程理论</td>
+</tr>
+<tr>
+<td>记忆再巩固窗口</td>
+<td>RELINK的时间约束</td>
+<td>为操作语法提供神经时间常数</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h3>23.3 反向信号：硬约束、软约束与兼容性信号</h3>
+<p>当神经层的反馈进入功能层时，它不是“支持”或“否定”的二元判决，而是需要被分层处理的三类信号。</p>
+<p><strong>第一类：硬约束（不可违反的物理极限）</strong>。神经生物学已经稳定确立的定量边界，功能层参数不能违反。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>时间尺度</td>
+<td>动作电位传导速度、突触传递延迟</td>
+<td>MKT时间常数不能设得更快</td>
+</tr>
+<tr>
+<td>能量代谢</td>
+<td>ATP合成速率、葡萄糖输送效率</td>
+<td>RES-D恢复速率必须在此约束内</td>
+</tr>
+<tr>
+<td>可塑性窗口</td>
+<td>蛋白质合成依赖的再巩固窗口（约6小时）</td>
+<td>RELINK操作窗口参数必须在此范围内</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>第二类：软约束（当前技术条件下的测量极限）</strong>。当前测量工具的信效度对功能层参数估计精度的限制。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>测量精度</td>
+<td>M4-STR-C无成熟的单点神经标记物</td>
+<td>标注高不确定性，优先开发测量工具</td>
+</tr>
+<tr>
+<td>信度限制</td>
+<td>M6-RES-D依赖代理指标</td>
+<td>需组合验证，暂不用于高精度决策</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>第三类：兼容性信号（非约束性的结构对应）</strong>。提示功能层概念划分可能在“切割自然关节”。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>独立汇聚</td>
+<td>RELINK与记忆再巩固的汇聚</td>
+<td>增强信心，记录归档</td>
+</tr>
+<tr>
+<td>结构对应</td>
+<td>DSP-F/B区分与DMN/FPN反相关</td>
+<td>更新兼容性审查报告</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>三类信号的约束强度对比</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>信号类型</th>
+<th>约束强度</th>
+<th>功能层响应</th>
+<th>证伪功能主张的资格</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>硬约束</td>
+<td>最强</td>
+<td>必须修正参数</td>
+<td>否（只标记不可能）</td>
+</tr>
+<tr>
+<td>软约束</td>
+<td>中等</td>
+<td>标注不确定性，优先开发</td>
+<td>否（只标记测不准）</td>
+</tr>
+<tr>
+<td>兼容性信号</td>
+<td>最弱</td>
+<td>归档，增强信心</td>
+<td>否（只提供信心）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键结论</strong>：三类信号中，没有任何一类有资格单方面证伪一个功能主张。证伪只能在功能层内部完成。</p>
+<hr class="section-divider">
+<h3>23.4 分层响应：参数快变、模型中变与映射慢变</h3>
+<p>反向约束的信号按<strong>分层响应规则</strong>处理，确保系统既不会因偶然噪声而频繁修改核心概念，也不会对系统性偏差视而不见。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>响应速度</th>
+<th>触发条件</th>
+<th>修正范围</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>参数层</strong></td>
+<td>快变</td>
+<td>每次新观测到达时</td>
+<td>参数后验分布</td>
+<td>M1-RES-D恢复速率上限被代谢研究校准</td>
+</tr>
+<tr>
+<td><strong>模型层</strong></td>
+<td>中速变</td>
+<td>跨多任务、多样本的参数残差持续同向</td>
+<td>模型形式</td>
+<td>从线性改为非线性</td>
+</tr>
+<tr>
+<td><strong>概念映射层</strong></td>
+<td>慢变</td>
+<td>跨情境稳健残差，低层修正无效</td>
+<td>UPLS概念映射重审</td>
+<td>M4-RES-B从单点改为组合映射</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>分层响应的逻辑</strong>：信号的强度与响应成本的匹配。参数校准低成本（每次EMA更新），模型调整中等成本，概念重审高成本——触发门槛足够高。</p>
+<p><strong>假阳性保护机制</strong>：</p>
+<ul>
+<li>参数层更新：每次新观测到达时执行，无门槛</li>
+<li>模型层调整触发：至少3个独立样本中观察到同向残差</li>
+<li>概念映射层重审触发：跨至少2个实验室、3种测量模态、多个临床情境的稳健残差</li>
+</ul>
+<hr class="section-divider">
+<h3>23.5 工程案例：UNIS RTE-Cal的反向约束闭环实现</h3>
+<p>前四节从哲学和算法层面描述了反向约束的分类与分层响应。本节展示这一机制在UNIS中的工程实现——特别是RTE-Cal（实时引擎的校准子模块）如何将“反向约束”从抽象原则转化为可运行的个体化闭环。</p>
+<h4>23.5.1 从静态约束到动态校准</h4>
+<p>如第22.5节所述，UNIS的L5神经先验库（NPL）存储了硬约束和软先验，用于在推理时裁剪或约束L4模型的输出。但这仍然是<strong>静态</strong>的——约束在运行时被应用，但不随个体数据变化而更新。</p>
+<p>RTE-Cal将反向约束推进到<strong>动态</strong>层面：它接收PSE反馈的状态估计和校准残差，递归更新个体化的模型参数。这个过程的本质是：<strong>神经层不仅对功能层施加约束，还通过PSE的状态估计获得反馈，进而调整自己对功能状态的映射</strong>。</p>
+<h4>23.5.2 闭环路径与协议</h4>
+<p>UNIS与PSE之间的双向通信协议定义了三条通道：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>方向</th>
+<th>通道</th>
+<th>内容</th>
+<th>作用</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>UNIS → PSE</td>
+<td><code>/func_likelihood</code></td>
+<td>神经似然 \( p(y_n \mid \Psi_t) \) + 置信度</td>
+<td>提供神经观测证据</td>
+</tr>
+<tr>
+<td>PSE → UNIS</td>
+<td><code>/state_estimate</code></td>
+<td>当前最优状态估计 \( \hat{\Psi}(t) \)</td>
+<td>为UNIS提供校准目标</td>
+</tr>
+<tr>
+<td>PSE → UNIS</td>
+<td><code>/calibration_feedback</code></td>
+<td>校准残差 + 参数调整建议</td>
+<td>驱动UNIS模型个体化</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RTE-Cal的校准循环</strong>：</p>
+<ol>
+<li><strong>初始阶段</strong>：UNIS使用群体先验（L5 NPL）初始化L4模型参数</li>
+<li><strong>运行时</strong>：RTE-Infer实时输出神经似然；PSE融合多通道数据，输出状态估计</li>
+<li><strong>反馈</strong>：PSE计算UNIS似然与实际状态估计之间的残差，通过 <code>/calibration_feedback</code> 发回UNIS</li>
+<li><strong>更新</strong>：RTE-Cal异步执行递归贝叶斯更新（卡尔曼滤波或粒子滤波），调整L4模型参数</li>
+<li><strong>迭代</strong>：更新后的参数在后续推理中使用，残差持续减小</li>
+</ol>
+<h4>23.5.3 工程意义：反向约束的可审计执行</h4>
+<p>这一设计使第23.2-23.4节中描述的“反向约束”不再是抽象的哲学原则或一次性的事后修正，而是：</p>
+<ul>
+<li><strong>可执行的</strong>：约束（硬约束、软先验）在L5中编码，运行时自动裁剪；个体化校准由RTE-Cal自动完成</li>
+<li><strong>可审计的</strong>：每次仲裁事件（裁剪、降权、方向冲突）都被记录在仲裁日志中，可供下游分析</li>
+<li><strong>可证伪的</strong>：如果RTE-Cal的校准不能持续减小残差（如在强反例SC4中——v3.0要求RTE-Cal校准后log-likelihood损失降低≥10%且优于朴素卡尔曼滤波基线），则UNIS的在线校准方法被证伪</li>
+</ul>
+<p><strong>与§22.4三层过滤规则的对应</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>三层过滤（哲学）</th>
+<th>UNIS工程实现</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>硬约束审查</td>
+<td>L5硬约束 → 自动裁剪，记入仲裁日志</td>
+</tr>
+<tr>
+<td>软约束校准</td>
+<td>L5软先验 → 贝叶斯软约束，不强制裁剪</td>
+</tr>
+<tr>
+<td>兼容性归档</td>
+<td>兼容性证据库，不参与运行时裁决</td>
+</tr>
+</tbody>
+</table></div>
+<p>RTE-Cal将“反向路径”从一次性信号处理升级为持续运行的闭环学习系统，使功能层与神经层之间的约束关系不再是单向的“神经→功能”强制，而是双向的、渐进校准的协同过程。</p>
+<hr class="section-divider">
+<h3>23.6 级联命题：可证伪的核心预测</h3>
+<p>以下预测是功能层向神经科学输出的核心产出，包含明确证伪条件。</p>
+<p><strong>Cascade-1：资源崩塌级联的时序验证</strong></p>
+<blockquote><p>**预测内容**：在持续觉醒状态下，M1-RES-D的下降将先于M3-RES-D的下降约3-6小时；M3-RES-D下降至基线30%以下时，M6-DSP-B的触发频率将显著上升。</p></blockquote>
+<p><strong>检验方案</strong>：30名健康成年人，24小时睡眠剥夺。测量M1-RES-D（主观疲劳+HRV）、M3-RES-D（Go/No-Go任务表现）、M6-DSP-B（习惯触发频率）。</p>
+<p><strong>证伪条件</strong>：</p>
+<ul>
+<li>条件一：M1-RES-D与M3-RES-D的下降不存在显著时序先后关系</li>
+<li>条件二：M6-DSP-B的上升可以被M2-RES-D的下降完全解释</li>
+<li>条件三：睡眠剥夺后，纯认知策略可维持M3-DSP-F基线水平</li>
+</ul>
+<p><strong>预测的失败后果分层</strong>（以Cascade-1为例）：若仅条件一被满足，参数层受损（调整滞后参数）；若条件二或三被满足，组件层受损（M3-RES-D的独立地位受挑战）；若三项均被满足，级联假设核心结构被严重削弱。</p>
+<blockquote><p>**注**：Cascade-2（结构重塑窗口的神经可塑性双路径检验）和Cascade-3（干预序列的神经效应差异检验）在v3.0预测清单修订中被降级移除。Cascade-2的删除理由为&quot;心理干预叠加效应通常不显著，与核心框架关联弱&quot;；Cascade-3的删除理由为&quot;长时程fMRI中介极难检测，样本需求过大&quot;。详见05-M-02-INTRE核心预测清单-v3.0第五节。</p></blockquote>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：双向约束闭环是神经层对接体系的核心运行架构。正向路径中，功能层基于MTT和MKT生成可检验的级联预测；反向路径中，神经层反馈被分类为硬约束、软约束和兼容性信号，分别触发参数层快变、模型层中速变和概念映射层慢变的分层响应。UNIS RTE-Cal将反向约束工程化为持续的闭环校准：接收PSE的状态估计反馈，递归更新个体化模型参数，使“双向约束”从哲学原则变为可审计、可证伪的运行时系统。Cascade-1级联预测命题——资源崩塌级联的时序验证——是功能层向神经科学输出的核心产出，包含明确的检验方案和证伪条件。（Cascade-2和Cascade-3已在v3.0预测清单中降级移除。）这一闭环设计使功能层既能从神经科学的反馈中持续学习，又不因偶然噪声而频繁动摇核心架构。</p>
+<blockquote><p>**关键术语**：双向约束闭环，正向路径，反向路径，硬约束，软约束，兼容性信号，分层响应，级联预测，UNIS，RTE-Cal，仲裁日志</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “级联预测只是兼容性证据的另一种说法” → ✅ 级联预测包含兼容性证据未能提供的新观测项（时序滞后、中介路径），是事前演绎而非事后归纳。<br>- ❌ “软约束意味着组件不存在” → ✅ 软约束标记的是测量工具的不成熟，而非测量对象的不存在。<br>- ❌ “如果预测失败，整个框架就崩溃” → ✅ 预测的证伪后果是分层的：参数失败仅校准参数，组件失败才需修订组件。<br>- ❌ “RTE-Cal是可有可无的附加功能” → ✅ RTE-Cal是反向约束闭环的核心执行者——没有它，反向路径只是一次性信号处理，无法形成持续学习。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 描述双向约束闭环的正反两条路径及其各自的功能。<br>2. 硬约束、软约束、兼容性信号三类反馈信号的区别是什么？各自触发什么响应？<br>3. 选择级联预测命题（Cascade-1），设计一个简化的实验方案来检验它。<br>4. UNIS RTE-Cal如何实现“反向约束”的工程闭环？它与§22.4的三层过滤规则有何对应关系？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch22.html" class="nav-link prev">‹ 22 神经对接：翻译与约束的根本差异</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch24.html" class="nav-link next">24 边界修订：从信号检测到概念修订 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

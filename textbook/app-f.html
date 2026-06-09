@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录F：逻辑指纹——编码协议与PCUI JSON示例 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录F：逻辑指纹——编码协议与PCUI JSON示例</h1>
+<p>本附录提供INTRE框架中<strong>逻辑指纹体系</strong>的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。</p>
+<p><strong>文档状态</strong>：v3.3.0（draft）</p>
+<p><strong>适用范围</strong>：所有将心理概念编译为M-R-D-S状态向量的工作，包括：跨流派概念映射、临床个案概念化、心理AI的MCT编译、功能层研究中的编码协议。</p>
+<hr class="section-divider">
+<h2>F.1 核心概念：解析差异的本质与逻辑指纹</h2>
+<p><strong>解析差异的必然性</strong>。在将传统心理学概念转译为INTRE的M-R-D-S标准化表述时，不同分析者（人类专家或LLM）对同一心理实体的解析常产生显著的表层差异。这种差异不是框架逻辑矛盾，而是<strong>任何一个单一解析都仅构成对标准逻辑指纹的片面采样</strong>——由于分析者的聚焦效应（流程聚焦、结构聚焦、资源聚焦），解析差异自然存在。标准逻辑指纹本身并非解析自带的属性，而是<strong>通过跨视角综合与专家共识建构的规范实体</strong>。</p>
+<p><strong>四组逻辑指纹的定义</strong>。逻辑指纹由四个正交维度构成，用于判定两份解析是否描述同一心理实体：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>指纹类型</th>
+<th>判定问题</th>
+<th>正交性保证</th>
+<th>示例（心理防御机制）</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>模块指纹</strong></td>
+<td>涉及哪些模块？各模块的角色？</td>
+<td>只回答“谁参与及角色”</td>
+<td>认知行为视角：<code>{(M2, primary), (M4, secondary)}</code></td>
+</tr>
+<tr>
+<td><strong>资源指纹</strong></td>
+<td>消耗或保护哪类资源？方向？</td>
+<td>只回答资源类型和方向</td>
+<td><code>{(RES-D, -), (RES-B, +)}</code></td>
+</tr>
+<tr>
+<td><strong>层级指纹</strong></td>
+<td>表现层与根源层？因果关系方向？</td>
+<td>只回答哪层是表现、哪层是根源</td>
+<td>表现: <code>DSP-B</code>；根源: <code>{STR-R, STR-C}</code>；方向: <code>表现 ← 根源</code></td>
+</tr>
+<tr>
+<td><strong>操作指纹</strong></td>
+<td>优先干预操作？序列符合D→R→S？</td>
+<td>只回答操作类型和顺序</td>
+<td><code>[GATE-, ALIGN, RELINK]</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>错误解析的判据</strong>。以下任一条件满足，即判定为错误解析（可证伪性保障）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>编号</th>
+<th>判据</th>
+<th>说明</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>E1</strong></td>
+<td>完全遗漏公认核心模块</td>
+<td>多视角集合确认的核心模块完全未被提及</td>
+<td>防御机制解析中完全未涉及M4</td>
+</tr>
+<tr>
+<td><strong>E2</strong></td>
+<td>资源方向与标准完全相反</td>
+<td>资源方向（+/-）与标准颠倒</td>
+<td>将反刍思维描述为<code>{(RES-D, +)}</code></td>
+</tr>
+<tr>
+<td><strong>E3</strong></td>
+<td>层级因果方向颠倒</td>
+<td>因果方向与标准相反</td>
+<td>将创伤反应描述为<code>STR ← DSP</code></td>
+</tr>
+<tr>
+<td><strong>E4</strong></td>
+<td>操作序列逻辑矛盾</td>
+<td>序列违背D→R→S深度逻辑</td>
+<td>对低功能系统给出<code>[RELINK, GATE-]</code></td>
+</tr>
+<tr>
+<td><strong>E5</strong></td>
+<td>模块角色与三组指纹系统矛盾</td>
+<td>导致资源/层级/操作指纹不可调和矛盾</td>
+<td>M1 primary却声称无RES-D消耗</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h2>F.2 逻辑指纹的取值规范与操作化流程</h2>
+<h3>F.2.1 模块指纹（M-fingerprint）</h3>
+<p><strong>取值形式</strong>（v3.3多视角版）：多视角映射集合，每个视角给出有序对集合<code>{(Mi, role), (Mj, role), ...}</code>，role ∈ {primary（核心驱动）, secondary（参与）, context（背景）}。</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>反刍思维 → <code>{默认视角: {(M2, primary), (M4, primary)}}</code></li>
+<li>心理防御机制 → <code>{认知行为视角: {(M2, primary), (M4, secondary)}, 精神分析视角: {(M3, primary), (M4, primary)}, 整合共识视角: {(M2, primary/secondary), (M3, primary/secondary), (M4, primary)}}</code></li>
+</ul>
+<p><strong>编码规则</strong>：</p>
+<ul>
+<li>每个概念至少有一个primary模块。</li>
+<li>不同视角的模块指纹平行存储于PCUI的多视角集合中，而非强制统一。</li>
+<li>当新视角被提出时，可扩展多视角集合。</li>
+</ul>
+<h3>F.2.2 资源指纹（R-fingerprint）</h3>
+<p><strong>取值形式</strong>：<code>{(RES-D, ±), (RES-B, ±)}</code>，其中<code>+</code>表示补充/保护，<code>-</code>表示消耗。允许缺失。</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>反刍思维 → <code>{(RES-D, -)}</code></li>
+<li>心理防御机制 → <code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>正念冥想 → <code>{(RES-D, +)}</code>（通过降低消耗间接补充）</li>
+</ul>
+<p><strong>编码规则</strong>：</p>
+<ul>
+<li>资源方向必须与标准一致，否则触发E2。</li>
+<li>若解析中未提及某资源类型，可空缺；若提及但方向相反，判定为错误。</li>
+</ul>
+<h3>F.2.3 层级指纹（D/S-fingerprint）</h3>
+<p><strong>取值形式</strong>：</p>
+<ul>
+<li>表现层：<code>{DSP-F, DSP-B, none}</code></li>
+<li>根源层：<code>{STR-R, STR-C, STR-S, 组合}</code></li>
+<li>因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></li>
+</ul>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>反刍思维 → 表现层<code>DSP-B</code>，根源层<code>{STR-C, STR-S}</code>，方向<code>表现 ← 根源</code></li>
+<li>惊恐发作 → 表现层<code>DSP-B</code>，根源层<code>{M4-STR-R, M4-STR-C}</code>，方向<code>表现 ← 根源</code></li>
+<li>行为激活 → 表现层<code>DSP-F</code>，根源层<code>M4-STR-C</code>，方向<code>表现 → 根源</code></li>
+</ul>
+<p><strong>编码规则</strong>：</p>
+<ul>
+<li>因果方向颠倒触发E3。</li>
+<li>根源层可允许多个STR子维度组合。</li>
+</ul>
+<h3>F.2.4 操作指纹（G-M-A-R-fingerprint）</h3>
+<p><strong>取值形式</strong>：有序列表<code>[op1, op2, ...]</code>，其中<code>op ∈ {GATE, MODULATE, ALIGN, RELINK}</code>。允许空列表。</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>反刍思维 → <code>[GATE-, MODULATE+, RELINK/ALIGN]</code></li>
+<li>惊恐发作（急性） → <code>[GATE-, MODULATE+]</code></li>
+<li>认知重构（孤立技术） → <code>[ALIGN]</code></li>
+</ul>
+<p><strong>编码规则</strong>：</p>
+<ul>
+<li>序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4。</li>
+<li>辅助操作可标注在括号中或作为子列表。</li>
+</ul>
+<h3>F.2.5 操作化判定流程</h3>
+<pre><code class="language-text">
+步骤1: 提取模块指纹（多视角）
+       → 识别解析所属的理论视角，提取该视角下的模块角色分配
+       → 若视角不明，使用“默认视角”或“整合共识视角”
+
+步骤2: 提取资源指纹
+       → 识别资源类型（RES-D/RES-B）及变化方向（+/−）
+
+步骤3: 提取层级指纹
+       → 识别表现层（DSP-F/DSP-B）与根源层（STR-R/C/S），判定因果方向
+
+步骤4: 提取操作指纹
+       → 提取干预操作序列（GATE/MODULATE/ALIGN/RELINK）
+
+步骤5: 综合判定
+       → 资源、层级、操作三组指纹一致，且模块指纹可纳入多视角集合 → 合法解析
+       → 出现E1-E5中任一条 → 错误解析
+</code></pre>
+<hr class="section-divider">
+<h2>F.3 实例验证：心理防御机制</h2>
+<p><strong>解析A：认知行为视角（流程聚焦）</strong></p>
+<blockquote><p>“心理防御机制是心理系统（主要涉及M4与M2的协同）为应对内部冲突或情感过载（M4-RES-D消耗），而自动（DSP-B）调用的，旨在降低焦虑和保护自尊根基（保护M4-RES-B）的行为或认知序列协议（STR-S）。其干预需先中断自动化进程（GATE-），再修正底层信念与连接（ALIGN/RELINK）。”</p></blockquote>
+<p><strong>四组指纹提取</strong>：</p>
+<ul>
+<li>模块指纹（认知行为视角）：<code>{(M2, primary), (M4, secondary)}</code></li>
+<li>资源指纹：<code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>层级指纹：表现层<code>DSP-B</code>，根源层<code>STR-S</code>，方向<code>表现 ← 根源</code></li>
+<li>操作指纹：<code>[GATE-, ALIGN/RELINK]</code></li>
+</ul>
+<p><strong>解析B：精神分析视角（结构聚焦）</strong></p>
+<blockquote><p>“心理防御机制是由M3主导的自动化调度策略（DSP-B），其根源在于M4的结构性冲突（STR-R/C）。当内在欲望与自我概念冲突引发焦虑（消耗M4-RES-D）时，该机制被激活以降低焦虑。干预需在行为层面中断自动化进程（GATE-），并在结构层面整合冲突，修正信念与连接（ALIGN &amp; RELINK）。”</p></blockquote>
+<p><strong>四组指纹提取</strong>：</p>
+<ul>
+<li>模块指纹（精神分析视角）：<code>{(M3, primary), (M4, primary)}</code></li>
+<li>资源指纹：<code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>层级指纹：表现层<code>DSP-B</code>，根源层<code>{STR-R, STR-C}</code>，方向<code>表现 ← 根源</code></li>
+<li>操作指纹：<code>[GATE-, ALIGN, RELINK]</code></li>
+</ul>
+<p><strong>一致性验证</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>逻辑指纹</th>
+<th>解析A</th>
+<th>解析B</th>
+<th>一致性判定</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>模块指纹</td>
+<td><code>{(M2, primary), (M4, secondary)}</code></td>
+<td><code>{(M3, primary), (M4, primary)}</code></td>
+<td>视角差异，均纳入多视角集合</td>
+</tr>
+<tr>
+<td>资源指纹</td>
+<td><code>{(RES-D, -), (RES-B, +)}</code></td>
+<td><code>{(RES-D, -), (RES-B, +)}</code></td>
+<td>✓ 一致</td>
+</tr>
+<tr>
+<td>层级指纹</td>
+<td>表现: <code>DSP-B</code>；根源: <code>STR-S</code></td>
+<td>表现: <code>DSP-B</code>；根源: <code>{STR-R, STR-C}</code></td>
+<td>✓ 一致（STR-S与STR-R/C同属S层）</td>
+</tr>
+<tr>
+<td>操作指纹</td>
+<td><code>[GATE-, ALIGN/RELINK]</code></td>
+<td><code>[GATE-, ALIGN, RELINK]</code></td>
+<td>✓ 一致</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>结论</strong>：两份解析合法，差异源于视角不同，均被多视角指纹集合容纳。未触发错误判据E1-E5。</p>
+<hr class="section-divider">
+<h2>F.4 PCUI条目示例（v3.3多视角版）</h2>
+<p>经过PCF-P和PCV-P后，标准化的PCUI条目发布至UPLS主库。以下为“心理防御机制”的PCUI编码示例（JSON格式）：</p>
+<pre><code class="language-json">
+{
+  &quot;pcui&quot;: &quot;UPLS.PCUI.v1.1.004&quot;,
+  &quot;preferred_label&quot;: &quot;心理防御机制&quot;,
+  &quot;synonyms&quot;: [&quot;防御&quot;, &quot;心理防御&quot;, &quot;ego defense&quot;],
+  &quot;definition&quot;: &quot;心理系统为应对内部冲突或情感过载，自动调用的、旨在降低焦虑和保护自尊基底的认知-情绪调度策略。&quot;,
+  &quot;module_fingerprint&quot;: {
+    &quot;storage_model&quot;: &quot;multi_perspective_dag&quot;,
+    &quot;perspectives&quot;: {
+      &quot;cognitive_behavioral&quot;: {&quot;M2&quot;: &quot;primary&quot;, &quot;M4&quot;: &quot;secondary&quot;},
+      &quot;psychoanalytic&quot;: {&quot;M3&quot;: &quot;primary&quot;, &quot;M4&quot;: &quot;primary&quot;},
+      &quot;integrated_consensus&quot;: {&quot;M2&quot;: &quot;primary_secondary&quot;, &quot;M3&quot;: &quot;primary_secondary&quot;, &quot;M4&quot;: &quot;primary&quot;}
+    },
+    &quot;dag_edges&quot;: [
+      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;情绪驱动认知&quot;},
+      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M3&quot;, &quot;label&quot;: &quot;情绪触发调度&quot;},
+      {&quot;from&quot;: &quot;M3&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;调度调用认知策略&quot;}
+    ]
+  },
+  &quot;resource_fingerprint&quot;: {&quot;RES-D&quot;: &quot;depletion&quot;, &quot;RES-B&quot;: &quot;protection&quot;},
+  &quot;layer_fingerprint&quot;: {
+    &quot;dispatch_layer&quot;: &quot;DSP-B&quot;,
+    &quot;structure_layer&quot;: [&quot;STR-R&quot;, &quot;STR-C&quot;],
+    &quot;causality&quot;: &quot;manifestation_from_structure&quot;
+  },
+  &quot;operation_fingerprint&quot;: [&quot;GATE-&quot;, &quot;ALIGN&quot;, &quot;RELINK&quot;],
+  &quot;cultural_variants&quot;: [],
+  &quot;version&quot;: &quot;1.1.0&quot;,
+  &quot;status&quot;: &quot;approved&quot;
+}
+</code></pre>
+<hr class="section-divider">
+<h2>F.5 UPLS三阶段知识生产流水线</h2>
+<p><strong>F.5.1 PCC-P：心理概念采集协议</strong></p>
+<p>输入端收集关于某一心理现象的全方位、多源流描述（理论文献、临床案例、社区语言、跨文化表达）。此阶段不进行理论整合，只保留语义场的丰富性。</p>
+<p><strong>F.5.2 PCF-P：心理概念形式化编译协议</strong></p>
+<p>多学科专家团队将采集的材料强制编译为理论中立、结构统一的PCUI草案：</p>
+<ol>
+<li>识别跨流派功能共识锚点</li>
+<li>映射到M-R-D-S四组指纹（多视角模块指纹集合）</li>
+<li>参数化定义</li>
+<li>记录异议与冲突，形成“反对意见档案”</li>
+</ol>
+<p><strong>F.5.3 PCV-P：心理概念验证协议</strong></p>
+<p>独立专家评审团对草案进行结构化评审：</p>
+<ul>
+<li>跨流派同行评议（25-35名专家，各流派均衡代表）</li>
+<li>量化共识判定：总体支持率≥80%，每个主要流派支持率≥60%</li>
+<li>跨文化适配审核</li>
+<li>通过后发布为正式PCUI条目，附DOI和API端点</li>
+</ul>
+<hr class="section-divider">
+<h2>F.6 编码员间一致性检验</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>指纹类型</th>
+<th>变量类型</th>
+<th>推荐指标</th>
+<th>可接受</th>
+<th>良好</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>模块指纹</td>
+<td>名义类别</td>
+<td>Cohen‘s κ / Fleiss’ κ</td>
+<td>κ ≥ 0.60</td>
+<td>κ ≥ 0.75</td>
+</tr>
+<tr>
+<td>资源指纹</td>
+<td>有序类别</td>
+<td>加权κ</td>
+<td>≥ 0.60</td>
+<td>≥ 0.75</td>
+</tr>
+<tr>
+<td>层级指纹</td>
+<td>名义+方向</td>
+<td>Fleiss’ κ</td>
+<td>≥ 0.60</td>
+<td>≥ 0.75</td>
+</tr>
+<tr>
+<td>操作指纹</td>
+<td>有序序列</td>
+<td>位置一致率 + 编辑距离</td>
+<td>≥70%</td>
+<td>≥85%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>示例脚本</strong>（Python）：</p>
+<pre><code class="language-python">
+from sklearn.metrics import cohen_kappa_score
+coder1 = [&#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M3&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M3&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;]
+coder2 = [&#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M3&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M3&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;]
+kappa = cohen_kappa_score(coder1, coder2)
+print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75
+</code></pre>
+<hr class="section-divider">
+<h2>F.7 与心理测量学构念效度网络的关系</h2>
+<p>逻辑指纹体系与Cronbach & Meehl的构念效度网络形成互补：</p>
+<ul>
+<li><strong>构念效度网络</strong>验证构念的外部关系，基于实证测量</li>
+<li><strong>逻辑指纹</strong>验证构念的内部结构（功能模块、资源、层级、操作），基于概念分析与专家共识</li>
+<li><strong>互补关系</strong>：构念效度网络提供“外部锚定”，逻辑指纹提供“内部解剖”</li>
+</ul>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-e.html" class="nav-link prev">‹ 附E：流派映射——10大流派的功能签名与操作分解</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-g.html" class="nav-link next">附G：术语对照——中英文约500条 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

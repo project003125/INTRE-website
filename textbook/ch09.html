@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第9章 测量方法：ABC分类与桥接校准 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第9章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第9章 测量方法：ABC分类与桥接校准</h1>
+<blockquote><p>**学习目标**：完成本章后你应能够：(1)阐述功能层测量的三条基本原则与三个测量通道；(2)按ABC三类区分42个子单元的测量成熟度；(3)描述EMA和数字表型在数据采集中的应用；(4)理解UNIS神经通道中NFI到功能似然的映射逻辑；(5)理解收敛效度/区分效度/三通道验证的评估策略；(6)掌握桥接-校准-原生三阶段精度优化路径。</p></blockquote>
+<hr class="section-divider">
+<h3>9.1 三原则：多模态融合与软测量</h3>
+<p>功能层测量的核心挑战在于：M-R-D-S中的大多数子单元是<strong>潜变量</strong>——它们需要从多种可观测信号中间接推断。INTRE对此采取的立场不是“等待完美的直接测量工具”，而是接受测量的间接性和概率性，并通过方法论创新将其转化为可管理的工程问题。</p>
+<p><strong>三条基本原则</strong>：</p>
+<ol>
+<li><strong>功能定义优先于测量</strong>。一个功能子单元的身份由其在M-R-D-S系统中的因果角色定义，而非由某一特定测量操作定义。测量工具的缺乏是工程问题，不是本体论问题。但需注意边界：功能定义优先于测量不等于功能定义免疫于测量失败。如果经过多轮、多模态、多样本的校准后，某个子单元的测量指标始终无法收敛（如三通道相关低于0.3），则应质疑该子单元的功能独立地位。</li>
+</ol>
+<ol>
+<li><strong>多模态融合优于单指标崇拜</strong>。INTRE采用<strong>软测量</strong>策略：将来自不同模态的观测（行为任务、生理信号、自陈报告、数字表型）通过概率模型融合，联合反演状态的后验分布。单一指标的噪声可以被其他指标的信息补偿，而状态估计的不确定性被显式量化。</li>
+</ol>
+<ol>
+<li><strong>测量成熟度分层管理</strong>。INTRE将42个子单元分为A、B、C三类，分别采用不同的测量策略。这一分类不是固定的——随着测量工程进展，子单元可以在类别间迁移（C→B→A）。</li>
+</ol>
+<p><strong>三个测量通道与观测函数</strong>。功能层的观测数据来自三个独立通道：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>通道</th>
+<th>数据来源</th>
+<th>基础设施</th>
+<th>输出形式</th>
+<th>时间分辨率</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>行为通道</strong></td>
+<td>量表、行为任务、EMA、数字表型</td>
+<td>传统心理测量</td>
+<td>行为似然 p(y_b \</td>
+<td>Ψ_t)</td>
+<td>秒至天</td>
+</tr>
+<tr>
+<td><strong>语义通道</strong></td>
+<td>自然语言叙述、临床访谈</td>
+<td>UPLS / PSL</td>
+<td>语义似然 p(y_s \</td>
+<td>Ψ_t)</td>
+<td>分钟至小时</td>
+</tr>
+<tr>
+<td><strong>神经通道</strong></td>
+<td>EEG、fNIRS、PPG、HRV等</td>
+<td>UNIS</td>
+<td>神经似然 p(y_n \</td>
+<td>Ψ_t)</td>
+<td>毫秒至秒</td>
+</tr>
+</tbody>
+</table></div>
+<p>三个通道的似然在PSE中通过贝叶斯融合，联合反演状态的后验分布。神经通道由UNIS（统一神经接口系统）提供标准化输出——这是功能层测量区别于变量范式的独特能力：高时间分辨率、抗主观偏倚的神经信号被转化为可直接进入PSE校准管线的概率形式。但需注意，神经信号不是功能状态的"直接读数"——它们必须经过L3 NFD（特征提取）和L4 NFM（神经-功能映射）才能转化为功能似然。这一映射的精度决定了神经通道的测量价值，需要通过独立验证（设计≥0.99，校准≥0.95）来保证。</p>
+<p>功能层测量的数学基础是观测方程：</p>
+<p>$$ y_t = h(\Psi_t, E_t) + \epsilon_t $$</p>
+<p>其中\(y_t\)是t时刻的观测向量（来自三个通道），\(\Psi_t\)是功能状态向量，\(h\)是观测函数，\(\epsilon_t\)是观测噪声。测量任务本质上是<strong>从观测\(y_t\)反推状态\(\Psi_t\)的逆问题</strong>。由于观测通常远少于状态维度（欠定问题），需要强先验（来自动力学模型和桥接知识）来约束解空间。多通道（行为+语义+神经）增加了观测维度，显著改善了逆问题的可辨识性。</p>
+<hr class="section-divider">
+<h3>9.2 成熟度分层：A类实证、B类整合与C类预测</h3>
+<p>基于测量成熟度，42个子单元被分为三类。分类依据三个可量化维度：映射可信度（0-10分）、现有工具成熟度、是否需要原创开发。</p>
+<p><strong>分类规则</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>类别</th>
+<th>映射可信度</th>
+<th>工具成熟度</th>
+<th>测量策略</th>
+<th>数量</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>A类（实证锚定）</strong></td>
+<td>≥8/10</td>
+<td>至少两种以上成熟方法</td>
+<td>直接复用并重标定</td>
+<td>~17</td>
+</tr>
+<tr>
+<td><strong>B类（整合性）</strong></td>
+<td>6-8/10</td>
+<td>分散在不同传统中</td>
+<td>组合测量与结构验证</td>
+<td>~18</td>
+</tr>
+<tr>
+<td><strong>C类（预测性）</strong></td>
+<td><6/10</td>
+<td>变量范式中无直接对应</td>
+<td>原创工具开发+过渡性代理</td>
+<td>~7</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A类：实证锚定</strong>。A类子单元在变量范式中有明确的对应构念，且已有相对成熟的测量工具。测量策略是<strong>直接复用并重标定</strong>。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子单元</th>
+<th>对应既有构念</th>
+<th>候选工具</th>
+<th>重标定策略</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M2-RES-D</td>
+<td>工作记忆容量</td>
+<td>n-back任务、数字广度</td>
+<td>基于常模百分位映射到0-100</td>
+</tr>
+<tr>
+<td>M3-RES-D</td>
+<td>自我控制资源</td>
+<td>自我控制量表(SCS)、Stroop坚持时间</td>
+<td>多指标综合，权重由因子分析确定</td>
+</tr>
+<tr>
+<td>M4-DSP-B</td>
+<td>自动情绪反应</td>
+<td>情绪Stroop、皮肤电导</td>
+<td>反应时差或生理指标归一化</td>
+</tr>
+<tr>
+<td>M6-DSP-B</td>
+<td>习惯强度</td>
+<td>自我报告习惯指数(SRHI)</td>
+<td>频率和自动化程度综合评分</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>B类：整合性</strong>。B类子单元的映射可信度为中高，但既有测量工具分散在不同传统中。测量策略是<strong>组合测量与结构验证</strong>。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子单元</th>
+<th>分散指标来源</th>
+<th>组合策略</th>
+<th>验证方法</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M3-RES-B</td>
+<td>自我效能量表、韧性量表、目标坚持追踪</td>
+<td>二阶因子模型</td>
+<td>CFA验证单因子结构</td>
+</tr>
+<tr>
+<td>M4-RES-B</td>
+<td>依恋安全感量表、基本信任量表</td>
+<td>多指标融合</td>
+<td>收敛效度检验</td>
+</tr>
+<tr>
+<td>M5-STR-R</td>
+<td>叙事连贯性评分、自我复杂性编码</td>
+<td>编码+自陈整合</td>
+<td>专家编码一致性检验</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>C类：预测性</strong>。C类子单元在变量范式中未被独立识别——它们是INTRE从功能分解逻辑中推导出的“结构空位”。测量策略是<strong>原创工具开发 + 过渡性代理</strong>。C类子单元约占42维的17%，其存在性本身是框架的可检验预测。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>子单元</th>
+<th>功能空位描述</th>
+<th>过渡性代理</th>
+<th>原创开发方向</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M6-RES-D</td>
+<td>行为启动能量</td>
+<td>行为启动延迟</td>
+<td>行为启动任务（从指令到动作的时间序列分析）</td>
+</tr>
+<tr>
+<td>M3-DSP-B</td>
+<td>自动放弃倾向</td>
+<td>目标坚持日志中的“放弃原因”编码</td>
+<td>放弃决策的EMA追踪</td>
+</tr>
+<tr>
+<td>M4-STR-C</td>
+<td>情绪联结结构</td>
+<td>关系主题编码、依恋访谈</td>
+<td>矫正性体验后的联结权重变化测量</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**C类子单元的正面定位**：C类不是框架的缺陷，而是研究议程。它们主动指向旧范式的盲区。随着实证积累，C类子单元将逐步向B类和A类迁移——这一迁移过程本身就是框架演化的实证轨迹。</p></blockquote>
+<hr class="section-divider">
+<h3>9.3 数字表型：EMA与被动传感的协议设计</h3>
+<p>功能层测量不局限于实验室环境。INTRE深度整合<strong>生态瞬时评估(EMA)</strong>和<strong>数字表型</strong>技术。</p>
+<p><strong>生态瞬时评估(EMA)</strong>。EMA通过智能手机在随机时间点或事件触发时推送简短问卷。EMA对功能层测量的核心贡献在于：捕捉RES-D等快速状态变量的日内波动；同步记录S-P环境输入；支持N-of-1设计和个体化建模。</p>
+<p>EMA条目开发应遵循“单维度、高频率、低负担”原则。例如：</p>
+<ul>
+<li>“过去一小时内，我感到精疲力竭”（M1-RES-D）</li>
+<li>“我很难集中注意力”（M2-RES-D）</li>
+<li>“我无法控制自己的担忧”（M2-DSP-B，M4-DSP-B）</li>
+</ul>
+<p><strong>数字表型</strong>。数字表型利用智能手机、可穿戴设备和电脑日志的被动传感数据，在不增加被试负担的情况下提取心理状态指标。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>数据源</th>
+<th>提取指标</th>
+<th>映射到功能子单元</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>加速度计</td>
+<td>活动水平、步数</td>
+<td>M6-DSP-F、M1-RES-D</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>位置熵、移动半径</td>
+<td>M3-DSP-F、M6-STR-S</td>
+</tr>
+<tr>
+<td>手机使用日志</td>
+<td>屏幕时间、应用切换频率</td>
+<td>M2-DSP-F/DSP-B、M3-RES-D</td>
+</tr>
+<tr>
+<td>HRV（可穿戴）</td>
+<td>心率变异性</td>
+<td>M1-DSP-B、M4-RES-D</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**效度声明**：上述映射是**候选关联**，并非已经验证的测量模型。每个数字表型指标在用于临床决策前，需要在独立样本中验证其与对应功能子单元的收敛效度。</p></blockquote>
+<p><strong>多模态融合的优势</strong>。当EMA自陈、被动传感和实验室测量三种模态的数据同时可用时，可以构建更稳健的状态估计。当多模态观测分歧时，系统输出后验分布的分散度增加，并触发“校准请求”。分歧本身也可能是重要的临床信号：例如，“主观平静但身体高唤醒”可能提示述情障碍。</p>
+<hr class="section-divider">
+<h3>9.4 信效度评估：收敛、区分与三通道验证</h3>
+<p><strong>收敛效度</strong>。同一功能子单元的不同测量指标应在理论上相关。评估采用<strong>多特质-多方法矩阵(MTMM)</strong>：同一子单元的不同方法之间的相关应显著高于不同子单元同一方法之间的相关。</p>
+<p><strong>区分效度</strong>。关键检验是<strong>双分离设计</strong>：实验操纵X应特异性地影响子单元A而不影响B，操纵Y应特异性地影响B而不影响A。例如，睡眠剥夺应主要影响M1-RES-D和M2-RES-D，而不应影响M4-STR-C的结构权重。</p>
+<p><strong>三通道验证</strong>。对于关键子单元（特别是C类预测性子单元），INTRE要求<strong>三通道收敛</strong>：(1)行为/生理指标、(2)主观报告、(3)UNIS神经似然。三个通道应呈现显著相关，且共同预测相关的临床结果。M3-RES-D的验证是当前最紧迫的实证任务。三通道之间的分歧也是重要的诊断信号——当UNIS神经似然指向高唤醒但自我报告显示平静时，可能提示述情障碍或内感受觉知缺陷。</p>
+<hr class="section-divider">
+<h3>9.5 精度路径：桥接-校准-原生三阶段</h3>
+<p>测量精度不是一次性达到的，而是通过<strong>桥接-校准-原生</strong>三阶段逐步提升：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>阶段</th>
+<th>时间</th>
+<th>策略</th>
+<th>精度水平</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>桥接期</td>
+<td>1-2年</td>
+<td>复用A类旧工具，代理测量C类</td>
+<td>中等，不确定性较高</td>
+</tr>
+<tr>
+<td>校准期</td>
+<td>2-5年</td>
+<td>贝叶斯更新，软测量融合</td>
+<td>中等-高，不确定性量化</td>
+</tr>
+<tr>
+<td>原生期</td>
+<td>5-10年</td>
+<td>为每个子单元开发专属测量范式</td>
+<td>高，精度收敛</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>桥接-校准策略</strong>：将既有知识压缩为先验分布，再通过贝叶斯更新持续修正。</p>
+<p>功能层面临的根本测量困境是“冷启动”问题：在没有任何个体数据的情况下，如何开始状态估计？INTRE的解决方案是<strong>桥接-校准策略</strong>。</p>
+<p><strong>桥接：将既有知识压缩为先验分布</strong>。桥接的任务是将变量范式百年积累的分散知识转化为PSE可用的初始先验分布\(p(\theta | K_{\text{legacy}})\)。桥接通过<strong>四层验证</strong>确保知识被系统化组织：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>检验内容</th>
+<th>示例（M3-RES-D消耗速率\(\alpha\)）</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>定性共识度</td>
+<td>效应方向是否与大量观察一致</td>
+<td>自我损耗文献普遍支持消耗效应</td>
+</tr>
+<tr>
+<td>数学结构合理性</td>
+<td>函数形式是否与机制兼容</td>
+<td>指数衰减，非线性的边际递减</td>
+</tr>
+<tr>
+<td>参数量级合理性</td>
+<td>数值是否在合理范围内</td>
+<td>文献中疲劳出现在30-90分钟后，\(\alpha \approx 0.1-0.15/h\)</td>
+</tr>
+<tr>
+<td>模型可校准性</td>
+<td>参数能否从数据中稳定估计</td>
+<td>可通过分层贝叶斯模型识别</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>校准：用新数据持续修正先验</strong>。校准通过PSE-C中的贝叶斯更新实现：</p>
+<p>$$ p(\theta | D_{\text{new}}) \propto p(D_{\text{new}} | \theta) \cdot p(\theta | K_{\text{legacy}}) $$</p>
+<p>随着个体数据的积累（EMA条目、可穿戴数据、行为任务），参数的后验分布逐步收窄。</p>
+<p><strong>冷启动的具体流程</strong>：</p>
+<ol>
+<li><strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验</li>
+<li><strong>初始评估</strong>：采集核心A类子单元数据，编译为初始状态向量</li>
+<li><strong>贝叶斯更新</strong>：用初始评估数据更新先验，获得第一次后验估计</li>
+<li><strong>动态校准</strong>：在治疗过程中持续采集数据，每次新数据到达后更新</li>
+<li><strong>收敛判断</strong>：当核心子单元的后验置信区间宽度低于阈值时，达到临床可用精度</li>
+</ol>
+<p><strong>桥接-校准策略的认识论意义</strong>：不等待完美的测量工具出现再开始工作，而是在当前最佳知识的基础上启动，通过持续的实证反馈逐步逼近真实。它不追求"一步到位"的精确性，而是将测量本身视为一个不断改进的工程过程。</p>
+<hr class="section-divider">
+<h3>9.6 UNIS神经测量通道：从NFI到功能似然</h3>
+<p>UNIS（统一神经接口系统）为功能层测量提供了第三个标准化通道——神经信号通道。它回答的问题是：原始神经数据（EEG波形、fNIRS时间序列、PPG信号）如何转化为PSE可以直接使用的功能状态似然？</p>
+<p><strong>UNIS六层中的测量相关层</strong>。UNIS的六层架构中，L3 NFD（神经特征定义）和L4 NFM（神经-功能映射）与测量直接相关：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>UNIS层</th>
+<th>测量职责</th>
+<th>输出</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>L1 NAP</td>
+<td>数据采集规范（BIDS格式、同步等级）</td>
+<td>原始数据</td>
+</tr>
+<tr>
+<td>L2 SCL</td>
+<td>信号校准（去伪影、滤波、归一化）</td>
+<td>预处理信号</td>
+</tr>
+<tr>
+<td>L3 NFD</td>
+<td>为每个标准特征分配NFI，提供参考实现</td>
+<td>NFI标识的特征值</td>
+</tr>
+<tr>
+<td>L4 NFM</td>
+<td>存储NFI→功能状态似然的预测模型</td>
+<td>p(y_n \</td>
+<td>Ψ_t) 神经似然</td>
+</tr>
+<tr>
+<td>L5 NPL</td>
+<td>双分类约束（生理硬约束+统计规律约束）</td>
+<td>先验边界</td>
+</tr>
+<tr>
+<td>L6 RTE</td>
+<td>实时执行推断与个体化校准</td>
+<td>实时神经似然流</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NFI与ABC分类的对应关系</strong>。UNIS的神经特征标识符(NFI)可以映射到功能层子单元的ABC测量成熟度：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>NFI示例</th>
+<th>映射到功能子单元</th>
+<th>NFM成熟度</th>
+<th>对应ABC类</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>NFI.EEG.v1.001</td>
+<td>M2-DSP-F（前额叶theta/beta比，认知负荷）</td>
+<td>设计验证≥0.99</td>
+<td>A（已有成熟映射）</td>
+</tr>
+<tr>
+<td>NFI.EEG.v1.002</td>
+<td>M4-DSP-B（杏仁核-前额叶耦合，情绪唤醒）</td>
+<td>设计验证≥0.99</td>
+<td>A</td>
+</tr>
+<tr>
+<td>NFI.HRV.v1.001</td>
+<td>M1-DSP-B（HRV高频功率，副交感张力）</td>
+<td>校准验证≥0.95</td>
+<td>A</td>
+</tr>
+<tr>
+<td>NFI.EEG.v1.005</td>
+<td>M3-RES-D（前额叶alpha不对称，意志资源）</td>
+<td>探索性P级</td>
+<td>C（需要独立验证）</td>
+</tr>
+<tr>
+<td>NFI.fNIRS.v1.001</td>
+<td>M2-RES-D（前额叶氧合，认知消耗）</td>
+<td>校准中</td>
+<td>B</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>神经似然的注入：桥接-校准路径的扩展</strong>。在§9.5描述的桥接-校准三阶段路径中，UNIS神经通道在以下环节注入：</p>
+<ol>
+<li><strong>桥接期</strong>：NFM中的模型先验来自文献元分析和跨被试群体校准——这些模型构成了"群体级神经-功能映射先验"，与生态位库中的行为先验并行存储</li>
+<li><strong>校准期</strong>：当个体神经数据到达时，RTE将NFI特征值输入NFM模型，输出神经似然 p(y_n \| Ψ_t)，以独立似然项的形式参与PSE-C的贝叶斯更新</li>
+<li><strong>原生期</strong>：RTE-Cal通过 <code>/calibration_feedback</code> 协议接收PSE的状态估计残差，对NFM映射模型进行个体化微调</li>
+</ol>
+<p><strong>通道分歧的测量学意义</strong>。当行为、语义和神经三个通道对同一子单元的状态估计出现系统性分歧时，这不仅是噪声——它是诊断信号：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>分歧模式</th>
+<th>可能含义</th>
+<th>临床示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>神经高唤醒 + 行为低报告</td>
+<td>内感受觉知缺陷、述情障碍</td>
+<td>患者平静但EEG显示高theta/beta</td>
+</tr>
+<tr>
+<td>行为高疲劳 + 神经正常</td>
+<td>动机性低努力、习得性抑制</td>
+<td>患者报告疲劳但fNIRS氧合正常</td>
+</tr>
+<tr>
+<td>语义与行为神经均分歧</td>
+<td>自欺或防御性报告</td>
+<td>患者声称"很好"但所有客观指标异常</td>
+</tr>
+</tbody>
+</table></div>
+<p>UNIS通道使功能层测量从双模态（行为+自陈）升级为三模态，显著提升了逆问题求解的可辨识性和通道分歧的诊断价值。它不是变量范式中简单的"生物标志物"思路——UNIS不声称某个NFI是某个功能状态的"生物指标"。它只提供一个经过校准的、带有不确定性量化的概率映射，然后由PSE在一个完整的系统动力学模型中进行三通道贝叶斯融合。神经信号只是三个视角之一，不是"更真实的那个"。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：功能层测量遵循三条基本原则：功能定义优先于测量、多模态融合优于单指标崇拜、测量成熟度分层管理。观测数据来自三个独立通道——行为通道（量表、EMA、数字表型）、语义通道（UPLS/PSL编译）和神经通道（UNIS神经似然）——通过贝叶斯融合联合反演状态后验。基于量化阈值，42个子单元被分为A类（实证锚定，复用旧工具）、B类（整合性，组合测量）、C类（预测性空位，原创开发+过渡性代理）。UNIS通过L3 NFD和L4 NFM将原始神经信号转化为标准化的功能似然 p(y_n | Ψ_t)，并以NFI标识符与ABC分类对应。三通道之间的系统性分歧是重要的临床诊断信号。生态瞬时评估遵循"单维度、高频率、低负担"原则，数字表型映射为候选关联需独立验证。测量信效度通过收敛效度、区分效度（双分离）和三通道验证进行评估。精度通过桥接-校准-原生三阶段逐步提升——UNIS的RTE-Cal在原生期提供个体化神经映射微调。桥接以四层验证将变量范式既有知识压缩为先验分布；冷启动从生态位库匹配开始，通过持续校准实现个体化状态估计。</p>
+<blockquote><p>**关键术语**：A/B/C类测量，软测量，EMA，数字表型，桥接-校准策略，观测函数，三通道验证，UNIS神经似然，NFI，NFM，通道分歧</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ &quot;C类测不了，框架不完整&quot; → ✅ C类预测性子单元是研究议程而非缺陷，主动指向旧范式盲区。<br>- ❌ &quot;桥接只是用旧数据填充新框架&quot; → ✅ 桥接通过四层验证将知识系统化组织，而非简单填充。<br>- ❌ &quot;神经信号是功能状态的&#x27;直接读数&#x27;&quot; → ✅ UNIS只提供概率映射 p(y_n | Ψ_t)，需与其他通道融合后由PSE推断状态。神经信号不是更&quot;真实&quot;的那个视角。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 用自己的话解释A类、B类、C类测量的区别，并各举一个例子。<br>2. 以M6-RES-D（行为启动能量）为例，设计一个从过渡性代理到原生测量的开发路线图。<br>3. 功能层测量面临冷启动问题：评估桥接-校准策略在什么条件下会失败？<br>4. 如果UNIS神经通道对M4-DSP-B的状态估计（高唤醒）与行为通道（量表自评低焦虑）出现系统性分歧，列举三种可能的解释及其对临床决策的不同含义。</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch08.html" class="nav-link prev">‹ 8 状态向量：42维表示与动力学</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch10.html" class="nav-link next">10 原子操作：GMAR语法与临床直觉 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

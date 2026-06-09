@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第14章 概念标识：PCUI编码与同义词映射 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第14章</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">第14章 概念标识：PCUI编码与同义词映射</h1>
+<blockquote><p>**学习目标**：完成本章后，你应能够：(1)理解PCUI如何解决心理学的术语碎片化问题；(2)掌握PCUI编码格式和M-R-D-S坐标标注规则；(3)列举至少3个多流派同义词映射示例；(4)理解PCUI元数据标注的五项防御机制。</p></blockquote>
+<blockquote><p>**本章定位**：PCUI是UPLS三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。</p></blockquote>
+<hr class="section-divider">
+<h3>14.1 医学先例：UMLS如何统一临床术语</h3>
+<p>心理学并非第一个遭遇术语碎片化危机的学科。在医学领域，同一疾病在不同编码体系中拥有完全不同的标识符。1986年，美国国家医学图书馆启动了统一医学语言系统(UMLS)项目，旨在建立一个超越所有特定编码体系的元词典层。UMLS的三层架构——元词典（Metathesaurus）、语义网络（Semantic Network）、专家词典（Specialist Lexicon）——40年来从未改变。</p>
+<p>UPLS在设计上直接借鉴了UMLS的结构策略：不是在DSM-5、RDoC或各流派理论之上建立另一个“超级理论”，而是在它们之上建立一个<strong>功能层的元映射层</strong>，使所有体系的术语可以在同一坐标系中被定位、比较和转换。</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>维度</th>
+<th>UMLS（医学）</th>
+<th>UPLS（心理学）</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>疾病命名体系混乱</td>
+<td>心理现象术语体系碎片化</td>
+</tr>
+<tr>
+<td>解决方案</td>
+<td>概念唯一标识符（CUI）层</td>
+<td>心理概念唯一标识符（PCUI）层</td>
+</tr>
+<tr>
+<td>层级结构</td>
+<td>元词典 → 语义网络 → 专家词库</td>
+<td>PCUI → PSA → PSL</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**关键差异**：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，UPLS必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
+<hr class="section-divider">
+<h3>14.2 PCUI编码体系</h3>
+<p>PCUI（Psychological Concept Unique Identifier）是UPLS为每个心理学概念分配的唯一结构化编码。其设计遵循三条原则：<strong>可读性</strong>（编码携带功能定位信息）、<strong>可扩展性</strong>（支持版本演进）、<strong>可计算性</strong>（支持机器解析）。</p>
+<p><strong>编码格式</strong>：</p>
+<pre><code class="language-">
+[CONCEPT_NAME].[DOMAIN].v[VERSION].[SEQUENCE]#[MODULE_SIGNATURE]
+</code></pre>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>字段</th>
+<th>说明</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>CONCEPT_NAME</td>
+<td>概念规范英文名称（全大写下划线分隔）</td>
+<td><code>CORE_BELIEF_NEGATIVE</code></td>
+</tr>
+<tr>
+<td>DOMAIN</td>
+<td>固定为<code>UPLS</code></td>
+<td><code>UPLS</code></td>
+</tr>
+<tr>
+<td>VERSION</td>
+<td>主版本号.次版本号</td>
+<td><code>v3.0</code></td>
+</tr>
+<tr>
+<td>SEQUENCE</td>
+<td>版本内顺序号（三位数字）</td>
+<td><code>007</code></td>
+</tr>
+<tr>
+<td>MODULE_SIGNATURE</td>
+<td>模块角色签名（见下表）</td>
+<td><code>#M2-STR-R</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ModuleSignature角色标签</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>标签</th>
+<th>名称</th>
+<th>含义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Core（核心）</td>
+<td>该模块是该概念的主要功能定位点</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Impact（受冲击）</td>
+<td>失调的次级影响区，非原发性</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Support（支撑）</td>
+<td>为概念运行提供资源或结构支撑</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Trigger（触发）</td>
+<td>该模块的状态变化是概念激活的触发条件</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Output（输出）</td>
+<td>行为或体验输出通道</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>完整示例</strong>：</p>
+<ul>
+<li><code>CORE_BELIEF_NEGATIVE.UPLS.v3.0.007#M2-STR-R</code>：负性核心信念，定位于M2认知模块的规则结构层</li>
+<li><code>CHRONIC_ANXIETY.UPLS.v2.0.001#M4C+M2I+M3I+M1S+M6O</code>：慢性焦虑，M4为核心，M2/M3受冲击，M1提供支撑，M6为输出通道</li>
+</ul>
+<hr class="section-divider">
+<h3>14.3 同义词映射：多流派术语的聚合</h3>
+<p>心理学最令人困扰的问题之一是：同一现象在不同流派中拥有完全不同的名称。PCUI通过<strong>多流派同义词映射</strong>解决这一问题——所有指向同一功能实体的流派术语被聚合到同一个PCUI条目下。</p>
+<p><strong>五组代表性同义词映射</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>流派A术语</th>
+<th>流派B术语</th>
+<th>流派C术语</th>
+<th>PCUI</th>
+<th>M-R-D-S坐标</th>
+<th>可信度</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>CBT“核心信念（无价值感）”</td>
+<td>精神分析“负性自我表征”</td>
+<td>人本“自我概念贬低”</td>
+<td><code>CORE_BELIEF_NEGATIVE</code></td>
+<td>M2-STR-R</td>
+<td>9/10</td>
+</tr>
+<tr>
+<td>CBT“自动负性思维”</td>
+<td>精神分析“前意识内容”</td>
+<td>ACT“认知融合”</td>
+<td><code>AUTOMATIC_NEGATIVE_THOUGHT</code></td>
+<td>M2-DSP-B</td>
+<td>9/10</td>
+</tr>
+<tr>
+<td>行为“条件化恐惧”</td>
+<td>精神分析“创伤连接”</td>
+<td>CBT“过度警觉”</td>
+<td><code>CONDITIONED_FEAR</code></td>
+<td>M4-STR-C + M4-DSP-B</td>
+<td>9/10</td>
+</tr>
+<tr>
+<td>精神分析“防御机制”</td>
+<td>CBT“认知回避”</td>
+<td>DBT“经验性回避”</td>
+<td><code>DEFENSE_MECHANISM</code></td>
+<td>M4-STR-S + M3-STR-S</td>
+<td>8/10</td>
+</tr>
+<tr>
+<td>行为“正强化”</td>
+<td>CBT“行为激活”</td>
+<td>积极心理学“奖励接触”</td>
+<td><code>POSITIVE_REINFORCEMENT</code></td>
+<td>S-P-P+ → M6-STR-C</td>
+<td>8/10</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**微案例：映射争议的解决**：“防御机制”在精神分析中被定位为M4-STR-S，在CBT中被定位为M2-STR-S。PCUI经多流派评审后确定ModuleSignature为`#M4C+M2S+M3S`——M4为核心，M2和M3为支撑。每一方的理论解释保留在条目的“多流派解释”字段中，不强行归一。</p></blockquote>
+<hr class="section-divider">
+<h3>14.4 一词多义：上下文消歧规则</h3>
+<p>同一术语在不同流派甚至同一流派的不同语境中，可以指代完全不同的功能实体。PCUI通过<strong>上下文消歧规则</strong>处理一词多义。</p>
+<p><strong>案例：“防御机制”的多义性</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>语境</th>
+<th>含义</th>
+<th>PCUI映射</th>
+<th>M-R-D-S坐标</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>精神分析</td>
+<td>无意识的情绪调节序列</td>
+<td><code>DEFENSE_MECHANISM</code></td>
+<td>M4-STR-S</td>
+</tr>
+<tr>
+<td>CBT</td>
+<td>有意识或无意识的思维回避</td>
+<td><code>COGNITIVE_AVOIDANCE</code></td>
+<td>M2-STR-S</td>
+</tr>
+<tr>
+<td>日常语言</td>
+<td>否认、合理化等社交策略</td>
+<td>（暂未编码）</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>消歧规则</strong>：</p>
+<ul>
+<li>若上下文包含“无意识”“焦虑”“压抑” → 映射到<code>DEFENSE_MECHANISM</code></li>
+<li>若上下文包含“回避想法”“分心”“逃避思考” → 映射到<code>COGNITIVE_AVOIDANCE</code></li>
+<li>若无明确上下文 → 返回备选项列表，要求人工确认</li>
+</ul>
+<hr class="section-divider">
+<h3>14.5 元数据标注：五项防御机制</h3>
+<p>每个PCUI条目包含一套完整的<strong>元数据标注</strong>，确保使用者了解该概念的实证基础和可信边界。这构成PCUI的<strong>五项防御机制</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>防御机制</th>
+<th>内容</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>可信度分级</td>
+<td>0-10分，反映多流派共识程度</td>
+<td>负性核心信念：9/10</td>
+</tr>
+<tr>
+<td>证据等级</td>
+<td>IET v3.0八级体系（→§3.5）</td>
+<td>F级（已有实证）或X级（理论解释）</td>
+</tr>
+<tr>
+<td>边界注释</td>
+<td>明确标注不覆盖什么、争议点</td>
+<td>“依恋安全感条目中注：RES-B的涌现性质仍有争议”</td>
+</tr>
+<tr>
+<td>版本化更新</td>
+<td>每个条目有独立版本号</td>
+<td><code>v3.0.007</code> → <code>v3.1.007</code></td>
+</tr>
+<tr>
+<td>强反例触发条件</td>
+<td>什么样的发现会否证该条目</td>
+<td>“若发现M2-STR-R与M4-STR-C不可区分，则条目需合并”</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>**边界注释示例**：在PCUI条目`ATTACHMENT_SECURITY.UPLS.v3.0.078#M4-RES-B`中，边界注释写道：“本条目将依恋安全感定位为M4-RES-B。但部分专家认为涉及M2-STR-R和M5-STR-C。若未来研究显示依恋安全感的变化可被M2/M5干预完全中介而不经过M4-RES-B，则本条目需修订为组合映射。”</p></blockquote>
+<hr class="section-divider">
+<h3>14.6 局部映射：预测性子单元(C类)的处理</h3>
+<p><strong>映射的必要性与不可完美性</strong>。UPLS必须将变量范式的构念映射到M-R-D-S坐标系——不映射则陷入理论隔绝。但完美映射不可达，因为：(1)心理现象是多维分布，非单点对应；(2)焦虑体验是多个功能子单元在时间中耦合放大的涌现整体；(3)M1-M6在功能维度上逻辑独立，任何映射都是选择性压缩。</p>
+<p><strong>局部映射协议</strong>——INTRE的策略是把不完美制度化：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>机制</th>
+<th>说明</th>
+<th>示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>主映射+次映射</td>
+<td>给出主导落点与次级牵连维度</td>
+<td>焦虑：M4-DSP-B↑（主），M2-STR-R（次），M1-RES-D↓（次）</td>
+</tr>
+<tr>
+<td>可信度分级</td>
+<td>0-10分</td>
+<td>焦虑映射可信度9/10</td>
+</tr>
+<tr>
+<td>边界注释</td>
+<td>说明“未覆盖什么”</td>
+<td>“不含特定恐惧对象，不含惊恐发作的躯体崩溃”</td>
+</tr>
+<tr>
+<td>版本化更新</td>
+<td>映射持续演化</td>
+<td>PCUI条目随新证据更新版本号</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>预测性子单元：旧范式的盲区</strong>。在所有42个子单元中，有一类在变量范式中缺少成熟对应物——<strong>C类预测性子单元</strong>（约7个，占17%）。以<strong>M6-RES-D（行为启动能量）</strong>为例：传统心理学将“没有行动”笼统归因于动机不足。INTRE主张，行为从静止到启动需要额外资源条件——“想做”与“做得起来”不是同一件事。这一区分的经验支持来自：(1)准备电位在主观意识到“自己要动”之前就已出现；(2)帕金森病（启动困难）与抑郁症（动机缺失）的临床双重分离；(3)基底节门控机制。M6-RES-D不是“换了个名字”，而是对长期被吸收到“意志力”中的现象的再分离。</p>
+<hr class="section-divider">
+<h3>14.7 功能编译器：五层流水线从主诉到向量</h3>
+<p>UPLS并非静态术语对照词典，而是一个将现象层描述重编码为功能层表示的<strong>功能编译器</strong>。</p>
+<p><strong>五层编译流水线</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>名称</th>
+<th>功能</th>
+<th>输入→输出示例</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>第1层</td>
+<td>PSL</td>
+<td>现象输入标准化</td>
+<td>“我最近老是心慌，脑子停不下来” → {躯体焦虑，反刍，注意固化}</td>
+</tr>
+<tr>
+<td>第2层</td>
+<td>PCUI</td>
+<td>跨流派统一标识</td>
+<td>{躯体焦虑，广泛性焦虑特征} → PCUI-ANX-001</td>
+</tr>
+<tr>
+<td>第3层</td>
+<td>M-R-D-S向量</td>
+<td>功能层中介表示</td>
+<td>PCUI-ANX-001 → {M4-DSP-B:0.8, M2-DSP-B:0.7, M1-RES-D:0.3}</td>
+</tr>
+<tr>
+<td>第4层</td>
+<td>G-M-A-R/PSE</td>
+<td>执行规划</td>
+<td>状态向量 → [GATE– M4-DSP-B, MODULATE+ M1-RES-D]</td>
+</tr>
+<tr>
+<td>第5层</td>
+<td>SID-P/MMD-P</td>
+<td>条件化调度</td>
+<td>操作序列+资源约束 → 分阶段干预方案</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>范式升级的认知成本</strong>。初次接触UPLS映射的人会感到不适——旧术语充满经验厚度，新坐标却是模块化、离散化的。这种不适是真实的，但它是<strong>跨层翻译的认知成本</strong>。功能层表示本来就不负责承载全部主观经验内容——它的职责是在需要系统操作与精准推断时提供更细粒度的结构入口。UPLS所做的是<strong>功能解耦</strong>：从“意志力”中拆出M3-RES-D（决策抑制）、M3-RES-B（长期韧性）、M6-RES-D（行动启动）。单个映射之所以显得“不完整”，是因为使用者还没有放弃“整箱思维”。</p>
+<hr class="section-divider">
+<p><strong>本章小结</strong>：PCUI是UPLS的核心概念标识层，其设计借鉴了UMLS在医学领域的成功经验。PCUI编码格式<code>[CONCEPT].[DOMAIN].v[VERSION].[SEQ]#[MODULE_SIGNATURE]</code>通过ModuleSignature标签（C/I/S/T/O）将概念直接锚定到M-R-D-S坐标空间。多流派同义词映射将CBT、精神分析、人本等流派的术语聚合到同一PCUI条目；一词多义消歧通过上下文规则处理同一术语在不同语境中的不同功能定位。元数据标注的五项防御机制——可信度分级、证据等级、边界注释、版本化更新、强反例触发条件——确保PCUI不是不可证伪的独断体系，而是可检验、可修订的知识库。局部映射协议通过主映射+次映射、可信度分级和边界注释管理映射的不完美性。功能编译器五层流水线（PSL→PCUI→M-R-D-S→G-M-A-R/PSE→SID-P/MMD-P）将自然语言主诉转化为可执行的干预方案。</p>
+<blockquote><p>**关键术语**：PCUI，ModuleSignature，角色标签（C/I/S/T/O），同义词映射，一词多义消歧，五项防御机制，局部映射协议，功能编译器</p></blockquote>
+<blockquote><p>**常见误区**：<br>- ❌ “PCUI是给术语换个名字” → ✅ PCUI不是重命名，而是将术语映射到M-R-D-S坐标。<br>- ❌ “所有术语都能找到完美的PCUI” → ✅ 文化特定概念可能需要新增条目或组合映射，边界注释会明确说明。<br>- ❌ “功能编译器是多余的复杂化” → ✅ 编译器使心理学从“概念解释”走向“解释-编译-执行”的完整工作流。</p></blockquote>
+<blockquote><p>**练习题**：<br>1. 将术语“反刍思维”尝试编译为PCUI编码（选择ModuleSignature并说明理由）。<br>2. 查阅文中同义词映射表，找出一个你认为映射可信度存疑的条目，说明理由。<br>3. 为什么UPLS不能直接照搬UMLS的设计？心理学缺少什么条件？</p></blockquote>
+<hr class="section-divider">
+<hr class="section-divider">
+<h2>版本记录</h2>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-30</td>
+<td>初始创建</td>
+</tr>
+</tbody>
+</table></div>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="ch13.html" class="nav-link prev">‹ 13 流派生成：从语法空位到预测疗法</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch15.html" class="nav-link next">15 语义架构：PSA推理与PSL编译 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

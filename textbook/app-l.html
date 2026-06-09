@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附录L：架构速查——推导链与公理体系 · INTRE 导论教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/" class="active">📖教材</a>
+                <a href="/INTRE/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录</span>
+        </div>
+    </div>
+
+    <main class="textbook-content">
+        <h1 class="chapter-title">附录L：架构速查——推导链与公理体系</h1>
+<p><strong>本附录定位</strong>：改编自INTRE项目源文档02-A-17（架构论证概要v2.4），是第5章“架构推导链”的完整展开。本速查版保留核心推导逻辑和关键结论，省略详细论证材料和替代方案比较。</p>
+<hr class="section-divider">
+<h2>L.1 体系总述：五大架构的生成逻辑</h2>
+<p>INTRE的理论大厦建立在一个自上而下的演绎逻辑之上。五大核心架构遵循“道→法→术→境”的层级生成关系：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>架构</th>
+<th>符号</th>
+<th>层级定位</th>
+<th>核心追问</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>N-S-R</strong></td>
+<td>Need-Structure-Realization</td>
+<td>道（元公理）</td>
+<td>智能系统如何存在与运作？</td>
+</tr>
+<tr>
+<td><strong>M-R-P</strong></td>
+<td>Module-Ring-Playbook</td>
+<td>法（通用架构）</td>
+<td>目标驱动智能体的通用蓝图？</td>
+</tr>
+<tr>
+<td><strong>M-R-D-S</strong></td>
+<td>Module-Resource-Dispatch-Structure</td>
+<td>术（诊断侧）</td>
+<td>心智此刻的内部状态？</td>
+</tr>
+<tr>
+<td><strong>G-M-A-R</strong></td>
+<td>Gate-Modulate-Align-Relink</td>
+<td>术（干预侧）</td>
+<td>如何修正非理想状态？</td>
+</tr>
+<tr>
+<td><strong>S-P</strong></td>
+<td>Source-Pattern</td>
+<td>境（环境参照系）</td>
+<td>系统在什么环境中运行？</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键符号区分</strong>：</p>
+<ul>
+<li>N-S-R中的R = Realization（实现）</li>
+<li>M-R-P中的R = Ring（调度环）</li>
+<li>M-R-D-S中的R = Resource（资源）</li>
+</ul>
+<blockquote><p>📖 **教材对应**：第5章§5.1</p></blockquote>
+<hr class="section-divider">
+<h2>L.2 哲学架构（N-S-R）：世界的元逻辑</h2>
+<p><strong>公理陈述</strong>：智能系统通过感知需要（Need），调用或构建结构（Structure），达成目标的实现（Realization）。三者关系可形式化为 <strong>R = f(N, S)</strong>。</p>
+<p><strong>跨层级逻辑指纹</strong>：无论分析对象是神经系统的预测编码、个体心理的成长适应，还是组织流程的协作优化，只要其运作模式可被合理地映射为N→S→R的闭环，该现象就被纳入INTRE的统一解释框架。</p>
+<p><strong>强反例触发条件</strong>：若发现某一完整的自适应系统层级的运作模式无法被合理地映射为N→S→R的闭环，则N-S-R的跨层级普适性主张需要被修正或限定。</p>
+<p><strong>逻辑必然性</strong>：在INTRE所定义的目标驱动、自适应、可反馈调节系统中，其运作逻辑上必须包含目标识别（N）、手段提供（S）和效果评估（R）三个功能组件。</p>
+<blockquote><p>📖 **教材对应**：第5章§5.2</p></blockquote>
+<hr class="section-divider">
+<h2>L.3 通用架构（M-R-P）：智能体的万能容器</h2>
+<p><strong>结构定义</strong>：为实现N-S-R循环，目标驱动型智能体需具备三个通用部件：</p>
+<ul>
+<li><strong>M（Module）</strong>：功能组件集与能力边界 —— “用什么来做”</li>
+<li><strong>R（Ring）</strong>：R1→R5负反馈控制流程 —— “如何持续调整”</li>
+<li><strong>P（Playbook）</strong>：可配置的具体策略与价值协议 —— “具体怎么做”</li>
+</ul>
+<p><strong>普适性论证</strong>：M-R-P实现“结构与内容的分离”：</p>
+<ul>
+<li>人类心理：M = M1-M6，P = CBT/ACT等剧本</li>
+<li>L4自动驾驶：M = 感知/定位/规划/控制，P = 巡航/交互/避障剧本</li>
+<li>工业机器人：M = 传感/机械臂，P = 装配序列</li>
+</ul>
+<blockquote><p>📖 **教材对应**：第5章§5.3</p></blockquote>
+<hr class="section-divider">
+<h2>L.4 功能实体（M1-M6）：心智的最小协同集合</h2>
+<p><strong>六模块概览</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>模块</th>
+<th>名称</th>
+<th>核心功能</th>
+<th>工程定位</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>具身</td>
+<td>能量与稳态基底</td>
+<td>电源/底座</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>认知</td>
+<td>世界建模与预测</td>
+<td>导航仪</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>意志</td>
+<td>中央调度与决策</td>
+<td>中央调度器</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>情绪</td>
+<td>价值评估与动机</td>
+<td>价值评估中心</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>言语</td>
+<td>符号化与社会协调</td>
+<td>I/O接口</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>行为</td>
+<td>行动执行与习惯</td>
+<td>执行器</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>完备性的三重担保</strong>：</p>
+<ol>
+<li><strong>逻辑推导</strong>：六模块展开并承载N-S-R循环的关键功能节点</li>
+<li><strong>工程验证</strong>：否定性特异崩溃论证——每模块缺失导致独特、不可补偿的崩溃模式</li>
+<li><strong>进化启发性支持</strong>：六模块对应功能地层的逐层叠加</li>
+</ol>
+<p><strong>与福多模块论的区别</strong>：M1-M6是<strong>功能接口</strong>而非信息封装模块。INTRE切换了评价标准——从“是否真实描述心智计算结构”到“是否能系统指导诊断与干预”。</p>
+<blockquote><p>📖 **教材对应**：第5章§5.4；第7章</p></blockquote>
+<hr class="section-divider">
+<h2>L.5 内感架构（M-R-D-S）：心智的状态描述语法</h2>
+<p><strong>三维骨架</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>维度</th>
+<th>核心追问</th>
+<th>数学对应</th>
+<th>功能属性</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>R（资源）</td>
+<td>系统此刻拥有什么？</td>
+<td>存量</td>
+<td>瞬时状态</td>
+</tr>
+<tr>
+<td>D（调度）</td>
+<td>系统此刻正在做什么？</td>
+<td>流量</td>
+<td>过程动态</td>
+</tr>
+<tr>
+<td>S（结构）</td>
+<td>系统为何以此方式运行？</td>
+<td>控制方程与拓扑</td>
+<td>因果配置</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>形式充分性类比</strong>：皮卡-林德勒夫定理为三维充分性提供启发式类比——给定初始状态和演化规则，系统的未来轨迹在理论上唯一确定。</p>
+<p><strong>R维度细分</strong>：RES-D（分钟-天，即时资本 → MODULATE）；RES-B（月-年，核心资本 → 结构性操作）</p>
+<p><strong>D维度细分</strong>：DSP-F（需意识、高能耗 → GATE+/-）；DSP-B（自动化、低能耗 → GATE–间接调控）</p>
+<p><strong>S维度细分</strong>：STR-R（陈述性规则 → ALIGN）；STR-C（关联性连接 → RELINK）；STR-S（程序性序列 → GATE）</p>
+<p><strong>42维状态空间</strong>：M1-M6 × 7子维度 = 42维。</p>
+<blockquote><p>📖 **教材对应**：第5章§5.5；第6章；第8章</p></blockquote>
+<hr class="section-divider">
+<h2>L.6 诊断逻辑（D-R-S）：从症状到根源的深度序列</h2>
+<p><strong>D-R-S层级诊断体系</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>层级</th>
+<th>问题性质</th>
+<th>干预定位</th>
+<th>干预操作</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>D（调度）</td>
+<td>表层功能紊乱</td>
+<td>急救型——稳定失控过程</td>
+<td>GATE</td>
+</tr>
+<tr>
+<td>R（资源）</td>
+<td>中层能量枯竭</td>
+<td>恢复型——补充燃料</td>
+<td>MODULATE</td>
+</tr>
+<tr>
+<td>S（结构）</td>
+<td>深层架构缺陷</td>
+<td>重建型——修复架构</td>
+<td>ALIGN/RELINK</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>干预序列的逻辑必然性</strong>：在严重失调情境下，默认优先级为 <strong>D层稳定 → R层恢复 → S层重建</strong>。在调度失控时补充资源低效，在资源枯竭时结构干预高风险。</p>
+<p><strong>序列刚性与失调程度正相关</strong>：Oᵢ越低序列越严格，高功能系统中可并行推进。</p>
+<blockquote><p>📖 **教材对应**：第11章</p></blockquote>
+<hr class="section-divider">
+<h2>L.7 操作架构（G-M-A-R）：心智的行动执行语法</h2>
+<p><strong>四操作定义</strong>：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>问题本质</th>
+<th>工程隐喻</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MODULATE</td>
+<td>RES-D</td>
+<td>即时燃料失衡</td>
+<td>充电/放电</td>
+</tr>
+<tr>
+<td>GATE</td>
+<td>DSP-F, DSP-B, 运行中的STR-S</td>
+<td>过程/序列失控</td>
+<td>切换开关</td>
+</tr>
+<tr>
+<td>ALIGN</td>
+<td>STR-R</td>
+<td>内部规则错误</td>
+<td>修改代码</td>
+</tr>
+<tr>
+<td>RELINK</td>
+<td>STR-C</td>
+<td>价值连接断裂</td>
+<td>重焊电路</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>靶点合法性矩阵</strong>（核心规则）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>禁止表述</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>GATE</td>
+<td>DSP-F, DSP-B, 运行中的STR-S</td>
+<td>GATE STR-R, GATE STR-C</td>
+</tr>
+<tr>
+<td>MODULATE</td>
+<td>RES-D</td>
+<td>MODULATE RES-B, MODULATE STR</td>
+</tr>
+<tr>
+<td>ALIGN</td>
+<td>STR-R</td>
+<td>ALIGN STR-C, ALIGN STR-S</td>
+</tr>
+<tr>
+<td>RELINK</td>
+<td>STR-C</td>
+<td>RELINK STR-R, RELINK STR-S</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>流派兼容性</strong>（功能层近似）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>流派</th>
+<th>核心接口</th>
+<th>G-M-A-R转译</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>CBT</td>
+<td>STR-R, DSP-B</td>
+<td>ALIGN + GATE–</td>
+</tr>
+<tr>
+<td>精神分析</td>
+<td>STR-C</td>
+<td>RELINK + GATE–</td>
+</tr>
+<tr>
+<td>人本主义</td>
+<td>RES-B, STR-C</td>
+<td>RELINK</td>
+</tr>
+<tr>
+<td>行为主义</td>
+<td>STR-C, STR-S</td>
+<td>GATE + RELINK</td>
+</tr>
+<tr>
+<td>ACT/正念</td>
+<td>DSP-B, STR-C</td>
+<td>GATE– + RELINK</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote><p>📖 **教材对应**：第5章§5.6；第10章；第12章</p></blockquote>
+<hr class="section-divider">
+<h2>L.8 外感架构（S-P）：环境参照系的注入</h2>
+<p><strong>S-层（Source）</strong>：六层次环境分类——微系统、中系统、外系统、宏系统、时间系统、数字系统</p>
+<p><strong>P-层（Pattern）</strong>：与M-R-D-S同构的命名规则，如<code>P-M4-RES-D-</code>表示环境消耗情绪资源</p>
+<p><strong>战略调制功能</strong>：S-P不改变G-M-A-R定义，但决定执行优先级、时序和风险阈值</p>
+<blockquote><p>📖 **教材对应**：第5章§5.7；第8章§8.4</p></blockquote>
+<hr class="section-divider">
+<h2>L.9 公理体系与可证伪性</h2>
+<p><strong>公理化层级</strong>：元公理层（A0-A2）→ 架构公理层（A3-A5）→ 特化推论（M1-M6）→ 描述推论（R-D-S）→ 操作推论（G-M-A-R）</p>
+<p><strong>强反例触发条件</strong>（五条核心主张的证伪路径）：</p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>主张</th>
+<th>证伪条件</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>C1: M1-M6完备性</td>
+<td>发现无法归入六模块的新心理功能</td>
+</tr>
+<tr>
+<td>C2: R-D-S完备性</td>
+<td>发现无法用R/D/S描述的状态变化维度</td>
+</tr>
+<tr>
+<td>C3: G-M-A-R完备性</td>
+<td>发现不可分解的新干预机制</td>
+</tr>
+<tr>
+<td>C4: D→R→S序列必然性</td>
+<td>低功能系统中跳过序列效果更优</td>
+</tr>
+<tr>
+<td>C5: M3-RES-D独立存在</td>
+<td><strong>强证伪</strong>：相关均<0.20；<strong>灰区</strong>：0.20-0.25；<strong>支持</strong>：>0.25</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>构念状态管理体系</strong>：Normative Core → Provisional Construct → Derived/Dependent → Deprecated</p>
+<blockquote><p>📖 **教材对应**：第3章；第29章</p></blockquote>
+<hr class="section-divider">
+<h2>L.10 实战速查手册（简化版）</h2>
+<p><strong>第一步：M-R-D-S状态扫描</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>维度</th>
+<th>故障代码</th>
+<th>典型表现</th>
+<th>自测问题</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>资源</td>
+<td>RES-D枯竭</td>
+<td>累、没劲、脑子转不动</td>
+<td>“我现在是不是没电了？”</td>
+</tr>
+<tr>
+<td></td>
+<td>RES-B薄弱</td>
+<td>长期不安、空虚、易崩溃</td>
+<td>“电池健康度是不是太低了？”</td>
+</tr>
+<tr>
+<td>调度</td>
+<td>DSP-F阻塞</td>
+<td>想专注但无法集中</td>
+<td>“想做的事为什么做不下去？”</td>
+</tr>
+<tr>
+<td></td>
+<td>DSP-B劫持</td>
+<td>控制不住胡思乱想</td>
+<td>“后台是不是有程序在乱跑？”</td>
+</tr>
+<tr>
+<td>结构</td>
+<td>STR-R错误</td>
+<td>钻牛角尖、完美主义</td>
+<td>“我的判断规则是不是有问题？”</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-C断裂</td>
+<td>感觉孤独、没意义</td>
+<td>“我和这件事的连接对吗？”</td>
+</tr>
+<tr>
+<td></td>
+<td>STR-S失灵</td>
+<td>一紧张就结巴</td>
+<td>“自动化反应程序是不是错了？”</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>第二步：G-M-A-R操作匹配</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>故障代码</th>
+<th>核心策略</th>
+<th>操作指令</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>DSP/STR-S</td>
+<td>GATE</td>
+<td>建立/阻断（开路/封路）</td>
+</tr>
+<tr>
+<td>RES-D</td>
+<td>MODULATE</td>
+<td>补充/抽取（加油/泄洪）</td>
+</tr>
+<tr>
+<td>STR-R</td>
+<td>ALIGN</td>
+<td>修正/重写（改代码）</td>
+</tr>
+<tr>
+<td>STR-C</td>
+<td>RELINK</td>
+<td>连接/切断（接线/剪线）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>第三步：D-R-S深度干预序列</strong></p>
+<ol>
+<li><strong>稳定调度（D）</strong>：如果现场混乱，先用GATE管制通道</li>
+<li><strong>补充资源（R）</strong>：如果能量不足，必须用MODULATE恢复RES-D</li>
+<li><strong>修复结构（S）</strong>：等状态稳定后，用ALIGN/RELINK修正底层因素</li>
+</ol>
+<p><strong>第四步：S-P环境扫描</strong>：检查微系统（职场/家庭）、数字系统（手机/网络）是否在持续消耗或扭曲你。</p>
+<hr class="section-divider">
+<p><strong>版本记录</strong></p>
+<div class='table-wrap'><table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-05-29</td>
+<td>速查版，改编自02-A-17</td>
+</tr>
+</tbody>
+</table></div>
+<hr class="section-divider">
+<h1 class="chapter-title">后记</h1>
+<h2>诞生历程：从退学到CC0发布</h2>
+<p>这本书的起点，不是一篇被接收的论文，也不是一个获得资助的研究项目，而是一次学术道路的中断。</p>
+<p>2023年，我因研究方向与传统心理学主流范式之间的根本性分歧，从福建师范大学的硕士项目中退学。这不是一个容易做出的决定，但回顾起来，它也许是必要的——因为变量范式所能容纳的问题空间，已经装不下我试图追问的问题。</p>
+<p>退学后的两年，是一段孤独而高强度的探索。我没有实验室、没有研究团队、没有经费支持，只有一个笔记本和一条不断增长的文献阅读清单。我反复追问同一个问题：为什么心理学积累了数万项实证研究、数千个量表、数百种被验证有效的干预技术，却仍然无法像物理学或生物学那样，建立起一套公认的、可累积的、可工程化的基础语言？</p>
+<p>这个追问将我引向了一个越来越清晰的诊断：心理学缺少一个“功能层”——介于神经实现与现象体验之间的中间抽象层，一个能够描述心理系统“如何运行”的形式化语法。这个诊断不是新的——认知科学、系统论、控制论、功能主义哲学都曾触及过类似的想法。但真正缺少的，是一套完整的、可计算的、可检验的工程实现。</p>
+<p>INTRE——Internal Regulation Engine——就是从这一追问中生长出来的。它的核心架构在两年多的迭代中逐步成形。每一次迭代都不是概念的堆砌，而是对同一个核心问题的反复逼近：如果心理学要成为一门可计算、可预测、可干预的工程科学，它的最小完备描述语言应该是什么样？</p>
+<p>2026年3月至5月，INTRE系列论文以预印本形式发布在Zenodo上，并选择CC0 1.0 Universal（公共领域奉献）作为授权协议。这意味着任何人——研究者、临床医生、学生、工程师，无论机构、国家或文化背景——都可以无限制地使用、修改、翻译、改编本框架的内容，无需请求许可，无需支付费用。这一选择的理由很简单：如果INTRE真的抓住了心理系统功能层的一些“自然关节”，那么它不应该被任何人的知识产权所禁锢；如果它是错的，那么它更不应该被锁在收费墙后面浪费读者的时间。</p>
+<p>CC0不是放弃署名权——它是在宣告：这套思想的真正所有权属于所有愿意检验、使用和改进它的人。</p>
+<h2>致谢</h2>
+<p>这本书不是一个人的作品。</p>
+<p>尽管最终的写作由一人完成，但INTRE框架的成形受益于数千名全球研究者和实践者的间接和直接贡献。他们中的大多数我从未谋面，他们的工作发表在过去的数十年甚至上百年中——从冯特到斯金纳，从皮亚杰到鲍尔比，从贝克的认知疗法到Linehan的DBT，从Marr的三层分析到Fodor的模块论，从Putnam的功能主义到Dennett的意向立场。INTRE不是凭空创造的，它是在这些巨人的肩膀上搭建的一个脚手架。</p>
+<p>在直接的层面，我要感谢福建师范大学的孟迎芳教授、林荣茂教授和尹彬教授。尽管我的学术路径最终与主流范式分道扬镳，但你们的指导、宽容和理解，为我最初的理论探索提供了重要的起点和基础。</p>
+<p>感谢我的朋友陈莉、王宝增、林燕、刘昆。在退学后那段不确定的日子里，你们的支持和鼓励让我保持了方向感。</p>
+<p>感谢陈子静——这本书的存在，有一半是因为你。你的陪伴、耐心和信任，是我能够完成这一漫长旅程的根本支撑。</p>
+<p>感谢开源学术共同体。没有开放的预印本平台、开源代码库和知识共享运动，INTRE不可能以现在的形态存在。这本书本身也是开放的——它的所有草稿、代码、仿真实验都在项目网站上公开。</p>
+<p>最后，感谢每一位阅读、批评、检验、使用或质疑INTRE的研究者。学术进步不来自于单向的宣示，而来自于持续的对话、反驳和修正。我期待这本书能够引发足够的争议和讨论，让它的弱点被暴露、被修正，让它的优点被检验、被改进或超越。</p>
+<h2>寄语未来</h2>
+<p>这本书的出版不是终点，而是一个起点。</p>
+<p>INTRE框架的当前版本（v1.0）是一个<strong>理论蓝图</strong>，而非已完成的产品。它的命运不取决于我在书中写了什么，而取决于接下来的十年中，全球研究者能否通过预注册实验、随机对照试验、跨文化比较和临床应用，检验它的预测、校准它的参数、扩展它的边界、或证伪它的核心主张。</p>
+<p>如果INTRE在后续检验中持续失败——如果它的42维状态空间无法被可靠测量，如果它的动力学预测不优于简单的线性模型，如果它的G-M-A-R操作序列不能带来增量临床增益——那么这本书应该被遗忘，或作为“曾经有人尝试过但失败了”的案例被记录在科学史中。这不是悲剧，这是科学自我纠正的正常过程。</p>
+<p>但如果——仅仅是如果——INTRE的核心主张在实证检验中存活下来，如果它真的为心理学提供了一个可累积、可计算、可工程化的基础语言，那么我希望这本书能够开启一个新的对话：不是关于“哪个流派更正确”，而是关于“心理系统如何被形式化描述、如何被仿真、如何被干预、如何被治理”。我希望它能鼓励更多研究者——特别是年轻研究者和来自非西方文化背景的研究者——加入这一探索，不是作为INTRE的“信徒”，而是作为它的批评者、检验者和改进者。</p>
+<p>心理学在等待它的“元素周期表”和“动力学方程”。我不知道INTRE是否是答案，但我相信答案一定会在功能层上被找到。这本书是向那个方向抛出的一个探针。</p>
+<p><strong>愿心理学终于拥有可累积的基础语言。</strong></p>
+<hr class="section-divider">
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-k.html" class="nav-link prev">‹ 附K：PSA依赖——矩阵、级联模板与文化参数</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-m.html" class="nav-link next">附M：数学速成——函数、微分、概率与滤波 ›</a></div>
+    </div>
+
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">CC0 1.0 · 保留部分权利</p>
+    </footer>
+</body>
+</html>

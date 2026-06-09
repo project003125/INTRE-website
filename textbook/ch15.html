@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=3">
+    <link rel="stylesheet" href="textbook.css?v=4">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
@@ -512,6 +512,8 @@
     
     if (!sidebar) return;
     
+    function isDesktop() { return window.innerWidth >= 1400; }
+    
     // Build TOC from H3 headings
     var headings = document.querySelectorAll('.textbook-content h3');
     headings.forEach(function(h, i) {
@@ -524,8 +526,11 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            sidebar.classList.remove('open');
-            if (overlay) overlay.classList.remove('show');
+            // Only close bottom sheet on mobile
+            if (!isDesktop()) {
+                sidebar.classList.remove('open');
+                if (overlay) overlay.classList.remove('show');
+            }
         };
         list.appendChild(link);
     });
@@ -542,7 +547,7 @@
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 list.querySelectorAll('.toc-item').forEach(function(el) { el.classList.remove('active'); });
-                var active = list.querySelector('.toc-item[href="#' + entry.target.id + '"]');
+                var active = list.querySelector('.toc-item[href="#" + entry.target.id]');
                 if (active) active.classList.add('active');
             }
         });

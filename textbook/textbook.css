@@ -475,6 +475,8 @@ footer {
 }
 
 /* ========== CHAPTER SIDEBAR TOC ========== */
+
+/* Mobile default: bottom sheet, hidden off-screen */
 .toc-sidebar {
     position: fixed;
     bottom: 0;
@@ -493,10 +495,12 @@ footer {
     overflow-y: auto;
 }
 
+/* Mobile: show when .open */
 .toc-sidebar.open {
     transform: translateY(0);
 }
 
+/* Drag handle indicator */
 .toc-sidebar::before {
     content: '';
     display: block;
@@ -556,6 +560,11 @@ footer {
     transition: all 0.15s ease;
 }
 
+.toc-sidebar-list .toc-item:hover {
+    color: var(--accent);
+    background: var(--bg-secondary);
+}
+
 .toc-sidebar-list .toc-item:active {
     color: var(--accent);
     background: var(--bg-secondary);
@@ -565,10 +574,10 @@ footer {
     color: var(--accent);
     border-left-color: var(--accent);
     font-weight: 500;
-    background: var(--bg-secondary);
+    background: var(--accent-bg);
 }
 
-/* Toggle button - floating pill on mobile */
+/* Toggle button - floating pill on mobile/tablet */
 .toc-toggle-btn {
     display: none;
     position: fixed;
@@ -589,34 +598,37 @@ footer {
     gap: 0.4rem;
 }
 
-.toc-toggle-btn:active {
-    transform: scale(0.96);
+.toc-toggle-btn:hover {
+    box-shadow: 0 6px 28px rgba(22,58,95,0.35);
+    transform: translateY(-1px);
 }
 
-.toc-toggle-btn i {
-    font-size: 0.85rem;
+.toc-toggle-btn:active {
+    transform: scale(0.96);
 }
 
 .toc-toggle-btn i {
     font-size: 1rem;
 }
 
-/* Overlay */
+/* Overlay for mobile bottom sheet */
 .toc-overlay {
     display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.35);
     z-index: 49;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .toc-overlay.show {
     display: block;
 }
 
-/* Desktop: fixed sidebar on the left, always visible */
+/* ===== Desktop (≥1400px): fixed sidebar on the left, always visible ===== */
 @media (min-width: 1400px) {
     .toc-sidebar {
+        /* Override mobile defaults completely */
         top: 3.4rem;
         bottom: auto;
         left: 0;
@@ -626,40 +638,53 @@ footer {
         max-height: none;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        padding: 1.5rem 0 1rem;
-        transform: translateX(0);
-        box-shadow: none;
         border-right: 1px solid var(--border-light);
         border-top: none;
+        padding: 1.2rem 0 1rem;
+        /* Desktop: always visible, no transform animation needed */
+        transform: none !important;
+        transition: none;
+        box-shadow: none;
     }
 
+    /* .open class irrelevant on desktop — sidebar is always visible */
     .toc-sidebar.open {
-        transform: translateX(0);
+        transform: none !important;
     }
 
+    /* Hide drag handle on desktop */
     .toc-sidebar::before {
         display: none;
     }
 
+    /* Hide close button header on desktop */
     .toc-sidebar-header {
         display: none !important;
     }
 
+    /* Compact TOC items on desktop */
     .toc-sidebar-list .toc-item {
-        padding: 0.35rem 1.2rem;
-        font-size: 0.78rem;
+        padding: 0.4rem 1.2rem;
+        font-size: 0.8rem;
         border-left-width: 2px;
     }
 
-    .toc-toggle-btn {
-        display: none;
+    .toc-sidebar-list .toc-item.active {
+        background: var(--accent-bg);
     }
 
+    /* Hide toggle button on desktop */
+    .toc-toggle-btn {
+        display: none !important;
+    }
+
+    /* Hide overlay on desktop */
     .toc-overlay,
     .toc-overlay.show {
-        display: none;
+        display: none !important;
     }
 
+    /* Push main content right to make room for sidebar */
     .textbook-content,
     .page-footer-nav {
         margin-left: 240px;
@@ -670,6 +695,7 @@ footer {
     }
 }
 
+/* Mobile/tablet (<1400px): show toggle button */
 @media (max-width: 1399px) {
     .toc-toggle-btn {
         display: flex;

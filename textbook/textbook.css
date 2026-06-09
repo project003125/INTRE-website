@@ -481,7 +481,7 @@ footer p { margin: 0; }
     padding: 0.4rem 0.6rem;
     line-height: 1;
     border-radius: 6px;
-    min-width: 36px; min-height: 36px;
+    min-width: 40px; min-height: 40px;
     display: flex; align-items: center; justify-content: center;
 }
 .toc-close-btn:active { color: var(--text); background: var(--border); }

@@ -19,8 +19,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8FAFC;
-            color: #1e293b;
+            background-color: #ffffff;
+            color: #111827;
             line-height: 1.6;
         }
 
@@ -65,34 +65,39 @@
         }
 
         .nav-links a {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.2s;
-            padding: 0.3rem 0;
-            border-bottom: 2px solid transparent;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            transition: all 0.15s ease;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: white;
-            border-bottom-color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-links a.active {
+            color: #1F4880;
+            background: white;
+            font-weight: 600;
         }
 
         /* 页面标题 */
         h1 {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: #1F4880;
-            margin: 1rem 0 0.5rem;
-            letter-spacing: -1px;
+            color: #111827;
+            margin: 1.5rem 0 0.4rem;
+            letter-spacing: -0.03em;
         }
 
         .subhead {
             font-size: 1.3rem;
             font-weight: 400;
-            color: #3B6FB5;
+            color: #6B7280;
             margin-bottom: 2rem;
             max-width: 900px;
         }
@@ -274,11 +279,11 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 1px dotted rgba(255,255,255,0.5);
+            /* no border */
         }
 
         footer a:hover {
-            border-bottom-color: white;
+            /* no border */
         }
 
         .footer-links {

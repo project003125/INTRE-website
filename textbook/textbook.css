@@ -21,7 +21,7 @@
     --link-hover: #1558A0;
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-    --max-width: 740px;
+    --max-width: 860px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -541,20 +541,20 @@ footer p { margin: 0; }
 }
 .toc-overlay.show { display: block; }
 
-/* ===== Desktop: fixed sidebar on RIGHT side ===== */
+/* ===== Desktop: fixed sidebar on LEFT side ===== */
 @media (min-width: 1400px) {
     .toc-sidebar {
         top: 3.2rem;
         bottom: auto;
-        left: auto;
-        right: 0;
+        left: 0;
+        right: auto;
         width: 220px;
         height: calc(100vh - 3.2rem);
         max-height: none;
         border-radius: 0;
         background: var(--bg-sidebar);
-        border-left: 0.5px solid var(--border-light);
-        border-right: none;
+        border-right: 0.5px solid var(--border-light);
+        border-left: none;
         border-top: none;
         padding: 1.2rem 0.5rem 1rem;
         transform: none !important;

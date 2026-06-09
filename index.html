@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +18,11 @@
             --blue: #2b6390;
             --blue-light: #5b8db8;
             --blue-pale: #dce8f5;
-            --blue-ghost: #f0f6fc;
+            --blue-ghost: #eef4fa;
+            --blue-mist: #f5f8fd;
             --slate-900: #0f172a;
             --slate-800: #1e293b;
+            --slate-700: #334155;
             --slate-600: #475569;
             --slate-500: #64748b;
             --slate-400: #94a3b8;
@@ -43,11 +45,46 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--blue-ghost);
+            background: var(--blue-mist);
             color: var(--slate-800);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            /* 极淡的网点背景 — 工程/科学感 */
+            background-image:
+                radial-gradient(circle, rgba(43,99,144,0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+            position: relative;
+        }
+
+        /* body 装饰性光晕 — 左上和右下两团氛围 */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 50%;
+        }
+        body::before {
+            top: -20%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(91,141,184,0.07) 0%, transparent 70%);
+        }
+        body::after {
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(22,58,95,0.05) 0%, transparent 70%);
+        }
+
+        /* 所有主要内容在 z-index 上层 */
+        nav, .hero, .container, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* ========== NAVIGATION ========== */
@@ -59,7 +96,6 @@
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow-nav);
-            backdrop-filter: blur(6px);
         }
 
         .nav-container {
@@ -115,140 +151,194 @@
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 4rem 2rem 3rem;
-            background: linear-gradient(165deg, var(--navy) 0%, #0f2b47 60%, var(--navy-light) 100%);
+            padding: 4.5rem 2rem 3.5rem;
+            background: linear-gradient(165deg, var(--navy) 0%, #0f2b47 55%, var(--navy-light) 100%);
             text-align: center;
         }
 
-        /* 装饰性背景几何网格 */
+        /* 几何网格（更精致的等边三角形网格氛围） */
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 40px 40px;
             pointer-events: none;
         }
 
-        /* 装饰性光晕 */
+        /* 装饰光晕 x2 */
         .hero::after {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -10%;
+            top: -20%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(91,141,184,0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-glow-left {
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(91,141,184,0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(43,99,144,0.08) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .hero-label {
             display: inline-block;
-            background: rgba(255,255,255,0.08);
-            color: var(--blue-light);
-            font-size: 0.8rem;
+            background: rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.65);
+            font-size: 0.78rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(4px);
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             color: var(--white);
             letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 1rem;
+            line-height: 1.05;
+            margin-bottom: 0.3rem;
         }
 
-        .hero h1 .accent {
-            background: linear-gradient(135deg, #8bbce6 0%, #bed9f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 .accent-dot {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8bbce6, #bed9f0);
+            margin-left: 0.1rem;
+            vertical-align: super;
+            font-size: 0.5em;
         }
 
         .hero-sub {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 400;
-            color: rgba(255,255,255,0.7);
-            max-width: 680px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
+            color: rgba(255,255,255,0.6);
+            max-width: 620px;
+            margin: 0.8rem auto 2.2rem;
+            line-height: 1.65;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 2.8rem;
             flex-wrap: wrap;
         }
 
         .hero-stat {
             text-align: center;
+            padding: 0.4rem 0.6rem;
         }
 
         .hero-stat-num {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--white);
+            letter-spacing: -0.02em;
         }
 
         .hero-stat-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.55);
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
             font-weight: 400;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
+            margin-top: 0.1rem;
         }
 
         .hero-stat-dot {
             display: inline-block;
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: var(--blue-light);
-            margin-right: 0.4rem;
+            margin-right: 0.5rem;
             vertical-align: middle;
+            opacity: 0.7;
+        }
+
+        /* ========== HERO → CONTENT 过渡 ========== */
+        .hero-divider {
+            position: relative;
+            z-index: 1;
+            height: 40px;
+            margin-top: -1px;
+            background: linear-gradient(180deg, #0f2b47, var(--blue-mist));
+            clip-path: ellipse(70% 100% at 50% 100%);
         }
 
         /* ========== CONTAINER ========== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem 2rem 3rem;
+        }
+
+        /* ========== 章节分隔装饰 ========== */
+        .section-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 1.5rem 0 0.5rem;
+            opacity: 0.3;
+        }
+        .section-decoration .line {
+            width: 40px;
+            height: 1px;
+            background: var(--blue-light);
+        }
+        .section-decoration .diamond {
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            transform: rotate(45deg);
         }
 
         /* ========== MISSION / MANIFESTO ========== */
         .manifesto {
-            max-width: 900px;
+            max-width: 880px;
             margin: 0 auto 3rem;
             background: var(--white);
             border-radius: var(--radius-md);
             padding: 2.5rem 3rem;
             box-shadow: var(--shadow-card);
             position: relative;
-            border: 1px solid rgba(220,232,245,0.5);
+            border: 1px solid rgba(220,232,245,0.4);
+            transition: box-shadow 0.3s var(--ease-smooth);
+        }
+        .manifesto:hover {
+            box-shadow: 0 8px 24px rgba(22,58,95,0.08);
         }
 
         .manifesto::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 3rem;
-            right: 3rem;
+            left: 2.5rem;
+            right: 2.5rem;
             height: 3px;
             background: linear-gradient(90deg, var(--blue-light), var(--navy), var(--blue-light));
             border-radius: 0 0 3px 3px;
@@ -256,18 +346,18 @@
 
         .manifesto-icon {
             float: left;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--blue);
-            opacity: 0.5;
+            opacity: 0.35;
             margin-right: 1rem;
-            margin-top: 0.2rem;
+            margin-top: 0.15rem;
             line-height: 1;
         }
 
         .manifesto p {
             font-size: 1.05rem;
             color: var(--slate-600);
-            line-height: 1.8;
+            line-height: 1.85;
         }
 
         .manifesto-tag {
@@ -275,11 +365,11 @@
             margin-top: 1.2rem;
             background: var(--blue-ghost);
             color: var(--blue);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
             padding: 0.3rem 1rem;
             border-radius: 30px;
-            border: 1px solid rgba(43,99,144,0.12);
+            border: 1px solid rgba(43,99,144,0.10);
         }
 
         /* ========== CARD GRID ========== */
@@ -328,7 +418,7 @@
             flex-direction: column;
         }
 
-        /* 卡片顶部装饰条 */
+        /* 卡片顶部装饰条（悬停浮现） */
         .card::before {
             content: '';
             position: absolute;
@@ -359,7 +449,7 @@
         }
 
         .card:hover .card-icon {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .card h2 {
@@ -390,12 +480,13 @@
             display: inline-block;
             background: var(--blue-ghost);
             color: var(--blue);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             padding: 0.2rem 0.8rem;
             border-radius: 30px;
             margin-top: 0.6rem;
-            border: 1px solid rgba(43,99,144,0.10);
+            border: 1px solid rgba(43,99,144,0.08);
+            align-self: flex-start;
         }
 
         .card p {
@@ -412,8 +503,13 @@
             border-radius: var(--radius-lg);
             padding: 3rem;
             margin: 3rem 0;
-            border: 1px solid rgba(220,232,245,0.5);
+            border: 1px solid rgba(220,232,245,0.4);
             box-shadow: var(--shadow-card);
+            transition: box-shadow 0.3s var(--ease-smooth);
+            position: relative;
+        }
+        .fusion-section:hover {
+            box-shadow: 0 8px 28px rgba(22,58,95,0.08);
         }
 
         .fusion-section h3 {
@@ -422,7 +518,7 @@
             color: var(--navy);
             text-align: center;
             letter-spacing: -0.03em;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .fusion-section > .sub {
@@ -444,11 +540,25 @@
             border-radius: var(--radius-sm);
             border-left: 4px solid var(--blue-light);
             transition: all 0.25s var(--ease-smooth);
+            position: relative;
         }
 
         .fusion-item:hover {
             background: var(--blue-pale);
             transform: translateY(-2px);
+        }
+
+        /* 层序号小标记 */
+        .fusion-item .layer-num {
+            position: absolute;
+            top: 0.6rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(22,58,95,0.04);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            pointer-events: none;
         }
 
         .fusion-item h4 {
@@ -464,39 +574,137 @@
             line-height: 1.6;
         }
 
+        .fusion-item .channel-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 0.8rem;
+            padding: 0.2rem 0.7rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(43,99,144,0.06);
+        }
+
         .fusion-formula {
             margin-top: 2rem;
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             border-radius: var(--radius-md);
             padding: 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fusion-formula::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
         }
 
         .fusion-formula code {
             font-family: 'Inter', monospace;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: #b4d4f0;
             letter-spacing: 0.02em;
+            position: relative;
+            z-index: 1;
         }
 
         .fusion-formula p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.65);
             font-size: 0.85rem;
             margin-top: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== THREE-CHANNEL DETAIL ========== */
+        .channel-detail-box {
+            margin-top: 2rem;
+            padding: 1.8rem;
+            background: var(--blue-ghost);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(220,232,245,0.3);
+        }
+
+        .channel-detail-title {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .channel-detail-title i {
+            color: var(--blue);
+        }
+
+        .channel-subgrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .channel-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            padding: 1.2rem;
+            border: 1px solid var(--slate-200);
+            transition: all 0.2s var(--ease-smooth);
+        }
+
+        .channel-card:hover {
+            box-shadow: 0 4px 12px rgba(22,58,95,0.06);
+            transform: translateY(-1px);
+        }
+
+        .channel-card .ch-name {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .channel-card .ch-name .ch-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .channel-card p {
+            font-size: 0.83rem;
+            color: var(--slate-600);
+            line-height: 1.6;
         }
 
         /* ========== TEXTBOOK CTA ========== */
         .cta-section {
-            background: linear-gradient(135deg, var(--blue-ghost) 0%, var(--white) 100%);
+            background: linear-gradient(135deg, var(--white) 0%, var(--blue-ghost) 100%);
             border-radius: var(--radius-lg);
             padding: 3rem;
             margin: 3rem 0;
             text-align: center;
-            border: 1px solid rgba(220,232,245,0.5);
+            border: 1px solid rgba(220,232,245,0.4);
             box-shadow: var(--shadow-card);
             position: relative;
             overflow: hidden;
+            transition: box-shadow 0.3s var(--ease-smooth);
+        }
+        .cta-section:hover {
+            box-shadow: 0 8px 28px rgba(22,58,95,0.08);
         }
 
         .cta-section::before {
@@ -525,7 +733,7 @@
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.7rem;
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: var(--white);
             padding: 0.9rem 2.5rem;
@@ -534,12 +742,12 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s var(--ease-smooth);
-            box-shadow: 0 8px 20px rgba(22,58,95,0.25);
+            box-shadow: 0 8px 20px rgba(22,58,95,0.20);
         }
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(22,58,95,0.35);
+            box-shadow: 0 14px 30px rgba(22,58,95,0.30);
         }
 
         .cta-btn i {
@@ -552,11 +760,23 @@
         /* ========== FOOTER ========== */
         footer {
             background: linear-gradient(135deg, var(--navy) 0%, #0f2b47 100%);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.65);
             text-align: center;
             padding: 3rem 2rem;
             margin-top: 4rem;
             font-size: 0.9rem;
+            position: relative;
+        }
+
+        /* 页脚顶部装饰线 */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
         }
 
         footer .footer-brand {
@@ -576,33 +796,30 @@
         }
 
         footer a {
-            color: rgba(255,255,255,0.75);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            border-bottom: 1px dotted rgba(255,255,255,0.3);
             transition: all 0.2s;
         }
         footer a:hover {
             color: var(--white);
-            border-bottom-color: var(--white);
         }
 
         footer .footer-links a {
-            margin: 0 0.3rem;
-            padding: 0.2rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            border-bottom: none;
             background: rgba(255,255,255,0.04);
             font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.04);
         }
 
         footer .footer-links a:hover {
-            background: rgba(255,255,255,0.10);
-            border-bottom: none;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.10);
         }
 
         footer .footer-meta {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.45);
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
             margin-top: 1rem;
             line-height: 1.8;
         }
@@ -610,20 +827,21 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .fusion-grid { grid-template-columns: 1fr; }
-            .fusion-section div[style*="grid-template-columns:repeat(3"] {
-                grid-template-columns: 1fr !important;
-            }
+            .channel-subgrid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
+            body { background-size: 20px 20px; }
             .container { padding: 1.5rem; }
-            .hero { padding: 3rem 1.5rem 2rem; }
-            .hero h1 { font-size: 2.6rem; }
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero h1 .accent-dot { width: 12px; height: 12px; }
             .hero-sub { font-size: 1rem; }
+            .hero-divider { height: 24px; clip-path: ellipse(100% 100% at 50% 100%); }
             .nav-links { gap: 0.15rem; }
-            .nav-links a { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
-            .logo a { font-size: 1.3rem; padding: 0.2rem 0.8rem; }
-            .card-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .nav-links a { font-size: 0.78rem; padding: 0.3rem 0.6rem; }
+            .logo a { font-size: 1.3rem; padding: 0.25rem 0.8rem; }
+            .card-grid { gap: 1.2rem; }
             .manifesto { padding: 1.8rem 1.5rem; }
             .fusion-section { padding: 2rem 1.5rem; }
             .cta-section { padding: 2rem 1.5rem; }
@@ -632,18 +850,25 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
             nav { padding: 0 1rem; }
             .nav-container { height: 3.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.2rem 0.45rem; }
         }
 
         /* ========== ANIMATIONS ========== */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-content { animation: fadeUp 0.8s var(--ease-smooth) both; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-content { animation: fadeUp 0.9s var(--ease-smooth) both; }
+        .hero-divider { animation: fadeIn 0.6s var(--ease-smooth) 0.15s both; }
         .manifesto { animation: fadeUp 0.6s var(--ease-smooth) 0.2s both; }
         .card-grid { animation: fadeUp 0.6s var(--ease-smooth) 0.3s both; }
         .fusion-section { animation: fadeUp 0.6s var(--ease-smooth) 0.4s both; }
@@ -651,6 +876,9 @@
     </style>
 </head>
 <body>
+    <!-- HERO 左下额外光晕 -->
+    <div class="hero-glow-left"></div>
+
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -672,8 +900,8 @@
     <section class="hero">
         <div class="hero-content">
             <span class="hero-label"><i class="fas fa-cube" style="margin-right:0.4rem;"></i> 功能层工程框架</span>
-            <h1>INTRE<span class="accent">.</span></h1>
-            <p class="hero-sub">连接现象与神经的形式化工具 — 让心理状态可描述、可仿真、可干预。</p>
+            <h1>INTRE<span class="accent-dot"></span></h1>
+            <p class="hero-sub">连接现象与神经的形式化工具 —<br>让心理状态可描述、可仿真、可干预。</p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-num"><span class="hero-stat-dot"></span>三通道</div>
@@ -695,7 +923,17 @@
         </div>
     </section>
 
+    <!-- HERO → 内容过渡 -->
+    <div class="hero-divider"></div>
+
     <div class="container">
+        <!-- 装饰分隔 -->
+        <div class="section-decoration">
+            <span class="line"></span>
+            <span class="diamond"></span>
+            <span class="line"></span>
+        </div>
+
         <!-- MANIFESTO -->
         <div class="manifesto">
             <div class="manifesto-icon"><i class="fas fa-quote-left"></i></div>
@@ -703,6 +941,13 @@
             <div class="manifesto-tag">
                 <i class="fas fa-tag" style="margin-right:0.3rem;"></i> v2.0 · 三通道融合架构 · 三篇 Zenodo 预印本
             </div>
+        </div>
+
+        <!-- 装饰分隔 -->
+        <div class="section-decoration">
+            <span class="line"></span>
+            <span class="diamond"></span>
+            <span class="line"></span>
         </div>
 
         <!-- 核心模块卡片 -->
@@ -757,48 +1002,39 @@
 
             <div class="fusion-grid">
                 <div class="fusion-item" style="border-left-color: var(--blue-light);">
+                    <span class="layer-num">01</span>
                     <h4>现象层</h4>
                     <p>主观体验、行为表现、临床症状。可直接观测的心理现象，也是干预的最终目标层。</p>
                 </div>
                 <div class="fusion-item" style="border-left-color: var(--navy);">
-                    <h4>功能层 <span style="background: var(--navy); color: white; padding:0.15rem 0.6rem; border-radius:20px; font-size:0.75rem; margin-left:0.5rem;">工程核心</span></h4>
+                    <span class="layer-num">02</span>
+                    <h4>功能层 <span style="background: var(--navy); color: white; padding:0.15rem 0.6rem; border-radius:20px; font-size:0.72rem; margin-left:0.5rem;">工程核心</span></h4>
                     <p><strong>M‑R‑D‑S</strong> 内感架构 + <strong>S‑P</strong> 外感架构。心理状态在此层被形式化为 42 维状态向量，INTRE 的运算中心。</p>
                 </div>
                 <div class="fusion-item" style="border-left-color: var(--blue-light);">
+                    <span class="layer-num">03</span>
                     <h4>神经层</h4>
                     <p>生物实现，包括神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，但通过 UNIS 与神经科学校准。</p>
                 </div>
             </div>
 
             <!-- 三通道融合说明 -->
-            <div style="margin-top:2rem; padding:1.8rem; background:var(--blue-ghost); border-radius:var(--radius-sm);">
-                <p style="font-weight:600; color:var(--navy); font-size:1rem; margin-bottom:1rem;">
-                    <i class="fas fa-code-branch" style="margin-right:0.5rem; color:var(--blue);"></i>三通道融合 — 三条输入管线，汇聚于功能层 PSE
-                </p>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem;">
-                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
-                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
-                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--blue-light); margin-right:0.4rem;"></span>行为通道
-                        </div>
-                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
-                            现象层的行为/临床测量 → <strong>PSE-M</strong> 处理 → 功能层行为似然 p(y<sub>b</sub>|Ψ)
-                        </p>
+            <div class="channel-detail-box">
+                <div class="channel-detail-title">
+                    <i class="fas fa-code-branch"></i> 三通道融合 — 三条输入管线，汇聚于功能层 PSE
+                </div>
+                <div class="channel-subgrid">
+                    <div class="channel-card">
+                        <div class="ch-name"><span class="ch-dot" style="background:var(--blue-light);"></span>行为通道</div>
+                        <p>现象层的行为/临床测量 → <strong>PSE-M</strong> 处理 → 功能层行为似然 p(y<sub>b</sub>|Ψ)</p>
                     </div>
-                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
-                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
-                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--navy); margin-right:0.4rem;"></span>语义通道
-                        </div>
-                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
-                            现象层的自然语言 → <strong>UPLS PSL</strong> 编译 → 功能层语义似然 p(y<sub>s</sub>|Ψ)
-                        </p>
+                    <div class="channel-card">
+                        <div class="ch-name"><span class="ch-dot" style="background:var(--navy);"></span>语义通道</div>
+                        <p>现象层的自然语言 → <strong>UPLS PSL</strong> 编译 → 功能层语义似然 p(y<sub>s</sub>|Ψ)</p>
                     </div>
-                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
-                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
-                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--blue-light); margin-right:0.4rem;"></span>神经通道
-                        </div>
-                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
-                            神经层的神经信号 → <strong>UNIS</strong> 六层架构 → 功能层神经似然 p(y<sub>n</sub>|Ψ)
-                        </p>
+                    <div class="channel-card">
+                        <div class="ch-name"><span class="ch-dot" style="background:var(--blue-light);"></span>神经通道</div>
+                        <p>神经层的神经信号 → <strong>UNIS</strong> 六层架构 → 功能层神经似然 p(y<sub>n</sub>|Ψ)</p>
                     </div>
                 </div>
             </div>
@@ -821,7 +1057,7 @@
 
     <footer>
         <div class="footer-brand">INTRE</div>
-        <p style="font-size:0.9rem;">心理学功能层工程框架 · 开放知识入口</p>
+        <p style="font-size:0.88rem;">心理学功能层工程框架 · 开放知识入口</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank"><i class="fas fa-file-alt"></i> PSE</a>

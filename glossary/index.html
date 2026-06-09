@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRE · 术语表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#f4f7fc; color:#1e293b; line-height:1.6; }
+        .container { max-width:1400px; margin:0 auto; padding:2rem; }
+        nav { background:#163A5F; color:white; padding:.8rem 2rem; }
+        .nav-container { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+        .logo a { color:white; text-decoration:none; font-size:1.8rem; font-weight:700; }
+        .nav-links { display:flex; gap:2rem; flex-wrap:wrap; }
+        .nav-links a { color:rgba(255,255,255,.85); text-decoration:none; font-weight:500; font-size:1rem; padding:.3rem 0; border-bottom:2px solid transparent; transition:color .2s; }
+        .nav-links a:hover, .nav-links a.active { color:white; border-bottom-color:white; }
+        h1 { font-size:2.8rem; font-weight:700; color:#163A5F; margin:1rem 0 .5rem; }
+        .subhead { font-size:1.2rem; color:#2b6390; margin-bottom:2rem; }
+        .section-label { font-size:1.6rem; font-weight:600; color:#163A5F; margin:2.5rem 0 1rem; border-left:6px solid #2b6390; padding-left:1rem; display:flex; align-items:center; gap:.8rem; }
+        .info-box { background:#e2ecf9; border-radius:1rem; padding:1.5rem; border-left:4px solid #163A5F; margin:1.5rem 0; }
+        footer { background:#163A5F; color:rgba(255,255,255,.8); text-align:center; padding:2rem; margin-top:3rem; font-size:.95rem; }
+        footer a { color:white; text-decoration:none; border-bottom:1px dotted rgba(255,255,255,.5); }
+        footer a:hover { border-bottom-color:white; }
+        .footer-links { margin:1rem 0; }
+        .footer-links a { margin:0 .6rem; }
+        @media (max-width:768px) { .container{padding:1.5rem} h1{font-size:2.2rem} }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="/INTRE/">INTRE</a></div>
+            <div class="nav-links">
+                <a href="/INTRE/">首页</a>
+                <a href="/INTRE/upls/">UPLS</a>
+                <a href="/INTRE/pse/">PSE</a>
+                <a href="/INTRE/unis/">UNIS</a>
+                <a href="/INTRE/rever/">REVER</a>
+                <a href="/INTRE/textbook/">📖教材</a>
+                <a href="/INTRE/glossary/" class="active">术语表</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>INTRE 术语表</h1>
+        <div class="subhead">核心术语速查 · 完整版含约 500 条中英对照条目</div>
+
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i> 本页面为精简版，仅列核心架构术语。完整术语对照表（含 IET v3.0 证据等级标注和交叉引用）位于私库 <code>06-S-02-INTRE-术语对照表.md</code>。
+        </div>
+
+        <div class="section-label"><i class="fas fa-cubes"></i> 架构术语</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem;">
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>M-R-D-S</strong> — 心理内感架构：M(模块)·R(资源)·D(调度)·S(结构)</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>S-P</strong> — 外感架构：S(环境来源六层)·P(影响模式+/-)</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>G-M-A-R</strong> — 原子操作语法：GATE/MODULATE/ALIGN/RELINK</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>42维状态向量</strong> — Ψ(t): 6模块×3维度(R/D/S)=42维</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>三层架构</strong> — 现象层/功能层/神经层，功能层为工程核心</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>三通道融合</strong> — 行为似然·语义似然·神经似然 = 贝叶斯融合</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>N-S-R</strong> — 元公理：Need(需求)·Structure(结构)·Realization(实现)</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>M1-M6</strong> — 六模块：M1具身/M2认知/M3意志/M4情绪/M5言语/M6行为</div>
+        </div>
+
+        <div class="section-label"><i class="fas fa-microchip"></i> PSE 术语</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem;">
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MCT</strong> — 心智编译理论：观测→状态向量</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MTT</strong> — 心智拓扑理论：网络结构与级联</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MKT</strong> — 心智动力理论：资源演化方程</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MDT</strong> — 心智调度理论：干预优化决策</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MPT</strong> — 心智塑性理论：结构改变机制</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>MET</strong> — 心智生态理论：环境-系统耦合</div>
+        </div>
+
+        <div class="section-label"><i class="fas fa-language"></i> UPLS 术语</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem;">
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>UPLS</strong> — 统一心理语言系统：形式化元语言</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>PCUI</strong> — 心理概念唯一标识符</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>PSA</strong> — 心理语义网络：概念间关系定义</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>PSL</strong> — 心理专项词汇库：自然语言→PCUI映射</div>
+        </div>
+
+        <div class="section-label"><i class="fas fa-brain"></i> UNIS 术语</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem;">
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>UNIS</strong> — 统一神经接口系统：神经通道基础设施</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>RTE</strong> — 实时引擎：L6推理+校准双模块</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>NFI</strong> — 神经特征标识符：标准化特征编码</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>NFM</strong> — 神经-功能映射：特征→似然模型库</div>
+        </div>
+
+        <div class="section-label"><i class="fas fa-heart"></i> REVER 术语</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem;">
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>REVER</strong> — 关系型AI伦理引擎：结构化伦理门控</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>Dₛ</strong> — 依赖分数：量化用户依恋程度</div>
+            <div class="info-box" style="margin:0;font-size:.9rem;"><strong>四道门控</strong> — 输入→诊断→依赖→输出四重伦理检查</div>
+        </div>
+    </div>
+    <footer>
+        <p>INTRE 心理学功能层工程框架 · 开放知识入口</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a> · 
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a> · 
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a> · 
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+        </div>
+        <p style="font-size:.8rem;margin-top:1rem;">版本 v2.0 (2026-06-09) · CC0 1.0</p>
+    </footer>
+</body>
+</html>

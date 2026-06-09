@@ -459,7 +459,7 @@ print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 list.querySelectorAll('.toc-item').forEach(function(el) { el.classList.remove('active'); });
-                var active = list.querySelector('.toc-item[href="#" + entry.target.id]');
+                var active = list.querySelector('.toc-item[href="#' + entry.target.id + '"]');
                 if (active) active.classList.add('active');
             }
         });

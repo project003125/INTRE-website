@@ -35,17 +35,19 @@
         .grid-6 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin:2rem 0; }
         @media (max-width:768px) { .grid-2,.grid-3,.grid-6{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:2.4rem} .nav-links{gap:0.5rem} .nav-links a{font-size:0.85rem} }
         @media (max-width:480px) { .nav-links a{font-size:0.75rem;padding:0.2rem 0} }
-        .info-box { background:#e2ecf9; border-radius:1rem; padding:1.5rem; border-left:4px solid #1F4880; margin:1.5rem 0; }
+        .info-box { background:#F8F9FA; border-radius:0.75rem; padding:1.5rem; border:0.5px solid #F0F0F2; margin:1.5rem 0; }
         .code-block { background:#1e293b; color:#e2e8f0; padding:1rem 1.5rem; border-radius:.8rem; font-family:'Courier New',monospace; font-size:.9rem; overflow-x:auto; margin:1rem 0; }
         .badge { background:#3B6FB5; color:white; font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:20px; margin-left:.5rem; display:inline-block; }
         .layer-card { background:white; border-radius:0.75rem; border:0.5px solid #D1D5DB; padding:1.5rem; }
         .layer-card h4 { color:#1F4880; font-size:1.2rem; }
         .layer-card .layer-num { display:inline-block; background:#1F4880; color:white; padding:.25rem .7rem; border-radius:30px; font-size:.8rem; font-weight:600; margin-bottom:.5rem; }
         footer { background:#1F4880; color:rgba(255,255,255,.65); text-align:center; padding:1.8rem 1.5rem; margin-top:3rem; font-size:.82rem; }
-        footer a { color:rgba(255,255,255,.85); text-decoration:none; }
+        footer .footer-brand { font-size:1.2rem; font-weight:700; color:white; letter-spacing:-0.02em; margin-bottom:0.4rem; }
+        footer a { color:rgba(255,255,255,.7); text-decoration:none; transition:all .2s; }
         footer a:hover { color:white; }
-        .footer-links { margin:1rem 0; }
-        .footer-links a { margin:0 .6rem; }
+        .footer-links { margin:1rem 0; display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap; }
+        .footer-links a { padding:0.3rem 0.8rem; border-radius:20px; background:rgba(255,255,255,.04); font-size:.85rem; border:1px solid rgba(255,255,255,.04); }
+        .footer-links a:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.10); }
     </style>
 </head>
 <body>
@@ -183,14 +185,15 @@
     </div>
 
     <footer>
-        <p>INTRE 心理学功能层工程框架 · 开放知识入口</p>
+        <div class="footer-brand">INTRE</div>
+        <p style="font-size:0.88rem;">心理学功能层工程框架 · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank"><i class="fas fa-file-alt"></i> PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank"><i class="fas fa-file-alt"></i> UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank"><i class="fas fa-file-alt"></i> REVER</a>
         </div>
-        <p style="font-size:.8rem;margin-top:1rem;">版本 v2.0 (2026-06-09) · CC0 1.0 · 保留部分权利</p>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.4); margin-top:1rem;">版本 v2.0 (2026-06-09) · CC0 1.0 · 保留部分权利</div>
     </footer>
 </body>
 </html>

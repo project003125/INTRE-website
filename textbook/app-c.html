@@ -492,7 +492,7 @@ t, states = run_intervention_simulation(intervention, params, t_max=72)
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 list.querySelectorAll('.toc-item').forEach(function(el) { el.classList.remove('active'); });
-                var active = list.querySelector('.toc-item[href="#" + entry.target.id]');
+                var active = list.querySelector('.toc-item[href="#' + entry.target.id + '"]');
                 if (active) active.classList.add('active');
             }
         });

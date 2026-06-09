@@ -161,7 +161,7 @@
         .term-item {
             padding: 0.7rem 0.9rem;
             border-radius: 6px;
-            border: 1px solid var(--border-light);
+            border: 0.5px solid var(--border-light);
             transition: background 0.15s ease;
             font-size: 0.9rem;
             line-height: 1.6;
@@ -208,11 +208,12 @@
             font-size: 0.82rem;
         }
 
-        footer a { color: rgba(255,255,255,0.8); }
+        footer .footer-brand { font-size: 1.2rem; font-weight: 700; color: white; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.2s; }
         footer a:hover { color: white; }
-
-        .footer-links { margin: 0.8rem 0; }
-        .footer-links a { margin: 0 0.4rem; }
+        .footer-links { margin: 0.8rem 0; display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+        .footer-links a { padding: 0.3rem 0.8rem; border-radius: 20px; background: rgba(255,255,255,0.04); font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.04); }
+        .footer-links a:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.10); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -307,14 +308,15 @@
     </div>
 
     <footer>
-        <p>INTRE 心理学功能层工程框架 · 开放知识入口</p>
+        <div class="footer-brand">INTRE</div>
+        <p style="font-size:0.88rem;">心理学功能层工程框架 · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a> · 
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank"><i class="fas fa-file-alt"></i> PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank"><i class="fas fa-file-alt"></i> UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank"><i class="fas fa-file-alt"></i> REVER</a>
         </div>
-        <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">版本 v2.0 (2026-06-09) · CC0 1.0</p>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.4); margin-top:1rem;">版本 v2.0 (2026-06-09) · CC0 1.0</div>
     </footer>
 </body>
 </html>

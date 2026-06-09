@@ -516,7 +516,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 list.querySelectorAll('.toc-item').forEach(function(el) { el.classList.remove('active'); });
-                var active = list.querySelector('.toc-item[href="#" + entry.target.id]');
+                var active = list.querySelector('.toc-item[href="#' + entry.target.id + '"]');
                 if (active) active.classList.add('active');
             }
         });

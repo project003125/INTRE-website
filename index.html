@@ -621,6 +621,9 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .fusion-grid { grid-template-columns: 1fr; }
+            .fusion-section div[style*="grid-template-columns:repeat(3"] {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -761,23 +764,53 @@
         <!-- 三层架构 + 三通道融合 -->
         <div class="fusion-section">
             <h3>三层架构 · 三通道融合</h3>
-            <p class="sub">从现象到功能层再到神经层，三通道贝叶斯融合驱动</p>
+            <p class="sub">本体论层级：现象层 → 功能层 → 神经层</p>
 
             <div class="fusion-grid">
                 <div class="fusion-item" style="border-left-color: var(--blue-light);">
                     <h4>现象层</h4>
                     <p>主观体验、行为表现、临床症状。可直接观测的心理现象，也是干预的最终目标层。</p>
-                    <span class="channel-tag">→ 行为通道：PSE-M 测量层</span>
                 </div>
                 <div class="fusion-item" style="border-left-color: var(--navy);">
                     <h4>功能层 <span style="background: var(--navy); color: white; padding:0.15rem 0.6rem; border-radius:20px; font-size:0.75rem; margin-left:0.5rem;">工程核心</span></h4>
-                    <p><strong>M‑R‑D‑S</strong> 内感架构 + <strong>S‑P</strong> 外感架构。心理状态在此层被形式化为 42 维状态向量。</p>
-                    <span class="channel-tag">→ 语义通道：UPLS PSL 编译管线</span>
+                    <p><strong>M‑R‑D‑S</strong> 内感架构 + <strong>S‑P</strong> 外感架构。心理状态在此层被形式化为 42 维状态向量，INTRE 的运算中心。</p>
                 </div>
                 <div class="fusion-item" style="border-left-color: var(--blue-light);">
                     <h4>神经层</h4>
                     <p>生物实现，包括神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，但通过 UNIS 与神经科学校准。</p>
-                    <span class="channel-tag">→ 神经通道：UNIS 六层架构</span>
+                </div>
+            </div>
+
+            <!-- 三通道融合说明 -->
+            <div style="margin-top:2rem; padding:1.8rem; background:var(--blue-ghost); border-radius:var(--radius-sm);">
+                <p style="font-weight:600; color:var(--navy); font-size:1rem; margin-bottom:1rem;">
+                    <i class="fas fa-code-branch" style="margin-right:0.5rem; color:var(--blue);"></i>三通道融合 — 三条输入管线，汇聚于功能层 PSE
+                </p>
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem;">
+                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
+                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
+                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--blue-light); margin-right:0.4rem;"></span>行为通道
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
+                            现象层的行为/临床测量 → <strong>PSE-M</strong> 处理 → 功能层行为似然 p(y<sub>b</sub>|Ψ)
+                        </p>
+                    </div>
+                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
+                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
+                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--navy); margin-right:0.4rem;"></span>语义通道
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
+                            现象层的自然语言 → <strong>UPLS PSL</strong> 编译 → 功能层语义似然 p(y<sub>s</sub>|Ψ)
+                        </p>
+                    </div>
+                    <div style="background:white; border-radius:0.75rem; padding:1.2rem; border:1px solid var(--slate-200);">
+                        <div style="font-weight:600; color:var(--navy); font-size:0.9rem; margin-bottom:0.4rem;">
+                            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--blue-light); margin-right:0.4rem;"></span>神经通道
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--slate-600); line-height:1.6;">
+                            神经层的神经信号 → <strong>UNIS</strong> 六层架构 → 功能层神经似然 p(y<sub>n</sub>|Ψ)
+                        </p>
+                    </div>
                 </div>
             </div>
 

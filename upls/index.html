@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,6 +200,12 @@
             .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
+            .nav-links { gap: 0.5rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .container { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-links a { font-size: 0.75rem; padding: 0.2rem 0; }
         }
 
         .info-box {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -207,6 +207,12 @@
             .grid-2, .grid-3, .grid-4 {
                 grid-template-columns: 1fr;
             }
+            .nav-links { gap: 0.5rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .container { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-links a { font-size: 0.75rem; padding: 0.2rem 0; }
         }
 
         .info-box {
@@ -420,12 +426,12 @@
             </div>
         </div>
 
-        <!-- 四、王梅案例（PSE 应用示范） -->
-        <div class="section-label"><i class="fas fa-user-check"></i> 四、案例：王梅 · 失眠与职业倦怠</div>
+        <!-- 四、案例（PSE 应用示范） -->
+        <div class="section-label"><i class="fas fa-user-check"></i> 四、案例：失眠与职业倦怠</div>
 
         <div class="case-study">
             <h3>背景</h3>
-            <p>王梅，34岁，互联网项目经理。主诉：入睡困难（平均入睡时间>90分钟），白天精力枯竭，工作动机下降，自我否定加重。持续6个月。</p>
+            <p>来访者，34岁，互联网项目经理。主诉：入睡困难（平均入睡时间>90分钟），白天精力枯竭，工作动机下降，自我否定加重。持续6个月。</p>
 
             <h3>UPLS 状态向量（基线）</h3>
             <div class="table-responsive">
@@ -433,7 +439,7 @@
                     <tr><th>模块</th><th>状态</th></tr>
                     <tr><td>M1-RES-D</td><td>25/100（严重枯竭）</td></tr>
                     <tr><td>M1-RES-B</td><td>40/100（中度耗损）</td></tr>
-                    <tr><td>M2-STR-R</td><td>“我必须完美”，“休息是可耻的”</td></tr>
+                    <tr><td>M2-STR-R</td><td>"我必须完美"，"休息是可耻的"</td></tr>
                     <tr><td>M3-DSP-F</td><td>0.2（目标导向控制弱）</td></tr>
                     <tr><td>M3-DSP-B</td><td>0.9（反刍自动化）</td></tr>
                     <tr><td>M4</td><td>焦虑度 0.8，抑郁度 0.6</td></tr>
@@ -441,7 +447,7 @@
             </table>
 
             <h3>PSE-M 仿真预测</h3>
-            <p>运行 10,000 个虚拟“王梅”个体，参数空间采样自先验分布。结果显示：</p>
+            <p>运行 10,000 个虚拟个体，参数空间采样自先验分布。结果显示：</p>
             <ul style="margin-left: 2rem; margin-bottom: 1rem;">
                 <li>若不干预，6个月内进入严重抑郁状态的概率：78%</li>
                 <li>临界点：RES-D < 20 持续 3 天 → 级联崩溃风险 +300%</li>
@@ -449,7 +455,7 @@
             </ul>
 
             <h3>PSE-C 临床校准</h3>
-            <p>使用王梅的真实 EMA 数据（14天，每天5次）更新后验参数：</p>
+            <p>使用来访者的真实 EMA 数据（14天，每天5次）更新后验参数：</p>
             <div class="code-block">
                 k_recovery (后验) = 0.12 /h [0.08, 0.16]<br>
                 k_consumption (后验) = 0.18 /h [0.14, 0.22]<br>
@@ -462,14 +468,14 @@
                     <thead><tr><th>阶段</th><th>操作</th><th>目标</th><th>预期效果</th></tr></thead>
                     <tbody>
                         <tr><td>第1-2周</td><td>GATE(DSP-B, -) + MODULATE(RES-D, +0.3)</td><td>抑制反刍，补充资源</td><td>RES-D ↑ 35→55</td></tr>
-                        <tr><td>第3-4周</td><td>ALIGN(STR-R, “休息是恢复”)</td><td>修正信念</td><td>自我否定 ↓</td></tr>
-                        <tr><td>第5-8周</td><td>RELINK(STR-C, “工作失败”→“学习机会”)</td><td>重构连接</td><td>心理弹性 ↑</td></tr>
+                        <tr><td>第3-4周</td><td>ALIGN(STR-R, "休息是恢复")</td><td>修正信念</td><td>自我否定 ↓</td></tr>
+                        <tr><td>第5-8周</td><td>RELINK(STR-C, "工作失败"→"学习机会")</td><td>重构连接</td><td>心理弹性 ↑</td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="info-box" style="margin-top: 1rem;">
-                <p><strong>结果</strong>：16周后，王梅 RES-D 恢复至 75，入睡时间 <30分钟，工作投入度回归正常水平。PSE 预测与真实轨迹相关系数 r=0.82。</p>
+                <p><strong>结果</strong>：16周后，来访者 RES-D 恢复至 75，入睡时间 <30分钟，工作投入度回归正常水平。PSE 预测与真实轨迹相关系数 r=0.82。</p>
             </div>
         </div>
 

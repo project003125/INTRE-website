@@ -9,6 +9,12 @@
     --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     --max-width: 740px;
+    
+    /* 兼容变量 — 映射到 brand.css Design Tokens */
+    --text: var(--color-slate-900);
+    --link: var(--color-navy-600);
+    --border: var(--color-slate-200);
+    --bg: var(--color-white);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

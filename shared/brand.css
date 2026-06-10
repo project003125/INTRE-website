@@ -12,7 +12,12 @@
   --color-navy-600: #1F4880;
   --color-navy-500: #2A5DA0;
   --color-navy-400: #3B6FB5;
+  --color-navy-300: #5A8ACC;  /* 新增：用于渐变中间色 */
   --color-navy-50:  #D6E5F3;
+
+  /* 兼容别名 — 用于首页架构图等 */
+  --blue: var(--color-navy-600);
+  --blue-light: var(--color-navy-400);
 
   /* Amber 强调色 — 仅 CTA / 重点标记 */
   --color-amber-900: #78350F;

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=6">
+    <link rel="stylesheet" href="textbook.css?v=7">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
@@ -240,9 +240,38 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
-
 <script>
 (function() {
+    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
+    
+    // === BUILD LEFT SIDEBAR: chapter navigation ===
+    var chapterNav = document.createElement('nav');
+    chapterNav.className = 'toc-sidebar toc-sidebar--left';
+    chapterNav.id = 'chapterNav';
+    var navList = document.createElement('div');
+    navList.className = 'chapter-nav-list';
+    
+    var lastSection = '';
+    chapters.forEach(function(c) {
+        if (c[0] !== lastSection) {
+            lastSection = c[0];
+            var sec = document.createElement('div');
+            sec.className = 'chapter-nav-section';
+            sec.textContent = lastSection;
+            navList.appendChild(sec);
+        }
+        var a = document.createElement('a');
+        a.className = 'chapter-nav-link';
+        if (c[1] + '.html' === currentPage) a.classList.add('active');
+        a.href = c[1] + '.html';
+        a.textContent = c[2];
+        navList.appendChild(a);
+    });
+    chapterNav.appendChild(navList);
+    document.body.insertBefore(chapterNav, document.body.firstChild);
+    
+    // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
@@ -253,19 +282,19 @@
     
     function isDesktop() { return window.innerWidth >= 1400; }
     
-    // Build TOC from H3 headings
-    var headings = document.querySelectorAll('.textbook-content h3');
+    var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
+    var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
         var id = 's' + i;
         h.id = id;
         var link = document.createElement('a');
         link.href = '#' + id;
         link.className = 'toc-item';
+        if (h.tagName === 'H2') { link.classList.add('toc-h2'); }
         link.textContent = h.textContent;
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            // Only close bottom sheet on mobile
             if (!isDesktop()) {
                 sidebar.classList.remove('open');
                 if (overlay) overlay.classList.remove('show');
@@ -281,7 +310,6 @@
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
     
-    // Highlight active section
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -294,7 +322,6 @@
     headings.forEach(function(h) { observer.observe(h); });
 })();
 </script>
-
 
 </body>
 </html>

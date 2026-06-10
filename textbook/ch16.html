@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第16章 共识工程：三阶段知识生产流水线 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第16章 共识工程：三阶段知识生产流水线</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLS三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
 <blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLS的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
@@ -407,13 +409,13 @@
 <tr>
 <td><strong>数值精化</strong></td>
 <td>Type-1自动通道</td>
-<td>均值偏移<1σ，方差变化<30%，样本量≥500</td>
+<td>均值偏移<1\(\sigma\)，方差变化<30%，样本量≥500</td>
 <td>自动化系统</td>
 </tr>
 <tr>
 <td><strong>概念修订</strong></td>
 <td>Type-2评审通道</td>
-<td>概念定义变更、机制描述变更、显著数值偏移(≥1σ)</td>
+<td>概念定义变更、机制描述变更、显著数值偏移(≥1\(\sigma\))</td>
 <td>PCV-P评审委员会</td>
 </tr>
 </tbody>
@@ -433,7 +435,7 @@
 3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -470,7 +472,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -513,7 +515,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -528,7 +530,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -536,8 +538,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -556,5 +558,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

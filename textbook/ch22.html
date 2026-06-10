@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第22章 神经对接：翻译与约束的根本差异 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第22章 神经对接：翻译与约束的根本差异</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解为什么“翻译”策略适用于现象层对接而不适用于神经层对接——多重实现度的层级梯度；(2)掌握以“约束”为主轴的神经层对接方法论逻辑；(3)区分兼容性证据与证伪性判据的区分及其方法论意义；(4)了解UNIS如何将约束原则工程化为可运行的神经输入系统。</p></blockquote>
 <hr class="section-divider">
@@ -106,7 +108,7 @@
 <td>物理学→化学</td>
 <td>极低</td>
 <td>极紧（几乎完全决定）</td>
-<td>产生水只有H₂O一种路径</td>
+<td>产生水只有\(\text{H}_2\text{O}\)一种路径</td>
 </tr>
 <tr>
 <td>化学→生物学</td>
@@ -207,19 +209,19 @@
 </tr>
 <tr>
 <td>模型间低分歧</td>
-<td>两模型差异<1σ</td>
+<td>两模型差异<1\(\sigma\)</td>
 <td>置信度加权平均</td>
 <td>自动（L4内部）</td>
 </tr>
 <tr>
 <td>模型间中度分歧</td>
-<td>差异1-2σ</td>
+<td>差异1-2\(\sigma\)</td>
 <td>加权平均为临时输出，触发独立测试集复检</td>
 <td>仲裁合约调度</td>
 </tr>
 <tr>
 <td>方向相反</td>
-<td>差异>2σ或预测方向相反</td>
+<td>差异>2\(\sigma\)或预测方向相反</td>
 <td>不融合，输出冲突信号供PSE动力学分析</td>
 <td>仲裁合约记录，社区评审</td>
 </tr>
@@ -286,7 +288,7 @@
 4. UNIS的L5将“生理硬约束”和“统计规律约束”分开处理。这种区分的临床意义是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -323,7 +325,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -366,7 +368,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -381,7 +383,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -389,8 +391,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -409,5 +411,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第9章 测量方法：ABC分类与桥接校准 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第9章 测量方法：ABC分类与桥接校准</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)阐述功能层测量的三条基本原则与三个测量通道；(2)按ABC三类区分42个子单元的测量成熟度；(3)描述EMA和数字表型在数据采集中的应用；(4)理解UNIS神经通道中NFI到功能似然的映射逻辑；(5)理解收敛效度/区分效度/三通道验证的评估策略；(6)掌握桥接-校准-原生三阶段精度优化路径。</p></blockquote>
 <hr class="section-divider">
@@ -83,24 +85,21 @@
 <td><strong>行为通道</strong></td>
 <td>量表、行为任务、EMA、数字表型</td>
 <td>UBMS（L1–L3）</td>
-<td>行为似然 p(y_b \</td>
-<td>Ψ_t)</td>
+<td>行为似然 \(p(y_b \mid \Psi_t)\)</td>
 <td>秒至天</td>
 </tr>
 <tr>
 <td><strong>语义通道</strong></td>
 <td>自然语言叙述、临床访谈</td>
 <td>UPLS / PSL</td>
-<td>语义似然 p(y_s \</td>
-<td>Ψ_t)</td>
+<td>语义似然 \(p(y_s \mid \Psi_t)\)</td>
 <td>分钟至小时</td>
 </tr>
 <tr>
 <td><strong>神经通道</strong></td>
 <td>EEG、fNIRS、PPG、HRV等</td>
 <td>UNIS</td>
-<td>神经似然 p(y_n \</td>
-<td>Ψ_t)</td>
+<td>神经似然 \(p(y_n \mid \Psi_t)\)</td>
 <td>毫秒至秒</td>
 </tr>
 </tbody>
@@ -378,8 +377,7 @@
 <tr>
 <td>L4 NFM</td>
 <td>存储NFI→功能状态似然的预测模型</td>
-<td>p(y_n \</td>
-<td>Ψ_t) 神经似然</td>
+<td>\(p(y_n \mid \Psi_t)\) 神经似然</td>
 </tr>
 <tr>
 <td>L5 NPL</td>
@@ -437,7 +435,7 @@
 <p><strong>神经似然的注入：桥接-校准路径的扩展</strong>。在§9.5描述的桥接-校准三阶段路径中，UNIS神经通道在以下环节注入：</p>
 <ol>
 <li><strong>桥接期</strong>：NFM中的模型先验来自文献元分析和跨被试群体校准——这些模型构成了"群体级神经-功能映射先验"，与生态位库中的行为先验并行存储</li>
-<li><strong>校准期</strong>：当个体神经数据到达时，RTE将NFI特征值输入NFM模型，输出神经似然 p(y_n \| Ψ_t)，以独立似然项的形式参与PSE-C的贝叶斯更新</li>
+<li><strong>校准期</strong>：当个体神经数据到达时，RTE将NFI特征值输入NFM模型，输出神经似然 \(p(y_n \mid \Psi_t)\)，以独立似然项的形式参与PSE-C的贝叶斯更新</li>
 <li><strong>原生期</strong>：RTE-Cal通过 <code>/calibration_feedback</code> 协议接收PSE的状态估计残差，对NFM映射模型进行个体化微调</li>
 </ol>
 <p><strong>通道分歧的测量学意义</strong>。当行为、语义和神经三个通道对同一子单元的状态估计出现系统性分歧时，这不仅是噪声——它是诊断信号：</p>
@@ -467,12 +465,12 @@
 </table></div>
 <p>UNIS通道使功能层测量从双模态（行为+自陈）升级为三模态，显著提升了逆问题求解的可辨识性和通道分歧的诊断价值。它不是变量范式中简单的"生物标志物"思路——UNIS不声称某个NFI是某个功能状态的"生物指标"。它只提供一个经过校准的、带有不确定性量化的概率映射，然后由PSE在一个完整的系统动力学模型中进行三通道贝叶斯融合。神经信号只是三个视角之一，不是"更真实的那个"。</p>
 <hr class="section-divider">
-<p><strong>本章小结</strong>：功能层测量遵循三条基本原则：功能定义优先于测量、多模态融合优于单指标崇拜、测量成熟度分层管理。观测数据来自三个独立通道——行为通道（量表、EMA、数字表型）、语义通道（UPLS/PSL编译）和神经通道（UNIS神经似然）——通过贝叶斯融合联合反演状态后验。基于量化阈值，42个子单元被分为A类（实证锚定，复用旧工具）、B类（整合性，组合测量）、C类（预测性空位，原创开发+过渡性代理）。UNIS通过L3 NFD和L4 NFM将原始神经信号转化为标准化的功能似然 p(y_n | Ψ_t)，并以NFI标识符与ABC分类对应。三通道之间的系统性分歧是重要的临床诊断信号。生态瞬时评估遵循"单维度、高频率、低负担"原则，数字表型映射为候选关联需独立验证。测量信效度通过收敛效度、区分效度（双分离）和三通道验证进行评估。精度通过桥接-校准-原生三阶段逐步提升——UNIS的RTE-Cal在原生期提供个体化神经映射微调。桥接以四层验证将变量范式既有知识压缩为先验分布；冷启动从生态位库匹配开始，通过持续校准实现个体化状态估计。</p>
+<p><strong>本章小结</strong>：功能层测量遵循三条基本原则：功能定义优先于测量、多模态融合优于单指标崇拜、测量成熟度分层管理。观测数据来自三个独立通道——行为通道（量表、EMA、数字表型）、语义通道（UPLS/PSL编译）和神经通道（UNIS神经似然）——通过贝叶斯融合联合反演状态后验。基于量化阈值，42个子单元被分为A类（实证锚定，复用旧工具）、B类（整合性，组合测量）、C类（预测性空位，原创开发+过渡性代理）。UNIS通过L3 NFD和L4 NFM将原始神经信号转化为标准化的功能似然 \(p(y_n \mid \Psi_t)\)，并以NFI标识符与ABC分类对应。三通道之间的系统性分歧是重要的临床诊断信号。生态瞬时评估遵循"单维度、高频率、低负担"原则，数字表型映射为候选关联需独立验证。测量信效度通过收敛效度、区分效度（双分离）和三通道验证进行评估。精度通过桥接-校准-原生三阶段逐步提升——UNIS的RTE-Cal在原生期提供个体化神经映射微调。桥接以四层验证将变量范式既有知识压缩为先验分布；冷启动从生态位库匹配开始，通过持续校准实现个体化状态估计。</p>
 <blockquote><p><strong>关键术语</strong>：A/B/C类测量，软测量，EMA，数字表型，桥接-校准策略，观测函数，三通道验证，UNIS神经似然，NFI，NFM，通道分歧</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ "C类测不了，框架不完整" → ✅ C类预测性子单元是研究议程而非缺陷，主动指向旧范式盲区。
 - ❌ "桥接只是用旧数据填充新框架" → ✅ 桥接通过四层验证将知识系统化组织，而非简单填充。
-- ❌ "神经信号是功能状态的'直接读数'" → ✅ UNIS只提供概率映射 p(y_n | Ψ_t)，需与其他通道融合后由PSE推断状态。神经信号不是更"真实"的那个视角。</p></blockquote>
+- ❌ "神经信号是功能状态的'直接读数'" → ✅ UNIS只提供概率映射 \(p(y_n \mid \Psi_t)\)，需与其他通道融合后由PSE推断状态。神经信号不是更"真实"的那个视角。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 用自己的话解释A类、B类、C类测量的区别，并各举一个例子。
 2. 以M6-RES-D（行为启动能量）为例，设计一个从过渡性代理到原生测量的开发路线图。
@@ -480,7 +478,7 @@
 4. 如果UNIS神经通道对M4-DSP-B的状态估计（高唤醒）与行为通道（量表自评低焦虑）出现系统性分歧，列举三种可能的解释及其对临床决策的不同含义。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -517,7 +515,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -560,7 +558,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -575,7 +573,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -583,8 +581,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -603,5 +601,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

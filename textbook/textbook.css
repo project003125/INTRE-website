@@ -1,31 +1,36 @@
 /* ============================================
-   INTRE 教材样式 v2.1.0
+   INTRE 教材样式 v2.3.1
    继承 brand.css + components.css 的 Design Tokens
    本文件仅包含教材特有样式
    ============================================ */
 
+/* 形式化定义：保留等宽视觉但允许 KaTeX 渲染 */
+em.formal-def {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.9em;
+    background: var(--color-slate-50);
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-sm);
+}
+
 :root {
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     --max-width: 740px;
-    
-    /* 兼容变量 — 映射到 brand.css Design Tokens */
+
+    /* 语义别名 — 教材内部简化引用 */
     --text: var(--color-slate-900);
     --link: var(--color-navy-600);
     --border: var(--color-slate-200);
     --bg: var(--color-white);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Scroll lock: 防止 TOC 面板打开时页面仍可滚动 */
+body.toc-open { overflow: hidden; }
 
 body {
-    font-family: var(--font);
-    background: #ffffff;
-    color: var(--color-slate-900);
+    font-family: var(--font-body), var(--font-chinese);
     line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 /* ========== PAGE HEADER ========== */
@@ -73,20 +78,29 @@ body {
 }
 
 .textbook-content h1.chapter-title {
-    font-size: 1.95rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--text);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
     margin-bottom: 2rem;
-    line-height: 1.25;
+    line-height: 1.1;
+}
+
+/* 中文章节标题不使用负字距 */
+.textbook-content h1.chapter-title:lang(zh) {
+    letter-spacing: 0;
 }
 
 .textbook-content h2 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--text);
     margin: 2.5rem 0 1rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+}
+
+.textbook-content h2:lang(zh) {
+    letter-spacing: 0;
 }
 
 .textbook-content h3 {
@@ -156,12 +170,12 @@ body {
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
     font-size: 0.85em;
-    color: #D6336C;
+    color: var(--color-navy-600);
 }
 
 .textbook-content pre {
-    background: #1E293B;
-    color: #E2E8F0;
+    background: var(--color-slate-900);
+    color: var(--color-slate-200);
     padding: 1.2rem;
     border-radius: 8px;
     overflow-x: auto;
@@ -209,6 +223,18 @@ body {
 }
 
 .textbook-content tr:last-child td { border-bottom: none; }
+
+/* ========== VERSION RECORD TITLE ========== */
+/* 替代 h2，不出现在 JS 生成的 TOC 目录中 */
+.version-record-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-slate-500);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: 0;
+    border-top: var(--stroke-hairline) solid var(--color-slate-200);
+    padding-top: 1.5rem;
+}
 
 /* ========== HORIZONTAL RULES ========== */
 .textbook-content hr.section-divider {
@@ -432,15 +458,16 @@ body {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     width: 100%;
-    max-height: 40vh;
+    max-height: 65vh;
     background: var(--bg);
     border-radius: 14px 14px 0 0;
-    padding: 0.5rem 0 1.2rem;
+    padding: 0.5rem 0 calc(1.2rem + env(safe-area-inset-bottom, 0px));
     z-index: 50;
     transform: translateY(100%);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .toc-sidebar.open { transform: translateY(0); }
 
@@ -458,6 +485,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.1rem 1rem 0.2rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 1;
+    border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+    margin-bottom: 0.3rem;
 }
 
 .toc-sidebar-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
@@ -470,8 +503,8 @@ body {
     cursor: pointer;
     padding: 0.4rem 0.6rem;
     line-height: 1;
-    border-radius: 6px;
-    min-width: 40px; min-height: 40px;
+    border-radius: 8px;
+    min-width: 44px; min-height: 44px;
     display: flex; align-items: center; justify-content: center;
 }
 .toc-close-btn:active { color: var(--text); background: var(--border); }
@@ -494,6 +527,23 @@ body {
 .toc-sidebar-list .toc-item:hover { color: var(--color-navy-600); background: var(--color-slate-100); }
 .toc-sidebar-list .toc-item:active { color: var(--color-navy-600); background: var(--color-slate-100); }
 
+/* H2 items: bold, larger, with left accent */
+.toc-sidebar-list .toc-item.toc-h2 {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text);
+    padding: 0.6rem 1rem;
+    margin-top: 4px;
+    border-left: 3px solid var(--color-navy-600);
+}
+
+/* H3 items: indented, lighter */
+.toc-sidebar-list .toc-item:not(.toc-h2) {
+    padding-left: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--color-slate-500);
+}
+
 .toc-sidebar-list .toc-item.active {
     color: var(--color-navy-600);
     font-weight: 500;
@@ -504,7 +554,7 @@ body {
 .toc-toggle-btn {
     display: none;
     position: fixed;
-    bottom: 1.2rem; right: 1.2rem;
+    bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px)); right: 1.2rem;
     z-index: 55;
     background: var(--color-navy-600);
     color: white;
@@ -514,17 +564,17 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 2px 12px rgba(31,72,128,0.2);
-    transition: box-shadow 0.15s, transform 0.1s, bottom 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--duration-fast), transform 0.1s, bottom 0.25s var(--ease-smooth), background var(--duration-fast);
     align-items: center; gap: 0.3rem;
 }
-.toc-toggle-btn:hover { box-shadow: 0 4px 20px rgba(31,72,128,0.28); }
+.toc-toggle-btn:hover { box-shadow: var(--shadow-sm); }
 .toc-toggle-btn:active { transform: scale(0.97); }
 /* When sidebar is open, move button above the bottom sheet */
 .toc-toggle-btn.is-open {
-    bottom: calc(40vh + 0.5rem);
+    bottom: calc(65vh + 0.5rem);
     background: var(--color-slate-600);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-sm);
 }
 
 .toc-overlay {

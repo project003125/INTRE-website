@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第21章 临床案例：焦虑、创伤与抑郁 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第21章 临床案例：焦虑、创伤与抑郁</h1>
 <blockquote><p><strong>实证声明</strong>：本章所有临床案例中的数值（状态估计值、预测概率、效应量等）均为基于PSE-M蒙特卡罗仿真的模拟演示，用于展示框架的应用逻辑，不代表真实临床数据。具体数值有待实证校准。</p></blockquote>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)追踪广泛性焦虑症从M-R-D-S诊断到G-M-A-R干预规划的完整路径；(2)理解创伤后应激的D-R-S序列优化逻辑；(3)解释抑郁症复发风险的功能层预测模型；(4)对比PSE个体化轨迹预测与传统群体统计模型的差异。</p></blockquote>
@@ -120,21 +122,21 @@
 <tr>
 <td>GATE– M2-DSP-B（正念）</td>
 <td>即时打断反刍</td>
-<td>Δ-8分（24h）</td>
+<td>\(\Delta\)-8分（24h）</td>
 <td>低</td>
 <td>无</td>
 </tr>
 <tr>
 <td>MODULATE+ M1-RES-D（睡眠锚定）</td>
 <td>补充资源</td>
-<td>Δ-12分（1周）</td>
+<td>\(\Delta\)-12分（1周）</td>
 <td>中</td>
 <td>低</td>
 </tr>
 <tr>
 <td>ALIGN M4-STR-R（认知重构）</td>
 <td>修正威胁规则</td>
-<td>Δ-18分（4周）</td>
+<td>\(\Delta\)-18分（4周）</td>
 <td>高</td>
 <td>低</td>
 </tr>
@@ -186,7 +188,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>第二步：D-R-S序列的强制性</strong>。Oᵢ≈35，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
+<p><strong>第二步：D-R-S序列的强制性</strong>。\(O_i \approx 35\)，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
 <p>MDT推荐序列： 1. <strong>稳定化（第1-4周）</strong>：MODULATE+ M4-RES-D（DBT情绪调节技能），MODULATE+ M1-RES-D（睡眠锚定），GATE– M4-DSP-B（接地技术）。目标：M4-RES-D > 40，M3-RES-D > 45。 2. <strong>资源建设（第5-8周）</strong>：通过治疗联盟的矫正性关系输入，初步提升M4-RES-B（S-P微系统提供<code>P-M4-RES-B+</code>）。 3. <strong>创伤加工（第9-16周）</strong>：当M4-RES-D稳定在>50后，启动RELINK M4-STR-C（PE或EMDR）。</p>
 <p><strong>第三步：PSE模拟两种序列的对比</strong>：</p>
 <div class="table-wrap"><table>
@@ -354,14 +356,14 @@
 <blockquote><p><strong>关键术语</strong>：状态演化预测，干预序列优化，复发风险预测，个体化轨迹</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ “PSE案例是事后圆说” → ✅ 案例中的数值为理论占位符，目的是展示语法如何工作而非声称预测精度。
-- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（Oᵢ<40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
+- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（\(O_i\)<40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 以广泛性焦虑为例，画出从主诉到干预规划的完整功能层诊断流程图。
 2. 如果治疗师跳过稳定化直接进行暴露，从功能层视角预测可能的临床后果。
 3. 比较PSE的个体化轨迹预测与传统逻辑回归预测复发在三个维度上的优势与局限。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -398,7 +400,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -441,7 +443,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -456,7 +458,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -464,8 +466,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -484,5 +486,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录B：G-M-A-R速查——按临床问题索引 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">附录B：G-M-A-R速查——按临床问题索引</h1>
 <p>本附录提供G-M-A-R原子操作的临床快速查阅指南。按常见临床问题分类，每个条目包含：问题描述、主导操作、靶点、辅助操作、示例技术及典型应用场景。本手册为临床决策的快速参考，具体干预序列需根据个体状态评估（特别是资源水平）调整。</p>
 <p><strong>符号说明</strong>： - 主导操作：主要作用机制的操作 - 辅助操作：起协同或准备作用的操作 - <code>+</code>：启动/增强；<code>–</code>：抑制/减弱；<code>→</code>：序列顺序</p>
@@ -545,7 +547,7 @@
 </table></div>
 <hr class="section-divider">
 <h2>十、跨诊断核心序列参考</h2>
-<p>以下为基于D-R-S深度序列的标准干预流程模板，适用于低至中度功能状态的患者（Oᵢ < 70）。具体实施需根据个体评估调整。</p>
+<p>以下为基于D-R-S深度序列的标准干预流程模板，适用于低至中度功能状态的患者（\(O_i\) < 70）。具体实施需根据个体评估调整。</p>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>阶段</th>
@@ -591,10 +593,10 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<p><strong>使用说明</strong>： 1. 本手册为临床快速参考，不替代完整的临床评估。干预前应使用M-R-D-S状态向量评估患者当前的功能配置。 2. 对于Oᵢ < 40的低功能患者，必须优先使用稳定化(GATE)和资源补充(MODULATE)操作，禁止跳过D/R层直接进行结构干预。 3. 同一临床问题可能对应多种机制分型（如同为拖延，机制可以是M3-RES-D枯竭、M2-STR-R完美主义、M4-STR-C焦虑回避等）。应通过功能诊断确定主导机制，再选择匹配操作。 4. 本表中的示例技术仅为代表，具体实施应参考各疗法手册并接受适当培训。</p>
+<p><strong>使用说明</strong>： 1. 本手册为临床快速参考，不替代完整的临床评估。干预前应使用M-R-D-S状态向量评估患者当前的功能配置。 2. 对于\(O_i\) < 40的低功能患者，必须优先使用稳定化(GATE)和资源补充(MODULATE)操作，禁止跳过D/R层直接进行结构干预。 3. 同一临床问题可能对应多种机制分型（如同为拖延，机制可以是M3-RES-D枯竭、M2-STR-R完美主义、M4-STR-C焦虑回避等）。应通过功能诊断确定主导机制，再选择匹配操作。 4. 本表中的示例技术仅为代表，具体实施应参考各疗法手册并接受适当培训。</p>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -631,7 +633,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -674,7 +676,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -689,7 +691,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -697,8 +699,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -717,5 +719,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

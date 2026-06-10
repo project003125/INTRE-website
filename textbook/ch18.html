@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第18章 PSE架构：五层引擎与心智六论 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第18章 PSE架构：五层引擎与心智六论</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLS语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIS的神经似然输入。</p></blockquote>
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
@@ -101,7 +103,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道： - <strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMS（统一行为测量系统）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t) - <strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布 - <strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</p>
+<p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道： - <strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMS（统一行为测量系统）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 \(p(y_b \mid \Psi_t)\) - <strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布 - <strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</p>
 <p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIS，实现神经模型的在线个体化微调。</p>
 <p><strong>层间依赖关系</strong>：架构层 → 算法层 → 参数层 → 方法论层 → 协议层（单向）。下层变化影响上层，但上层变化不应波及下层。这实现了<strong>关注点分离</strong>：测量工具改进只影响参数层，不会迫使架构层修改。</p>
 <hr class="section-divider">
@@ -246,7 +248,7 @@
 <tr>
 <td>MDT-1</td>
 <td>D→R→S序列刚性</td>
-<td>在Oᵢ<50的低功能系统中，违反D→R→S序列的干预预期收益为负（预期伤害>预期增益）</td>
+<td>在\(O_i\)<50的低功能系统中，违反D→R→S序列的干预预期收益为负（预期伤害>预期增益）</td>
 <td>X</td>
 </tr>
 <tr>
@@ -322,7 +324,7 @@
 <tr>
 <td>MET-2</td>
 <td>下行耦合优先</td>
-<td>在低功能系统（Oᵢ<50）中，环境→系统的下行耦合效应显著强于系统→环境的上行耦合效应</td>
+<td>在低功能系统（\(O_i\)<50）中，环境→系统的下行耦合效应显著强于系统→环境的上行耦合效应</td>
 <td>X</td>
 </tr>
 <tr>
@@ -362,7 +364,7 @@
 4. PSE的三个输入通道分别由哪些基础设施提供？UNIS在其中扮演什么角色？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -399,7 +401,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -442,7 +444,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -457,7 +459,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -465,8 +467,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -485,5 +487,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

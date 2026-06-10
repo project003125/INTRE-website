@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录G：术语对照——中英文约500条 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">附录G：术语对照——中英文约500条</h1>
 <p>本附录提供INTRE框架及相关领域的核心术语定义与中英文对照。术语选择覆盖：功能层基础概念、M-R-D-S状态语法、G-M-A-R操作语法、UPLS知识基础设施、UNIS神经接口系统、UBMS行为测量系统、PSE仿真引擎、REVER伦理架构、结构范式与变量范式对比、心理学流派相关术语等。每个条目包含：中文术语、英文术语、简要定义。</p>
 <p><strong>使用说明</strong>：术语定义尽可能简洁，详细内容请参考正文相关章节。部分术语有缩略形式，在“英文术语”中一并列出。首次定义章节见正文索引。</p>
@@ -342,7 +344,7 @@
 </tr>
 <tr>
 <td>功能完整性指数</td>
-<td>Functional Integrity Index (Oᵢ)</td>
+<td>Functional Integrity Index (\(O_i\))</td>
 <td>综合评估系统整体健康度</td>
 </tr>
 </tbody>
@@ -520,8 +522,7 @@
 <tr>
 <td><strong>L6 RTE</strong></td>
 <td>Real-time Engine</td>
-<td>实时引擎，输出神经似然p(y_n\</td>
-<td>Ψ_t)并执行个体化贝叶斯校准</td>
+<td>实时引擎，输出神经似然 \(p(y_n \mid \Psi_t)\) 并执行个体化贝叶斯校准</td>
 </tr>
 <tr>
 <td>BIDS</td>
@@ -541,8 +542,7 @@
 <tr>
 <td>神经似然</td>
 <td>Neural Likelihood</td>
-<td>UNIS的标准化输出，p(y_n \</td>
-<td>Ψ_t)，传入PSE用于贝叶斯多模态融合</td>
+<td>UNIS的标准化输出，\(p(y_n \mid \Psi_t)\)，传入PSE用于贝叶斯多模态融合</td>
 </tr>
 <tr>
 <td>仲裁合约</td>
@@ -598,8 +598,7 @@
 <tr>
 <td>行为似然</td>
 <td>Behavioral Likelihood</td>
-<td>UBMS L3的标准化输出 p(y_b \</td>
-<td>Ψ_t)，传入PSE参与三通道贝叶斯融合</td>
+<td>UBMS L3的标准化输出 \(p(y_b \mid \Psi_t)\)，传入PSE参与三通道贝叶斯融合</td>
 </tr>
 </tbody>
 </table></div>
@@ -614,7 +613,7 @@
 <tbody>
 <tr>
 <td>状态向量</td>
-<td>State Vector (Ψ)</td>
+<td>State Vector (\(\Psi\))</td>
 <td>42维M-R-D-S状态表示</td>
 </tr>
 <tr>
@@ -1118,7 +1117,7 @@
 </table></div>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -1155,7 +1154,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -1198,7 +1197,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -1213,7 +1212,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -1221,8 +1220,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -1241,5 +1240,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

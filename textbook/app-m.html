@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录M：数学速成——函数、微分、概率与滤波 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">附录M：数学速成——函数、微分、概率与滤波</h1>
 <blockquote><p><strong>目标读者</strong>：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
 <blockquote><p><strong>学习路线</strong>：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
@@ -147,9 +149,7 @@
 <tr>
 <td><strong>向量的模长（范数）</strong></td>
 <td>向量的长度</td>
-<td>\(\</td>
-<td>\vec{v}\</td>
-<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
+<td>\(\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
 <td>状态向量的“总偏离”程度</td>
 </tr>
 <tr>
@@ -213,7 +213,7 @@
 </tbody>
 </table></div>
 <p><strong>心理学解释</strong>： - <strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验） - <strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性 - <strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</p>
-<p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
+<p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验\(\approx\)68%。这就是<strong>校准</strong>。</p>
 <hr class="section-divider">
 <h2>M.5 状态估计的思想</h2>
 <p><strong>为什么需要</strong>：第20章的粒子滤波是卡尔曼滤波的推广。先理解核心思想。</p>
@@ -457,7 +457,7 @@
 <blockquote><p><strong>学习策略</strong>：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。<strong>目标不是学会数学，而是能读懂PSE的输入输出逻辑</strong>。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -494,7 +494,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -537,7 +537,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -552,7 +552,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -560,8 +560,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -580,5 +580,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第11章 干预序列：DRS深度法则与例外 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,9 +55,9 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">第11章 干预序列：DRS深度法则与例外</h1>
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)解释DRS序列的功能依赖逻辑；(2)区分五个Oᵢ水平对应的序列刚性和允许操作；(3)识别违反序列的四类典型临床风险；(4)列举四种序列例外规则及其适用前提；(5)理解不同操作的效果时间尺度差异及其临床含义。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)解释DRS序列的功能依赖逻辑；(2)区分五个\(O_i\)水平对应的序列刚性和允许操作；(3)识别违反序列的四类典型临床风险；(4)列举四种序列例外规则及其适用前提；(5)理解不同操作的效果时间尺度差异及其临床含义。</p></blockquote>
 <hr class="section-divider">
 <h3>11.1 序列逻辑：资源与调度的功能依赖</h3>
 <p>D-R-S干预深度序列是INTRE框架中从“状态描述”到“干预操作”的关键桥梁。它回答一个根本性的临床问题：当系统处于低功能状态时，干预应该从哪一层开始？</p>
@@ -66,7 +68,7 @@
 <div class="table-wrap"><table>
 <thead><tr>
 <th>系统状态</th>
-<th>功能完整性指数Oᵢ</th>
+<th>功能完整性指数\(O_i\)</th>
 <th>序列刚性</th>
 <th>允许的操作</th>
 </tr></thead>
@@ -103,7 +105,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>功能完整性指数Oᵢ</strong>：一个综合指标（0-100），通过对M-R-D-S状态向量中关键子维度的加权聚合计算。简化版本可聚焦于四个核心指标：M3-RES-D（意志资源）、M4-RES-D（情绪容限）、M4-DSP-B（自动情绪激活强度）、M3-DSP-F（执行控制可用性），取等权平均作为快速筛查。分界点（30、50、70、85）为理论占位符，有待PSE-C校准。</p>
+<p><strong>功能完整性指数\(O_i\)</strong>：一个综合指标（0-100），通过对M-R-D-S状态向量中关键子维度的加权聚合计算。简化版本可聚焦于四个核心指标：M3-RES-D（意志资源）、M4-RES-D（情绪容限）、M4-DSP-B（自动情绪激活强度）、M3-DSP-F（执行控制可用性），取等权平均作为快速筛查。分界点（30、50、70、85）为理论占位符，有待PSE-C校准。</p>
 <hr class="section-divider">
 <h3>11.2 三阶段划分：GATE→MODULATE→ALIGN/RELINK</h3>
 <p>标准D-R-S序列分为三个阶段，每个阶段有特定的操作重点、临床目标和退出条件。</p>
@@ -170,11 +172,11 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>压力测试验证</strong>：对EMDR、成瘾刺激控制、正念减压、行为激活等表面违反D→R→S序列的有效方案进行了深度功能分析。所有方案均被证明与序列逻辑兼容——或通过隐式资源奠基（EMDR的准备阶段）、或适用于高功能系统的并行边界、或以D层为起点的合理序列。<strong>未发现任何公认有效方案在低功能系统(Oᵢ < 50)中成功跳过D/R层直接进行S层深度重构且效果优于序列方案</strong>。</p>
+<p><strong>压力测试验证</strong>：对EMDR、成瘾刺激控制、正念减压、行为激活等表面违反D→R→S序列的有效方案进行了深度功能分析。所有方案均被证明与序列逻辑兼容——或通过隐式资源奠基（EMDR的准备阶段）、或适用于高功能系统的并行边界、或以D层为起点的合理序列。<strong>未发现任何公认有效方案在低功能系统(\(O_i < 50\))中成功跳过D/R层直接进行S层深度重构且效果优于序列方案</strong>。</p>
 <blockquote><p><strong>声明</strong>：以下例外规则基于理论推导，尚未经大规模实证验证，临床应用需谨慎评估。</p></blockquote>
 <p><strong>例外规则</strong>。序列规则不是绝对的。以下情况可作为例外：</p>
 <ol>
-<li><strong>高功能系统中的并行操作</strong>。当Oᵢ > 70时，系统有足够的冗余资源来同时处理多层操作。并行操作不违反序列精神，因为它不是“跳过”，而是在资源充足的条件下的效率优化。</li>
+<li><strong>高功能系统中的并行操作</strong>。当 \(O_i > 70\) 时，系统有足够的冗余资源来同时处理多层操作。并行操作不违反序列精神，因为它不是“跳过”，而是在资源充足的条件下的效率优化。</li>
 </ol>
 <ol>
 <li><strong>以D层撬动R层的正反馈策略</strong>。行为激活(BA)是一个典型案例：当M3-RES-D极低时，BA不直接补充资源，而是先GATE+极低成本的简单行为，行为完成后带来的正强化触发积极情绪激活，进而通过正向循环提升资源。有效前提：(1)所选行为在当前资源水平下可执行；(2)行为后能快速产生正反馈。<strong>风险条件</strong>：如果患者在行为后没有体验到任何正强化（如严重快感缺乏），行为激活可能无效。</li>
@@ -185,7 +187,7 @@
 <ol>
 <li><strong>在准备充分的结构性干预中的短时资源透支</strong>。某些深度治疗（如高剂量暴露）可能在短时间内要求患者消耗大量RES-D以换取长期的结构性改变。这类操作必须在严格的安全条件下进行，有预先的资源准备，并预设紧急终止条件。</li>
 </ol>
-<p><strong>临床决策树</strong>： - 步骤0：是否存在不可逆的损害风险？若是，优先启动安全计划 - 步骤1：评估Oᵢ。若Oᵢ < 50，严格执行D→R→S - 步骤2：若Oᵢ ≥ 50，评估特定资源水平。若M3-RES-D < 35或M4-RES-D < 30，仍应优先R层 - 步骤3：若资源充足，评估风险-收益比 - 步骤4：记录例外理由和退出条件</p>
+<p><strong>临床决策树</strong>： - 步骤0：是否存在不可逆的损害风险？若是，优先启动安全计划 - 步骤1：评估\(O_i\)。若 \(O_i < 50\)，严格执行D→R→S - 步骤2：若 \(O_i \geq 50\)，评估特定资源水平。若M3-RES-D < 35或M4-RES-D < 30，仍应优先R层 - 步骤3：若资源充足，评估风险-收益比 - 步骤4：记录例外理由和退出条件</p>
 <hr class="section-divider">
 <h3>11.4 时序预测：从秒到年的效果尺度匹配</h3>
 <p>D-R-S序列不仅规定了操作的顺序，还隐含了不同操作效果的时间动力学。</p>
@@ -239,18 +241,18 @@
 <p><strong>D-R-S序列对复发的预测</strong>。违反序列的干预不仅即时效果差，还可能导致更高的复发率。理论预测：在低功能系统中，跳过R层直接进行S层干预，虽然可能在短期内观察到一定效果，但这种效果是脆弱的——因为缺乏资源支持的S层改变没有被稳固的基底支撑，当遇到生活应激时，系统会快速回弹到旧的结构状态。</p>
 <p><strong>时序分层的临床工具价值</strong>：治疗师可以利用时序分层来设定患者期望、判断是否需要调整策略、以及在维持期安排强化会话。</p>
 <hr class="section-divider">
-<p><strong>本章小结</strong>：D-R-S干预深度序列是INTRE框架从状态描述到干预操作的核心桥梁。在低功能系统中，序列刚性由功能依赖关系强制担保：先稳定调度(GATE)，再补充资源(MODULATE)，最后修复结构(ALIGN/RELINK)。序列刚性与失调程度正相关，Oᵢ越低序列越严格。违反序列的典型风险包括干预无效、继发性损害和脱落率升高。例外规则包括高功能系统中的并行操作、以D层撬动R层的正反馈策略、紧急危机中的药物优先、以及准备充分的结构性干预中的短时资源透支。不同操作的效果时间尺度存在理论差异：GATE快而短，MODULATE中速，ALIGN S形，RELINK慢而持久。这一时序分层为干预匹配和复发预测提供了可检验的假说。</p>
-<blockquote><p><strong>关键术语</strong>：D-R-S序列，功能完整性指数(Oᵢ)，恢复不对称定律，干预匹配假说，时序分层</p></blockquote>
+<p><strong>本章小结</strong>：D-R-S干预深度序列是INTRE框架从状态描述到干预操作的核心桥梁。在低功能系统中，序列刚性由功能依赖关系强制担保：先稳定调度(GATE)，再补充资源(MODULATE)，最后修复结构(ALIGN/RELINK)。序列刚性与失调程度正相关，\(O_i\)越低序列越严格。违反序列的典型风险包括干预无效、继发性损害和脱落率升高。例外规则包括高功能系统中的并行操作、以D层撬动R层的正反馈策略、紧急危机中的药物优先、以及准备充分的结构性干预中的短时资源透支。不同操作的效果时间尺度存在理论差异：GATE快而短，MODULATE中速，ALIGN S形，RELINK慢而持久。这一时序分层为干预匹配和复发预测提供了可检验的假说。</p>
+<blockquote><p><strong>关键术语</strong>：D-R-S序列，功能完整性指数(\(O_i\))，恢复不对称定律，干预匹配假说，时序分层</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
-- ❌ “DRS序列是绝对规则，永远不能跳过” → ✅ 高功能系统中Oᵢ > 70允许并行操作；药物可在实现层暂时绕过序列，但需后续回归。
-- ❌ “Oᵢ分界点是固定不变的” → ✅ 分界点（30、50、70、85）是理论占位符，不同生态位可能有不同阈值，有待PSE-C校准。</p></blockquote>
+- ❌ “DRS序列是绝对规则，永远不能跳过” → ✅ 高功能系统中 \(O_i > 70\) 允许并行操作；药物可在实现层暂时绕过序列，但需后续回归。
+- ❌ “\(O_i\)分界点是固定不变的” → ✅ 分界点（30、50、70、85）是理论占位符，不同生态位可能有不同阈值，有待PSE-C校准。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 为什么在低功能系统中必须先稳定调度层？用功能依赖关系解释。
 2. 列举三种违反D-R-S序列的临床风险，并说明每种风险的机制。
 3. 行为激活表面上“跳过”了R层，为什么它不被视为对D-R-S序列的违反？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -287,7 +289,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -330,7 +332,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -345,7 +347,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -353,8 +355,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -373,5 +375,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

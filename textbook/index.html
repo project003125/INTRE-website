@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <style>
         /* ===== 教材目录页专有样式 ===== */
         .container { max-width:780px; margin:0 auto; padding:2.5rem 1.5rem; }
-        h1 { font-family: var(--font-body); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 .4rem; letter-spacing:-0.02em; position:relative; padding-bottom:0.5rem; }
+        h1 { font-family: var(--font-display); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 .4rem; letter-spacing:-0.02em; position:relative; padding-bottom:0.5rem; }
         h1::after { content:''; position:absolute; bottom:0; left:0; width:50px; height:2.5px; background-color:var(--color-navy-600); border-radius:2px; }
         .subhead { font-size:1.05rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; }
         .intro-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); border-left:3px solid var(--color-navy-600); margin:1.5rem 0; }
@@ -38,9 +39,9 @@
         .appendix-item strong { color:var(--color-navy-600); }
 
         ::-webkit-scrollbar { width:6px; }
-        ::-webkit-scrollbar-track { background:#f1f5f9; }
-        ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:3px; }
-        ::-webkit-scrollbar-thumb:hover { background:#94a3b8; }
+        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
+        ::-webkit-scrollbar-thumb { background: var(--color-slate-400); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-slate-500); }
         ::selection { background:rgba(31,72,128,0.15); color:var(--color-slate-900); }
 
         @media (max-width:768px) { .chapter-grid{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} .subhead{font-size:.9rem} .section-label{font-size:.9rem} }
@@ -112,20 +113,20 @@
         <div class="section-label"><i class="fas fa-paperclip"></i> 附录</div>
         <div class="appendices">
             <div class="appendix-grid">
-                <a href="app-a.html" class="appendix-item"><strong>A</strong> — 42 子维度列表：符号·定义·分类·测量</a>
-                <a href="app-b.html" class="appendix-item"><strong>B</strong> — G-M-A-R 速查：按临床问题索引</a>
-                <a href="app-c.html" class="appendix-item"><strong>C</strong> — PSE 快速入门：代码示例与仿真模板</a>
-                <a href="app-d.html" class="appendix-item"><strong>D</strong> — REVER 审计：四子协议模板</a>
-                <a href="app-e.html" class="appendix-item"><strong>E</strong> — 跨学校概念映射汇编</a>
-                <a href="app-f.html" class="appendix-item"><strong>F</strong> — 逻辑指纹：编码协议与 PCUI JSON 示例</a>
-                <a href="app-g.html" class="appendix-item"><strong>G</strong> — 术语对照：中英文约 500 条</a>
-                <a href="app-h.html" class="appendix-item"><strong>H</strong> — 形式审查：压力测试与替代测试摘要</a>
-                <a href="app-i.html" class="appendix-item"><strong>I</strong> — 抽象·中文版</a>
-                <a href="app-j.html" class="appendix-item"><strong>J</strong> — 完整目录</a>
-                <a href="app-k.html" class="appendix-item"><strong>K</strong> — 完整合并稿</a>
-                <a href="app-l.html" class="appendix-item"><strong>L</strong> — 后记</a>
-                <a href="app-m.html" class="appendix-item"><strong>M</strong> — 数学速成——函数、微分、概率与滤波</a>
-                <a href="app-n.html" class="appendix-item"><strong>N</strong> — 概念速查——心理学、神经科学与系统论</a>
+                <a href="app-a.html" class="appendix-item"><strong>A</strong> — 42子维度</a>
+                <a href="app-b.html" class="appendix-item"><strong>B</strong> — GMAR速查</a>
+                <a href="app-c.html" class="appendix-item"><strong>C</strong> — PSE入门</a>
+                <a href="app-d.html" class="appendix-item"><strong>D</strong> — REVER审计</a>
+                <a href="app-e.html" class="appendix-item"><strong>E</strong> — 流派映射</a>
+                <a href="app-f.html" class="appendix-item"><strong>F</strong> — 逻辑指纹</a>
+                <a href="app-g.html" class="appendix-item"><strong>G</strong> — 术语对照</a>
+                <a href="app-h.html" class="appendix-item"><strong>H</strong> — 形式审查</a>
+                <a href="app-i.html" class="appendix-item"><strong>I</strong> — 家教案例</a>
+                <a href="app-j.html" class="appendix-item"><strong>J</strong> — PCUI规范</a>
+                <a href="app-k.html" class="appendix-item"><strong>K</strong> — PSA依赖</a>
+                <a href="app-l.html" class="appendix-item"><strong>L</strong> — 架构速查</a>
+                <a href="app-m.html" class="appendix-item"><strong>M</strong> — 数学速成</a>
+                <a href="app-n.html" class="appendix-item"><strong>N</strong> — 概念速查</a>
             </div>
         </div>
     </div>
@@ -143,5 +144,6 @@
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

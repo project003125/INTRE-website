@@ -2,18 +2,20 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录H：形式审查——压力测试与替代测试结果摘要 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body>
+<body lang="zh">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -53,7 +55,7 @@
         </div>
     </div>
 
-    <main class="textbook-content">
+    <main id="main-content" class="textbook-content">
         <h1 class="chapter-title">附录H：形式审查——压力测试与替代测试结果摘要</h1>
 <p>本附录汇总INTRE框架在理论建构阶段经历的系统性压力测试与替代测试结果。这些测试旨在检验框架的逻辑自洽性、可证伪性、核心组件的必要性以及在功能层中间层候选架构中的竞争定位。所有测试均由INTRE内部团队完成，部分测试已通过预注册方式公开。</p>
 <hr class="section-divider">
@@ -318,12 +320,12 @@
 <hr class="section-divider">
 <h3>H.5 总体结论：结构稳健性与实证债务</h3>
 <p><strong>已完成的逻辑与结构验证</strong>： - 内部理论压力测试：17项通过（含条件通过），无致命逻辑矛盾。 - 外部兼容性压力测试：10篇论文未触发主要失败条件。 - 核心组件替代测试：460个替代方案中0个完全替代。 - 角色化替代测试：在双核心职能上保持不可替代的结构优势。</p>
-<p><strong>尚待跨越的三道实证关卡</strong>： 1. <strong>编码可靠性</strong>：M-R-D-S状态语法的编码员间一致性（κ ≥ 0.60）。 2. <strong>干预匹配增量效度</strong>：基于G-M-A-R的靶点匹配干预优于常规治疗。 3. <strong>PSE预测表现</strong>：动力学仿真对个体轨迹的预测精度与校准度。</p>
+<p><strong>尚待跨越的三道实证关卡</strong>： 1. <strong>编码可靠性</strong>：M-R-D-S状态语法的编码员间一致性（\(\kappa \geq 0.60\)）。 2. <strong>干预匹配增量效度</strong>：基于G-M-A-R的靶点匹配干预优于常规治疗。 3. <strong>PSE预测表现</strong>：动力学仿真对个体轨迹的预测精度与校准度。</p>
 <p><strong>框架的可证伪性承诺</strong>：五条核心主张均有明确的证伪路径，其中最脆弱的节点是 <strong>M3-RES-D的三通道收敛效度研究</strong>。框架已内建版本演化与强反例触发协议，承诺在证据面前有序修正或降级。</p>
 <hr class="section-divider">
 <p><em>本附录基于以下文档编制：05-R-01、05-R-02、05-R-03、05-V-00至05-V-19。详细数据请参见各原始报告。</em></p>
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -360,7 +362,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
 
 
 <script>
@@ -403,7 +405,7 @@
 
     if (!sidebar) return;
 
-    function isDesktop() { return window.innerWidth >= 1200; }
+    function isMobile() { return window.innerWidth < 960; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -418,7 +420,7 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (!isDesktop()) {
+            if (isMobile()) {
                 
                 close();
             }
@@ -426,8 +428,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -446,5 +448,6 @@
 })();
 </script>
 
+<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

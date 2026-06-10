@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,7 +52,7 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第9章 测量方法：ABC分类与桥接校准</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)阐述功能层测量的三条基本原则与三个测量通道；(2)按ABC三类区分42个子单元的测量成熟度；(3)描述EMA和数字表型在数据采集中的应用；(4)理解UNIS神经通道中NFI到功能似然的映射逻辑；(5)理解收敛效度/区分效度/三通道验证的评估策略；(6)掌握桥接-校准-原生三阶段精度优化路径。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)阐述功能层测量的三条基本原则与三个测量通道；(2)按ABC三类区分42个子单元的测量成熟度；(3)描述EMA和数字表型在数据采集中的应用；(4)理解UNIS神经通道中NFI到功能似然的映射逻辑；(5)理解收敛效度/区分效度/三通道验证的评估策略；(6)掌握桥接-校准-原生三阶段精度优化路径。</p></blockquote>
 <hr class="section-divider">
 <h3>9.1 三原则：多模态融合与软测量</h3>
 <p>功能层测量的核心挑战在于：M-R-D-S中的大多数子单元是<strong>潜变量</strong>——它们需要从多种可观测信号中间接推断。INTRE对此采取的立场不是“等待完美的直接测量工具”，而是接受测量的间接性和概率性，并通过方法论创新将其转化为可管理的工程问题。</p>
@@ -71,7 +67,7 @@
 <li><strong>测量成熟度分层管理</strong>。INTRE将42个子单元分为A、B、C三类，分别采用不同的测量策略。这一分类不是固定的——随着测量工程进展，子单元可以在类别间迁移（C→B→A）。</li>
 </ol>
 <p><strong>三个测量通道与观测函数</strong>。功能层的观测数据来自三个独立通道：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>通道</th>
 <th>数据来源</th>
@@ -83,7 +79,7 @@
 <tr>
 <td><strong>行为通道</strong></td>
 <td>量表、行为任务、EMA、数字表型</td>
-<td>传统心理测量</td>
+<td>UBMS（L1–L3）</td>
 <td>行为似然 p(y_b \</td>
 <td>Ψ_t)</td>
 <td>秒至天</td>
@@ -114,7 +110,7 @@
 <h3>9.2 成熟度分层：A类实证、B类整合与C类预测</h3>
 <p>基于测量成熟度，42个子单元被分为三类。分类依据三个可量化维度：映射可信度（0-10分）、现有工具成熟度、是否需要原创开发。</p>
 <p><strong>分类规则</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>类别</th>
 <th>映射可信度</th>
@@ -147,7 +143,7 @@
 </tbody>
 </table></div>
 <p><strong>A类：实证锚定</strong>。A类子单元在变量范式中有明确的对应构念，且已有相对成熟的测量工具。测量策略是<strong>直接复用并重标定</strong>。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子单元</th>
 <th>对应既有构念</th>
@@ -182,7 +178,7 @@
 </tbody>
 </table></div>
 <p><strong>B类：整合性</strong>。B类子单元的映射可信度为中高，但既有测量工具分散在不同传统中。测量策略是<strong>组合测量与结构验证</strong>。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子单元</th>
 <th>分散指标来源</th>
@@ -211,7 +207,7 @@
 </tbody>
 </table></div>
 <p><strong>C类：预测性</strong>。C类子单元在变量范式中未被独立识别——它们是INTRE从功能分解逻辑中推导出的“结构空位”。测量策略是<strong>原创工具开发 + 过渡性代理</strong>。C类子单元约占42维的17%，其存在性本身是框架的可检验预测。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子单元</th>
 <th>功能空位描述</th>
@@ -239,19 +235,14 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**C类子单元的正面定位**：C类不是框架的缺陷，而是研究议程。它们主动指向旧范式的盲区。随着实证积累，C类子单元将逐步向B类和A类迁移——这一迁移过程本身就是框架演化的实证轨迹。</p></blockquote>
+<blockquote><p><strong>C类子单元的正面定位</strong>：C类不是框架的缺陷，而是研究议程。它们主动指向旧范式的盲区。随着实证积累，C类子单元将逐步向B类和A类迁移——这一迁移过程本身就是框架演化的实证轨迹。</p></blockquote>
 <hr class="section-divider">
 <h3>9.3 数字表型：EMA与被动传感的协议设计</h3>
 <p>功能层测量不局限于实验室环境。INTRE深度整合<strong>生态瞬时评估(EMA)</strong>和<strong>数字表型</strong>技术。</p>
 <p><strong>生态瞬时评估(EMA)</strong>。EMA通过智能手机在随机时间点或事件触发时推送简短问卷。EMA对功能层测量的核心贡献在于：捕捉RES-D等快速状态变量的日内波动；同步记录S-P环境输入；支持N-of-1设计和个体化建模。</p>
-<p>EMA条目开发应遵循“单维度、高频率、低负担”原则。例如：</p>
-<ul>
-<li>“过去一小时内，我感到精疲力竭”（M1-RES-D）</li>
-<li>“我很难集中注意力”（M2-RES-D）</li>
-<li>“我无法控制自己的担忧”（M2-DSP-B，M4-DSP-B）</li>
-</ul>
+<p>EMA条目开发应遵循“单维度、高频率、低负担”原则。例如： - “过去一小时内，我感到精疲力竭”（M1-RES-D） - “我很难集中注意力”（M2-RES-D） - “我无法控制自己的担忧”（M2-DSP-B，M4-DSP-B）</p>
 <p><strong>数字表型</strong>。数字表型利用智能手机、可穿戴设备和电脑日志的被动传感数据，在不增加被试负担的情况下提取心理状态指标。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>数据源</th>
 <th>提取指标</th>
@@ -280,7 +271,7 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**效度声明**：上述映射是**候选关联**，并非已经验证的测量模型。每个数字表型指标在用于临床决策前，需要在独立样本中验证其与对应功能子单元的收敛效度。</p></blockquote>
+<blockquote><p><strong>效度声明</strong>：上述映射是<strong>候选关联</strong>，并非已经验证的测量模型。每个数字表型指标在用于临床决策前，需要在独立样本中验证其与对应功能子单元的收敛效度。</p></blockquote>
 <p><strong>多模态融合的优势</strong>。当EMA自陈、被动传感和实验室测量三种模态的数据同时可用时，可以构建更稳健的状态估计。当多模态观测分歧时，系统输出后验分布的分散度增加，并触发“校准请求”。分歧本身也可能是重要的临床信号：例如，“主观平静但身体高唤醒”可能提示述情障碍。</p>
 <hr class="section-divider">
 <h3>9.4 信效度评估：收敛、区分与三通道验证</h3>
@@ -290,7 +281,7 @@
 <hr class="section-divider">
 <h3>9.5 精度路径：桥接-校准-原生三阶段</h3>
 <p>测量精度不是一次性达到的，而是通过<strong>桥接-校准-原生</strong>三阶段逐步提升：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>阶段</th>
 <th>时间</th>
@@ -321,7 +312,7 @@
 <p><strong>桥接-校准策略</strong>：将既有知识压缩为先验分布，再通过贝叶斯更新持续修正。</p>
 <p>功能层面临的根本测量困境是“冷启动”问题：在没有任何个体数据的情况下，如何开始状态估计？INTRE的解决方案是<strong>桥接-校准策略</strong>。</p>
 <p><strong>桥接：将既有知识压缩为先验分布</strong>。桥接的任务是将变量范式百年积累的分散知识转化为PSE可用的初始先验分布\(p(\theta | K_{\text{legacy}})\)。桥接通过<strong>四层验证</strong>确保知识被系统化组织：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>检验内容</th>
@@ -353,20 +344,13 @@
 <p><strong>校准：用新数据持续修正先验</strong>。校准通过PSE-C中的贝叶斯更新实现：</p>
 <p>$$ p(\theta | D_{\text{new}}) \propto p(D_{\text{new}} | \theta) \cdot p(\theta | K_{\text{legacy}}) $$</p>
 <p>随着个体数据的积累（EMA条目、可穿戴数据、行为任务），参数的后验分布逐步收窄。</p>
-<p><strong>冷启动的具体流程</strong>：</p>
-<ol>
-<li><strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验</li>
-<li><strong>初始评估</strong>：采集核心A类子单元数据，编译为初始状态向量</li>
-<li><strong>贝叶斯更新</strong>：用初始评估数据更新先验，获得第一次后验估计</li>
-<li><strong>动态校准</strong>：在治疗过程中持续采集数据，每次新数据到达后更新</li>
-<li><strong>收敛判断</strong>：当核心子单元的后验置信区间宽度低于阈值时，达到临床可用精度</li>
-</ol>
+<p><strong>冷启动的具体流程</strong>： 1. <strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验 2. <strong>初始评估</strong>：采集核心A类子单元数据，编译为初始状态向量 3. <strong>贝叶斯更新</strong>：用初始评估数据更新先验，获得第一次后验估计 4. <strong>动态校准</strong>：在治疗过程中持续采集数据，每次新数据到达后更新 5. <strong>收敛判断</strong>：当核心子单元的后验置信区间宽度低于阈值时，达到临床可用精度</p>
 <p><strong>桥接-校准策略的认识论意义</strong>：不等待完美的测量工具出现再开始工作，而是在当前最佳知识的基础上启动，通过持续的实证反馈逐步逼近真实。它不追求"一步到位"的精确性，而是将测量本身视为一个不断改进的工程过程。</p>
 <hr class="section-divider">
 <h3>9.6 UNIS神经测量通道：从NFI到功能似然</h3>
 <p>UNIS（统一神经接口系统）为功能层测量提供了第三个标准化通道——神经信号通道。它回答的问题是：原始神经数据（EEG波形、fNIRS时间序列、PPG信号）如何转化为PSE可以直接使用的功能状态似然？</p>
 <p><strong>UNIS六层中的测量相关层</strong>。UNIS的六层架构中，L3 NFD（神经特征定义）和L4 NFM（神经-功能映射）与测量直接相关：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>UNIS层</th>
 <th>测量职责</th>
@@ -407,7 +391,7 @@
 </tbody>
 </table></div>
 <p><strong>NFI与ABC分类的对应关系</strong>。UNIS的神经特征标识符(NFI)可以映射到功能层子单元的ABC测量成熟度：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>NFI示例</th>
 <th>映射到功能子单元</th>
@@ -454,7 +438,7 @@
 <li><strong>原生期</strong>：RTE-Cal通过 <code>/calibration_feedback</code> 协议接收PSE的状态估计残差，对NFM映射模型进行个体化微调</li>
 </ol>
 <p><strong>通道分歧的测量学意义</strong>。当行为、语义和神经三个通道对同一子单元的状态估计出现系统性分歧时，这不仅是噪声——它是诊断信号：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>分歧模式</th>
 <th>可能含义</th>
@@ -481,13 +465,20 @@
 <p>UNIS通道使功能层测量从双模态（行为+自陈）升级为三模态，显著提升了逆问题求解的可辨识性和通道分歧的诊断价值。它不是变量范式中简单的"生物标志物"思路——UNIS不声称某个NFI是某个功能状态的"生物指标"。它只提供一个经过校准的、带有不确定性量化的概率映射，然后由PSE在一个完整的系统动力学模型中进行三通道贝叶斯融合。神经信号只是三个视角之一，不是"更真实的那个"。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：功能层测量遵循三条基本原则：功能定义优先于测量、多模态融合优于单指标崇拜、测量成熟度分层管理。观测数据来自三个独立通道——行为通道（量表、EMA、数字表型）、语义通道（UPLS/PSL编译）和神经通道（UNIS神经似然）——通过贝叶斯融合联合反演状态后验。基于量化阈值，42个子单元被分为A类（实证锚定，复用旧工具）、B类（整合性，组合测量）、C类（预测性空位，原创开发+过渡性代理）。UNIS通过L3 NFD和L4 NFM将原始神经信号转化为标准化的功能似然 p(y_n | Ψ_t)，并以NFI标识符与ABC分类对应。三通道之间的系统性分歧是重要的临床诊断信号。生态瞬时评估遵循"单维度、高频率、低负担"原则，数字表型映射为候选关联需独立验证。测量信效度通过收敛效度、区分效度（双分离）和三通道验证进行评估。精度通过桥接-校准-原生三阶段逐步提升——UNIS的RTE-Cal在原生期提供个体化神经映射微调。桥接以四层验证将变量范式既有知识压缩为先验分布；冷启动从生态位库匹配开始，通过持续校准实现个体化状态估计。</p>
-<blockquote><p>**关键术语**：A/B/C类测量，软测量，EMA，数字表型，桥接-校准策略，观测函数，三通道验证，UNIS神经似然，NFI，NFM，通道分歧</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ &quot;C类测不了，框架不完整&quot; → ✅ C类预测性子单元是研究议程而非缺陷，主动指向旧范式盲区。<br>- ❌ &quot;桥接只是用旧数据填充新框架&quot; → ✅ 桥接通过四层验证将知识系统化组织，而非简单填充。<br>- ❌ &quot;神经信号是功能状态的&#x27;直接读数&#x27;&quot; → ✅ UNIS只提供概率映射 p(y_n | Ψ_t)，需与其他通道融合后由PSE推断状态。神经信号不是更&quot;真实&quot;的那个视角。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 用自己的话解释A类、B类、C类测量的区别，并各举一个例子。<br>2. 以M6-RES-D（行为启动能量）为例，设计一个从过渡性代理到原生测量的开发路线图。<br>3. 功能层测量面临冷启动问题：评估桥接-校准策略在什么条件下会失败？<br>4. 如果UNIS神经通道对M4-DSP-B的状态估计（高唤醒）与行为通道（量表自评低焦虑）出现系统性分歧，列举三种可能的解释及其对临床决策的不同含义。</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：A/B/C类测量，软测量，EMA，数字表型，桥接-校准策略，观测函数，三通道验证，UNIS神经似然，NFI，NFM，通道分歧</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ "C类测不了，框架不完整" → ✅ C类预测性子单元是研究议程而非缺陷，主动指向旧范式盲区。
+- ❌ "桥接只是用旧数据填充新框架" → ✅ 桥接通过四层验证将知识系统化组织，而非简单填充。
+- ❌ "神经信号是功能状态的'直接读数'" → ✅ UNIS只提供概率映射 p(y_n | Ψ_t)，需与其他通道融合后由PSE推断状态。神经信号不是更"真实"的那个视角。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 用自己的话解释A类、B类、C类测量的区别，并各举一个例子。
+2. 以M6-RES-D（行为启动能量）为例，设计一个从过渡性代理到原生测量的开发路线图。
+3. 功能层测量面临冷启动问题：评估桥接-校准策略在什么条件下会失败？
+4. 如果UNIS神经通道对M4-DSP-B的状态估计（高唤醒）与行为通道（量表自评低焦虑）出现系统性分歧，列举三种可能的解释及其对临床决策的不同含义。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -504,7 +495,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch08.html" class="nav-link prev">‹ 8 状态向量：42维表示与动力学</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch10.html" class="nav-link next">10 原子操作：GMAR语法与临床直觉 ›</a></div>
+        <div class="chapter-nav"><a href="ch08.html" class="nav-link prev">‹ 状态向量</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch10.html" class="nav-link next">原子操作 ›</a></div>
     </div>
 
     <footer>
@@ -513,21 +504,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch09.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -546,18 +538,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -578,14 +570,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

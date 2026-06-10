@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,7 +52,7 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第6章 状态维度：资源、调度与结构三轴</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)从系统动力学的存量-流量-结构框架推导R-D-S三维的必要性；(2)区分RES-D与RES-B的时间尺度和干预接口；(3)区分DSP-F与DSP-B的意识参与度和资源消耗模式；(4)区分STR-R/C/S三种结构类型及其对应的G-M-A-R操作；(5)理解R-D-S的工程收敛解定位。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)从系统动力学的存量-流量-结构框架推导R-D-S三维的必要性；(2)区分RES-D与RES-B的时间尺度和干预接口；(3)区分DSP-F与DSP-B的意识参与度和资源消耗模式；(4)区分STR-R/C/S三种结构类型及其对应的G-M-A-R操作；(5)理解R-D-S的工程收敛解定位。</p></blockquote>
 <hr class="section-divider">
 <h3>6.1 为何三轴：系统动力学与工程收敛</h3>
 <p>功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：<strong>资源(Resource, R)</strong>、<strong>调度(Dispatch, D)</strong>、<strong>结构(Structure, S)</strong>。为什么恰好是这三个？</p>
@@ -84,12 +80,7 @@
 <p><strong>STR-C（连接结构）</strong>：这是关联性的、非命题性的知识——情感连接、条件化联想、依恋模式、内隐态度。STR-C以加权网络的形式组织（如“亲密→被抛弃”的连接权重为0.78）。其知识类型是关联性知识（知道“什么与什么相连”）。STR-C的改变不能仅通过逻辑辩论实现——它需要通过新的体验（如矫正性情感体验）来重新加权连接。这些操作属于G-M-A-R中的<strong>RELINK</strong>。STR-C是INTRE在功能层对条件反射、情绪记忆、内隐联结和依恋模式等“连接权重”相关现象的理论整合创新。</p>
 <p><strong>STR-S（序列结构）</strong>：这是程序性的、时序组织的知识——习惯脚本、行为序列、认知程序、仪式化动作。STR-S以步骤序列的形式组织（如“当感到焦虑时→回避社交→独处→短暂缓解→长期恶化”）。其知识类型是程序性知识（知道“怎么做”）。STR-S的改变需要通过重复练习、执行意图、行为排练来实现——这些操作属于G-M-A-R中的<strong>GATE</strong>的长期效应：通过反复启动(GATE+)或抑制(GATE–)某一序列，逐步重构STR-S。</p>
 <p><strong>图灵机功能同构论证</strong>。STR-R/C/S三分法的一个理论支持来自计算理论：任何信息处理系统在功能上必须包含三个基本组件——(1)规则表（定义状态转移规则，对应STR-R），(2)存储纸带（存储信息与关联，对应STR-C），(3)读写头移动协议（定义操作的顺序，对应STR-S）。三分法不是心理学经验的归纳，而是从计算理论推导出的功能结构必然性。</p>
-<p><strong>STR三分法的临床区分意义</strong>。区分STR-R、STR-C和STR-S直接影响干预技术的选择：</p>
-<ul>
-<li>STR-R问题（如“我必须完美”的非理性信念）→ 优先使用ALIGN类技术（认知重构）</li>
-<li>STR-C问题（如创伤后“亲密→危险”的连接）→ 优先使用RELINK类技术（暴露、EMDR）</li>
-<li>STR-S问题（如习惯性回避行为序列）→ 优先使用GATE类技术（刺激控制、行为排练）</li>
-</ul>
+<p><strong>STR三分法的临床区分意义</strong>。区分STR-R、STR-C和STR-S直接影响干预技术的选择： - STR-R问题（如“我必须完美”的非理性信念）→ 优先使用ALIGN类技术（认知重构） - STR-C问题（如创伤后“亲密→危险”的连接）→ 优先使用RELINK类技术（暴露、EMDR） - STR-S问题（如习惯性回避行为序列）→ 优先使用GATE类技术（刺激控制、行为排练）</p>
 <p>将三类结构问题混为一谈，会导致干预靶点失焦——这是临床中“道理都懂但就是改不了”现象的常见原因。</p>
 <hr class="section-divider">
 <h3>6.5 完备性论证：R-D-S的正交性与覆盖力</h3>
@@ -99,13 +90,18 @@
 <p><strong>结论</strong>：R-D-S三维在概念定义上正交，在现象覆盖上完备，在工程实践中是描述动态系统的最小完备维度集。它是INTRE作为功能层通用状态描述语言的核心骨架。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：R-D-S三维状态语法从系统动力学的存量-流量-结构框架推导而来，在工程约束（诊断精度、干预指导力、跨现象覆盖）下收敛为最优解。资源层区分快速波动的RES-D和缓慢变化的RES-B，两者的临床区分意义在于干预路径的根本不同（MODULATE治标 vs 结构性操作治本）。调度层区分意识可调控的DSP-F和自动化的DSP-B，DSP-B“劫持”是临床中许多自动化失控现象的机制根源。结构层区分规则(STR-R)、连接(STR-C)和序列(STR-S)三种知识类型，对应ALIGN、RELINK和GATE三类不同的干预操作。R-D-S是INTRE作为功能层通用状态描述语言的核心骨架，也是连接描述（状态）与操作（干预）的关键枢纽。</p>
-<blockquote><p>**关键术语**：R-D-S，RES-D，RES-B，DSP-F，DSP-B，STR-R，STR-C，STR-S，正交性，工程收敛解</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “42个维度太多可以合并” → ✅ 降维测试表明合并会导致关键功能区分的丢失（如拖延的不同亚型）。<br>- ❌ “RES-B可以通过MODULATE直接补充” → ✅ RES-B只能通过结构性操作（ALIGN/RELINK/GATE）间接建设。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 从系统动力学的存量-流量-结构框架出发，解释为什么R-D-S是描述动态系统的最小完备维度集。<br>2. 考试焦虑在R-D-S语法中可以被分解为哪些组件？分别标注R、D、S维度的贡献。<br>3. 本章将R-D-S定位为工程收敛解而非对心理实体结构的发现。这一认识论定位对INTRE的科学性是增强还是削弱？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：R-D-S，RES-D，RES-B，DSP-F，DSP-B，STR-R，STR-C，STR-S，正交性，工程收敛解</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “42个维度太多可以合并” → ✅ 降维测试表明合并会导致关键功能区分的丢失（如拖延的不同亚型）。
+- ❌ “RES-B可以通过MODULATE直接补充” → ✅ RES-B只能通过结构性操作（ALIGN/RELINK/GATE）间接建设。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 从系统动力学的存量-流量-结构框架出发，解释为什么R-D-S是描述动态系统的最小完备维度集。
+2. 考试焦虑在R-D-S语法中可以被分解为哪些组件？分别标注R、D、S维度的贡献。
+3. 本章将R-D-S定位为工程收敛解而非对心理实体结构的发现。这一认识论定位对INTRE的科学性是增强还是削弱？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -122,7 +118,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch05.html" class="nav-link prev">‹ 5 架构推导：从元公理到操作系统</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch07.html" class="nav-link next">7 功能模块：M1至M6划分与级联 ›</a></div>
+        <div class="chapter-nav"><a href="ch05.html" class="nav-link prev">‹ 架构推导</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch07.html" class="nav-link next">功能模块 ›</a></div>
     </div>
 
     <footer>
@@ -131,21 +127,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch06.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -164,18 +161,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -196,14 +193,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

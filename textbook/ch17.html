@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,23 +52,18 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第17章 逻辑指纹：解析差异的标准化治理</h1>
-<blockquote><p>**学习目标**：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
-<blockquote><p>**本章定位**：第14-15章介绍了UPLS的静态知识架构，第16章介绍了多视角共识工程。本章讨论UPLS知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——**逻辑指纹体系**正是为此设计的标准化工具。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
+<blockquote><p><strong>本章定位</strong>：第14-15章介绍了UPLS的静态知识架构，第16章介绍了多视角共识工程。本章讨论UPLS知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
 <hr class="section-divider">
 <h3>17.1 治理必要性：解析差异的必然性</h3>
 <p>在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。</p>
-<p><strong>这不是UPLS框架的逻辑缺陷，而是心理现象复杂性的自然体现。</strong> 解析差异的根源包括：</p>
-<ul>
-<li><strong>流派聚焦差异</strong>：CBT训练者更容易看到认知成分（M2），精神分析师更容易看到情感连接（M4）</li>
-<li><strong>临床经验差异</strong>：儿童治疗师和成人治疗师对同一概念可能有不同的权重分配</li>
-<li><strong>文化背景差异</strong>：东亚文化中的“神经衰弱”和西方文化中的“焦虑”可能映射到不同的M-R-D-S配置</li>
-</ul>
+<p><strong>这不是UPLS框架的逻辑缺陷，而是心理现象复杂性的自然体现。</strong> 解析差异的根源包括： - <strong>流派聚焦差异</strong>：CBT训练者更容易看到认知成分（M2），精神分析师更容易看到情感连接（M4） - <strong>临床经验差异</strong>：儿童治疗师和成人治疗师对同一概念可能有不同的权重分配 - <strong>文化背景差异</strong>：东亚文化中的“神经衰弱”和西方文化中的“焦虑”可能映射到不同的M-R-D-S配置</p>
 <p><strong>治理的必要性</strong>：如果不加以治理，解析差异会导致：(1)UPLS知识库的不一致性；(2)临床决策的不稳定性；(3)可重复性危机。</p>
-<blockquote><p>**微案例**：假设70%的分析者将“心理韧性”定位为M3-RES-B，30%定位为M4-RES-B。简单采用多数决会抹杀30%的洞察。逻辑指纹体系的目标正是：**判定分歧是否属于合法变体**，而非消灭分歧。</p></blockquote>
+<blockquote><p><strong>微案例</strong>：假设70%的分析者将“心理韧性”定位为M3-RES-B，30%定位为M4-RES-B。简单采用多数决会抹杀30%的洞察。逻辑指纹体系的目标正是：<strong>判定分歧是否属于合法变体</strong>，而非消灭分歧。</p></blockquote>
 <hr class="section-divider">
 <h3>17.2 四组指纹：模块、资源、层级与操作</h3>
 <p>逻辑指纹是判定不同解析是否描述同一心理实体的标准化工具。四组指纹从四个正交维度捕获心理现象的不同侧面，组合使用可形成稳定的功能特征签名。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>指纹类型</th>
 <th>判定问题</th>
@@ -109,7 +100,7 @@
 <h4>17.2.1 模块指纹（M-fingerprint）</h4>
 <p><strong>定义</strong>：描述一个心理现象涉及哪些功能模块（M1-M6），以及各模块在该现象中的功能角色。</p>
 <p><strong>角色标签</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>角色</th>
 <th>代码</th>
@@ -144,7 +135,7 @@
 </tbody>
 </table></div>
 <p><strong>示例：心理防御机制</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>理论视角</th>
 <th>模块指纹</th>
@@ -168,7 +159,7 @@
 <h4>17.2.2 资源指纹（R-fingerprint）</h4>
 <p><strong>定义</strong>：描述一个心理现象涉及哪些资源类型（RES-D / RES-B），以及资源的变化方向（消耗<code>-</code> / 补充<code>+</code>）。</p>
 <p><strong>取值格式</strong>：<code>{(RES-D, ±), (RES-B, ±)}</code></p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>现象</th>
 <th>资源指纹</th>
@@ -195,13 +186,8 @@
 <p><strong>判定规则</strong>：资源指纹必须完全一致（包括方向和是否出现）才能判定为同一实体。</p>
 <h4>17.2.3 层级指纹（D/S-fingerprint）</h4>
 <p><strong>定义</strong>：描述一个心理现象在调度层（DSP）和结构层（STR）之间的分配——哪些是表现（当前的、动态的），哪些是根源（稳定的、配置性的）。</p>
-<p><strong>取值格式</strong>：</p>
-<ul>
-<li>表现层：<code>{DSP-F, DSP-B, none}</code></li>
-<li>根源层：<code>{STR-R, STR-C, STR-S, 组合}</code></li>
-<li>因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></li>
-</ul>
-<div class='table-wrap'><table>
+<p><strong>取值格式</strong>： - 表现层：<code>{DSP-F, DSP-B, none}</code> - 根源层：<code>{STR-R, STR-C, STR-S, 组合}</code> - 因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></p>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>现象</th>
 <th>表现层</th>
@@ -227,7 +213,7 @@
 <h4>17.2.4 操作指纹（G-M-A-R-fingerprint）</h4>
 <p><strong>定义</strong>：描述干预该现象的首选G-M-A-R操作序列。</p>
 <p><strong>取值格式</strong>：有序列表<code>[op1, op2, ...]</code>，允许空列表。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>现象</th>
 <th>操作指纹</th>
@@ -243,15 +229,11 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>判定规则</strong>：</p>
-<ul>
-<li>序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4</li>
-<li>不同流派对同一现象的操作指纹可能不同，只要提供理论依据且不违反D→R→S，可视为合法变体</li>
-</ul>
+<p><strong>判定规则</strong>： - 序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4 - 不同流派对同一现象的操作指纹可能不同，只要提供理论依据且不违反D→R→S，可视为合法变体</p>
 <hr class="section-divider">
 <h3>17.3 错误判据：E1-E5可证伪性锚点</h3>
 <p>为确保可证伪性，逻辑指纹体系明确规定了五种错误解析判定标准。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>编号</th>
 <th>判据</th>
@@ -295,7 +277,7 @@
 <hr class="section-divider">
 <h3>17.4 一致性检验：编码员间Kappa标准</h3>
 <p>在功能层研究中使用逻辑指纹进行编码时，必须报告<strong>编码员间一致性</strong>。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>指纹类型</th>
 <th>变量类型</th>
@@ -335,7 +317,7 @@
 </tbody>
 </table></div>
 <p><strong>κ值的解释</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>κ范围</th>
 <th>一致性程度</th>
@@ -365,17 +347,15 @@
 </tbody>
 </table></div>
 <p><strong>示例：计算Cohen‘s κ</strong>（Python）：</p>
-<pre><code class="language-python">
-from sklearn.metrics import cohen_kappa_score
-kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
-</code></pre>
+<pre><code class="language-python">from sklearn.metrics import cohen_kappa_score
+kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 <hr class="section-divider">
 <h3>17.5 微案例：指纹判定两份解析的合法性</h3>
 <p><strong>场景</strong>：两位治疗师对同一患者（表现为“一紧张就暴食”）进行功能层解析。</p>
 <p><strong>解析A（CBT取向）</strong>：“暴食是情绪驱动下的自动行为序列（M6-DSP-B），源于M4-STR-C中‘紧张→进食’的异常强连接。干预应通过暴露（RELINK M4-STR-C）和习惯逆转（GATE– M6-DSP-B）进行。”</p>
 <p><strong>解析B（精神动力取向）</strong>：“暴食是对不可承受情绪的防御性调节序列（M4-STR-S），根源在于M4-RES-B（安全感基底）薄弱。干预需通过治疗关系修复安全感（RELINK M4-STR-C → 涌现M4-RES-B）。”</p>
 <p><strong>逻辑指纹提取</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>指纹</th>
 <th>解析A</th>
@@ -405,7 +385,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
 </tbody>
 </table></div>
 <p><strong>判定</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>指纹</th>
 <th>是否一致</th>
@@ -437,13 +417,19 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
 <p><strong>结论</strong>：两份解析均合法，属于同一心理实体的不同理论视角。可纳入多视角集合。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：逻辑指纹体系是UPLS治理解析差异的核心工具。四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。五种错误解析判据（E1-E5）确保了UPLS的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLS知识库的可靠性。通过逻辑指纹，UPLS能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识基础设施。</p>
-<blockquote><p>**关键术语**：逻辑指纹，模块指纹，资源指纹，层级指纹，操作指纹，错误解析判据（E1-E5），编码员间一致性，Cohen’s κ</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。<br>- ❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。<br>- ❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ&gt;70）或经过严格安全评估的特殊情况。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 给定两份解析（见17.5微案例），尝试自己提取四组指纹并与文中对比。<br>2. 如果两位编码员对10个概念的模块指纹判定有3处分歧（一致率70%），计算κ值（假设随机一致率50%），判定一致性水平。<br>3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：逻辑指纹，模块指纹，资源指纹，层级指纹，操作指纹，错误解析判据（E1-E5），编码员间一致性，Cohen’s κ</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。
+- ❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。
+- ❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ>70）或经过严格安全评估的特殊情况。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 给定两份解析（见17.5微案例），尝试自己提取四组指纹并与文中对比。
+2. 如果两位编码员对10个概念的模块指纹判定有3处分歧（一致率70%），计算κ值（假设随机一致率50%），判定一致性水平。
+3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -460,7 +446,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch16.html" class="nav-link prev">‹ 16 共识工程：三阶段知识生产流水线</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch18.html" class="nav-link next">18 PSE架构：五层引擎与心智六论 ›</a></div>
+        <div class="chapter-nav"><a href="ch16.html" class="nav-link prev">‹ 共识工程</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch18.html" class="nav-link next">PSE架构 ›</a></div>
     </div>
 
     <footer>
@@ -469,21 +455,22 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch17.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -502,18 +489,18 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -534,14 +521,14 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

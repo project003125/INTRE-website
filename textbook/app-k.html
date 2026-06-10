@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -50,7 +46,7 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录</span>
+            <span class="page-label">附录K</span>
         </div>
     </div>
 
@@ -62,7 +58,7 @@
 <h2>K.1 六模块标准依赖矩阵（完整版）</h2>
 <p>以下依赖矩阵定义M1-M6模块之间的因果影响强度（0-1）。权重含义：0=无直接影响，1=完全决定。数据来源为理论推导（F级）结合文献元分析，最终权重有待PSE-C大规模校准。</p>
 <h3>6×6依赖矩阵</h3>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>从↓ / 到→</th>
 <th>M1</th>
@@ -165,9 +161,13 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**矩阵脚注**：<br>- 加粗数值为强依赖（≥0.65），代表临床中最显著的跨模块影响<br>- “出度总和”反映该模块对其他模块的整体影响强度（M4和M1最高）<br>- “入度总和”反映该模块受其他模块影响的整体强度（M6和M3最高）<br>- 当前版本为F级（理论推导+文献元分析），尚未经过PSE-C大规模校准</p></blockquote>
+<blockquote><p><strong>矩阵脚注</strong>：
+- 加粗数值为强依赖（≥0.65），代表临床中最显著的跨模块影响
+- “出度总和”反映该模块对其他模块的整体影响强度（M4和M1最高）
+- “入度总和”反映该模块受其他模块影响的整体强度（M6和M3最高）
+- 当前版本为F级（理论推导+文献元分析），尚未经过PSE-C大规模校准</p></blockquote>
 <p><strong>关键依赖速查表（权重≥0.65）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>源模块</th>
 <th>靶模块</th>
@@ -237,7 +237,7 @@
 <hr class="section-divider">
 <h2>K.2 四类级联路径模板</h2>
 <p>级联路径模板描述失调从起始模块到下游模块的典型传播模式。每类模板包含：识别口诀、级联方向、典型症状指纹、最高杠杆靶点、误判风险。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模板名称</th>
 <th>口诀</th>
@@ -283,8 +283,7 @@
 </table></div>
 <p><strong>级联路径示例（正向追踪）</strong>：</p>
 <p><strong>情绪驱动型级联（创伤后应激）</strong>：</p>
-<pre><code class="language-">
-S-P触发（环境线索）
+<pre><code>S-P触发（环境线索）
     ↓
 M4-STR-C创伤连接激活
     ↓
@@ -296,11 +295,9 @@ M3-RES-D被消耗（情绪调节努力）
     ↓
 M3-DSP-F失效
     ↓
-M6-DSP-B回避行为接管
-</code></pre>
+M6-DSP-B回避行为接管</code></pre>
 <p><strong>资源崩溃型级联（职业倦怠）</strong>：</p>
-<pre><code class="language-">
-持续高负荷工作
+<pre><code>持续高负荷工作
     ↓
 M1-RES-D持续消耗（睡眠不足、疲劳）
     ↓
@@ -310,12 +307,11 @@ M3-DSP-F门控能力下降
     ↓
 M6-DSP-B（自动化拖延）接管
     ↓
-负反馈：未完成工作增加 → M1-RES-D进一步消耗
-</code></pre>
+负反馈：未完成工作增加 → M1-RES-D进一步消耗</code></pre>
 <hr class="section-divider">
 <h2>K.3 反向溯源速查表</h2>
 <p>给定末端症状，反向匹配最可能的级联模板（用于临床快速定位）。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>末端症状</th>
 <th>最可能模板（按概率降序）</th>
@@ -373,17 +369,11 @@ M6-DSP-B（自动化拖延）接管
 </tr>
 </tbody>
 </table></div>
-<p><strong>溯源决策树</strong>：</p>
-<ol>
-<li>是否存在明显的环境触发（S-P）？是 → 优先考虑习惯固化型或情绪驱动型</li>
-<li>资源水平（M1/M3-RES-D）是否低于30？是 → 优先考虑资源崩溃型</li>
-<li>是否存在稳定的错误信念（M2-STR-R）？是 → 优先考虑规则扭曲型</li>
-<li>是否存在创伤性连接（M4-STR-C高权重）？是 → 优先考虑情绪驱动型</li>
-</ol>
+<p><strong>溯源决策树</strong>： 1. 是否存在明显的环境触发（S-P）？是 → 优先考虑习惯固化型或情绪驱动型 2. 资源水平（M1/M3-RES-D）是否低于30？是 → 优先考虑资源崩溃型 3. 是否存在稳定的错误信念（M2-STR-R）？是 → 优先考虑规则扭曲型 4. 是否存在创伤性连接（M4-STR-C高权重）？是 → 优先考虑情绪驱动型</p>
 <hr class="section-divider">
 <h2>K.4 操作-组件映射合法性矩阵</h2>
 <p>本矩阵规定G-M-A-R四类操作的合法靶点、常见误用及替代方案。违反合法性将导致干预无效或医源性损害。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接合法靶点</th>
@@ -457,11 +447,14 @@ M6-DSP-B（自动化拖延）接管
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**临床快速判断**：<br>- 问题表现为“我做不到”且资源充足 → 查GATE/RELINK<br>- 问题表现为“我不信”且资源充足 → 查ALIGN<br>- 问题表现为“我太累” → 先查MODULATE，勿跳级</p></blockquote>
+<blockquote><p><strong>临床快速判断</strong>：
+- 问题表现为“我做不到”且资源充足 → 查GATE/RELINK
+- 问题表现为“我不信”且资源充足 → 查ALIGN
+- 问题表现为“我太累” → 先查MODULATE，勿跳级</p></blockquote>
 <hr class="section-divider">
 <h2>K.5 PSL-L文化变体参数速查表</h2>
 <p>文化变体参数在PSL-L和PCUI层注入，用于调整MCT编译和PSE生态位先验。以下参数为F级（跨文化心理学文献推导），有待PSE-C多文化样本校准（P级）。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>参数</th>
 <th>东亚</th>
@@ -521,18 +514,12 @@ M6-DSP-B（自动化拖延）接管
 </tr>
 </tbody>
 </table></div>
-<p><strong>使用说明</strong>：</p>
-<ul>
-<li>文化变体参数在PSE-I阶段注入，影响生态位匹配和MCT编译</li>
-<li>当个体文化背景与生态位库默认文化不匹配时，系统自动应用相应调整</li>
-<li>若个体具有多重文化身份，需使用加权组合或单独校准</li>
-<li>所有参数为初始先验，实际应用时应随个体数据逐步校准后移</li>
-</ul>
-<blockquote><p>**文化变体使用的伦理警示**：文化参数不得用于刻板印象推断。仅当个体明确认同该文化背景时才应用；当信息不足时，使用更宽的先验分布而非强制应用文化调整。</p></blockquote>
+<p><strong>使用说明</strong>： - 文化变体参数在PSE-I阶段注入，影响生态位匹配和MCT编译 - 当个体文化背景与生态位库默认文化不匹配时，系统自动应用相应调整 - 若个体具有多重文化身份，需使用加权组合或单独校准 - 所有参数为初始先验，实际应用时应随个体数据逐步校准后移</p>
+<blockquote><p><strong>文化变体使用的伦理警示</strong>：文化参数不得用于刻板印象推断。仅当个体明确认同该文化背景时才应用；当信息不足时，使用更宽的先验分布而非强制应用文化调整。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -549,7 +536,7 @@ M6-DSP-B（自动化拖延）接管
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-j.html" class="nav-link prev">‹ 附J：PCUI规范——角色标签、映射与消歧</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-l.html" class="nav-link next">附L：架构速查——推导链与公理体系 ›</a></div>
+        <div class="chapter-nav"><a href="app-j.html" class="nav-link prev">‹ PCUI规范</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-l.html" class="nav-link next">架构速查 ›</a></div>
     </div>
 
     <footer>
@@ -558,21 +545,22 @@ M6-DSP-B（自动化拖延）接管
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 流派映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 家教案例'), ('附录', 'app-j.html', 'J PCUI规范'), ('附录', 'app-k.html', 'K PSA依赖'), ('附录', 'app-l.html', 'L 架构速查'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'app-k.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -591,18 +579,18 @@ M6-DSP-B（自动化拖延）接管
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -623,14 +611,14 @@ M6-DSP-B（自动化拖延）接管
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

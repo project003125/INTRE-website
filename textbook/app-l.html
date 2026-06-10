@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -50,7 +46,7 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录</span>
+            <span class="page-label">附录L</span>
         </div>
     </div>
 
@@ -60,7 +56,7 @@
 <hr class="section-divider">
 <h2>L.1 体系总述：五大架构的生成逻辑</h2>
 <p>INTRE的理论大厦建立在一个自上而下的演绎逻辑之上。五大核心架构遵循“道→法→术→境”的层级生成关系：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>架构</th>
 <th>符号</th>
@@ -100,20 +96,15 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>关键符号区分</strong>：</p>
-<ul>
-<li>N-S-R中的R = Realization（实现）</li>
-<li>M-R-P中的R = Ring（调度环）</li>
-<li>M-R-D-S中的R = Resource（资源）</li>
-</ul>
-<blockquote><p>📖 **教材对应**：第5章§5.1</p></blockquote>
+<p><strong>关键符号区分</strong>： - N-S-R中的R = Realization（实现） - M-R-P中的R = Ring（调度环） - M-R-D-S中的R = Resource（资源）</p>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.1</p></blockquote>
 <hr class="section-divider">
 <h2>L.2 哲学架构（N-S-R）：世界的元逻辑</h2>
 <p><strong>公理陈述</strong>：智能系统通过感知需要（Need），调用或构建结构（Structure），达成目标的实现（Realization）。三者关系可形式化为 <strong>R = f(N, S)</strong>。</p>
 <p><strong>跨层级逻辑指纹</strong>：无论分析对象是神经系统的预测编码、个体心理的成长适应，还是组织流程的协作优化，只要其运作模式可被合理地映射为N→S→R的闭环，该现象就被纳入INTRE的统一解释框架。</p>
 <p><strong>强反例触发条件</strong>：若发现某一完整的自适应系统层级的运作模式无法被合理地映射为N→S→R的闭环，则N-S-R的跨层级普适性主张需要被修正或限定。</p>
 <p><strong>逻辑必然性</strong>：在INTRE所定义的目标驱动、自适应、可反馈调节系统中，其运作逻辑上必须包含目标识别（N）、手段提供（S）和效果评估（R）三个功能组件。</p>
-<blockquote><p>📖 **教材对应**：第5章§5.2</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.2</p></blockquote>
 <hr class="section-divider">
 <h2>L.3 通用架构（M-R-P）：智能体的万能容器</h2>
 <p><strong>结构定义</strong>：为实现N-S-R循环，目标驱动型智能体需具备三个通用部件：</p>
@@ -122,17 +113,12 @@
 <li><strong>R（Ring）</strong>：R1→R5负反馈控制流程 —— “如何持续调整”</li>
 <li><strong>P（Playbook）</strong>：可配置的具体策略与价值协议 —— “具体怎么做”</li>
 </ul>
-<p><strong>普适性论证</strong>：M-R-P实现“结构与内容的分离”：</p>
-<ul>
-<li>人类心理：M = M1-M6，P = CBT/ACT等剧本</li>
-<li>L4自动驾驶：M = 感知/定位/规划/控制，P = 巡航/交互/避障剧本</li>
-<li>工业机器人：M = 传感/机械臂，P = 装配序列</li>
-</ul>
-<blockquote><p>📖 **教材对应**：第5章§5.3</p></blockquote>
+<p><strong>普适性论证</strong>：M-R-P实现“结构与内容的分离”： - 人类心理：M = M1-M6，P = CBT/ACT等剧本 - L4自动驾驶：M = 感知/定位/规划/控制，P = 巡航/交互/避障剧本 - 工业机器人：M = 传感/机械臂，P = 装配序列</p>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.3</p></blockquote>
 <hr class="section-divider">
 <h2>L.4 功能实体（M1-M6）：心智的最小协同集合</h2>
 <p><strong>六模块概览</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模块</th>
 <th>名称</th>
@@ -178,18 +164,13 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>完备性的三重担保</strong>：</p>
-<ol>
-<li><strong>逻辑推导</strong>：六模块展开并承载N-S-R循环的关键功能节点</li>
-<li><strong>工程验证</strong>：否定性特异崩溃论证——每模块缺失导致独特、不可补偿的崩溃模式</li>
-<li><strong>进化启发性支持</strong>：六模块对应功能地层的逐层叠加</li>
-</ol>
+<p><strong>完备性的三重担保</strong>： 1. <strong>逻辑推导</strong>：六模块展开并承载N-S-R循环的关键功能节点 2. <strong>工程验证</strong>：否定性特异崩溃论证——每模块缺失导致独特、不可补偿的崩溃模式 3. <strong>进化启发性支持</strong>：六模块对应功能地层的逐层叠加</p>
 <p><strong>与福多模块论的区别</strong>：M1-M6是<strong>功能接口</strong>而非信息封装模块。INTRE切换了评价标准——从“是否真实描述心智计算结构”到“是否能系统指导诊断与干预”。</p>
-<blockquote><p>📖 **教材对应**：第5章§5.4；第7章</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.4；第7章</p></blockquote>
 <hr class="section-divider">
 <h2>L.5 内感架构（M-R-D-S）：心智的状态描述语法</h2>
 <p><strong>三维骨架</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>核心追问</th>
@@ -222,11 +203,11 @@
 <p><strong>D维度细分</strong>：DSP-F（需意识、高能耗 → GATE+/-）；DSP-B（自动化、低能耗 → GATE–间接调控）</p>
 <p><strong>S维度细分</strong>：STR-R（陈述性规则 → ALIGN）；STR-C（关联性连接 → RELINK）；STR-S（程序性序列 → GATE）</p>
 <p><strong>42维状态空间</strong>：M1-M6 × 7子维度 = 42维。</p>
-<blockquote><p>📖 **教材对应**：第5章§5.5；第6章；第8章</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.5；第6章；第8章</p></blockquote>
 <hr class="section-divider">
 <h2>L.6 诊断逻辑（D-R-S）：从症状到根源的深度序列</h2>
 <p><strong>D-R-S层级诊断体系</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>问题性质</th>
@@ -256,11 +237,11 @@
 </table></div>
 <p><strong>干预序列的逻辑必然性</strong>：在严重失调情境下，默认优先级为 <strong>D层稳定 → R层恢复 → S层重建</strong>。在调度失控时补充资源低效，在资源枯竭时结构干预高风险。</p>
 <p><strong>序列刚性与失调程度正相关</strong>：Oᵢ越低序列越严格，高功能系统中可并行推进。</p>
-<blockquote><p>📖 **教材对应**：第11章</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第11章</p></blockquote>
 <hr class="section-divider">
 <h2>L.7 操作架构（G-M-A-R）：心智的行动执行语法</h2>
 <p><strong>四操作定义</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接合法靶点</th>
@@ -295,7 +276,7 @@
 </tbody>
 </table></div>
 <p><strong>靶点合法性矩阵</strong>（核心规则）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接合法靶点</th>
@@ -325,7 +306,7 @@
 </tbody>
 </table></div>
 <p><strong>流派兼容性</strong>（功能层近似）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>流派</th>
 <th>核心接口</th>
@@ -359,18 +340,18 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>📖 **教材对应**：第5章§5.6；第10章；第12章</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.6；第10章；第12章</p></blockquote>
 <hr class="section-divider">
 <h2>L.8 外感架构（S-P）：环境参照系的注入</h2>
 <p><strong>S-层（Source）</strong>：六层次环境分类——微系统、中系统、外系统、宏系统、时间系统、数字系统</p>
 <p><strong>P-层（Pattern）</strong>：与M-R-D-S同构的命名规则，如<code>P-M4-RES-D-</code>表示环境消耗情绪资源</p>
 <p><strong>战略调制功能</strong>：S-P不改变G-M-A-R定义，但决定执行优先级、时序和风险阈值</p>
-<blockquote><p>📖 **教材对应**：第5章§5.7；第8章§8.4</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第5章§5.7；第8章§8.4</p></blockquote>
 <hr class="section-divider">
 <h2>L.9 公理体系与可证伪性</h2>
 <p><strong>公理化层级</strong>：元公理层（A0-A2）→ 架构公理层（A3-A5）→ 特化推论（M1-M6）→ 描述推论（R-D-S）→ 操作推论（G-M-A-R）</p>
 <p><strong>强反例触发条件</strong>（五条核心主张的证伪路径）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>主张</th>
 <th>证伪条件</th>
@@ -399,11 +380,11 @@
 </tbody>
 </table></div>
 <p><strong>构念状态管理体系</strong>：Normative Core → Provisional Construct → Derived/Dependent → Deprecated</p>
-<blockquote><p>📖 **教材对应**：第3章；第29章</p></blockquote>
+<blockquote><p>📖 <strong>教材对应</strong>：第3章；第29章</p></blockquote>
 <hr class="section-divider">
 <h2>L.10 实战速查手册（简化版）</h2>
 <p><strong>第一步：M-R-D-S状态扫描</strong></p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>故障代码</th>
@@ -456,7 +437,7 @@
 </tbody>
 </table></div>
 <p><strong>第二步：G-M-A-R操作匹配</strong></p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>故障代码</th>
 <th>核心策略</th>
@@ -494,7 +475,7 @@
 <p><strong>第四步：S-P环境扫描</strong>：检查微系统（职场/家庭）、数字系统（手机/网络）是否在持续消耗或扭曲你。</p>
 <hr class="section-divider">
 <p><strong>版本记录</strong></p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -509,7 +490,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h1 class="chapter-title">后记</h1>
+<p># 后记</p>
 <h2>诞生历程：从退学到CC0发布</h2>
 <p>这本书的起点，不是一篇被接收的论文，也不是一个获得资助的研究项目，而是一次学术道路的中断。</p>
 <p>2023年，我因研究方向与传统心理学主流范式之间的根本性分歧，从福建师范大学的硕士项目中退学。这不是一个容易做出的决定，但回顾起来，它也许是必要的——因为变量范式所能容纳的问题空间，已经装不下我试图追问的问题。</p>
@@ -537,7 +518,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-k.html" class="nav-link prev">‹ 附K：PSA依赖——矩阵、级联模板与文化参数</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-m.html" class="nav-link next">附M：数学速成——函数、微分、概率与滤波 ›</a></div>
+        <div class="chapter-nav"><a href="app-k.html" class="nav-link prev">‹ PSA依赖</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-m.html" class="nav-link next">数学速成 ›</a></div>
     </div>
 
     <footer>
@@ -546,21 +527,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 流派映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 家教案例'), ('附录', 'app-j.html', 'J PCUI规范'), ('附录', 'app-k.html', 'K PSA依赖'), ('附录', 'app-l.html', 'L 架构速查'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'app-l.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -579,18 +561,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -611,14 +593,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

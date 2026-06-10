@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,13 +52,13 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第14章 概念标识：PCUI编码与同义词映射</h1>
-<blockquote><p>**学习目标**：完成本章后，你应能够：(1)理解PCUI如何解决心理学的术语碎片化问题；(2)掌握PCUI编码格式和M-R-D-S坐标标注规则；(3)列举至少3个多流派同义词映射示例；(4)理解PCUI元数据标注的五项防御机制。</p></blockquote>
-<blockquote><p>**本章定位**：PCUI是UPLS三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PCUI如何解决心理学的术语碎片化问题；(2)掌握PCUI编码格式和M-R-D-S坐标标注规则；(3)列举至少3个多流派同义词映射示例；(4)理解PCUI元数据标注的五项防御机制。</p></blockquote>
+<blockquote><p><strong>本章定位</strong>：PCUI是UPLS三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。</p></blockquote>
 <hr class="section-divider">
 <h3>14.1 医学先例：UMLS如何统一临床术语</h3>
 <p>心理学并非第一个遭遇术语碎片化危机的学科。在医学领域，同一疾病在不同编码体系中拥有完全不同的标识符。1986年，美国国家医学图书馆启动了统一医学语言系统(UMLS)项目，旨在建立一个超越所有特定编码体系的元词典层。UMLS的三层架构——元词典（Metathesaurus）、语义网络（Semantic Network）、专家词典（Specialist Lexicon）——40年来从未改变。</p>
 <p>UPLS在设计上直接借鉴了UMLS的结构策略：不是在DSM-5、RDoC或各流派理论之上建立另一个“超级理论”，而是在它们之上建立一个<strong>功能层的元映射层</strong>，使所有体系的术语可以在同一坐标系中被定位、比较和转换。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>UMLS（医学）</th>
@@ -86,15 +82,13 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**关键差异**：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，UPLS必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
+<blockquote><p><strong>关键差异</strong>：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，UPLS必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
 <hr class="section-divider">
 <h3>14.2 PCUI编码体系</h3>
 <p>PCUI（Psychological Concept Unique Identifier）是UPLS为每个心理学概念分配的唯一结构化编码。其设计遵循三条原则：<strong>可读性</strong>（编码携带功能定位信息）、<strong>可扩展性</strong>（支持版本演进）、<strong>可计算性</strong>（支持机器解析）。</p>
 <p><strong>编码格式</strong>：</p>
-<pre><code class="language-">
-[CONCEPT_NAME].[DOMAIN].v[VERSION].[SEQUENCE]#[MODULE_SIGNATURE]
-</code></pre>
-<div class='table-wrap'><table>
+<pre><code>[CONCEPT_NAME].[DOMAIN].v[VERSION].[SEQUENCE]#[MODULE_SIGNATURE]</code></pre>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>字段</th>
 <th>说明</th>
@@ -129,7 +123,7 @@
 </tbody>
 </table></div>
 <p><strong>ModuleSignature角色标签</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>标签</th>
 <th>名称</th>
@@ -163,16 +157,12 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>完整示例</strong>：</p>
-<ul>
-<li><code>CORE_BELIEF_NEGATIVE.UPLS.v3.0.007#M2-STR-R</code>：负性核心信念，定位于M2认知模块的规则结构层</li>
-<li><code>CHRONIC_ANXIETY.UPLS.v2.0.001#M4C+M2I+M3I+M1S+M6O</code>：慢性焦虑，M4为核心，M2/M3受冲击，M1提供支撑，M6为输出通道</li>
-</ul>
+<p><strong>完整示例</strong>： - <code>CORE_BELIEF_NEGATIVE.UPLS.v3.0.007#M2-STR-R</code>：负性核心信念，定位于M2认知模块的规则结构层 - <code>CHRONIC_ANXIETY.UPLS.v2.0.001#M4C+M2I+M3I+M1S+M6O</code>：慢性焦虑，M4为核心，M2/M3受冲击，M1提供支撑，M6为输出通道</p>
 <hr class="section-divider">
 <h3>14.3 同义词映射：多流派术语的聚合</h3>
 <p>心理学最令人困扰的问题之一是：同一现象在不同流派中拥有完全不同的名称。PCUI通过<strong>多流派同义词映射</strong>解决这一问题——所有指向同一功能实体的流派术语被聚合到同一个PCUI条目下。</p>
 <p><strong>五组代表性同义词映射</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>流派A术语</th>
 <th>流派B术语</th>
@@ -224,12 +214,12 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**微案例：映射争议的解决**：“防御机制”在精神分析中被定位为M4-STR-S，在CBT中被定位为M2-STR-S。PCUI经多流派评审后确定ModuleSignature为`#M4C+M2S+M3S`——M4为核心，M2和M3为支撑。每一方的理论解释保留在条目的“多流派解释”字段中，不强行归一。</p></blockquote>
+<blockquote><p><strong>微案例：映射争议的解决</strong>：“防御机制”在精神分析中被定位为M4-STR-S，在CBT中被定位为M2-STR-S。PCUI经多流派评审后确定ModuleSignature为<code>#M4C+M2S+M3S</code>——M4为核心，M2和M3为支撑。每一方的理论解释保留在条目的“多流派解释”字段中，不强行归一。</p></blockquote>
 <hr class="section-divider">
 <h3>14.4 一词多义：上下文消歧规则</h3>
 <p>同一术语在不同流派甚至同一流派的不同语境中，可以指代完全不同的功能实体。PCUI通过<strong>上下文消歧规则</strong>处理一词多义。</p>
 <p><strong>案例：“防御机制”的多义性</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>语境</th>
 <th>含义</th>
@@ -257,16 +247,11 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>消歧规则</strong>：</p>
-<ul>
-<li>若上下文包含“无意识”“焦虑”“压抑” → 映射到<code>DEFENSE_MECHANISM</code></li>
-<li>若上下文包含“回避想法”“分心”“逃避思考” → 映射到<code>COGNITIVE_AVOIDANCE</code></li>
-<li>若无明确上下文 → 返回备选项列表，要求人工确认</li>
-</ul>
+<p><strong>消歧规则</strong>： - 若上下文包含“无意识”“焦虑”“压抑” → 映射到<code>DEFENSE_MECHANISM</code> - 若上下文包含“回避想法”“分心”“逃避思考” → 映射到<code>COGNITIVE_AVOIDANCE</code> - 若无明确上下文 → 返回备选项列表，要求人工确认</p>
 <hr class="section-divider">
 <h3>14.5 元数据标注：五项防御机制</h3>
 <p>每个PCUI条目包含一套完整的<strong>元数据标注</strong>，确保使用者了解该概念的实证基础和可信边界。这构成PCUI的<strong>五项防御机制</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>防御机制</th>
 <th>内容</th>
@@ -300,12 +285,12 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**边界注释示例**：在PCUI条目`ATTACHMENT_SECURITY.UPLS.v3.0.078#M4-RES-B`中，边界注释写道：“本条目将依恋安全感定位为M4-RES-B。但部分专家认为涉及M2-STR-R和M5-STR-C。若未来研究显示依恋安全感的变化可被M2/M5干预完全中介而不经过M4-RES-B，则本条目需修订为组合映射。”</p></blockquote>
+<blockquote><p><strong>边界注释示例</strong>：在PCUI条目<code>ATTACHMENT_SECURITY.UPLS.v3.0.078#M4-RES-B</code>中，边界注释写道：“本条目将依恋安全感定位为M4-RES-B。但部分专家认为涉及M2-STR-R和M5-STR-C。若未来研究显示依恋安全感的变化可被M2/M5干预完全中介而不经过M4-RES-B，则本条目需修订为组合映射。”</p></blockquote>
 <hr class="section-divider">
 <h3>14.6 局部映射：预测性子单元(C类)的处理</h3>
 <p><strong>映射的必要性与不可完美性</strong>。UPLS必须将变量范式的构念映射到M-R-D-S坐标系——不映射则陷入理论隔绝。但完美映射不可达，因为：(1)心理现象是多维分布，非单点对应；(2)焦虑体验是多个功能子单元在时间中耦合放大的涌现整体；(3)M1-M6在功能维度上逻辑独立，任何映射都是选择性压缩。</p>
 <p><strong>局部映射协议</strong>——INTRE的策略是把不完美制度化：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>机制</th>
 <th>说明</th>
@@ -339,7 +324,7 @@
 <h3>14.7 功能编译器：五层流水线从主诉到向量</h3>
 <p>UPLS并非静态术语对照词典，而是一个将现象层描述重编码为功能层表示的<strong>功能编译器</strong>。</p>
 <p><strong>五层编译流水线</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>名称</th>
@@ -382,13 +367,19 @@
 <p><strong>范式升级的认知成本</strong>。初次接触UPLS映射的人会感到不适——旧术语充满经验厚度，新坐标却是模块化、离散化的。这种不适是真实的，但它是<strong>跨层翻译的认知成本</strong>。功能层表示本来就不负责承载全部主观经验内容——它的职责是在需要系统操作与精准推断时提供更细粒度的结构入口。UPLS所做的是<strong>功能解耦</strong>：从“意志力”中拆出M3-RES-D（决策抑制）、M3-RES-B（长期韧性）、M6-RES-D（行动启动）。单个映射之所以显得“不完整”，是因为使用者还没有放弃“整箱思维”。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：PCUI是UPLS的核心概念标识层，其设计借鉴了UMLS在医学领域的成功经验。PCUI编码格式<code>[CONCEPT].[DOMAIN].v[VERSION].[SEQ]#[MODULE_SIGNATURE]</code>通过ModuleSignature标签（C/I/S/T/O）将概念直接锚定到M-R-D-S坐标空间。多流派同义词映射将CBT、精神分析、人本等流派的术语聚合到同一PCUI条目；一词多义消歧通过上下文规则处理同一术语在不同语境中的不同功能定位。元数据标注的五项防御机制——可信度分级、证据等级、边界注释、版本化更新、强反例触发条件——确保PCUI不是不可证伪的独断体系，而是可检验、可修订的知识库。局部映射协议通过主映射+次映射、可信度分级和边界注释管理映射的不完美性。功能编译器五层流水线（PSL→PCUI→M-R-D-S→G-M-A-R/PSE→SID-P/MMD-P）将自然语言主诉转化为可执行的干预方案。</p>
-<blockquote><p>**关键术语**：PCUI，ModuleSignature，角色标签（C/I/S/T/O），同义词映射，一词多义消歧，五项防御机制，局部映射协议，功能编译器</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “PCUI是给术语换个名字” → ✅ PCUI不是重命名，而是将术语映射到M-R-D-S坐标。<br>- ❌ “所有术语都能找到完美的PCUI” → ✅ 文化特定概念可能需要新增条目或组合映射，边界注释会明确说明。<br>- ❌ “功能编译器是多余的复杂化” → ✅ 编译器使心理学从“概念解释”走向“解释-编译-执行”的完整工作流。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 将术语“反刍思维”尝试编译为PCUI编码（选择ModuleSignature并说明理由）。<br>2. 查阅文中同义词映射表，找出一个你认为映射可信度存疑的条目，说明理由。<br>3. 为什么UPLS不能直接照搬UMLS的设计？心理学缺少什么条件？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：PCUI，ModuleSignature，角色标签（C/I/S/T/O），同义词映射，一词多义消歧，五项防御机制，局部映射协议，功能编译器</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “PCUI是给术语换个名字” → ✅ PCUI不是重命名，而是将术语映射到M-R-D-S坐标。
+- ❌ “所有术语都能找到完美的PCUI” → ✅ 文化特定概念可能需要新增条目或组合映射，边界注释会明确说明。
+- ❌ “功能编译器是多余的复杂化” → ✅ 编译器使心理学从“概念解释”走向“解释-编译-执行”的完整工作流。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 将术语“反刍思维”尝试编译为PCUI编码（选择ModuleSignature并说明理由）。
+2. 查阅文中同义词映射表，找出一个你认为映射可信度存疑的条目，说明理由。
+3. 为什么UPLS不能直接照搬UMLS的设计？心理学缺少什么条件？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -405,7 +396,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch13.html" class="nav-link prev">‹ 13 流派生成：从语法空位到预测疗法</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch15.html" class="nav-link next">15 语义架构：PSA推理与PSL编译 ›</a></div>
+        <div class="chapter-nav"><a href="ch13.html" class="nav-link prev">‹ 流派生成</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch15.html" class="nav-link next">语义架构 ›</a></div>
     </div>
 
     <footer>
@@ -414,21 +405,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch14.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -447,18 +439,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -479,14 +471,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

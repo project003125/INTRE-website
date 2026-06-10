@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,14 +52,14 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第8章 状态向量：42维表示与动力学</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)描述42维状态向量的构成并区分各分量的时间尺度；(2)解释状态空间几何性质；(3)理解微分方程框架的一般形式；(4)陈述恢复不对称定律及其临床意义；(5)描述S-P外感架构的六层环境来源与P-层模式编码；(6)了解多模态融合中神经似然的来源。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述42维状态向量的构成并区分各分量的时间尺度；(2)解释状态空间几何性质；(3)理解微分方程框架的一般形式；(4)陈述恢复不对称定律及其临床意义；(5)描述S-P外感架构的六层环境来源与P-层模式编码；(6)了解多模态融合中神经似然的来源。</p></blockquote>
 <hr class="section-divider">
 <h3>8.1 完整列表：42子维度的符号与定义</h3>
 <p>在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。每个分量代表某一特定功能模块在某一特定状态维度上的取值（通常归一化到0-100区间或-1到+1区间，视维度性质而定）。</p>
 <p><strong>42维状态向量的数学表示</strong>：</p>
 <p>$$ \Psi(t) = \begin{pmatrix} \psi_{1,RES-D}(t) \\ \psi_{1,RES-B}(t) \\ \psi_{1,DSP-F}(t) \\ \psi_{1,DSP-B}(t) \\ \psi_{1,STR-R}(t) \\ \psi_{1,STR-C}(t) \\ \psi_{1,STR-S}(t) \\ \psi_{2,RES-D}(t) \\ \vdots \\ \psi_{6,STR-S}(t) \end{pmatrix} $$</p>
 <p><strong>各分量的功能定义速查表</strong>（完整操作化定义见附录A）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模块</th>
 <th>子维度</th>
@@ -354,23 +350,18 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**注**：M1的STR-R和STR-C当前为理论空位（待后续细化）。STR-C在简化表示中可投影为平均连接强度（标量），STR-S可投影为序列僵化程度评分。完整表示保留矩阵或序列结构用于高精度仿真。</p></blockquote>
+<blockquote><p><strong>注</strong>：M1的STR-R和STR-C当前为理论空位（待后续细化）。STR-C在简化表示中可投影为平均连接强度（标量），STR-S可投影为序列僵化程度评分。完整表示保留矩阵或序列结构用于高精度仿真。</p></blockquote>
 <p><strong>42维的必要性</strong>：降维测试表明，任何将模块合并（如将M1、M3、M4的资源层合并）或子维度合并（如将STR-R/C/S合并）的简化框架，都会导致关键功能区分的丢失。例如，将M3-RES-D与M4-RES-D合并为单一“心理能量”，就无法解释为什么休息可以恢复意志资源但未必能恢复安全感。</p>
 <hr class="section-divider">
 <h3>8.2 几何解释：正交轴、可行子空间与吸引子</h3>
 <p>42维状态向量\(\Psi(t)\)位于高维空间\(\mathbb{R}^{42}\)的子集中。该状态空间具有几个重要的几何性质。</p>
 <p><strong>正交轴假设</strong>。R、D、S三个维度被假设为<strong>功能正交</strong>——它们描述的是心理系统中不同类型的属性，在概念上相互独立。“正交性”是在功能定义层面上的概念独立性，不承诺在测量数据中彼此不相关。实际上，由于系统动力学，三个维度在数据中往往呈现相关，但这不违反概念正交性——正如物理学中的位置和动量在概念上正交，但在相空间中通过哈密顿方程耦合。</p>
 <p><strong>可行状态子空间</strong>。并非42维空间中的所有点都是心理系统可达的。生理、解剖和动力学约束限制了系统实际能够占据的子空间。例如，M3-RES-D不能高于M1-RES-D的供给上限（资源约束）；M4-DSP-B的过度激活往往伴随着M4-RES-D的消耗。可行状态子空间是一个低维流形，嵌入在42维空间中。PSE仿真的任务之一就是学习这个流形的结构。</p>
-<p><strong>高维流形与临床状态</strong>。不同的心理障碍对应状态空间中不同的区域或吸引子：</p>
-<ul>
-<li>重度抑郁（迟滞型）→ 低M3-RES-D + 低M4-RES-D + 低M1-RES-D + M2-STR-R负性偏向</li>
-<li>广泛性焦虑 → 高M4-DSP-B + 高M2-DSP-B + 中等M3-RES-D消耗</li>
-<li>创伤后应激 → M4-STR-C异常高权重 + M4-RES-B低 + M4-DSP-B易触发</li>
-</ul>
+<p><strong>高维流形与临床状态</strong>。不同的心理障碍对应状态空间中不同的区域或吸引子： - 重度抑郁（迟滞型）→ 低M3-RES-D + 低M4-RES-D + 低M1-RES-D + M2-STR-R负性偏向 - 广泛性焦虑 → 高M4-DSP-B + 高M2-DSP-B + 中等M3-RES-D消耗 - 创伤后应激 → M4-STR-C异常高权重 + M4-RES-B低 + M4-DSP-B易触发</p>
 <p><strong>状态空间的距离与相似性</strong>。两个状态向量之间的欧氏距离可以定义心理状态的相似性。在实际应用中，通常先对维度进行标准化（z-score），并考虑马氏距离作为欧氏距离的替代方案。</p>
 <hr class="section-divider">
 <h3>8.3 时间演化：微分方程框架的一般形式</h3>
-<blockquote><p>**符号约定**：\(\Psi(t)\)表示42维状态向量，\(\psi_i(t)\)表示其第\(i\)个分量；\(\theta\)表示参数向量；\(E(t)\)表示环境输入向量（来自S-P外感架构）；\(u(t)\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
+<blockquote><p><strong>符号约定</strong>：\(\Psi(t)\)表示42维状态向量，\(\psi_i(t)\)表示其第\(i\)个分量；\(\theta\)表示参数向量；\(E(t)\)表示环境输入向量（来自S-P外感架构）；\(u(t)\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
 <p>状态向量\(\Psi(t)\)随时间的变化由一组耦合的常微分方程(ODEs)描述。这些方程构成了PSE中心智动力学理论(MKT)的数学核心。</p>
 <p><strong>一般形式</strong>：</p>
 <p>$$ \frac{d\psi_i}{dt} = f_i(\Psi(t), E(t), u(t); \theta_i) $$</p>
@@ -396,7 +387,7 @@
 <h3>8.4 环境耦合：S-P外感架构与生态位</h3>
 <p>状态向量\(\Psi(t)\)的演化不仅依赖于内部动力学，还持续受到外部环境的调制。INTRE通过<strong>S-P外感架构</strong>对环境进行结构化描述。</p>
 <p><strong>S-层：环境来源的分类</strong>。S-层借鉴并拓展了布朗芬布伦纳的生态系统理论：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>名称</th>
@@ -455,7 +446,7 @@
 <hr class="section-divider">
 <h3>8.5 多模态融合与神经似然</h3>
 <p>PSE是一个多模态贝叶斯融合引擎，其状态估计依赖于三个输入通道的观测数据。这三个通道及其对应的基础设施为：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>通道</th>
 <th>观测类型</th>
@@ -466,7 +457,7 @@
 <tr>
 <td><strong>行为通道</strong></td>
 <td>心理量表、行为任务、EMA</td>
-<td>传统心理测量学</td>
+<td>UBMS（三层架构）</td>
 <td>行为似然 \( p(y_b \mid \Psi) \)</td>
 </tr>
 <tr>
@@ -489,13 +480,20 @@
 <p><strong>多模态融合的临床意义</strong>：当三个通道的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。PSE不强制融合所有通道，而是在UNIS仲裁合约（§24.2）和PSE内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S同构的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLS）和神经（UNIS）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
-<blockquote><p>**关键术语**：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。<br>- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S同构的编码格式，使环境输入可直接进入动力学方程。<br>- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 写出状态向量的数学表示形式并解释各符号的含义。<br>2. 选择拖延和焦虑两个现象，在42维表格中标注它们最可能涉及的核心子维度。<br>3. 恢复不对称定律声称消耗快于恢复。如果对称律成立，人类的心理生活会有什么不同？<br>4. PSE的三个输入通道分别是什么？每个通道由哪个基础设施提供？当神经通道与语义通道的似然方向相反时，可能提示什么临床现象？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。
+- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S同构的编码格式，使环境输入可直接进入动力学方程。
+- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 写出状态向量的数学表示形式并解释各符号的含义。
+2. 选择拖延和焦虑两个现象，在42维表格中标注它们最可能涉及的核心子维度。
+3. 恢复不对称定律声称消耗快于恢复。如果对称律成立，人类的心理生活会有什么不同？
+4. PSE的三个输入通道分别是什么？每个通道由哪个基础设施提供？当神经通道与语义通道的似然方向相反时，可能提示什么临床现象？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -512,7 +510,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 7 功能模块：M1至M6划分与级联</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch09.html" class="nav-link next">9 测量方法：ABC分类与桥接校准 ›</a></div>
+        <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 功能模块</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch09.html" class="nav-link next">测量方法 ›</a></div>
     </div>
 
     <footer>
@@ -521,21 +519,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch08.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -554,18 +553,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -586,14 +585,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -50,23 +46,21 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录</span>
+            <span class="page-label">附录M</span>
         </div>
     </div>
 
     <main class="textbook-content">
         <h1 class="chapter-title">附录M：数学速成——函数、微分、概率与滤波</h1>
-<blockquote><p>**目标读者**：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
-<blockquote><p>**学习路线**：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
-<pre><code class="language-text">
-函数与导数 → 微分方程 → 线性代数基础 → 概率与贝叶斯 → 状态估计思想 → 粒子滤波 → 非线性动力学
+<blockquote><p><strong>目标读者</strong>：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
+<blockquote><p><strong>学习路线</strong>：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
+<pre><code class="language-text">函数与导数 → 微分方程 → 线性代数基础 → 概率与贝叶斯 → 状态估计思想 → 粒子滤波 → 非线性动力学
     ↓            ↓           ↓              ↓              ↓               ↓            ↓
-  第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章
-</code></pre>
+  第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章</code></pre>
 <hr class="section-divider">
 <h2>M.1 函数与导数（高中回顾）</h2>
 <p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是随时间变化的函数；导数描述“变化快慢”。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>通俗解释</th>
@@ -94,12 +88,12 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。</p>
+<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。  </p>
 <blockquote><p>📌 你不需要会推导，只需知道：指数衰减意味着“越剩越少，减少得越慢”。</p></blockquote>
 <hr class="section-divider">
 <h2>M.2 微分方程基础</h2>
 <p><strong>为什么需要</strong>：第8、19章用微分方程描述心理状态如何随时间演化。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>解释</th>
@@ -133,7 +127,7 @@
 <hr class="section-divider">
 <h2>M.3 线性代数基础（第8章必备）</h2>
 <p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>通俗解释</th>
@@ -191,7 +185,7 @@
 <hr class="section-divider">
 <h2>M.4 概率与贝叶斯定理</h2>
 <p><strong>为什么需要</strong>：第20章用贝叶斯校准融合观测数据，更新对状态的不确定性。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>通俗解释</th>
@@ -215,17 +209,12 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>心理学解释</strong>：</p>
-<ul>
-<li><strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验）</li>
-<li><strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性</li>
-<li><strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</li>
-</ul>
+<p><strong>心理学解释</strong>： - <strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验） - <strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性 - <strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</p>
 <p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
 <hr class="section-divider">
 <h2>M.5 状态估计的思想</h2>
 <p><strong>为什么需要</strong>：第20章的粒子滤波是卡尔曼滤波的推广。先理解核心思想。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>解释</th>
@@ -245,18 +234,12 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>卡尔曼滤波的四个步骤</strong>（只需记逻辑）：</p>
-<ol>
-<li><strong>预测</strong>：用动力学方程推测下一时刻状态</li>
-<li><strong>观测</strong>：获得带噪声的读数</li>
-<li><strong>更新</strong>：结合预测和观测，按不确定性加权平均</li>
-<li><strong>重复</strong></li>
-</ol>
+<p><strong>卡尔曼滤波的四个步骤</strong>（只需记逻辑）： 1. <strong>预测</strong>：用动力学方程推测下一时刻状态 2. <strong>观测</strong>：获得带噪声的读数 3. <strong>更新</strong>：结合预测和观测，按不确定性加权平均 4. <strong>重复</strong></p>
 <blockquote><p>📌 类比：开车进隧道前知道速度（预测），隧道内推算位置（预测），出隧道后GPS恢复（观测），结合修正（更新）。</p></blockquote>
 <hr class="section-divider">
 <h2>M.6 粒子滤波概念</h2>
 <p><strong>为什么需要</strong>：当系统是非线性、非高斯时（心理系统正是如此），卡尔曼滤波失效。粒子滤波是通用替代方法。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>通俗解释</th>
@@ -281,8 +264,7 @@
 </tbody>
 </table></div>
 <p><strong>粒子滤波循环</strong>：</p>
-<pre><code class="language-">
-初始粒子群（均匀散布）
+<pre><code>初始粒子群（均匀散布）
     ↓
 预测：根据动力学方程移动每个粒子
     ↓
@@ -290,14 +272,13 @@
     ↓
 重采样：高权重粒子繁殖，低权重淘汰
     ↓
-（循环）
-</code></pre>
+（循环）</code></pre>
 <p><strong>最终输出</strong>：粒子群聚集区 = 状态最佳估计；分散程度 = 不确定性。</p>
 <blockquote><p>📌 类比：用一群侦探分头追踪嫌疑人，每步用新线索淘汰不靠谱侦探，让靠谱侦探繁殖。</p></blockquote>
 <hr class="section-divider">
 <h2>M.7 集合预报与CRPS（第20章）</h2>
 <p><strong>为什么需要</strong>：PSE输出概率预测，需要评估预测质量。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>解释</th>
@@ -329,7 +310,7 @@
 <hr class="section-divider">
 <h2>M.8 非线性动力学基本概念（第29章）</h2>
 <p><strong>为什么需要</strong>：第29章讨论混沌、吸引子、非线性系统。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>通俗解释</th>
@@ -366,7 +347,7 @@
 <hr class="section-divider">
 <h2>M.9 高级统计计算概念（第28章，可选）</h2>
 <p>第28章涉及一些更专业的概念，对于理解PSE原理不是必须的。下表供好奇读者参考：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
 <th>简短说明</th>
@@ -393,7 +374,7 @@
 <blockquote><p>📌 初学阶段可跳过这些内容。PSE的实际校准使用粒子滤波，不要求掌握MCMC或VB。</p></blockquote>
 <hr class="section-divider">
 <h2>M.10 总结：各章需要的数学知识速查表</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>章节</th>
 <th>需要的概念</th>
@@ -433,16 +414,10 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>你不需要</strong>：</p>
-<ul>
-<li>手工解微分方程 → 计算机数值积分</li>
-<li>手工做贝叶斯积分 → 粒子滤波自动完成</li>
-<li>推导MCMC算法 → 本书不要求</li>
-<li>计算高维向量内积 → 理解概念即可</li>
-</ul>
+<p><strong>你不需要</strong>： - 手工解微分方程 → 计算机数值积分 - 手工做贝叶斯积分 → 粒子滤波自动完成 - 推导MCMC算法 → 本书不要求 - 计算高维向量内积 → 理解概念即可</p>
 <hr class="section-divider">
 <h2>M.11 推荐自学资源（免费中文）</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>资源</th>
 <th>适合部分</th>
@@ -476,11 +451,11 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**学习策略**：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。**目标不是学会数学，而是能读懂PSE的输入输出逻辑**。</p></blockquote>
+<blockquote><p><strong>学习策略</strong>：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。<strong>目标不是学会数学，而是能读懂PSE的输入输出逻辑</strong>。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -497,7 +472,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 附L：架构速查——推导链与公理体系</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-n.html" class="nav-link next">附N：概念速查——心理学、神经科学与系统论 ›</a></div>
+        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 架构速查</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-n.html" class="nav-link next">概念速查 ›</a></div>
     </div>
 
     <footer>
@@ -506,21 +481,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 流派映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 家教案例'), ('附录', 'app-j.html', 'J PCUI规范'), ('附录', 'app-k.html', 'K PSA依赖'), ('附录', 'app-l.html', 'L 架构速查'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'app-m.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -539,18 +515,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -571,14 +547,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

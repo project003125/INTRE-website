@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -50,7 +46,7 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录</span>
+            <span class="page-label">附录H</span>
         </div>
     </div>
 
@@ -61,7 +57,7 @@
 <h3>H.1 内部理论压力测试（17项）</h3>
 <p><strong>测试范围</strong>：覆盖公理层、模块层、R-D-S维度层、诊断逻辑层、干预操作层、环境架构层及整体架构。</p>
 <p><strong>总体结果</strong>：17项测试中，<strong>12项完全通过，5项条件性通过，0项失败</strong>。所有未完全通过的项目均指向<strong>形式化不完整或边界声明缺失</strong>，可通过补充规则修复，无需修改核心架构。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>测试数</th>
@@ -133,7 +129,7 @@
 <h3>H.2 外部兼容性压力测试（10篇既有论文）</h3>
 <p><strong>测试方法</strong>：在每篇论文分析前预设可能削弱INTRE核心区分的失败条件，再核对原论文结果是否触发。</p>
 <p><strong>结果</strong>：<strong>10篇论文均未触发预设主要失败条件</strong>。若干跨论文发现与INTRE核心功能区分形成高度相容，包括：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>论文主题</th>
 <th>关键发现</th>
@@ -178,7 +174,7 @@
 <h3>H.3 核心组件替代测试（460个替代方案）</h3>
 <p>对16项核心组件分别设计20–40个替代方案，遍历检验是否存在功能等价或更优的替代架构。</p>
 <p><strong>累计结果</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>统计项</th>
 <th>数值</th>
@@ -208,7 +204,7 @@
 </tbody>
 </table></div>
 <p><strong>各组件替代测试关键裁决</strong>（完整总表见05-V-17）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>编号</th>
 <th>核心组件</th>
@@ -318,25 +314,14 @@
 <p><strong>最终裁决</strong>：<strong>没有替代者，只有互补层</strong>。INTRE不声称在所有职能上最优，但它是唯一同时通过“通用状态描述层”和“操作语法生成层”双核心角色准入条件的架构。</p>
 <hr class="section-divider">
 <h3>H.5 总体结论：结构稳健性与实证债务</h3>
-<p><strong>已完成的逻辑与结构验证</strong>：</p>
-<ul>
-<li>内部理论压力测试：17项通过（含条件通过），无致命逻辑矛盾。</li>
-<li>外部兼容性压力测试：10篇论文未触发主要失败条件。</li>
-<li>核心组件替代测试：460个替代方案中0个完全替代。</li>
-<li>角色化替代测试：在双核心职能上保持不可替代的结构优势。</li>
-</ul>
-<p><strong>尚待跨越的三道实证关卡</strong>：</p>
-<ol>
-<li><strong>编码可靠性</strong>：M-R-D-S状态语法的编码员间一致性（κ ≥ 0.60）。</li>
-<li><strong>干预匹配增量效度</strong>：基于G-M-A-R的靶点匹配干预优于常规治疗。</li>
-<li><strong>PSE预测表现</strong>：动力学仿真对个体轨迹的预测精度与校准度。</li>
-</ol>
+<p><strong>已完成的逻辑与结构验证</strong>： - 内部理论压力测试：17项通过（含条件通过），无致命逻辑矛盾。 - 外部兼容性压力测试：10篇论文未触发主要失败条件。 - 核心组件替代测试：460个替代方案中0个完全替代。 - 角色化替代测试：在双核心职能上保持不可替代的结构优势。</p>
+<p><strong>尚待跨越的三道实证关卡</strong>： 1. <strong>编码可靠性</strong>：M-R-D-S状态语法的编码员间一致性（κ ≥ 0.60）。 2. <strong>干预匹配增量效度</strong>：基于G-M-A-R的靶点匹配干预优于常规治疗。 3. <strong>PSE预测表现</strong>：动力学仿真对个体轨迹的预测精度与校准度。</p>
 <p><strong>框架的可证伪性承诺</strong>：五条核心主张均有明确的证伪路径，其中最脆弱的节点是 <strong>M3-RES-D的三通道收敛效度研究</strong>。框架已内建版本演化与强反例触发协议，承诺在证据面前有序修正或降级。</p>
 <hr class="section-divider">
 <p><em>本附录基于以下文档编制：05-R-01、05-R-02、05-R-03、05-V-00至05-V-19。详细数据请参见各原始报告。</em></p>
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -353,7 +338,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-g.html" class="nav-link prev">‹ 附G：术语对照——中英文约500条</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-i.html" class="nav-link next">附I：家教案例——学生拖延的INTRE干预 ›</a></div>
+        <div class="chapter-nav"><a href="app-g.html" class="nav-link prev">‹ 术语对照</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-i.html" class="nav-link next">家教案例 ›</a></div>
     </div>
 
     <footer>
@@ -362,21 +347,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 流派映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 家教案例'), ('附录', 'app-j.html', 'J PCUI规范'), ('附录', 'app-k.html', 'K PSA依赖'), ('附录', 'app-l.html', 'L 架构速查'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'app-h.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -395,18 +381,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -427,14 +413,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

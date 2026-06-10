@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,40 +52,21 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第20章 仿真校准：蒙特卡罗与贝叶斯</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIS神经似然注入；(4)描述RTE-Cal异步校准与UNIS↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
-<blockquote><p>**⚠️ 实证成熟度声明**：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，**不可用于临床决策**。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIS神经似然注入；(4)描述RTE-Cal异步校准与UNIS↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
+<blockquote><p><strong>⚠️ 实证成熟度声明</strong>：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 <hr class="section-divider">
 <h3>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h3>
 <p>PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。</p>
-<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括：</p>
-<ul>
-<li>初始状态\(\Psi(0)\)（从生态位先验分布中采样）</li>
-<li>动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等</li>
-<li>耦合参数：依赖矩阵中的权重\(w_{ij}\)</li>
-<li>环境参数：S-P输入的强度、频率、持续时间</li>
-</ul>
-<p><strong>蒙特卡罗仿真流程</strong>：</p>
-<ol>
-<li><strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\)</li>
-<li><strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\)</li>
-<li><strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta）</li>
-<li><strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件</li>
-<li><strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</li>
-</ol>
+<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括： - 初始状态\(\Psi(0)\)（从生态位先验分布中采样） - 动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等 - 耦合参数：依赖矩阵中的权重\(w_{ij}\) - 环境参数：S-P输入的强度、频率、持续时间</p>
+<p><strong>蒙特卡罗仿真流程</strong>： 1. <strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\) 2. <strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\) 3. <strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta） 4. <strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件 5. <strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</p>
 <p>典型PSE-M仿真运行100万至1000万个智能体，每个仿真时长为数周到数月。借助GPU并行计算，千万级仿真可在数小时至数天内完成。</p>
-<p><strong>PSE-M的输出</strong>：</p>
-<ul>
-<li><strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布</li>
-<li><strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”）</li>
-<li><strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布</li>
-<li><strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</li>
-</ul>
+<p><strong>PSE-M的输出</strong>： - <strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布 - <strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”） - <strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布 - <strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</p>
 <p><strong>PSE-M的认识论地位</strong>：输出是<strong>理论导出的合成数据</strong>，而非经验发现。其价值在于探索理论的推论并生成可检验的预测。</p>
 <hr class="section-divider">
 <h3>20.2 PSE-P：先验提取与生态位库</h3>
 <p>PSE-P的任务是将PSE-M生成的海量合成数据以及变量范式积累的实证知识（元分析、量表常模、实验效应量），压缩为可供PSE-C使用的<strong>先验参数分布</strong>和<strong>生态位库</strong>。</p>
 <p><strong>生态位的定义与分层</strong>。生态位是个体典型S-P环境配置与M-R-D-S基线状态的联合分布。分类维度包括：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>示例取值</th>
@@ -124,14 +101,8 @@
 </tbody>
 </table></div>
 <p>当前版本生态位库包含约20个常见生态位（如“青少年焦虑障碍”“高压知识工作者”），基于DSM-5流行病学数据和临床专家共识（F级）。</p>
-<blockquote><p>**⚠️ 工程判断声明**：生态位分类与先验分布为初始工程选择，随数据积累可修订、合并或增删。</p></blockquote>
-<p><strong>参数先验的提取流程</strong>：</p>
-<ol>
-<li><strong>知识桥接</strong>：从变量范式中提取实证发现，转换为参数分布。当存在复制争议时，先验方差被扩大</li>
-<li><strong>仿真校准</strong>：在PSE-M中运行该生态位的智能体种群，调整参数使仿真输出与实证数据匹配</li>
-<li><strong>不确定性量化</strong>：记录参数估计的不确定性</li>
-<li><strong>生态位谱系构建</strong>：识别生态位间的层级关系，支持降级匹配</li>
-</ol>
+<blockquote><p><strong>⚠️ 工程判断声明</strong>：生态位分类与先验分布为初始工程选择，随数据积累可修订、合并或增删。</p></blockquote>
+<p><strong>参数先验的提取流程</strong>： 1. <strong>知识桥接</strong>：从变量范式中提取实证发现，转换为参数分布。当存在复制争议时，先验方差被扩大 2. <strong>仿真校准</strong>：在PSE-M中运行该生态位的智能体种群，调整参数使仿真输出与实证数据匹配 3. <strong>不确定性量化</strong>：记录参数估计的不确定性 4. <strong>生态位谱系构建</strong>：识别生态位间的层级关系，支持降级匹配</p>
 <p><strong>先验分布的形式</strong>：Gamma分布（消耗速率）、Beta分布（0-1参数）、正态分布（截断）、Dirichlet分布（多类别权重）。</p>
 <p><strong>生态位库的伦理考量</strong>：每个生态位标注其数据来源的人群特征，在样本代表性不足时扩大先验不确定性。文化变体参数被显式编码为调节因子。</p>
 <hr class="section-divider">
@@ -140,21 +111,8 @@
 <p><strong>贝叶斯校准的数学框架</strong>：</p>
 <p>$$ p(\Psi(t), \theta \mid y_{1:t}) \propto p(y_{1:t} \mid \Psi(t), \theta) \cdot p(\Psi(0), \theta) $$</p>
 <p>由于状态空间维度高（42维）、动力学非线性，PSE-C采用<strong>序贯蒙特卡罗（粒子滤波）</strong>或<strong>集合卡尔曼滤波(EnKF)</strong>进行近似推理。</p>
-<p><strong>校准流程</strong>：</p>
-<ol>
-<li><strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验分布</li>
-<li><strong>初始观测编译</strong>：使用VTS-P协议将初始评估数据编译为初始状态向量的似然</li>
-<li><strong>递推校准</strong>：每次新观测到达时：预测步（用MKT向前传播）→ 更新步（更新粒子权重）→ 重采样</li>
-<li><strong>收敛判断</strong>：当核心参数的后验分布标准差低于预设阈值时，达到临床可用精度</li>
-<li><strong>预测输出</strong>：基于当前后验分布，输出未来状态轨迹的概率预测</li>
-</ol>
-<p><strong>观测模型的设计</strong>。观测似然\(p(y \mid \Psi)\)定义不同类型观测数据到状态向量的映射：</p>
-<ul>
-<li><strong>量表分数</strong>：线性关系\(y = a + b\psi + \epsilon\)，系数通过桥接研究校准</li>
-<li><strong>EMA条目</strong>：伯努利分布或序数Logistic回归</li>
-<li><strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D</li>
-<li><strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</li>
-</ul>
+<p><strong>校准流程</strong>： 1. <strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验分布 2. <strong>初始观测编译</strong>：使用VTS-P协议将初始评估数据编译为初始状态向量的似然 3. <strong>递推校准</strong>：每次新观测到达时：预测步（用MKT向前传播）→ 更新步（更新粒子权重）→ 重采样 4. <strong>收敛判断</strong>：当核心参数的后验分布标准差低于预设阈值时，达到临床可用精度 5. <strong>预测输出</strong>：基于当前后验分布，输出未来状态轨迹的概率预测</p>
+<p><strong>观测模型的设计</strong>。观测似然\(p(y \mid \Psi)\)定义不同类型观测数据到状态向量的映射： - <strong>量表分数</strong>：线性关系\(y = a + b\psi + \epsilon\)，系数通过桥接研究校准 - <strong>EMA条目</strong>：伯努利分布或序数Logistic回归 - <strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D - <strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</p>
 <p><strong>个体差异的处理</strong>：PSE-C同时估计状态轨迹\(\Psi(t)\)和个体的固定参数\(\theta\)（消耗速率、学习率），实现"个性化"。</p>
 <p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
 <p>$$ p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIS)}} $$</p>
@@ -165,11 +123,11 @@
 <ol>
 <li><strong>前向通路</strong>（UNIS → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
 <li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \(p(\Psi_t \mid y_{1:t})\)</li>
-<li><strong>残差计算</strong>（PSE内部）：当行为通道和神经通道对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
+<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMS校准）和神经通道（经UNIS转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
 <li><strong>反向通路</strong>（PSE → UNIS）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
 </ol>
 <p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIS的分层更新纪律：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>更新目标</th>
 <th>速率</th>
@@ -197,32 +155,28 @@
 <hr class="section-divider">
 <h3>20.4 不确定性量化：集合预报与CRPS评分</h3>
 <p>PSE-C的输出是<strong>概率预测</strong>——以分布的形式表达预测的不确定性。</p>
-<p><strong>不确定性的三个来源</strong>：</p>
-<ol>
-<li><strong>状态估计不确定性（认识论）</strong>：因观测有限且存在噪声，随数据增加而减少</li>
-<li><strong>参数不确定性</strong>：个体动力学参数从数据中推断，也随数据增加而减少</li>
-<li><strong>固有随机性（偶然不确定性）</strong>：系统本身的随机性，无法消除</li>
-</ol>
+<p><strong>不确定性的三个来源</strong>： 1. <strong>状态估计不确定性（认识论）</strong>：因观测有限且存在噪声，随数据增加而减少 2. <strong>参数不确定性</strong>：个体动力学参数从数据中推断，也随数据增加而减少 3. <strong>固有随机性（偶然不确定性）</strong>：系统本身的随机性，无法消除</p>
 <p>PSE通过<strong>集合预报</strong>表示总不确定性：从PSE-C后验分布中采样M个粒子，将每个粒子前向积分，得到M条轨迹的集合分布。</p>
-<p><strong>预测区间的计算</strong>：</p>
-<ul>
-<li><strong>中位数轨迹</strong>：M条轨迹在每一时间点的中位数</li>
-<li><strong>置信区间</strong>：第2.5和第97.5百分位数轨迹（95%预测区间）</li>
-<li><strong>事件概率</strong>：发生该事件的轨迹数 / M</li>
-<li><strong>最可能轨迹</strong>：具有最高后验密度的轨迹</li>
-</ul>
+<p><strong>预测区间的计算</strong>： - <strong>中位数轨迹</strong>：M条轨迹在每一时间点的中位数 - <strong>置信区间</strong>：第2.5和第97.5百分位数轨迹（95%预测区间） - <strong>事件概率</strong>：发生该事件的轨迹数 / M - <strong>最可能轨迹</strong>：具有最高后验密度的轨迹</p>
 <p><strong>临床决策中的不确定性表达</strong>。典型输出：“该患者在未来48小时内发生情绪崩溃（M4-RES-D < 20）的概率为30% [95%预测区间: 15%-45%]。主要风险因素是持续性睡眠不足。建议在明日上午安排一次休息窗口，可将概率降至15%以下。”</p>
 <p><strong>校准检验</strong>。一个概率预测系统的核心质量指标是<strong>校准度</strong>：预测的概率是否与实际发生的频率一致。PSE需要对校准度进行持续监控——如果系统性偏离，触发闭环修正。</p>
 <p><strong>预测精度的评估指标</strong>：RMSE（均方根误差）、CRPS（连续排序概率得分）、区间覆盖率、Brier评分。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLS）和神经（UNIS）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIS与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
-<blockquote><p>**关键术语**：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ &quot;蒙特卡罗仿真就是计算机算命&quot; → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。<br>- ❌ &quot;PSE-C可以直接用于临床决策&quot; → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。<br>- ❌ &quot;神经似然是功能状态的&#x27;直接读数&#x27;&quot; → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 区分PSE-M蒙特卡罗仿真和PSE-C贝叶斯校准的功能定位。<br>2. 以一个具体的效应量为例，说明桥接的四层验证流程。<br>3. 集合预报在天气预报中已被广泛采用。讨论将这一思想应用于心理状态预测时面临的独特挑战。<br>4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ "蒙特卡罗仿真就是计算机算命" → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。
+- ❌ "PSE-C可以直接用于临床决策" → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。
+- ❌ "神经似然是功能状态的'直接读数'" → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 区分PSE-M蒙特卡罗仿真和PSE-C贝叶斯校准的功能定位。
+2. 以一个具体的效应量为例，说明桥接的四层验证流程。
+3. 集合预报在天气预报中已被广泛采用。讨论将这一思想应用于心理状态预测时面临的独特挑战。
+4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -239,7 +193,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">‹ 19 系统动力学：资源、调度与结构方程</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch21.html" class="nav-link next">21 临床案例：焦虑、创伤与抑郁 ›</a></div>
+        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">‹ 系统动力学</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch21.html" class="nav-link next">临床案例 ›</a></div>
     </div>
 
     <footer>
@@ -248,21 +202,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch20.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -281,18 +236,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -313,14 +268,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

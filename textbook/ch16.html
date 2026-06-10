@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,12 +52,12 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第16章 共识工程：三阶段知识生产流水线</h1>
-<blockquote><p>**学习目标**：完成本章后，你应能够：(1)描述UPLS三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
-<blockquote><p>**本章定位**：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLS的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLS三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
+<blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLS的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
 <hr class="section-divider">
 <h3>16.1 全景流程：PCC-P→PCF-P→PCV-P</h3>
 <p>PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套<strong>三阶段知识生产流水线</strong>——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>阶段</th>
 <th>名称</th>
@@ -97,19 +93,13 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>核心设计理念</strong>：</p>
-<ul>
-<li><strong>阶段分离</strong>：采集、编译、验证由不同团队执行，避免利益冲突</li>
-<li><strong>通过率递减</strong>：从采集（宽松）到验证（严格）逐步提高标准</li>
-<li><strong>可追溯性</strong>：每个阶段的决策、争议、修改都记录在案</li>
-<li><strong>失败友好</strong>：未通过的条目有明确的修订通道，不意味着“失败”而是“暂未成熟”</li>
-</ul>
-<blockquote><p>**微案例**：如果让一位CBT专家直接撰写“焦虑”的PCUI条目，他很可能会将其定位为M2-STR-R（认知规则扭曲），忽略M4-STR-C的贡献。三阶段流水线强制跨流派参与：PCC-P采集精神分析和行为主义的文献，PCF-P由多流派专家编译，PCV-P由独立评议团审查。最终条目会包含多流派视角的注解。</p></blockquote>
+<p><strong>核心设计理念</strong>： - <strong>阶段分离</strong>：采集、编译、验证由不同团队执行，避免利益冲突 - <strong>通过率递减</strong>：从采集（宽松）到验证（严格）逐步提高标准 - <strong>可追溯性</strong>：每个阶段的决策、争议、修改都记录在案 - <strong>失败友好</strong>：未通过的条目有明确的修订通道，不意味着“失败”而是“暂未成熟”</p>
+<blockquote><p><strong>微案例</strong>：如果让一位CBT专家直接撰写“焦虑”的PCUI条目，他很可能会将其定位为M2-STR-R（认知规则扭曲），忽略M4-STR-C的贡献。三阶段流水线强制跨流派参与：PCC-P采集精神分析和行为主义的文献，PCF-P由多流派专家编译，PCV-P由独立评议团审查。最终条目会包含多流派视角的注解。</p></blockquote>
 <hr class="section-divider">
 <h3>16.2 采集协议：广度优先与五重质量门</h3>
 <p>PCC-P是流水线的第一阶段，遵循“<strong>广度优先</strong>”原则：先广泛覆盖各流派、各文化、各来源类型，容忍模糊和不一致。</p>
 <p><strong>四类输入源</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>来源类型</th>
 <th>具体内容</th>
@@ -145,7 +135,7 @@
 </table></div>
 <p><strong>自动化采集六步流程</strong>：文献获取 → 文本预处理 → 术语识别 → 概念提取 → 元数据标注 → 质量初筛</p>
 <p><strong>五重质量门</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>质量门</th>
 <th>标准</th>
@@ -184,7 +174,7 @@
 <h3>16.3 编译协议：多学科强制形式化</h3>
 <p>PCF-P将PCC-P采集的概念原材料编译为符合PSA规范的标准化PCUI条目草案。与PCC-P的“广度优先”不同，PCF-P是“<strong>精度优先</strong>”。</p>
 <p><strong>编译专家团队配置（15-20人）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>领域</th>
 <th>人数</th>
@@ -224,7 +214,7 @@
 </tbody>
 </table></div>
 <p><strong>五个形式化编译阶段</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>阶段</th>
 <th>任务</th>
@@ -264,19 +254,14 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>冲突解决机制</strong>（三级递进）：</p>
-<ol>
-<li>专家小组内部讨论（2-3天）</li>
-<li>扩大会议（1周），引入额外专家仲裁</li>
-<li>指导委员会仲裁（72小时），记录异议档案</li>
-</ol>
+<p><strong>冲突解决机制</strong>（三级递进）： 1. 专家小组内部讨论（2-3天） 2. 扩大会议（1周），引入额外专家仲裁 3. 指导委员会仲裁（72小时），记录异议档案</p>
 <p>所有异议——无论是否被采纳——都被结构化记录，存入PCUI条目的“异议档案”中。</p>
 <p><strong>通过率目标</strong>：约60%。未通过的40%包括争议过大、参数化不充分或架构映射模糊的条目。</p>
 <hr class="section-divider">
 <h3>16.4 验证协议：五重共识标准与异议档案</h3>
 <p>PCV-P通过跨流派同行评议和共识判定，将PCF-P草案确立为正式发布的PCUI条目。PCV-P是“<strong>权威性优先</strong>”阶段。</p>
 <p><strong>评议团配置（25-35人）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>强制要求</th>
@@ -316,7 +301,7 @@
 </tbody>
 </table></div>
 <p><strong>两阶段评议流程</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>阶段</th>
 <th>时长</th>
@@ -339,7 +324,7 @@
 </tbody>
 </table></div>
 <p><strong>五重共识标准</strong>（必须同时满足）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>标准</th>
 <th>阈值</th>
@@ -374,7 +359,7 @@
 </tbody>
 </table></div>
 <p><strong>失败分级处理</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>支持率区间</th>
 <th>处理方式</th>
@@ -406,14 +391,9 @@
 <p><strong>异议档案</strong>：PCV-P阶段的所有反对意见、争议点、未决问题被结构化记录并永久保存在PCUI条目的元数据中。包含：反对者姓名和机构、反对的具体内容、支持证据、评审团回应、未采纳的理由。</p>
 <hr class="section-divider">
 <h3>16.5 版本治理：双轨发布与追溯更新</h3>
-<p><strong>异议档案的价值</strong>：</p>
-<ol>
-<li><strong>学术诚信</strong>：公开记录分歧，不掩盖不同观点</li>
-<li><strong>知识演化</strong>：为未来修订提供起点——新证据出现时可从异议档案快速定位争议点</li>
-<li><strong>教育价值</strong>：新人可看到学科内部的真实争议</li>
-</ol>
+<p><strong>异议档案的价值</strong>： 1. <strong>学术诚信</strong>：公开记录分歧，不掩盖不同观点 2. <strong>知识演化</strong>：为未来修订提供起点——新证据出现时可从异议档案快速定位争议点 3. <strong>教育价值</strong>：新人可看到学科内部的真实争议</p>
 <p><strong>版本治理</strong>：PCUI条目的版本管理遵循双轨发布协议：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>变更类型</th>
 <th>通道</th>
@@ -435,22 +415,23 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>版本号语义</strong>：<code>vMAJOR.MINOR.PATCH</code></p>
-<ul>
-<li>MAJOR：架构级变更（如模块重定义）</li>
-<li>MINOR：概念修订（Type-2触发）</li>
-<li>PATCH：数值精化（Type-1触发）</li>
-</ul>
+<p><strong>版本号语义</strong>：<code>vMAJOR.MINOR.PATCH</code> - MAJOR：架构级变更（如模块重定义） - MINOR：概念修订（Type-2触发） - PATCH：数值精化（Type-1触发）</p>
 <p>每个PCUI条目的完整变更历史可通过其DOI追溯。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：UPLS的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
-<blockquote><p>**关键术语**：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率&lt;60%），即使总体支持率90%，条目也不能发布。<br>- ❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。<br>- ❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 如果一个PCUI条目在PCV-P中获得总体支持率85%，但精神分析流派支持率仅为55%，应如何处理？<br>2. 判断“将M3-RES-D的恢复速率从0.12/h更新为0.11/h（基于新元分析）”属于Type-1还是Type-2变更？为什么？<br>3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率<60%），即使总体支持率90%，条目也不能发布。
+- ❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。
+- ❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 如果一个PCUI条目在PCV-P中获得总体支持率85%，但精神分析流派支持率仅为55%，应如何处理？
+2. 判断“将M3-RES-D的恢复速率从0.12/h更新为0.11/h（基于新元分析）”属于Type-1还是Type-2变更？为什么？
+3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -467,7 +448,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch15.html" class="nav-link prev">‹ 15 语义架构：PSA推理与PSL编译</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch17.html" class="nav-link next">17 逻辑指纹：解析差异的标准化治理 ›</a></div>
+        <div class="chapter-nav"><a href="ch15.html" class="nav-link prev">‹ 语义架构</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch17.html" class="nav-link next">逻辑指纹 ›</a></div>
     </div>
 
     <footer>
@@ -476,21 +457,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch16.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -509,18 +491,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -541,14 +523,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

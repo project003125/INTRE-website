@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,22 +52,14 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第13章 流派生成：从语法空位到预测疗法</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
 <hr class="section-divider">
 <h3>13.1 生成语法：从M-R-D-S空位到新干预方案</h3>
 <p>INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的<strong>预测性流派</strong>。这是INTRE作为“理论引擎”的核心体现。</p>
 <p><strong>流派生成的形式化条件</strong>。任意干预方案可表示为：<code>干预 = (靶点集T ⊆ M-R-D-S子单元，操作序列O = [o₁, o₂, ..., oₖ]，优先级约束C)</code>。一个<strong>流派</strong>被定义为一组具有一致理论内核的干预方案。从INTRE语法出发生成一个新流派，需满足：靶点特异性、操作一致性、区分度、完备性、可检验性。</p>
 <p><strong>“结构空位”作为生成起点</strong>。INTRE的42维状态空间中，那些在变量范式中未被独立识别、但被功能分解逻辑强制要求的子单元——即<strong>C类预测性子单元</strong>（如M6-RES-D行为启动能量、M3-DSP-B自动放弃倾向、M1-STR-C躯体-意义连接）——正是新流派生成的理想起点。每一个C类子单元都代表一个“未被开采的功能靶点”。</p>
-<p><strong>生成流程</strong>：</p>
-<ol>
-<li>选择候选靶点（从42个子单元中选取未被现有流派占据的组件）</li>
-<li>匹配原子操作（根据靶点类型选择合法操作）</li>
-<li>设计序列逻辑（按D-R-S深度序列或具体问题模型安排顺序）</li>
-<li>界定适应症（推导该靶点的功能失调会产生何种症状指纹）</li>
-<li>形成可检验预测（给出预注册可验证的假说，包括证伪条件）</li>
-<li>标注边界与风险</li>
-</ol>
-<blockquote><p>**INTRE不能替代临床创新**。INTRE不会自动发明具体技术。它所做的是：**指明哪个功能靶点值得开发技术、该靶点应匹配什么原子操作、验证该操作需要检验什么预测**。具体的“如何做”仍然是人类治疗师的创造性工作。</p></blockquote>
+<p><strong>生成流程</strong>： 1. 选择候选靶点（从42个子单元中选取未被现有流派占据的组件） 2. 匹配原子操作（根据靶点类型选择合法操作） 3. 设计序列逻辑（按D-R-S深度序列或具体问题模型安排顺序） 4. 界定适应症（推导该靶点的功能失调会产生何种症状指纹） 5. 形成可检验预测（给出预注册可验证的假说，包括证伪条件） 6. 标注边界与风险</p>
+<blockquote><p><strong>INTRE不能替代临床创新</strong>。INTRE不会自动发明具体技术。它所做的是：<strong>指明哪个功能靶点值得开发技术、该靶点应匹配什么原子操作、验证该操作需要检验什么预测</strong>。具体的“如何做”仍然是人类治疗师的创造性工作。</p></blockquote>
 <p><strong>INTRE与已有流派的关系定位</strong>：INTRE生成的预测性流派不是为了“取代”CBT、ACT等已有实证支持的疗法，而是为了<strong>填补它们留下的功能空白</strong>。例如，CBT主要靶向STR-R（信念），ACT主要靶向DSP-B（认知融合），行为疗法主要靶向STR-S（行为序列），精神分析主要靶向STR-C（情感连接）。但仍有功能靶点未被任何主流流派系统占据——预测性流派正是对这些空位的回应。</p>
 <hr class="section-divider">
 <h3>13.2 典范案例：默认模式调度疗法（DMD）</h3>
@@ -79,7 +67,7 @@
 <p><strong>问题识别：反刍与担忧的功能层定位</strong>。反刍和担忧是跨诊断的常见症状。传统流派各有侧重：CBT关注内容，ACT关注功能，正念关注态度。然而，它们都未能系统占据一个更基础的功能靶点：<strong>反刍进程本身作为一个调度过程</strong>。</p>
 <p>在INTRE框架中，反刍和担忧被定位为<strong>M2-DSP-B（认知后台调度）的失控激活</strong>——一个自动化的、持续运行的认知过程。问题不在于反刍的“内容”错了，而在于<strong>反刍这个进程的“播放开关”坏了</strong>——系统失去了关闭它的能力。</p>
 <p><strong>核心洞察：从内容修正到调度门控</strong>。DMD的核心洞察：反刍和担忧在功能层上是“调度失控”。因此，DMD不直接处理信念内容（那是ALIGN的任务），而是直接训练个体快速切换注意通道的能力——即<strong>GATE– M2-DSP-B</strong>（抑制反刍进程）和<strong>GATE+ M1-DSP-F</strong>（激活感官前台）的联合操作。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>对比维度</th>
 <th>传统CBT</th>
@@ -104,7 +92,7 @@
 </tbody>
 </table></div>
 <p><strong>DMD的G-M-A-R操作分解</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>技术</th>
 <th>操作</th>
@@ -144,15 +132,10 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>DMD的标准化协议</strong>（6-12次会话）：</p>
-<ul>
-<li><strong>觉察阶段（1-2次）</strong>：心理教育（DMN与TPN的类比），反刍日志记录</li>
-<li><strong>替代技能训练阶段（3-8次）</strong>：感官锚定、计数法、身体锚定</li>
-<li><strong>内化与维持阶段（9-12次）</strong>：内化“想法不是命令”规则，制定预防计划</li>
-</ul>
+<p><strong>DMD的标准化协议</strong>（6-12次会话）： - <strong>觉察阶段（1-2次）</strong>：心理教育（DMN与TPN的类比），反刍日志记录 - <strong>替代技能训练阶段（3-8次）</strong>：感官锚定、计数法、身体锚定 - <strong>内化与维持阶段（9-12次）</strong>：内化“想法不是命令”规则，制定预防计划</p>
 <p><strong>DMD的神经科学基础</strong>：DMN（默认模式网络）在心智游移时激活，FPN（额顶控制网络）在外部任务导向时激活，两者呈反相关。反刍个体表现为DMN过度激活和切换障碍。DMD的感官锚定旨在通过激活TPN间接抑制DMN。</p>
 <p><strong>DMD的可检验预测</strong>（详见《INTRE 核心预测清单 v3.0》）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>ID</th>
 <th>预测内容</th>
@@ -202,7 +185,7 @@
 <hr class="section-divider">
 <h3>13.3 其他流派：VRB、BIE、SPR与NCB简介</h3>
 <p>INTRE共生成了十个预测性流派，覆盖了从启动能量到数字边界、从叙事资本到算法厌恶等多个功能空位。以下为各流派的核心功能签名概览（完整映射见附录E）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>流派</th>
 <th>全称</th>
@@ -284,13 +267,18 @@
 <p><strong>INTRE生成流派的独特价值</strong>：(1)提供了流派生成的<strong>第一性原理依据</strong>——从功能层语法推导出的必然空位；(2)提供了<strong>可检验的靶点机制</strong>——每个流派的预测不仅包括症状改善，还包括功能层靶点的变化；(3)内置了<strong>证伪条件</strong>——如果靶点指标不改善而症状改善，则流派的核心机制假设被削弱。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：INTRE的流派生成语法从42维状态空间中的C类预测性子单元出发，通过靶点选择、操作匹配、序列设计和可检验预测生成，演绎出尚未被现有流派系统占据的新干预方案。INTRE提供的是形式化框架和约束条件——它不会自动发明具体技术，但指明了哪个靶点值得开发、应匹配什么操作、需要检验什么预测。默认模式调度疗法(DMD)是这一生成能力的典范：它从“反刍是调度失控而非信念错误”的核心洞察出发，以GATE– M2-DSP-B和GATE+ M1-DSP-F为核心操作，给出了可检验的P级预测。其他预测性流派如VRB、BIE、SPR、DEB、NCB等分别填补了M3-RES-D、M6-RES-D、M4-STR-C、S-P数字系统、M5-RES-B等空位。预测性流派的验证路线图分为五个阶段，从概念验证到RCT再到传播实施，每个阶段都有明确的通过标准和证伪条件。INTRE的流派生成能力证明了它不仅是已有知识的收纳箱，更是一台能够生成新知识、新疗法的理论引擎。</p>
-<blockquote><p>**关键术语**：流派生成语法，结构空位，DMD，预测性流派，验证路线图</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “INTRE能自动生成新疗法” → ✅ INTRE提供形式化框架和约束条件，指明靶点和操作匹配，但具体技术开发仍是人类治疗师的创造性工作。<br>- ❌ “DMD试图取代CBT” → ✅ DMD填补的是CBT等流派未系统占据的功能空位（注意调度过程本身），而不是替代CBT处理信念内容。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 从42维状态空间中识别一个你认为可能成为“结构空位”的子单元，并设计一个简要的流派生成方案。<br>2. DMD与CBT在反刍问题上的功能定位有何本质区别？<br>3. 如果一个预测性流派的核心预测在多个独立RCT中被证伪，按照INTRE的验证路线图应如何处理？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：流派生成语法，结构空位，DMD，预测性流派，验证路线图</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “INTRE能自动生成新疗法” → ✅ INTRE提供形式化框架和约束条件，指明靶点和操作匹配，但具体技术开发仍是人类治疗师的创造性工作。
+- ❌ “DMD试图取代CBT” → ✅ DMD填补的是CBT等流派未系统占据的功能空位（注意调度过程本身），而不是替代CBT处理信念内容。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 从42维状态空间中识别一个你认为可能成为“结构空位”的子单元，并设计一个简要的流派生成方案。
+2. DMD与CBT在反刍问题上的功能定位有何本质区别？
+3. 如果一个预测性流派的核心预测在多个独立RCT中被证伪，按照INTRE的验证路线图应如何处理？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -307,7 +295,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch12.html" class="nav-link prev">‹ 12 流派分解：六大流派的GMAR映射</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch14.html" class="nav-link next">14 概念标识：PCUI编码与同义词映射 ›</a></div>
+        <div class="chapter-nav"><a href="ch12.html" class="nav-link prev">‹ 流派分解</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch14.html" class="nav-link next">概念标识 ›</a></div>
     </div>
 
     <footer>
@@ -316,21 +304,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch13.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -349,18 +338,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -381,14 +370,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

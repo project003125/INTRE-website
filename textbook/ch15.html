@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,12 +52,12 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
-<blockquote><p>**学习目标**：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
 <hr class="section-divider">
 <h3>15.1 PSA定位：从词典到推理系统</h3>
 <p>如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要<strong>推理</strong>的问题。</p>
 <p>PSA（Psychological Semantic Architecture，心理语义架构）正是为了解决这一问题而设计的。PSA定义了PCUI概念之间的形式化关系——模块依赖权重、级联路径模板、操作-组件映射规则——将UPLS从<strong>静态词典</strong>升级为<strong>推理系统</strong>。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>回答的问题</th>
@@ -80,13 +76,13 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**微案例**：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
+<blockquote><p><strong>微案例</strong>：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
 <hr class="section-divider">
 <h3>15.2 核心编码：依赖矩阵、级联模板与操作映射</h3>
 <p>PSA的核心编码包含三类信息：<strong>模块依赖权重</strong>、<strong>级联路径模板</strong>和<strong>操作-组件映射规则</strong>。</p>
 <h4>15.2.1 模块依赖权重</h4>
 <p>模块依赖权重定义了M1-M6之间因果影响的强度（0-1）。以下为理论推导的标准矩阵（权重≥0.65加粗）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>从↓ / 到→</th>
 <th>M1</th>
@@ -153,16 +149,10 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>关键依赖解读</strong>：</p>
-<ul>
-<li><strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据</li>
-<li><strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗</li>
-<li><strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加</li>
-<li><strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</li>
-</ul>
+<p><strong>关键依赖解读</strong>： - <strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据 - <strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗 - <strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加 - <strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</p>
 <h4>15.2.2 级联路径模板</h4>
 <p>级联路径模板描述失调从起始模块到下游模块的典型传播模式：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模板名称</th>
 <th>级联方向</th>
@@ -197,7 +187,7 @@
 </tbody>
 </table></div>
 <h4>15.2.3 操作-组件映射规则</h4>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接靶点</th>
@@ -236,7 +226,7 @@
 <h3>15.3 PSL设计：自然语言到PCUI的映射接口</h3>
 <p>PSL（Psychological Specialist Lexicon，心理专项词汇库）是UPLS的自然语言接口层。它的任务是：将临床口语、患者主诉、文化隐喻等非结构化的语言输入，映射为标准化的PCUI标识符和M-R-D-S坐标。</p>
 <p><strong>PSL-L五层结构</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>内容</th>
@@ -271,7 +261,7 @@
 </tbody>
 </table></div>
 <p><strong>临床口语到PCUI的映射示例</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>患者主诉（中文）</th>
 <th>可能的PCUI映射</th>
@@ -303,7 +293,7 @@
 <h3>15.4 文化变体：参数化对抗WEIRD偏见</h3>
 <p>心理学的一个重大挑战是<strong>WEIRD偏见</strong>（研究基于西方、教育程度高、工业化、富裕、民主的人口）。UPLS通过<strong>文化变体参数</strong>在架构层面对抗这一偏见。</p>
 <p><strong>文化变体的三层处理策略</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>处理方式</th>
@@ -328,7 +318,7 @@
 </tbody>
 </table></div>
 <p><strong>文化变体参数示例（东亚 vs 西方）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>参数</th>
 <th>东亚版本</th>
@@ -362,12 +352,11 @@
 </tr>
 </tbody>
 </table></div>
-<blockquote><p>**重要声明**：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
+<blockquote><p><strong>重要声明</strong>：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
 <hr class="section-divider">
 <h3>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h3>
 <p>UPLS静态三层与PSE动态引擎之间的接口关系，构成了从“静态知识”到“动态计算”的完整链路。</p>
-<pre><code class="language-text">
-┌─────────────────────────────────────────────────────────────┐
+<pre><code class="language-text">┌─────────────────────────────────────────────────────────────┐
 │                      自然语言输入                            │
 └─────────────────────────┬───────────────────────────────────┘
                           ▼
@@ -389,10 +378,9 @@
 ┌─────────────────────────────────────────────────────────────┐
 │  PSE：MCT编译状态向量，MKT动力学积分，MDT干预序列优化        │
 │  → 输出：个体化轨迹预测 + 干预处方                           │
-└─────────────────────────────────────────────────────────────┘
-</code></pre>
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <p><strong>关键接口协议</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>接口</th>
 <th>方向</th>
@@ -430,7 +418,7 @@
 <h3>15.6 微案例：从主诉到PCUI的完整编译</h3>
 <p><strong>主诉</strong>：“我最近老是心慌，尤其是晚上一个人在家的时候。心跳得特别快，觉得要出事了，但去医院查了心脏没问题。”</p>
 <p><strong>Step 1 – PSL分词与术语识别</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>词元</th>
 <th>候选PCUI</th>
@@ -468,13 +456,19 @@
 <p><strong>Step 3 – PSA推理</strong>：加载依赖矩阵后自动计算：M4-DSP-B↑ → M3-RES-D消耗速率+30%（预计3天后跌破40）；M4-DSP-B↑ → M2-DSP-B↑（反刍风险+25%）；推荐干预：先GATE– M4-DSP-B（接地技术）+ MODULATE+ M1-RES-D（睡眠锚定），待资源稳定后再ALIGN M4-STR-R（灾难化信念挑战）。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLS静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使UPLS不仅是一个术语词典，更是一个可运行的、支持临床推理的知识基础设施。</p>
-<blockquote><p>**关键术语**：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。<br>- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。<br>- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？<br>2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。<br>3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。
+- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。
+- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？
+2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。
+3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -491,7 +485,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 14 概念标识：PCUI编码与同义词映射</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch16.html" class="nav-link next">16 共识工程：三阶段知识生产流水线 ›</a></div>
+        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 概念标识</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch16.html" class="nav-link next">共识工程 ›</a></div>
     </div>
 
     <footer>
@@ -500,21 +494,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch15.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -533,18 +528,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -565,14 +560,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

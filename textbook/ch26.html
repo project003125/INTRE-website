@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,8 +52,8 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第26章 心理AI：功能层驱动的智能交互</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIS作为神经输入前端在心理AI中的角色。</p></blockquote>
-<blockquote><p>**⚠️ 重要声明**：心理AI当前阶段应被定位为**辅助工具**，而非替代人类治疗师。对于自杀危机、严重精神障碍，必须有人类专业人员的监督和介入。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIS作为神经输入前端在心理AI中的角色。</p></blockquote>
+<blockquote><p><strong>⚠️ 重要声明</strong>：心理AI当前阶段应被定位为<strong>辅助工具</strong>，而非替代人类治疗师。对于自杀危机、严重精神障碍，必须有人类专业人员的监督和介入。</p></blockquote>
 <hr class="section-divider">
 <h3>26.1 架构定义：PSE内核+REVER伦理层+UNIS前端+LLM界面</h3>
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
@@ -75,15 +71,14 @@
 <li><strong>LLM界面</strong>：负责将PSE输出（状态报告、预测、操作序列）转译为自然语言响应，并将用户的自然语言输入反向编译为MCT可读的格式化数据。LLM充当“翻译器”，而非“决策者”。所有临床决策由PSE内核做出。</li>
 </ol>
 <p><strong>完整数据流（含UNIS）</strong>：</p>
-<pre><code class="language-text">
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+<pre><code class="language-text">┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
 │  可穿戴设备  │    │   用户输入   │    │   环境传感器 │    │   历史记录   │
 │  EEG/PPG等  │    │  自然语言   │    │   GPS/加速  │    │   EMA/日志  │
 └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
        │                  │                  │                  │
        ▼                  ▼                  ▼                  ▼
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│    UNIS     │    │    UPLS     │    │  行为通道   │    │    PSE      │
+│    UNIS     │    │    UPLS     │    │    UBMS     │    │    PSE      │
 │  神经似然   │    │  语义似然   │    │  行为似然   │    │  状态融合   │
 └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
        │                  │                  │                  │
@@ -108,10 +103,9 @@
                                   │  LLM 界面   │
                                   │ 自然语言    │
                                   │ 响应生成    │
-                                  └─────────────┘
-</code></pre>
+                                  └─────────────┘</code></pre>
 <p><strong>心理AI与纯LLM的本质区别</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>纯LLM聊天机器人</th>
@@ -163,7 +157,7 @@
 <h3>26.2 教育应用：自适应学习中的心理感知</h3>
 <p>教育技术中的自适应学习系统通常根据学生的知识掌握程度调整学习内容。但学习效果不仅受认知状态影响，还受心理状态（疲劳、焦虑、动机）的强烈调节。</p>
 <p><strong>学习中的心理状态监测</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>心理状态</th>
 <th>M-R-D-S映射</th>
@@ -214,12 +208,7 @@
 <li>行为标记：用餐时间不规律、外出频率下降、与家人通话减少</li>
 <li>生理标记（UNIS）：HRV下降、睡眠碎片化、theta/beta比异常</li>
 </ul>
-<p><strong>社交陪伴的“放大而非替代”原则</strong>：</p>
-<ul>
-<li><strong>记忆辅助</strong>：提醒老年人给家人打电话、回顾家庭照片</li>
-<li><strong>社交桥梁</strong>：当老年人说“我很想我女儿”时，AI回应“要现在给她打个电话吗？我可以帮你拨号”而非“我在这里陪你”</li>
-<li><strong>社交技能训练</strong>：通过角色扮演练习维持基本对话能力，逐步减少提醒频率</li>
-</ul>
+<p><strong>社交陪伴的“放大而非替代”原则</strong>： - <strong>记忆辅助</strong>：提醒老年人给家人打电话、回顾家庭照片 - <strong>社交桥梁</strong>：当老年人说“我很想我女儿”时，AI回应“要现在给她打个电话吗？我可以帮你拨号”而非“我在这里陪你” - <strong>社交技能训练</strong>：通过角色扮演练习维持基本对话能力，逐步减少提醒频率</p>
 <p><strong>认知刺激与情绪调节</strong>：结构化认知训练（工作记忆练习、语义联想游戏），监测M2-RES-D消耗，疲劳时自动切换活动类型。</p>
 <p><strong>危机检测与警报</strong>：连续24小时无活动、自杀意念标记、跌倒检测时自动联系预设紧急联系人。危机检测只作为辅助筛选，所有高风险警报须在24小时内由人类确认。</p>
 <hr class="section-divider">
@@ -231,7 +220,7 @@
 <li>生理信号（可选佩戴，UNIS）：HRV下降、前额叶theta/beta比升高（认知负荷累积）</li>
 </ul>
 <p><strong>倦怠的分级干预</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>风险等级</th>
 <th>M-R-D-S指纹</th>
@@ -260,7 +249,7 @@
 <hr class="section-divider">
 <h3>26.5 聊天机器人：从话术到功能层干预</h3>
 <p><strong>从话术到功能层干预的跃迁</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>传统聊天机器人</th>
@@ -295,14 +284,22 @@
 <p><strong>临床验证路线</strong>：心理AI在应用于临床前需要经过：与金标准诊断的一致性检验；状态估计的重测信度和收敛效度；干预推荐与人类专家的一致性；随机对照试验证明优于常规聊天机器人。</p>
 <p><strong>警告</strong>：心理AI不能替代专业心理治疗。对于自杀危机、严重精神障碍，请立即联系专业人员。</p>
 <hr class="section-divider">
-<p><strong>本章小结</strong>：心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIS神经前端（可选）+ PSE内核（状态估计与干预规划）+ REVER伦理层（门控审查）+ LLM界面（自然语言编译与生成）。它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIS提供高时间分辨率、抗主观偏倚的神经通道输入。在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。在老年照护中，遵循“社交放大而非替代”原则，检测孤独感并提供认知刺激。在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。在心理健康聊天机器人中，实现了从“话术匹配”到“功能层干预”的跃迁。心理AI与REVER的协同确保了技术落地的伦理安全性。</p>
-<blockquote><p>**关键术语**：心理AI，PSE内核+LLM界面，UNIS神经前端，社交放大而非替代，冷启动，三通道融合</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “心理AI可以替代人类治疗师” → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。<br>- ❌ “心理AI的核心能力是更像人” → ✅ 心理AI的核心能力是“更懂功能”——将自然语言编译为状态向量并基于动力学模型决策。<br>- ❌ “UNIS是心理AI的必需品” → ✅ UNIS是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 画出心理AI的四层架构图，标注每层的数据流向。<br>2. 传统聊天机器人与心理AI在响应“我感到焦虑”时，内部处理流程的根本差异是什么？<br>3. 如果自主性优先原则被严格执行，心理AI的商业模型将如何受到影响？讨论商业利益与伦理设计之间的张力。<br>4. UNIS在心理AI中扮演什么角色？在什么场景下UNIS通道最为关键？</p></blockquote>
+<p><strong>本章小结</strong>：心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIS神经前端（可选）+ UBMS行为通道 + PSE内核（状态估计与干预规划）+ REVER伦理层（门控审查）+ LLM界面（自然语言编译与生成）。它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIS提供高时间分辨率、抗主观偏倚的神经通道输入。在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。在老年照护中，遵循“社交放大而非替代”原则，检测孤独感并提供认知刺激。在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。在心理健康聊天机器人中，实现了从“话术匹配”到“功能层干预”的跃迁。心理AI与REVER的协同确保了技术落地的伦理安全性。</p>
+<blockquote><p><strong>关键术语</strong>：心理AI，PSE内核+LLM界面，UNIS神经前端，UBMS行为测量，社交放大而非替代，冷启动，三通道融合</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “心理AI可以替代人类治疗师” → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。
+- ❌ “心理AI的核心能力是更像人” → ✅ 心理AI的核心能力是“更懂功能”——将自然语言编译为状态向量并基于动力学模型决策。
+- ❌ "UNIS是心理AI的必需品" → ✅ UNIS是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。
+- ❌ "行为通道就是量表分数" → ✅ UBMS将量表分数转化为功能似然时经过三层处理：注册库存储工具信息、校准引擎执行个体化修正、似然API提供标准化接口。这远超出了简单的分数对照。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 画出心理AI的四层架构图，标注每层的数据流向。
+2. 传统聊天机器人与心理AI在响应“我感到焦虑”时，内部处理流程的根本差异是什么？
+3. 如果自主性优先原则被严格执行，心理AI的商业模型将如何受到影响？讨论商业利益与伦理设计之间的张力。
+4. UNIS在心理AI中扮演什么角色？在什么场景下UNIS通道最为关键？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -319,7 +316,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch25.html" class="nav-link prev">‹ 25 REVER：结构伦理、依赖雷达与门控</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch27.html" class="nav-link next">27 跨学科接口：学科映射与范式协作 ›</a></div>
+        <div class="chapter-nav"><a href="ch25.html" class="nav-link prev">‹ REVER</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch27.html" class="nav-link next">跨学科接口 ›</a></div>
     </div>
 
     <footer>
@@ -328,21 +325,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch26.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -361,18 +359,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -393,14 +391,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

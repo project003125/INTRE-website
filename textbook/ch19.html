@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,7 +52,7 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第19章 系统动力学：资源、调度与结构方程</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)掌握RES-D的耗竭-恢复方程的基本形式及参数含义；(2)理解DSP-F/B切换的阈值模型；(3)描述STR-C权重更新和STR-R信念更新的学习规则；(4)理解模块间耦合的数学表达及其在依赖矩阵中的体现。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)掌握RES-D的耗竭-恢复方程的基本形式及参数含义；(2)理解DSP-F/B切换的阈值模型；(3)描述STR-C权重更新和STR-R信念更新的学习规则；(4)理解模块间耦合的数学表达及其在依赖矩阵中的体现。</p></blockquote>
 <hr class="section-divider">
 <h3>19.1 资源动力学：耗竭-恢复与不对称定律</h3>
 <p>资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是<strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率。</p>
@@ -66,11 +62,11 @@
 <p>在简化临床模型中，常用指数衰减+恢复的形式：</p>
 <p>$$ \frac{dR}{dt} = \beta (R_{\text{max}} - R) - \gamma \cdot A(t) \cdot R $$</p>
 <p>其中\(\beta\)是恢复速率常数，\(\gamma\)是消耗速率常数，\(A(t)\)是当前活动强度。恢复不对称定律体现为\(\gamma > \beta\)。</p>
-<blockquote><p>**⚠️ 工程判断声明**：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
+<blockquote><p><strong>⚠️ 工程判断声明</strong>：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
 <p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
 <p>$$ \text{Supply}_i(t) = \frac{w_i \cdot \text{Demand}_i(t)}{\sum_j w_j \cdot \text{Demand}_j(t)} \cdot \text{TotalSupply}(t) $$</p>
 <p><strong>资源恢复的时间常数</strong>（理论占位符）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>资源类型</th>
 <th>典型恢复时间常数</th>
@@ -125,12 +121,7 @@
 <p>其中\(x_i, x_j\)是节点激活强度，\(\lambda\)是遗忘项，\(g(\text{arousal})\)是情绪唤醒调制函数（高唤醒加速学习）。</p>
 <p><strong>STR-S的习惯巩固</strong>：</p>
 <p>$$ \frac{dS_k}{dt} = \eta_s \cdot (\text{Frequency}_k - \lambda S_k) \cdot \text{Reinforcement}_k $$</p>
-<p><strong>塑性窗口原则</strong>。结构修改需要依次经历三阶段：</p>
-<ol>
-<li><strong>去稳定化/塑性窗口开放</strong>：现有结构被扰动到不稳定状态</li>
-<li><strong>修改期</strong>：在窗口内通过新体验修改结构</li>
-<li><strong>巩固期</strong>：修改后结构需要时间稳定，避免干扰</li>
-</ol>
+<p><strong>塑性窗口原则</strong>。结构修改需要依次经历三阶段： 1. <strong>去稳定化/塑性窗口开放</strong>：现有结构被扰动到不稳定状态 2. <strong>修改期</strong>：在窗口内通过新体验修改结构 3. <strong>巩固期</strong>：修改后结构需要时间稳定，避免干扰</p>
 <p><strong>能量-塑性耦合</strong>：</p>
 <p>$$ \frac{dW_{ij}}{dt} \propto \mathbf{1}[R_{\text{M4-RES-D}} > \theta_{\text{emotion}} \land R_{\text{M3-RES-D}} > \theta_{\text{volition}}] \cdot \text{LearningRule} $$</p>
 <p>资源枯竭的患者无法从深度结构干预中充分受益。</p>
@@ -138,7 +129,7 @@
 <h3>19.4 拓扑网络：MTT依赖矩阵与级联路径</h3>
 <p>MTT将心理系统建模为有向加权图，节点是M-R-D-S子单元（42个），边是功能依赖关系。</p>
 <p><strong>依赖矩阵的关键边</strong>（示例，完整见附录K）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>源 → 靶</th>
 <th>权重</th>
@@ -162,15 +153,10 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>枢纽节点与级联路径</strong>。MTT计算三种中心性：</p>
-<ul>
-<li><strong>出度</strong>：节点影响他人的广度</li>
-<li><strong>入度</strong>：节点受他人影响的广度</li>
-<li><strong>介数中心性</strong>：节点在级联传播路径中出现的频率</li>
-</ul>
+<p><strong>枢纽节点与级联路径</strong>。MTT计算三种中心性： - <strong>出度</strong>：节点影响他人的广度 - <strong>入度</strong>：节点受他人影响的广度 - <strong>介数中心性</strong>：节点在级联传播路径中出现的频率</p>
 <p>在焦虑和抑郁谱系中，M4节点（尤其是M4-DSP-B和M4-STR-C）介数中心性最高。</p>
 <p><strong>典型级联模式</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模式</th>
 <th>级联路径</th>
@@ -203,13 +189,18 @@
 <p><strong>从依赖矩阵到干预选择</strong>：MTT输出为MDT提供约束。应选择介数中心性最高的节点——虽不一定是病因源，但能最有效阻断级联扩散。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：PSE的状态动力学模型由三组方程构成。资源动力学描述RES-D的消耗与恢复，特征是恢复不对称定律（消耗快于恢复）。调度动力学描述DSP-F与DSP-B的竞争与切换，阈值模型解释资源枯竭时自动化过程的“劫持”。结构动力学描述STR-R、STR-C和STR-S的慢速更新，塑性窗口原则和能量-塑性耦合共同制约结构性改变的发生条件。模块间耦合的拓扑网络(MTT)定义42节点之间的有向依赖关系，通过枢纽节点识别、级联路径分析和反馈环路检测，为干预靶点选择提供量化依据。这三组动力学模型以不同的时间尺度协同工作，共同决定心理系统的演化轨迹。</p>
-<blockquote><p>**关键术语**：恢复不对称定律，Lotka-Volterra模型，塑性窗口，再巩固窗口，依赖矩阵，耦合权重</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “动力学方程是虚构的” → ✅ 方程形式是理论假设，但参数通过PSE-C贝叶斯校准从数据中估计。<br>- ❌ “恢复不对称定律已被充分证实” → ✅ 它在多个领域有支持，但具体参数仍需PSE-C校准。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 写出M3-RES-D的标准资源动力学方程并解释每个参数的含义。<br>2. 模块间耦合通过什么数学形式进入动力学方程？以M4到M3的级联为例说明。<br>3. 当某个参数在现有数据中不可唯一辨识时，PSE应如何处理？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：恢复不对称定律，Lotka-Volterra模型，塑性窗口，再巩固窗口，依赖矩阵，耦合权重</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “动力学方程是虚构的” → ✅ 方程形式是理论假设，但参数通过PSE-C贝叶斯校准从数据中估计。
+- ❌ “恢复不对称定律已被充分证实” → ✅ 它在多个领域有支持，但具体参数仍需PSE-C校准。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 写出M3-RES-D的标准资源动力学方程并解释每个参数的含义。
+2. 模块间耦合通过什么数学形式进入动力学方程？以M4到M3的级联为例说明。
+3. 当某个参数在现有数据中不可唯一辨识时，PSE应如何处理？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -226,7 +217,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch18.html" class="nav-link prev">‹ 18 PSE架构：五层引擎与心智六论</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch20.html" class="nav-link next">20 仿真校准：蒙特卡罗与贝叶斯 ›</a></div>
+        <div class="chapter-nav"><a href="ch18.html" class="nav-link prev">‹ PSE架构</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch20.html" class="nav-link next">仿真校准 ›</a></div>
     </div>
 
     <footer>
@@ -235,21 +226,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch19.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -268,18 +260,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -300,14 +292,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

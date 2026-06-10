@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,21 +52,16 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第29章 未来方向：挑战、争议与计算愿景</h1>
-<blockquote><p>**学习目标**：完成本章后，你应能够：(1)列举INTRE框架当前面临的主要未解决问题（含UNIS三层验证路线）；(2)理解框架的可证伪性设计和强反例触发协议；(3)阐述INTRE与其他范式（现象学、神经科学、行为分析）的协作关系；(4)解释范式跃迁的三条件总论（概念可映射性、参数可校准性、系统可闭环性）。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)列举INTRE框架当前面临的主要未解决问题（含UNIS三层验证路线）；(2)理解框架的可证伪性设计和强反例触发协议；(3)阐述INTRE与其他范式（现象学、神经科学、行为分析）的协作关系；(4)解释范式跃迁的三条件总论（概念可映射性、参数可校准性、系统可闭环性）。</p></blockquote>
 <hr class="section-divider">
 <h3>29.1 未决问题：边界、精度、辨识性与文化</h3>
 <p>INTRE框架在理论层面已形成较为完整的结构，但在实证层面仍面临大量未解决的问题。</p>
-<p><strong>模块边界的实证检验</strong>。M1-M6六模块的划分在理论上通过否定性特异崩溃论证得到支持，但模块边界的精确位置仍需实证检验。核心问题包括：</p>
-<ul>
-<li><strong>M5（言语）与M2（认知）的边界</strong>：内隐的自我叙事与语义联想网络在功能上如何区分？</li>
-<li><strong>M3（意志）与M6（行为）的边界</strong>：M3-RES-D（意志资源）与M6-RES-D（行为启动能量）的临床双分离——帕金森病的启动困难与抑郁症的动机缺失——已提供初步支持，但其他群体的检验尚不充分。</li>
-<li><strong>是否存在M7？</strong> “灵性体验”“超个人意识”是否超出了M1-M6的解释范围？当前立场是这些体验可被分解为M2-DSP-B改变、M4-STR-C临时重加权和M1-DSP-B调节的组合，无需M7。但这需要神经现象学的实证检验。</li>
-</ul>
+<p><strong>模块边界的实证检验</strong>。M1-M6六模块的划分在理论上通过否定性特异崩溃论证得到支持，但模块边界的精确位置仍需实证检验。核心问题包括： - <strong>M5（言语）与M2（认知）的边界</strong>：内隐的自我叙事与语义联想网络在功能上如何区分？ - <strong>M3（意志）与M6（行为）的边界</strong>：M3-RES-D（意志资源）与M6-RES-D（行为启动能量）的临床双分离——帕金森病的启动困难与抑郁症的动机缺失——已提供初步支持，但其他群体的检验尚不充分。 - <strong>是否存在M7？</strong> “灵性体验”“超个人意识”是否超出了M1-M6的解释范围？当前立场是这些体验可被分解为M2-DSP-B改变、M4-STR-C临时重加权和M1-DSP-B调节的组合，无需M7。但这需要神经现象学的实证检验。</p>
 <p><strong>测量精度与生态效度的权衡</strong>。C类预测性子单元的测量工具开发仍处于早期阶段。当前优先级最高的C类子单元为：M6-RES-D（行为启动能量）和M3-DSP-B（自动放弃倾向）。更深层的问题是：功能层测量的“金标准”是什么？在变量范式中，金标准是专家诊断或客观行为指标。在功能层中，状态向量的“真值”是不可观测的潜变量。因此，验证只能通过收敛效度（多模态指标汇聚）和预测效度（状态估计对后续行为的预测能力）间接进行。</p>
 <p><strong>动力学复杂度的可辨识性</strong>。MKT方程包含大量参数。在实际数据中，这些参数可能不可全部唯一辨识。PSE通过强先验（生态位库）和贝叶斯正则化来约束参数空间，但在数据稀疏的情况下，后验不确定性可能仍然很大。关键在于：(1)明确报告参数的不确定性区间；(2)进行敏感性分析；(3)设计专门实验来隔离估计特定参数。</p>
 <p><strong>文化普适性</strong>。当前框架的实证基础主要来自WEIRD人群。M-R-D-S的维度是否在不同文化中具有相同的结构？INTRE通过PCUI中的文化变体参数和文化适配审核来应对这一问题，但跨文化的系统性验证仍是未来数年的核心任务。</p>
 <p><strong>UNIS神经接口：三层验证路线</strong>。UNIS作为FLP第三基础设施，其核心挑战在于神经-功能映射的精度验证。UNIS采用了<strong>三层递增验证路线</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>验证层</th>
 <th>目标精度</th>
@@ -119,7 +110,7 @@
 <h3>29.4 强反例协议：C1-C5证伪路径与触发条件</h3>
 <p>INTRE区别于伪科学的关键特征，是其<strong>明确的可证伪性设计</strong>。框架预先规定了什么样的发现会削弱甚至推翻其核心主张，并承诺在条件满足时进行修正。</p>
 <p><strong>五条核心主张的证伪路径</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>核心主张</th>
 <th>可证伪预测</th>
@@ -161,7 +152,7 @@
 <h3>29.5 修订机制：闭环反馈与构念降级</h3>
 <p>INTRE不是一次成型的封闭体系，而是被设计为<strong>能够持续演化的理论引擎</strong>。其演化机制通过<strong>双重投影闭环</strong>实现：UPLS的概念映射和PSE的动力学建模都会产生不可避免的误差；这些误差不是失败，而是系统与现实接触的信号，通过闭环反馈重新进入概念层。</p>
 <p><strong>分层更新速率</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>更新速率</th>
@@ -190,7 +181,7 @@
 </tbody>
 </table></div>
 <p><strong>版本演化与构念降级</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>状态</th>
 <th>含义</th>
@@ -223,7 +214,7 @@
 <hr class="section-divider">
 <h3>29.6 三条件总论：映射性、校准性与闭环性</h3>
 <p>结构范式并非通过单一主张完成范式跃迁，而是依赖三项第一性原理条件共同成立。这三项条件共同构成了一个新范式要想合法接管旧范式、又不陷入空想或僵化所必须满足的最低结构要求。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>条件</th>
 <th>核心问题</th>
@@ -255,7 +246,7 @@
 <p><strong>条件二：参数可校准性</strong>。新范式必须能够进入经验世界并在数据中被不断修正。INTRE通过双重定义（UPLS理论版 + PSE工程版）、桥接-校准策略（四层验证将既有知识压缩为先验，贝叶斯更新逐步校准）、测量工程（A/B/C三类）满足此条件。</p>
 <p><strong>条件三：系统可闭环性</strong>。当未来数据、反证和新发现不断涌来时，新范式如何不僵化？INTRE通过双重投影（概念映射误差 + 动力学建模残差）和分层溯源（参数→模型→映射）满足此条件。M4-RES-B映射修正是典型案例。</p>
 <p><strong>新旧范式对照</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>维度</th>
 <th>变量范式</th>
@@ -283,15 +274,20 @@
 <p><strong>一种新的科学姿态</strong>：结构范式真正试图建立的，是一个<strong>能够持续逼近真理的元系统</strong>。它不把不完美视作羞耻，而把不完美转化为版本演化的动力；它不把批评视作威胁，而把批评纳入反馈路径；它不依赖“我已经正确”的姿态来维持权威，而依赖“我能在现实冲击中越来越对”的能力来获得生命力。如果前者可以被称为现代心理学的<strong>理论时代</strong>，那么结构范式所开启的，正是一种新的可能：<strong>心理学的工程时代</strong>。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：INTRE框架仍面临大量未解决问题，包括模块边界的实证检验、C类预测性子单元的测量精度、动力学参数的可辨识性、文化普适性，以及UNIS神经-功能映射的三层验证路线（设计→校准→个体化）。UNIS的L3校准验证（NFM群体级映射）是整个体系的最薄弱环节——若SC3被触发，神经通道将降级为弱先验。内部压力测试、外部兼容性测试和替代测试表明，INTRE已通过理论建构阶段的所有逻辑和结构审查，值得进入前瞻性实证验证。框架与现象学、神经科学、行为分析等范式的关系是分层协作而非取代竞争。可证伪性设计是INTRE区别于伪科学的关键特征——五条核心主张均有明确的证伪路径。闭环修订机制使框架能够从实证偏差中学习并持续演化。范式跃迁的三条件总论——概念可映射性、参数可校准性、系统可闭环性——共同构成了结构范式合法性的最低结构要求。</p>
-<blockquote><p>**关键术语**：强反例触发协议，闭环修正，理论引擎，心理学作为计算科学，三条件总论，范式扩容</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “‘计算科学’是把心理学变成物理学” → ✅ 计算科学指采用计算建模方法（形式化、仿真、校准），不是物理还原论。心理学必须处理意向性和意义。<br>- ❌ “INTRE声称已经正确” → ✅ INTRE的细节几乎必然会被修正，但它所开启的问题空间——心理学需要功能层的状态语法和操作语法——可能保留下来。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 列举INTRE五个核心主张C1-C5及其对应的证伪条件。<br>2. 从五个证伪条件中选出你认为最可能在实证中被触发的一个，预测它对框架的连锁影响。<br>3. 心理学作为计算科学的愿景将心理学类比为气象学的数值天气预报。这一类比在哪些维度是恰当的，在哪些维度是误导的？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：强反例触发协议，闭环修正，理论引擎，心理学作为计算科学，三条件总论，范式扩容</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “‘计算科学’是把心理学变成物理学” → ✅ 计算科学指采用计算建模方法（形式化、仿真、校准），不是物理还原论。心理学必须处理意向性和意义。
+- ❌ “INTRE声称已经正确” → ✅ INTRE的细节几乎必然会被修正，但它所开启的问题空间——心理学需要功能层的状态语法和操作语法——可能保留下来。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 列举INTRE五个核心主张C1-C5及其对应的证伪条件。
+2. 从五个证伪条件中选出你认为最可能在实证中被触发的一个，预测它对框架的连锁影响。
+3. 心理学作为计算科学的愿景将心理学类比为气象学的数值天气预报。这一类比在哪些维度是恰当的，在哪些维度是误导的？</p></blockquote>
 <hr class="section-divider">
 <p><strong>接下来将输出附录A-M及后记。由于内容较多，我会依次输出。请继续确认是否需要继续输出附录。</strong></p>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch28.html" class="nav-link prev">‹ 28 研究方法：从N-of-1到状态空间建模</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-a.html" class="nav-link next">附A：42子维度列表——符号、定义、分类与测量 ›</a></div>
+        <div class="chapter-nav"><a href="ch28.html" class="nav-link prev">‹ 研究方法</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="app-a.html" class="nav-link next">42子维度 ›</a></div>
     </div>
 
     <footer>
@@ -300,21 +296,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch29.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -333,18 +330,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -365,14 +362,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

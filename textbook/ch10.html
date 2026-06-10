@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,13 +52,13 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第10章 原子操作：GMAR语法与临床直觉</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)严格定义GATE/MODULATE/ALIGN/RELINK四操作的靶点和操作本质；(2)运用靶点合法性矩阵判断操作-组件映射是否合法；(3)理解双分离论证在操作不可替代性证明中的作用；(4)描述操作组合的四种交互类型；(5)能够将常见临床技术分解为G-M-A-R操作序列。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)严格定义GATE/MODULATE/ALIGN/RELINK四操作的靶点和操作本质；(2)运用靶点合法性矩阵判断操作-组件映射是否合法；(3)理解双分离论证在操作不可替代性证明中的作用；(4)描述操作组合的四种交互类型；(5)能够将常见临床技术分解为G-M-A-R操作序列。</p></blockquote>
 <hr class="section-divider">
 <h3>10.1 四操作定义：GATE、MODULATE、ALIGN与RELINK</h3>
 <p>如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的<strong>干预语言</strong>——一套从M-R-D-S状态空间直接推导出的原子操作集。</p>
 <p><strong>原子操作的设计标准</strong>：靶点特异性（每个操作对应一个不可再分的功能靶点）、操作可区分性（不同操作之间存在清晰边界）、执行可转译性（每个操作可转译为具体的临床技术）、反馈可校准性（操作效果可在状态空间中被检测和量化）。</p>
 <p><strong>四个操作的概览</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接合法靶点</th>
@@ -129,7 +125,7 @@
 <hr class="section-divider">
 <h3>10.2 对偶映射：靶点合法性矩阵</h3>
 <p>四个操作与M-R-D-S状态空间之间存在严格的对偶映射。每个操作有<strong>直接合法靶点</strong>、<strong>间接影响</strong>和<strong>禁止表述</strong>。这一矩阵是G-M-A-R形式语法的核心规则。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
 <th>直接合法靶点</th>
@@ -165,12 +161,14 @@
 </table></div>
 <p><strong>对偶映射的临床意义</strong>。当一个治疗师说“我正在做认知重构”时，他实际上在执行ALIGN M2-STR-R。如果试图用认知辩论来治疗一个根深蒂固的创伤连接（M4-STR-C），就是在尝试用ALIGN替代RELINK——这往往导致“道理都懂，但感觉不变”的临床困境。</p>
 <p><strong>GATE与STR-S的边界处理</strong>。GATE的直接对象是<strong>运行中的</strong>STR-S序列。例如，当一个人正在执行回避行为序列时，GATE–可以打断当前正在运行的这一序列。但要使这一序列的触发频率永久降低，需要反复执行GATE–，通过重复门控来逐步削弱STR-S的权重——这是GATE对STR-S的<strong>间接影响</strong>，而非直接操作。</p>
-<blockquote><p>**常见临床误用示例**：<br>- “我要用认知重构来治疗你的创伤连接” → 试图用ALIGN替代RELINK → 预期失败：“道理都懂，但感觉没变。”<br>- “我要用睡眠卫生来提升你的自我价值感” → 试图用MODULATE+ M1-RES-D直接提升M4-RES-B → 预期失败：“睡好了，但依然觉得自己没价值。”</p></blockquote>
+<blockquote><p><strong>常见临床误用示例</strong>：
+- “我要用认知重构来治疗你的创伤连接” → 试图用ALIGN替代RELINK → 预期失败：“道理都懂，但感觉没变。”
+- “我要用睡眠卫生来提升你的自我价值感” → 试图用MODULATE+ M1-RES-D直接提升M4-RES-B → 预期失败：“睡好了，但依然觉得自己没价值。”</p></blockquote>
 <hr class="section-divider">
 <h3>10.3 不可替代性：双分离论证与替代测试</h3>
 <p>G-M-A-R四操作是否可以被简化（合并为三个）或需要扩展（增加到五个）？不可替代性论证从两个方向展开：<strong>必要性</strong>（每个操作覆盖一个其他操作无法覆盖的功能靶点）和<strong>充分性</strong>（四个操作足以覆盖已知的心理干预功能靶点）。</p>
 <p><strong>必要性的双分离论证</strong>。两个操作如果功能不同，应该存在一种情境，其中一个操作有效而另一个无效：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>对比</th>
 <th>预期双分离</th>
@@ -198,7 +196,7 @@
 <p><strong>充分性的替代测试</strong>。在16项核心组件替代测试中，G-M-A-R操作架构接受了20个替代方案的遍历检验。替代方案包括：三操作合并（如将MODULATE归入GATE）、五操作扩展（如增加“CREATE”操作）、完全不同的操作分类。结果：没有替代方案能够同时满足靶点特异性、操作可区分性、执行可转译性和反馈可校准性四项标准。</p>
 <p><strong>“恰好四个”的工程最优性</strong>。少于四个操作会丢失关键区分：将MODULATE并入GATE会无法区分“资源补充”与“过程门控”；将RELINK并入ALIGN会无法区分“信念修正”与“连接重写”。多于四个操作会增加认知负荷而无足够的增量收益。</p>
 <p><strong>常见心理干预技术到G-M-A-R的映射</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>技术</th>
 <th>主要操作</th>
@@ -246,7 +244,7 @@
 <li><strong>PTSD的延长暴露</strong>：<code>[MODULATE+ M4-RES-D（稳定化准备）， GATE– M6-DSP-B（抑制回避）， RELINK M4-STR-C（暴露后安全学习）]</code></li>
 </ul>
 <p><strong>序列中的操作交互</strong>。操作序列不是简单的和——操作之间可以产生协同或拮抗效应：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>交互类型</th>
 <th>机制</th>
@@ -275,34 +273,30 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>嵌套组合</strong>。某些复合干预可以表示为嵌套结构。例如，“行为实验”的完整嵌套结构：</p>
-<ol>
-<li>ALIGN（前提）：建立假设</li>
-<li>GATE+ M6-DSP-F：执行实验行为</li>
-<li>观测结果</li>
-<li>比较：将结果与旧规则对比</li>
-<li>ALIGN（结论）：如果矛盾，修正规则</li>
-</ol>
+<p><strong>嵌套组合</strong>。某些复合干预可以表示为嵌套结构。例如，“行为实验”的完整嵌套结构： 1. ALIGN（前提）：建立假设 2. GATE+ M6-DSP-F：执行实验行为 3. 观测结果 4. 比较：将结果与旧规则对比 5. ALIGN（结论）：如果矛盾，修正规则</p>
 <p><strong>干预处方的标准化</strong>。G-M-A-R序列可以作为干预处方的标准化语言。例如：</p>
-<pre><code class="language-text">
-问题类型：拖延（M3-RES-D枯竭型）
+<pre><code class="language-text">问题类型：拖延（M3-RES-D枯竭型）
 干预序列：
 1. MODULATE+ M1-RES-D：睡眠锚定
 2. MODULATE+ M3-RES-D：任务分段（25分钟工作+5分钟休息）
 3. GATE– M6-DSP-B：移除手机等自动化逃避线索
-4. （当M3-RES-D &gt; 50时）ALIGN M2-STR-R：检验“我必须完美”的规则
-</code></pre>
+4. （当M3-RES-D &gt; 50时）ALIGN M2-STR-R：检验“我必须完美”的规则</code></pre>
 <p><strong>注意</strong>：某些高级临床技能（如治疗联盟的建立、共情的传递）不能简单还原为G-M-A-R操作序列——它们是治疗关系中涌现的复杂交互。这些关系因素被建模为S-P环境输入和长期的RELINK效应，而不是简化为单次原子操作。</p>
 <p><strong>可检验性</strong>：操作组合最重要的价值是使干预可检验。如果两个干预方案被表示为不同的G-M-A-R序列，我们可以检验序列的顺序是否重要、某个操作是否是必要成分、不同操作之间的交互是否如理论预期。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：G-M-A-R是INTRE框架的原子干预操作语法，包含四个相互不可替代的操作。GATE管制调度层过程（对象必须是运行中的过程），MODULATE调节资源层的即时能量，ALIGN修正规则结构的命题性信念，RELINK重塑连接结构的情感与联想权重。操作与状态空间之间存在严格的对偶映射，合法性矩阵规定了每个操作的直接靶点、间接影响和禁止表述。操作的不可替代性通过双分离论证和替代测试得到初步支持。真实世界的复合干预通过操作序列（四类交互机制）和嵌套组合来表示，为干预的标准化、可比较和可检验提供了形式化语言。</p>
-<blockquote><p>**关键术语**：GATE，MODULATE，ALIGN，RELINK，靶点合法性矩阵，操作不可替代性，操作序列</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “GATE可以作用于任何心理过程” → ✅ GATE只能作用于运行中的过程（DSP或运行中的STR-S序列），不能作用于静态的规则或连接。<br>- ❌ “CBT=ALIGN，精神动力=RELINK” → ✅ 每个流派都是多操作的组合。CBT也使用GATE（行为激活）和RELINK（暴露），精神动力也使用GATE（防御分析）和ALIGN（心理教育）。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 用自己的话解释GATE、MODULATE、ALIGN、RELINK四个操作的本质区别。<br>2. 给定一个临床技术（如“正念呼吸”），将其分解为G-M-A-R操作序列。<br>3. 为什么MODULATE不能直接作用于RES-B？如果试图这样做，临床后果可能是什么？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：GATE，MODULATE，ALIGN，RELINK，靶点合法性矩阵，操作不可替代性，操作序列</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “GATE可以作用于任何心理过程” → ✅ GATE只能作用于运行中的过程（DSP或运行中的STR-S序列），不能作用于静态的规则或连接。
+- ❌ “CBT=ALIGN，精神动力=RELINK” → ✅ 每个流派都是多操作的组合。CBT也使用GATE（行为激活）和RELINK（暴露），精神动力也使用GATE（防御分析）和ALIGN（心理教育）。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 用自己的话解释GATE、MODULATE、ALIGN、RELINK四个操作的本质区别。
+2. 给定一个临床技术（如“正念呼吸”），将其分解为G-M-A-R操作序列。
+3. 为什么MODULATE不能直接作用于RES-B？如果试图这样做，临床后果可能是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -319,7 +313,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch09.html" class="nav-link prev">‹ 9 测量方法：ABC分类与桥接校准</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch11.html" class="nav-link next">11 干预序列：DRS深度法则与例外 ›</a></div>
+        <div class="chapter-nav"><a href="ch09.html" class="nav-link prev">‹ 测量方法</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch11.html" class="nav-link next">干预序列 ›</a></div>
     </div>
 
     <footer>
@@ -328,21 +322,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch10.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -361,18 +356,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -393,14 +388,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

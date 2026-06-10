@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,12 +52,12 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第24章 边界修订：从信号检测到概念修订</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)列举INTRE已识别的边界张力和未决问题；(2)描述自我修正决策树的运行流程；(3)理解M4-RES-B映射修正作为闭环运作的典型案例；(4)使用神经证据地位分层和工具地图评估不同功能组件的实证成熟度；(5)了解UNIS仲裁合约如何实现自动化边界修订。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE已识别的边界张力和未决问题；(2)描述自我修正决策树的运行流程；(3)理解M4-RES-B映射修正作为闭环运作的典型案例；(4)使用神经证据地位分层和工具地图评估不同功能组件的实证成熟度；(5)了解UNIS仲裁合约如何实现自动化边界修订。</p></blockquote>
 <hr class="section-divider">
 <h3>24.1 张力盘点：概念缺口、实证冲突与方法挑战</h3>
 <p>一个成熟的理论框架不仅应展示其与现有证据的兼容之处，更应诚实记录其边界、张力和未解决的挑战。INTRE的神经层对接体系通过04-A-08系统归档了当前已识别的所有未决张力。</p>
 <p><strong>概念缺口（框架结构本身的不完备）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>缺口</th>
 <th>描述</th>
@@ -90,7 +86,7 @@
 </tbody>
 </table></div>
 <p><strong>实证张力（框架主张与神经证据之间的摩擦）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>张力</th>
 <th>描述</th>
@@ -119,7 +115,7 @@
 </tbody>
 </table></div>
 <p><strong>方法论挑战（检验条件的不充分）</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>挑战</th>
 <th>描述</th>
@@ -148,7 +144,7 @@
 </tbody>
 </table></div>
 <p><strong>张力升级规则</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>当前状态</th>
 <th>触发条件</th>
@@ -180,8 +176,7 @@
 <hr class="section-divider">
 <h3>24.2 修正决策树：从信号确认到映射层重审</h3>
 <p>当反向约束信号积累到触发阈值时，INTRE通过一套标准化的自我修正决策树来处理偏差。</p>
-<pre><code class="language-text">
-信号检测（来自神经层反馈或PSE-C残差）
+<pre><code class="language-text">信号检测（来自神经层反馈或PSE-C残差）
     ↓
 信号确认（三项原则检查）
     ├── 原则1：至少两个独立研究团队报告
@@ -222,30 +217,14 @@
     │ → UPLS多视角共识评审（PCF-P+PCV-P）   │
     │ → 可能结果：修订映射/降级构念/废弃构念│
     │ → 版本记录，下游文档追溯更新          │
-    └──────────────────────────────────────┘
-</code></pre>
+    └──────────────────────────────────────┘</code></pre>
 <p><strong>UNIS仲裁合约：自动化的边界修订</strong></p>
 <p>在上述决策树中，参数层校准和模型层调整阶段可以由人工或自动化系统执行。UNIS的跨层仲裁合约提供了一个<strong>运行时自动边界修正</strong>的工程案例——它不需要等待人类专家介入，而是在推理过程中实时执行约束检查与裁剪。</p>
-<p>UNIS L5（神经先验库）存储了两类约束：</p>
-<ul>
-<li><strong>生理硬约束</strong>（分子/突触级）：违反即裁剪，记入仲裁日志</li>
-<li><strong>统计规律约束</strong>（环路/系统级）：以软先验注入，不强制裁剪</li>
-</ul>
-<p>当L4（神经-功能映射模型）的输出违反硬约束时，仲裁合约自动执行：</p>
-<ol>
-<li>将输出值裁剪至约束边界</li>
-<li>生成<code>arbitration_event</code>记录（含触发条件、涉及模型版本、裁剪结果）</li>
-<li>将事件推送至审计日志，供下游分析和社区评审</li>
-</ol>
+<p>UNIS L5（神经先验库）存储了两类约束： - <strong>生理硬约束</strong>（分子/突触级）：违反即裁剪，记入仲裁日志 - <strong>统计规律约束</strong>（环路/系统级）：以软先验注入，不强制裁剪</p>
+<p>当L4（神经-功能映射模型）的输出违反硬约束时，仲裁合约自动执行： 1. 将输出值裁剪至约束边界 2. 生成<code>arbitration_event</code>记录（含触发条件、涉及模型版本、裁剪结果） 3. 将事件推送至审计日志，供下游分析和社区评审</p>
 <p>这一机制对应决策树中的“参数层校准”阶段，但其执行是<strong>实时的、自动的</strong>，而非事后的人工修正。当同一功能维度的两个独立L4模型输出方向相反时（差异>2σ），仲裁合约不进行融合，而是输出冲突信号供PSE动力学分析——这对应决策树中的“强反例条件检查”阶段的前置信号。</p>
 <p><strong>工程意义</strong>：UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制。它不替代UPLS的概念映射层重审（那是慢变层），而是在参数层和模型层提供了实时自动化修正能力。</p>
-<p><strong>决策树的关键设计原则</strong>：</p>
-<ol>
-<li><strong>优先低层修正</strong>：先在参数层尝试，避免不必要的高层修订</li>
-<li><strong>假阳性保护</strong>：单次异常不触发高层修正；需要独立复现、跨模态稳健、低层修正无效三重条件</li>
-<li><strong>时间约束</strong>：每层有明确的响应时限</li>
-<li><strong>追溯更新义务</strong>：任何层级修正完成后，依赖被修正组件的下游文档有义务在60天内更新</li>
-</ol>
+<p><strong>决策树的关键设计原则</strong>： 1. <strong>优先低层修正</strong>：先在参数层尝试，避免不必要的高层修订 2. <strong>假阳性保护</strong>：单次异常不触发高层修正；需要独立复现、跨模态稳健、低层修正无效三重条件 3. <strong>时间约束</strong>：每层有明确的响应时限 4. <strong>追溯更新义务</strong>：任何层级修正完成后，依赖被修正组件的下游文档有义务在60天内更新</p>
 <hr class="section-divider">
 <h3>24.3 案例示范：M4-RES-B的单点改组合映射</h3>
 <p>本节展示一个闭环修正案例——依恋安全感从单点映射到组合映射的演化过程。</p>
@@ -254,18 +233,13 @@
 <p><strong>第二步：参数层调整（失败）</strong>。尝试提高M4-RES-B的学习率参数，但在新样本上仍然存在类似偏差。</p>
 <p><strong>第三步：模型层调整（失败）</strong>。将线性恢复模型改为带非线性跃迁的双指数模型，残差仍然存在。</p>
 <p><strong>第四步：触发概念映射层重审</strong>。偏差在至少3个独立样本中复现（N=45, 62, 38），跨不同治疗师和临床情境，且参数层和模型层调整均无效——满足强反例触发条件。</p>
-<p><strong>第五步：多视角共识评审</strong>。专家团队重新审视“依恋安全感”的功能定位。共识结论：依恋安全感实际上包含三个可区分的功能成分：</p>
-<ul>
-<li><strong>M4-RES-B</strong>：深层安全基底——被爱、被接纳的原始感受</li>
-<li><strong>M2-STR-R</strong>：关于他人可信度的关系信念——“大多数人是善意的”</li>
-<li><strong>M5-STR-C</strong>：社会支持连接的叙事强度——可被述说的支持网络</li>
-</ul>
+<p><strong>第五步：多视角共识评审</strong>。专家团队重新审视“依恋安全感”的功能定位。共识结论：依恋安全感实际上包含三个可区分的功能成分： - <strong>M4-RES-B</strong>：深层安全基底——被爱、被接纳的原始感受 - <strong>M2-STR-R</strong>：关于他人可信度的关系信念——“大多数人是善意的” - <strong>M5-STR-C</strong>：社会支持连接的叙事强度——可被述说的支持网络</p>
 <p><strong>第六步：修正为组合映射（v2.0）</strong>：<code>M4-RES-B (primary) + M2-STR-R (secondary) + M5-STR-C (context)</code>。PSE-C在新数据上验证：组合映射的预测残差比单点映射降低了62%（RMSE从12.4降至4.7）。</p>
 <p><strong>方法论的教训</strong>：闭环修正不是框架的“失败”，而是从实证反馈中学习的成功案例。</p>
 <hr class="section-divider">
 <h3>24.4 证据分层：L1-L4与M1-M3的分级体系</h3>
 <p>并非所有功能组件都有同等的神经科学证据支持。INTRE按42个功能子单元提供证据地位分层：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>名称</th>
@@ -305,7 +279,7 @@
 </tbody>
 </table></div>
 <p><strong>代表性示例</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>组件</th>
 <th>证据层级</th>
@@ -340,7 +314,7 @@
 </tbody>
 </table></div>
 <p><strong>测量范式成熟度三级分级</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>层级</th>
 <th>名称</th>
@@ -368,28 +342,26 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>A/B/C类与M1/M2/M3的对应关系</strong>：</p>
-<ul>
-<li>M1（可直接复用）与A类（实证锚定）高度重叠</li>
-<li>M2（需组合验证）与B类（整合性）高度重叠</li>
-<li>M3（需从零开发）与C类（预测性）高度重叠</li>
-</ul>
-<p><strong>工程建议</strong>：</p>
-<ul>
-<li>优先使用M1工具进行PSE-C冷启动校准</li>
-<li>M2组件设计多模态融合方案，通过潜变量建模提取共同因子</li>
-<li>M3组件以理论推演和行为代理为主，明确标注高不确定性</li>
-</ul>
+<p><strong>A/B/C类与M1/M2/M3的对应关系</strong>： - M1（可直接复用）与A类（实证锚定）高度重叠 - M2（需组合验证）与B类（整合性）高度重叠 - M3（需从零开发）与C类（预测性）高度重叠</p>
+<p><strong>工程建议</strong>： - 优先使用M1工具进行PSE-C冷启动校准 - M2组件设计多模态融合方案，通过潜变量建模提取共同因子 - M3组件以理论推演和行为代理为主，明确标注高不确定性</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：INTRE已识别的边界张力包括递归自我建模缺失（概念缺口）、自我损耗复制争议（实证张力）、跨文化检验缺失（方法论挑战）等。自我修正决策树规定从信号确认→参数层校准→模型层调整→概念映射层重审的完整流程。UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制，在参数层和模型层提供了实时自动化修正能力。M4-RES-B从单点映射修正为组合映射的案例展示了闭环的实际运作。神经证据地位分层（L1-L4）和工具成熟度分级（M1-M3）为功能组件的实证基础提供了透明的诚实地图——L1/M1组件可进入PSE-C校准；L3-4/M3组件是框架最脆弱的实证节点，应优先接受独立检验。</p>
-<blockquote><p>**关键术语**：边界张力，概念缺口，实证张力，方法论挑战，自我修正决策树，强反例触发条件，证据地位分层（L1-L4），工具成熟度分级（M1-M3），UNIS，仲裁合约，运行时自动修正</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “L4证据地位意味着组件是虚构的” → ✅ L4标记的是“当前无独立神经证据”，是理论创新的自然产物，非组件不存在的证明。<br>- ❌ “张力清单意味着框架有缺陷” → ✅ 诚实记录张力是科学诚信的标志。<br>- ❌ “自我修正决策树只有在失败时才使用” → ✅ 参数层校准是每次PSE-C更新时的常规操作。<br>- ❌ “UNIS仲裁合约替代了UPLS的概念评审” → ✅ 仲裁合约处理运行时自动裁剪（参数层），UPLS概念评审处理慢变的概念映射修订（映射层），两者是互补关系。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 列举INTRE已识别的三类边界张力各一例。<br>2. 描述自我修正决策树从信号检测到概念修订的完整流程。<br>3. M4-RES-B的映射修正案例说明了闭环修正的什么方法论原则？<br>4. UNIS仲裁合约与UPLS的概念映射层重审在时间尺度和职能上有何区别？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：边界张力，概念缺口，实证张力，方法论挑战，自我修正决策树，强反例触发条件，证据地位分层（L1-L4），工具成熟度分级（M1-M3），UNIS，仲裁合约，运行时自动修正</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “L4证据地位意味着组件是虚构的” → ✅ L4标记的是“当前无独立神经证据”，是理论创新的自然产物，非组件不存在的证明。
+- ❌ “张力清单意味着框架有缺陷” → ✅ 诚实记录张力是科学诚信的标志。
+- ❌ “自我修正决策树只有在失败时才使用” → ✅ 参数层校准是每次PSE-C更新时的常规操作。
+- ❌ “UNIS仲裁合约替代了UPLS的概念评审” → ✅ 仲裁合约处理运行时自动裁剪（参数层），UPLS概念评审处理慢变的概念映射修订（映射层），两者是互补关系。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 列举INTRE已识别的三类边界张力各一例。
+2. 描述自我修正决策树从信号检测到概念修订的完整流程。
+3. M4-RES-B的映射修正案例说明了闭环修正的什么方法论原则？
+4. UNIS仲裁合约与UPLS的概念映射层重审在时间尺度和职能上有何区别？</p></blockquote>
 <hr class="section-divider">
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch23.html" class="nav-link prev">‹ 23 双向约束：正向预测与反向信号</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch25.html" class="nav-link next">25 REVER：结构伦理、依赖雷达与门控 ›</a></div>
+        <div class="chapter-nav"><a href="ch23.html" class="nav-link prev">‹ 双向约束</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch25.html" class="nav-link next">REVER ›</a></div>
     </div>
 
     <footer>
@@ -398,21 +370,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch24.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -431,18 +404,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -463,14 +436,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

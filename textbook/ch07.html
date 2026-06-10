@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,12 +52,12 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第7章 功能模块：M1至M6划分与级联</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)陈述M1-M6六模块的划分依据与否定性特异崩溃论证；(2)描述每个核心模块的功能定义、典型失调和干预接口；(3)识别三类模块间耦合机制；(4)解释枢纽模块概念及其在级联干预中的杠杆作用；(5)理解边界模糊的必然性及其管理策略。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)陈述M1-M6六模块的划分依据与否定性特异崩溃论证；(2)描述每个核心模块的功能定义、典型失调和干预接口；(3)识别三类模块间耦合机制；(4)解释枢纽模块概念及其在级联干预中的杠杆作用；(5)理解边界模糊的必然性及其管理策略。</p></blockquote>
 <hr class="section-divider">
 <h3>7.1 划分依据：否定性特异崩溃论证</h3>
 <p>INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对<strong>功能角色</strong>的分解。</p>
 <p><strong>划分的逻辑依据</strong>。六个模块的划分源于一个进化上的功能性追问：一个需要在不确定环境中生存、适应并繁衍的生物有机体，其心理系统至少需要具备哪些不可相互替代的功能能力？答案指向六个基本功能：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>模块</th>
 <th>核心功能</th>
@@ -100,12 +96,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>否定性特异崩溃论证</strong>。这是模块划分最核心的论证方式：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统性崩溃模式。例如：</p>
-<ul>
-<li><strong>M1严重受损</strong>（慢性疲劳）→ 资源基线全面下降，表现为“能量崩溃”，但信念、连接可能基本完好</li>
-<li><strong>M3严重受损</strong>（意志瘫痪）→ 目标维持能力丧失，但情绪体验和理解可能正常</li>
-<li><strong>M4严重受损</strong>（情绪麻木）→ 价值评估信号缺失，决策困难，但理性推理可能正常</li>
-</ul>
+<p><strong>否定性特异崩溃论证</strong>。这是模块划分最核心的论证方式：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统性崩溃模式。例如： - <strong>M1严重受损</strong>（慢性疲劳）→ 资源基线全面下降，表现为“能量崩溃”，但信念、连接可能基本完好 - <strong>M3严重受损</strong>（意志瘫痪）→ 目标维持能力丧失，但情绪体验和理解可能正常 - <strong>M4严重受损</strong>（情绪麻木）→ 价值评估信号缺失，决策困难，但理性推理可能正常</p>
 <p>这些崩溃模式的可分离性是检验模块独立性的关键实证路径。<strong>双分离</strong>——不同病因导致同一现象，不同干预产生不同效果——是验证模块功能独立性的核心方法。</p>
 <p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性担保，不适用于所有智能体类型。</p>
 <p><strong>完备性的三重担保</strong>（工程合理性支撑，而非公理证明）：(1)逻辑推导——六模块展开并承载N-S-R循环的关键功能节点；(2)工程验证——每模块缺失导致独特的不可补偿崩溃模式；(3)进化启发性支持——六模块对应功能地层的逐层叠加（启发性支持）。</p>
@@ -113,9 +104,9 @@
 <hr class="section-divider">
 <h3>7.2 M1具身：能量调控、稳态与内感受</h3>
 <p><strong>功能定义</strong>。M1是心理系统的物理基座与能量引擎。它负责：生物能量的获取、储存和分配；内部稳态的维持（体温、pH值）；内感受信号的生成与处理（内脏感觉、疲劳感、饥饿感）；生理节律的调控（睡眠-觉醒周期）。</p>
-<blockquote><p>**临床锚定**：连续熬夜三天后，连起床都困难——M1-RES-D枯竭。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：连续熬夜三天后，连起床都困难——M1-RES-D枯竭。</p></blockquote>
 <p><strong>核心子维度</strong>（M1在R-D-S上的投射）：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -160,9 +151,9 @@
 <hr class="section-divider">
 <h3>7.3 M2认知：世界模型、推理与知识表征</h3>
 <p><strong>功能定义</strong>。M2是心理系统的建模引擎与知识库。它负责：从感官输入中提取模式并构建世界模型；存储和检索陈述性知识；执行推理、判断和问题解决；生成对过去、现在和未来的表征。</p>
-<blockquote><p>**临床锚定**：明知道明天有考试，脑子里却全是“我肯定不及格”——M2-DSP-B反刍。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：明知道明天有考试，脑子里却全是“我肯定不及格”——M2-DSP-B反刍。</p></blockquote>
 <p><strong>核心子维度</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -211,9 +202,9 @@
 <hr class="section-divider">
 <h3>7.4 M3意志：目标选择、执行控制与价值</h3>
 <p><strong>功能定义</strong>。M3是心理系统的中央调度器。它负责：在多目标间进行优先级排序和资源分配；启动、维持或终止目标导向行为（意志力）；抑制与当前目标冲突的冲动或习惯；在不确定情境下做出承诺性决策。</p>
-<blockquote><p>**临床锚定**：明明知道重要，就是启动不了——M3-RES-D耗竭或M3-DSP-F失灵。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：明明知道重要，就是启动不了——M3-RES-D耗竭或M3-DSP-F失灵。</p></blockquote>
 <p><strong>核心子维度</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -263,9 +254,9 @@
 <hr class="section-divider">
 <h3>7.5 M4情绪：威胁评估、奖赏与动机</h3>
 <p><strong>功能定义</strong>。M4是心理系统的价值评估中心与动机引擎。它负责：对内外刺激进行快速的情感标记（好/坏、安全/危险）；生成动机信号（趋近/回避）；调节情绪反应的强度和持续时间。</p>
-<blockquote><p>**临床锚定**：一听到关门声就心慌——M4-DSP-B条件化恐惧。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：一听到关门声就心慌——M4-DSP-B条件化恐惧。</p></blockquote>
 <p><strong>核心子维度</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -314,9 +305,9 @@
 <hr class="section-divider">
 <h3>7.6 M5言语：符号化、叙事与社会沟通</h3>
 <p><strong>功能定义</strong>。M5是心理系统的符号接口与社会协调器。它负责：将内部状态编码为可共享的符号；接收和解析他人发出的符号信息；构建和维持自我叙事；进行内在独白和言语思维。</p>
-<blockquote><p>**临床锚定**：心里乱糟糟的，但说不出来——M5-STR-C情感-语言映射断裂。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：心里乱糟糟的，但说不出来——M5-STR-C情感-语言映射断裂。</p></blockquote>
 <p><strong>核心子维度</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -365,9 +356,9 @@
 <hr class="section-divider">
 <h3>7.7 M6行为：动作序列、习惯与技能执行</h3>
 <p><strong>功能定义</strong>。M6是心理系统的执行终端。它负责：将意志决策和情绪驱动力转化为外显的动作输出；通过重复练习将行为序列固化为习惯和技能；在习惯与目标导向控制之间切换。</p>
-<blockquote><p>**临床锚定**：不知不觉又刷了2小时手机——M6-DSP-B习惯自动化。</p></blockquote>
+<blockquote><p><strong>临床锚定</strong>：不知不觉又刷了2小时手机——M6-DSP-B习惯自动化。</p></blockquote>
 <p><strong>核心子维度</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>子维度</th>
 <th>功能定义</th>
@@ -420,10 +411,8 @@
 <p><strong>第二类耦合：调度权限降级</strong>。当M3-RES-D低于阈值时，M3-DSP-F失效，调度权限降级给M6-DSP-B和M4-DSP-B。这导致了“明知不该做却停不下来”的现象。</p>
 <p><strong>第三类耦合：结构约束</strong>。STR层的结构参数对调度层和资源层施加约束。例如，M2-STR-R中的完美主义规则会增加M3-RES-D的消耗速率。</p>
 <p><strong>级联路径示例（拖延行为逆向追溯）</strong>：</p>
-<pre><code class="language-text">
-M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务-威胁连接）
-→ M2-STR-R（完美主义规则）→ M3-RES-D耗竭 → M1-RES-D不足（睡眠不足）
-</code></pre>
+<pre><code class="language-text">M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务-威胁连接）
+→ M2-STR-R（完美主义规则）→ M3-RES-D耗竭 → M1-RES-D不足（睡眠不足）</code></pre>
 <p>每向上追溯一层，就获得一个潜在干预靶点——行为激活(M6)、暴露(M4)、认知重构(M2)、睡眠锚定(M1)。</p>
 <p><strong>枢纽模块识别</strong>。在依赖矩阵中，M4（情绪模块）的出度和入度均较高——M4→M3（情绪消耗意志力）、M4→M6（恐惧驱动回避）、M2→M4（认知触发情绪）、M1→M4（能量基底影响情绪容限）。在焦虑和抑郁谱系中，M4通常具有最高的枢纽度，是级联传播的核心节点。这意味着，在复杂病例中，稳定M4可能是中断级联扩散的关键杠杆点。</p>
 <hr class="section-divider">
@@ -431,7 +420,7 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
 <p><strong>观察到的边界模糊</strong>。M1-M6的模块边界在边缘案例中存在模糊：内部言语同时具有M5的符号化属性和M2的推理属性；情绪生理唤醒既属于M1的能量代谢，也是M4情绪自动激活的产物；习惯性回避既是M6的行为序列，也携带M4的情感连接。</p>
 <p><strong>理论基础：计算不可约性</strong>。在一个计算不可约的系统中，不存在一组有限、互斥、完备的功能类别，使得每个心理过程可被唯一归入其中且不丢失信息。心理系统满足计算不可约系统的全部特征：极高自由度、非线性耦合、混沌动力学、历史与学习依赖。</p>
 <p><strong>INTRE的工程管理机制</strong>：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>机制</th>
 <th>作用</th>
@@ -468,13 +457,18 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
 <p><strong>科学姿态的转变</strong>：INTRE的边界模糊管理标志着心理学从“追求虚幻的绝对精确”转向“在认知极限内逼近有用模型”的成熟科学姿态。边界模糊不是需要被修复的bug，而是需要被接受并管理的feature。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：六模块(M1-M6)是对人类心智功能层的工程化分解，依据进化必需性和否定性特异崩溃论证。M1提供能量基底，M2构建世界模型，M3执行意志控制，M4生成价值评估，M5提供符号化接口，M6执行行为序列。每个模块在R-D-S三维上投射出具体的子单元，各有典型失调模式和G-M-A-R干预接口。模块间通过资源供给阻断、调度权限降级和结构约束三类机制相互耦合，形成可追踪的级联路径。枢纽模块（如M4）的识别为复杂病例的干预杠杆点选择提供了理论依据。边界模糊通过计算不可约性论证被确认为不可消除的固有属性，INTRE通过工程机制对其进行管理而非徒劳地追求绝对精确。</p>
-<blockquote><p>**关键术语**：M1-M6，否定性特异崩溃，依赖矩阵，枢纽节点，级联效应，功能接口，计算不可约性</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “M1-M6必须满足福多模块论的信息封装标准” → ✅ INTRE的模块是工程学导向的**功能接口**，接受模块间的高交互性并将其作为可追踪、可干预的耦合路径。<br>- ❌ “边界模糊是设计缺陷” → ✅ 边界模糊是计算不可约系统的固有属性，INTRE通过局部映射协议等机制进行管理而非消除。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 什么是否定性特异崩溃论证？用它来为M3（意志模块）的独立性辩护。<br>2. 内部言语同时涉及M2和M5，这是否证伪了模块划分的互斥性？请运用边界模糊的必然性论述回应。<br>3. 福多论证了中央系统的不可模块化性。INTRE以功能接口重新定义模块，你认为这是诚实的工程策略还是回避了福多挑战的核心？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：M1-M6，否定性特异崩溃，依赖矩阵，枢纽节点，级联效应，功能接口，计算不可约性</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “M1-M6必须满足福多模块论的信息封装标准” → ✅ INTRE的模块是工程学导向的<strong>功能接口</strong>，接受模块间的高交互性并将其作为可追踪、可干预的耦合路径。
+- ❌ “边界模糊是设计缺陷” → ✅ 边界模糊是计算不可约系统的固有属性，INTRE通过局部映射协议等机制进行管理而非消除。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 什么是否定性特异崩溃论证？用它来为M3（意志模块）的独立性辩护。
+2. 内部言语同时涉及M2和M5，这是否证伪了模块划分的互斥性？请运用边界模糊的必然性论述回应。
+3. 福多论证了中央系统的不可模块化性。INTRE以功能接口重新定义模块，你认为这是诚实的工程策略还是回避了福多挑战的核心？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -491,7 +485,7 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch06.html" class="nav-link prev">‹ 6 状态维度：资源、调度与结构三轴</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch08.html" class="nav-link next">8 状态向量：42维表示与动力学 ›</a></div>
+        <div class="chapter-nav"><a href="ch06.html" class="nav-link prev">‹ 状态维度</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch08.html" class="nav-link next">状态向量 ›</a></div>
     </div>
 
     <footer>
@@ -500,21 +494,22 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch07.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -533,18 +528,18 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -565,14 +560,14 @@ M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

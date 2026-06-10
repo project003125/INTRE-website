@@ -9,12 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="textbook.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
-    
-    <!-- 侧边栏目录 -->
+
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
             <span class="toc-sidebar-title">目录</span>
@@ -23,12 +21,10 @@
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <!-- 移动端目录切换按钮 -->
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
         <i class="fas fa-list"></i> 目录
     </button>
 
-    <!-- 遮罩层 -->
     <div class="toc-overlay" id="tocOverlay"></div>
 
 <nav>
@@ -56,7 +52,7 @@
 
     <main class="textbook-content">
         <h1 class="chapter-title">第4章 范式批判：变量范式的边界与吸纳</h1>
-<blockquote><p>**学习目标**：完成本章后你应能够：(1)精确陈述变量范式的第一性原理及其三重操作准则；(2)运用洞穴隐喻还原十种分析模式的影子几何本质；(3)区分统计中介与因果中介并列举因果中介成立的三组必要条件；(4)评估潜变量/网络/计算精神病学等当代方法的进化与边界；(5)阐述从变量到状态向量的三重解耦逻辑。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)精确陈述变量范式的第一性原理及其三重操作准则；(2)运用洞穴隐喻还原十种分析模式的影子几何本质；(3)区分统计中介与因果中介并列举因果中介成立的三组必要条件；(4)评估潜变量/网络/计算精神病学等当代方法的进化与边界；(5)阐述从变量到状态向量的三重解耦逻辑。</p></blockquote>
 <hr class="section-divider">
 <h3>4.1 元假设还原：变量范式的三条操作准则</h3>
 <p>变量范式在过去一个世纪中主导了心理学的主流实践。它并非一个单一的理论，而是一套共享的本体论预设和方法论规则。要理解变量范式的边界，必须首先精确陈述其第一性原理。</p>
@@ -79,7 +75,7 @@
 <p>为了更直观地把握变量范式的本体论困境，本节借用柏拉图“洞穴隐喻”作为认知脚手架——不是作为证明，而是作为帮助读者看见“观测数据、系统隐状态与环境参数之间非等价关系”的直观工具。</p>
 <p>在洞穴隐喻中，囚徒只能看到墙上的影子，误以为影子就是全部实在。变量范式的研究者同样只能观测到“影子”——量表分数、行为频率、自我报告——而心理系统的真实功能结构（M-R-D-S状态向量）是投射影子的三维物体。环境与情境参数则是光源的角度与强度——它们改变影子的形态，但不改变物体的结构。</p>
 <p><strong>十种分析模式的还原</strong>。以下将变量范式的十种主流分析模式逐一定位在这一隐喻空间中：</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>分析模式</th>
 <th>变量范式操作</th>
@@ -151,7 +147,7 @@
 <hr class="section-divider">
 <h3>4.4 当代边界：潜变量、网络与计算精神病学</h3>
 <p>变量范式并非静止不变。它在其发展过程中已经发展出潜变量模型、图因果框架、密集纵向设计、症状网络、计算精神病学等当代扩展形态。这些方法显著提升了心理学在测量、因果推断、动态建模和预测上的严密性。然而，它们是否已经越过了“影子几何”的边界？本节的核心主张是：<strong>这些当代方法即使处于其最强形态，也并不自动完成观测变量到功能组件的本体映射</strong>。</p>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>方法</th>
 <th>做到了</th>
@@ -207,13 +203,17 @@
 <p><strong>从“接近因果”到“可计算概率”</strong>。变量范式的“接近”策略是通过更严格的统计控制来无限逼近因果——这是在同一维度内追求精度极限。结构范式的“可计算概率”策略则属于不同维度：它首先建立从功能状态到观测读数的生成映射，再通过贝叶斯反演从观测数据中估计状态后验分布。这不是从“相关”到“因果”的渐进改良，而是从<strong>统计关联到生成模型</strong>的范式转换。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：变量范式的第一性原理——将心理现象分解为可量化的独立变量——衍生出分解性、相关性、可加性三条操作准则。洞穴隐喻将十种分析模式还原为“影子几何学”。中介效应分析是这一范式的“核心标本”：统计中介与因果中介之间存在需要额外识别条件才能跨越的本体论鸿沟。当代方法显著提升了观测层推断能力，但并不自动完成观测变量到功能组件的本体映射。四重百年质疑被INTRE通过引入功能层状态向量和“三重解耦”系统回应。变量范式与结构范式的关系不是替代，而是<strong>知识重组</strong>：旧范式提供建筑材料，新范式提供组织蓝图。从“接近因果”到“可计算概率”，标志着心理学从描述性科学向预测性工程的范式跃迁。</p>
-<blockquote><p>**关键术语**：分解性/相关性/可加性准则，洞穴隐喻，影子几何学，统计中介，因果中介，三重解耦，生成映射</p></blockquote>
-<blockquote><p>**常见误区**：<br>- ❌ “所有中介分析都是错的” → ✅ INTRE区分了横断面弱识别中介（批判对象）与实验/纵向强识别中介（满足识别条件时可靠性更高）。</p></blockquote>
-<blockquote><p>**练习题**：<br>1. 解释洞穴隐喻如何类比变量范式的本体论困境。<br>2. 给出一篇你熟悉的论文的中介分析，从功能层视角重写其机制解释。<br>3. 尝试为变量范式辩护：在哪些场景中变量范式的统计关联进路更有优势？</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：分解性/相关性/可加性准则，洞穴隐喻，影子几何学，统计中介，因果中介，三重解耦，生成映射</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：
+- ❌ “所有中介分析都是错的” → ✅ INTRE区分了横断面弱识别中介（批判对象）与实验/纵向强识别中介（满足识别条件时可靠性更高）。</p></blockquote>
+<blockquote><p><strong>练习题</strong>：
+1. 解释洞穴隐喻如何类比变量范式的本体论困境。
+2. 给出一篇你熟悉的论文的中介分析，从功能层视角重写其机制解释。
+3. 尝试为变量范式辩护：在哪些场景中变量范式的统计关联进路更有优势？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <h2>版本记录</h2>
-<div class='table-wrap'><table>
+<div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
 <th>日期</th>
@@ -230,7 +230,7 @@
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch03.html" class="nav-link prev">‹ 3 框架总览：INTRE核心资产与子系统</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch05.html" class="nav-link next">5 架构推导：从元公理到操作系统 ›</a></div>
+        <div class="chapter-nav"><a href="ch03.html" class="nav-link prev">‹ 框架总览</a><a href="index.html" class="nav-link up">☰ 目录</a><a href="ch05.html" class="nav-link next">架构推导 ›</a></div>
     </div>
 
     <footer>
@@ -239,21 +239,22 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'\\\\(',right:'\\\\)',display:false}]});"></script>
 
 
 <script>
 (function() {
-    var chapters = [('上篇 导论', 'ch01', '1 范式演变'), ('上篇 导论', 'ch02', '2 层次定位'), ('上篇 导论', 'ch03', '3 框架总览'), ('上篇 导论', 'ch04', '4 范式批判'), ('上篇 导论', 'ch05', '5 架构推导'), ('上篇 导论', 'ch06', '6 状态维度'), ('上篇 导论', 'ch07', '7 功能模块'), ('上篇 导论', 'ch08', '8 状态向量'), ('上篇 导论', 'ch09', '9 测量方法'), ('中篇 PSE六论', 'ch10', '10 原子操作'), ('中篇 PSE六论', 'ch11', '11 干预序列'), ('中篇 PSE六论', 'ch12', '12 流派分解'), ('中篇 PSE六论', 'ch13', '13 流派生成'), ('中篇 PSE六论', 'ch14', '14 概念标识'), ('中篇 PSE六论', 'ch15', '15 语义架构'), ('中篇 PSE六论', 'ch16', '16 共识工程'), ('中篇 PSE六论', 'ch17', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18', '18 PSE架构'), ('下篇 应用', 'ch19', '19 系统动力学'), ('下篇 应用', 'ch20', '20 仿真校准'), ('下篇 应用', 'ch21', '21 临床案例'), ('下篇 应用', 'ch22', '22 神经对接'), ('下篇 应用', 'ch23', '23 双向约束'), ('下篇 应用', 'ch24', '24 边界修订'), ('下篇 应用', 'ch25', '25 REVER'), ('下篇 应用', 'ch26', '26 心理AI'), ('下篇 应用', 'ch27', '27 跨学科接口'), ('下篇 应用', 'ch28', '28 研究方法'), ('下篇 应用', 'ch29', '29 未来方向'), ('附录', 'app-a', 'A 42子维度'), ('附录', 'app-b', 'B GMAR速查'), ('附录', 'app-c', 'C PSE入门'), ('附录', 'app-d', 'D REVER审计'), ('附录', 'app-e', 'E 跨学校映射'), ('附录', 'app-f', 'F 逻辑指纹'), ('附录', 'app-g', 'G 术语对照'), ('附录', 'app-h', 'H 形式审查'), ('附录', 'app-i', 'I 抽象'), ('附录', 'app-j', 'J 完整目录'), ('附录', 'app-k', 'K 合并稿'), ('附录', 'app-l', 'L 后记'), ('附录', 'app-m', 'M 数学速成'), ('附录', 'app-n', 'N 概念速查')];
-    var currentPage = window.location.pathname.split('/').pop() || 'ch01.html';
-    
+    var chapters = [('上篇 导论', 'ch01.html', '1 范式演变'), ('上篇 导论', 'ch02.html', '2 层次定位'), ('上篇 导论', 'ch03.html', '3 框架总览'), ('上篇 导论', 'ch04.html', '4 范式批判'), ('上篇 导论', 'ch05.html', '5 架构推导'), ('上篇 导论', 'ch06.html', '6 状态维度'), ('上篇 导论', 'ch07.html', '7 功能模块'), ('上篇 导论', 'ch08.html', '8 状态向量'), ('上篇 导论', 'ch09.html', '9 测量方法'), ('中篇 PSE六论', 'ch10.html', '10 原子操作'), ('中篇 PSE六论', 'ch11.html', '11 干预序列'), ('中篇 PSE六论', 'ch12.html', '12 流派分解'), ('中篇 PSE六论', 'ch13.html', '13 流派生成'), ('中篇 PSE六论', 'ch14.html', '14 概念标识'), ('中篇 PSE六论', 'ch15.html', '15 语义架构'), ('中篇 PSE六论', 'ch16.html', '16 共识工程'), ('中篇 PSE六论', 'ch17.html', '17 逻辑指纹'), ('中篇 PSE六论', 'ch18.html', '18 PSE架构'), ('下篇 应用', 'ch19.html', '19 系统动力学'), ('下篇 应用', 'ch20.html', '20 仿真校准'), ('下篇 应用', 'ch21.html', '21 临床案例'), ('下篇 应用', 'ch22.html', '22 神经对接'), ('下篇 应用', 'ch23.html', '23 双向约束'), ('下篇 应用', 'ch24.html', '24 边界修订'), ('下篇 应用', 'ch25.html', '25 REVER'), ('下篇 应用', 'ch26.html', '26 心理AI'), ('下篇 应用', 'ch27.html', '27 跨学科接口'), ('下篇 应用', 'ch28.html', '28 研究方法'), ('下篇 应用', 'ch29.html', '29 未来方向'), ('附录', 'app-a.html', 'A 42子维度'), ('附录', 'app-b.html', 'B GMAR速查'), ('附录', 'app-c.html', 'C PSE入门'), ('附录', 'app-d.html', 'D REVER审计'), ('附录', 'app-e.html', 'E 跨学校映射'), ('附录', 'app-f.html', 'F 逻辑指纹'), ('附录', 'app-g.html', 'G 术语对照'), ('附录', 'app-h.html', 'H 形式审查'), ('附录', 'app-i.html', 'I 抽象'), ('附录', 'app-j.html', 'J 完整目录'), ('附录', 'app-k.html', 'K 合并稿'), ('附录', 'app-l.html', 'L 后记'), ('附录', 'app-m.html', 'M 数学速成'), ('附录', 'app-n.html', 'N 概念速查')];
+    var currentPage = window.location.pathname.split('/').pop() || 'ch04.html';
+
     // === BUILD LEFT SIDEBAR: chapter navigation ===
     var chapterNav = document.createElement('nav');
     chapterNav.className = 'toc-sidebar--left';
     chapterNav.id = 'chapterNav';
     var navList = document.createElement('div');
     navList.className = 'chapter-nav-list';
-    
+
     var lastSection = '';
     chapters.forEach(function(c) {
         if (c[0] !== lastSection) {
@@ -272,18 +273,18 @@
     });
     chapterNav.appendChild(navList);
     document.body.insertBefore(chapterNav, document.body.firstChild);
-    
+
     // === BUILD RIGHT SIDEBAR: current page H2+H3 TOC ===
     var sidebar = document.getElementById('tocSidebar');
     var toggleBtn = document.getElementById('tocToggleBtn');
     var closeBtn = document.getElementById('tocCloseBtn');
     var overlay = document.getElementById('tocOverlay');
     var list = document.getElementById('tocSidebarList');
-    
+
     if (!sidebar) return;
-    
+
     function isDesktop() { return window.innerWidth >= 1200; }
-    
+
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
     headings.forEach(function(h, i) {
@@ -304,14 +305,14 @@
         };
         list.appendChild(link);
     });
-    
+
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
-    
+
     if (toggleBtn) toggleBtn.onclick = open;
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {

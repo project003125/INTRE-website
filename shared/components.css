@@ -552,7 +552,7 @@ hr {
 
 /* ===== 子页面信息框 ===== */
 .subpage-info-box {
-  background: linear-gradient(135deg, var(--color-slate-100) 0%, #f0f4f9 100%);
+  background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
   border-left: 3px solid var(--color-navy-400);

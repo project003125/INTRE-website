@@ -20,9 +20,15 @@ from pathlib import Path
 # ============================================================
 # CONFIGURATION
 # ============================================================
+# Paths are computed relative to this script's location:
+#   -website/                  ← BASE_DIR (parent of scripts/)
+#   -website/scripts/          ← this script
+#   INTRE/08-导论教材/         ← VAULT_DIR (sibling of -website/)
+#   -website/textbook/         ← WEBSITE_DIR
 
-VAULT_DIR = Path(r"C:\Users\Administrator\Documents\INTRE\08-导论教材")
-WEBSITE_DIR = Path(r"C:\Users\Administrator\Documents\INTRE\-website\textbook")
+BASE_DIR = Path(__file__).resolve().parent.parent
+VAULT_DIR = BASE_DIR.parent / "08-导论教材"
+WEBSITE_DIR = BASE_DIR / "textbook"
 
 # Chapter mapping: vault filename pattern → (html_filename, section, short_label, chapter_label)
 # Keys are regex patterns matched against vault filenames

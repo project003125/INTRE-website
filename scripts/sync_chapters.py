@@ -435,8 +435,8 @@ _HTML_TEMPLATE = r'''<!DOCTYPE html>
         }
         var a = document.createElement('a');
         a.className = 'chapter-nav-link';
-        if (c[1] + '.html' === currentPage) a.classList.add('active');
-        a.href = c[1] + '.html';
+        if (c[1] === currentPage) a.classList.add('active');
+        a.href = c[1];
         a.textContent = c[2];
         navList.appendChild(a);
     });

@@ -485,7 +485,7 @@
                 <tbody>
                     <tr><td><strong>L1</strong></td><td>行为测量注册库</td><td>存储观测函数、信效度矩阵、桥接参数、数字表型协议、版本元数据</td><td>工具信息 → 标准化 BHI 条目</td></tr>
                     <tr><td><strong>L2</strong></td><td>校准与桥接引擎</td><td>IRT 跨工具等价转换、带层级收缩的贝叶斯个体化校准、漂移检测</td><td>原始分数 → 个体校准似然</td></tr>
-                    <tr><td><strong>L3</strong></td><td>行为似然 API</td><td>JSON-RPC 端点 /behavioral_likelihood 和 /calibration_feedback</td><td>行为似然 → PSE 三通道融合</td></tr>
+                    <tr><td><strong>L3</strong></td><td>行为似然 API (BLA)</td><td>JSON-RPC 端点 /behavioral_likelihood 和 /calibration_feedback</td><td>行为似然 → PSE 三通道融合（所有 p(y_b|Ψ) 必须经此端点获取）</td></tr>
                 </tbody>
             </table>
         </div>

@@ -499,7 +499,7 @@ _HTML_TEMPLATE = r'''<!DOCTYPE html>
     function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); }
     function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); }
 
-    if (toggleBtn) toggleBtn.onclick = open;
+    if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
     if (overlay) overlay.onclick = close;
 

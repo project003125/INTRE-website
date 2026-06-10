@@ -465,6 +465,38 @@
             background: rgba(31,72,128,0.15);
             color: #111827;
         }
+    
+        /* Sub-page header gradient accent */
+        .container {
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3B6FB5, #1F4880, #3B6FB5, transparent);
+            border-radius: 2px;
+        }
+        
+        /* h1 with accent underline */
+        h1 {
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #1F4880, #3B6FB5);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -488,7 +520,7 @@
 
     <div class="container">
         <h1>REVER</h1>
-        <div class="subhead">关系型AI的结构化伦理引擎 · 可验证的优先级分配架构</div>
+        <div class="subhead">关系型AI的结构化伦理引擎 · 可验证的优先级分配架构 <span style="background:#B45309;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">伦理约束</span></div>
         
         <div class="love-definition">
             <i class="fas fa-heart" style="color: #c44545;"></i>

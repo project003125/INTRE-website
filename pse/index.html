@@ -439,6 +439,38 @@
             background: rgba(31,72,128,0.15);
             color: #111827;
         }
+    
+        /* Sub-page header gradient accent */
+        .container {
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3B6FB5, #1F4880, #3B6FB5, transparent);
+            border-radius: 2px;
+        }
+        
+        /* h1 with accent underline */
+        h1 {
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #1F4880, #3B6FB5);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -462,11 +494,11 @@
 
     <div class="container">
         <h1>PSE</h1>
-        <div class="subhead">心理系统工程 · 基于仿真的心理状态预测与优化</div>
+        <div class="subhead">心理系统工程 · 基于心智六论的大规模仿真引擎 <span style="background:#6B21A8;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">计算引擎</span></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" style="color: #1F4880; opacity: 0.6; margin-right: 0.5rem;"></i>
-            PSE 将 UPLS 的形式化描述转化为可计算的动力学系统。它基于<strong>心智六论</strong>构建仿真引擎，通过<strong>PSE‑M（蒙特卡洛仿真）</strong>和<strong>PSE‑C（临床校准）</strong>，实现对心理状态演化的预测和干预优化。
+            PSE 将形式化描述转化为可计算的动力学系统 — 基于<strong>心智六论</strong>，通过 PSE‑M 蒙特卡洛仿真与 PSE‑C 贝叶斯校准预测心理状态演化。
         </div>
 
         <!-- 一、五层架构与心智六论 -->

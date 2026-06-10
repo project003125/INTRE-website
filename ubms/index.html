@@ -413,6 +413,38 @@
             background: rgba(31,72,128,0.15);
             color: #111827;
         }
+    
+        /* Sub-page header gradient accent */
+        .container {
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3B6FB5, #1F4880, #3B6FB5, transparent);
+            border-radius: 2px;
+        }
+        
+        /* h1 with accent underline */
+        h1 {
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #1F4880, #3B6FB5);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -436,11 +468,11 @@
 
     <div class="container">
         <h1>UBMS</h1>
-        <div class="subhead">统一行为测量系统 · 结构化行为观测到功能层似然的标准化管道</div>
+        <div class="subhead">统一行为测量系统 · 结构化行为观测→功能层似然的标准化管道 <span style="background:#C65D21;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">行为通道</span></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" style="color: #1F4880; opacity: 0.6; margin-right: 0.5rem;"></i>
-            UBMS 将心理学数十年积累的海量行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong>。数据本身已是数值形式——核心挑战不是"理解含义"（那是 UPLS 的任务），而是定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接与版本演化，并为 PSE 提供标准化的行为似然接口。
+            UBMS 将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，为 PSE 提供标准化行为似然接口。
         </div>
 
         <!-- 一、三层架构总览 -->

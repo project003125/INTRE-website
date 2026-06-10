@@ -64,10 +64,10 @@
 <p>资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是<strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率。</p>
 <p><strong>基本方程</strong>。单个RES-D分量的基本动力学方程为：</p>
 <p>$$ \frac{dR}{dt} = \text{Supply}(t) - \alpha \cdot R - \text{Demand}(\Psi, u, E) $$</p>
-<p>其中\(R\)是当前资源水平（0-100），\(\text{Supply}(t)\)是来自上游模块的资源供给率，\(\alpha \cdot R\)是基线消耗项，\(\text{Demand}\)是任务或环境驱动的额外消耗。</p>
+<p>其中\\(R\\)是当前资源水平（0-100），\\(\text{Supply}(t)\\)是来自上游模块的资源供给率，\\(\alpha \cdot R\\)是基线消耗项，\\(\text{Demand}\\)是任务或环境驱动的额外消耗。</p>
 <p>在简化临床模型中，常用指数衰减+恢复的形式：</p>
 <p>$$ \frac{dR}{dt} = \beta (R_{\text{max}} - R) - \gamma \cdot A(t) \cdot R $$</p>
-<p>其中\(\beta\)是恢复速率常数，\(\gamma\)是消耗速率常数，\(A(t)\)是当前活动强度。恢复不对称定律体现为\(\gamma > \beta\)。</p>
+<p>其中\\(\beta\\)是恢复速率常数，\\(\gamma\\)是消耗速率常数，\\(A(t)\\)是当前活动强度。恢复不对称定律体现为\\(\gamma > \beta\\)。</p>
 <blockquote><p><strong>⚠️ 工程判断声明</strong>：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
 <p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
 <p>$$ \text{Supply}_i(t) = \frac{w_i \cdot \text{Demand}_i(t)}{\sum_j w_j \cdot \text{Demand}_j(t)} \cdot \text{TotalSupply}(t) $$</p>
@@ -101,17 +101,17 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>恢复不对称定律的经验基础</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\(\gamma / \beta > 1\)，典型比值2-5。</p>
+<p><strong>恢复不对称定律的经验基础</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\\(\gamma / \beta > 1\\)，典型比值2-5。</p>
 <hr class="section-divider">
 <h3>19.2 调度动力学：阈值切换与DSP-B劫持</h3>
 <p>调度动力学描述DSP-F和DSP-B之间的竞争与切换（秒到分钟尺度）。</p>
 <p><strong>双过程竞争的Lotka-Volterra模型</strong>：</p>
 <p>$$ \frac{dF}{dt} = r_F F \left(1 - \frac{F + \theta_{FB} B}{K_F}\right) - \delta_F F $$ $$ \frac{dB}{dt} = r_B B \left(1 - \frac{B + \theta_{BF} F}{K_B}\right) - \delta_B B + \text{AutoTrigger}(E) $$</p>
-<p>其中\(F\)和\(B\)是激活强度（0-1），\(\theta_{FB}, \theta_{BF}\)是交叉抑制系数（通常\(\theta_{BF} > \theta_{FB}\)），\(\text{AutoTrigger}(E)\)是环境自动触发部分。</p>
+<p>其中\\(F\\)和\\(B\\)是激活强度（0-1），\\(\theta_{FB}, \theta_{BF}\\)是交叉抑制系数（通常\\(\theta_{BF} > \theta_{FB}\\)），\\(\text{AutoTrigger}(E)\\)是环境自动触发部分。</p>
 <p><strong>切换阈值模型</strong>（临床更常用）：</p>
 <p>$$ F_{\text{active}} = \mathbf{1}\left[ (\text{Novelty}(t) + \text{Conflict}(t) > \theta_{\text{switch}}) \land (R_{\text{res}} > \theta_{\text{res}}) \right] $$</p>
-<p>其中\(\theta_{\text{switch}}\)是切换阈值，\(\theta_{\text{res}}\)是资源门槛（通常30-40/100）。在PSE仿真中用sigmoid函数平滑近似。</p>
-<p><strong>DSP-B“劫持”的动力学</strong>：当资源枯竭(\(R_{\text{res}} < \theta_{\text{res}}\))时，DSP-F被迫让出控制权，DSP-B自由运行：</p>
+<p>其中\\(\theta_{\text{switch}}\\)是切换阈值，\\(\theta_{\text{res}}\\)是资源门槛（通常30-40/100）。在PSE仿真中用sigmoid函数平滑近似。</p>
+<p><strong>DSP-B“劫持”的动力学</strong>：当资源枯竭(\\(R_{\text{res}} < \theta_{\text{res}}\\))时，DSP-F被迫让出控制权，DSP-B自由运行：</p>
 <p>$$ \frac{dB}{dt} = \lambda \cdot (B_{\text{max}} - B) \quad \text{when } F=0 \text{ and AutoTrigger present} $$</p>
 <p><strong>GATE操作的动力学效应</strong>：GATE–操作瞬时降低F或B的激活强度：</p>
 <p>$$ B(t^+) = \max(0, B(t^-) - \Delta_{\text{GATE}}) $$</p>
@@ -121,10 +121,10 @@
 <p>结构动力学描述STR层分量的变化——慢变量，时间尺度从周到年。</p>
 <p><strong>STR-R的信念更新规则</strong>（贝叶斯式）：</p>
 <p>$$ \frac{dW_r}{dt} = \eta_r \cdot (\text{PE}) \cdot (\text{Salience}) $$</p>
-<p>其中\(\eta_r\)是信念更新学习率，PE是预测误差（预期与实际之差），Salience是证据显著性。</p>
+<p>其中\\(\eta_r\\)是信念更新学习率，PE是预测误差（预期与实际之差），Salience是证据显著性。</p>
 <p><strong>STR-C的连接权重更新（赫布学习）</strong>：</p>
 <p>$$ \frac{dW_{ij}}{dt} = \eta_c \cdot (x_i x_j - \lambda W_{ij}) \cdot g(\text{arousal}) $$</p>
-<p>其中\(x_i, x_j\)是节点激活强度，\(\lambda\)是遗忘项，\(g(\text{arousal})\)是情绪唤醒调制函数（高唤醒加速学习）。</p>
+<p>其中\\(x_i, x_j\\)是节点激活强度，\\(\lambda\\)是遗忘项，\\(g(\text{arousal})\\)是情绪唤醒调制函数（高唤醒加速学习）。</p>
 <p><strong>STR-S的习惯巩固</strong>：</p>
 <p>$$ \frac{dS_k}{dt} = \eta_s \cdot (\text{Frequency}_k - \lambda S_k) \cdot \text{Reinforcement}_k $$</p>
 <p><strong>塑性窗口原则</strong>。结构修改需要依次经历三阶段： 1. <strong>去稳定化/塑性窗口开放</strong>：现有结构被扰动到不稳定状态 2. <strong>修改期</strong>：在窗口内通过新体验修改结构 3. <strong>巩固期</strong>：修改后结构需要时间稳定，避免干扰</p>
@@ -191,7 +191,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>反馈环路分析</strong>。正反馈回路（环路增益\(G>1\)）维持精神病理。例如反刍-失眠-情绪脆弱回路：M2-DSP-B↑ → M1-STR-S↓ → M1-RES-D↓ → M4-RES-D↓ → M4-DSP-B↑ → M2-DSP-B↑。打断任何一条边可瓦解回路。</p>
+<p><strong>反馈环路分析</strong>。正反馈回路（环路增益\\(G>1\\)）维持精神病理。例如反刍-失眠-情绪脆弱回路：M2-DSP-B↑ → M1-STR-S↓ → M1-RES-D↓ → M4-RES-D↓ → M4-DSP-B↑ → M2-DSP-B↑。打断任何一条边可瓦解回路。</p>
 <p><strong>从依赖矩阵到干预选择</strong>：MTT输出为MDT提供约束。应选择介数中心性最高的节点——虽不一定是病因源，但能最有效阻断级联扩散。</p>
 <hr class="section-divider">
 <p><strong>本章小结</strong>：PSE的状态动力学模型由三组方程构成。资源动力学描述RES-D的消耗与恢复，特征是恢复不对称定律（消耗快于恢复）。调度动力学描述DSP-F与DSP-B的竞争与切换，阈值模型解释资源枯竭时自动化过程的“劫持”。结构动力学描述STR-R、STR-C和STR-S的慢速更新，塑性窗口原则和能量-塑性耦合共同制约结构性改变的发生条件。模块间耦合的拓扑网络(MTT)定义42节点之间的有向依赖关系，通过枢纽节点识别、级联路径分析和反馈环路检测，为干预靶点选择提供量化依据。这三组动力学模型以不同的时间尺度协同工作，共同决定心理系统的演化轨迹。</p>

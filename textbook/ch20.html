@@ -63,8 +63,8 @@
 <hr class="section-divider">
 <h3>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h3>
 <p>PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。</p>
-<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括： - 初始状态\(\Psi(0)\)（从生态位先验分布中采样） - 动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等 - 耦合参数：依赖矩阵中的权重\(w_{ij}\) - 环境参数：S-P输入的强度、频率、持续时间</p>
-<p><strong>蒙特卡罗仿真流程</strong>： 1. <strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\) 2. <strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\) 3. <strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta） 4. <strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件 5. <strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</p>
+<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\\(\theta\\)定义，包括： - 初始状态\\(\Psi(0)\\)（从生态位先验分布中采样） - 动力学参数：消耗速率\\(\alpha_i\\)、恢复速率\\(\beta_i\\)、阈值\\(\theta_{\text{switch}}\\)、学习率\\(\eta\\)等 - 耦合参数：依赖矩阵中的权重\\(w_{ij}\\) - 环境参数：S-P输入的强度、频率、持续时间</p>
+<p><strong>蒙特卡罗仿真流程</strong>： 1. <strong>初始化</strong>：从先验分布中采样\\(\theta\\)和\\(\Psi(0)\\) 2. <strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\\(E(t)\\) 3. <strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta） 4. <strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件 5. <strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</p>
 <p>典型PSE-M仿真运行100万至1000万个智能体，每个仿真时长为数周到数月。借助GPU并行计算，千万级仿真可在数小时至数天内完成。</p>
 <p><strong>PSE-M的输出</strong>： - <strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布 - <strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”） - <strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布 - <strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</p>
 <p><strong>PSE-M的认识论地位</strong>：输出是<strong>理论导出的合成数据</strong>，而非经验发现。其价值在于探索理论的推论并生成可检验的预测。</p>
@@ -118,18 +118,18 @@
 <p>$$ p(\Psi(t), \theta \mid y_{1:t}) \propto p(y_{1:t} \mid \Psi(t), \theta) \cdot p(\Psi(0), \theta) $$</p>
 <p>由于状态空间维度高（42维）、动力学非线性，PSE-C采用<strong>序贯蒙特卡罗（粒子滤波）</strong>或<strong>集合卡尔曼滤波(EnKF)</strong>进行近似推理。</p>
 <p><strong>校准流程</strong>： 1. <strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验分布 2. <strong>初始观测编译</strong>：使用VTS-P协议将初始评估数据编译为初始状态向量的似然 3. <strong>递推校准</strong>：每次新观测到达时：预测步（用MKT向前传播）→ 更新步（更新粒子权重）→ 重采样 4. <strong>收敛判断</strong>：当核心参数的后验分布标准差低于预设阈值时，达到临床可用精度 5. <strong>预测输出</strong>：基于当前后验分布，输出未来状态轨迹的概率预测</p>
-<p><strong>观测模型的设计</strong>。观测似然\(p(y \mid \Psi)\)定义不同类型观测数据到状态向量的映射： - <strong>量表分数</strong>：线性关系\(y = a + b\psi + \epsilon\)，系数通过桥接研究校准 - <strong>EMA条目</strong>：伯努利分布或序数Logistic回归 - <strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D - <strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</p>
-<p><strong>个体差异的处理</strong>：PSE-C同时估计状态轨迹\(\Psi(t)\)和个体的固定参数\(\theta\)（消耗速率、学习率），实现"个性化"。</p>
+<p><strong>观测模型的设计</strong>。观测似然\\(p(y \mid \Psi)\\)定义不同类型观测数据到状态向量的映射： - <strong>量表分数</strong>：线性关系\\(y = a + b\psi + \epsilon\\)，系数通过桥接研究校准 - <strong>EMA条目</strong>：伯努利分布或序数Logistic回归 - <strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D - <strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</p>
+<p><strong>个体差异的处理</strong>：PSE-C同时估计状态轨迹\\(\Psi(t)\\)和个体的固定参数\\(\theta\\)（消耗速率、学习率），实现"个性化"。</p>
 <p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
 <p>$$ p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIS)}} $$</p>
-<p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIS L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
+<p>其中神经似然 \\(p(y_n \mid \Psi)\\) 由UNIS L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
 <h4>20.3.1 RTE-Cal：神经映射的异步个体化校准</h4>
 <p>RTE-Cal是UNIS L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
 <p><strong>校准环路</strong>。RTE-Cal运行一个异步闭环：</p>
 <ol>
-<li><strong>前向通路</strong>（UNIS → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
-<li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \(p(\Psi_t \mid y_{1:t})\)</li>
-<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMS校准）和神经通道（经UNIS转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
+<li><strong>前向通路</strong>（UNIS → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \\(p(y_n \mid \Psi_t^{\text{prior}})\\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
+<li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \\(p(\Psi_t \mid y_{1:t})\\)</li>
+<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMS校准）和神经通道（经UNIS转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \\(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\\)</li>
 <li><strong>反向通路</strong>（PSE → UNIS）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
 </ol>
 <p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIS的分层更新纪律：</p>

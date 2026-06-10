@@ -63,7 +63,7 @@
 <hr class="section-divider">
 <h3>18.1 五层架构：架构、算法、参数、方法论与协议</h3>
 <p><strong>心理系统工程引擎(PSE)</strong> 是INTRE框架的计算核心。它将功能层的静态描述语法(M-R-D-S)和操作语法(G-M-A-R)转化为可运行、可校准、可预测的动力学仿真系统。PSE采用五层架构，每一层承担不同的工程职责。</p>
-<p><strong>第一层：架构层(Architecture Layer)</strong>——PSE的静态本体论基础。包含： - <strong>M-R-D-S内感架构</strong>：42维状态空间的定义 - <strong>G-M-A-R操作语法</strong>：四个原子操作的定义 - <strong>S-P外感架构</strong>：环境输入的六层来源分类 - <strong>N-S-R元架构</strong>：最高阶组织原则，在MDT优化目标函数中体现为长期功能完整性指数\(O_i(T)\)的驱动</p>
+<p><strong>第一层：架构层(Architecture Layer)</strong>——PSE的静态本体论基础。包含： - <strong>M-R-D-S内感架构</strong>：42维状态空间的定义 - <strong>G-M-A-R操作语法</strong>：四个原子操作的定义 - <strong>S-P外感架构</strong>：环境输入的六层来源分类 - <strong>N-S-R元架构</strong>：最高阶组织原则，在MDT优化目标函数中体现为长期功能完整性指数\\(O_i(T)\\)的驱动</p>
 <p>架构层变化最慢，只在INTRE框架版本升级时修改。</p>
 <p><strong>第二层：算法层(Algorithm Layer)</strong>——PSE的“物理引擎”，由<strong>心智六论</strong>构成（详见18.2节）。算法层只包含函数形式、拓扑关系和约束规则，不包含具体参数值。</p>
 <p><strong>第三层：参数层(Parameter Layer)</strong>——为算法层的方程提供具体的<strong>概率分布</strong>（先验），编码既有知识的不确定性。由五个标准知识库构成： - <strong>SPMC-L</strong>：PCUI映射的参数分布 - <strong>SPER-L</strong>：S-P典型模式与生态位的参数配置 - <strong>SPSM-L</strong>：因果路径模板、动力学参数先验 - <strong>SPDC-L</strong>：G-M-A-R操作的执行成本、预期收益的先验 - <strong>SPOT-L</strong>：抽象操作转译为具体情景化任务的规则库</p>
@@ -104,16 +104,16 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道： - <strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMS（统一行为测量系统）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t) - <strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布 - <strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</p>
+<p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道： - <strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMS（统一行为测量系统）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t) - <strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布 - <strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \\( p(y_n \mid \Psi_t) \\)，以<code>/func_likelihood</code>协议传入PSE</p>
 <p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIS，实现神经模型的在线个体化微调。</p>
 <p><strong>层间依赖关系</strong>：架构层 → 算法层 → 参数层 → 方法论层 → 协议层（单向）。下层变化影响上层，但上层变化不应波及下层。这实现了<strong>关注点分离</strong>：测量工具改进只影响参数层，不会迫使架构层修改。</p>
 <hr class="section-divider">
 <h3>18.2 心智六论：MCT至MET的职责分工</h3>
 <p>心智六论是PSE算法层的核心，每个理论模块规定一类动力学规则。</p>
-<p><strong>MCT：心智编译理论(Mental Compilation Theory)</strong>——解决“输入问题”：将非结构化临床叙述编译为M-R-D-S状态向量。编译流程：词法分析（PSL切分）→ 概念映射（PCUI匹配）→ 语境消歧 → 状态向量填充 → 不确定性量化（输出概率分布\(p(\Psi_0)\)）。</p>
-<p><strong>MTT：心智拓扑理论(Mental Topology Theory)</strong>——解决“结构问题”：状态空间中各分量之间的依赖关系。将心理系统建模为有向加权图\(G=(V,E)\)，节点是M-R-D-S子单元，边是有向依赖关系。核心输出： - <strong>依赖矩阵</strong>：42×42的权重矩阵 - <strong>枢纽节点识别</strong>：计算出度、入度、介数中心性（M4通常最高） - <strong>级联路径分析</strong>：识别典型传播路径 - <strong>反馈环路检测</strong>：识别正/负反馈回路</p>
-<p><strong>MKT：心智动力理论(Mental Kinetics Theory)</strong>——解决“速率问题”：状态分量以什么速率、遵循什么函数形式变化。一般形式： \[ \frac{d\Psi_i}{dt} = f_i(\Psi, E, u; \theta) \] 区分三类动力学：资源动力学（消耗+恢复，恢复不对称定律）、调度动力学（阈值切换）、结构动力学（学习规则，慢变量）。</p>
-<p><strong>MDT：心智调度理论(Mental Dispatch Theory)</strong>——解决“干预规划问题”：在给定当前状态、目标状态和资源约束下，选择最优G-M-A-R操作序列。形式化为约束优化问题： \[ \max_{O} \; \mathbb{E}[\Delta O_i(T) \mid \Psi(t), E(t), \text{约束}] \] 考虑资源约束、前置条件约束、时序约束。输出优先级排序的操作序列及预期收益、成本、成功概率。</p>
+<p><strong>MCT：心智编译理论(Mental Compilation Theory)</strong>——解决“输入问题”：将非结构化临床叙述编译为M-R-D-S状态向量。编译流程：词法分析（PSL切分）→ 概念映射（PCUI匹配）→ 语境消歧 → 状态向量填充 → 不确定性量化（输出概率分布\\(p(\Psi_0)\\)）。</p>
+<p><strong>MTT：心智拓扑理论(Mental Topology Theory)</strong>——解决“结构问题”：状态空间中各分量之间的依赖关系。将心理系统建模为有向加权图\\(G=(V,E)\\)，节点是M-R-D-S子单元，边是有向依赖关系。核心输出： - <strong>依赖矩阵</strong>：42×42的权重矩阵 - <strong>枢纽节点识别</strong>：计算出度、入度、介数中心性（M4通常最高） - <strong>级联路径分析</strong>：识别典型传播路径 - <strong>反馈环路检测</strong>：识别正/负反馈回路</p>
+<p><strong>MKT：心智动力理论(Mental Kinetics Theory)</strong>——解决“速率问题”：状态分量以什么速率、遵循什么函数形式变化。一般形式： \\[ \frac{d\Psi_i}{dt} = f_i(\Psi, E, u; \theta) \\] 区分三类动力学：资源动力学（消耗+恢复，恢复不对称定律）、调度动力学（阈值切换）、结构动力学（学习规则，慢变量）。</p>
+<p><strong>MDT：心智调度理论(Mental Dispatch Theory)</strong>——解决“干预规划问题”：在给定当前状态、目标状态和资源约束下，选择最优G-M-A-R操作序列。形式化为约束优化问题： \\[ \max_{O} \; \mathbb{E}[\Delta O_i(T) \mid \Psi(t), E(t), \text{约束}] \\] 考虑资源约束、前置条件约束、时序约束。输出优先级排序的操作序列及预期收益、成本、成功概率。</p>
 <p><strong>MPT：心智塑性理论(Mental Plasticity Theory)</strong>——解决“结构改变的动力学”：STR层在什么条件下、以什么速率发生持久变化。三个核心原则： - <strong>塑性窗口原则</strong>：结构改变需要去稳定化→修改→巩固三阶段 - <strong>能量-塑性耦合</strong>：结构改变深度受可用资源限制 - <strong>巩固不稳定原则</strong>：新修改的结构在初始巩固期内不稳定</p>
 <p><strong>MET：心智生态理论(Mental Ecology Theory)</strong>——解决“环境-系统耦合问题”：S-P环境输入如何调制M-R-D-S状态演化。定义两种耦合方向： - <strong>下行耦合（环境→系统）</strong>：S-P向量作为强制输入进入状态演化方程 - <strong>上行耦合（系统→环境）</strong>：系统状态影响个体如何选择和修改环境（生态位建构）</p>
 <p>MET还定义<strong>生态位(ecological niche)</strong>：个体典型S-P环境配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。</p>
@@ -347,7 +347,7 @@
 <p>	### 18.3 理论注入：PSE-I与文化变体编译</p>
 <p>PSE-I是将抽象理论规范转化为可运行计算机代码的编译阶段。</p>
 <p><strong>输入</strong>：架构层（42维状态空间定义、操作合法性矩阵）、算法层（依赖矩阵、微分方程形式、优化目标函数）、参数层（先验分布）。</p>
-<p><strong>编译过程</strong>转换为： 1. 状态空间声明（数据结构） 2. 动力学函数库（\(f_i\)的代码实现） 3. 依赖矩阵初始化 4. 参数采样器（用于PSE-M） 5. 观测函数（将状态映射到观测空间） 6. 协议模板（VTS-P等决策树骨架）</p>
+<p><strong>编译过程</strong>转换为： 1. 状态空间声明（数据结构） 2. 动力学函数库（\\(f_i\\)的代码实现） 3. 依赖矩阵初始化 4. 参数采样器（用于PSE-M） 5. 观测函数（将状态映射到观测空间） 6. 协议模板（VTS-P等决策树骨架）</p>
 <p><strong>输出</strong>：可执行的PSE仿真环境（Docker容器或Python库），以及标准API供PSE-M/PSE-P/PSE-C调用。</p>
 <p><strong>文化变体的注入</strong>：UPLS的PSL-L中的文化变体参数在PSE-I阶段被注入，使仿真可针对不同文化背景调整。文化变体参数初始值基于跨文化文献（F级），跨文化等值性有待PSE-C验证（P级）。</p>
 <p><strong>验证与测试</strong>：PSE-I输出需通过单元测试、集成测试、回归测试。PSE开源引擎快速入门见附录C。</p>
@@ -356,7 +356,7 @@
 <blockquote><p><strong>关键术语</strong>：PSE，五层架构，心智六论，MCT/MTT/MKT/MDT/MPT/MET，PSE-I/M/P/C，三通道输入，UNIS</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。
-- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。
+- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\\(\Psi(t)\\)和依赖矩阵耦合。
 - ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLS）和神经（UNIS）三个通道的输入。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 画出PSE的五层架构图，每层用一句话概括其职责。

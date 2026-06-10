@@ -65,7 +65,7 @@
   第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章</code></pre>
 <hr class="section-divider">
 <h2>M.1 函数与导数（高中回顾）</h2>
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是随时间变化的函数；导数描述“变化快慢”。</p>
+<p><strong>为什么需要</strong>：第8章的状态向量 \\(\Psi(t)\\) 是随时间变化的函数；导数描述“变化快慢”。</p>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
@@ -77,24 +77,24 @@
 <tr>
 <td><strong>函数</strong></td>
 <td>一个量随另一个量变化的规则</td>
-<td>\(y = f(x)\)</td>
-<td>意志资源 \(R\) 随时间 \(t\) 变化：\(R(t)\)</td>
+<td>\\(y = f(x)\\)</td>
+<td>意志资源 \\(R\\) 随时间 \\(t\\) 变化：\\(R(t)\\)</td>
 </tr>
 <tr>
 <td><strong>导数</strong></td>
 <td>函数在某点的瞬时变化率</td>
-<td>\(\frac{dy}{dt}\) 或 \(y'\)</td>
-<td>意志资源的消耗速率 \(dR/dt\)</td>
+<td>\\(\frac{dy}{dt}\\) 或 \\(y'\\)</td>
+<td>意志资源的消耗速率 \\(dR/dt\\)</td>
 </tr>
 <tr>
 <td><strong>指数衰减</strong></td>
 <td>按当前值的固定比例减少</td>
-<td>\(\frac{dR}{dt} = -\alpha R\)</td>
+<td>\\(\frac{dR}{dt} = -\alpha R\\)</td>
 <td>资源消耗速率与当前资源量成正比</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。  </p>
+<p><strong>关键式子</strong>：若 \\(\frac{dR}{dt} = -\alpha R\\)，则 \\(R(t) = R_0 e^{-\alpha t}\\)（指数衰减）。  </p>
 <blockquote><p>📌 你不需要会推导，只需知道：指数衰减意味着“越剩越少，减少得越慢”。</p></blockquote>
 <hr class="section-divider">
 <h2>M.2 微分方程基础</h2>
@@ -109,30 +109,30 @@
 <tr>
 <td><strong>常微分方程（ODE）</strong></td>
 <td>包含未知函数及其导数的方程</td>
-<td>\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\)</td>
+<td>\\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\\)</td>
 </tr>
 <tr>
 <td><strong>解</strong></td>
-<td>满足方程的函数 \(R(t)\)</td>
+<td>满足方程的函数 \\(R(t)\\)</td>
 <td>资源随时间变化的轨迹</td>
 </tr>
 <tr>
 <td><strong>初始条件</strong></td>
-<td>\(t=0\) 时的状态值 \(R(0)\)</td>
+<td>\\(t=0\\) 时的状态值 \\(R(0)\\)</td>
 <td>初始评估时的资源水平</td>
 </tr>
 <tr>
 <td><strong>参数</strong></td>
-<td>方程中不变的常数（如 \(\alpha\)）</td>
+<td>方程中不变的常数（如 \\(\alpha\\)）</td>
 <td>消耗速率、恢复速率</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>核心思想</strong>：给定初始状态和演化规则，计算机可以通过数值积分（如欧拉方法）近似算出未来轨迹——<strong>你不必手工解方程</strong>，只需理解输入输出。</p>
-<p><strong>欧拉方法直观</strong>：\(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\)，一步接一步，像动画片逐帧播放。</p>
+<p><strong>欧拉方法直观</strong>：\\(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\\)，一步接一步，像动画片逐帧播放。</p>
 <hr class="section-divider">
 <h2>M.3 线性代数基础（第8章必备）</h2>
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
+<p><strong>为什么需要</strong>：第8章的状态向量 \\(\Psi(t)\\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>概念</th>
@@ -144,45 +144,45 @@
 <tr>
 <td><strong>向量</strong></td>
 <td>一组有序的数字列表</td>
-<td>\(\vec{v} = (v_1, v_2, \dots, v_n)\)</td>
-<td>42维状态向量 \(\Psi\)</td>
+<td>\\(\vec{v} = (v_1, v_2, \dots, v_n)\\)</td>
+<td>42维状态向量 \\(\Psi\\)</td>
 </tr>
 <tr>
 <td><strong>向量的模长（范数）</strong></td>
 <td>向量的长度</td>
-<td>\(\</td>
+<td>\\(\</td>
 <td>\vec{v}\</td>
-<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
+<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\\)</td>
 <td>状态向量的“总偏离”程度</td>
 </tr>
 <tr>
 <td><strong>向量点积（内积）</strong></td>
 <td>两向量对应分量乘积之和</td>
-<td>\(\vec{u} \cdot \vec{v} = \sum u_i v_i\)</td>
+<td>\\(\vec{u} \cdot \vec{v} = \sum u_i v_i\\)</td>
 <td>用于计算相似度</td>
 </tr>
 <tr>
 <td><strong>欧氏距离</strong></td>
 <td>两向量之间的直线距离</td>
-<td>\(d = \sqrt{\sum (u_i - v_i)^2}\)</td>
+<td>\\(d = \sqrt{\sum (u_i - v_i)^2}\\)</td>
 <td>两个心理状态的相似性</td>
 </tr>
 <tr>
 <td><strong>正交</strong></td>
 <td>两向量点积为零，互相垂直</td>
-<td>\(\vec{u} \cdot \vec{v} = 0\)</td>
+<td>\\(\vec{u} \cdot \vec{v} = 0\\)</td>
 <td>R、D、S维度功能独立</td>
 </tr>
 <tr>
 <td><strong>矩阵</strong></td>
 <td>二维数字表格</td>
-<td>\(A_{m \times n}\)</td>
+<td>\\(A_{m \times n}\\)</td>
 <td>依赖矩阵（42×42）</td>
 </tr>
 <tr>
 <td><strong>转置</strong></td>
 <td>行列互换</td>
-<td>\(A^T\)</td>
+<td>\\(A^T\\)</td>
 <td>用于计算协方差</td>
 </tr>
 </tbody>
@@ -201,21 +201,21 @@
 <tr>
 <td><strong>概率</strong></td>
 <td>事件发生的可能性（0到1）</td>
-<td>\(P(A)\)</td>
+<td>\\(P(A)\\)</td>
 </tr>
 <tr>
 <td><strong>条件概率</strong></td>
 <td>在B发生下A的概率</td>
-<td>\(P(A \mid B)\)</td>
+<td>\\(P(A \mid B)\\)</td>
 </tr>
 <tr>
 <td><strong>贝叶斯定理</strong></td>
-<td>已知 \(P(B \mid A)\) 求 \(P(A \mid B)\)</td>
-<td>\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\)</td>
+<td>已知 \\(P(B \mid A)\\) 求 \\(P(A \mid B)\\)</td>
+<td>\\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\\)</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>心理学解释</strong>： - <strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验） - <strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性 - <strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</p>
+<p><strong>心理学解释</strong>： - <strong>先验</strong> \\(P(A)\\)：观测数据之前的初始信念（如生态位先验） - <strong>似然</strong> \\(P(B \mid A)\\)：在给定状态A下观测到数据B的可能性 - <strong>后验</strong> \\(P(A \mid B)\\)：观测数据后更新的信念</p>
 <p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
 <hr class="section-divider">
 <h2>M.5 状态估计的思想</h2>
@@ -329,7 +329,7 @@
 </tr>
 <tr>
 <td><strong>相空间</strong></td>
-<td>状态向量 \(\Psi\) 所在的虚拟空间</td>
+<td>状态向量 \\(\Psi\\) 所在的虚拟空间</td>
 <td>42维空间，每个点代表一种心理状态</td>
 </tr>
 <tr>

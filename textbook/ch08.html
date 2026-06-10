@@ -360,38 +360,38 @@
 <p><strong>42维的必要性</strong>：降维测试表明，任何将模块合并（如将M1、M3、M4的资源层合并）或子维度合并（如将STR-R/C/S合并）的简化框架，都会导致关键功能区分的丢失。例如，将M3-RES-D与M4-RES-D合并为单一“心理能量”，就无法解释为什么休息可以恢复意志资源但未必能恢复安全感。</p>
 <hr class="section-divider">
 <h3>8.2 几何解释：正交轴、可行子空间与吸引子</h3>
-<p>42维状态向量\(\Psi(t)\)位于高维空间\(\mathbb{R}^{42}\)的子集中。该状态空间具有几个重要的几何性质。</p>
+<p>42维状态向量\\(\Psi(t)\\)位于高维空间\\(\mathbb{R}^{42}\\)的子集中。该状态空间具有几个重要的几何性质。</p>
 <p><strong>正交轴假设</strong>。R、D、S三个维度被假设为<strong>功能正交</strong>——它们描述的是心理系统中不同类型的属性，在概念上相互独立。“正交性”是在功能定义层面上的概念独立性，不承诺在测量数据中彼此不相关。实际上，由于系统动力学，三个维度在数据中往往呈现相关，但这不违反概念正交性——正如物理学中的位置和动量在概念上正交，但在相空间中通过哈密顿方程耦合。</p>
 <p><strong>可行状态子空间</strong>。并非42维空间中的所有点都是心理系统可达的。生理、解剖和动力学约束限制了系统实际能够占据的子空间。例如，M3-RES-D不能高于M1-RES-D的供给上限（资源约束）；M4-DSP-B的过度激活往往伴随着M4-RES-D的消耗。可行状态子空间是一个低维流形，嵌入在42维空间中。PSE仿真的任务之一就是学习这个流形的结构。</p>
 <p><strong>高维流形与临床状态</strong>。不同的心理障碍对应状态空间中不同的区域或吸引子： - 重度抑郁（迟滞型）→ 低M3-RES-D + 低M4-RES-D + 低M1-RES-D + M2-STR-R负性偏向 - 广泛性焦虑 → 高M4-DSP-B + 高M2-DSP-B + 中等M3-RES-D消耗 - 创伤后应激 → M4-STR-C异常高权重 + M4-RES-B低 + M4-DSP-B易触发</p>
 <p><strong>状态空间的距离与相似性</strong>。两个状态向量之间的欧氏距离可以定义心理状态的相似性。在实际应用中，通常先对维度进行标准化（z-score），并考虑马氏距离作为欧氏距离的替代方案。</p>
 <hr class="section-divider">
 <h3>8.3 时间演化：微分方程框架的一般形式</h3>
-<blockquote><p><strong>符号约定</strong>：\(\Psi(t)\)表示42维状态向量，\(\psi_i(t)\)表示其第\(i\)个分量；\(\theta\)表示参数向量；\(E(t)\)表示环境输入向量（来自S-P外感架构）；\(u(t)\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
-<p>状态向量\(\Psi(t)\)随时间的变化由一组耦合的常微分方程(ODEs)描述。这些方程构成了PSE中心智动力学理论(MKT)的数学核心。</p>
+<blockquote><p><strong>符号约定</strong>：\\(\Psi(t)\\)表示42维状态向量，\\(\psi_i(t)\\)表示其第\\(i\\)个分量；\\(\theta\\)表示参数向量；\\(E(t)\\)表示环境输入向量（来自S-P外感架构）；\\(u(t)\\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
+<p>状态向量\\(\Psi(t)\\)随时间的变化由一组耦合的常微分方程(ODEs)描述。这些方程构成了PSE中心智动力学理论(MKT)的数学核心。</p>
 <p><strong>一般形式</strong>：</p>
 <p>$$ \frac{d\psi_i}{dt} = f_i(\Psi(t), E(t), u(t); \theta_i) $$</p>
 <p><strong>资源动力学（RES-D）</strong>。RES-D分量的典型方程形式为：</p>
 <p>$$ \frac{dR}{dt} = \text{供给}(t) - \alpha \cdot R - \text{消耗率}(\Psi, E) $$</p>
 <p><strong>简化示例：M3-RES-D的动力学方程</strong></p>
 <p>$$ \frac{dR_{\text{M3}}}{dt} = S_0 - \alpha R_{\text{M3}} - \beta \cdot \text{DSP-F负荷} - \gamma \cdot \text{M4-DSP-B} $$</p>
-<p>其中\(S_0\)是来自M1-RES-D的供给，\(\alpha\)是基线消耗速率（约0.1-0.2/h），\(\beta\)是执行控制消耗系数，\(\gamma\)是情绪干扰消耗系数。当\(R_{\text{M3}}\)低于阈值\(\theta\)时，DSP-F自动失效，系统降级到DSP-B模式。</p>
+<p>其中\\(S_0\\)是来自M1-RES-D的供给，\\(\alpha\\)是基线消耗速率（约0.1-0.2/h），\\(\beta\\)是执行控制消耗系数，\\(\gamma\\)是情绪干扰消耗系数。当\\(R_{\text{M3}}\\)低于阈值\\(\theta\\)时，DSP-F自动失效，系统降级到DSP-B模式。</p>
 <p><strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率，导致资源耗竭比恢复更快。这一不对称性在心理疲劳研究和临床观察中得到支持。</p>
 <p><strong>调度动力学（DSP-F/B）</strong>。DSP-F和DSP-B之间的切换通常建模为阈值触发模型：</p>
 <p>$$ \text{DSP-F激活} = \begin{cases} 1, & \text{if } \text{冲突/新异性} > \theta_{\text{novel}} \text{ 且 } \text{RES-D} > \theta_{\text{res}} \\ 0, & \text{otherwise} \end{cases} $$</p>
 <p>当DSP-F因资源枯竭而失效时，DSP-B过程可能“劫持”控制权。</p>
 <p><strong>结构动力学（STR）</strong>。STR层分量的变化通常较慢，由学习规则驱动：</p>
 <ul>
-<li><strong>STR-C权重更新</strong>（赫布学习）：\(\frac{dW_{ij}}{dt} = \eta \cdot (x_i x_j - \lambda W_{ij})\)</li>
-<li><strong>STR-R规则修正</strong>：\(\frac{dR_r}{dt} = \eta \cdot \text{证据积累} \cdot (\text{信念更新})\)</li>
-<li><strong>STR-S强化</strong>：\(\frac{dS_k}{dt} = \eta \cdot \text{强化信号} \cdot \text{序列执行频率}\)</li>
+<li><strong>STR-C权重更新</strong>（赫布学习）：\\(\frac{dW_{ij}}{dt} = \eta \cdot (x_i x_j - \lambda W_{ij})\\)</li>
+<li><strong>STR-R规则修正</strong>：\\(\frac{dR_r}{dt} = \eta \cdot \text{证据积累} \cdot (\text{信念更新})\\)</li>
+<li><strong>STR-S强化</strong>：\\(\frac{dS_k}{dt} = \eta \cdot \text{强化信号} \cdot \text{序列执行频率}\\)</li>
 </ul>
 <p><strong>模块间耦合项</strong>。不同模块的状态分量通过耦合函数相互影响。例如：</p>
 <p>$$ \frac{d \text{M3-RES-D}}{dt} = \text{供给}_{\text{M1→M3}} - \alpha_{\text{M3}} \cdot \text{M3-RES-D} - \beta \cdot \text{M4-DSP-B} $$</p>
-<p>其中\(\beta\)是耦合系数（从依赖矩阵获得，如M4→M3权重0.75）。</p>
+<p>其中\\(\beta\\)是耦合系数（从依赖矩阵获得，如M4→M3权重0.75）。</p>
 <hr class="section-divider">
 <h3>8.4 环境耦合：S-P外感架构与生态位</h3>
-<p>状态向量\(\Psi(t)\)的演化不仅依赖于内部动力学，还持续受到外部环境的调制。INTRE通过<strong>S-P外感架构</strong>对环境进行结构化描述。</p>
+<p>状态向量\\(\Psi(t)\\)的演化不仅依赖于内部动力学，还持续受到外部环境的调制。INTRE通过<strong>S-P外感架构</strong>对环境进行结构化描述。</p>
 <p><strong>S-层：环境来源的分类</strong>。S-层借鉴并拓展了布朗芬布伦纳的生态系统理论：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -464,29 +464,29 @@
 <td><strong>行为通道</strong></td>
 <td>心理量表、行为任务、EMA</td>
 <td>UBMS（三层架构）</td>
-<td>行为似然 \( p(y_b \mid \Psi) \)</td>
+<td>行为似然 \\( p(y_b \mid \Psi) \\)</td>
 </tr>
 <tr>
 <td><strong>语义通道</strong></td>
 <td>自然语言、临床访谈、叙事</td>
 <td>UPLS（PCUI/PSL）</td>
-<td>语义似然 \( p(y_s \mid \Psi) \)</td>
+<td>语义似然 \\( p(y_s \mid \Psi) \\)</td>
 </tr>
 <tr>
 <td><strong>神经通道</strong></td>
 <td>EEG、fNIRS、PPG、可穿戴</td>
 <td>UNIS（六层架构）</td>
-<td>神经似然 \( p(y_n \mid \Psi) \)</td>
+<td>神经似然 \\( p(y_n \mid \Psi) \\)</td>
 </tr>
 </tbody>
 </table></div>
 <p>PSE在每一时间步接收这三个通道的似然，通过贝叶斯更新计算状态后验分布：</p>
 <p>$$ p(\Psi_t \mid y_{b,t}, y_{s,t}, y_{n,t}) \propto p(y_{b,t} \mid \Psi_t) \cdot p(y_{s,t} \mid \Psi_t) \cdot p(y_{n,t} \mid \Psi_t) \cdot p(\Psi_t \mid \Psi_{t-1}) $$</p>
-<p>其中 \( p(y_n \mid \Psi_t) \) 由UNIS的L6（RTE引擎）实时输出。UNIS将原始神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
+<p>其中 \\( p(y_n \mid \Psi_t) \\) 由UNIS的L6（RTE引擎）实时输出。UNIS将原始神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
 <p><strong>多模态融合的临床意义</strong>：当三个通道的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。PSE不强制融合所有通道，而是在UNIS仲裁合约（§24.2）和PSE内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
 <hr class="section-divider">
-<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S同构的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLS）和神经（UNIS）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
-<blockquote><p><strong>关键术语</strong>：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
+<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\\(\Psi(t)\\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S同构的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLS）和神经（UNIS）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
+<blockquote><p><strong>关键术语</strong>：状态向量\\(\Psi(t)\\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。
 - ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S同构的编码格式，使环境输入可直接进入动力学方程。

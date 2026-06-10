@@ -7,9 +7,9 @@
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ========== DESIGN TOKENS ========== */
         :root {
@@ -42,6 +42,7 @@
 
         /* ========== RESET & BASE ========== */
         * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -751,6 +752,71 @@
             .nav-links a { font-size: 0.7rem; padding: 0.2rem 0.45rem; }
         }
 
+        /* ========== POLISH DETAILS ========== */
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Selection color */
+        ::selection { background: rgba(31,72,128,0.15); color: #111827; }
+        
+        /* Card top accent line on hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--navy), var(--blue-light));
+            border-radius: 0 0 2px 2px;
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-smooth);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Hero background pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(109,163,212,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59,111,181,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Manifesto accent line refinement */
+        .manifesto::before {
+            height: 2.5px;
+            background: linear-gradient(90deg, transparent, var(--blue-light), var(--navy), var(--blue-light), transparent);
+        }
+        
+        /* Section header h2 underline animation */
+        .section-header h2::after {
+            transition: width 0.3s var(--ease-smooth);
+        }
+        .section-header:hover h2::after {
+            width: 60px;
+        }
+        
+        /* Fusion item number refinement */
+        .fusion-item .layer-num {
+            font-size: 3rem;
+            opacity: 0.04;
+        }
+        
+        /* Footer links hover glow */
+        footer .footer-links a:hover {
+            box-shadow: 0 0 12px rgba(255,255,255,0.06);
+        }
+        
         /* ========== ANIMATIONS ========== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }

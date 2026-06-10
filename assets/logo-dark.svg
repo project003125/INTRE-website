@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <title>INTRE Logo (Dark)</title>
+  <desc>INTRE Logo 深色背景版本 — 白色/浅色线条</desc>
+  
+  <!-- 外三角 -->
+  <polygon points="100,18 178,152 22,152" 
+    fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round"/>
+  
+  <!-- 内六边形 -->
+  <polygon points="100,48 130,65 130,100 100,117 70,100 70,65" 
+    fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- NSR 循环弧 -->
+  <path d="M 100,36 A 64,64 0 0,1 155,118" 
+    fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 155,118 A 64,64 0 0,1 45,118" 
+    fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 45,118 A 64,64 0 0,1 100,36" 
+    fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 模块节点 -->
+  <circle cx="100" cy="48" r="5" fill="#ffffff"/>
+  <circle cx="130" cy="65" r="5" fill="#ffffff"/>
+  <circle cx="130" cy="100" r="5" fill="#ffffff"/>
+  <circle cx="100" cy="117" r="5" fill="#ffffff"/>
+  <circle cx="70" cy="100" r="5" fill="#ffffff"/>
+  <circle cx="70" cy="65" r="5" fill="#ffffff"/>
+  
+  <!-- 核心 -->
+  <circle cx="100" cy="82" r="4" fill="#ffffff"/>
+</svg>

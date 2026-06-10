@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <title>INTRE Logo</title>
+  <desc>INTRE Functional Prism — 三角=三层架构, 六边形=6功能模块, 循环弧=N-S-R, 核心=Ψ(t)</desc>
+  
+  <!-- 外三角 — 棱镜（三层架构容器） -->
+  <polygon points="100,18 178,152 22,152" 
+    fill="none" stroke="#1F4880" stroke-width="3.5" stroke-linejoin="round"/>
+  
+  <!-- 内六边形 — 6 功能模块 M1-M6 -->
+  <polygon points="100,48 130,65 130,100 100,117 70,100 70,65" 
+    fill="none" stroke="#3B6FB5" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- NSR 循环弧 — Need(上)→Structure(右)→Realization(左) -->
+  <path d="M 100,36 A 64,64 0 0,1 155,118" 
+    fill="none" stroke="#1F4880" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 155,118 A 64,64 0 0,1 45,118" 
+    fill="none" stroke="#3B6FB5" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 45,118 A 64,64 0 0,1 100,36" 
+    fill="none" stroke="#6DA3D4" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 六个模块节点 -->
+  <circle cx="100" cy="48" r="5" fill="#1F4880"/>
+  <circle cx="130" cy="65" r="5" fill="#1F4880"/>
+  <circle cx="130" cy="100" r="5" fill="#1F4880"/>
+  <circle cx="100" cy="117" r="5" fill="#1F4880"/>
+  <circle cx="70" cy="100" r="5" fill="#1F4880"/>
+  <circle cx="70" cy="65" r="5" fill="#1F4880"/>
+  
+  <!-- 核心点 — Ψ(t) -->
+  <circle cx="100" cy="82" r="4" fill="#1F4880"/>
+</svg>

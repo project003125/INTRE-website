@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+  <title>INTRE Logo + Wordmark</title>
+  <desc>INTRE完整品牌标识：功能层棱镜 + 字标</desc>
+  
+  <style>
+    .brand { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 72px; font-weight: 700; fill: #1F4880; letter-spacing: -0.04em; }
+    .sub { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 16px; fill: #64748b; letter-spacing: 0.12em; font-weight: 400; }
+  </style>
+  
+  <!-- Logo 图标 -->
+  <g transform="translate(70, 100)">
+    <polygon points="0,-60 52,30 -52,30" 
+      fill="none" stroke="#1F4880" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="0,-34 30,-17 30,17 0,34 -30,17 -30,-17" 
+      fill="none" stroke="#3B6FB5" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M 0,-48 A 48,48 0 0,1 42,24" 
+      fill="none" stroke="#1F4880" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M 42,24 A 48,48 0 0,1 -42,24" 
+      fill="none" stroke="#3B6FB5" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M -42,24 A 48,48 0 0,1 0,-48" 
+      fill="none" stroke="#6DA3D4" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="0" cy="-34" r="4" fill="#1F4880"/>
+    <circle cx="30" cy="-17" r="4" fill="#1F4880"/>
+    <circle cx="30" cy="17" r="4" fill="#1F4880"/>
+    <circle cx="0" cy="34" r="4" fill="#1F4880"/>
+    <circle cx="-30" cy="17" r="4" fill="#1F4880"/>
+    <circle cx="-30" cy="-17" r="4" fill="#1F4880"/>
+    <circle cx="0" cy="0" r="3" fill="#1F4880"/>
+  </g>
+  
+  <!-- 品牌字标 -->
+  <text class="brand" x="160" y="108">INTRE</text>
+  <text class="sub" x="162" y="138">FUNCTIONAL LAYER PSYCHOLOGY</text>
+</svg>

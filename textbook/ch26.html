@@ -65,7 +65,7 @@
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
 <p><strong>心理AI的四层架构</strong>：</p>
 <ol>
-<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \\( p(y_n \mid \Psi_t) \\)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
+<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \( p(y_n \mid \Psi_t) \)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
 </ol>
 <ol>
 <li><strong>PSE内核</strong>：负责状态估计、轨迹预测、干预规划。输入是MCT编译后的M-R-D-S状态向量、S-P环境向量，以及来自UNIS的神经似然（若有）。输出是状态后验分布、预测区间和推荐的G-M-A-R操作序列。PSE内核是“冷”的计算引擎——只做数值计算和优化。</li>
@@ -327,7 +327,7 @@
 
     <footer>
         <div class="footer-brand">INTRE</div>
-        <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>

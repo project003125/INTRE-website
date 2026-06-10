@@ -67,7 +67,7 @@
 <p><strong>第三项资产：G-M-A-R操作语法</strong>。这是从M-R-D-S的状态空间中推导出的原子干预操作集——门控(GATE)、调制(MODULATE)、校准(ALIGN)、重联(RELINK)。每类操作对应状态空间中一个特定的、不可相互替代的功能靶点。G-M-A-R是INTRE作为“操作语法生成层”的核心竞争力。在23个中间层候选架构的遍历比较中，只有INTRE满足操作语法生成层的全部条件（靶点特异性、操作可区分性、执行可转译性、反馈可校准性、跨流派翻译≥80/100）。</p>
 <p><strong>第四项资产：UPLS（统一心理语言系统）</strong>。UPLS是INTRE的知识基础设施层，包含PCUI（概念唯一标识）、PSA（语义架构）、PSL（专家词典）三个组件，其结构类比于医学领域的UMLS。UPLS的核心功能是为跨流派概念映射提供标准化平台。它的价值在于将“跨流派整合”从一个哲学口号转化为可操作的工程任务。</p>
 <p><strong>第五项资产：PSE（心理系统工程引擎）</strong>。PSE是INTRE的计算核心，包含五层架构（架构层、算法层、参数层、方法论层、协议层）、心智六论（MCT/MTT/MKT/MDT/MPT/MET）、四阶段仿真管线（PSE-I/M/P/C）。PSE的目标是将功能层状态向量转化为可计算、可预测、可校准的动力学系统。当前，PSE处于<strong>概念蓝图阶段</strong>——其理论规范完整，但大规模参数校准和实证验证尚未完成。PSE不是“已经工作的引擎”，而是“值得建造的引擎”的设计图纸。</p>
-<p><strong>第六项资产：UNIS（统一神经接口系统）</strong>。UNIS是INTRE的神经输入基础设施，与UPLS、PSE并列FLP三大工程支柱。它解决的核心问题是：如何将原始神经信号（EEG、fNIRS、PPG等）转换为功能层状态向量的神经似然 \\( p(y_n \mid \Psi_t) \\)。UNIS采用六层递进架构——L1采集规范(NAP)、L2信号校准(SCL)、L3神经特征定义(NFD)、L4神经-功能映射(NFM)、L5神经先验库(NPL)、L6实时引擎(RTE)——为PSE的多模态贝叶斯融合提供标准化的神经输入通道。UNIS与PSE之间通过双向通信协议（<code>/func_likelihood</code>、<code>/state_estimate</code>、<code>/calibration_feedback</code>）形成增强闭环：PSE的状态估计反馈回UNIS，用于实时个体化校准神经映射模型。当前UNIS同样处于<strong>规范设计阶段</strong>，其种子NFI（神经特征标识符）和NFM模型库的社区填充是后续工程化的核心任务。</p>
+<p><strong>第六项资产：UNIS（统一神经接口系统）</strong>。UNIS是INTRE的神经输入基础设施，与UPLS、PSE并列FLP三大工程支柱。它解决的核心问题是：如何将原始神经信号（EEG、fNIRS、PPG等）转换为功能层状态向量的神经似然 \( p(y_n \mid \Psi_t) \)。UNIS采用六层递进架构——L1采集规范(NAP)、L2信号校准(SCL)、L3神经特征定义(NFD)、L4神经-功能映射(NFM)、L5神经先验库(NPL)、L6实时引擎(RTE)——为PSE的多模态贝叶斯融合提供标准化的神经输入通道。UNIS与PSE之间通过双向通信协议（<code>/func_likelihood</code>、<code>/state_estimate</code>、<code>/calibration_feedback</code>）形成增强闭环：PSE的状态估计反馈回UNIS，用于实时个体化校准神经映射模型。当前UNIS同样处于<strong>规范设计阶段</strong>，其种子NFI（神经特征标识符）和NFM模型库的社区填充是后续工程化的核心任务。</p>
 <p><strong>资产分级与嵌套关系</strong>：这六项资产并不在同一层级上。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -103,8 +103,8 @@
 <p>INTRE框架的工程功能可以分解为四个相互依赖的核心基础设施，外加一个独立的伦理约束层。四者与伦理约束层的关系可概括为：<strong>UPLS是本体地图，UNIS是神经天线，UBMS是行为标尺，PSE是动力学引擎</strong>，而REVER是安全护栏。</p>
 <p><strong>UPLS：统一描述子系统</strong>。UPLS的任务是提供功能层的静态描述语法。它回答“心理系统由哪些功能组件构成，当前处于什么状态”。UPLS的核心产出是M-R-D-S状态向量和PCUI概念映射库。UPLS本身不回答“状态如何随时间变化”（那是PSE的任务），也不回答“干预应如何设计”（那是G-M-A-R的任务）。它是PSE和G-M-A-R的<strong>本体论基础</strong>——没有UPLS定义的状态空间，PSE的动力学方程没有操作对象，G-M-A-R的操作没有靶点。</p>
 <p><strong>PSE：仿真预测子系统</strong>。PSE的任务是将UPLS的静态状态空间转化为动态演化模型。它回答“给定当前状态和环境输入，系统未来会怎样演化”。PSE的核心能力包括：通过MKT微分方程计算状态轨迹，通过MTT分析级联传播路径，通过MDT优化干预序列，通过PSE-C贝叶斯校准将群体先验更新为个体后验。PSE是INTRE从“描述”走向“预测”的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第18-21章。）</p>
-<p><strong>UNIS：神经输入子系统</strong>。UNIS的任务是将神经层观测信号转换为功能层状态向量的神经似然。它回答“在当前神经信号下，功能状态向量各个分量的概率分布是什么”。UNIS的核心产出是实时神经似然 \\( p(y_n \mid \Psi_t) \\)、置信度区间以及赋能信号（信号质量、同步等级、人群覆盖等）。UNIS是PSE多模态贝叶斯融合的三个输入通道（行为、语义、神经）之一。它与PSE之间通过双向通信协议形成增强闭环：PSE将状态估计和校准残差反馈给UNIS，UNIS据此进行在线个体化模型微调。UNIS不回答"功能状态如何演化"（那是PSE的任务），也不回答"如何改变状态"（那是G-M-A-R的任务）。（详见第22.6节及UNIS专项文档。）</p>
-<p><strong>UBMS：行为测量子系统</strong>。UBMS（Unified Behavioral Measurement System，统一行为测量系统）是FLP的行为通道基础设施，与UPLS、UNIS、PSE并列四大核心基础设施。UBMS的任务是将结构化行为观测——心理量表分数、EMA条目、认知任务表现、数字表型特征——转化为实时行为似然 \\( p(y_b \mid \Psi_t) \\)。UBMS采用三层架构：L1行为测量注册库（观测函数、信效度矩阵、工具桥接参数），L2校准与桥接引擎（IRT跨工具等价转换、贝叶斯个体化校准、漂移检测），L3行为似然API（JSON-RPC端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMS的核心设计原则是：数值桥接前必须先经UPLS语义对齐——两个量表只有在UPLS确认它们测量同一M-R-D-S组件后，才能进行IRT跨工具等价转换。UBMS不回答"语义含义是什么"（那是UPLS的任务），也不回答"状态如何演化"（那是PSE的任务）。当前UBMS处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMS专项论文。）</p>
+<p><strong>UNIS：神经输入子系统</strong>。UNIS的任务是将神经层观测信号转换为功能层状态向量的神经似然。它回答“在当前神经信号下，功能状态向量各个分量的概率分布是什么”。UNIS的核心产出是实时神经似然 \( p(y_n \mid \Psi_t) \)、置信度区间以及赋能信号（信号质量、同步等级、人群覆盖等）。UNIS是PSE多模态贝叶斯融合的三个输入通道（行为、语义、神经）之一。它与PSE之间通过双向通信协议形成增强闭环：PSE将状态估计和校准残差反馈给UNIS，UNIS据此进行在线个体化模型微调。UNIS不回答"功能状态如何演化"（那是PSE的任务），也不回答"如何改变状态"（那是G-M-A-R的任务）。（详见第22.6节及UNIS专项文档。）</p>
+<p><strong>UBMS：行为测量子系统</strong>。UBMS（Unified Behavioral Measurement System，统一行为测量系统）是FLP的行为通道基础设施，与UPLS、UNIS、PSE并列四大核心基础设施。UBMS的任务是将结构化行为观测——心理量表分数、EMA条目、认知任务表现、数字表型特征——转化为实时行为似然 \( p(y_b \mid \Psi_t) \)。UBMS采用三层架构：L1行为测量注册库（观测函数、信效度矩阵、工具桥接参数），L2校准与桥接引擎（IRT跨工具等价转换、贝叶斯个体化校准、漂移检测），L3行为似然API（JSON-RPC端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMS的核心设计原则是：数值桥接前必须先经UPLS语义对齐——两个量表只有在UPLS确认它们测量同一M-R-D-S组件后，才能进行IRT跨工具等价转换。UBMS不回答"语义含义是什么"（那是UPLS的任务），也不回答"状态如何演化"（那是PSE的任务）。当前UBMS处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMS专项论文。）</p>
 <p><strong>REVER：伦理约束子系统</strong>。REVER的任务是在AI拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答“在保证功能效用的前提下，如何设计伦理上安全的AI系统”。REVER的核心设计包括：非人格性公理（AI不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER不是独立于UPLS和PSE的另一套语言，而是同一套语法在伦理维度的扩展应用——它将“结构伦理”从哲学原则转化为可执行的门控协议。（详见第25-26章。）</p>
 <p><strong>五者的关系</strong>：UPLS是<strong>静态地图</strong>，UNIS是<strong>神经观测接口</strong>，UBMS是<strong>行为标尺</strong>，PSE是<strong>动力学引擎</strong>，REVER是<strong>安全护栏</strong>。前四者共享同一套M-R-D-S/G-M-A-R语法，使得描述、输入、预测和干预可以在同一个形式化框架内无缝衔接。</p>
 <hr class="section-divider">
@@ -273,7 +273,7 @@
 
     <footer>
         <div class="footer-brand">INTRE</div>
-        <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">心理学功能层工程框架 · 导论教材</p>
+        <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>

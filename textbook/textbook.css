@@ -14,6 +14,18 @@ em.formal-def {
     border-radius: var(--radius-sm);
 }
 
+/* KaTeX 块级公式容器 */
+.katex-display-block {
+    margin: 1.2rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.katex-display-block .katex-display {
+    margin: 0;
+}
+
 :root {
     --max-width: 740px;
 

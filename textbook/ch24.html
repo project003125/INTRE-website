@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -227,7 +228,7 @@
 <p>在上述决策树中，参数层校准和模型层调整阶段可以由人工或自动化系统执行。UNIS的跨层仲裁合约提供了一个<strong>运行时自动边界修正</strong>的工程案例——它不需要等待人类专家介入，而是在推理过程中实时执行约束检查与裁剪。</p>
 <p>UNIS L5（神经先验库）存储了两类约束： - <strong>生理硬约束</strong>（分子/突触级）：违反即裁剪，记入仲裁日志 - <strong>统计规律约束</strong>（环路/系统级）：以软先验注入，不强制裁剪</p>
 <p>当L4（神经-功能映射模型）的输出违反硬约束时，仲裁合约自动执行： 1. 将输出值裁剪至约束边界 2. 生成<code>arbitration_event</code>记录（含触发条件、涉及模型版本、裁剪结果） 3. 将事件推送至审计日志，供下游分析和社区评审</p>
-<p>这一机制对应决策树中的“参数层校准”阶段，但其执行是<strong>实时的、自动的</strong>，而非事后的人工修正。当同一功能维度的两个独立L4模型输出方向相反时（差异>2\(\sigma\)），仲裁合约不进行融合，而是输出冲突信号供PSE动力学分析——这对应决策树中的“强反例条件检查”阶段的前置信号。</p>
+<p>这一机制对应决策树中的“参数层校准”阶段，但其执行是<strong>实时的、自动的</strong>，而非事后的人工修正。当同一功能维度的两个独立L4模型输出方向相反时（差异>2<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span>），仲裁合约不进行融合，而是输出冲突信号供PSE动力学分析——这对应决策树中的“强反例条件检查”阶段的前置信号。</p>
 <p><strong>工程意义</strong>：UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制。它不替代UPLS的概念映射层重审（那是慢变层），而是在参数层和模型层提供了实时自动化修正能力。</p>
 <p><strong>决策树的关键设计原则</strong>： 1. <strong>优先低层修正</strong>：先在参数层尝试，避免不必要的高层修订 2. <strong>假阳性保护</strong>：单次异常不触发高层修正；需要独立复现、跨模态稳健、低层修正无效三重条件 3. <strong>时间约束</strong>：每层有明确的响应时限 4. <strong>追溯更新义务</strong>：任何层级修正完成后，依赖被修正组件的下游文档有义务在60天内更新</p>
 <hr class="section-divider">
@@ -383,9 +384,8 @@
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

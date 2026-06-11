@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -108,7 +109,7 @@
 <td>物理学→化学</td>
 <td>极低</td>
 <td>极紧（几乎完全决定）</td>
-<td>产生水只有\(\text{H}_2\text{O}\)一种路径</td>
+<td>产生水只有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>H</mtext><mn>2</mn></msub><mtext>O</mtext></mrow><annotation encoding="application/x-tex">\text{H}_2\text{O}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">H</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord text"><span class="mord">O</span></span></span></span></span>一种路径</td>
 </tr>
 <tr>
 <td>化学→生物学</td>
@@ -159,7 +160,7 @@
 <p>神经层的反馈始终以“校准者”而非“法官”的身份参与功能层的修正程序。</p>
 <hr class="section-divider">
 <h3>22.5 从原则到工程：UNIS的约束分类实现</h3>
-<p>前四节确立了“神经层对接是约束而非翻译”的哲学原则。本节展示这一原则如何在UNIS（统一神经接口系统）中被工程化为可运行的架构组件。UNIS是FLP的四大基础设施之一，其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \)。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。</p>
+<p>前四节确立了“神经层对接是约束而非翻译”的哲学原则。本节展示这一原则如何在UNIS（统一神经接口系统）中被工程化为可运行的架构组件。UNIS是FLP的四大基础设施之一，其任务是将神经信号转换为功能层似然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>n</mi></msub><mo>∣</mo><msub><mi mathvariant="normal">Ψ</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y_n \mid \Psi_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">Ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。</p>
 <h4>22.5.1 约束的三级分类及其工程对应</h4>
 <p>回顾§22.4中提出的三类反向信号——硬约束、软约束和兼容性信号——在UNIS L5中被精确映射为可执行的数据结构和规则：</p>
 <div class="table-wrap"><table>
@@ -209,19 +210,19 @@
 </tr>
 <tr>
 <td>模型间低分歧</td>
-<td>两模型差异<1\(\sigma\)</td>
+<td>两模型差异<1<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span></td>
 <td>置信度加权平均</td>
 <td>自动（L4内部）</td>
 </tr>
 <tr>
 <td>模型间中度分歧</td>
-<td>差异1-2\(\sigma\)</td>
+<td>差异1-2<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span></td>
 <td>加权平均为临时输出，触发独立测试集复检</td>
 <td>仲裁合约调度</td>
 </tr>
 <tr>
 <td>方向相反</td>
-<td>差异>2\(\sigma\)或预测方向相反</td>
+<td>差异>2<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span>或预测方向相反</td>
 <td>不融合，输出冲突信号供PSE动力学分析</td>
 <td>仲裁合约记录，社区评审</td>
 </tr>
@@ -323,9 +324,8 @@
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

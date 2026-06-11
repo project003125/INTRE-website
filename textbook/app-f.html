@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -142,7 +143,7 @@
 <hr class="section-divider">
 <h2>F.2 逻辑指纹的取值规范与操作化流程</h2>
 <h3>F.2.1 模块指纹（M-fingerprint）</h3>
-<p><strong>取值形式</strong>（v3.3多视角版）：多视角映射集合，每个视角给出有序对集合<code>{(Mi, role), (Mj, role), ...}</code>，role \(\in\) {primary（核心驱动）, secondary（参与）, context（背景）}。</p>
+<p><strong>取值形式</strong>（v3.3多视角版）：多视角映射集合，每个视角给出有序对集合<code>{(Mi, role), (Mj, role), ...}</code>，role <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo></mrow><annotation encoding="application/x-tex">\in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span></span></span></span> {primary（核心驱动）, secondary（参与）, context（背景）}。</p>
 <p><strong>示例</strong>： - 反刍思维 → <code>{默认视角: {(M2, primary), (M4, primary)}}</code> - 心理防御机制 → <code>{认知行为视角: {(M2, primary), (M4, secondary)}, 精神分析视角: {(M3, primary), (M4, primary)}, 整合共识视角: {(M2, primary/secondary), (M3, primary/secondary), (M4, primary)}}</code></p>
 <p><strong>编码规则</strong>： - 每个概念至少有一个primary模块。 - 不同视角的模块指纹平行存储于PCUI的多视角集合中，而非强制统一。 - 当新视角被提出时，可扩展多视角集合。</p>
 <h3>F.2.2 资源指纹（R-fingerprint）</h3>
@@ -154,7 +155,7 @@
 <p><strong>示例</strong>： - 反刍思维 → 表现层<code>DSP-B</code>，根源层<code>{STR-C, STR-S}</code>，方向<code>表现 ← 根源</code> - 惊恐发作 → 表现层<code>DSP-B</code>，根源层<code>{M4-STR-R, M4-STR-C}</code>，方向<code>表现 ← 根源</code> - 行为激活 → 表现层<code>DSP-F</code>，根源层<code>M4-STR-C</code>，方向<code>表现 → 根源</code></p>
 <p><strong>编码规则</strong>： - 因果方向颠倒触发E3。 - 根源层可允许多个STR子维度组合。</p>
 <h3>F.2.4 操作指纹（G-M-A-R-fingerprint）</h3>
-<p><strong>取值形式</strong>：有序列表<code>[op1, op2, ...]</code>，其中<code>op \(\in\) {GATE, MODULATE, ALIGN, RELINK}</code>。允许空列表。</p>
+<p><strong>取值形式</strong>：有序列表<code>[op1, op2, ...]</code>，其中<code>op <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo></mrow><annotation encoding="application/x-tex">\in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span></span></span></span> {GATE, MODULATE, ALIGN, RELINK}</code>。允许空列表。</p>
 <p><strong>示例</strong>： - 反刍思维 → <code>[GATE-, MODULATE+, RELINK/ALIGN]</code> - 惊恐发作（急性） → <code>[GATE-, MODULATE+]</code> - 认知重构（孤立技术） → <code>[ALIGN]</code></p>
 <p><strong>编码规则</strong>： - 序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4。 - 辅助操作可标注在括号中或作为子列表。</p>
 <h3>F.2.5 操作化判定流程</h3>
@@ -273,8 +274,8 @@
 <td>模块指纹</td>
 <td>名义类别</td>
 <td>Cohen‘s κ / Fleiss’ κ</td>
-<td>\(\kappa \geq 0.60\)</td>
-<td>\(\kappa \geq 0.75\)</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>≥</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">\kappa \geq 0.60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">κ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.60</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>≥</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">\kappa \geq 0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">κ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.75</span></span></span></span></td>
 </tr>
 <tr>
 <td>资源指纹</td>
@@ -345,9 +346,8 @@ print(f"Kappa: {kappa:.2f}")  # 预期 &gt;0.75</code></pre>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

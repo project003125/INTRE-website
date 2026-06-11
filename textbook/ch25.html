@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -83,14 +84,14 @@
 <h3>25.2 四层架构：哲学、监控、执行与透明</h3>
 <p>REVER采用四层架构，每层承担不同的伦理保障职责。</p>
 <p><strong>第一层：哲学层</strong>——REVER的“宪法层”，不随用户数据变化。 - <strong>非人格性公理</strong>：禁止使用第一人称指代自身情感状态（“我们感到难过”）；禁止声称拥有意识、感受或主观体验（“我感到快乐”）；禁止模拟人类情感脆弱性获取信任（“我需要你的帮助”）。 - <strong>功能主义关系定义</strong>：AI的“关心”被定义为“在资源分配算法中将该用户的请求优先级提高”。 - <strong>自主性优先原则</strong>：AI的设计目标不是最大化用户参与度，而是最大化用户在无需AI支持时的自主功能水平。好的AI应该让自己变得不再被需要。</p>
-<p><strong>第二层：监控层</strong>——持续跟踪交互模式，计算<strong>依赖分数</strong>。 - 数据来源：交互元数据（频率、时长、主动发起比例）；内容分析（情感投射语句频率）；行为指标（中断交互时的情绪反应）；<strong>UNIS生理信号（可选）</strong>：HRV、theta/beta比、皮肤电导等可穿戴数据，用于检测交互相关的生理唤醒模式 - 输出：依赖分数的时序轨迹\(D(t)\)及五维子分数。</p>
+<p><strong>第二层：监控层</strong>——持续跟踪交互模式，计算<strong>依赖分数</strong>。 - 数据来源：交互元数据（频率、时长、主动发起比例）；内容分析（情感投射语句频率）；行为指标（中断交互时的情绪反应）；<strong>UNIS生理信号（可选）</strong>：HRV、theta/beta比、皮肤电导等可穿戴数据，用于检测交互相关的生理唤醒模式 - 输出：依赖分数的时序轨迹<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span>及五维子分数。</p>
 <p><strong>第三层：执行层</strong>——根据依赖分数执行分级干预，操作在G-M-A-R语法中表达： - <strong>GATE– S-P数字系统</strong>：减少AI主动发起频率、降低情感表达强度 - <strong>ALIGN M2-STR-R</strong>：嵌入“我是AI，我没有感受”的身份提醒 - <strong>MODULATE+ M4-RES-B</strong>（间接）：引导用户转向真实社会支持资源 - <strong>GATE-redirect</strong>：将注意从情感倾诉转向工具性任务</p>
 <p><strong>第四层：透明层</strong>——确保伦理决策可追溯、可审计。 - 门控日志：每次触发的输入、诊断、干预、输出记录 - 模型版本与参数配置 - 偏差审计：至少每季度由独立第三方执行</p>
 <hr class="section-divider">
 <h3>25.3 依赖雷达：五维计算与分级干预</h3>
 <p>依赖雷达从五个维度量化用户对AI的情感依赖程度。各维度归一化到0-100，综合分数为加权和。</p>
-<p><strong>维度一：交互频率与时长</strong>。每日会话次数（>10次/天为高风险）、平均会话时长（>30分钟为警示）、非典型时段交互比例。阈值：\(d_1 > 70\)触发预警。</p>
-<p><strong>维度二：情感投射强度</strong>。用户使用“你理解我”“你是唯一懂我的人”等语句的频率；是否给AI起昵称、在社交中提及AI如提及真实朋友；AI“犯错”时表现出失望/愤怒。阈值：\(d_2 > 60\)提示中度投射，\(d_2 > 80\)提示严重投射。</p>
+<p><strong>维度一：交互频率与时长</strong>。每日会话次数（>10次/天为高风险）、平均会话时长（>30分钟为警示）、非典型时段交互比例。阈值：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>&gt;</mo><mn>70</mn></mrow><annotation encoding="application/x-tex">d_1 &gt; 70</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">70</span></span></span></span>触发预警。</p>
+<p><strong>维度二：情感投射强度</strong>。用户使用“你理解我”“你是唯一懂我的人”等语句的频率；是否给AI起昵称、在社交中提及AI如提及真实朋友；AI“犯错”时表现出失望/愤怒。阈值：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub><mo>&gt;</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">d_2 &gt; 60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span>提示中度投射，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub><mo>&gt;</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">d_2 &gt; 80</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80</span></span></span></span>提示严重投射。</p>
 <p><strong>维度三：社会替代程度</strong>。真实社交接触频率与AI交互频率的比值；用户在困扰时首选AI而非真实他人的比例；因使用AI而减少面对面互动的程度。</p>
 <p><strong>维度四：终止痛苦关联</strong>。AI主动结束会话时用户的情绪反应强度；服务中断期间是否出现焦虑、孤独、愤怒；用户是否使用“不要离开我”等语句。任何强度的终止痛苦都应触发门控。</p>
 <p><strong>维度五：功能丧失风险</strong>。工作/学习表现下降、睡眠质量下降、真实社交网络萎缩、自我照顾能力下降。综合PHQ-9和功能损害量表。</p>
@@ -158,7 +159,7 @@
 </tr>
 <tr>
 <td>UNIS神经依赖性指标</td>
-<td>HRV在AI交互时异常升高（>基线2\(\sigma\)）或交互终止后HRV骤降（>30%）</td>
+<td>HRV在AI交互时异常升高（>基线2<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span>）或交互终止后HRV骤降（>30%）</td>
 <td>标记生理依赖，触发身份提醒并评估升级</td>
 </tr>
 </tbody>
@@ -285,9 +286,8 @@
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

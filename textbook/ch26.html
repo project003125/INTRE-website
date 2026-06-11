@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -64,7 +65,7 @@
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
 <p><strong>心理AI的四层架构</strong>：</p>
 <ol>
-<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \( p(y_n \mid \Psi_t) \)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
+<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>n</mi></msub><mo>∣</mo><msub><mi mathvariant="normal">Ψ</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y_n \mid \Psi_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">Ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
 </ol>
 <ol>
 <li><strong>PSE内核</strong>：负责状态估计、轨迹预测、干预规划。输入是MCT编译后的M-R-D-S状态向量、S-P环境向量，以及来自UNIS的神经似然（若有）。输出是状态后验分布、预测区间和推荐的G-M-A-R操作序列。PSE内核是“冷”的计算引擎——只做数值计算和优化。</li>
@@ -338,9 +339,8 @@
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body lang="zh">
@@ -62,7 +63,7 @@
 <hr class="section-divider">
 <h3>21.1 广泛性焦虑：状态预测与干预优化</h3>
 <p><strong>案例背景</strong>。李华，32岁，软件工程师，因“持续担忧、入睡困难、工作时分心”就诊。GAD-7评分15/21（中度焦虑），PSQI睡眠质量指数12/21（显著障碍）。</p>
-<p><strong>第一步：初始评估与状态编译（VTS-P + MCT）</strong>。编译为初始状态向量\(\Psi(0)\)：</p>
+<p><strong>第一步：初始评估与状态编译（VTS-P + MCT）</strong>。编译为初始状态向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Psi(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ψ</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>：</p>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>子单元</th>
@@ -107,7 +108,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>第二步：生态位匹配与先验加载（PSE-P）</strong>。匹配生态位：“高压力知识工作者+睡眠障碍+焦虑倾向”。加载先验：M4-DSP-B消耗速率先验\(\alpha \sim \text{Gamma}(0.15, 0.04)\)/h，M3-RES-D恢复速率\(\beta \sim \text{Gamma}(0.10, 0.03)\)/h，M4→M3耦合权重0.75。</p>
+<p><strong>第二步：生态位匹配与先验加载（PSE-P）</strong>。匹配生态位：“高压力知识工作者+睡眠障碍+焦虑倾向”。加载先验：M4-DSP-B消耗速率先验<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∼</mo><mtext>Gamma</mtext><mo stretchy="false">(</mo><mn>0.15</mn><mo separator="true">,</mo><mn>0.04</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha \sim \text{Gamma}(0.15, 0.04)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Gamma</span></span><span class="mopen">(</span><span class="mord">0.15</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.04</span><span class="mclose">)</span></span></span></span>/h，M3-RES-D恢复速率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>∼</mo><mtext>Gamma</mtext><mo stretchy="false">(</mo><mn>0.10</mn><mo separator="true">,</mo><mn>0.03</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\beta \sim \text{Gamma}(0.10, 0.03)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Gamma</span></span><span class="mopen">(</span><span class="mord">0.10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.03</span><span class="mclose">)</span></span></span></span>/h，M4→M3耦合权重0.75。</p>
 <p><strong>第三步：初始轨迹预测（无干预）</strong>。使用MKT方程前向积分72小时，预测第三天下午M3-RES-D将跌破30阈值，此时DSP-F失效，DSP-B劫持，预期出现明显的冲动控制困难（工作失误、情绪爆发）。预测不确定性：95%置信区间显示跌破时间在48-78小时之间。</p>
 <p><strong>第四步：干预优化（MDT + MMD-P）</strong>。MDT评估候选干预的ROI：</p>
 <div class="table-wrap"><table>
@@ -122,21 +123,21 @@
 <tr>
 <td>GATE– M2-DSP-B（正念）</td>
 <td>即时打断反刍</td>
-<td>\(\Delta\)-8分（24h）</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-8分（24h）</td>
 <td>低</td>
 <td>无</td>
 </tr>
 <tr>
 <td>MODULATE+ M1-RES-D（睡眠锚定）</td>
 <td>补充资源</td>
-<td>\(\Delta\)-12分（1周）</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-12分（1周）</td>
 <td>中</td>
 <td>低</td>
 </tr>
 <tr>
 <td>ALIGN M4-STR-R（认知重构）</td>
 <td>修正威胁规则</td>
-<td>\(\Delta\)-18分（4周）</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-18分（4周）</td>
 <td>高</td>
 <td>低</td>
 </tr>
@@ -188,7 +189,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>第二步：D-R-S序列的强制性</strong>。\(O_i \approx 35\)，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
+<p><strong>第二步：D-R-S序列的强制性</strong>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub><mo>≈</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">O_i \approx 35</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">35</span></span></span></span>，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
 <p>MDT推荐序列： 1. <strong>稳定化（第1-4周）</strong>：MODULATE+ M4-RES-D（DBT情绪调节技能），MODULATE+ M1-RES-D（睡眠锚定），GATE– M4-DSP-B（接地技术）。目标：M4-RES-D > 40，M3-RES-D > 45。 2. <strong>资源建设（第5-8周）</strong>：通过治疗联盟的矫正性关系输入，初步提升M4-RES-B（S-P微系统提供<code>P-M4-RES-B+</code>）。 3. <strong>创伤加工（第9-16周）</strong>：当M4-RES-D稳定在>50后，启动RELINK M4-STR-C（PE或EMDR）。</p>
 <p><strong>第三步：PSE模拟两种序列的对比</strong>：</p>
 <div class="table-wrap"><table>
@@ -356,7 +357,7 @@
 <blockquote><p><strong>关键术语</strong>：状态演化预测，干预序列优化，复发风险预测，个体化轨迹</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ “PSE案例是事后圆说” → ✅ 案例中的数值为理论占位符，目的是展示语法如何工作而非声称预测精度。
-- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（\(O_i\)<40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
+- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">O_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 以广泛性焦虑为例，画出从主诉到干预规划的完整功能层诊断流程图。
 2. 如果治疗师跳过稳定化直接进行暴露，从功能层视角预测可能的临床后果。
@@ -398,9 +399,8 @@
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\(',right:'\)',display:false}]});"></script>
+    
+    
 
 
 <script>

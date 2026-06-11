@@ -81,8 +81,9 @@ nav.light .nav-links a:hover {
 }
 
 .nav-links a.active {
-  color: var(--color-white);
-  background-color: rgba(255,255,255,0.12);
+  color: var(--color-navy-600);
+  background-color: var(--color-white);
+  font-weight: 600;
 }
 
 nav.light .nav-links a.active {
@@ -342,20 +343,6 @@ tbody tr:hover {
   text-align: center;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background:
-    radial-gradient(ellipse 30% 40% at 20% 60%, rgba(59,111,181,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 25% 35% at 80% 30%, rgba(45,93,160,0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 20% 30% at 50% 80%, rgba(107,163,212,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
 .hero-content {
   position: relative;
   z-index: 1;
@@ -452,7 +439,7 @@ hr {
   left: 0;
   width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
+  background: var(--color-navy-600);
   border-radius: 2px;
 }
 
@@ -552,7 +539,7 @@ hr {
 
 /* ===== 子页面信息框 ===== */
 .subpage-info-box {
-  background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
+  background-color: var(--color-slate-100);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
   border-left: 3px solid var(--color-navy-400);
@@ -639,7 +626,7 @@ hr {
   top: 0.15rem;
   bottom: 0.15rem;
   width: 3px;
-  background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
+  background: var(--color-navy-600);
   border-radius: 2px;
 }
 
@@ -673,12 +660,12 @@ hr {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-slate-400);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--color-slate-500);
 }
 
 /* ===== 选中文本颜色 ===== */

@@ -1,7 +1,0 @@
-agent: TR
-session_start: 2026-06-11T13:30:00+08:00
-files:
-  - index.html
-  - shared/brand.css
-  - shared/components.css
-scope_note: 修复 CSS 渐变违规（S-01~S-06），统一 nav active 态，更新 brand.css 版本号。Cross-scope: website-frontend

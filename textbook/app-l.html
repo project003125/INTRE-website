@@ -2,21 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>附录L：架构速查——推导链与公理体系 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body lang="zh">
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
+<body>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -34,7 +31,10 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/INTRE/" class="nav-logo">INTRE</a>
+            <a href="/INTRE/" class="nav-logo">
+                <img src="../assets/logo-dark.svg" alt="INTRE" onerror="this.style.display='none'">
+                <span class="logo-text">INTRE</span>
+            </a>
             <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
             <div class="nav-links">
                 <a href="/INTRE/">首页</a>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <main id="main-content" class="textbook-content">
+    <main class="textbook-content">
         <h1 class="chapter-title">附录L：架构速查——推导链与公理体系</h1>
 <p><strong>本附录定位</strong>：改编自INTRE项目源文档02-A-17（架构论证概要v2.4），是第5章“架构推导链”的完整展开。本速查版保留核心推导逻辑和关键结论，省略详细论证材料和替代方案比较。</p>
 <hr class="section-divider">
@@ -242,7 +242,7 @@
 </tbody>
 </table></div>
 <p><strong>干预序列的逻辑必然性</strong>：在严重失调情境下，默认优先级为 <strong>D层稳定 → R层恢复 → S层重建</strong>。在调度失控时补充资源低效，在资源枯竭时结构干预高风险。</p>
-<p><strong>序列刚性与失调程度正相关</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">O_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>越低序列越严格，高功能系统中可并行推进。</p>
+<p><strong>序列刚性与失调程度正相关</strong>：Oᵢ越低序列越严格，高功能系统中可并行推进。</p>
 <blockquote><p>📖 <strong>教材对应</strong>：第11章</p></blockquote>
 <hr class="section-divider">
 <h2>L.7 操作架构（G-M-A-R）：心智的行动执行语法</h2>
@@ -537,12 +537,13 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -585,7 +586,7 @@
 
     if (!sidebar) return;
 
-    function isMobile() { return window.innerWidth < 960; }
+    function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -600,16 +601,15 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (isMobile()) {
-                
+            if (!isDesktop()) {
                 close();
             }
         };
         list.appendChild(link);
     });
 
-    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -628,6 +628,5 @@
 })();
 </script>
 
-<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

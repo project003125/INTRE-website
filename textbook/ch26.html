@@ -2,21 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第26章 心理AI：功能层驱动的智能交互 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body lang="zh">
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
+<body>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -34,7 +31,10 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/INTRE/" class="nav-logo">INTRE</a>
+            <a href="/INTRE/" class="nav-logo">
+                <img src="../assets/logo-dark.svg" alt="INTRE" onerror="this.style.display='none'">
+                <span class="logo-text">INTRE</span>
+            </a>
             <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
             <div class="nav-links">
                 <a href="/INTRE/">首页</a>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <main id="main-content" class="textbook-content">
+    <main class="textbook-content">
         <h1 class="chapter-title">第26章 心理AI：功能层驱动的智能交互</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIS作为神经输入前端在心理AI中的角色。</p></blockquote>
 <blockquote><p><strong>⚠️ 重要声明</strong>：心理AI当前阶段应被定位为<strong>辅助工具</strong>，而非替代人类治疗师。对于自杀危机、严重精神障碍，必须有人类专业人员的监督和介入。</p></blockquote>
@@ -65,7 +65,7 @@
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
 <p><strong>心理AI的四层架构</strong>：</p>
 <ol>
-<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>n</mi></msub><mo>∣</mo><msub><mi mathvariant="normal">Ψ</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y_n \mid \Psi_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">Ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
+<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \( p(y_n \mid \Psi_t) \)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
 </ol>
 <ol>
 <li><strong>PSE内核</strong>：负责状态估计、轨迹预测、干预规划。输入是MCT编译后的M-R-D-S状态向量、S-P环境向量，以及来自UNIS的神经似然（若有）。输出是状态后验分布、预测区间和推荐的G-M-A-R操作序列。PSE内核是“冷”的计算引擎——只做数值计算和优化。</li>
@@ -304,7 +304,7 @@
 4. UNIS在心理AI中扮演什么角色？在什么场景下UNIS通道最为关键？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+<h2>版本记录</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -335,12 +335,13 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -383,7 +384,7 @@
 
     if (!sidebar) return;
 
-    function isMobile() { return window.innerWidth < 960; }
+    function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -398,16 +399,15 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (isMobile()) {
-                
+            if (!isDesktop()) {
                 close();
             }
         };
         list.appendChild(link);
     });
 
-    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -426,6 +426,5 @@
 })();
 </script>
 
-<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

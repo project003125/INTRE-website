@@ -2,21 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>附录A：42子维度列表——符号、定义、分类与测量 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body lang="zh">
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
+<body>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -34,7 +31,10 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/INTRE/" class="nav-logo">INTRE</a>
+            <a href="/INTRE/" class="nav-logo">
+                <img src="../assets/logo-dark.svg" alt="INTRE" onerror="this.style.display='none'">
+                <span class="logo-text">INTRE</span>
+            </a>
             <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
             <div class="nav-links">
                 <a href="/INTRE/">首页</a>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <main id="main-content" class="textbook-content">
+    <main class="textbook-content">
         <h1 class="chapter-title">附录A：42子维度列表——符号、定义、分类与测量</h1>
 <p>本附录提供INTRE框架核心状态空间——42维M-R-D-S向量的完整定义。每一维度由功能模块(M1-M6)与状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成。每个条目包含：符号、功能定义、测量成熟度分类(A/B/C)、候选测量方法及证据等级。</p>
 <p><strong>测量成熟度分类说明</strong>（详见第9章）： - <strong>A类（实证锚定）</strong>：变量范式中有明确对应构念，已有相对成熟的测量工具，可直接复用并重标定。 - <strong>B类（整合性）</strong>：映射可信度中高，但既有测量工具分散，需组合测量与结构验证。 - <strong>C类（预测性）</strong>：变量范式中未被独立识别，需原创工具开发，当前使用过渡性代理。</p>
@@ -499,7 +499,7 @@
 <p><strong>使用说明</strong>： 1. 本表为理论推导的规范列表，各子维度的具体数值（如阈值、恢复常数）参见PSE工程先验版（附录C及在线参数库）。 2. C类预测性子单元的原生测量工具正在开发中，当前研究应使用过渡性代理并明确标注置信度。 3. A类工具的得分需通过桥接研究（详见第9章）重新标定到0-100的功能层尺度，不能直接使用原始量表分数。 4. 本表将随INTRE版本更新而迭代，最新版本请访问项目网站。</p>
 <hr class="section-divider">
 <hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+<h2>版本记录</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -530,12 +530,13 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -578,7 +579,7 @@
 
     if (!sidebar) return;
 
-    function isMobile() { return window.innerWidth < 960; }
+    function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -593,16 +594,15 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (isMobile()) {
-                
+            if (!isDesktop()) {
                 close();
             }
         };
         list.appendChild(link);
     });
 
-    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -621,6 +621,5 @@
 })();
 </script>
 
-<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

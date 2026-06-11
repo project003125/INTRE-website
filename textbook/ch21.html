@@ -2,21 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第21章 临床案例：焦虑、创伤与抑郁 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body lang="zh">
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
+<body>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -34,7 +31,10 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/INTRE/" class="nav-logo">INTRE</a>
+            <a href="/INTRE/" class="nav-logo">
+                <img src="../assets/logo-dark.svg" alt="INTRE" onerror="this.style.display='none'">
+                <span class="logo-text">INTRE</span>
+            </a>
             <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
             <div class="nav-links">
                 <a href="/INTRE/">首页</a>
@@ -56,14 +56,14 @@
         </div>
     </div>
 
-    <main id="main-content" class="textbook-content">
+    <main class="textbook-content">
         <h1 class="chapter-title">第21章 临床案例：焦虑、创伤与抑郁</h1>
 <blockquote><p><strong>实证声明</strong>：本章所有临床案例中的数值（状态估计值、预测概率、效应量等）均为基于PSE-M蒙特卡罗仿真的模拟演示，用于展示框架的应用逻辑，不代表真实临床数据。具体数值有待实证校准。</p></blockquote>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)追踪广泛性焦虑症从M-R-D-S诊断到G-M-A-R干预规划的完整路径；(2)理解创伤后应激的D-R-S序列优化逻辑；(3)解释抑郁症复发风险的功能层预测模型；(4)对比PSE个体化轨迹预测与传统群体统计模型的差异。</p></blockquote>
 <hr class="section-divider">
 <h3>21.1 广泛性焦虑：状态预测与干预优化</h3>
 <p><strong>案例背景</strong>。李华，32岁，软件工程师，因“持续担忧、入睡困难、工作时分心”就诊。GAD-7评分15/21（中度焦虑），PSQI睡眠质量指数12/21（显著障碍）。</p>
-<p><strong>第一步：初始评估与状态编译（VTS-P + MCT）</strong>。编译为初始状态向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ψ</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Psi(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ψ</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>：</p>
+<p><strong>第一步：初始评估与状态编译（VTS-P + MCT）</strong>。编译为初始状态向量\(\Psi(0)\)：</p>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>子单元</th>
@@ -108,7 +108,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>第二步：生态位匹配与先验加载（PSE-P）</strong>。匹配生态位：“高压力知识工作者+睡眠障碍+焦虑倾向”。加载先验：M4-DSP-B消耗速率先验<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∼</mo><mtext>Gamma</mtext><mo stretchy="false">(</mo><mn>0.15</mn><mo separator="true">,</mo><mn>0.04</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha \sim \text{Gamma}(0.15, 0.04)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Gamma</span></span><span class="mopen">(</span><span class="mord">0.15</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.04</span><span class="mclose">)</span></span></span></span>/h，M3-RES-D恢复速率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>∼</mo><mtext>Gamma</mtext><mo stretchy="false">(</mo><mn>0.10</mn><mo separator="true">,</mo><mn>0.03</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\beta \sim \text{Gamma}(0.10, 0.03)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Gamma</span></span><span class="mopen">(</span><span class="mord">0.10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.03</span><span class="mclose">)</span></span></span></span>/h，M4→M3耦合权重0.75。</p>
+<p><strong>第二步：生态位匹配与先验加载（PSE-P）</strong>。匹配生态位：“高压力知识工作者+睡眠障碍+焦虑倾向”。加载先验：M4-DSP-B消耗速率先验\(\alpha \sim \text{Gamma}(0.15, 0.04)\)/h，M3-RES-D恢复速率\(\beta \sim \text{Gamma}(0.10, 0.03)\)/h，M4→M3耦合权重0.75。</p>
 <p><strong>第三步：初始轨迹预测（无干预）</strong>。使用MKT方程前向积分72小时，预测第三天下午M3-RES-D将跌破30阈值，此时DSP-F失效，DSP-B劫持，预期出现明显的冲动控制困难（工作失误、情绪爆发）。预测不确定性：95%置信区间显示跌破时间在48-78小时之间。</p>
 <p><strong>第四步：干预优化（MDT + MMD-P）</strong>。MDT评估候选干预的ROI：</p>
 <div class="table-wrap"><table>
@@ -123,21 +123,21 @@
 <tr>
 <td>GATE– M2-DSP-B（正念）</td>
 <td>即时打断反刍</td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-8分（24h）</td>
+<td>Δ-8分（24h）</td>
 <td>低</td>
 <td>无</td>
 </tr>
 <tr>
 <td>MODULATE+ M1-RES-D（睡眠锚定）</td>
 <td>补充资源</td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-12分（1周）</td>
+<td>Δ-12分（1周）</td>
 <td>中</td>
 <td>低</td>
 </tr>
 <tr>
 <td>ALIGN M4-STR-R（认知重构）</td>
 <td>修正威胁规则</td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>-18分（4周）</td>
+<td>Δ-18分（4周）</td>
 <td>高</td>
 <td>低</td>
 </tr>
@@ -189,7 +189,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>第二步：D-R-S序列的强制性</strong>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub><mo>≈</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">O_i \approx 35</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">35</span></span></span></span>，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
+<p><strong>第二步：D-R-S序列的强制性</strong>。Oᵢ≈35，处于低功能危机状态。D-R-S序列强制要求：<strong>必须先稳定化(MODULATE+)，绝不能直接进行暴露(RELINK)</strong>。</p>
 <p>MDT推荐序列： 1. <strong>稳定化（第1-4周）</strong>：MODULATE+ M4-RES-D（DBT情绪调节技能），MODULATE+ M1-RES-D（睡眠锚定），GATE– M4-DSP-B（接地技术）。目标：M4-RES-D > 40，M3-RES-D > 45。 2. <strong>资源建设（第5-8周）</strong>：通过治疗联盟的矫正性关系输入，初步提升M4-RES-B（S-P微系统提供<code>P-M4-RES-B+</code>）。 3. <strong>创伤加工（第9-16周）</strong>：当M4-RES-D稳定在>50后，启动RELINK M4-STR-C（PE或EMDR）。</p>
 <p><strong>第三步：PSE模拟两种序列的对比</strong>：</p>
 <div class="table-wrap"><table>
@@ -357,14 +357,14 @@
 <blockquote><p><strong>关键术语</strong>：状态演化预测，干预序列优化，复发风险预测，个体化轨迹</p></blockquote>
 <blockquote><p><strong>常见误区</strong>：
 - ❌ “PSE案例是事后圆说” → ✅ 案例中的数值为理论占位符，目的是展示语法如何工作而非声称预测精度。
-- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">O_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
+- ❌ “跳过稳定化直接暴露在某些情况下可能更有效” → ✅ 在低功能系统（Oᵢ<40）中，压力测试未发现任何有效方案能成功跳过D/R层。</p></blockquote>
 <blockquote><p><strong>练习题</strong>：
 1. 以广泛性焦虑为例，画出从主诉到干预规划的完整功能层诊断流程图。
 2. 如果治疗师跳过稳定化直接进行暴露，从功能层视角预测可能的临床后果。
 3. 比较PSE的个体化轨迹预测与传统逻辑回归预测复发在三个维度上的优势与局限。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+<h2>版本记录</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -395,12 +395,13 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -443,7 +444,7 @@
 
     if (!sidebar) return;
 
-    function isMobile() { return window.innerWidth < 960; }
+    function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -458,16 +459,15 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (isMobile()) {
-                
+            if (!isDesktop()) {
                 close();
             }
         };
         list.appendChild(link);
     });
 
-    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -486,6 +486,5 @@
 })();
 </script>
 
-<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

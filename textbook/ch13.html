@@ -2,21 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第13章 流派生成：从语法空位到预测疗法 · INTRE 导论教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 </head>
-<body lang="zh">
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--color-navy-600);color:var(--color-white);padding:0.5rem 1rem;z-index:200;transition:top 0.15s;">跳至正文</a>
+<body>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
@@ -34,7 +31,10 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/INTRE/" class="nav-logo">INTRE</a>
+            <a href="/INTRE/" class="nav-logo">
+                <img src="../assets/logo-dark.svg" alt="INTRE" onerror="this.style.display='none'">
+                <span class="logo-text">INTRE</span>
+            </a>
             <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
             <div class="nav-links">
                 <a href="/INTRE/">首页</a>
@@ -56,13 +56,13 @@
         </div>
     </div>
 
-    <main id="main-content" class="textbook-content">
+    <main class="textbook-content">
         <h1 class="chapter-title">第13章 流派生成：从语法空位到预测疗法</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
 <hr class="section-divider">
 <h3>13.1 生成语法：从M-R-D-S空位到新干预方案</h3>
 <p>INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的<strong>预测性流派</strong>。这是INTRE作为“理论引擎”的核心体现。</p>
-<p><strong>流派生成的形式化条件</strong>。任意干预方案可表示为：<em class="formal-def">干预 = (靶点集T ⊆ M-R-D-S子单元，操作序列O = [<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>o</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>o</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>o</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">o_1, o_2, \ldots, o_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>]，优先级约束C)</em>。一个<strong>流派</strong>被定义为一组具有一致理论内核的干预方案。从INTRE语法出发生成一个新流派，需满足：靶点特异性、操作一致性、区分度、完备性、可检验性。</p>
+<p><strong>流派生成的形式化条件</strong>。任意干预方案可表示为：<code>干预 = (靶点集T ⊆ M-R-D-S子单元，操作序列O = [o₁, o₂, ..., oₖ]，优先级约束C)</code>。一个<strong>流派</strong>被定义为一组具有一致理论内核的干预方案。从INTRE语法出发生成一个新流派，需满足：靶点特异性、操作一致性、区分度、完备性、可检验性。</p>
 <p><strong>“结构空位”作为生成起点</strong>。INTRE的42维状态空间中，那些在变量范式中未被独立识别、但被功能分解逻辑强制要求的子单元——即<strong>C类预测性子单元</strong>（如M6-RES-D行为启动能量、M3-DSP-B自动放弃倾向、M1-STR-C躯体-意义连接）——正是新流派生成的理想起点。每一个C类子单元都代表一个“未被开采的功能靶点”。</p>
 <p><strong>生成流程</strong>： 1. 选择候选靶点（从42个子单元中选取未被现有流派占据的组件） 2. 匹配原子操作（根据靶点类型选择合法操作） 3. 设计序列逻辑（按D-R-S深度序列或具体问题模型安排顺序） 4. 界定适应症（推导该靶点的功能失调会产生何种症状指纹） 5. 形成可检验预测（给出预注册可验证的假说，包括证伪条件） 6. 标注边界与风险</p>
 <blockquote><p><strong>INTRE不能替代临床创新</strong>。INTRE不会自动发明具体技术。它所做的是：<strong>指明哪个功能靶点值得开发技术、该靶点应匹配什么原子操作、验证该操作需要检验什么预测</strong>。具体的“如何做”仍然是人类治疗师的创造性工作。</p></blockquote>
@@ -134,7 +134,7 @@
 <td>“想法不是命令”规则</td>
 <td>ALIGN</td>
 <td>M2-STR-R</td>
-<td>建立"有这个想法<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace nobreak"></span><span class="mrel">=</span></span></span></span></span>必须跟随它"</td>
+<td>建立“有这个想法≠必须跟随它”</td>
 </tr>
 </tbody>
 </table></div>
@@ -173,9 +173,9 @@
 </tr>
 <tr>
 <td><strong>DMD‑P4</strong></td>
-<td>DMD 的效果<strong>不能被认知重构完全中介</strong>；调度能力改善独立预测症状变化，<strong>增量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>≥</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">R^2 \geq 0.05</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></strong></td>
+<td>DMD 的效果<strong>不能被认知重构完全中介</strong>；调度能力改善独立预测症状变化，<strong>增量 R² ≥ 0.05</strong></td>
 <td>中介分析，控制信念改变（DAS）</td>
-<td>增量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> < 0.05 或间接效应 > 80%</td>
+<td>增量 R² < 0.05 或间接效应 > 80%</td>
 <td>L2</td>
 </tr>
 <tr>
@@ -283,7 +283,7 @@
 3. 如果一个预测性流派的核心预测在多个独立RCT中被证伪，按照INTRE的验证路线图应如何处理？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+<h2>版本记录</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -314,12 +314,13 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -362,7 +363,7 @@
 
     if (!sidebar) return;
 
-    function isMobile() { return window.innerWidth < 960; }
+    function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
     var hIdx = 0, h2Idx = 0;
@@ -377,16 +378,15 @@
         link.onclick = function(e) {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
-            if (isMobile()) {
-                
+            if (!isDesktop()) {
                 close();
             }
         };
         list.appendChild(link);
     });
 
-    function open() { document.body.classList.add('toc-open'); sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { document.body.classList.remove('toc-open'); sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -405,6 +405,5 @@
 })();
 </script>
 
-<script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
 </body>
 </html>

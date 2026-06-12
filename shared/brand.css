@@ -118,49 +118,6 @@
   --reading-width:  740px;
 }
 
-/* ---- Dark Mode ---- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Navy 主色系 — 深色模式变体 */
-    --color-navy-950: #D6E5F3;
-    --color-navy-800: #f1f5f9;
-    --color-navy-700: #e2e8f0;
-    --color-navy-600: #5A8ACC;
-    --color-navy-600-light: #85B7EB;
-    --color-navy-600-bg: rgba(90, 138, 204, 0.12);
-    --color-navy-600-bg-subtle: rgba(90, 138, 204, 0.08);
-    --color-navy-600-border: rgba(90, 138, 204, 0.2);
-    --color-navy-500: #3B6FB5;
-    --color-navy-400: #2A5DA0;
-    --color-navy-300: #1F4880;
-    --color-navy-50:  #0E264A;
-
-    /* Slate 中性系 — 反转 */
-    --color-slate-900: #f8fafc;
-    --color-slate-800: #f1f5f9;
-    --color-slate-700: #e2e8f0;
-    --color-slate-600: #cbd5e1;
-    --color-slate-500: #94a3b8;
-    --color-slate-400: #64748b;
-    --color-slate-200: #334155;
-    --color-slate-100: #1e293b;
-    --color-slate-50:  #0f172a;
-
-    /* White & Overlay */
-    --color-white: #0f172a;
-    --color-white-65: rgba(15, 23, 42, 0.65);
-    --color-white-55: rgba(15, 23, 42, 0.55);
-    --color-overlay: rgba(0, 0, 0, 0.6);
-
-    /* 阴影 — 深色模式需要更强的阴影 */
-    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-navy-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-navy-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.5);
-  }
-}
-
 /* ---- Reset ---- */
 *, *::before, *::after {
   margin: 0;

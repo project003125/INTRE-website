@@ -105,10 +105,9 @@ nav.light .nav-links a.active {
   color: var(--color-white);
   font-size: 1.3rem;
   cursor: pointer;
-  padding: 0.8rem;
+  padding: 0.6rem 0.8rem;
   min-width: 44px;
   min-height: 44px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -145,7 +144,7 @@ nav.light .nav-toggle {
   }
 
   .nav-links a {
-    padding: 0.8rem 1rem;
+    padding: 0.75rem 1rem;
     font-size: 0.9rem;
     border-radius: var(--radius-sm);
     min-height: 44px;
@@ -192,6 +191,8 @@ footer {
 .footer-links a {
   color: rgba(255,255,255,0.6);
   font-size: 0.88rem;
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
   font-weight: 500;
   transition: color var(--duration-fast) var(--ease-smooth);
 }
@@ -238,7 +239,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 0.6rem 1.4rem;
+  padding: 0.75rem 1.4rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
@@ -892,7 +893,7 @@ body.sidebar-open { overflow: hidden; }
 
 .textbook-sidebar-drawer-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1rem;
   font-size: 0.88rem;
   color: var(--color-slate-600);
   text-decoration: none;

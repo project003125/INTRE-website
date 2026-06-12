@@ -399,6 +399,17 @@
       }
     });
 
+    // Auto-open on desktop (toggle button is hidden at ≥1200px)
+    if (isDesktop()) openToc();
+
+    // React to viewport resize across the 1200px breakpoint
+    var wasDesktop = isDesktop();
+    window.addEventListener('resize', function () {
+      var nowDesktop = isDesktop();
+      if (nowDesktop && !wasDesktop) { openToc(); wasDesktop = true; }
+      else if (!nowDesktop && wasDesktop) { closeToc(); wasDesktop = false; }
+    });
+
     // Scroll spy
     if (headings.length > 0) {
       var observer = new IntersectionObserver(function (entries) {

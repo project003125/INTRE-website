@@ -24,7 +24,7 @@
 
         /* ---------- Hero ---------- */
         .hero h1 {
-            font-size: 4rem;
+            font-size: var(--text-4xl);
             font-weight: 600;
             letter-spacing: -0.03em;
         }
@@ -41,7 +41,7 @@
         }
 
         .hero-sub {
-            font-size: 1.2rem;
+            font-size: var(--text-lg);
             color: var(--color-white-65);
             max-width: 640px;
             margin: 0.5rem auto 2.2rem;
@@ -61,7 +61,7 @@
         }
 
         .hero-stat-num {
-            font-size: 1.5rem;
+            font-size: var(--text-xl);
             font-weight: 700;
             color: var(--color-white);
             letter-spacing: -0.02em;
@@ -79,7 +79,7 @@
         }
 
         .hero-stat-label {
-            font-size: 0.78rem;
+            font-size: var(--text-2xs);
             color: var(--color-white-55);
             font-weight: 400;
             letter-spacing: 0.03em;
@@ -142,7 +142,7 @@
         }
         .manifesto-icon {
             float: left;
-            font-size: 1.8rem;
+            font-size: var(--text-2xl);
             color: var(--color-navy-400);
             opacity: 0.35;
             margin-right: 1rem;
@@ -151,7 +151,7 @@
             transition: opacity var(--duration-normal) var(--ease-smooth);
         }
         .manifesto p {
-            font-size: 1.05rem;
+            font-size: var(--text-md);
             color: var(--color-slate-700);
             line-height: 1.85;
         }
@@ -162,7 +162,7 @@
             margin-bottom: 2.5rem;
         }
         .section-header h2 {
-            font-size: 2rem;
+            font-size: var(--text-2xl);
             font-weight: 700;
             color: var(--color-navy-600);
             letter-spacing: -0.03em;
@@ -182,7 +182,7 @@
         }
         .section-header p {
             color: var(--color-slate-500);
-            font-size: 1rem;
+            font-size: var(--text-base);
             margin-top: 0.4rem;
         }
 
@@ -225,7 +225,7 @@
         .card:hover::before { opacity: 1; }
 
         .card-icon {
-            font-size: 2rem;
+            font-size: var(--text-2xl);
             color: var(--color-navy-400);
             margin-bottom: 1rem;
             transition: transform var(--duration-normal) var(--ease-smooth);
@@ -234,7 +234,7 @@
 
         .card h2 {
             font-family: var(--font-body);
-            font-size: 1.4rem;
+            font-size: var(--text-xl);
             font-weight: 700;
             color: var(--color-navy-600);
             margin-bottom: 0.3rem;
@@ -244,7 +244,7 @@
             letter-spacing: -0.02em;
         }
         .card h2 .arrow {
-            font-size: 1rem;
+            font-size: var(--text-base);
             color: var(--color-navy-400);
             opacity: 0;
             transform: translateX(-8px);
@@ -256,7 +256,7 @@
             display: inline-block;
             background-color: var(--color-navy-50);
             color: var(--color-navy-600);
-            font-size: 0.72rem;
+            font-size: var(--text-2xs);
             font-weight: 600;
             padding: 0.2rem 0.8rem;
             border-radius: var(--radius-pill);
@@ -266,7 +266,7 @@
 
         .card p {
             color: var(--color-slate-700);
-            font-size: 0.93rem;
+            font-size: var(--text-base);
             line-height: 1.7;
             flex-grow: 1;
             margin-top: 0.6rem;
@@ -284,7 +284,7 @@
         .fusion-section:hover { box-shadow: var(--shadow-sm); }
 
         .fusion-section h3 {
-            font-size: 1.8rem;
+            font-size: var(--text-2xl);
             font-weight: 700;
             color: var(--color-navy-600);
             text-align: center;
@@ -294,7 +294,7 @@
         .fusion-section > .sub {
             text-align: center;
             color: var(--color-slate-500);
-            font-size: 0.95rem;
+            font-size: var(--text-base);
             margin-bottom: 2rem;
         }
 
@@ -319,7 +319,7 @@
             position: absolute;
             top: 0.6rem;
             right: 1rem;
-            font-size: 3rem;
+            font-size: var(--text-3xl);
             font-weight: 800;
             color: rgba(31,72,128,0.04);
             line-height: 1;
@@ -327,14 +327,14 @@
             pointer-events: none;
         }
         .fusion-item h4 {
-            font-size: 1.2rem;
+            font-size: var(--text-lg);
             font-weight: 600;
             color: var(--color-navy-600);
             margin-bottom: 0.6rem;
         }
         .fusion-item p {
             color: var(--color-slate-700);
-            font-size: 0.9rem;
+            font-size: var(--text-sm);
             line-height: 1.6;
         }
 
@@ -347,7 +347,7 @@
         .channel-detail-title {
             font-weight: 600;
             color: var(--color-navy-600);
-            font-size: 1rem;
+            font-size: var(--text-base);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -372,7 +372,7 @@
         .channel-card .ch-name {
             font-weight: 600;
             color: var(--color-navy-600);
-            font-size: 0.9rem;
+            font-size: var(--text-sm);
             margin-bottom: 0.4rem;
             display: flex;
             align-items: center;
@@ -385,7 +385,7 @@
             display: inline-block;
         }
         .channel-card p {
-            font-size: 0.83rem;
+            font-size: var(--text-xs);
             color: var(--color-slate-700);
             line-height: 1.6;
         }
@@ -410,7 +410,7 @@
         }
         .fusion-formula code {
             font-family: var(--font-mono);
-            font-size: 1.15rem;
+            font-size: var(--text-md);
             font-weight: 500;
             color: var(--color-navy-50);
             letter-spacing: 0.02em;
@@ -424,7 +424,7 @@
         }
         .fusion-formula p {
             color: var(--color-white-55);
-            font-size: 0.85rem;
+            font-size: var(--text-xs);
             margin-top: 0.8rem;
             position: relative;
             z-index: 1;
@@ -454,7 +454,7 @@
             background-color: var(--color-navy-600);
         }
         .cta-section h3 {
-            font-size: 1.8rem;
+            font-size: var(--text-2xl);
             font-weight: 700;
             color: var(--color-navy-600);
             letter-spacing: -0.03em;
@@ -462,7 +462,7 @@
         .cta-section p {
             color: var(--color-slate-700);
             margin: 0.8rem 0 1.5rem;
-            font-size: 1rem;
+            font-size: var(--text-base);
         }
 
         .cta-btn {
@@ -475,7 +475,7 @@
             border-radius: var(--radius-pill);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: var(--text-base);
             transition: all var(--duration-normal) var(--ease-smooth);
             box-shadow: var(--shadow-navy-sm);
         }
@@ -494,18 +494,18 @@
             .channel-subgrid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero-sub { font-size: 1rem; }
+            .hero h1 { font-size: var(--text-3xl); }
+            .hero-sub { font-size: var(--text-base); }
             .hero-stats { gap: 1.5rem; }
             .card-grid { gap: 1.2rem; }
             .manifesto { padding: 1.8rem 1.5rem; }
             .fusion-section { padding: 2rem 1.5rem; }
             .cta-section { padding: 2rem 1.5rem; }
-            .section-header h2 { font-size: 1.6rem; }
+            .section-header h2 { font-size: var(--text-xl); }
             .fusion-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: var(--text-2xl); }
         }
 
         /* ---------- 动效 ---------- */
@@ -560,12 +560,12 @@
             color: var(--color-white);
             padding: 0.15rem 0.6rem;
             border-radius: var(--radius-pill);
-            font-size: 0.72rem;
+            font-size: var(--text-2xs);
             margin-left: 0.5rem;
         }
 
         /* 行内样式替代 — footer-desc */
-        .footer-desc { font-size: 0.88rem; opacity: 0.6; margin: 0.3rem 0 1rem; }
+        .footer-desc { font-size: var(--text-sm); opacity: 0.6; margin: 0.3rem 0 1rem; }
     </style>
 </head>
 <body>

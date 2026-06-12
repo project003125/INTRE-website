@@ -13,6 +13,8 @@
   --color-navy-600: #1F4880;
   --color-navy-600-light: #2A5DA0;
   --color-navy-600-bg: rgba(31, 72, 128, 0.08);
+  --color-navy-600-bg-subtle: rgba(31, 72, 128, 0.06);
+  --color-navy-600-border: rgba(31, 72, 128, 0.12);
   --color-navy-500: #2A5DA0;
   --color-navy-400: #3B6FB5;
   --color-navy-300: #5A8ACC;  /* 新增：用于渐变中间色 */
@@ -39,8 +41,11 @@
   --color-slate-100: #f1f5f9;
   --color-slate-50:  #f8fafc;
 
-  /* White */
+  /* White & Overlay */
   --color-white: #ffffff;
+  --color-white-65: rgba(255, 255, 255, 0.65);   /* 深色背景主文字 */
+  --color-white-55: rgba(255, 255, 255, 0.55);   /* 深色背景次文字 */
+  --color-overlay: rgba(0, 0, 0, 0.3);           /* 遮罩层 */
 
   /* 大地通道色 — 模块标识，同视口 ≤2 种 */
   --color-upls:  #5A8270;
@@ -54,6 +59,19 @@
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-mono:    'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+
+  /* ---- 字号体系 ---- */
+  --text-2xs: 0.72rem;   /* ~11.5px — 微型标签 */
+  --text-xs:  0.8125rem; /* 13px — 小标签 */
+  --text-sm:  0.875rem;  /* 14px — 小正文/代码 */
+  --text-base: 1rem;     /* 16px — 正文 */
+  --text-md:  1.125rem;  /* 18px — 中号 */
+  --text-lg:  1.25rem;   /* 20px — 大号 */
+  --text-xl:  1.5rem;    /* 24px — 小标题 */
+  --text-2xl: 2rem;      /* 32px — 标题 */
+  --text-3xl: 2.5rem;    /* 40px — 大标题 */
+  --text-4xl: 3.5rem;    /* 56px — 超大标题 */
+  --text-5xl: 4.5rem;    /* 72px — Hero */
 
   /* ---- 线宽体系 (Design Tokens) ---- */
   --stroke-core:      2.5px;
@@ -73,6 +91,9 @@
   --shadow-xs:    0 1px 2px rgba(15, 23, 42, 0.04);
   --shadow-sm:    0 2px 8px rgba(15, 23, 42, 0.06);
   --shadow-solid: 4px 4px 0 var(--color-navy-800);
+  --shadow-navy-sm: 0 2px 8px rgba(31, 72, 128, 0.25);
+  --shadow-navy-md: 0 4px 12px rgba(31, 72, 128, 0.35);
+  --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.15);
 
   /* ---- 间距系统 (4px 基数) ---- */
   --space-1:  4px;
@@ -258,7 +279,7 @@ code, pre, .mono {
   left: 0;
   top: 0;
   background: var(--color-navy-800);
-  color: white;
+  color: var(--color-white);
   padding: 0.5rem 1rem;
   z-index: 10000;
   font-size: 0.875rem;

@@ -97,9 +97,9 @@ nav.light .nav-links a.active {
   background-color: var(--color-navy-50);
 }
 
-/* 移动端汉堡菜单 */
+/* 移动端汉堡菜单 — 桌面端强制隐藏，仅 ≤768px 显示 */
 .nav-toggle {
-  display: none;
+  display: none !important;
   background: none;
   border: none;
   color: var(--color-white);
@@ -116,15 +116,9 @@ nav.light .nav-toggle {
   color: var(--color-slate-900);
 }
 
-@media (min-width: 769px) {
-  .nav-toggle {
-    display: none !important;
-  }
-}
-
 @media (max-width: 768px) {
   .nav-toggle {
-    display: block;
+    display: block !important;
   }
 
   .nav-links {

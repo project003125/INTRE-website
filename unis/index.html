@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · UNIS 统一神经接口系统</title>
+    <meta name="description" content="UNIS（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <meta property="og:title" content="UNIS · 统一神经信号接口 · INTRE">
+    <meta property="og:description" content="UNIS（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <meta property="og:type" content="article">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,153 +41,15 @@
         .layer-card { background:white; border-radius:0.75rem; border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; }
         .layer-card h4 { color:var(--color-navy-600); font-size:1.2rem; }
         .layer-card .layer-num { display:inline-block; background:var(--color-navy-600); color:white; padding:.25rem .7rem; border-radius:30px; font-size:.8rem; font-weight:600; margin-bottom:.5rem; }
-
-    
-        /* === VISUAL POLISH === */
-        
-        /* Table zebra striping */
-        .table tbody tr:nth-child(even) td {
-            background-color: var(--color-slate-100);
-        }
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50) !important;
-        }
-        
-        /* Info-box left accent */
-        .info-box {
-            border-left: 3px solid var(--color-navy-400);
-            background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
-        }
-        
-        /* Card hover micro-interaction */
-        .card {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(31,72,128,0.08);
-            background: #fff;
-        }
-        
-        /* Section label icon circle */
-        .section-label i {
-            background: rgba(59,111,181,0.08);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Subtle top accent bar on container */
-        .container::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400), var(--color-navy-300), var(--color-navy-400), var(--color-navy-600));
-            border-radius: 0 0 3px 3px;
-            margin-bottom: 0;
-            opacity: 0;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* h3 border refinement */
-        h3 {
-            border-bottom: none;
-            padding-bottom: 0;
-            position: relative;
-            padding-left: 0.9rem;
-        }
-        h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            width: 3px;
-            background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* Grid cards equal height */
-        .grid-2, .grid-3, .grid-4 {
-            align-items: stretch;
-        }
-        .grid-2 > .card, .grid-3 > .card, .grid-4 > .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Better scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(31,72,128,0.15);
-            color: var(--color-slate-900);
-        }
-    
-        /* Sub-page header gradient accent */
-        .container {
-            position: relative;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-navy-400), var(--color-navy-600), var(--color-navy-400), transparent);
-            border-radius: 2px;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            display: inline-block;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/" class="active">UNIS</a>
@@ -195,17 +61,17 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>UNIS</h1>
         <div class="subhead">统一神经接口系统 · 生理信号→功能层似然的标准化管道 <span style="background:var(--color-navy-400);color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">神经通道</span></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" style="color:var(--color-navy-600);opacity:.6;margin-right:.5rem;"></i>
+            <i class="fas fa-quote-left" aria-hidden="true" style="color:var(--color-navy-600);opacity:.6;margin-right:.5rem;"></i>
             UNIS 将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。
         </div>
 
         <!-- 一、六层架构 -->
-        <div class="section-label"><i class="fas fa-layer-group"></i> 一、六层架构</div>
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、六层架构</h2>
         <p style="margin-bottom:1.5rem;">UNIS 的六个层次从原始信号到功能似然逐级递进，每个层次对应一个不可还原的独立问题。</p>
 
         <div class="grid-6">
@@ -252,11 +118,11 @@
         </div>
 
         <!-- 二、L6 RTE 双模块 -->
-        <div class="section-label"><i class="fas fa-bolt"></i> 二、L6 RTE：实时推理与校准</div>
+        <h2 class="section-label"><i class="fas fa-bolt" aria-hidden="true"></i> 二、L6 RTE：实时推理与校准</h2>
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-tachometer-alt" style="color:var(--color-navy-400);"></i> RTE-Infer</h4>
+                <h4><i class="fas fa-tachometer-alt" aria-hidden="true" style="color:var(--color-navy-400);"></i> RTE-Infer</h4>
                 <p><strong>实时推理引擎</strong>— 无状态、低延迟、确定性计算。</p>
                 <ul style="margin-left:1.2rem;margin-top:.5rem;">
                     <li>管线：L2 数据流 → L3 特征计算 → L4 模型 → p(yₙ|Ψ)</li>
@@ -264,7 +130,7 @@
                 </ul>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sliders-h" style="color:var(--color-navy-400);"></i> RTE-Cal</h4>
+                <h4><i class="fas fa-sliders-h" aria-hidden="true" style="color:var(--color-navy-400);"></i> RTE-Cal</h4>
                 <p><strong>异步校准引擎</strong>— 有状态、精度优先、不阻塞推理快路径。</p>
                 <ul style="margin-left:1.2rem;margin-top:.5rem;">
                     <li>接收 RTE-Infer 输出 + PSE 状态估计</li>
@@ -282,7 +148,7 @@
         </div>
 
         <!-- 三、NFI 神经特征标识 -->
-        <div class="section-label"><i class="fas fa-fingerprint"></i> 三、NFI 神经特征标识符</div>
+        <h2 class="section-label"><i class="fas fa-fingerprint" aria-hidden="true"></i> 三、NFI 神经特征标识符</h2>
         <div class="table-responsive">
             <table class="table">
                 <thead><tr><th>NFI</th><th>功能维度</th><th>设备</th><th>优先级</th></tr></thead>
@@ -296,7 +162,7 @@
         </div>
 
         <!-- 四、强反例协议 -->
-        <div class="section-label"><i class="fas fa-shield-alt"></i> 四、强反例协议</div>
+        <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 四、强反例协议</h2>
         <div class="table-responsive">
             <table class="table">
                 <thead><tr><th>ID</th><th>主张</th><th>证伪条件</th></tr></thead>
@@ -312,20 +178,21 @@
         <div class="info-box">
             <p><strong>UNIS 的定位</strong>：UNIS 是 FLP 三通道架构中的神经通道，与 UPLS（语义通道）、PSE-M（行为通道）并列。三者通过贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIS 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

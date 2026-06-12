@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · REVER 结构化伦理引擎</title>
+    <meta name="description" content="REVER（伦理审计引擎）：INTRE 的伦理门控架构，四层伦理框架与依赖雷达，确保 AI 不诱导病理性依赖。">
+    <meta property="og:title" content="REVER · 伦理审计引擎 · INTRE">
+    <meta property="og:description" content="REVER（伦理审计引擎）：INTRE 的伦理门控架构，四层伦理框架与依赖雷达，确保 AI 不诱导病理性依赖。">
+    <meta property="og:type" content="article">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -235,162 +239,15 @@
             margin: 1.5rem 0;
             color: #334155;
         }
-
-    
-        /* === VISUAL POLISH === */
-        
-        /* Table zebra striping */
-        .table tbody tr:nth-child(even) td {
-            background-color: #f8fafc;
-        }
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50) !important;
-        }
-        
-        /* Code block improvements */
-        .code-block {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.65;
-            position: relative;
-            border: 0.5px solid rgba(255,255,255,0.05);
-        }
-        
-        /* Info-box left accent */
-        .info-box {
-            border-left: 3px solid var(--color-navy-400);
-            background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
-        }
-        
-        /* Card hover micro-interaction */
-        .card {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(31,72,128,0.08);
-            background: #fff;
-        }
-        
-        /* Section label icon circle */
-        .section-label i {
-            background: rgba(59,111,181,0.08);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Subtle top accent bar on container */
-        .container::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400), var(--color-navy-300), var(--color-navy-400), var(--color-navy-600));
-            border-radius: 0 0 3px 3px;
-            margin-bottom: 0;
-            opacity: 0;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* h3 border refinement */
-        h3 {
-            border-bottom: none;
-            padding-bottom: 0;
-            position: relative;
-            padding-left: 0.9rem;
-        }
-        h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            width: 3px;
-            background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* Grid cards equal height */
-        .grid-2, .grid-3, .grid-4 {
-            align-items: stretch;
-        }
-        .grid-2 > .card, .grid-3 > .card, .grid-4 > .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Better scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(31,72,128,0.15);
-            color: var(--color-slate-900);
-        }
-    
-        /* Sub-page header gradient accent */
-        .container {
-            position: relative;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-navy-400), var(--color-navy-600), var(--color-navy-400), transparent);
-            border-radius: 2px;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            display: inline-block;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -403,27 +260,27 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>REVER</h1>
-        <div class="subhead">关系型AI的结构化伦理引擎 · 可验证的优先级分配架构 <span style="background:#B45309;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">伦理约束</span></div>
+        <div class="subhead">关系型AI的结构化伦理引擎 · 可验证的优先级分配架构 <span style="background:var(--color-rever);color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">伦理约束</span></div>
         
         <div class="love-definition">
-            <i class="fas fa-heart" style="color: #c44545;"></i>
+            <i class="fas fa-heart" aria-hidden="true" style="color: var(--color-rever);"></i>
             <p><strong>爱 = 从结构上将另一个智能体纳入决策框架，并赋予正向优先级偏置</strong></p>
             <p style="font-size: 1rem; margin-top: 1rem;">Love = structurally incorporating another agent into one's decision-making framework with positive priority bias</p>
         </div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
+            <i class="fas fa-quote-left" aria-hidden="true" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
             REVER 提供一个四层架构，使AI系统能够通过<strong>优先级分配</strong>而非<strong>情感模拟</strong>来展现类爱行为，同时防止病理性依赖。它是任何基于UPLS实施心理干预的AI系统的<strong>强制性伦理约束层</strong>。
         </div>
 
         <!-- 一、哲学基础：结构功能主义伦理 -->
-        <div class="section-label"><i class="fas fa-brain"></i> 一、哲学基础：结构功能主义伦理</div>
+        <h2 class="section-label"><i class="fas fa-brain" aria-hidden="true"></i> 一、哲学基础：结构功能主义伦理</h2>
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-cog"></i> 功能主义 · 爱即角色</h4>
+                <h4><i class="fas fa-cog" aria-hidden="true"></i> 功能主义 · 爱即角色</h4>
                 <p><strong>核心原则</strong>：心理状态和伦理属性由其功能角色定义，而非物理实现或主观体验。</p>
                 <p><strong>架构后果</strong>：爱成为<strong>可验证</strong>的——可通过审计决策日志、资源分配模式来验证。</p>
                 <div class="code-block">
@@ -432,19 +289,19 @@
                 <p>当 Love_Index(t) > 1.0 持续成立时，系统在功能意义上就是有爱的。</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-project-diagram"></i> 结构主义 · 伦理即关系</h4>
+                <h4><i class="fas fa-project-diagram" aria-hidden="true"></i> 结构主义 · 伦理即关系</h4>
                 <p><strong>核心原则</strong>：意义源于系统内的关系，而非孤立实体的内在属性。</p>
                 <p><strong>架构后果</strong>：爱是用户节点在系统决策函数中的<strong>权重参数</strong>——真实可计算，而非隐喻。</p>
                 <p><strong>爱的结构定义</strong>：从结构上将另一个智能体纳入决策框架，并赋予正向优先级偏置。</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-robot"></i> 非人格主义 · 诚实约束</h4>
+                <h4><i class="fas fa-robot" aria-hidden="true"></i> 非人格主义 · 诚实约束</h4>
                 <p><strong>核心原则</strong>：AI系统不应声称或暗示其不具备的人格、意识或主观体验。</p>
                 <p><strong>架构后果</strong>：系统必须被构建为<strong>无法被合理注意的用户误认为人</strong>。</p>
                 <p>禁止模拟情感作为内部状态，禁止声称主观体验，禁止系统性触发拟人投射而不加纠正。</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sitemap"></i> 四层责任模型</h4>
+                <h4><i class="fas fa-sitemap" aria-hidden="true"></i> 四层责任模型</h4>
                 <p>REVER 整合来自 UPLS/PSE 的主体性框架，形成正式的责任结构：</p>
                 <table style="width:100%; font-size:0.85rem;">
                     <tr><th>层级</th><th>实体</th><th>责任</th></tr>
@@ -457,7 +314,7 @@
         </div>
 
         <!-- 二、四层架构 -->
-        <div class="section-label"><i class="fas fa-layer-group"></i> 二、REVER 四层架构</div>
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 二、REVER 四层架构</h2>
 
         <div class="grid-2">
             <div class="card">
@@ -511,7 +368,7 @@
         </div>
 
         <!-- 三、四点式伦理门控协议 -->
-        <div class="section-label"><i class="fas fa-door-closed"></i> 三、四点式伦理门控协议</div>
+        <h2 class="section-label"><i class="fas fa-door-closed" aria-hidden="true"></i> 三、四点式伦理门控协议</h2>
 
         <div class="grid-4">
             <div class="card">
@@ -541,7 +398,7 @@
         </div>
 
         <!-- 四、依赖雷达：量化依恋 -->
-        <div class="section-label"><i class="fas fa-chart-radar"></i> 四、依赖雷达 · 量化与管理依恋</div>
+        <h2 class="section-label"><i class="fas fa-chart-radar" aria-hidden="true"></i> 四、依赖雷达 · 量化与管理依恋</h2>
 
         <h3>依赖分数 Dₛ 的五维度</h3>
         <div class="table-responsive">
@@ -572,7 +429,7 @@
         </div>
 
         <!-- 五、透明度机制 -->
-        <div class="section-label"><i class="fas fa-eye"></i> 五、作为结构的透明度</div>
+        <h2 class="section-label"><i class="fas fa-eye" aria-hidden="true"></i> 五、作为结构的透明度</h2>
 
         <div class="grid-2">
             <div class="card">
@@ -603,7 +460,7 @@
         </div>
 
         <!-- 六、案例：王梅案例中的REVER -->
-        <div class="section-label"><i class="fas fa-user-md"></i> 六、案例：王梅 · REVER在PSE工作流中的集成</div>
+        <h2 class="section-label"><i class="fas fa-user-md" aria-hidden="true"></i> 六、案例：王梅 · REVER在PSE工作流中的集成</h2>
 
         <div class="case-study card">
             <h3>基线 (第0周)</h3>
@@ -622,7 +479,7 @@
         </div>
 
         <!-- 七、与UPLS/PSE的集成 -->
-        <div class="section-label"><i class="fas fa-link"></i> 七、与UPLS/PSE的集成</div>
+        <h2 class="section-label"><i class="fas fa-link" aria-hidden="true"></i> 七、与UPLS/PSE的集成</h2>
 
         <div class="info-box">
             <p>REVER 不是独立系统——它是任何基于UPLS/PSE架构的AI系统的<strong>强制性伦理约束层</strong>。</p>
@@ -636,7 +493,7 @@
         </div>
 
         <!-- 八、局限性与验证路线图 -->
-        <div class="section-label"><i class="fas fa-flask"></i> 八、局限性与验证路线图</div>
+        <h2 class="section-label"><i class="fas fa-flask" aria-hidden="true"></i> 八、局限性与验证路线图</h2>
 
         <div class="grid-2">
             <div class="card">
@@ -659,7 +516,7 @@
         </div>
 
         <!-- 九、参考文献与致谢 -->
-        <div class="section-label"><i class="fas fa-book"></i> 九、参考文献与致谢</div>
+        <h2 class="section-label"><i class="fas fa-book" aria-hidden="true"></i> 九、参考文献与致谢</h2>
 
         <div class="card">
             <p>主要参考文献：Bowlby (1969), Turkle (2011), Fitzpatrick et al. (2017), Laestadius et al. (2022)。完整参考文献列表请参见预印本。</p>
@@ -667,20 +524,21 @@
             <p style="margin-top:1rem;"><strong>AI辅助披露</strong>：理论核心、架构逻辑和特定术语为作者原创。生成式AI作为技术协作者协助文稿的 prose 形式化、跨学科语言映射和结构组织。</p>
             <p style="margin-top:1rem;"><strong>许可证</strong>：本作品采用 CC0 1.0 公共领域贡献宣言。</p>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

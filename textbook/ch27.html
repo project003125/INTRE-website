@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第27章 跨学科接口：学科映射与范式协作</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解INTRE作为人文社科“中间层”翻译框架的定位；(2)描述与神经科学的双向约束关系；(3)识别39学科接口图谱的分级；(4)理解变量范式与结构范式的互补协作关系。</p></blockquote>
 <hr class="section-divider">
-<h3>27.1 中间层定位：INTRE作为转化机制的候选框架</h3>
+<h2>27.1 中间层定位：INTRE作为转化机制的候选框架</h2>
 <p>现代人文社科在经验化过程中形成了一套稳定的操作共识：以变量为基本描述单位，以统计关联为主要证据形式。但当研究目标转向解释“外部社会信号如何在个体内部转化为认知、情感、动机与行为输出”时，变量范式面临一个功能层缺口。</p>
 <p><strong>社会科学中的“黑箱”问题</strong>：</p>
 <div class="table-wrap"><table>
@@ -104,7 +104,7 @@
 <p><strong>INTRE作为中间层语法的核心主张</strong>： - <strong>S-P外感架构</strong>将外部信号按来源层级和影响模式分类 - <strong>M-R-D-S内感架构</strong>将内部状态分解为资源、调度、结构的组合 - <strong>G-M-A-R操作架构</strong>规定改变内部状态的原子操作</p>
 <p><strong>边界与接力</strong>：INTRE不替代各学科的核心理论。它提供的是一种<strong>接口语法</strong>，使各学科在需要进入“个体内部转化机制”时可以共享一套功能层描述语言。解释的接力棒在以下节点交回原学科：集体行为的涌现（交回社会学/经济学）、宏观结构演化（交回历史学/政治学）、规范应然判断（交回伦理学/法学）。</p>
 <hr class="section-divider">
-<h3>27.2 神经双向约束：兼容审查与级联预测</h3>
+<h2>27.2 神经双向约束：兼容审查与级联预测</h2>
 <p>INTRE功能层与神经科学的关系不是“映射”或“还原”，而是<strong>双向约束</strong>。（详细论述见第22-24章。）</p>
 <p><strong>神经兼容性审查的主要发现</strong>（综合评分8.2/10）：</p>
 <div class="table-wrap"><table>
@@ -150,7 +150,7 @@
 <p><strong>需要关注的未决接口</strong>： - <strong>DMN功能广度</strong>：参与心理理论、情景模拟，超出M2-DSP-B和M5-STR-R的当前映射 - <strong>多巴胺系统的多通路复杂性</strong>：阶段性DA、紧张性DA、黑质-纹状体通路各有功能，当前映射存在多对多对应 - <strong>预测误差参数化</strong>：预测加工框架中的精度加权预测误差尚无直接对应</p>
 <p><strong>级联预测的生成</strong>（详见第23章§23.6及《INTRE 核心预测清单 v3.0》）： - 资源崩塌级联预测（Cascade-1）：M1-RES-D下降先于M3-RES-D约3-6小时，M3-RES-D下降至30%以下时M6-DSP-B上升 - RELINK的再巩固窗口推理：提取创伤记忆后6h内进行安全学习，效果优于24h后（兼容性证据层面的功能层推论，非 v3.0 标准化预测）</p>
 <hr class="section-divider">
-<h3>27.3 接口图谱：39学科的四级成熟度标注</h3>
+<h2>27.3 接口图谱：39学科的四级成熟度标注</h2>
 <p>基于INTRE的S-P→M-R-D-S→G-M-A-R链路，可绘制39个人文社科及交叉学科的接口图谱。接口成熟度分为四级：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -190,7 +190,7 @@
 <p><strong>接口的边界标注</strong>： - <strong>规范性学科的核心任务</strong>：伦理学、美学、法学的核心是“应该如何”，INTRE只介入其中的描述性分支 - <strong>以超个体实体为主要分析单位的学科</strong>：历史学的宏观叙事、地理学的空间结构——当分析单位不是个体心智时，INTRE不直接适用 - <strong>纯现象学体验</strong>：主观质感、审美体验——不被功能化，而是作为方法论边界保留</p>
 <p><strong>反身性问题的处理</strong>：INTRE框架本身也可以被用来分析“INTRE研究者”群体的M-R-D-S状态。这个反身性追问是合法的，但不影响框架本身的分析效力。</p>
 <hr class="section-divider">
-<h3>27.4 变量范式价值：测量、创新、验证与适配</h3>
+<h2>27.4 变量范式价值：测量、创新、验证与适配</h2>
 <p>结构范式的兴起不意味着变量范式的废弃。变量范式在五个核心领域具有结构范式无法完全替代的独特贡献。</p>
 <p><strong>五个不可替代价值</strong>：</p>
 <ol>
@@ -251,7 +251,7 @@
 </table></div>
 <p><strong>变量范式研究者的转型路线图</strong>（三阶段）： - <strong>短期（0-2年）</strong>：理解结构范式的核心概念，在论文中使用“与……相容”的谨慎表述 - <strong>中期（2-5年）</strong>：与结构范式开发者协作，用变量范式方法检验PSE的预测 - <strong>长期（5-10年）</strong>：成为“双语者”，根据研究问题灵活选择或组合两种范式的工具</p>
 <hr class="section-divider">
-<h3>27.5 协作路径：变量研究者的四层参与模型</h3>
+<h2>27.5 协作路径：变量研究者的四层参与模型</h2>
 <p><strong>层次一：零成本参与——使用INTRE术语进行概念标注</strong>。将论文中的核心构念尝试性标注到M-R-D-S坐标空间中。例如：“本研究的‘自我控制’构念，在INTRE语法中被试探性映射为M3-RES-D，可信度7/10。”</p>
 <p><strong>层次二：协作参与——为PSE提供观测函数校准数据</strong>。贡献元分析数据（标注来源模块、靶模块和效应方向）；参与多量表联测研究；提供非WEIRD人群数据集。</p>
 <p><strong>层次三：独立检验——用变量范式的方法论审计INTRE</strong>。执行替代测试，提出你认为更优的替代方案并用实证数据比较；检验核心预测（特别是C5: M3-RES-D独立存在性）；发现“结构空位”（无法被现有42维解释的稳定现象）。</p>
@@ -270,7 +270,7 @@
 3. 如果十年后结构范式在预测精度上显著优于变量范式，互补协作定位是否仍然成立？范式关系演化可能路径是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -295,19 +295,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -372,8 +372,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -392,5 +392,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

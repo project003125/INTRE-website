@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · 术语表</title>
+    <meta name="description" content="INTRE 术语表：功能层心理学核心术语的中英对照与定义索引，覆盖 M-R-D-S、G-M-A-R、UPLS、UNIS、UBMS、PSE、REVER 全部模块。">
+    <meta property="og:title" content="术语表 · INTRE">
+    <meta property="og:description" content="INTRE 术语表：功能层心理学核心术语的中英对照与定义索引，覆盖 M-R-D-S、G-M-A-R、UPLS、UNIS、UBMS、PSE、REVER 全部模块。">
+    <meta property="og:type" content="article">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -219,11 +223,12 @@
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -241,8 +246,8 @@
             <h1>INTRE 术语表</h1>
             <p class="sub">核心架构术语速查</p>
             <div class="stats">
-                <span><i class="fas fa-tag"></i> 80+ 术语</span>
-                <span><i class="fas fa-layer-group"></i> 8 类别</span>
+                <span><i class="fas fa-tag" aria-hidden="true"></i> 80+ 术语</span>
+                <span><i class="fas fa-layer-group" aria-hidden="true"></i> 8 类别</span>
             </div>
         </div>
     </div>
@@ -250,10 +255,10 @@
     <div class="glossary-content">
 
         <div class="glossary-note">
-            <i class="fas fa-info-circle"></i> 本页面术语源自权威规范 <code>06-S-02-INTRE-术语对照表.md</code>（v2.3.0），含 IET v3.0 八级证据体系。完整版约 120 条术语含交叉引用标注，此处仅列核心条目。
+            <i class="fas fa-info-circle" aria-hidden="true"></i> 本页面术语源自权威规范 <code>06-S-02-INTRE-术语对照表.md</code>（v2.3.0），含 IET v3.0 八级证据体系。完整版约 120 条术语含交叉引用标注，此处仅列核心条目。
         </div>
 
-        <div class="section-heading"><i class="fas fa-cubes"></i> 核心架构术语</div>
+        <div class="section-heading"><i class="fas fa-cubes" aria-hidden="true"></i> 核心架构术语</div>
         <div class="term-grid">
             <div class="term-item"><strong>N-S-R</strong> <span class="sep">|</span> Need-Structure-Realization <span class="sep">—</span> <span class="def">元公理：需要→结构→实现的循环</span></div>
             <div class="term-item"><strong>M-R-P</strong> <span class="sep">|</span> Module-Ring-Playbook <span class="sep">—</span> <span class="def">通用架构：模块-调度环-剧本</span></div>
@@ -274,7 +279,7 @@
             <div class="term-item"><strong>P+ / P–</strong> <span class="sep">—</span> <span class="def">资源增强型 / 资源消耗型环境模式</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-code"></i> 操作语法 (G-M-A-R)</div>
+        <div class="section-heading"><i class="fas fa-code" aria-hidden="true"></i> 操作语法 (G-M-A-R)</div>
         <div class="term-grid">
             <div class="term-item"><strong>GATE</strong> <span class="sep">—</span> <span class="def">门控操作：启动/抑制/切换进程，目标 DSP</span></div>
             <div class="term-item"><strong>GATE+</strong> <span class="sep">—</span> <span class="def">启动/增强进程</span></div>
@@ -287,7 +292,7 @@
             <div class="term-item"><strong>RELINK</strong> <span class="sep">—</span> <span class="def">重联操作：重组连接网络，目标 STR-C</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-microchip"></i> 心理系统工程 (PSE)</div>
+        <div class="section-heading"><i class="fas fa-microchip" aria-hidden="true"></i> 心理系统工程 (PSE)</div>
         <div class="term-grid">
             <div class="term-item"><strong>PSE</strong> <span class="sep">|</span> Psychological System Engine <span class="sep">—</span> <span class="def">心理系统工程引擎</span></div>
             <div class="term-item"><strong>MCT</strong> <span class="sep">|</span> Mental Compilation Theory <span class="sep">—</span> <span class="def">心智编译理论：观测 → 状态向量</span></div>
@@ -305,7 +310,7 @@
             <div class="term-item"><strong>PSE-I/M/P/C</strong> <span class="sep">—</span> <span class="def">PSE 四阶段：I 理论注入 → M 蒙特卡罗仿真 → P 先验提取 → C 真实世界校准</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-language"></i> 知识基础设施 (UPLS)</div>
+        <div class="section-heading"><i class="fas fa-language" aria-hidden="true"></i> 知识基础设施 (UPLS)</div>
         <div class="term-grid">
             <div class="term-item"><strong>UPLS</strong> <span class="sep">|</span> Unified Psychological Language System <span class="sep">—</span> <span class="def">统一心理语言系统：形式化元语言基础设施</span></div>
             <div class="term-item"><strong>PCUI</strong> <span class="sep">|</span> Psychological Concept Unique Identifier <span class="sep">—</span> <span class="def">心理概念唯一标识符</span></div>
@@ -313,7 +318,7 @@
             <div class="term-item"><strong>PSL</strong> <span class="sep">|</span> Psychological Specialist Lexicon <span class="sep">—</span> <span class="def">心理专家词典：自然语言 → PCUI 映射</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-brain"></i> 神经接口系统 (UNIS)</div>
+        <div class="section-heading"><i class="fas fa-brain" aria-hidden="true"></i> 神经接口系统 (UNIS)</div>
         <div class="term-grid">
             <div class="term-item"><strong>UNIS</strong> <span class="sep">|</span> Unified Neural Interface System <span class="sep">—</span> <span class="def">神经通道（EEG/fNIRS/ECoG）→ 功能层似然，六层递进架构</span></div>
             <div class="term-item"><strong>NAP</strong> <span class="sep">|</span> L1 Neural Acquisition Protocol <span class="sep">—</span> <span class="def">神经采集规范：规定 BIDS 格式、同步等级、元数据标准</span></div>
@@ -330,7 +335,7 @@
             <div class="term-item"><strong>仲裁合约</strong> <span class="sep">—</span> <span class="def">UNIS ↔ PSE 双向通信接口：/func_likelihood（前向）+ /calibration_feedback（反向）</span></div>
             <div class="term-item"><strong>通道分歧</strong> <span class="sep">—</span> <span class="def">行为/语义/神经三通道对同子单元估计出现系统性分歧时的诊断信号</span></div>
         </div>
-        <div class="section-heading"><i class="fas fa-ruler"></i> 行为测量系统 (UBMS)</div>
+        <div class="section-heading"><i class="fas fa-ruler" aria-hidden="true"></i> 行为测量系统 (UBMS)</div>
         <div class="term-grid">
             <div class="term-item"><strong>UBMS</strong> <span class="sep">|</span> Unified Behavioral Measurement System <span class="sep">—</span> <span class="def">统一行为测量系统：FLP 行为通道基础设施，将结构化行为观测转化为行为似然</span></div>
             <div class="term-item"><strong>BHI 标识符</strong> <span class="sep">|</span> Behavioral Health Indicator <span class="sep">—</span> <span class="def">行为健康指标标识符，格式 BHI.[DOMAIN].v[VER].[SEQ]，如 BHI.DEPRESSION.v2.003</span></div>
@@ -350,7 +355,7 @@
         </div>
 
 
-        <div class="section-heading"><i class="fas fa-flask"></i> FLP 学科体系</div>
+        <div class="section-heading"><i class="fas fa-flask" aria-hidden="true"></i> FLP 学科体系</div>
         <div class="term-grid">
             <div class="term-item"><strong>FLP</strong> <span class="sep">|</span> Functional Layer Psychology <span class="sep">—</span> <span class="def">功能层心理学：INTRE 框架的学科统称，含五大支柱学科</span></div>
             <div class="term-item"><strong>PFIM</strong> <span class="sep">|</span> Psychofunctional Input Metrology <span class="sep">—</span> <span class="def">功能层输入测量学：多通道 p(Ψ|y) 估计</span></div>
@@ -362,14 +367,14 @@
             <div class="term-item"><strong>CI+AI</strong> <span class="sep">—</span> <span class="def">协同建构方法论：人类晶核 + AI 展开</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-heart"></i> 伦理引擎 (REVER)</div>
+        <div class="section-heading"><i class="fas fa-heart" aria-hidden="true"></i> 伦理引擎 (REVER)</div>
         <div class="term-grid">
             <div class="term-item"><strong>REVER</strong> <span class="sep">—</span> <span class="def">关系型 AI 伦理引擎：结构化伦理门控</span></div>
             <div class="term-item"><strong>Dₛ</strong> <span class="sep">—</span> <span class="def">依赖分数：量化用户依恋程度</span></div>
             <div class="term-item"><strong>四道门控</strong> <span class="sep">—</span> <span class="def">输入 → 诊断 → 依赖 → 输出，四重伦理检查</span></div>
         </div>
 
-        <div class="section-heading"><i class="fas fa-balance-scale"></i> 证据等级标签 (IET v3.0)</div>
+        <div class="section-heading"><i class="fas fa-balance-scale" aria-hidden="true"></i> 证据等级标签 (IET v3.0)</div>
         <div class="term-grid">
             <div class="term-item"><strong>D</strong> <span class="sep">—</span> <span class="def">定义类：术语如何被规定/界定</span></div>
             <div class="term-item"><strong>L</strong> <span class="sep">—</span> <span class="def">推导类：从前提可推出什么</span></div>
@@ -388,14 +393,15 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

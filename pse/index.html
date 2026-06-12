@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · PSE 心理系统工程</title>
+    <meta name="description" content="PSE（心理状态仿真引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
+    <meta property="og:title" content="PSE · 心理状态仿真引擎 · INTRE">
+    <meta property="og:description" content="PSE（心理状态仿真引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
+    <meta property="og:type" content="article">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -209,152 +213,15 @@
             padding: 2rem;
             margin: 2rem 0;
         }
-    
-        /* === VISUAL POLISH === */
-        
-        /* Table zebra striping */
-        .table tbody tr:nth-child(even) td {
-            background-color: #f8fafc;
-        }
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50) !important;
-        }
-        
-        /* Info-box left accent */
-        .info-box {
-            border-left: 3px solid var(--color-navy-400);
-            background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
-        }
-        
-        /* Card hover micro-interaction */
-        .card {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(31,72,128,0.08);
-            background: #fff;
-        }
-        
-        /* Section label icon circle */
-        .section-label i {
-            background: rgba(59,111,181,0.08);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Subtle top accent bar on container */
-        .container::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400), var(--color-navy-300), var(--color-navy-400), var(--color-navy-600));
-            border-radius: 0 0 3px 3px;
-            margin-bottom: 0;
-            opacity: 0;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* h3 border refinement */
-        h3 {
-            border-bottom: none;
-            padding-bottom: 0;
-            position: relative;
-            padding-left: 0.9rem;
-        }
-        h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            width: 3px;
-            background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* Grid cards equal height */
-        .grid-2, .grid-3, .grid-4 {
-            align-items: stretch;
-        }
-        .grid-2 > .card, .grid-3 > .card, .grid-4 > .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Better scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(31,72,128,0.15);
-            color: var(--color-slate-900);
-        }
-    
-        /* Sub-page header gradient accent */
-        .container {
-            position: relative;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-navy-400), var(--color-navy-600), var(--color-navy-400), transparent);
-            border-radius: 2px;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            display: inline-block;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -367,51 +234,51 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>PSE</h1>
-        <div class="subhead">心理系统工程引擎 · 基于心智六论的大规模仿真引擎 <span style="background:#6B21A8;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">计算引擎</span></div>
+        <div class="subhead">心理系统工程引擎 · 基于心智六论的大规模仿真引擎 <span style="background:var(--color-pse);color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">计算引擎</span></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
+            <i class="fas fa-quote-left" aria-hidden="true" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
             PSE 将形式化描述转化为可计算的动力学系统 — 基于<strong>心智六论</strong>，通过 PSE‑M（蒙特卡罗仿真）与 PSE‑C（真实世界校准）预测心理状态演化。
         </div>
 
         <!-- 一、五层架构与心智六论 -->
-        <div class="section-label"><i class="fas fa-layer-group"></i> 一、心智六论 · PSE 的理论基础</div>
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、心智六论 · PSE 的理论基础</h2>
 
         <div class="grid-3">
             <div class="card">
-                <h4><i class="fas fa-compass" style="color: var(--color-navy-400);"></i> MCT · 心智编译理论</h4>
+                <h4><i class="fas fa-compass" aria-hidden="true" style="color: var(--color-navy-400);"></i> MCT · 心智编译理论</h4>
                 <p><strong>Mental Compilation Theory</strong></p>
                 <p>将临床观测（主诉、量表）编译为 M-R-D-S 状态向量。解决“现象→形式化”的映射问题。</p>
                 <div class="code-block" style="font-size:0.8rem;">主诉“疲惫不堪”→ M1-RES-D↓</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-project-diagram" style="color: var(--color-navy-400);"></i> MTT · 心智拓扑理论</h4>
+                <h4><i class="fas fa-project-diagram" aria-hidden="true" style="color: var(--color-navy-400);"></i> MTT · 心智拓扑理论</h4>
                 <p><strong>Mental Topology Theory</strong></p>
                 <p>描述 M-R-D-S 组件间的连接结构与因果网络。定义依赖强度矩阵 w_base。</p>
                 <div class="code-block" style="font-size:0.8rem;">M1-RES-D → M3-RES-D: 0.8</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-chart-line" style="color: var(--color-navy-400);"></i> MKT · 心智动力理论</h4>
+                <h4><i class="fas fa-chart-line" aria-hidden="true" style="color: var(--color-navy-400);"></i> MKT · 心智动力理论</h4>
                 <p><strong>Mental Kinetics Theory</strong></p>
                 <p>资源与状态的演化方程，包含存量-流量-结构动力学。定义速率常数 k。</p>
                 <div class="code-block" style="font-size:0.8rem;">d(RES-D)/dt = k_rec - k_cons</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sliders-h" style="color: var(--color-navy-400);"></i> MDT · 心智调度理论</h4>
+                <h4><i class="fas fa-sliders-h" aria-hidden="true" style="color: var(--color-navy-400);"></i> MDT · 心智调度理论</h4>
                 <p><strong>Mental Dispatch Theory</strong></p>
                 <p>干预优化的决策理论，将 G-M-A-R 操作映射为控制信号。优化干预序列。</p>
                 <div class="code-block" style="font-size:0.8rem;">选择 MODULATE+ 时机</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-dna" style="color: var(--color-navy-400);"></i> MPT · 心智塑性理论</h4>
+                <h4><i class="fas fa-dna" aria-hidden="true" style="color: var(--color-navy-400);"></i> MPT · 心智塑性理论</h4>
                 <p><strong>Mental Plasticity Theory</strong></p>
                 <p>结构层（STR）的改变机制，描述学习与习惯化的速率。</p>
                 <div class="code-block" style="font-size:0.8rem;">d(STR-R)/dt = η·Δ</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-globe-asia" style="color: var(--color-navy-400);"></i> MET · 心智生态理论</h4>
+                <h4><i class="fas fa-globe-asia" aria-hidden="true" style="color: var(--color-navy-400);"></i> MET · 心智生态理论</h4>
                 <p><strong>Mental Ecology Theory</strong></p>
                 <p>环境-系统耦合模型，描述 S-P 外感架构如何影响内感状态。</p>
                 <div class="code-block" style="font-size:0.8rem;">P-M1-RES-D+ 来自社会支持</div>
@@ -419,7 +286,7 @@
         </div>
 
         <!-- 二、PSE 四阶段 -->
-        <div class="section-label"><i class="fas fa-sync-alt"></i> 二、PSE 四阶段 · 从理论到临床</div>
+        <h2 class="section-label"><i class="fas fa-sync-alt" aria-hidden="true"></i> 二、PSE 四阶段 · 从理论到临床</h2>
 
         <div class="grid-4">
             <div class="card" style="text-align: center;">
@@ -457,7 +324,7 @@
         </div>
 
         <!-- 三、动力学方程与参数 -->
-        <div class="section-label"><i class="fas fa-square-root-variable"></i> 三、动力学方程与参数</div>
+        <h2 class="section-label"><i class="fas fa-square-root-variable" aria-hidden="true"></i> 三、动力学方程与参数</h2>
 
         <div class="grid-2">
             <div class="card">
@@ -480,7 +347,7 @@
         </div>
 
         <!-- 四、王梅案例（PSE 应用示范） -->
-        <div class="section-label"><i class="fas fa-user-check"></i> 四、案例：王梅 · 失眠与职业倦怠</div>
+        <h2 class="section-label"><i class="fas fa-user-check" aria-hidden="true"></i> 四、案例：王梅 · 失眠与职业倦怠</h2>
 
         <div class="case-study">
             <h3>背景</h3>
@@ -499,6 +366,7 @@
                     <tr><td>M4</td><td>焦虑度 0.8，抑郁度 0.6</td></tr>
                     </tbody>
                 </table>
+            </div>
 
             <h3>PSE-M 仿真预测</h3>
             <p>运行 10,000 个虚拟"王梅"个体，参数空间采样自先验分布。结果显示：</p>
@@ -534,7 +402,7 @@
         </div>
 
         <!-- 五、PSE 协议体系 -->
-        <div class="section-label"><i class="fas fa-file-contract"></i> 五、PSE 协议体系</div>
+        <h2 class="section-label"><i class="fas fa-file-contract" aria-hidden="true"></i> 五、PSE 协议体系</h2>
 
         <div class="grid-3">
             <div class="card">
@@ -565,7 +433,7 @@
         </div>
 
         <!-- 六、知识库支撑 -->
-        <div class="section-label"><i class="fas fa-book"></i> 六、知识库支撑</div>
+        <h2 class="section-label"><i class="fas fa-book" aria-hidden="true"></i> 六、知识库支撑</h2>
 
         <div class="table-responsive">
             <table class="table">
@@ -577,20 +445,21 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -528,19 +528,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -605,8 +605,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -625,5 +625,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

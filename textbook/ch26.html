@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIS作为神经输入前端在心理AI中的角色。</p></blockquote>
 <blockquote><p><strong>⚠️ 重要声明</strong>：心理AI当前阶段应被定位为<strong>辅助工具</strong>，而非替代人类治疗师。对于自杀危机、严重精神障碍，必须有人类专业人员的监督和介入。</p></blockquote>
 <hr class="section-divider">
-<h3>26.1 架构定义：PSE内核+REVER伦理层+UNIS前端+LLM界面</h3>
+<h2>26.1 架构定义：PSE内核+REVER伦理层+UNIS前端+LLM界面</h2>
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
 <p><strong>心理AI的四层架构</strong>：</p>
 <ol>
@@ -157,7 +157,7 @@
 </ol>
 <p><strong>心理AI的伦理承诺</strong>：在首次交互时声明“我是AI系统，没有感受或意识。我的回应基于数学模型。我的目标是帮助你增强自主调节能力。”该声明应在每次会话开始时展示或至少每日一次。</p>
 <hr class="section-divider">
-<h3>26.2 教育应用：自适应学习中的心理感知</h3>
+<h2>26.2 教育应用：自适应学习中的心理感知</h2>
 <p>教育技术中的自适应学习系统通常根据学生的知识掌握程度调整学习内容。但学习效果不仅受认知状态影响，还受心理状态（疲劳、焦虑、动机）的强烈调节。</p>
 <p><strong>学习中的心理状态监测</strong>：</p>
 <div class="table-wrap"><table>
@@ -203,7 +203,7 @@
 <p><strong>学习动机的长期建设</strong>：通过叙事资本积累（让学生记录“学习成功故事”）、成长心态训练（ALIGN M2-STR-R）、自主性支持（逐步交还控制权）来建设M3-RES-B和M5-RES-B。</p>
 <p><strong>教师仪表盘</strong>：显示班级层面的资源枯竭热点、焦虑峰值时间，只显示聚合统计，不暴露个体数据。</p>
 <hr class="section-divider">
-<h3>26.3 老年照护：孤独感监测与社交放大</h3>
+<h2>26.3 老年照护：孤独感监测与社交放大</h2>
 <p>老年人群面临的核心心理挑战是孤独感(M4-RES-B下降)和认知衰退(M2-RES-D下降)。</p>
 <p><strong>孤独感的早期检测</strong>（通过智能音箱、可穿戴设备、家居传感器，可选UNIS增强）：</p>
 <ul>
@@ -215,7 +215,7 @@
 <p><strong>认知刺激与情绪调节</strong>：结构化认知训练（工作记忆练习、语义联想游戏），监测M2-RES-D消耗，疲劳时自动切换活动类型。</p>
 <p><strong>危机检测与警报</strong>：连续24小时无活动、自杀意念标记、跌倒检测时自动联系预设紧急联系人。危机检测只作为辅助筛选，所有高风险警报须在24小时内由人类确认。</p>
 <hr class="section-divider">
-<h3>26.4 企业EAP：职业倦怠的早期干预</h3>
+<h2>26.4 企业EAP：职业倦怠的早期干预</h2>
 <p><strong>工作场景中的隐蔽监测</strong>（在员工知情同意下）：</p>
 <ul>
 <li>工作模式：工作时间异常延长、任务切换频率增加、加班后次日恢复缓慢</li>
@@ -250,7 +250,7 @@
 <p><strong>组织层面的匿名分析</strong>：向管理者提供团队层面的倦怠风险分布，不暴露个人身份（团队规模≥10人时才可生成报告）。</p>
 <p><strong>自主性优先的退出机制</strong>：当员工状态恢复健康范围并稳定后，系统逐步降低监测频率和干预主动性；员工可随时退出监测。</p>
 <hr class="section-divider">
-<h3>26.5 聊天机器人：从话术到功能层干预</h3>
+<h2>26.5 聊天机器人：从话术到功能层干预</h2>
 <p><strong>从话术到功能层干预的跃迁</strong>：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -301,7 +301,7 @@
 4. UNIS在心理AI中扮演什么角色？在什么场景下UNIS通道最为关键？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -326,19 +326,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -403,8 +403,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -423,5 +423,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

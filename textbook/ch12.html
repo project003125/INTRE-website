@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第12章 流派分解：六大流派的GMAR映射</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)将CBT/精神动力/人本/行为/ACT/系统疗法的核心技术分解为G-M-A-R序列；(2)识别六大流派在RELINK上的收敛性；(3)区分ALIGN优先流派与RELINK优先流派的靶点差异；(4)理解功能签名概念及其在跨流派比较中的价值。</p></blockquote>
 <hr class="section-divider">
-<h3>12.1 CBT分解：ALIGN为主、GATE为辅</h3>
+<h2>12.1 CBT分解：ALIGN为主、GATE为辅</h2>
 <p>认知行为疗法(CBT)是当今最具实证支持的心理治疗流派之一。其核心假设是：心理障碍源于功能失调的认知规则(STR-R)和由此产生的自动化认知过程(DSP-B)。CBT的干预目标是通过修正这些规则和过程来改善情绪和行为。值得注意的是，CBT并非只有ALIGN操作——行为激活(GATE+)、暴露(GATE–+RELINK)、正念(GATE–)也常被整合进CBT的广义框架中。本节描述的是CBT的核心机制。</p>
 <p><strong>功能签名</strong>：<code>M2-STR-R（规则结构） + M2-DSP-B（自动负性思维） + M4-DSP-B（自动情绪反应）</code>。可概括为：<strong>以ALIGN M2-STR-R为核心，辅以GATE– M2-DSP-B/M4-DSP-B的干预组合</strong>。</p>
 <p><strong>核心技术的G-M-A-R分解</strong>：</p>
@@ -110,7 +110,7 @@
 <p><strong>CBT的干预序列</strong>：典型CBT会话隐含D-R-S逻辑：先用GATE–减缓自动思维流，再用ALIGN修正规则，最后用GATE+安排行为实验。在低功能患者中，治疗师会先进行行为激活或稳定化，待资源足够后再进入认知工作。</p>
 <p><strong>CBT与INTRE的相容性</strong>：CBT的核心构念可无歧义地映射到M2-STR-R和M2-DSP-B。其效果研究中的中介变量（如“认知改变中介了CBT对抑郁的效果”）可在功能层中被重新表述为：ALIGN M2-STR-R的变化中介了M4-DSP-B和M6-DSP-F的改善。</p>
 <hr class="section-divider">
-<h3>12.2 精神动力：RELINK为核心操作</h3>
+<h2>12.2 精神动力：RELINK为核心操作</h2>
 <p>精神动力疗法的核心假设是：心理障碍源于无意识的冲突、早期关系经验内化形成的客体关系模板(STR-C)，以及用于管理焦虑的防御机制(STR-S)。干预目标是通过治疗关系中的矫正性情感体验来修正这些深层结构。</p>
 <p><strong>功能签名</strong>：<code>M4-STR-C（客体关系/依恋模板） + M4-STR-S（防御序列） + M4-RES-B（安全感基底，涌现）</code>。可概括为：<strong>以RELINK M4-STR-C为核心，辅以GATE– M4-STR-S和S-P微系统的矫正性输入</strong>。</p>
 <p><strong>核心技术的G-M-A-R分解</strong>：</p>
@@ -163,7 +163,7 @@
 <p><strong>精神动力疗法的干预序列</strong>：第一阶段建立安全联盟(S-P微系统，相当于R层奠基)；第二阶段防御分析和移情解释(GATE– + RELINK)；第三阶段修通和整合(迭代RELINK)。其S层操作极度依赖稳定的治疗关系和足够的情绪容限。</p>
 <p><strong>与INTRE的对话</strong>：精神动力疗法的核心概念——“移情”“客体关系”“防御”——在变量范式中常因“不可操作化”而被边缘化。INTRE的STR-C和STR-S框架为这些概念提供了功能层的操作化接口。“客体关系”可映射为M4-STR-C中的特定连接模式；“防御机制”可映射为M4-STR-S中的自动化情绪调节序列。</p>
 <hr class="section-divider">
-<h3>12.3 人本与体验：RELINK与S-P安全基座</h3>
+<h2>12.3 人本与体验：RELINK与S-P安全基座</h2>
 <p>人本主义疗法和体验疗法的核心假设是：心理障碍源于自我概念与有机体经验之间的不一致，以及个体对自身体验的回避或扭曲。干预目标是通过治疗师提供的无条件积极关注创造安全的环境，使来访者能够重新接触和整合被否认的体验。</p>
 <p><strong>功能签名</strong>：<code>M4-STR-C（条件化价值连接） + M5-STR-R（自我叙事规则） + M1-STR-C（躯体-情感连接）</code>。可概括为：<strong>以RELINK M4-STR-C和RELINK M1-STR-C为核心，以S-P微系统作为改变的条件</strong>。</p>
 <p><strong>核心技术的G-M-A-R分解</strong>：</p>
@@ -209,7 +209,7 @@
 <p><strong>人本/体验疗法的干预序列</strong>：以S-P环境创建为起点，通过体验性激活(GATE+)让被压抑的体验浮现，最后通过RELINK建立新连接。这类疗法对ALIGN操作的使用最少，对RELINK和GATE的使用最多。</p>
 <p><strong>与INTRE的独特接口</strong>：人本/体验疗法为INTRE提供了M1-STR-C（躯体-意义连接）和M5-STR-C（叙事-体验连接）这两个重要接口，在躯体化障碍、PTSD和述情障碍的治疗中至关重要。</p>
 <hr class="section-divider">
-<h3>12.4 行为疗法：GATE–与RELINK的联合</h3>
+<h2>12.4 行为疗法：GATE–与RELINK的联合</h2>
 <p>行为疗法的核心假设是：心理障碍源于条件化学习形成的刺激-反应连接(STR-C)和习惯化行为序列(STR-S)。干预目标是通过重新安排环境 contingencies 和重复暴露来修改这些连接和序列。</p>
 <p><strong>功能签名</strong>：<code>M4-STR-C（条件化情绪连接） + M6-STR-S（习惯行为序列） + M6-DSP-B（自动化行为）</code>。可概括为：<strong>以GATE–和RELINK为核心，以S-P环境重组为关键工具</strong>。</p>
 <p><strong>核心技术的G-M-A-R分解</strong>：</p>
@@ -261,7 +261,7 @@
 </table></div>
 <p><strong>行为疗法的干预序列</strong>：急性期优先GATE–和S-P重组；维持期通过反复正强化巩固新行为。行为疗法不依赖内省能力或认知资源，特别适合儿童、认知功能受损者及高阻抗患者。</p>
 <hr class="section-divider">
-<h3>12.5 ACT与正念：GATE–解耦与ALIGN价值</h3>
+<h2>12.5 ACT与正念：GATE–解耦与ALIGN价值</h2>
 <p>接纳与承诺疗法(ACT)和正念疗法的核心假设是：心理障碍源于<strong>认知融合</strong>（与想法内容过度融合）和<strong>经验性回避</strong>（试图控制或消除不愉快体验）。干预目标是培养心理灵活性。</p>
 <blockquote><p><strong>重要区分</strong>：CBT的ALIGN修正想法内容（“我必须完美”→“尽力就好”），ACT的GATE–修正想法-行动耦合（“我有一个想法说‘我必须完美’，但这只是一个想法”）。CBT更适合信念内容扭曲（如强烈自我批评），ACT更适合与想法的过度融合（如强迫症中的“想法即行动”倾向）。</p></blockquote>
 <p><strong>功能签名</strong>：<code>M2-DSP-B ↔ M2-STR-R（认知融合） + M4-STR-S（经验性回避序列） + M3-STR-R（价值）</code>。可概括为：<strong>以GATE– M2-DSP-B解耦为核心，辅以ALIGN M3-STR-R和GATE+ M6-DSP-F</strong>。</p>
@@ -314,7 +314,7 @@
 </table></div>
 <p><strong>ACT/正念的干预序列</strong>：先通过GATE–打破认知融合和回避的恶性循环（调度层），再通过ALIGN价值观和RELINK观察自我（结构层），最后通过GATE+承诺行动（调度层正向）。这一序列符合D-R-S的宏观顺序。</p>
 <hr class="section-divider">
-<h3>12.6 系统疗法：ALIGN/RELINK作用于S-P架构</h3>
+<h2>12.6 系统疗法：ALIGN/RELINK作用于S-P架构</h2>
 <p>系统疗法的核心假设是：个体症状是更大系统（家庭、组织）中功能失调模式的产物。干预目标不是改变个体内部状态，而是改变系统层面的互动规则(STR-R)、连接结构(STR-C)和行为序列(STR-S)。</p>
 <p><strong>功能签名</strong>：<code>S-P-STR-R（关系规则） + S-P-STR-C（关系连接结构） + S-P-STR-S（互动序列）</code>。可概括为：<strong>以ALIGN S-P-STR-R和RELINK S-P-STR-C为核心</strong>，通过对系统而非个体的操作来间接改变个体M-R-D-S状态。</p>
 <p><strong>核心技术的G-M-A-R分解</strong>：</p>
@@ -367,7 +367,7 @@
 <p><strong>系统疗法的干预序列</strong>：通常从循环提问和重构(ALIGN)开始，改变理解框架；然后通过结构性干预(RELINK)重塑关系模式；最后通过家庭仪式(GATE+)固化新互动序列。系统疗法不直接操作个体内部状态，但通过改变个体持续暴露的S-P环境，间接改变个体的M-R-D-S状态。</p>
 <p><strong>INTRE的整合价值</strong>：INTRE为系统疗法提供了一个精确的形式化语言来描述“系统的系统”——个体的M-R-D-S状态与家庭的S-P-STR-R/C/S之间的双向耦合。</p>
 <hr class="section-divider">
-<h3>12.7 元分析：RELINK的收敛与ALIGN/RELINK的分工</h3>
+<h2>12.7 元分析：RELINK的收敛与ALIGN/RELINK的分工</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>流派</th>
@@ -540,7 +540,7 @@
 3. ACT的“认知解耦”和CBT的“认知重构”在功能层上的本质区别是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -565,19 +565,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -642,8 +642,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -662,5 +662,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

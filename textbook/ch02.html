@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第2章 层次定位：本体论、认识论与合法性</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述神经层/功能层/现象层的三层垂直架构及其关系；(2)解释多重实现性原则及其对功能层独立性的辩护力；(3)区分现象层对接（翻译）与神经层对接（约束）；(4)陈述功能层研究的合法性标准——可测量、可干预、可计算；(5)阐明约束功能主义与方法论功能主义的立场差异。</p></blockquote>
 <hr class="section-divider">
-<h3>2.1 三层架构：神经层、功能层与现象层</h3>
+<h2>2.1 三层架构：神经层、功能层与现象层</h2>
 <p>功能层范式的核心主张是：在神经实现层与现象体验层之间，存在一个独立的、可被形式化描述的功能组织层。这三层构成一个垂直嵌套的层级结构，每一层回答不同的问题，遵循不同的描述语法。</p>
 <p><strong>神经层</strong>回答的是“心理系统的物理实现是什么”。它的描述单位是神经元、突触、神经递质、脑区、功能连接网络。神经层的发现告诉我们：威胁加工涉及杏仁核激活，工作记忆维持与前额叶皮层有关，多巴胺信号编码奖赏预测误差。神经层的真理标准是生物学可实现性与实验可重复性。</p>
 <p><strong>现象层</strong>回答的是“个体体验到什么、表现出什么”。它的描述单位是主观报告（“我感到焦虑”）、行为频率（“过去一周失眠三天”）、临床诊断标签（“广泛性焦虑障碍”）。现象层的真理标准是测量信度、评定者一致性和诊断效度。</p>
@@ -73,26 +73,26 @@
 - N-S-R 的 S = Structure（概念槽），跨域通用的结构形态
 - M-R-D-S 的 S = Structure（实例化），领域特化为 STR-R/C/S 三分法</p></blockquote>
 <hr class="section-divider">
-<h3>2.2 独立性论证：多重实现性与约束功能主义</h3>
+<h2>2.2 独立性论证：多重实现性与约束功能主义</h2>
 <p>功能层作为独立分析层级的合法性，首先来自<strong>多重实现性原则</strong>。该原则由希拉里·普特南和杰瑞·福多提出，其核心主张是：同一心理功能可以由完全不同的物理系统实现。恐惧条件化可以在人类、大鼠、果蝇甚至人工神经网络中实现，尽管这些系统的神经硬件天差地别，但在功能描述层面——刺激与威胁结果的关联学习、自动化回避反应的触发——它们是等价的。</p>
 <p>多重实现性的逻辑推论是：<strong>功能描述不能被还原为物理描述</strong>。如果我们试图用“杏仁核激活强度”来定义“恐惧”，那么我们就无法解释为什么没有杏仁核的动物（或杏仁核受损的人类）仍然可以表现出恐惧行为（通过其他神经通路）。功能描述保持独立，恰恰是因为它抓住了不同物理实现之间的<strong>共同组织原则</strong>。</p>
 <p>INTRE的M1-M6模块、R-D-S维度、G-M-A-R操作都是功能层构造。它们不声称与特定脑区一一对应。例如，M4（情绪模块）不是“杏仁核”，而是“价值评估与动机信号生成”的功能角色。这一角色可以由杏仁核、前额叶皮层、岛叶甚至外周生理信号在不同的条件下协同实现。功能层的独立性正是INTRE能够跨物种、跨诊断、跨流派建立统一语言的基石。</p>
 <p><strong>独立性不等于豁免权</strong>。多重实现性有一个容易被滥用的方向：它可能被用作“逃避神经约束”的借口——如果一个功能框架宣称“我不关心神经实现”，就可能任意发明功能组件而不受物理现实检验。INTRE没有走这条路。功能描述必须与神经层的硬约束相容：(1)时间尺度硬约束——RES-D的消耗和恢复发生在分钟到天的尺度，STR-C的重联需要周到月，功能模型的动力学参数不能违背这些神经可塑性的时间常数；(2)能量代谢硬约束——M3-RES-D的消耗不能超过M1-RES-D的供给上限，这与前额叶的葡萄糖代谢极限一致；(3)可塑性窗口硬约束——RELINK操作需要再巩固时间窗（睡眠、间隔重复），不能无限制地随时进行。承认多重实现性不等于放弃神经约束。功能层的独立性是<strong>受约束的独立性</strong>——功能描述不被神经实现所定义，但必须与神经实现相容。</p>
 <hr class="section-divider">
-<h3>2.3 双重对接：现象层翻译与神经层约束</h3>
+<h2>2.3 双重对接：现象层翻译与神经层约束</h2>
 <p>功能层不是一座孤岛。它必须向“上”与现象层对接，向“下”与神经层对接。这两种对接的性质完全不同，不能混为一谈。</p>
 <p><strong>现象层对接：翻译</strong>。现象层与功能层描述的是同一心理系统——功能层<strong>生成</strong>现象体验，现象层是功能状态的<strong>投影</strong>结果。两者只是粒度不同。变量范式的“焦虑”是一个模糊的聚合标签，INTRE将其分解为M4-DSP-B高唤醒、M2-STR-R威胁偏置、M1-RES-D下降的组合状态。现象层对接的本质是<strong>跨语言翻译</strong>——从现象层的自然语言构念到功能层的状态向量。翻译必然有信息损失（主观质感的丢失），但换来的是结构分解和工程可操作性。INTRE通过“诚实的局部映射协议”（主映射+次映射、可信度分级、边界注释）将这种损失制度化。</p>
 <p><strong>神经层对接：约束</strong>。神经层与功能层属于不同本体论层级。神经层描述物理实现，功能层描述功能组织。两者之间不是翻译关系，而是<strong>约束关系</strong>。神经发现不能定义功能主张的真值（那是功能层内部动力学检验的任务），但可以标记物理可实现性的边界。例如，神经可塑性的时间常数（小时到天）为STR-C的RELINK操作设置了硬约束——你不能指望一次60分钟的会谈就彻底改写一个依恋创伤连接。神经层还可以提供兼容性信号：当功能层的概念划分（如DSP-F与DSP-B的区分）在神经层找到独立对应（DMN与FPN的反相关）时，它增强了我们对功能层“切割自然关节”的信心。</p>
 <p>两种对接的区分至关重要。混淆它们会导致两种错误：一是试图将功能主张直接“翻译”为神经发现（违背多重实现原则）；二是试图用神经层证据直接证伪功能主张（混淆了实现层与功能层的证伪条件）。（神经层对接的详细方法论见第22-24章。）</p>
 <p><strong>对接质量的操作化标准</strong>。“翻译”和“约束”不是模糊的哲学原则，而是有具体质量标准的工程操作。(1)<strong>翻译质量标准</strong>：每个现象层构念到功能层状态向量的映射需标注可信度分级（0-10分）。主映射（≥8分）是经过多源收敛验证的强映射；次映射（5-7分）是理论上合理但实证未闭合的候选映射；边界注释明确标注了信息损失的类型和位置。(2)<strong>约束有效性标准</strong>：功能层的主张必须与神经层的三条硬约束相容——时间尺度、能量代谢、可塑性窗口。满足这三条硬约束是功能层主张能够进入实证检验的前提条件。</p>
 <hr class="section-divider">
-<h3>2.4 合法性标准：可测量、可干预、可计算</h3>
+<h2>2.4 合法性标准：可测量、可干预、可计算</h2>
 <p>一个分析层级要获得科学合法性，必须满足三条工程标准：可测量、可干预、可计算。</p>
 <p><strong>可测量</strong>不要求每个功能子单元都有现成的“量表”。INTRE将测量成熟度分层为A类（实证锚定，可复用旧工具）、B类（整合性，需组合测量）、C类（预测性，需原创工具开发）。C类预测性子单元在当前阶段不作为临床决策的硬依据——其存在性本身是一个可检验的预测，而非已确立的事实。更重要的是，INTRE采用<strong>软测量</strong>策略：不追求单一完美指标，而是通过多源观测（行为任务、生理信号、自陈报告、数字表型）与动力学模型的联合反演来估计功能状态的后验分布。一个功能子单元的可测性不是全有或全无，而是可以通过测量工程的逐步推进不断提高。（详见第9章。）</p>
 <p><strong>可干预</strong>要求功能层描述能够导出可操作的治疗靶点。G-M-A-R操作语法正是为此设计：每个操作对应R-D-S中一个特定的、可直接操纵的功能组件。RES-D问题触发MODULATE+（资源补充），DSP-B问题触发GATE–（过程抑制），STR-R问题触发ALIGN（规则修正），STR-C问题触发RELINK（连接重构）。干预的因果链可以在功能层内被追踪和检验，而不必下沉到神经层或停留在现象层的黑箱关联。（详见第10章。）</p>
 <p><strong>可计算</strong>要求功能层的状态和操作可以被形式化为可编程、可仿真的对象。INTRE的M-R-D-S状态向量是42维的数值表示，G-M-A-R操作是明确定义的变换规则，PSE引擎提供了从状态演化微分方程到蒙特卡洛仿真再到贝叶斯校准的完整计算管线。UNIS进一步将神经信号标准化为神经似然——使实时计算不仅依赖行为和语义数据，还能接入高时间分辨率的神经通道。这使得功能层不仅是一个定性描述框架，更是一个可运行的计算模型——这也是它区别于以往心理学整合尝试的关键特征。（详见第18-21章。）</p>
 <hr class="section-divider">
-<h3>2.5 认识论立场：约束功能主义与工程收敛解</h3>
+<h2>2.5 认识论立场：约束功能主义与工程收敛解</h2>
 <p>INTRE的认识论立场可以概括为“约束功能主义”。它与经典功能主义之间有一个最根本的区分需要首先明确：</p>
 <p><strong>本体论功能主义 vs 方法论功能主义</strong>。经典功能主义是<strong>本体论主张</strong>：心理状态就是功能状态——这是关于心理本质的形而上学断言。INTRE的功能主义是<strong>方法论主张</strong>：为了工程目标（描述、解释、预测、控制），我们使用功能状态作为基本描述单位。它不宣称功能状态就是心理系统的终极实在——它只宣称它们是高可用的工程构造。这一区分将INTRE从“你如何证明功能层真实存在？”的形而上学泥潭中解救出来：我们不需要证明功能层“真实存在”，只需要证明它是一个可测量、可干预、可计算、可检验、可修正的工程抽象——这一定位与计算机科学中的“接口”“抽象数据类型”和“虚拟层”共享同一个逻辑。</p>
 <p>在这个方法论功能主义的基础之上，约束功能主义在以下几个维度上与经典功能主义既有连续性，也有重要修正：</p>
@@ -125,7 +125,7 @@
 <p>这种收敛解的地位，赋予 R-D-S 一种独特的实在性——“<strong>约束下的客观性</strong>”。它不像工具论所说的那样“为真只是因为有用”——因为约束本身是客观的：物理定律、计算极限、工程可行性是客观存在的。当一个理论恰好是满足这些客观约束的唯一可行形式时，它就不再是任意虚构。但它同时也不必声称自己是大脑的真实内在结构——因为大脑中并没有一个叫“资源”的脑区、一个叫“调度”的腺体。它所刻画的是<strong>为了在一定精度下控制与模拟心理系统，我们所必须跟踪的那些状态量</strong>。正如机翼翼型不反映鸟的生理学，却如实反映了空气动力学。</p>
 <p><strong>可证伪性的澄清</strong>。批评者常质疑：R-D-S 声称“一切心理功能都可用资源、调度、结构三维描述”，但由于任何有功能的东西都不可能不消耗能量、不可能没有规律，因此反例在物理上几乎不可想象——R-D-S 是否沦为了不可证伪的套套逻辑？INTRE 的回应是：反例的条件不是“物理上不消耗资源”，而是<strong>“虽然物理上必然消耗资源、必然有规律，但在有限维度的 R-D-S 参数空间内无法被有效捕获”</strong>。如果对一个公认的核心心理功能（如“灵感”“审美体验”），在 R-D-S 参数空间内构建的形式化模型的预测力显著低于随机基准，且经过多轮参数扩展仍无法突破阈值，则该功能构成 R-D-S 的有效反例。R-D-S 并没有让自己免于证伪——它只是把证伪的战场从不可捉摸的形而上学，转移到了可操作的工程仿真与数据建模领域。</p>
 <hr class="section-divider">
-<h3>2.6 客观性论证：系统/认知/工程三条路径的收敛</h3>
+<h2>2.6 客观性论证：系统/认知/工程三条路径的收敛</h2>
 <p>一个潜在的质疑是：功能层是真实存在的分析层级，还是研究者为了方便而发明的人工语言？本节从三条独立路径论证功能层的客观性——它不是理论家的虚构，而是被多个学科独立触及的“隐性收敛点”。</p>
 <p><strong>路径一：系统科学</strong>。任何动态系统——无论是物理系统、生物系统还是社会系统——都需要三个层次来描述：(1)物理层（物质载体），(2)行为层（对外表现），(3)功能层（内部组织与运行规则）。没有功能层，就无法解释为什么同一物理载体可以产生不同的行为（同一个人在不同状态下表现出完全不同的认知能力），也无法解释为什么同一行为可以来自不同的内部组织（两个DSM诊断相同的患者具有完全不同的功能层配置）。功能层是复杂系统的客观组成部分，而非心理学家的发明。</p>
 <p><strong>路径二：认知科学</strong>。大卫·马尔的三层分析已经论证：理解一个信息处理系统，必须在计算层（任务定义）、算法/表征层（信息处理规则）和实现层（硬件）上分别建立理论。算法/表征层（即功能层的直接对应物）的独立性已被认知神经科学反复验证：同一个算法（如贝叶斯推理）可以由完全不同的神经网络实现，同一个神经网络也可以执行不同的算法。算法/表征层不是“软件”层面的隐喻，而是真实存在的组织层级。</p>
@@ -144,7 +144,7 @@
 3. 尝试将“爱”这一现象同时从神经层、功能层和现象层进行描述。在功能层尝试使用M-R-D-S语法。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -169,19 +169,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -246,8 +246,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -266,5 +266,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

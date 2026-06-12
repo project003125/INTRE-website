@@ -9,7 +9,10 @@
   /* Navy 主色系 — 承担 90% 品牌表达 */
   --color-navy-950: #0A1E3D;
   --color-navy-800: #122F5C;
+  --color-navy-700: #0E264A;
   --color-navy-600: #1F4880;
+  --color-navy-600-light: #2A5DA0;
+  --color-navy-600-bg: rgba(31, 72, 128, 0.08);
   --color-navy-500: #2A5DA0;
   --color-navy-400: #3B6FB5;
   --color-navy-300: #5A8ACC;  /* 新增：用于渐变中间色 */
@@ -27,11 +30,14 @@
 
   /* Slate 中性系 */
   --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
   --color-slate-700: #334155;
+  --color-slate-600: #475569;
   --color-slate-500: #64748b;
   --color-slate-400: #94a3b8;
   --color-slate-200: #e2e8f0;
   --color-slate-100: #f1f5f9;
+  --color-slate-50:  #f8fafc;
 
   /* White */
   --color-white: #ffffff;
@@ -57,6 +63,7 @@
 
   /* ---- 圆角体系 ---- */
   --radius-sharp: 0;
+  --radius-xs:    2px;
   --radius-sm:    4px;
   --radius-md:    8px;
   --radius-pill:  999px;
@@ -78,8 +85,11 @@
 
   /* ---- 动效 ---- */
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-xfast: 120ms;
   --duration-fast: 150ms;
+  --duration-medium: 200ms;
   --duration-normal: 300ms;
+  --duration-slow: 250ms;
 
   /* ---- 布局 ---- */
   --grid-container: 1180px;
@@ -239,4 +249,21 @@ code, pre, .mono {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Skip navigation link — accessibility (M5) */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-navy-800);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-nav:focus {
+  top: 0;
 }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
 <hr class="section-divider">
-<h3>15.1 PSA定位：从词典到推理系统</h3>
+<h2>15.1 PSA定位：从词典到推理系统</h2>
 <p>如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要<strong>推理</strong>的问题。</p>
 <p>PSA（Psychological Semantic Architecture，心理语义架构）正是为了解决这一问题而设计的。PSA定义了PCUI概念之间的形式化关系——模块依赖权重、级联路径模板、操作-组件映射规则——将UPLS从<strong>静态词典</strong>升级为<strong>推理系统</strong>。</p>
 <div class="table-wrap"><table>
@@ -81,9 +81,9 @@
 </table></div>
 <blockquote><p><strong>微案例</strong>：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
 <hr class="section-divider">
-<h3>15.2 核心编码：依赖矩阵、级联模板与操作映射</h3>
+<h2>15.2 核心编码：依赖矩阵、级联模板与操作映射</h2>
 <p>PSA的核心编码包含三类信息：<strong>模块依赖权重</strong>、<strong>级联路径模板</strong>和<strong>操作-组件映射规则</strong>。</p>
-<h4>15.2.1 模块依赖权重</h4>
+<h3>15.2.1 模块依赖权重</h3>
 <p>模块依赖权重定义了M1-M6之间因果影响的强度（0-1）。以下为理论推导的标准矩阵（权重≥0.65加粗）：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -153,7 +153,7 @@
 </tbody>
 </table></div>
 <p><strong>关键依赖解读</strong>： - <strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据 - <strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗 - <strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加 - <strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</p>
-<h4>15.2.2 级联路径模板</h4>
+<h3>15.2.2 级联路径模板</h3>
 <p>级联路径模板描述失调从起始模块到下游模块的典型传播模式：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -189,7 +189,7 @@
 </tr>
 </tbody>
 </table></div>
-<h4>15.2.3 操作-组件映射规则</h4>
+<h3>15.2.3 操作-组件映射规则</h3>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>操作</th>
@@ -226,7 +226,7 @@
 </table></div>
 <p><strong>临床意义</strong>：如果一个干预方案声称“用认知辩论治疗创伤连接”，PSA会标记为操作-组件错配（ALIGN不能直接替代RELINK），并推荐修正方案。</p>
 <hr class="section-divider">
-<h3>15.3 PSL设计：自然语言到PCUI的映射接口</h3>
+<h2>15.3 PSL设计：自然语言到PCUI的映射接口</h2>
 <p>PSL（Psychological Specialist Lexicon，心理专项词汇库）是UPLS的自然语言接口层。它的任务是：将临床口语、患者主诉、文化隐喻等非结构化的语言输入，映射为标准化的PCUI标识符和M-R-D-S坐标。</p>
 <p><strong>PSL-L五层结构</strong>：</p>
 <div class="table-wrap"><table>
@@ -293,7 +293,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h3>15.4 文化变体：参数化对抗WEIRD偏见</h3>
+<h2>15.4 文化变体：参数化对抗WEIRD偏见</h2>
 <p>心理学的一个重大挑战是<strong>WEIRD偏见</strong>（研究基于西方、教育程度高、工业化、富裕、民主的人口）。UPLS通过<strong>文化变体参数</strong>在架构层面对抗这一偏见。</p>
 <p><strong>文化变体的三层处理策略</strong>：</p>
 <div class="table-wrap"><table>
@@ -357,7 +357,7 @@
 </table></div>
 <blockquote><p><strong>重要声明</strong>：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
 <hr class="section-divider">
-<h3>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h3>
+<h2>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h2>
 <p>UPLS静态三层与PSE动态引擎之间的接口关系，构成了从“静态知识”到“动态计算”的完整链路。</p>
 <pre><code class="language-text">┌─────────────────────────────────────────────────────────────┐
 │                      自然语言输入                            │
@@ -418,7 +418,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h3>15.6 微案例：从主诉到PCUI的完整编译</h3>
+<h2>15.6 微案例：从主诉到PCUI的完整编译</h2>
 <p><strong>主诉</strong>：“我最近老是心慌，尤其是晚上一个人在家的时候。心跳得特别快，觉得要出事了，但去医院查了心脏没问题。”</p>
 <p><strong>Step 1 – PSL分词与术语识别</strong>：</p>
 <div class="table-wrap"><table>
@@ -470,7 +470,7 @@
 3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -495,19 +495,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -572,8 +572,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -592,5 +592,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

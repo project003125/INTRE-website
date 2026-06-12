@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>前置阅读</strong>：第22-24章建立了神经层对接的方法论基础——双向约束闭环、三级信号分类、分层响应机制。本章为这些方法论提供具体的操作工具：状态空间建模、贝叶斯参数估计、解析差异治理。读者可将本章视为第七部分的“工程操作手册”。</p></blockquote>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)设计功能层研究的个体内密集追踪方案；(2)理解状态空间模型和贝叶斯校准的核心逻辑；(3)应用逻辑指纹体系进行概念映射的一致性检验；(4)遵循可重复性标准进行预注册和开放科学实践。</p></blockquote>
 <hr class="section-divider">
-<h3>28.1 研究设计：个体内密集追踪与分层贝叶斯</h3>
+<h2>28.1 研究设计：个体内密集追踪与分层贝叶斯</h2>
 <p>功能层心理学的核心研究对象不是静态的“变量”，而是随时间演化的<strong>状态轨迹</strong>\(\Psi(t)\)。这一转变对研究设计提出了新的要求。</p>
 <p><strong>个体内密集追踪设计</strong>。功能层研究不排斥群体研究。实际上，生态位库的构建、参数先验的提取都需要大样本人群数据。功能层研究的独特之处在于：它不将群体统计直接推论到个体，而是将群体数据作为个体模型的先验。在此基础上，功能层研究设计强调<strong>个体内密集追踪</strong>：通过EMA、可穿戴设备、行为日志等方法，在单个个体上收集数百至数千个时间点的观测数据。这种设计能够捕捉时间尺度分离（RES-D的分钟-小时波动、STR的周-月变化）、非线性动力学特征（阈值效应、临界慢化）和个体特异性。</p>
 <p><strong>N-of-1设计与分层贝叶斯</strong>。当研究目标是理解个体机制而非估计群体平均时，N-of-1设计是重要工具。同一被试在多个时间点接受不同的干预条件（随机顺序，设洗脱期），通过个体内比较推断因果机制。统计推断可通过<strong>分层贝叶斯模型</strong>将多个N-of-1研究进行部分池化：每个个体有自己的参数，但参数分布来自群体先验。</p>
@@ -66,7 +66,7 @@
 <p><strong>干预研究的设计</strong>。核心是<strong>机制匹配</strong>，而非“疗法A vs 疗法B”的黑箱比较： - 前测：全面评估M-R-D-S状态向量，识别主导失调机制 - 随机化分层：根据主导机制类型分层随机化 - 干预操作化：将干预方案分解为G-M-A-R操作序列，通过录音编码检查治疗忠诚度 - 机制测量：多次测量靶点状态分量，检验中介路径 - 随访：根据结构改变的时间常数设定（ALIGN类1-3个月，RELINK类6-12个月）</p>
 <p><strong>替代模型竞争</strong>。应同时报告：(1)功能层模型的预测精度；(2)传统变量模型的预测精度；(3)纯数据驱动模型的预测精度。如果功能层模型在预测精度、可解释性、样本效率或跨情境泛化上显著优于替代模型，则其理论价值获得实证支持。</p>
 <hr class="section-divider">
-<h3>28.2 数据采集：可穿戴、EMA与数字表型融合</h3>
+<h2>28.2 数据采集：可穿戴、EMA与数字表型融合</h2>
 <p>功能层研究的数据采集需要覆盖三个层次：实验室控制任务（高信度、低生态效度）、生态瞬时评估（中信度、中生态效度）、被动传感（低信度、高生态效度）。</p>
 <p><strong>生态瞬时评估(EMA)设计要点</strong>： - <strong>采样方案</strong>：随机时间采样（每天6-8次）捕捉基线波动；事件触发采样捕捉极端状态；固定时间采样捕捉节律变化 - <strong>条目设计</strong>：每个条目直接映射到特定M-R-D-S子维度，尽可能简短。EMA条目的映射效度应在实验室预研究中检验（收敛效度r > 0.5为可接受） - <strong>依从性管理</strong>：通过提醒、游戏化设计、短问卷（<2分钟）保持高依从性（目标>80%）</p>
 <p><strong>可穿戴设备的被动传感</strong>：</p>
@@ -109,7 +109,7 @@
 <p><strong>隐私保护</strong>：数据采集必须获得明确的知情同意，GPS模糊化到社区级别，数据存储和传输加密。参与者有权随时查看自己被收集的数据并退出研究。</p>
 <p><strong>多模态融合协议</strong>： - 核心模态（所有参与者）：EMA（每日6次）+ 可穿戴设备（连续） - 补充模态（子样本）：实验室行为任务（每月1次）+ 数字表型（连续） - 核心模态最低完成标准：EMA依从率≥70%，可穿戴佩戴时间≥80%</p>
 <hr class="section-divider">
-<h3>28.3 数据分析：时间序列、状态空间与机器学习融合</h3>
+<h2>28.3 数据分析：时间序列、状态空间与机器学习融合</h2>
 <p>功能层数据是多模态、高维、密集时间序列。以下方法成为核心分析工具。</p>
 <p><strong>方法选择简则</strong>：若数据近似线性高斯→卡尔曼滤波(KF)；弱非线性→EKF/UKF；强非线性、非高斯→粒子滤波/EnKF；离线分析需完整后验→MCMC；快速迭代→变分贝叶斯。初学者可从EnKF+MCMC（离线估计参数）的组合开始。</p>
 <p><strong>时间序列分析（探索性）</strong>：在进入复杂状态空间模型前，可使用自相关函数(ACF)检测依赖性、交叉相关函数(CCF)检测滞后相关性、去趋势波动分析(DFA)检测长程相关性、频谱分析检测周期性成分。</p>
@@ -120,13 +120,13 @@
 <p><strong>机器学习方法的融合</strong>： - <strong>高斯过程(GP)</strong>：对未知函数（如观测函数\(h\)）进行非参数建模 - <strong>循环神经网络(RNN/LSTM)</strong>：作为MKT方程的“替代模型”——当MKT方程未知或过于复杂时，用RNN从数据中学习状态演化。若RNN显著优于MKT方程，提示MKT方程需要修正 - <strong>变分自编码器(VAE)</strong>：从高维观测中学习低维隐状态表示</p>
 <p><strong>模型比较与选择</strong>：留一法交叉验证(LOOCV)、信息准则(AIC/BIC)、贝叶斯因子(BF > 10为强证据)。</p>
 <hr class="section-divider">
-<h3>28.4 可重复性：预注册、数据共享与代码开源</h3>
+<h2>28.4 可重复性：预注册、数据共享与代码开源</h2>
 <p><strong>预注册的扩展内容</strong>。除了传统内容，功能层研究预注册还应包括： - 状态空间模型的完整规格（状态向量维度、观测方程形式、状态方程形式、参数先验分布） - 参数识别策略（哪些参数可从数据中唯一估计，哪些需固定） - 预测的量化形式（不仅是“M3-RES-D下降”，而是“在任务开始后t分钟下降到θ以下，95%预测区间为[t-10, t+10]”） - 证伪的具体标准</p>
 <p><strong>数据共享的隐私保护</strong>： - <strong>去标识化</strong>：移除直接标识符，泛化间接标识符 - <strong>数据扰动</strong>：GPS模糊化（精度降至500米），时间戳随机偏移（±1小时） - <strong>访问控制</strong>：存放在受控访问存储库，研究人员签署数据使用协议 - <strong>合成数据替代</strong>：无法公开原始数据时，发布从后验分布中采样的合成数据</p>
 <p><strong>代码与模型开源</strong>：PSE的Python/Julia实现应开源，附带Docker容器确保可复现，提供模拟数据供测试，提供详细API文档。</p>
 <p><strong>复现研究的激励机制</strong>：学术共同体应鼓励“注册复现报告”——在数据收集前接受研究方案，无论结果如何都发表。</p>
 <hr class="section-divider">
-<h3>28.5 差异治理：逻辑指纹与多视角共识</h3>
+<h2>28.5 差异治理：逻辑指纹与多视角共识</h2>
 <p>不同研究者在将临床现象翻译为M-R-D-S状态向量时，可能产生解析差异。INTRE通过<strong>逻辑指纹体系</strong>和<strong>共识编码协议</strong>来解决这一问题。（详细论述见第17章和附录F。）</p>
 <p><strong>四组逻辑指纹</strong>（速查）：</p>
 <div class="table-wrap"><table>
@@ -207,7 +207,7 @@
 2. 为M3-RES-D是否独立于M1-RES-D这一研究问题设计一个预注册的N-of-1研究方案。
 3. 粒子滤波和卡尔曼滤波都是状态估计的方法，在什么条件下应选择粒子滤波而非卡尔曼滤波？</p></blockquote>
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -232,19 +232,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -309,8 +309,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -329,5 +329,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

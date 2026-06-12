@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第22章 神经对接：翻译与约束的根本差异</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解为什么“翻译”策略适用于现象层对接而不适用于神经层对接——多重实现度的层级梯度；(2)掌握以“约束”为主轴的神经层对接方法论逻辑；(3)区分兼容性证据与证伪性判据的区分及其方法论意义；(4)了解UNIS如何将约束原则工程化为可运行的神经输入系统。</p></blockquote>
 <hr class="section-divider">
-<h3>22.1 两种逻辑：同本体翻译与跨本体约束</h3>
+<h2>22.1 两种逻辑：同本体翻译与跨本体约束</h2>
 <p>INTRE的功能层必须向“上”与现象层对接——接管变量范式的概念遗产；也必须向“下”与神经层对接——接受神经实现施加的物理边界约束。两条对接路径服务于完全不同的目的。</p>
 <p><strong>现象层对接：同一本体论空间内的翻译</strong>。现象层与功能层共享同一本体论空间：两者都在描述心理系统本身。变量范式使用现象层的模糊聚类（如“焦虑”），功能层使用系统状态的高维向量（如“M4-DSP-B高唤醒 + M2-STR-R威胁偏向”）。因此，现象层对接的核心是<strong>翻译</strong>——建立从旧概念到新坐标系的映射规则，并诚实地标注翻译中的信息损失（主映射+次映射、可信度分级、边界注释）。</p>
 <p><strong>神经层对接：跨本体论层级的约束</strong>。神经层描述的不是心理系统本身，而是心理系统的<strong>物理实现基础</strong>。功能描述不能被翻译为神经描述，神经描述也不能被翻译为功能描述——它们是两种不同类别的语言。因此，神经层对接的核心不是建立翻译规则，而是建立<strong>约束关系</strong>——神经层标记功能描述的物理可实现性边界，功能层在边界内保持自主描述权。</p>
@@ -91,7 +91,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h3>22.2 约束主轴：多重实现度的层级梯度</h3>
+<h2>22.2 约束主轴：多重实现度的层级梯度</h2>
 <p>为什么现象层对接可以采用“翻译”方案，而神经层对接必须采用“约束”方案？根源在于<strong>多重实现度的层级梯度</strong>。</p>
 <p>多重实现原则（Putnam, 1967; Fodor, 1974）的核心洞见是：同一高层功能可以由完全不同的低层物理配置实现。但“多重实现”的程度本身是梯度分布的：</p>
 <div class="table-wrap"><table>
@@ -126,14 +126,14 @@
 <p><strong>“松而不脱”的精确含义</strong>。“松”意味着功能层拥有广阔的自主设计空间。同一干预目标（如降低M4-DSP-B的过度反应）可以由多条神经通路实现。“不脱”意味着当功能层的宣称触碰到物理极限时，必须接受修正。如果INTRE假设的M3-RES-D消耗速率要求超过神经元能量代谢的理论上限，这个假设本身就应被放弃。</p>
 <p><strong>推论：约束不是翻译</strong>。我们无法为功能描述建立一份“神经翻译表”——说“GATE操作 = 前额叶-杏仁核功能连接增强”是错误的，因为GATE操作完全可以由其他神经通路实现。神经层对接的正确姿态是：识别神经层对功能层的<strong>约束边界</strong>——什么在物理上不可能——而非建立一一对应的翻译词典。</p>
 <hr class="section-divider">
-<h3>22.3 独立且受限：实现绑定谬误与约束功能主义</h3>
+<h2>22.3 独立且受限：实现绑定谬误与约束功能主义</h2>
 <p>“约束为主轴”的立场同时反对两个极端：一是神经还原主义（认为功能描述最终可被神经描述替代），二是平行论（认为功能层与神经层毫无关系）。</p>
 <p><strong>不可还原：多重实现原则的规范意涵</strong>。功能层不可被神经层还原，不是经验事实的偶然描述，而是科学解释结构的规范要求。一个关于功能层的主张，如果其真值条件被绑定于特定神经实现，就犯了<strong>实现绑定谬误</strong>。</p>
 <p>以INTRE的RELINK操作为例：RELINK被定义为对STR-C连接权重的更新。它在功能层的证伪条件是——RELINK操作是否稳定地产出连接权重变化及其预期的行为后果。它不是“RELINK是否必须依赖蛋白质合成”——如果大脑进化出另一种不依赖蛋白质合成的结构更新机制，RELINK作为功能操作依然成立。神经层面的发现是<strong>兼容性证据</strong>，不是<strong>证伪性判据</strong>。</p>
 <p><strong>必须被约束：不受约束即伪科学</strong>。如果一个功能理论可以自由地设定参数，使得任何神经发现都无法对它构成挑战，那么这个理论就免疫于经验检验。功能层如果要做出精确的级联时序预测——例如“M1-RES-D枯竭后，M3-RES-D将在T小时内跌破阈值”——就必须接受神经层提供的物理极限。</p>
 <p><strong>约束功能主义：独立但不孤立</strong>。功能描述是自主的（不可被神经描述替代），但非独立的（必须接受神经实现的物理边界约束）。约束不是枷锁，而是科学理论保持经验接触的唯一方式。</p>
 <hr class="section-divider">
-<h3>22.4 证伪划界：兼容性证据vs证伪性判据</h3>
+<h2>22.4 证伪划界：兼容性证据vs证伪性判据</h2>
 <p>如果功能层不可被神经层还原，但又必须接受神经层的约束，那么一个关键问题浮现：<strong>神经层的发现究竟有没有资格证伪一个功能主张？</strong></p>
 <p><strong>兼容性证据与证伪性判据的根本区分</strong>。功能主张的证伪判据必须在其自身层级内完成，神经发现不能直接证伪功能主张。</p>
 <p><em>兼容性证据</em>指的是神经层与功能层之间的结构对应——例如“RELINK操作与记忆再巩固窗口存在独立汇聚”、“DSP-F/B区分与DMN/FPN反相关对应”。兼容性证据可以做三件事：(1)增强对功能构念的信心；(2)引导研究资源的优先配置；(3)标记物理可实现性的边界。但兼容性证据<strong>不可以</strong>定义功能主张的真值。</p>
@@ -156,9 +156,9 @@
     └── 否 → 信号与本框架无直接关联，登记后归档</code></pre>
 <p>神经层的反馈始终以“校准者”而非“法官”的身份参与功能层的修正程序。</p>
 <hr class="section-divider">
-<h3>22.5 从原则到工程：UNIS的约束分类实现</h3>
+<h2>22.5 从原则到工程：UNIS的约束分类实现</h2>
 <p>前四节确立了“神经层对接是约束而非翻译”的哲学原则。本节展示这一原则如何在UNIS（统一神经接口系统）中被工程化为可运行的架构组件。UNIS是FLP的四大基础设施之一，其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \)。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。</p>
-<h4>22.5.1 约束的三级分类及其工程对应</h4>
+<h3>22.5.1 约束的三级分类及其工程对应</h3>
 <p>回顾§22.4中提出的三类反向信号——硬约束、软约束和兼容性信号——在UNIS L5中被精确映射为可执行的数据结构和规则：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -189,7 +189,7 @@
 </tbody>
 </table></div>
 <p><strong>关键区分</strong>：UNIS L5将“生理硬约束”（分子/突触级，普遍适用）与“统计规律约束”（环路/系统级，高度稳健但极端条件下可能偏离）分开处理。前者触发自动硬裁剪，后者触发软先验注入——这避免了将经验规律当作物理定律而过度限制模型的灵活性。</p>
-<h4>22.5.2 仲裁合约：当数据驱动与理论约束冲突时</h4>
+<h3>22.5.2 仲裁合约：当数据驱动与理论约束冲突时</h3>
 <p>如§22.4所述，神经层发现不能直接证伪功能层主张。但UNIS的L4（数据驱动的映射模型）与L5（理论驱动的约束）之间必然存在冲突。UNIS定义了一个<strong>跨层仲裁合约</strong>，自动处理冲突而不陷入“神经还原主义”或“功能层免疫”两个极端：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -226,7 +226,7 @@
 </tbody>
 </table></div>
 <p><strong>工程意义</strong>：这套仲裁合约实现了§22.4中“神经层以校准者而非法官身份参与”的原则。它不要求功能层主张对神经发现无条件让步，也不允许功能层免疫于经验检验——冲突被显式记录、分类处理，并为未来的理论修订保留了审计线索。</p>
-<h4>22.5.3 从静态约束到动态校准：RTE-Cal的闭环反馈</h4>
+<h3>22.5.3 从静态约束到动态校准：RTE-Cal的闭环反馈</h3>
 <p>§22.3的“约束功能主义”主张功能描述独立但不孤立。UNIS的L6（RTE实时引擎）将这一主张推进到个体化层面：</p>
 <ul>
 <li><strong>RTE-Infer</strong>：实时输出当前最优模型下的神经似然，延迟<50ms（中等特征），不等待校准收敛。</li>
@@ -234,7 +234,7 @@
 </ul>
 <p><strong>闭环路径</strong>：UNIS输出神经似然 → PSE融合多模态数据，更新状态估计 → PSE将状态估计和残差反馈给UNIS → UNIS调整L4模型参数（迁移学习） → 下一轮似然更准确。</p>
 <p>这一闭环使§22.3中“功能层与神经层双向约束”的抽象论述，变为可持续学习、可审计验证的工程系统。UNIS不是“神经翻译器”，而是“约束执行器”——它不声称神经信号定义了功能状态，而是将神经信号作为有边界、有置信度的证据输入给PSE，同时接受PSE的反馈来持续修正自身。</p>
-<h4>22.5.4 小结：原则到工程的映射</h4>
+<h3>22.5.4 小结：原则到工程的映射</h3>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>哲学原则（§22.2-22.4）</th>
@@ -265,7 +265,7 @@
 </table></div>
 <p>UNIS的存在使本章从“哲学宣言”变为“工程蓝图”。读者在学习后续章节（第23-24章）的级联预测和边界修订时，应理解：这些抽象机制在UNIS中已经或正在被实现为可运行、可检验的代码和协议。</p>
 <hr class="section-divider">
-<h3>22.6 微案例：RELINK与记忆再巩固的独立汇聚</h3>
+<h2>22.6 微案例：RELINK与记忆再巩固的独立汇聚</h2>
 <p><strong>功能层预测</strong>。从INTRE的操作语法出发：RELINK是对STR-C的受控更新。要使连接权重发生持久改变，系统必须经历三个阶段：(1)激活目标连接，使其进入不稳定状态；(2)在窗口期内提供新的体验或信息；(3)允许新连接巩固。因此，RELINK操作在功能层上的一个可检验预测是：<strong>存在一个时间窗口，在该窗口内进行干预的效果显著优于窗口外</strong>。</p>
 <p><strong>神经科学的独立发现</strong>。Nader等人(2000)的经典实验发现：恐惧记忆在被提取后会进入一个“再巩固”窗口（约6小时），在此期间给予蛋白质合成抑制剂可以消除恐惧反应。</p>
 <p><strong>这不是“证明”，而是“独立汇聚”</strong>。当两条完全独立的推导路径——一条从控制论操作语法出发，一条从分子神经学实验出发——指向同一个功能现实时，我们获得的是<strong>兼容性信号</strong>。这一汇聚极大地增强了我们对RELINK构念“切割自然关节”的信心。</p>
@@ -286,7 +286,7 @@
 4. UNIS的L5将“生理硬约束”和“统计规律约束”分开处理。这种区分的临床意义是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -311,19 +311,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -388,8 +388,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -408,5 +408,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

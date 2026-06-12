@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第3章 框架总览：INTRE核心资产与子系统</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE六大核心资产并按方法论/工程化/研究纲领三档分级；(2)描述UPLS/UNIS/UBMS/PSE四个核心基础设施的分工与协作关系，以及REVER伦理层的独立定位；(3)解释四阶范式转变框架及INTRE在其中的定位；(4)阐述框架的三层主张结构和版本演化协议；(5)识别IET v3.0的八级证据分类体系及其标注原则。</p></blockquote>
 <hr class="section-divider">
-<h3>3.1 资产分级：方法论、工程化与研究纲领</h3>
+<h2>3.1 资产分级：方法论、工程化与研究纲领</h2>
 <p>INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。</p>
 <p><strong>第一项资产：功能层定位</strong>。这是INTRE最具诊断价值的贡献——它明确指出心理学需要一个介于神经层与现象层之间的功能描述层。这一判断即使未来M-R-D-S的具体版本被大幅修订也仍然成立，因为它是对学科结构性缺口的识别，而非某一具体理论的命题。功能层定位的稳健性来源于三条独立路径的收敛（系统科学、认知科学、工程实践）。</p>
 <p><strong>第二项资产：M-R-D-S状态语法</strong>。这是功能层的具体描述语言——六个模块(M1-M6)、三个维度(资源R、调度D、结构S)、42个子单元。M-R-D-S提供了将模糊的临床构念（如“焦虑”“抑郁”）分解为可定位的功能组件组合。然而，M-R-D-S的具体维数、模块边界和维度划分是<strong>可修订的工程选择</strong>，而非不可动摇的本体论真理。它的实证成熟度有待A/B/C三类子单元的测量工具开发和校准验证。</p>
@@ -96,7 +96,7 @@
 </table></div>
 <p>UPLS封装了M-R-D-S和G-M-A-R（前者是状态语法，后者是操作语法，UPLS将二者纳入统一的知识基础设施），因此后两者也作为独立资产列出，以示其可独立评估的工程价值。</p>
 <hr class="section-divider">
-<h3>3.2 四大核心基础设施 + REVER伦理层</h3>
+<h2>3.2 四大核心基础设施 + REVER伦理层</h2>
 <p>INTRE框架的工程功能可以分解为四个相互依赖的核心基础设施，外加一个独立的伦理约束层。四者与伦理约束层的关系可概括为：<strong>UPLS是本体地图，UNIS是神经天线，UBMS是行为标尺，PSE是动力学引擎</strong>，而REVER是安全护栏。</p>
 <p><strong>UPLS：统一描述子系统</strong>。UPLS的任务是提供功能层的静态描述语法。它回答“心理系统由哪些功能组件构成，当前处于什么状态”。UPLS的核心产出是M-R-D-S状态向量和PCUI概念映射库。UPLS本身不回答“状态如何随时间变化”（那是PSE的任务），也不回答“干预应如何设计”（那是G-M-A-R的任务）。它是PSE和G-M-A-R的<strong>本体论基础</strong>——没有UPLS定义的状态空间，PSE的动力学方程没有操作对象，G-M-A-R的操作没有靶点。</p>
 <p><strong>PSE：仿真预测子系统</strong>。PSE的任务是将UPLS的静态状态空间转化为动态演化模型。它回答“给定当前状态和环境输入，系统未来会怎样演化”。PSE的核心能力包括：通过MKT微分方程计算状态轨迹，通过MTT分析级联传播路径，通过MDT优化干预序列，通过PSE-C贝叶斯校准将群体先验更新为个体后验。PSE是INTRE从“描述”走向“预测”的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第18-21章。）</p>
@@ -105,14 +105,14 @@
 <p><strong>REVER：伦理约束子系统</strong>。REVER的任务是在AI拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答“在保证功能效用的前提下，如何设计伦理上安全的AI系统”。REVER的核心设计包括：非人格性公理（AI不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER不是独立于UPLS和PSE的另一套语言，而是同一套语法在伦理维度的扩展应用——它将“结构伦理”从哲学原则转化为可执行的门控协议。（详见第25-26章。）</p>
 <p><strong>五者的关系</strong>：UPLS是<strong>静态地图</strong>，UNIS是<strong>神经观测接口</strong>，UBMS是<strong>行为标尺</strong>，PSE是<strong>动力学引擎</strong>，REVER是<strong>安全护栏</strong>。前四者共享同一套M-R-D-S/G-M-A-R语法，使得描述、输入、预测和干预可以在同一个形式化框架内无缝衔接。</p>
 <hr class="section-divider">
-<h3>3.3 知识基建：PCUI、PSA与PSL概览</h3>
+<h2>3.3 知识基建：PCUI、PSA与PSL概览</h2>
 <p>UPLS的知识基础设施借鉴了医学领域统一医学语言系统(UMLS)的成功经验，由三个组件构成。</p>
 <p><strong>PCUI：心理概念唯一标识符</strong>。PCUI为每个心理概念分配唯一的标准化编码，将所有流派对同一功能现象的术语映射到同一个规范条目。例如，CBT的“核心信念（无价值感）”、精神分析的“负性自我表征”、人本主义的“自我概念贬低”都被映射到同一个PCUI条目，其M-R-D-S坐标被标注为<code>M2-STR-R</code>。PCUI解决了心理学长期存在的同义词问题（不同术语同一现象）和一词多义问题（同一术语在不同流派中含义不同）。每个PCUI条目包含：规范定义、流派术语映射、M-R-D-S坐标、参数先验分布、版本号和证据等级标注。（详见第14章。）</p>
 <p><strong>PSA：心理语义架构</strong>。PSA定义了PCUI概念之间的形式关系——模块依赖权重、级联路径模板、操作-组件映射（哪些G-M-A-R操作适用于哪些M-R-D-S组件）。PSA是UPLS的<strong>推理引擎</strong>：给定一个状态向量，PSA可以计算级联风险、识别枢纽节点、推荐优先干预靶点。PSA的依赖矩阵是PSE中MTT（心智拓扑理论）的输入。（详见第15章。）</p>
 <p><strong>PSL：心理专家词典</strong>。PSL提供自然语言到PCUI的映射接口。它包含：临床口语到PCUI的映射（“我心慌”→<code>M4-DSP-B↑</code>）、文化特定习语的映射（东亚文化中的“神经衰弱”→PCUI条目）、语境消歧规则（同一短语在不同上下文中映射到不同PCUI）。PSL使得MCT（心智编译理论）能够将非结构化的临床叙述编译为结构化的M-R-D-S状态向量。PSL是INTRE从学术语言下沉到临床应用的关键基础设施。（详见第15章。）</p>
 <p>三者的关系可以类比为：PCUI是<strong>词典</strong>（概念的定义和编码），PSA是<strong>语法书</strong>（概念之间的关系规则），PSL是<strong>翻译器</strong>（自然语言到形式语言的转换接口）。</p>
 <hr class="section-divider">
-<h3>3.4 层级与开放：可修订性声明与版本演化</h3>
+<h2>3.4 层级与开放：可修订性声明与版本演化</h2>
 <p>INTRE框架在设计上区分了不同层级的主张，并为每一层级设置了不同的修订门槛。这一设计防止了理论在面对反例时的两种病态反应：要么僵化地否认一切反例（教条主义），要么在每次反例后随意修改核心主张（机会主义）。</p>
 <p><strong>三层主张结构</strong>。INTRE的核心主张分为三个层级：</p>
 <div class="table-wrap"><table>
@@ -170,7 +170,7 @@
 </table></div>
 <p><strong>强反例触发条件</strong>。框架为核心主张设置了明确的强反例触发条件。例如：(1)若发现稳定、可重复、具增量预测力的新心理功能无法归入M1-M6，则模块完备性主张被挑战；(2)若发现新的不可由R/D/S组合描述的心理状态变化维度，则状态语法完备性被挑战；(3)若发现公认有效且不可被G-M-A-R分解的新干预机制，则操作语法完备性被挑战。（完整清单见第29章。）</p>
 <hr class="section-divider">
-<h3>3.5 主张治理：IET v3.0证据分类学</h3>
+<h2>3.5 主张治理：IET v3.0证据分类学</h2>
 <p>INTRE最独特的元科学贡献之一，是其对理论主张进行系统化证据等级标注的治理协议——IET v3.0（INTRE证据分类学）。这一协议将理论主张分为八个等级，明确区分了定义、推导、事实、解释、预测、规范、证据和关系，防止将逻辑推导与经验验证混为一谈。</p>
 <p><strong>八级证据体系</strong>：</p>
 <div class="table-wrap"><table>
@@ -247,7 +247,7 @@
 3. UNIS被定位为FLP四大基础设施之一，与UPLS、UBMS、PSE并列。你认为这个定位是否恰当？理由是什么？并说明UBMS作为行为通道基础设施补充了之前的什么缺口。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -272,19 +272,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -349,8 +349,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -369,5 +369,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

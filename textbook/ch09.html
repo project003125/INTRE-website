@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第9章 测量方法：ABC分类与桥接校准</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)阐述功能层测量的三条基本原则与三个测量通道；(2)按ABC三类区分42个子单元的测量成熟度；(3)描述EMA和数字表型在数据采集中的应用；(4)理解UNIS神经通道中NFI到功能似然的映射逻辑；(5)理解收敛效度/区分效度/三通道验证的评估策略；(6)掌握桥接-校准-原生三阶段精度优化路径。</p></blockquote>
 <hr class="section-divider">
-<h3>9.1 三原则：多模态融合与软测量</h3>
+<h2>9.1 三原则：多模态融合与软测量</h2>
 <p>功能层测量的核心挑战在于：M-R-D-S中的大多数子单元是<strong>潜变量</strong>——它们需要从多种可观测信号中间接推断。INTRE对此采取的立场不是“等待完美的直接测量工具”，而是接受测量的间接性和概率性，并通过方法论创新将其转化为可管理的工程问题。</p>
 <p><strong>三条基本原则</strong>：</p>
 <ol>
@@ -110,7 +110,7 @@
 <p>$$ y_t = h(\Psi_t, E_t) + \epsilon_t $$</p>
 <p>其中\(y_t\)是t时刻的观测向量（来自三个通道），\(\Psi_t\)是功能状态向量，\(h\)是观测函数，\(\epsilon_t\)是观测噪声。测量任务本质上是<strong>从观测\(y_t\)反推状态\(\Psi_t\)的逆问题</strong>。由于观测通常远少于状态维度（欠定问题），需要强先验（来自动力学模型和桥接知识）来约束解空间。多通道（行为+语义+神经）增加了观测维度，显著改善了逆问题的可辨识性。</p>
 <hr class="section-divider">
-<h3>9.2 成熟度分层：A类实证、B类整合与C类预测</h3>
+<h2>9.2 成熟度分层：A类实证、B类整合与C类预测</h2>
 <p>基于测量成熟度，42个子单元被分为三类。分类依据三个可量化维度：映射可信度（0-10分）、现有工具成熟度、是否需要原创开发。</p>
 <p><strong>分类规则</strong>：</p>
 <div class="table-wrap"><table>
@@ -240,7 +240,7 @@
 </table></div>
 <blockquote><p><strong>C类子单元的正面定位</strong>：C类不是框架的缺陷，而是研究议程。它们主动指向旧范式的盲区。随着实证积累，C类子单元将逐步向B类和A类迁移——这一迁移过程本身就是框架演化的实证轨迹。</p></blockquote>
 <hr class="section-divider">
-<h3>9.3 数字表型：EMA与被动传感的协议设计</h3>
+<h2>9.3 数字表型：EMA与被动传感的协议设计</h2>
 <p>功能层测量不局限于实验室环境。INTRE深度整合<strong>生态瞬时评估(EMA)</strong>和<strong>数字表型</strong>技术。</p>
 <p><strong>生态瞬时评估(EMA)</strong>。EMA通过智能手机在随机时间点或事件触发时推送简短问卷。EMA对功能层测量的核心贡献在于：捕捉RES-D等快速状态变量的日内波动；同步记录S-P环境输入；支持N-of-1设计和个体化建模。</p>
 <p>EMA条目开发应遵循“单维度、高频率、低负担”原则。例如： - “过去一小时内，我感到精疲力竭”（M1-RES-D） - “我很难集中注意力”（M2-RES-D） - “我无法控制自己的担忧”（M2-DSP-B，M4-DSP-B）</p>
@@ -277,12 +277,12 @@
 <blockquote><p><strong>效度声明</strong>：上述映射是<strong>候选关联</strong>，并非已经验证的测量模型。每个数字表型指标在用于临床决策前，需要在独立样本中验证其与对应功能子单元的收敛效度。</p></blockquote>
 <p><strong>多模态融合的优势</strong>。当EMA自陈、被动传感和实验室测量三种模态的数据同时可用时，可以构建更稳健的状态估计。当多模态观测分歧时，系统输出后验分布的分散度增加，并触发“校准请求”。分歧本身也可能是重要的临床信号：例如，“主观平静但身体高唤醒”可能提示述情障碍。</p>
 <hr class="section-divider">
-<h3>9.4 信效度评估：收敛、区分与三通道验证</h3>
+<h2>9.4 信效度评估：收敛、区分与三通道验证</h2>
 <p><strong>收敛效度</strong>。同一功能子单元的不同测量指标应在理论上相关。评估采用<strong>多特质-多方法矩阵(MTMM)</strong>：同一子单元的不同方法之间的相关应显著高于不同子单元同一方法之间的相关。</p>
 <p><strong>区分效度</strong>。关键检验是<strong>双分离设计</strong>：实验操纵X应特异性地影响子单元A而不影响B，操纵Y应特异性地影响B而不影响A。例如，睡眠剥夺应主要影响M1-RES-D和M2-RES-D，而不应影响M4-STR-C的结构权重。</p>
 <p><strong>三通道验证</strong>。对于关键子单元（特别是C类预测性子单元），INTRE要求<strong>三通道收敛</strong>：(1)行为/生理指标、(2)主观报告、(3)UNIS神经似然。三个通道应呈现显著相关，且共同预测相关的临床结果。M3-RES-D的验证是当前最紧迫的实证任务。三通道之间的分歧也是重要的诊断信号——当UNIS神经似然指向高唤醒但自我报告显示平静时，可能提示述情障碍或内感受觉知缺陷。</p>
 <hr class="section-divider">
-<h3>9.5 精度路径：桥接-校准-原生三阶段</h3>
+<h2>9.5 精度路径：桥接-校准-原生三阶段</h2>
 <p>测量精度不是一次性达到的，而是通过<strong>桥接-校准-原生</strong>三阶段逐步提升：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -350,7 +350,7 @@
 <p><strong>冷启动的具体流程</strong>： 1. <strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验 2. <strong>初始评估</strong>：采集核心A类子单元数据，编译为初始状态向量 3. <strong>贝叶斯更新</strong>：用初始评估数据更新先验，获得第一次后验估计 4. <strong>动态校准</strong>：在治疗过程中持续采集数据，每次新数据到达后更新 5. <strong>收敛判断</strong>：当核心子单元的后验置信区间宽度低于阈值时，达到临床可用精度</p>
 <p><strong>桥接-校准策略的认识论意义</strong>：不等待完美的测量工具出现再开始工作，而是在当前最佳知识的基础上启动，通过持续的实证反馈逐步逼近真实。它不追求"一步到位"的精确性，而是将测量本身视为一个不断改进的工程过程。</p>
 <hr class="section-divider">
-<h3>9.6 UNIS神经测量通道：从NFI到功能似然</h3>
+<h2>9.6 UNIS神经测量通道：从NFI到功能似然</h2>
 <p>UNIS（统一神经接口系统）为功能层测量提供了第三个标准化通道——神经信号通道。它回答的问题是：原始神经数据（EEG波形、fNIRS时间序列、PPG信号）如何转化为PSE可以直接使用的功能状态似然？</p>
 <p><strong>UNIS六层中的测量相关层</strong>。UNIS的六层架构中，L3 NFD（神经特征定义）和L4 NFM（神经-功能映射）与测量直接相关：</p>
 <div class="table-wrap"><table>
@@ -480,7 +480,7 @@
 4. 如果UNIS神经通道对M4-DSP-B的状态估计（高唤醒）与行为通道（量表自评低焦虑）出现系统性分歧，列举三种可能的解释及其对临床决策的不同含义。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -505,19 +505,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -582,8 +582,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -602,5 +602,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

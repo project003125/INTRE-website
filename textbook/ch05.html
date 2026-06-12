@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>本章定位</strong>：本章展示推导链的逻辑骨架。完整的论证材料、替代方案比较和数学细节见<strong>附录L</strong>。建议读者先通读本章获得整体图景，再根据需要查阅附录。</p></blockquote>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 画出从 N-S-R 元公理到 G-M-A-R 操作语法的完整推导链；(2) 解释每一步推导中“上位概念如何被操作化定义为下位概念”；(3) 陈述 R-D-S 三维作为存量-流量-结构在系统动力学中的数学对应；(4) 理解 G-M-A-R 四操作的靶点合法性矩阵是如何从 R-D-S 状态空间自然导出的；(5) 说明为什么 INTRE 的组件不是“被发明”的，而是“被推导”的。</p></blockquote>
 <hr class="section-divider">
-<h3>5.1 推导链总览：五大架构的生成逻辑</h3>
+<h2>5.1 推导链总览：五大架构的生成逻辑</h2>
 <p>INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的<strong>下行推导</strong>过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -117,7 +117,7 @@
     E &lt;--&gt; F
     D &lt;--&gt; F</code></pre>
 <hr class="section-divider">
-<h3>5.2 元公理：N-S-R与所有智能系统的存在逻辑</h3>
+<h2>5.2 元公理：N-S-R与所有智能系统的存在逻辑</h2>
 <p><strong>公理陈述</strong>。N-S-R 是 INTRE 体系的逻辑起点：</p>
 <blockquote><p>智能系统通过感知内在或外在的“需要”（Need, N），调用或构建相应的“结构”（Structure, S），并通过该结构的运作，达成目标的“实现”（Realization, R）。</p></blockquote>
 <p>三者关系可形式化表述为 <strong>R = f(N, S)</strong>。</p>
@@ -131,7 +131,7 @@
 <p><strong>关键区分——N-S-R 与 M-R-D-S 中 S 的双重含义</strong>： - N-S-R 的 S = Structure（概念槽），跨域通用的结构形态 - M-R-D-S 的 S = Structure（实例化），领域特化为 STR-R/C/S 三分法</p>
 <p>具体而言，N-S-R 中的 S 是一个跨域通用的<strong>概念槽</strong>。在后续推导中，这个 S 被逐步实例化：在 M-R-P 层，S 被操作化定义为“模块+调度环+剧本”；在 M-R-D-S 层，S 进一步被特化为 STR-R、STR-C 和 STR-S。三者是“上位概念 → 实例化”的推导关系。</p>
 <hr class="section-divider">
-<h3>5.3 通用架构：M-R-P作为S的操作化定义</h3>
+<h2>5.3 通用架构：M-R-P作为S的操作化定义</h2>
 <p><strong>从公理到架构的关键一跃</strong>。N-S-R 是一个哲学公理。但要让它成为可操作的工程框架，必须回答：公理中的 S（结构）具体是什么？</p>
 <p>INTRE 的回答是一个<strong>规定性定义</strong>：在 INTRE 体系内部，公理中的“结构（S）”被操作化定义为 <strong>M-R-P 通用架构</strong>。</p>
 <p><strong>M-R-P 的三组件</strong>：</p>
@@ -147,7 +147,7 @@
 - M-R-P 中的 R = Ring（调度环），指模块间的信息调度环路
 - M-R-D-S 中的 R = Resource（资源），指能耗与时间预算</p></blockquote>
 <hr class="section-divider">
-<h3>5.4 心智特化：M1-M6六功能模块的导出</h3>
+<h2>5.4 心智特化：M1-M6六功能模块的导出</h2>
 <p>M-R-P 是“万能容器”。但 INTRE 的目标是为<strong>人类心智</strong>提供功能层描述语法。因此，下一步是将 M-R-P 中的 M（模块）特化为人类心智的具体功能模块。</p>
 <p><strong>否定性特异崩溃论证</strong>是模块划分的核心工程验证：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统崩溃模式。例如，M1（具身）缺损导致全局能量崩溃（如重度抑郁的躯体症状），M3（意志）缺损导致决策瘫痪（如刺激-反应模式），M4（情绪）缺损导致价值盲（如精神分裂症阴性症状）。这些特异性崩溃模式为模块的独立功能角色提供了间接的工程验证。</p>
 <p>基于此，INTRE 将人类心智在功能层分解为六个模块（M1-M6）：</p>
@@ -200,7 +200,7 @@
 <p><strong>完备性的三重担保</strong>： 1. <strong>逻辑推导</strong>：六模块分别展开并承载 N-S-R 循环在人类心智中的关键功能节点。 2. <strong>工程验证</strong>：否定性特异崩溃论证——每个模块的缺失导致独特的、不可补偿的系统崩溃模式。 3. <strong>进化启发性支持</strong>：六模块大致对应生命进化史上功能地层的逐层叠加（启发性支持，非严格系统发生学断言）。</p>
 <p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性担保，不适用于所有智能体类型。它是当前最优的工程选择，而非逻辑上唯一可能的分解方式。</p>
 <hr class="section-divider">
-<h3>5.5 状态语法：R-D-S三维的推导</h3>
+<h2>5.5 状态语法：R-D-S三维的推导</h2>
 <p>确立了功能实体后，如何精确描述这些模块在任一时刻的状态？</p>
 <p>INTRE 的答案是 <strong>R-D-S 三维状态语法</strong>：</p>
 <div class="table-wrap"><table>
@@ -287,7 +287,7 @@
 </table></div>
 <p>M1-M6（6个模块）与 R-D-S 的7个子维度构成笛卡尔积，生成 <strong>42维状态空间</strong>——这就是INTRE为心理状态的精确诊断提供的统一坐标系。</p>
 <hr class="section-divider">
-<h3>5.6 操作语法：G-M-A-R四操作的导出</h3>
+<h2>5.6 操作语法：G-M-A-R四操作的导出</h2>
 <p>有了精确的状态空间后，一个自然的问题是：针对这个状态空间的每个维度，我们可以执行什么操作来改变它？</p>
 <p>G-M-A-R 是从 R-D-S 状态空间的拓扑结构中<strong>自然导出</strong>的。每个操作对应状态空间中一个特定的、不可相互替代的功能靶点：</p>
 <div class="table-wrap"><table>
@@ -356,7 +356,7 @@
 </table></div>
 <p><strong>D→R→S 干预序列</strong>——从状态空间拓扑自然导出的推论： - 在调度失控（D 层）时补充资源（R 层）是低效的 - 在资源枯竭（R 层）时进行结构重建（S 层）是高风险的 - 因此，默认干预序列为 <strong>D 层稳定 → R 层恢复 → S 层重建</strong></p>
 <hr class="section-divider">
-<h3>5.7 环境参照：S-P外感架构的补全</h3>
+<h2>5.7 环境参照：S-P外感架构的补全</h2>
 <p>M-R-D-S 描述内部状态，G-M-A-R 定义干预操作，但还缺少一个关键维度：<strong>系统在什么样的环境中运行？</strong></p>
 <p>S-P（源-模式）外感架构补全了这个缺失的维度：</p>
 <ul>
@@ -366,7 +366,7 @@
 <p>S-P 架构不改变 G-M-A-R 原子操作的功能定义，但作为<strong>战略上下文注入器</strong>，决定其执行优先级、时序和风险阈值。</p>
 <p><strong>S-P与UNIS的互补</strong>。S-P外感架构描述的是环境信息的<strong>类别和模式</strong>（"什么环境因素在影响系统"），而UNIS神经接口系统描述的是环境信息通过神经通道的<strong>测量和转化</strong>（"如何将环境对神经系统的客观影响转化为功能似然"）。两者的关系是：S-P定义了环境输入的来源分类（微系统到数字系统、P-分量方向），UNIS提供了其中一类——神经生理信号——的标准化采集、校准和映射管道。例如，S-P标注"数字系统环境→M4-DSP-B（情绪唤醒）"这一环境输入路径，UNIS则通过EEG→NFD→NFM→RTE管道将其转化为可量化的神经似然，传入PSE。S-P是<strong>语义框架</strong>（"什么在发生"），UNIS是<strong>测量实现</strong>（"如何量化检测"）。两者共同构成功能层的环境感知体系。</p>
 <hr class="section-divider">
-<h3>5.8 方法论意义：从观点集合到演绎系统</h3>
+<h2>5.8 方法论意义：从观点集合到演绎系统</h2>
 <p><strong>从“观点集合”到“演绎系统”</strong>。INTRE 的组件不是被“发明”的，而是被“推导”的。如果你接受 N-S-R 元公理，接受 M-R-P 作为 S 的操作化定义，接受存量-流量-结构作为动态系统描述的必要范畴，那么 M1-M6、R-D-S、G-M-A-R 和 S-P 就是从这些前提中<strong>必然导出</strong>的结构。</p>
 <p><strong>可证伪性的精确锚定</strong>。推导链使 INTRE 的可证伪性从模糊变为精确。要证伪 INTRE，你不需要攻击整个框架——你只需要攻击推导链中的某一环： - 攻击元公理层：证明 N-S-R 不是适应性系统的必要逻辑 - 攻击架构公理层：证明 M-R-P 不是目标驱动智能体的最优通用架构 - 攻击特化推论层：证明 M1-M6 不是人类心智功能分解的最优工程选择 - 攻击形式充分性：证明存量-流量-结构不适用于心理功能层 - 攻击操作推论：证明 G-M-A-R 的四操作集不覆盖已知的有效干预机制</p>
 <p><strong>模块化可修正性</strong>。推导链的层级结构使框架可以<strong>局部修正而不整体崩塌</strong>。如果实证证明 M3-RES-D 不是独立的意志资源池，这不会影响 N-S-R 元公理、M-R-P 通用架构和 R-D-S 的形式充分性——修正只发生在参数层和模型层。</p>
@@ -382,7 +382,7 @@
 3. 如果未来实证研究证明存量-流量-结构框架不适用于心理功能层，INTRE 的哪些组件会受影响？哪些可能幸存？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -407,19 +407,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -484,8 +484,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -504,5 +504,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

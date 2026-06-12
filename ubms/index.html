@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · UBMS 统一行为测量系统</title>
+    <meta name="description" content="UBMS（统一行为测量系统）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
+    <meta property="og:title" content="UBMS · 统一行为测量系统 · INTRE">
+    <meta property="og:description" content="UBMS（统一行为测量系统）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
+    <meta property="og:type" content="article">
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -178,153 +182,15 @@
             margin-left: 0.5rem;
             display: inline-block;
         }
-
-    
-        /* === VISUAL POLISH === */
-        
-        /* Table zebra striping */
-        .table tbody tr:nth-child(even) td {
-            background-color: var(--color-slate-100);
-        }
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50) !important;
-        }
-        
-        /* Info-box left accent */
-        .info-box {
-            border-left: 3px solid var(--color-navy-400);
-            background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
-        }
-        
-        /* Card hover micro-interaction */
-        .card {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(31,72,128,0.08);
-            background: #fff;
-        }
-        
-        /* Section label icon circle */
-        .section-label i {
-            background: rgba(59,111,181,0.08);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Subtle top accent bar on container */
-        .container::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400), var(--color-navy-300), var(--color-navy-400), var(--color-navy-600));
-            border-radius: 0 0 3px 3px;
-            margin-bottom: 0;
-            opacity: 0;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* h3 border refinement */
-        h3 {
-            border-bottom: none;
-            padding-bottom: 0;
-            position: relative;
-            padding-left: 0.9rem;
-        }
-        h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            width: 3px;
-            background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* Grid cards equal height */
-        .grid-2, .grid-3, .grid-4 {
-            align-items: stretch;
-        }
-        .grid-2 > .card, .grid-3 > .card, .grid-4 > .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Better scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(31,72,128,0.15);
-            color: var(--color-slate-900);
-        }
-    
-        /* Sub-page header gradient accent */
-        .container {
-            position: relative;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-navy-400), var(--color-navy-600), var(--color-navy-400), transparent);
-            border-radius: 2px;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            display: inline-block;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -337,17 +203,17 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>UBMS</h1>
-        <div class="subhead">统一行为测量系统 · 结构化行为观测→功能层似然的标准化管道 <span style="background:#C65D21;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">行为通道</span></div>
+        <div class="subhead">统一行为测量系统 · 结构化行为观测→功能层似然的标准化管道 <span style="background:var(--color-ubms);color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">行为通道</span></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
+            <i class="fas fa-quote-left" aria-hidden="true" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
             UBMS 将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，为 PSE 提供标准化行为似然接口。
         </div>
 
         <!-- 一、三层架构总览 -->
-        <div class="section-label"><i class="fas fa-layer-group"></i> 一、三层架构总览</div>
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、三层架构总览</h2>
         <p style="margin-bottom: 1.5rem;">每层回答一个独立问题，层间通过标准化 JSON Schema 通信，复用现有心理测量标准（IRT、CTT、PROMIS、COSMIN）。</p>
 
         <div class="table-responsive">
@@ -362,7 +228,7 @@
         </div>
 
         <!-- 二、FLP 四大基础设施中的定位 -->
-        <div class="section-label"><i class="fas fa-sitemap"></i> 二、FLP 四大基础设施中的定位</div>
+        <h2 class="section-label"><i class="fas fa-sitemap" aria-hidden="true"></i> 二、FLP 四大基础设施中的定位</h2>
         <p style="margin-bottom: 1.5rem;">UBMS 隶属于 PFIM（功能层输入测量学）的行为输入通道，与 UPLS、UNIS 并列构成 PSE 的三通道输入源。</p>
 
         <div class="table-responsive">
@@ -378,7 +244,7 @@
         </div>
 
         <!-- 三、关键设计决策 -->
-        <div class="section-label"><i class="fas fa-lightbulb"></i> 三、关键设计决策</div>
+        <h2 class="section-label"><i class="fas fa-lightbulb" aria-hidden="true"></i> 三、关键设计决策</h2>
 
         <h3>3.1 UPLS 语义对齐前置</h3>
         <div class="card card-accent">
@@ -410,11 +276,11 @@
         </div>
 
         <!-- 四、观测函数与 BHI 标识符 -->
-        <div class="section-label"><i class="fas fa-chart-line"></i> 四、观测函数与 BHI 标识符</div>
+        <h2 class="section-label"><i class="fas fa-chart-line" aria-hidden="true"></i> 四、观测函数与 BHI 标识符</h2>
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-tag" style="color: var(--color-navy-400);"></i> BHI · 行为健康标识符</h4>
+                <h4><i class="fas fa-tag" aria-hidden="true" style="color: var(--color-navy-400);"></i> BHI · 行为健康标识符</h4>
                 <p><strong>作用：</strong> 为每个标准化行为测量工具分配唯一标识符</p>
                 <p><strong>示例：</strong></p>
                 <div class="code-block" style="font-size:0.82rem;">
@@ -427,7 +293,7 @@
                 </div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-function" style="color: var(--color-navy-400);"></i> 观测函数</h4>
+                <h4><i class="fas fa-function" aria-hidden="true" style="color: var(--color-navy-400);"></i> 观测函数</h4>
                 <p><strong>形式：</strong> y<sub>b</sub> = h(Ψ, c, θ<sub>i</sub>) + ε</p>
                 <p><strong>参数：</strong></p>
                 <ul style="margin:0.5rem 0 0 1.2rem; color: #374151; font-size:0.9rem;">
@@ -440,7 +306,7 @@
         </div>
 
         <!-- 五、分阶段演进 -->
-        <div class="section-label"><i class="fas fa-road"></i> 五、分阶段演进路径</div>
+        <h2 class="section-label"><i class="fas fa-road" aria-hidden="true"></i> 五、分阶段演进路径</h2>
 
         <div class="table-responsive">
             <table class="table">
@@ -457,7 +323,7 @@
         </div>
 
         <!-- 六、与其他基础设施的接口 -->
-        <div class="section-label"><i class="fas fa-code-branch"></i> 六、基础设施间接口</div>
+        <h2 class="section-label"><i class="fas fa-code-branch" aria-hidden="true"></i> 六、基础设施间接口</h2>
 
         <div class="grid-3">
             <div class="card">
@@ -476,20 +342,21 @@
                 <p>p(y<sub>b</sub>|Ψ) 直接注入 PSE 贝叶斯融合器，与语义、神经似然联合估计状态后验</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

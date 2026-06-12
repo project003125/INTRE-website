@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIS神经似然注入；(4)描述RTE-Cal异步校准与UNIS↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 <hr class="section-divider">
-<h3>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h3>
+<h2>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h2>
 <p>PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。</p>
 <p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括： - 初始状态\(\Psi(0)\)（从生态位先验分布中采样） - 动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等 - 耦合参数：依赖矩阵中的权重\(w_{ij}\) - 环境参数：S-P输入的强度、频率、持续时间</p>
 <p><strong>蒙特卡罗仿真流程</strong>： 1. <strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\) 2. <strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\) 3. <strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta） 4. <strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件 5. <strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</p>
@@ -66,7 +66,7 @@
 <p><strong>PSE-M的输出</strong>： - <strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布 - <strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”） - <strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布 - <strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</p>
 <p><strong>PSE-M的认识论地位</strong>：输出是<strong>理论导出的合成数据</strong>，而非经验发现。其价值在于探索理论的推论并生成可检验的预测。</p>
 <hr class="section-divider">
-<h3>20.2 PSE-P：先验提取与生态位库</h3>
+<h2>20.2 PSE-P：先验提取与生态位库</h2>
 <p>PSE-P的任务是将PSE-M生成的海量合成数据以及变量范式积累的实证知识（元分析、量表常模、实验效应量），压缩为可供PSE-C使用的<strong>先验参数分布</strong>和<strong>生态位库</strong>。</p>
 <p><strong>生态位的定义与分层</strong>。生态位是个体典型S-P环境配置与M-R-D-S基线状态的联合分布。分类维度包括：</p>
 <div class="table-wrap"><table>
@@ -109,7 +109,7 @@
 <p><strong>先验分布的形式</strong>：Gamma分布（消耗速率）、Beta分布（0-1参数）、正态分布（截断）、Dirichlet分布（多类别权重）。</p>
 <p><strong>生态位库的伦理考量</strong>：每个生态位标注其数据来源的人群特征，在样本代表性不足时扩大先验不确定性。文化变体参数被显式编码为调节因子。</p>
 <hr class="section-divider">
-<h3>20.3 PSE-C：粒子滤波贝叶斯校准</h3>
+<h2>20.3 PSE-C：粒子滤波贝叶斯校准</h2>
 <p>PSE-C将PSE-P提供的先验分布与个体的真实观测数据相结合，通过贝叶斯更新计算个体化的后验状态估计。</p>
 <p><strong>贝叶斯校准的数学框架</strong>：</p>
 <p>$$ p(\Psi(t), \theta \mid y_{1:t}) \propto p(y_{1:t} \mid \Psi(t), \theta) \cdot p(\Psi(0), \theta) $$</p>
@@ -120,7 +120,7 @@
 <p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
 <p>$$ p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIS)}} $$</p>
 <p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIS L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
-<h4>20.3.1 RTE-Cal：神经映射的异步个体化校准</h4>
+<h3>20.3.1 RTE-Cal：神经映射的异步个体化校准</h3>
 <p>RTE-Cal是UNIS L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
 <p><strong>校准环路</strong>。RTE-Cal运行一个异步闭环：</p>
 <ol>
@@ -156,7 +156,7 @@
 </table></div>
 <p><strong>工程意义</strong>。RTE-Cal使UNIS从一个"群体平均"的神经-功能映射系统升级为"个体自适应"的校准系统——这类似于脑电的个体化源定位：使用群体模板作为初始估计，再通过个体解剖数据进行微调。在PSE-C的概念设计阶段，RTE-Cal的完整实现依赖于NFM模型的群体级验证——当前所有NFI的映射模型均为探索性P级（详见Ch22）。</p>
 <hr class="section-divider">
-<h3>20.4 不确定性量化：集合预报与CRPS评分</h3>
+<h2>20.4 不确定性量化：集合预报与CRPS评分</h2>
 <p>PSE-C的输出是<strong>概率预测</strong>——以分布的形式表达预测的不确定性。</p>
 <p><strong>不确定性的三个来源</strong>： 1. <strong>状态估计不确定性（认识论）</strong>：因观测有限且存在噪声，随数据增加而减少 2. <strong>参数不确定性</strong>：个体动力学参数从数据中推断，也随数据增加而减少 3. <strong>固有随机性（偶然不确定性）</strong>：系统本身的随机性，无法消除</p>
 <p>PSE通过<strong>集合预报</strong>表示总不确定性：从PSE-C后验分布中采样M个粒子，将每个粒子前向积分，得到M条轨迹的集合分布。</p>
@@ -178,7 +178,7 @@
 4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -203,19 +203,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -280,8 +280,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -300,5 +300,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

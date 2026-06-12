@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,27 +57,27 @@
         <h1 class="chapter-title">第6章 状态维度：资源、调度与结构三轴</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)从系统动力学的存量-流量-结构框架推导R-D-S三维的必要性；(2)区分RES-D与RES-B的时间尺度和干预接口；(3)区分DSP-F与DSP-B的意识参与度和资源消耗模式；(4)区分STR-R/C/S三种结构类型及其对应的G-M-A-R操作；(5)理解R-D-S的工程收敛解定位。</p></blockquote>
 <hr class="section-divider">
-<h3>6.1 为何三轴：系统动力学与工程收敛</h3>
+<h2>6.1 为何三轴：系统动力学与工程收敛</h2>
 <p>功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：<strong>资源(Resource, R)</strong>、<strong>调度(Dispatch, D)</strong>、<strong>结构(Structure, S)</strong>。为什么恰好是这三个？</p>
 <p><strong>系统动力学的基础</strong>。任何动态系统——无论是物理系统、生物系统还是社会系统——要描述其当前状态和未来演化，都需要回答三个根本问题：(1)系统此刻<strong>拥有什么</strong>（存量）？(2)系统此刻<strong>正在做什么</strong>（流量/过程）？(3)系统<strong>为何以这种方式运行</strong>（控制结构与规则）？这三个问题对应系统动力学中经典的<strong>存量-流量-结构</strong>三分框架。R-D-S正是这一框架在心理功能层的实例化。</p>
 <p><strong>皮卡-林德勒夫定理的启发性类比</strong>。常微分方程理论指出：在满足连续性条件的系统中，给定初始状态向量和演化动力学方程，系统的未来轨迹是唯一确定的。这为R-D-S三维的<strong>形式充分性</strong>提供了一个启发性类比——要完整确定演化轨迹，我们需要知道(1)当前存量（初始状态），(2)流量规则（微分方程），(3)结构参数（方程中的系数和拓扑）。需要强调的是，这一定理在此处提供的是启发性类比，而非数学完备性的证明。</p>
 <p><strong>工程约束的收敛</strong>。INTRE是一个<strong>工程框架</strong>，其设计受制于三组工程约束：(1)<strong>诊断精度</strong>——维度必须能够区分表面相似但机制不同的临床现象（如同为“拖延”，要能区分M3-RES-D枯竭型、M4-STR-C焦虑型、M2-STR-R完美主义型）；(2)<strong>干预指导力</strong>——每个维度必须对应明确的G-M-A-R操作靶点；(3)<strong>跨现象覆盖</strong>——维度必须能描述从基本情绪反应到复杂叙事自我整合的广泛心理现象。R-D-S是在这三组工程约束下收敛的最优解。</p>
 <p><strong>R-D-S的认识论定位</strong>：R-D-S是五重独立约束下被迫收敛的工程最优解，而非对心理实体结构的直接发现。完整的五重约束论证见第2章§2.5。</p>
 <hr class="section-divider">
-<h3>6.2 资源层：RES-D可调度与RES-B基底</h3>
+<h2>6.2 资源层：RES-D可调度与RES-B基底</h2>
 <p>资源层描述的是心理系统的<strong>存量状态</strong>——系统当前拥有多少可用的心理能量。它回答“系统此刻有多少燃料可用”。资源层被进一步区分为两个时间尺度和功能角色不同的子维度。</p>
 <p><strong>RES-D（可调度资源）</strong>：这是快速波动的、即时可用的心理能量。其特征包括：时间尺度为分钟至天；敏感于睡眠、营养、急性应激和近期的认知/情绪负荷；可通过休息、放松、营养补充和行为激活在数小时至数天内恢复。RES-D的功能角色类似于一个组织的<strong>运营资本</strong>。M3-RES-D（意志资源）的耗竭表现为自我控制任务的失败、决策疲劳；M4-RES-D（情绪容限）的耗竭表现为情绪调节能力下降、易激惹。RES-D对应G-M-A-R中的<strong>MODULATE</strong>操作。</p>
 <p><strong>RES-B（基底资源）</strong>：这是缓慢变化的、长期积累的心理资本。其特征包括：时间尺度为月至年；由长期的生活经历、关系质量、价值实现和安全感积累构成；抵抗快速变化，需要结构性干预才能持久提升。RES-B的功能角色类似于一个组织的<strong>核心资本</strong>。M4-RES-B（安全感基底）的薄弱表现为长期的防御性、过度警觉；M5-RES-B（叙事整合基底）的薄弱表现为自我叙事断裂。RES-B不能通过MODULATE直接补充——它需要通过ALIGN、RELINK和GATE等结构性操作间接建设。</p>
 <p><strong>RES-D与RES-B的临床区分意义</strong>。区分RES-D和RES-B直接指导干预决策。一个以RES-D枯竭为主的患者（如急性应激后的失眠）应优先接受MODULATE+型干预——睡眠卫生、运动、任务减负。一个以RES-B薄弱为主的患者（如长期依恋创伤导致的慢性不安全感）需要通过ALIGN/RELINK进行结构性修复——如果误用MODULATE+，其效果将是暂时的、不持久的。</p>
 <hr class="section-divider">
-<h3>6.3 调度层：DSP-F前景与DSP-B后台</h3>
+<h2>6.3 调度层：DSP-F前景与DSP-B后台</h2>
 <p>调度层描述的是心理系统的<strong>过程状态</strong>——哪些心理过程当前正在运行。它回答“系统此刻在做什么”。</p>
 <p><strong>DSP-F（前景调度）</strong>：这是需要意识参与、目标导向、资源消耗高的主动控制过程。其特征包括：执行慢、可被有意识地启动和终止、灵活性高、消耗RES-D。DSP-F对应卡尼曼“双系统理论”中的系统2——审慎推理、逻辑分析、冲动抑制。DSP-F对应G-M-A-R中的<strong>GATE+</strong>（启动一个前台过程）和<strong>GATE–</strong>（抑制一个前台过程）。</p>
 <p><strong>DSP-B（后台调度）</strong>：这是自动化、无需意识参与、资源消耗低的背景过程。其特征包括：执行快、难以被有意识地直接终止（需要间接调度）、固化后高度稳定。DSP-B对应卡尼曼的系统1——直觉反应、习惯性行为、自动化的情绪反应。DSP-B对应G-M-A-R中的<strong>GATE–</strong>（抑制一个后台过程）——这一操作通常不是直接“关掉”DSP-B，而是通过激活竞争性的DSP-F过程来间接压制。</p>
 <p><strong>DSP-F与DSP-B的神经科学基础</strong>。DSP-F/B的区分在大尺度脑网络层面获得了独立的兼容性支持。默认模式网络(DMN)在静息态、心智游移时激活，对应DSP-B；额顶控制网络(FPN)在执行外部任务时激活，对应DSP-F。两者在静息态下呈稳定的反相关。</p>
 <p><strong>DSP-B“劫持”的临床意义</strong>。当RES-D严重枯竭或DSP-F因疲劳而功能下降时，DSP-B过程可能“劫持”系统的控制权，导致自动化、适应不良的行为模式在没有意识许可的情况下持续运行。典型的例子包括：压力下的习惯性暴食、焦虑时的回避行为、失眠时的侵入性反刍思维。在这些情况下，试图通过“讲道理”（ALIGN STR-R）来改变行为往往是低效的——优先干预应该是通过感官锚定、行为激活或环境重新设计来<strong>GATE–</strong>失控的DSP-B过程。</p>
 <hr class="section-divider">
-<h3>6.4 结构层：STR-R规则、STR-C连接与STR-S序列</h3>
+<h2>6.4 结构层：STR-R规则、STR-C连接与STR-S序列</h2>
 <p>结构层描述的是心理系统的<strong>配置状态</strong>——那些稳定地决定系统如何响应输入的深层参数。它回答“系统为何以这种方式运行”。</p>
 <p><strong>STR-R（规则结构）</strong>：这是命题性的、可被语言表述的知识——信念、规则、图式、价值观。STR-R以“如果-那么”的形式组织（如“如果我犯错，就说明我无能”）。其知识类型是陈述性知识（知道“是什么”）。STR-R的改变可以通过逻辑辩论、证据呈现和行为实验来实现——这些操作属于G-M-A-R中的<strong>ALIGN</strong>。</p>
 <p><strong>STR-C（连接结构）</strong>：这是关联性的、非命题性的知识——情感连接、条件化联想、依恋模式、内隐态度。STR-C以加权网络的形式组织（如“亲密→被抛弃”的连接权重为0.78）。其知识类型是关联性知识（知道“什么与什么相连”）。STR-C的改变不能仅通过逻辑辩论实现——它需要通过新的体验（如矫正性情感体验）来重新加权连接。这些操作属于G-M-A-R中的<strong>RELINK</strong>。STR-C是INTRE在功能层对条件反射、情绪记忆、内隐联结和依恋模式等“连接权重”相关现象的理论整合创新。</p>
@@ -86,7 +86,7 @@
 <p><strong>STR三分法的临床区分意义</strong>。区分STR-R、STR-C和STR-S直接影响干预技术的选择： - STR-R问题（如“我必须完美”的非理性信念）→ 优先使用ALIGN类技术（认知重构） - STR-C问题（如创伤后“亲密→危险”的连接）→ 优先使用RELINK类技术（暴露、EMDR） - STR-S问题（如习惯性回避行为序列）→ 优先使用GATE类技术（刺激控制、行为排练）</p>
 <p>将三类结构问题混为一谈，会导致干预靶点失焦——这是临床中“道理都懂但就是改不了”现象的常见原因。</p>
 <hr class="section-divider">
-<h3>6.5 完备性论证：R-D-S的正交性与覆盖力</h3>
+<h2>6.5 完备性论证：R-D-S的正交性与覆盖力</h2>
 <p>R-D-S三维是否真正正交（即彼此独立，不可互相化约）？这一问题至关重要，因为如果三个维度存在本质上的重叠，那么42维状态空间就存在概念冗余。</p>
 <p><strong>正交性</strong>：R、D、S在概念定义上严格正交。资源描述存量，调度描述流量，结构描述控制规则。三者之间的共变是系统动力学的表现（并行激活、因果耦合、资源依赖），而非维度定义的重叠。没有发现不可分解的“本质捆绑”。</p>
 <p><strong>完备性</strong>：是否可能用两个维度来描述心理状态？压力测试表明，这种简化会导致关键信息丢失。S层的结构参数决定了D层和R层的行为模式——一个具有“我必须完美”规则的系统，即使在RES-D充足的情况下，也会表现出与没有该规则的系统完全不同的调度模式和资源消耗模式。反之，增加维度（如节律相位）会产生与现有维度的重叠——可以被S-P的时间系统或STR-S的节律设定点吸收。</p>
@@ -103,7 +103,7 @@
 3. 本章将R-D-S定位为工程收敛解而非对心理实体结构的发现。这一认识论定位对INTRE的科学性是增强还是削弱？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -128,19 +128,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -205,8 +205,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -225,5 +225,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · 导论教材</title>
+    <meta name="description" content="INTRE 导论教材：29 章正文加 14 篇附录，系统覆盖功能层心理学框架全部核心内容，从范式演变到计算愿景。">
+    <meta property="og:title" content="导论教材 · INTRE">
+    <meta property="og:description" content="INTRE 导论教材：29 章正文加 14 篇附录，系统覆盖功能层心理学框架全部核心内容，从范式演变到计算愿景。">
+    <meta property="og:type" content="article">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -50,11 +54,12 @@
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -66,7 +71,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>📖 导论教材</h1>
         <div class="subhead">功能层心理学：基于 UPLS 与 PSE 的结构范式导论</div>
 
@@ -76,42 +81,42 @@
         </div>
 
         <!-- 正文 -->
-        <div class="section-label"><i class="fas fa-book"></i> 正文（第1章 - 第29章）</div>
+        <div class="section-label"><i class="fas fa-book" aria-hidden="true"></i> 正文（第1章 - 第29章）</div>
 
         <div class="chapter-grid">
-            <a href="ch01.html" class="chapter-card"><div><span class="ch-num">1</span><span class="ch-title">范式演变：从变量到功能层诞生</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">心理学范式演变史，变量范式的危机与功能层的提出</div></a>
-            <a href="ch02.html" class="chapter-card"><div><span class="ch-num">2</span><span class="ch-title">层次定位：本体论、认识论与合法性</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">功能层的本体论与认识论定位及合法性辩护</div></a>
-            <a href="ch03.html" class="chapter-card"><div><span class="ch-num">3</span><span class="ch-title">框架总览：INTRE核心资产与子系统</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">六大核心资产·三大基础设施·四阶范式转变框架</div></a>
-            <a href="ch04.html" class="chapter-card"><div><span class="ch-num">4</span><span class="ch-title">范式批判：变量范式的边界与吸纳</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">变量范式的边界分析及对其合理成分的吸纳</div></a>
-            <a href="ch05.html" class="chapter-card"><div><span class="ch-num">5</span><span class="ch-title">架构推导：从元公理到操作系统</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">从 N-S-R 元公理推导至 M-R-D-S 操作系统的完整过程</div></a>
-            <a href="ch06.html" class="chapter-card"><div><span class="ch-num">6</span><span class="ch-title">状态维度：资源、调度与结构三轴</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">RES/DSP/STR 三轴状态维度体系及相互约束</div></a>
-            <a href="ch07.html" class="chapter-card"><div><span class="ch-num">7</span><span class="ch-title">功能模块：M1至M6划分与级联</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">六大模块的划分依据、功能边界与级联依赖关系</div></a>
-            <a href="ch08.html" class="chapter-card"><div><span class="ch-num">8</span><span class="ch-title">状态向量：42维表示与动力学</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">42维状态向量表示方法、动力学方程与多模态融合</div></a>
-            <a href="ch09.html" class="chapter-card"><div><span class="ch-num">9</span><span class="ch-title">测量方法：ABC分类与桥接校准</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">A/B/C三类测量成熟度分类；桥接-校准-原生三阶段优化路径</div></a>
-            <a href="ch10.html" class="chapter-card"><div><span class="ch-num">10</span><span class="ch-title">原子操作：GMAR语法与临床直觉</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">GATE/MODULATE/ALIGN/RELINK 四种原子操作的语法定义</div></a>
-            <a href="ch11.html" class="chapter-card"><div><span class="ch-num">11</span><span class="ch-title">干预序列：DRS深度法则与例外</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">D-R-S 诊断深度法则及其已知例外与边界条件</div></a>
-            <a href="ch12.html" class="chapter-card"><div><span class="ch-num">12</span><span class="ch-title">流派分解：六大流派的GMAR映射</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">六大心理治疗流派（CBT/DBT/ACT/EFT/精神分析/人本）的映射</div></a>
-            <a href="ch13.html" class="chapter-card"><div><span class="ch-num">13</span><span class="ch-title">流派生成：从语法空位到预测疗法</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">通过语法空位发现预测新疗法的生成机制</div></a>
-            <a href="ch14.html" class="chapter-card"><div><span class="ch-num">14</span><span class="ch-title">概念标识：PCUI编码与同义词映射</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">PCUI 概念唯一标识编码与跨流派同义词消歧映射</div></a>
-            <a href="ch15.html" class="chapter-card"><div><span class="ch-num">15</span><span class="ch-title">语义架构：PSA推理与PSL编译</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">PSA 心理语义推理引擎与 PSL 编译管线</div></a>
-            <a href="ch16.html" class="chapter-card"><div><span class="ch-num">16</span><span class="ch-title">共识工程：三阶段知识生产流水线</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">PCC/PCF/PCV 三阶段共识工程知识生产流水线</div></a>
-            <a href="ch17.html" class="chapter-card"><div><span class="ch-num">17</span><span class="ch-title">逻辑指纹：解析差异的标准化治理</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">逻辑指纹方法论及解析差异的标准化治理机制</div></a>
-            <a href="ch18.html" class="chapter-card"><div><span class="ch-num">18</span><span class="ch-title">PSE架构：五层引擎与心智六论</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">PSE 五层计算引擎架构（架构/算法/参数/方法/协议）与心智六论</div></a>
-            <a href="ch19.html" class="chapter-card"><div><span class="ch-num">19</span><span class="ch-title">系统动力学：资源、调度与结构方程</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">系统动力学微分方程：资源消耗/恢复、调度分配、结构塑性</div></a>
-            <a href="ch20.html" class="chapter-card"><div><span class="ch-num">20</span><span class="ch-title">仿真校准：蒙特卡罗与贝叶斯</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">蒙特卡罗仿真与贝叶斯校准方法；三通道贝叶斯融合</div></a>
-            <a href="ch21.html" class="chapter-card"><div><span class="ch-num">21</span><span class="ch-title">临床案例：焦虑、创伤与抑郁</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">三种典型临床案例（王梅·倦怠；林芳·暴食；张薇·焦虑）的完整走查</div></a>
-            <a href="ch22.html" class="chapter-card"><div><span class="ch-num">22</span><span class="ch-title">神经对接：翻译与约束的根本差异</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">现象层对接 vs 神经层约束——两种对接类型的本质区别</div></a>
-            <a href="ch23.html" class="chapter-card"><div><span class="ch-num">23</span><span class="ch-title">双向约束：正向预测与反向信号</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">功能层→神经层正向预测与神经层→功能层反向信号的双向闭环</div></a>
-            <a href="ch24.html" class="chapter-card"><div><span class="ch-num">24</span><span class="ch-title">边界修订：从信号检测到概念修订</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">从边界信号检测到 ABC 类概念修订的完整决策路径</div></a>
-            <a href="ch25.html" class="chapter-card"><div><span class="ch-num">25</span><span class="ch-title">REVER：结构伦理、依赖雷达与门控</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">REVER 伦理引擎：四层架构·依赖雷达 Dₛ·四点式伦理门控</div></a>
-            <a href="ch26.html" class="chapter-card"><div><span class="ch-num">26</span><span class="ch-title">心理AI：功能层驱动的智能交互</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">PSE+UPLS+UNIS 三层架构的心理AI；三通道融合在AI中的实现</div></a>
-            <a href="ch27.html" class="chapter-card"><div><span class="ch-num">27</span><span class="ch-title">跨学科接口：学科映射与范式协作</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">跨学科接口设计：变量范式+结构范式的互补协作框架</div></a>
-            <a href="ch28.html" class="chapter-card"><div><span class="ch-num">28</span><span class="ch-title">研究方法：从N-of-1到状态空间建模</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">从个体化 N-of-1 研究到状态空间模型的方法论体系</div></a>
-            <a href="ch29.html" class="chapter-card"><div><span class="ch-num">29</span><span class="ch-title">未来方向：挑战、争议与计算愿景</span><span class="card-link-icon"><i class="fas fa-arrow-right"></i></span></div><div class="ch-desc">实证挑战·术语争议·计算愿景·开放问题</div></a>
+            <a href="ch01.html" class="chapter-card"><div><span class="ch-num">1</span><span class="ch-title">范式演变：从变量到功能层诞生</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">心理学范式演变史，变量范式的危机与功能层的提出</div></a>
+            <a href="ch02.html" class="chapter-card"><div><span class="ch-num">2</span><span class="ch-title">层次定位：本体论、认识论与合法性</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">功能层的本体论与认识论定位及合法性辩护</div></a>
+            <a href="ch03.html" class="chapter-card"><div><span class="ch-num">3</span><span class="ch-title">框架总览：INTRE核心资产与子系统</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">六大核心资产·三大基础设施·四阶范式转变框架</div></a>
+            <a href="ch04.html" class="chapter-card"><div><span class="ch-num">4</span><span class="ch-title">范式批判：变量范式的边界与吸纳</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">变量范式的边界分析及对其合理成分的吸纳</div></a>
+            <a href="ch05.html" class="chapter-card"><div><span class="ch-num">5</span><span class="ch-title">架构推导：从元公理到操作系统</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">从 N-S-R 元公理推导至 M-R-D-S 操作系统的完整过程</div></a>
+            <a href="ch06.html" class="chapter-card"><div><span class="ch-num">6</span><span class="ch-title">状态维度：资源、调度与结构三轴</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">RES/DSP/STR 三轴状态维度体系及相互约束</div></a>
+            <a href="ch07.html" class="chapter-card"><div><span class="ch-num">7</span><span class="ch-title">功能模块：M1至M6划分与级联</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">六大模块的划分依据、功能边界与级联依赖关系</div></a>
+            <a href="ch08.html" class="chapter-card"><div><span class="ch-num">8</span><span class="ch-title">状态向量：42维表示与动力学</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">42维状态向量表示方法、动力学方程与多模态融合</div></a>
+            <a href="ch09.html" class="chapter-card"><div><span class="ch-num">9</span><span class="ch-title">测量方法：ABC分类与桥接校准</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">A/B/C三类测量成熟度分类；桥接-校准-原生三阶段优化路径</div></a>
+            <a href="ch10.html" class="chapter-card"><div><span class="ch-num">10</span><span class="ch-title">原子操作：GMAR语法与临床直觉</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">GATE/MODULATE/ALIGN/RELINK 四种原子操作的语法定义</div></a>
+            <a href="ch11.html" class="chapter-card"><div><span class="ch-num">11</span><span class="ch-title">干预序列：DRS深度法则与例外</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">D-R-S 诊断深度法则及其已知例外与边界条件</div></a>
+            <a href="ch12.html" class="chapter-card"><div><span class="ch-num">12</span><span class="ch-title">流派分解：六大流派的GMAR映射</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">六大心理治疗流派（CBT/DBT/ACT/EFT/精神分析/人本）的映射</div></a>
+            <a href="ch13.html" class="chapter-card"><div><span class="ch-num">13</span><span class="ch-title">流派生成：从语法空位到预测疗法</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">通过语法空位发现预测新疗法的生成机制</div></a>
+            <a href="ch14.html" class="chapter-card"><div><span class="ch-num">14</span><span class="ch-title">概念标识：PCUI编码与同义词映射</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">PCUI 概念唯一标识编码与跨流派同义词消歧映射</div></a>
+            <a href="ch15.html" class="chapter-card"><div><span class="ch-num">15</span><span class="ch-title">语义架构：PSA推理与PSL编译</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">PSA 心理语义推理引擎与 PSL 编译管线</div></a>
+            <a href="ch16.html" class="chapter-card"><div><span class="ch-num">16</span><span class="ch-title">共识工程：三阶段知识生产流水线</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">PCC/PCF/PCV 三阶段共识工程知识生产流水线</div></a>
+            <a href="ch17.html" class="chapter-card"><div><span class="ch-num">17</span><span class="ch-title">逻辑指纹：解析差异的标准化治理</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">逻辑指纹方法论及解析差异的标准化治理机制</div></a>
+            <a href="ch18.html" class="chapter-card"><div><span class="ch-num">18</span><span class="ch-title">PSE架构：五层引擎与心智六论</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">PSE 五层计算引擎架构（架构/算法/参数/方法/协议）与心智六论</div></a>
+            <a href="ch19.html" class="chapter-card"><div><span class="ch-num">19</span><span class="ch-title">系统动力学：资源、调度与结构方程</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">系统动力学微分方程：资源消耗/恢复、调度分配、结构塑性</div></a>
+            <a href="ch20.html" class="chapter-card"><div><span class="ch-num">20</span><span class="ch-title">仿真校准：蒙特卡罗与贝叶斯</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">蒙特卡罗仿真与贝叶斯校准方法；三通道贝叶斯融合</div></a>
+            <a href="ch21.html" class="chapter-card"><div><span class="ch-num">21</span><span class="ch-title">临床案例：焦虑、创伤与抑郁</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">三种典型临床案例（王梅·倦怠；林芳·暴食；张薇·焦虑）的完整走查</div></a>
+            <a href="ch22.html" class="chapter-card"><div><span class="ch-num">22</span><span class="ch-title">神经对接：翻译与约束的根本差异</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">现象层对接 vs 神经层约束——两种对接类型的本质区别</div></a>
+            <a href="ch23.html" class="chapter-card"><div><span class="ch-num">23</span><span class="ch-title">双向约束：正向预测与反向信号</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">功能层→神经层正向预测与神经层→功能层反向信号的双向闭环</div></a>
+            <a href="ch24.html" class="chapter-card"><div><span class="ch-num">24</span><span class="ch-title">边界修订：从信号检测到概念修订</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">从边界信号检测到 ABC 类概念修订的完整决策路径</div></a>
+            <a href="ch25.html" class="chapter-card"><div><span class="ch-num">25</span><span class="ch-title">REVER：结构伦理、依赖雷达与门控</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">REVER 伦理引擎：四层架构·依赖雷达 Dₛ·四点式伦理门控</div></a>
+            <a href="ch26.html" class="chapter-card"><div><span class="ch-num">26</span><span class="ch-title">心理AI：功能层驱动的智能交互</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">PSE+UPLS+UNIS 三层架构的心理AI；三通道融合在AI中的实现</div></a>
+            <a href="ch27.html" class="chapter-card"><div><span class="ch-num">27</span><span class="ch-title">跨学科接口：学科映射与范式协作</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">跨学科接口设计：变量范式+结构范式的互补协作框架</div></a>
+            <a href="ch28.html" class="chapter-card"><div><span class="ch-num">28</span><span class="ch-title">研究方法：从N-of-1到状态空间建模</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">从个体化 N-of-1 研究到状态空间模型的方法论体系</div></a>
+            <a href="ch29.html" class="chapter-card"><div><span class="ch-num">29</span><span class="ch-title">未来方向：挑战、争议与计算愿景</span><span class="card-link-icon"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></div><div class="ch-desc">实证挑战·术语争议·计算愿景·开放问题</div></a>
         </div>
 
         <!-- 附录 -->
-        <div class="section-label"><i class="fas fa-paperclip"></i> 附录</div>
+        <div class="section-label"><i class="fas fa-paperclip" aria-hidden="true"></i> 附录</div>
         <div class="appendices">
             <div class="appendix-grid">
                 <a href="app-a.html" class="appendix-item"><strong>A</strong> — 42子维度</a>
@@ -130,21 +135,22 @@
                 <a href="app-n.html" class="appendix-item"><strong>N</strong> — 概念速查</a>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 <script>document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){this.closest(".nav-links").classList.remove("open");})});</script>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

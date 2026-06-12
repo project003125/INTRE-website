@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第10章 原子操作：GMAR语法与临床直觉</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)严格定义GATE/MODULATE/ALIGN/RELINK四操作的靶点和操作本质；(2)运用靶点合法性矩阵判断操作-组件映射是否合法；(3)理解双分离论证在操作不可替代性证明中的作用；(4)描述操作组合的四种交互类型；(5)能够将常见临床技术分解为G-M-A-R操作序列。</p></blockquote>
 <hr class="section-divider">
-<h3>10.1 四操作定义：GATE、MODULATE、ALIGN与RELINK</h3>
+<h2>10.1 四操作定义：GATE、MODULATE、ALIGN与RELINK</h2>
 <p>如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的<strong>干预语言</strong>——一套从M-R-D-S状态空间直接推导出的原子操作集。</p>
 <p><strong>原子操作的设计标准</strong>：靶点特异性（每个操作对应一个不可再分的功能靶点）、操作可区分性（不同操作之间存在清晰边界）、执行可转译性（每个操作可转译为具体的临床技术）、反馈可校准性（操作效果可在状态空间中被检测和量化）。</p>
 <p><strong>四个操作的概览</strong>：</p>
@@ -126,7 +126,7 @@
 </ul>
 <p>RELINK是最深层的操作，时间尺度最长，能量成本最高。在资源不足或调度不稳定的情况下强行进行RELINK可能适得其反——这是D→R→S序列的核心论证。</p>
 <hr class="section-divider">
-<h3>10.2 对偶映射：靶点合法性矩阵</h3>
+<h2>10.2 对偶映射：靶点合法性矩阵</h2>
 <p>四个操作与M-R-D-S状态空间之间存在严格的对偶映射。每个操作有<strong>直接合法靶点</strong>、<strong>间接影响</strong>和<strong>禁止表述</strong>。这一矩阵是G-M-A-R形式语法的核心规则。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -168,7 +168,7 @@
 - “我要用认知重构来治疗你的创伤连接” → 试图用ALIGN替代RELINK → 预期失败：“道理都懂，但感觉没变。”
 - “我要用睡眠卫生来提升你的自我价值感” → 试图用MODULATE+ M1-RES-D直接提升M4-RES-B → 预期失败：“睡好了，但依然觉得自己没价值。”</p></blockquote>
 <hr class="section-divider">
-<h3>10.3 不可替代性：双分离论证与替代测试</h3>
+<h2>10.3 不可替代性：双分离论证与替代测试</h2>
 <p>G-M-A-R四操作是否可以被简化（合并为三个）或需要扩展（增加到五个）？不可替代性论证从两个方向展开：<strong>必要性</strong>（每个操作覆盖一个其他操作无法覆盖的功能靶点）和<strong>充分性</strong>（四个操作足以覆盖已知的心理干预功能靶点）。</p>
 <p><strong>必要性的双分离论证</strong>。两个操作如果功能不同，应该存在一种情境，其中一个操作有效而另一个无效：</p>
 <div class="table-wrap"><table>
@@ -239,7 +239,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h3>10.4 操作组合：序列、嵌套与交互效应</h3>
+<h2>10.4 操作组合：序列、嵌套与交互效应</h2>
 <p>真实世界的心理干预很少是单一原子操作。成熟疗法都是多个原子操作按特定序列组合而成的<strong>复合干预</strong>。</p>
 <p><strong>操作序列</strong>。大多数心理干预遵循一个时间序列：</p>
 <ul>
@@ -298,7 +298,7 @@
 3. 为什么MODULATE不能直接作用于RES-B？如果试图这样做，临床后果可能是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -323,19 +323,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -400,8 +400,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -420,5 +420,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

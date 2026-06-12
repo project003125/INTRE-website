@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLS语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIS的神经似然输入。</p></blockquote>
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 <hr class="section-divider">
-<h3>18.1 五层架构：架构、算法、参数、方法论与协议</h3>
+<h2>18.1 五层架构：架构、算法、参数、方法论与协议</h2>
 <p><strong>心理系统工程引擎(PSE)</strong> 是INTRE框架的计算核心。它将功能层的静态描述语法(M-R-D-S)和操作语法(G-M-A-R)转化为可运行、可校准、可预测的动力学仿真系统。PSE采用五层架构，每一层承担不同的工程职责。</p>
 <p><strong>第一层：架构层(Architecture Layer)</strong>——PSE的静态本体论基础。包含： - <strong>M-R-D-S内感架构</strong>：42维状态空间的定义 - <strong>G-M-A-R操作语法</strong>：四个原子操作的定义 - <strong>S-P外感架构</strong>：环境输入的六层来源分类 - <strong>N-S-R元架构</strong>：最高阶组织原则，在MDT优化目标函数中体现为长期功能完整性指数\(O_i(T)\)的驱动</p>
 <p>架构层变化最慢，只在INTRE框架版本升级时修改。</p>
@@ -105,7 +105,7 @@
 <p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIS，实现神经模型的在线个体化微调。</p>
 <p><strong>层间依赖关系</strong>：架构层 → 算法层 → 参数层 → 方法论层 → 协议层（单向）。下层变化影响上层，但上层变化不应波及下层。这实现了<strong>关注点分离</strong>：测量工具改进只影响参数层，不会迫使架构层修改。</p>
 <hr class="section-divider">
-<h3>18.2 心智六论：MCT至MET的职责分工</h3>
+<h2>18.2 心智六论：MCT至MET的职责分工</h2>
 <p>心智六论是PSE算法层的核心，每个理论模块规定一类动力学规则。</p>
 <p><strong>MCT：心智编译理论(Mental Compilation Theory)</strong>——解决“输入问题”：将非结构化临床叙述编译为M-R-D-S状态向量。编译流程：词法分析（PSL切分）→ 概念映射（PCUI匹配）→ 语境消歧 → 状态向量填充 → 不确定性量化（输出概率分布\(p(\Psi_0)\)）。</p>
 <p><strong>MTT：心智拓扑理论(Mental Topology Theory)</strong>——解决“结构问题”：状态空间中各分量之间的依赖关系。将心理系统建模为有向加权图\(G=(V,E)\)，节点是M-R-D-S子单元，边是有向依赖关系。核心输出： - <strong>依赖矩阵</strong>：42×42的权重矩阵 - <strong>枢纽节点识别</strong>：计算出度、入度、介数中心性（M4通常最高） - <strong>级联路径分析</strong>：识别典型传播路径 - <strong>反馈环路检测</strong>：识别正/负反馈回路</p>
@@ -115,7 +115,7 @@
 <p><strong>MET：心智生态理论(Mental Ecology Theory)</strong>——解决“环境-系统耦合问题”：S-P环境输入如何调制M-R-D-S状态演化。定义两种耦合方向： - <strong>下行耦合（环境→系统）</strong>：S-P向量作为强制输入进入状态演化方程 - <strong>上行耦合（系统→环境）</strong>：系统状态影响个体如何选择和修改环境（生态位建构）</p>
 <p>MET还定义<strong>生态位(ecological niche)</strong>：个体典型S-P环境配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。</p>
 <hr class="section-divider">
-<h3>18.2.1 定律速查：26条核心命题</h3>
+<h2>18.2.1 定律速查：26条核心命题</h2>
 <blockquote><p><strong>说明</strong>：以下26条定律构成心智六论的形式化核心。完整推导及数学细节见01-X-03（心智六论形式化规范）。验证状态分为：<strong>F</strong>=已有实证支持；<strong>X</strong>=理论推导/待验证；<strong>P</strong>=预测性子单元/前瞻性实证待完成。</p></blockquote>
 <p><strong>MCT（心智编译理论）——5条定律</strong></p>
 <div class="table-wrap"><table>
@@ -362,7 +362,7 @@
 4. PSE的三个输入通道分别由哪些基础设施提供？UNIS在其中扮演什么角色？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -387,19 +387,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -464,8 +464,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -484,5 +484,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

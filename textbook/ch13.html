@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第13章 流派生成：从语法空位到预测疗法</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
 <hr class="section-divider">
-<h3>13.1 生成语法：从M-R-D-S空位到新干预方案</h3>
+<h2>13.1 生成语法：从M-R-D-S空位到新干预方案</h2>
 <p>INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的<strong>预测性流派</strong>。这是INTRE作为“理论引擎”的核心体现。</p>
 <p><strong>流派生成的形式化条件</strong>。任意干预方案可表示为：<code>干预 = (靶点集T ⊆ M-R-D-S子单元，操作序列O = [o₁, o₂, ..., oₖ]，优先级约束C)</code>。一个<strong>流派</strong>被定义为一组具有一致理论内核的干预方案。从INTRE语法出发生成一个新流派，需满足：靶点特异性、操作一致性、区分度、完备性、可检验性。</p>
 <p><strong>“结构空位”作为生成起点</strong>。INTRE的42维状态空间中，那些在变量范式中未被独立识别、但被功能分解逻辑强制要求的子单元——即<strong>C类预测性子单元</strong>（如M6-RES-D行为启动能量、M3-DSP-B自动放弃倾向、M1-STR-C躯体-意义连接）——正是新流派生成的理想起点。每一个C类子单元都代表一个“未被开采的功能靶点”。</p>
@@ -65,7 +65,7 @@
 <blockquote><p><strong>INTRE不能替代临床创新</strong>。INTRE不会自动发明具体技术。它所做的是：<strong>指明哪个功能靶点值得开发技术、该靶点应匹配什么原子操作、验证该操作需要检验什么预测</strong>。具体的“如何做”仍然是人类治疗师的创造性工作。</p></blockquote>
 <p><strong>INTRE与已有流派的关系定位</strong>：INTRE生成的预测性流派不是为了“取代”CBT、ACT等已有实证支持的疗法，而是为了<strong>填补它们留下的功能空白</strong>。例如，CBT主要靶向STR-R（信念），ACT主要靶向DSP-B（认知融合），行为疗法主要靶向STR-S（行为序列），精神分析主要靶向STR-C（情感连接）。但仍有功能靶点未被任何主流流派系统占据——预测性流派正是对这些空位的回应。</p>
 <hr class="section-divider">
-<h3>13.2 典范案例：默认模式调度疗法（DMD）</h3>
+<h2>13.2 典范案例：默认模式调度疗法（DMD）</h2>
 <p>默认模式调度疗法(DMD)是INTRE生成的十个预测性流派中最具代表性的方案。它展示了一个流派如何从功能层空位出发，经由G-M-A-R操作设计，最终形成可检验的干预协议。</p>
 <p><strong>问题识别：反刍与担忧的功能层定位</strong>。反刍和担忧是跨诊断的常见症状。传统流派各有侧重：CBT关注内容，ACT关注功能，正念关注态度。然而，它们都未能系统占据一个更基础的功能靶点：<strong>反刍进程本身作为一个调度过程</strong>。</p>
 <p>在INTRE框架中，反刍和担忧被定位为<strong>M2-DSP-B（认知后台调度）的失控激活</strong>——一个自动化的、持续运行的认知过程。问题不在于反刍的“内容”错了，而在于<strong>反刍这个进程的“播放开关”坏了</strong>——系统失去了关闭它的能力。</p>
@@ -186,7 +186,7 @@
 </table></div>
 <p><strong>DMD的独特贡献</strong>：填补了现有流派均未系统占据的功能层靶点——<strong>注意调度过程本身</strong>(M2-DSP-B → M1-DSP-F的门控转换)。适用人群：“理性上知道但停不下来”者、对正念不耐受者。禁忌症：急性自杀危机、需要深思的决策情境、严重解离或精神病性障碍活跃期。</p>
 <hr class="section-divider">
-<h3>13.3 其他流派：VRB、BIE、SPR与NCB简介</h3>
+<h2>13.3 其他流派：VRB、BIE、SPR与NCB简介</h2>
 <p>INTRE共生成了十个预测性流派，覆盖了从启动能量到数字边界、从叙事资本到算法厌恶等多个功能空位。以下为各流派的核心功能签名概览（完整映射见附录E）：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -260,7 +260,7 @@
 </table></div>
 <p><strong>流派间的协同</strong>：这些预测性流派可以协同使用。例如，一个同时存在意志资源枯竭(M3-RES-D低)和启动困难(M6-RES-D低)的患者，可以先使用VRB进行资源预算管理，再使用BIE训练启动能量。INTRE的M-R-D-S坐标系使得这种跨流派的精准匹配成为可能。</p>
 <hr class="section-divider">
-<h3>13.4 验证路线：从概念验证到RCT的五阶段</h3>
+<h2>13.4 验证路线：从概念验证到RCT的五阶段</h2>
 <p>预测性流派的提出不是终点，而是实证检验的起点。INTRE为每一个预测性流派设计了分层验证路线。</p>
 <p><strong>第一阶段：概念验证与原型开发（1-2年）</strong>：开发标准化治疗手册；培训治疗师；在小样本(N=10-20)中进行可行性测试。通过标准：脱落率<20%，无严重不良事件。</p>
 <p><strong>第二阶段：单臂预实验与效应量估计（2-3年）</strong>：在N=30-50样本中评估初步效果。通过标准：效应量d > 0.5，改善在随访期维持。</p>
@@ -280,7 +280,7 @@
 3. 如果一个预测性流派的核心预测在多个独立RCT中被证伪，按照INTRE的验证路线图应如何处理？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -305,19 +305,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -382,8 +382,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -402,5 +402,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

@@ -236,16 +236,13 @@ body {
 
 .textbook-content tr:last-child td { border-bottom: none; }
 
-/* ========== VERSION RECORD TITLE ========== */
-/* 替代 h2，不出现在 JS 生成的 TOC 目录中 */
+/* 版本记录标题（替代 h2，避免被 TOC 抓取） */
 .version-record-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-slate-500);
+    color: var(--text);
     margin: 2.5rem 0 1rem;
-    letter-spacing: 0;
-    border-top: var(--stroke-hairline) solid var(--color-slate-200);
-    padding-top: 1.5rem;
+    letter-spacing: -0.02em;
 }
 
 /* ========== HORIZONTAL RULES ========== */
@@ -287,7 +284,7 @@ body {
     color: var(--color-slate-500);
     padding: 0.45rem 0.9rem;
     border-radius: 6px;
-    transition: all 0.15s ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .nav-link:hover { background: var(--color-slate-100); color: var(--color-navy-600); }

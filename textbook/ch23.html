@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第23章 双向约束：正向预测与反向信号</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述双向约束闭环的正反两条路径及其运行逻辑；(2)区分硬约束、软约束、兼容性信号三类反馈信号及其处理规则；(3)理解分层响应机制（参数层/模型层/映射层）的设计原理；(4)陈述级联失效预测命题及其证伪条件；(5)了解UNIS RTE-Cal如何实现反向约束的工程闭环。</p></blockquote>
 <hr class="section-divider">
-<h3>23.1 闭环架构：功能层→神经层→功能层</h3>
+<h2>23.1 闭环架构：功能层→神经层→功能层</h2>
 <p>双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。</p>
 <pre><code class="language-text">┌─────────────────────────────────────────────────────────────────┐
 │                      双向约束闭环                                 │
@@ -107,7 +107,7 @@
 </table></div>
 <p>功能层同样承担主动角色——通过级联预测向神经科学提问，从“下游接收者”转变为“问题定义者”。</p>
 <hr class="section-divider">
-<h3>23.2 正向路径：级联预测与整合坐标系</h3>
+<h2>23.2 正向路径：级联预测与整合坐标系</h2>
 <p><strong>级联预测的生成机制</strong>。级联预测从功能层的先验结构中演绎而来： 1. 从MTT依赖矩阵中识别上下游关系（如M1→M3依赖边权重0.85） 2. 从MKT中引入时序约束（M1-RES-D消耗速率约0.15/h） 3. 推导出包含滞后参数的时序假说：M1-RES-D枯竭后约3-6小时，M3-RES-D将跌破功能阈值</p>
 <p><strong>整合框架：将零散神经发现组织进统一坐标系</strong>：</p>
 <div class="table-wrap"><table>
@@ -140,7 +140,7 @@
 </tbody>
 </table></div>
 <hr class="section-divider">
-<h3>23.3 反向信号：硬约束、软约束与兼容性信号</h3>
+<h2>23.3 反向信号：硬约束、软约束与兼容性信号</h2>
 <p>当神经层的反馈进入功能层时，它不是“支持”或“否定”的二元判决，而是需要被分层处理的三类信号。</p>
 <p><strong>第一类：硬约束（不可违反的物理极限）</strong>。神经生物学已经稳定确立的定量边界，功能层参数不能违反。</p>
 <div class="table-wrap"><table>
@@ -238,7 +238,7 @@
 </table></div>
 <p><strong>关键结论</strong>：三类信号中，没有任何一类有资格单方面证伪一个功能主张。证伪只能在功能层内部完成。</p>
 <hr class="section-divider">
-<h3>23.4 分层响应：参数快变、模型中变与映射慢变</h3>
+<h2>23.4 分层响应：参数快变、模型中变与映射慢变</h2>
 <p>反向约束的信号按<strong>分层响应规则</strong>处理，确保系统既不会因偶然噪声而频繁修改核心概念，也不会对系统性偏差视而不见。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -275,12 +275,12 @@
 <p><strong>分层响应的逻辑</strong>：信号的强度与响应成本的匹配。参数校准低成本（每次EMA更新），模型调整中等成本，概念重审高成本——触发门槛足够高。</p>
 <p><strong>假阳性保护机制</strong>： - 参数层更新：每次新观测到达时执行，无门槛 - 模型层调整触发：至少3个独立样本中观察到同向残差 - 概念映射层重审触发：跨至少2个实验室、3种测量模态、多个临床情境的稳健残差</p>
 <hr class="section-divider">
-<h3>23.5 工程案例：UNIS RTE-Cal的反向约束闭环实现</h3>
+<h2>23.5 工程案例：UNIS RTE-Cal的反向约束闭环实现</h2>
 <p>前四节从哲学和算法层面描述了反向约束的分类与分层响应。本节展示这一机制在UNIS中的工程实现——特别是RTE-Cal（实时引擎的校准子模块）如何将“反向约束”从抽象原则转化为可运行的个体化闭环。</p>
-<h4>23.5.1 从静态约束到动态校准</h4>
+<h3>23.5.1 从静态约束到动态校准</h3>
 <p>如第22.5节所述，UNIS的L5神经先验库（NPL）存储了硬约束和软先验，用于在推理时裁剪或约束L4模型的输出。但这仍然是<strong>静态</strong>的——约束在运行时被应用，但不随个体数据变化而更新。</p>
 <p>RTE-Cal将反向约束推进到<strong>动态</strong>层面：它接收PSE反馈的状态估计和校准残差，递归更新个体化的模型参数。这个过程的本质是：<strong>神经层不仅对功能层施加约束，还通过PSE的状态估计获得反馈，进而调整自己对功能状态的映射</strong>。</p>
-<h4>23.5.2 闭环路径与协议</h4>
+<h3>23.5.2 闭环路径与协议</h3>
 <p>UNIS与PSE之间的双向通信协议定义了三条通道：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -318,7 +318,7 @@
 <li><strong>更新</strong>：RTE-Cal异步执行递归贝叶斯更新（卡尔曼滤波或粒子滤波），调整L4模型参数</li>
 <li><strong>迭代</strong>：更新后的参数在后续推理中使用，残差持续减小</li>
 </ol>
-<h4>23.5.3 工程意义：反向约束的可审计执行</h4>
+<h3>23.5.3 工程意义：反向约束的可审计执行</h3>
 <p>这一设计使第23.2-23.4节中描述的“反向约束”不再是抽象的哲学原则或一次性的事后修正，而是：</p>
 <ul>
 <li><strong>可执行的</strong>：约束（硬约束、软先验）在L5中编码，运行时自动裁剪；个体化校准由RTE-Cal自动完成</li>
@@ -348,7 +348,7 @@
 </table></div>
 <p>RTE-Cal将“反向路径”从一次性信号处理升级为持续运行的闭环学习系统，使功能层与神经层之间的约束关系不再是单向的“神经→功能”强制，而是双向的、渐进校准的协同过程。</p>
 <hr class="section-divider">
-<h3>23.6 级联命题：可证伪的核心预测</h3>
+<h2>23.6 级联命题：可证伪的核心预测</h2>
 <p>以下预测是功能层向神经科学输出的核心产出，包含明确证伪条件。</p>
 <p><strong>Cascade-1：资源崩塌级联的时序验证</strong></p>
 <blockquote><p><strong>预测内容</strong>：在持续觉醒状态下，M1-RES-D的下降将先于M3-RES-D的下降约3-6小时；M3-RES-D下降至基线30%以下时，M6-DSP-B的触发频率将显著上升。</p></blockquote>
@@ -371,7 +371,7 @@
 4. UNIS RTE-Cal如何实现“反向约束”的工程闭环？它与§22.4的三层过滤规则有何对应关系？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -396,19 +396,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -473,8 +473,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -493,5 +493,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

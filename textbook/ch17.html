@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,13 +58,13 @@
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
 <blockquote><p><strong>本章定位</strong>：第14-15章介绍了UPLS的静态知识架构，第16章介绍了多视角共识工程。本章讨论UPLS知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
 <hr class="section-divider">
-<h3>17.1 治理必要性：解析差异的必然性</h3>
+<h2>17.1 治理必要性：解析差异的必然性</h2>
 <p>在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。</p>
 <p><strong>这不是UPLS框架的逻辑缺陷，而是心理现象复杂性的自然体现。</strong> 解析差异的根源包括： - <strong>流派聚焦差异</strong>：CBT训练者更容易看到认知成分（M2），精神分析师更容易看到情感连接（M4） - <strong>临床经验差异</strong>：儿童治疗师和成人治疗师对同一概念可能有不同的权重分配 - <strong>文化背景差异</strong>：东亚文化中的“神经衰弱”和西方文化中的“焦虑”可能映射到不同的M-R-D-S配置</p>
 <p><strong>治理的必要性</strong>：如果不加以治理，解析差异会导致：(1)UPLS知识库的不一致性；(2)临床决策的不稳定性；(3)可重复性危机。</p>
 <blockquote><p><strong>微案例</strong>：假设70%的分析者将“心理韧性”定位为M3-RES-B，30%定位为M4-RES-B。简单采用多数决会抹杀30%的洞察。逻辑指纹体系的目标正是：<strong>判定分歧是否属于合法变体</strong>，而非消灭分歧。</p></blockquote>
 <hr class="section-divider">
-<h3>17.2 四组指纹：模块、资源、层级与操作</h3>
+<h2>17.2 四组指纹：模块、资源、层级与操作</h2>
 <p>逻辑指纹是判定不同解析是否描述同一心理实体的标准化工具。四组指纹从四个正交维度捕获心理现象的不同侧面，组合使用可形成稳定的功能特征签名。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -100,7 +100,7 @@
 </tr>
 </tbody>
 </table></div>
-<h4>17.2.1 模块指纹（M-fingerprint）</h4>
+<h3>17.2.1 模块指纹（M-fingerprint）</h3>
 <p><strong>定义</strong>：描述一个心理现象涉及哪些功能模块（M1-M6），以及各模块在该现象中的功能角色。</p>
 <p><strong>角色标签</strong>：</p>
 <div class="table-wrap"><table>
@@ -159,7 +159,7 @@
 </tbody>
 </table></div>
 <p><strong>判定规则</strong>：只要一份解析的模块指纹可以归入已建立的多视角集合，即视为合法变体。</p>
-<h4>17.2.2 资源指纹（R-fingerprint）</h4>
+<h3>17.2.2 资源指纹（R-fingerprint）</h3>
 <p><strong>定义</strong>：描述一个心理现象涉及哪些资源类型（RES-D / RES-B），以及资源的变化方向（消耗<code>-</code> / 补充<code>+</code>）。</p>
 <p><strong>取值格式</strong>：<code>{(RES-D, ±), (RES-B, ±)}</code></p>
 <div class="table-wrap"><table>
@@ -187,7 +187,7 @@
 </tbody>
 </table></div>
 <p><strong>判定规则</strong>：资源指纹必须完全一致（包括方向和是否出现）才能判定为同一实体。</p>
-<h4>17.2.3 层级指纹（D/S-fingerprint）</h4>
+<h3>17.2.3 层级指纹（D/S-fingerprint）</h3>
 <p><strong>定义</strong>：描述一个心理现象在调度层（DSP）和结构层（STR）之间的分配——哪些是表现（当前的、动态的），哪些是根源（稳定的、配置性的）。</p>
 <p><strong>取值格式</strong>： - 表现层：<code>{DSP-F, DSP-B, none}</code> - 根源层：<code>{STR-R, STR-C, STR-S, 组合}</code> - 因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></p>
 <div class="table-wrap"><table>
@@ -213,7 +213,7 @@
 </tbody>
 </table></div>
 <p><strong>判定规则</strong>：如果两份解析的因果方向相反，或表现/根源分配完全颠倒，则触发E3错误判据。</p>
-<h4>17.2.4 操作指纹（G-M-A-R-fingerprint）</h4>
+<h3>17.2.4 操作指纹（G-M-A-R-fingerprint）</h3>
 <p><strong>定义</strong>：描述干预该现象的首选G-M-A-R操作序列。</p>
 <p><strong>取值格式</strong>：有序列表<code>[op1, op2, ...]</code>，允许空列表。</p>
 <div class="table-wrap"><table>
@@ -234,7 +234,7 @@
 </table></div>
 <p><strong>判定规则</strong>： - 序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4 - 不同流派对同一现象的操作指纹可能不同，只要提供理论依据且不违反D→R→S，可视为合法变体</p>
 <hr class="section-divider">
-<h3>17.3 错误判据：E1-E5可证伪性锚点</h3>
+<h2>17.3 错误判据：E1-E5可证伪性锚点</h2>
 <p>为确保可证伪性，逻辑指纹体系明确规定了五种错误解析判定标准。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -278,7 +278,7 @@
 </table></div>
 <p><strong>错误解析的处理流程</strong>：一旦触发E1-E5中的任一条，退回编译者附带错误判据编号；连续3次触发同一错误，解析标记为“无效”。</p>
 <hr class="section-divider">
-<h3>17.4 一致性检验：编码员间Kappa标准</h3>
+<h2>17.4 一致性检验：编码员间Kappa标准</h2>
 <p>在功能层研究中使用逻辑指纹进行编码时，必须报告<strong>编码员间一致性</strong>。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -353,7 +353,7 @@
 <pre><code class="language-python">from sklearn.metrics import cohen_kappa_score
 kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 <hr class="section-divider">
-<h3>17.5 微案例：指纹判定两份解析的合法性</h3>
+<h2>17.5 微案例：指纹判定两份解析的合法性</h2>
 <p><strong>场景</strong>：两位治疗师对同一患者（表现为“一紧张就暴食”）进行功能层解析。</p>
 <p><strong>解析A（CBT取向）</strong>：“暴食是情绪驱动下的自动行为序列（M6-DSP-B），源于M4-STR-C中‘紧张→进食’的异常强连接。干预应通过暴露（RELINK M4-STR-C）和习惯逆转（GATE– M6-DSP-B）进行。”</p>
 <p><strong>解析B（精神动力取向）</strong>：“暴食是对不可承受情绪的防御性调节序列（M4-STR-S），根源在于M4-RES-B（安全感基底）薄弱。干预需通过治疗关系修复安全感（RELINK M4-STR-C → 涌现M4-RES-B）。”</p>
@@ -431,7 +431,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -456,19 +456,19 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -533,8 +533,8 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -553,5 +553,6 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

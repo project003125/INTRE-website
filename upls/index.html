@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTRE · UPLS 统一心理语言系统</title>
+    <meta name="description" content="UPLS（统一心理语言语义）：INTRE 的语义通道与内感架构，提供 M-R-D-S 状态语法和 G-M-A-R 操作语法的形式化元语言基础设施。">
+    <meta property="og:title" content="UPLS · 统一心理语言语义 · INTRE">
+    <meta property="og:description" content="UPLS（统一心理语言语义）：INTRE 的语义通道与内感架构，提供 M-R-D-S 状态语法和 G-M-A-R 操作语法的形式化元语言基础设施。">
+    <meta property="og:type" content="article">
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -174,152 +178,15 @@
             margin-left: 0.5rem;
             display: inline-block;
         }
-
-        /* === VISUAL POLISH === */
-        
-        /* Table zebra striping */
-        .table tbody tr:nth-child(even) td {
-            background-color: var(--color-slate-100);
-        }
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50) !important;
-        }
-        
-        /* Info-box left accent */
-        .info-box {
-            border-left: 3px solid var(--color-navy-400);
-            background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-navy-50) 100%);
-        }
-        
-        /* Card hover micro-interaction */
-        .card {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(31,72,128,0.08);
-            background: #fff;
-        }
-        
-        /* Section label icon circle */
-        .section-label i {
-            background: rgba(59,111,181,0.08);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Subtle top accent bar on container */
-        .container::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400), var(--color-navy-300), var(--color-navy-400), var(--color-navy-600));
-            border-radius: 0 0 3px 3px;
-            margin-bottom: 0;
-            opacity: 0;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* h3 border refinement */
-        h3 {
-            border-bottom: none;
-            padding-bottom: 0;
-            position: relative;
-            padding-left: 0.9rem;
-        }
-        h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            width: 3px;
-            background: linear-gradient(180deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
-        
-        /* Grid cards equal height */
-        .grid-2, .grid-3, .grid-4 {
-            align-items: stretch;
-        }
-        .grid-2 > .card, .grid-3 > .card, .grid-4 > .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Better scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(31,72,128,0.15);
-            color: var(--color-slate-900);
-        }
-    
-        /* Sub-page header gradient accent */
-        .container {
-            position: relative;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-navy-400), var(--color-navy-600), var(--color-navy-400), transparent);
-            border-radius: 2px;
-        }
-        
-        /* h1 with accent underline */
-        h1 {
-            position: relative;
-            display: inline-block;
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-navy-600), var(--color-navy-400));
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
     <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/" class="active">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -332,17 +199,17 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main id="main-content" class="container">
         <h1>UPLS</h1>
-        <div class="subhead">统一心理语言系统 · 形式化元语言基础设施 <span style="background:#2D8A5E;color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">语义通道</span></div>
+        <div class="subhead">统一心理语言系统 · 形式化元语言基础设施 <span style="background:var(--color-upls);color:white;padding:.2rem .8rem;border-radius:20px;font-size:.85rem;margin-left:.5rem;">语义通道</span></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
+            <i class="fas fa-quote-left" aria-hidden="true" style="color: var(--color-navy-600); opacity: 0.6; margin-right: 0.5rem;"></i>
             UPLS 提供一套严格的形式化语法，使心理状态可描述、可计算、可干预。它包含<strong>内感架构 M‑R‑D‑S</strong>、<strong>操作架构 G‑M‑A‑R</strong> 以及<strong>知识基础设施 PCUI/PSA/PSL</strong>，是 INTRE 框架的元语言基础。
         </div>
 
         <!-- 一、M-R-D-S 内感架构 -->
-        <div class="section-label"><i class="fas fa-cube"></i> 一、M‑R‑D‑S 内感架构</div>
+        <h2 class="section-label"><i class="fas fa-cube" aria-hidden="true"></i> 一、M‑R‑D‑S 内感架构</h2>
         <p style="margin-bottom: 1.5rem;">描述心理状态内部组成的语法：<strong>M</strong>（六大功能模块）、<strong>R</strong>（资源层）、<strong>D</strong>（调度层）、<strong>S</strong>（结构层）。</p>
 
         <h3>1.1 六大功能模块（M层）</h3>
@@ -406,30 +273,30 @@
         </div>
 
         <!-- 二、G-M-A-R 操作架构 -->
-        <div class="section-label"><i class="fas fa-sliders"></i> 二、G‑M‑A‑R 操作架构</div>
+        <h2 class="section-label"><i class="fas fa-sliders" aria-hidden="true"></i> 二、G‑M‑A‑R 操作架构</h2>
         <p>原子级心理操作语法，对应系统动力学的四种基本干预类型。</p>
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-door-open" style="color: var(--color-navy-400);"></i> GATE · 门控</h4>
+                <h4><i class="fas fa-door-open" aria-hidden="true" style="color: var(--color-navy-400);"></i> GATE · 门控</h4>
                 <p><strong>作用对象：</strong> DSP、STR-S</p>
                 <p><strong>操作本质：</strong> 通道开关控制（启动/抑制进程）</p>
                 <p><strong>示例：</strong> GATE(DSP-B, -) —— 抑制后台自动思维</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sliders-h" style="color: var(--color-navy-400);"></i> MODULATE · 调制</h4>
+                <h4><i class="fas fa-sliders-h" aria-hidden="true" style="color: var(--color-navy-400);"></i> MODULATE · 调制</h4>
                 <p><strong>作用对象：</strong> RES</p>
                 <p><strong>操作本质：</strong> 资源数量调节（增加/减少）</p>
                 <p><strong>示例：</strong> MODULATE(RES-D, +0.3) —— 提升调度资源</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-arrows-spin" style="color: var(--color-navy-400);"></i> ALIGN · 对齐</h4>
+                <h4><i class="fas fa-arrows-spin" aria-hidden="true" style="color: var(--color-navy-400);"></i> ALIGN · 对齐</h4>
                 <p><strong>作用对象：</strong> STR-R</p>
                 <p><strong>操作本质：</strong> 规则修正（更新信念）</p>
                 <p><strong>示例：</strong> ALIGN(STR-R, "我不必完美")</p>
             </div>
             <div class="card">
-                <h4><i class="fas fa-link" style="color: var(--color-navy-400);"></i> RELINK · 重联</h4>
+                <h4><i class="fas fa-link" aria-hidden="true" style="color: var(--color-navy-400);"></i> RELINK · 重联</h4>
                 <p><strong>作用对象：</strong> STR-C</p>
                 <p><strong>操作本质：</strong> 连接重构（改变关系权重）</p>
                 <p><strong>示例：</strong> RELINK(STR-C, "失败"→"学习", +0.6)</p>
@@ -441,7 +308,7 @@
         </div>
 
         <!-- 三、知识基础设施 -->
-        <div class="section-label"><i class="fas fa-database"></i> 三、知识基础设施</div>
+        <h2 class="section-label"><i class="fas fa-database" aria-hidden="true"></i> 三、知识基础设施</h2>
 
         <h3>3.1 PCUI · 心理概念唯一标识符</h3>
         <p>为每个心理学概念分配唯一编码，消除歧义，支持跨流派映射。</p>
@@ -477,7 +344,7 @@
         </div>
 
         <!-- 四、跨流派整合 -->
-        <div class="section-label"><i class="fas fa-diagram-project"></i> 四、跨流派整合</div>
+        <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 四、跨流派整合</h2>
 
         <div class="table-responsive">
             <table class="table">
@@ -498,7 +365,7 @@
         </div>
 
         <!-- 五、UPLS 协议体系 -->
-        <div class="section-label"><i class="fas fa-file-signature"></i> 五、UPLS 协议体系</div>
+        <h2 class="section-label"><i class="fas fa-file-signature" aria-hidden="true"></i> 五、UPLS 协议体系</h2>
 
         <div class="grid-3">
             <div class="card">
@@ -517,20 +384,21 @@
                 <p>跨流派共识验证，确定 PCUI 的效度和信度。</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.2 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

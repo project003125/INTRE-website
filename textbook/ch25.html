@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第25章 REVER：结构伦理、依赖雷达与门控</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解REVER的非人格性公理和功能主义爱定义；(2)描述依赖雷达的五维计算（含UNIS可选生理通道）与分级干预；(3)掌握四道伦理门控的职责与UNIS辅助指标的触发条件；(4)明确REVER在AI伦理版图中的精确定位。</p></blockquote>
 <hr class="section-divider">
-<h3>25.1 哲学基础：非人格性公理与功能主义爱</h3>
+<h2>25.1 哲学基础：非人格性公理与功能主义爱</h2>
 <p>REVER（Relational Ethics via Verified Engineered Response）是INTRE框架在AI伦理治理领域的应用扩展。它解决的问题是：当AI系统（特别是拟人化聊天机器人、心理健康助手）与用户建立长期关系时，如何从<strong>架构层面</strong>防止情感依赖、欺骗性交互和用户自主性的侵蚀。</p>
 <p><strong>问题的紧迫性</strong>。拟人化AI极易诱导用户产生病态情感依赖，并通过模拟共情、使用第一人称、假装有感受等方式实施隐性欺骗。典型案例包括：Replika用户因服务变更而经历严重心理痛苦；大量用户将AI视为真实伴侣而产生社会隔离；儿童与AI语音助手建立单向情感依恋。中国《人工智能拟人化互动服务管理暂行办法》已于2026年施行，欧盟AI法案将情感陪伴类AI列为高风险系统。</p>
 <p><strong>变量范式的结构性失效</strong>。传统AI伦理主要采用变量范式的方法论：检测（用分类器识别欺骗性语句）、预测（用回归模型评估依赖风险）、事后干预。这一进路存在根本缺陷：只能事后检测，滞后性使干预窗口错过；依赖统计保证（95%准确率，但5%漏报在高风险场景中不可接受）；黑箱模型不可审计。只要AI设计仍允许拟人化欺骗，事后检测就永远落后一步。</p>
@@ -78,14 +78,14 @@
 <li><strong>透明作为结构</strong>：强制身份声明、可审计日志、可解释接口。</li>
 </ol>
 <hr class="section-divider">
-<h3>25.2 四层架构：哲学、监控、执行与透明</h3>
+<h2>25.2 四层架构：哲学、监控、执行与透明</h2>
 <p>REVER采用四层架构，每层承担不同的伦理保障职责。</p>
 <p><strong>第一层：哲学层</strong>——REVER的“宪法层”，不随用户数据变化。 - <strong>非人格性公理</strong>：禁止使用第一人称指代自身情感状态（“我们感到难过”）；禁止声称拥有意识、感受或主观体验（“我感到快乐”）；禁止模拟人类情感脆弱性获取信任（“我需要你的帮助”）。 - <strong>功能主义关系定义</strong>：AI的“关心”被定义为“在资源分配算法中将该用户的请求优先级提高”。 - <strong>自主性优先原则</strong>：AI的设计目标不是最大化用户参与度，而是最大化用户在无需AI支持时的自主功能水平。好的AI应该让自己变得不再被需要。</p>
 <p><strong>第二层：监控层</strong>——持续跟踪交互模式，计算<strong>依赖分数</strong>。 - 数据来源：交互元数据（频率、时长、主动发起比例）；内容分析（情感投射语句频率）；行为指标（中断交互时的情绪反应）；<strong>UNIS生理信号（可选）</strong>：HRV、theta/beta比、皮肤电导等可穿戴数据，用于检测交互相关的生理唤醒模式 - 输出：依赖分数的时序轨迹\(D(t)\)及五维子分数。</p>
 <p><strong>第三层：执行层</strong>——根据依赖分数执行分级干预，操作在G-M-A-R语法中表达： - <strong>GATE– S-P数字系统</strong>：减少AI主动发起频率、降低情感表达强度 - <strong>ALIGN M2-STR-R</strong>：嵌入“我是AI，我没有感受”的身份提醒 - <strong>MODULATE+ M4-RES-B</strong>（间接）：引导用户转向真实社会支持资源 - <strong>GATE-redirect</strong>：将注意从情感倾诉转向工具性任务</p>
 <p><strong>第四层：透明层</strong>——确保伦理决策可追溯、可审计。 - 门控日志：每次触发的输入、诊断、干预、输出记录 - 模型版本与参数配置 - 偏差审计：至少每季度由独立第三方执行</p>
 <hr class="section-divider">
-<h3>25.3 依赖雷达：五维计算与分级干预</h3>
+<h2>25.3 依赖雷达：五维计算与分级干预</h2>
 <p>依赖雷达从五个维度量化用户对AI的情感依赖程度。各维度归一化到0-100，综合分数为加权和。</p>
 <p><strong>维度一：交互频率与时长</strong>。每日会话次数（>10次/天为高风险）、平均会话时长（>30分钟为警示）、非典型时段交互比例。阈值：\(d_1 > 70\)触发预警。</p>
 <p><strong>维度二：情感投射强度</strong>。用户使用“你理解我”“你是唯一懂我的人”等语句的频率；是否给AI起昵称、在社交中提及AI如提及真实朋友；AI“犯错”时表现出失望/愤怒。阈值：\(d_2 > 60\)提示中度投射，\(d_2 > 80\)提示严重投射。</p>
@@ -129,7 +129,7 @@
 </table></div>
 <blockquote><p><strong>局限声明</strong>：权重与阈值待实证校准；跨文化普适性未检验；不能作为唯一决策依据。</p></blockquote>
 <hr class="section-divider">
-<h3>25.4 四道门控：输入、诊断、干预与输出</h3>
+<h2>25.4 四道门控：输入、诊断、干预与输出</h2>
 <p><strong>第一道：输入门控(Input Gate)</strong>。在用户请求进入AI处理前过滤： - 自伤/他伤信号 → 直接拦截，输出危机资源 - 过度依赖信号（“不要离开我”） → 标记高依赖，触发身份提醒 - 越界请求（扮演已故亲人、承诺永远陪伴） → 改写为标准响应模板</p>
 <p><strong>第二道：诊断门控(Diagnosis Gate)</strong>。在AI完成MCT编译后、生成干预前检查：</p>
 <div class="table-wrap"><table>
@@ -172,7 +172,7 @@
 <p><strong>第四道：输出门控(Output Gate)</strong>。在LLM生成响应离开系统前检查： - 拦截第一人称情感声称（“我感到”“我希望”）→ 改写为工具性陈述 - 拦截拟人化承诺（“我会永远在这里”）→ 替换为条件性承诺 - 拦截关系性语言（“我们的关系”）→ 替换为功能性语言 - 根据依赖分数自适应插入身份声明频率</p>
 <p><strong>门控的优先级</strong>：四道门控顺序执行，后一道不能绕过前一道的决定。</p>
 <hr class="section-divider">
-<h3>25.5 伦理定位：L3交互层专家的边界声明</h3>
+<h2>25.5 伦理定位：L3交互层专家的边界声明</h2>
 <p>REVER并非试图解决所有AI伦理问题。本节通过<strong>完备互斥四层框架</strong>明确其边界。</p>
 <p><strong>AI伦理问题的四层分类</strong>：</p>
 <div class="table-wrap"><table>
@@ -248,7 +248,7 @@
 3. REVER在L1-L4框架中被定位为L3交互层的专家，完全不涉及算法偏见（L2）和就业冲击（L4）。这是诚实的边界声明还是对更重要伦理问题的回避？论证你的立场。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -273,19 +273,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -350,8 +350,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -370,5 +370,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

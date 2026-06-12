@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第1章 范式演变：从变量到功能层诞生</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 追溯心理学从哲学思辨到实验室科学的演变路径；(2) 陈述变量范式的核心元假设和三条操作准则；(3) 列举变量范式的三重危机并解释其共同根源；(4) 对比DSM、RDoC、HiTOP三个整合框架的贡献与局限；(5) 解释功能层的概念及其提出的工程必要性。</p></blockquote>
 <hr class="section-divider">
-<h3>1.1 历史溯源：从哲学思辨到实验室科学</h3>
+<h2>1.1 历史溯源：从哲学思辨到实验室科学</h2>
 <p>1879年，威廉·冯特在莱比锡大学建立了第一个心理学实验室，这一事件被普遍视为现代心理学作为独立科学的起点。冯特的工作标志着心理学从哲学母体中脱胎而出，开始采用实验方法研究意识的基本成分——这一取向后来被称为“结构主义”。然而，结构主义对内省方法的依赖很快遭到批评，因为它难以在不同的实验室之间产生可复现的结果。</p>
 <p><strong>行为主义的转向</strong>。20世纪初，约翰·华生和B.F.斯金纳将心理学的研究对象从不可观察的意识转向可观察的行为。行为主义采纳了“刺激-反应”（S-R）范式，将心理现象简化为环境刺激与行为反应之间的联结。这一范式具有鲜明的工程导向：它追求对行为的预测和控制，且其基本描述单位可以在实验室中被精确操纵和测量。行为主义主导了美国心理学近半个世纪，并发展出强大的实验传统和定量方法。</p>
 <p><strong>认知革命与信息加工模型</strong>。20世纪50-60年代，乔治·米勒、乌尔里克·奈瑟和赫伯特·西蒙等人发起了“认知革命”，将心理学的焦点从外部行为转向内部心理过程。受计算机科学和信息论的启发，认知心理学将心智类比为信息处理系统，研究注意、记忆、思维、语言等“认知过程”的编码、存储和提取规律。</p>
@@ -65,7 +65,7 @@
 <p>变量范式的核心假设可以精确陈述为：<strong>心理现象可以被分解为相互独立、可量化的变量，而科学研究的任务就是发现这些变量之间的相关或因果关系</strong>。这一假设不是经验发现，而是操作预设——它是将心理现象纳入统计模型所必须付出的本体论代价。从这一预设出发，三条操作准则被自然导出：分解性准则（心理世界由独立存在的“构念”组成，可通过量表单独测量）、相关性准则（构念之间的统计关联是对心理机制的有效描述）、可加性准则（总体心理状态可以分解为各构念效应的线性叠加）。</p>
 <p>变量范式的工具体系在过去一个世纪中臻于精密。心理测量学发展了因子分析、项目反应理论和结构方程模型；实验心理学优化了交叉滞后设计、随机对照试验和元分析；临床心理学建立了DSM诊断分类系统。这套工具体系为心理学积累了海量的经验规律——数万项实证研究、数千个标准化量表、数百种被验证有效的干预技术。然而，正如下一节将要论证的，这套工具体系也同时孕育了它的隐性危机。</p>
 <hr class="section-divider">
-<h3>1.2 黄金与危机：变量范式的三重困境</h3>
+<h2>1.2 黄金与危机：变量范式的三重困境</h2>
 <p>变量范式的成就无须赘述。但自2010年代以来，心理学经历了一场深刻的“复制危机”，这场危机暴露出变量范式在方法论和本体论层面的双重困境。</p>
 <p><strong>复制危机</strong>。2015年，开放科学合作项目对100项高影响力心理学研究进行了大规模复现，结果触目惊心：原始研究中97%报告了显著结果，而复现研究中仅有36%达到同样的统计显著性。这一发现并非孤例——社会启动效应、自我损耗效应、意志力消耗理论等经典发现相继在严格复现中折戟。复制危机的原因是多方面的：样本量不足、发表偏差、研究者自由度、p值操纵等。但这些技术层面的解释并未触及更深层的问题：<strong>如果心理学的基本描述单位（变量）在不同的实验室、不同的样本、不同的操作化方式下不能稳定复现，这是否暗示着变量本身不是心理系统中稳定的“天然关节”？</strong></p>
 <p><strong>构念膨胀</strong>。PsycTests数据库收录了约27,000个心理测量量表，其中56%从未被任何论文引用。这意味着心理学在每个概念维度上都生成了大量重复或接近重复的测量工具，但新构念的引入并未带来相应的理论整合或预测增益。构念膨胀的深层原因在于：变量范式将有限功能状态在不同情境下的无限投影读数当作独立构念加以命名，而未能建立从观测信号到功能状态的生成映射。当一个抑郁量表分数可以来自资源枯竭、价值断裂、情绪失调或认知扭曲四种完全不同机制的混合时，“抑郁”这个变量就不再是单一的心理实体，而是一个语义上拥挤的聚合标签。</p>
@@ -73,7 +73,7 @@
 <p><strong>三重危机的共同根源</strong>。这三重危机并非独立发生——它们的共同根源在于：变量范式的基本描述单位（现象层变量）与心理系统的生成结构之间存在系统性错位。同一底层功能障碍可在不同观测接口上产生看似无关的表现（如执行功能缺陷在学业、社交、情绪调节三个场景中表现为不同“症状”，被不同量表捕获为不同“构念”），而看似相关的表现可能来自完全不同的底层机制（如“焦虑”和“抑郁”的症状重叠可能源于资源枯竭驱动了两种不同的表层输出模式，而非共享一个“内化障碍”实体）。当研究者为每个新情境下的投影命名一个新的“变量”时，构念自然膨胀；当研究者试图在不同情境下复现同一变量关系时，情境参数的变化改变了投影形态，复制自然失败；当不同流派以各自的术语体系切割同一现象域时，理论自然碎片化。</p>
 <p>变量范式并非没有自我修正机制。构念效度与法则网络试图通过理论网络中的关系来定义构念；网络心理学放弃潜变量实体假设，将症状之间的激活模式作为研究对象。然而，这些修正并未改变基本描述单位：无论是法则网络中的“构念”还是网络模型中的“节点”，其身份和测量仍然依赖现象层的观测读数。它们没有回答一个更根本的问题：<strong>这些读数在心理系统的功能架构中对应什么组件？</strong></p>
 <hr class="section-divider">
-<h3>1.3 整合边界：DSM、RDoC与HiTOP的结构性缺口</h3>
+<h2>1.3 整合边界：DSM、RDoC与HiTOP的结构性缺口</h2>
 <p>面对理论碎片化，心理学和精神病学发展了几种大规模的整合框架。这些框架各自取得了重要进展，但都未能占据本文所说的“功能层”。</p>
 <p><strong>DSM-5：症状分类的极限</strong>。《精神障碍诊断与统计手册》第五版提供了操作化的诊断标准，极大提高了临床诊断的一致性。DSM-5的价值在于它终结了基于病因学猜想的诊断混乱，为临床试验和流行病学研究提供了共同语言。然而，DSM-5明确声明其不包含机制解释——它的分类基于症状的共现模式，而非功能失调的机制。同一DSM诊断标签下可能存在完全不同的功能层配置：一个被诊断为“严重抑郁障碍”的患者可能以M3-DSP-F瘫痪和M1-RES-D枯竭为主要特征（迟滞型），另一个却可能以M4-DSP-B过度激活为主（激越型）。这两种亚型需要完全不同的干预序列，DSM-5无法区分它们。</p>
 <p><strong>RDoC：神经层取向的局限</strong>。美国国家精神卫生研究所推出的研究领域标准(RDoC)试图绕过DSM的现象学分类，直接锚定神经生物学机制。RDoC将心理功能分解为五个领域（负价系统、正价系统、认知系统、社会过程、唤醒/调节系统），每个领域下设从基因到行为的多个分析单元。RDoC的贡献在于推动精神病学从症状描述走向机制研究。然而，RDoC主要锚定的是<strong>神经层</strong>——它的目标是连接基因、环路、神经化学与行为，而不是为临床干预设计提供功能层靶点。认知重构技术并不直接改变某个脑区的激活模式，它改变的是个体解释威胁、评估价值、生成反应的<strong>功能规则</strong>。RDoC缺乏描述这些功能规则的语法。</p>
@@ -108,21 +108,21 @@
 </table></div>
 <p><strong>共同的缺口</strong>。DSM、RDoC和HiTOP分别占据了现象层分类、神经层机制和症状维度结构，但它们都没有系统性地占据<strong>功能层</strong>——即介于神经实现与现象体验之间，描述心理系统“如何运行”的中间抽象层。这一缺口正是INTRE试图填补的。</p>
 <hr class="section-divider">
-<h3>1.4 AI挑战：心理咨询任务中的范式冲击</h3>
+<h2>1.4 AI挑战：心理咨询任务中的范式冲击</h2>
 <p>2023年以来，生成式人工智能在心理健康领域的表现引发了心理学界的深度不安。多项独立评估显示，大型语言模型（如GPT-4、Claude等）在文本形式的患者共情评价上已与人类专业人员相当或更优。这些AI系统能够生成与治疗师难以区分的支持性回应，识别文本中的情绪线索，并输出结构化的干预建议。</p>
 <p>这一技术突破对变量范式的挑战是结构性的。变量范式的核心竞争力之一是对心理现象的<strong>模式识别</strong>——从量表数据中提取因子结构，从行为实验中识别效应模式，从临床描述中归纳诊断标签。然而，模式识别恰恰是深度学习的天然优势。如果AI可以在不依赖任何心理学理论的情况下，仅从大规模文本数据中学习到“共情对话”的模式，那么变量范式积累的现象层知识就面临着被技术替代的风险。</p>
 <p>更深层的警示在于：<strong>如果心理学的主要产出是现象层的统计规律，而AI能够从数据中直接习得这些规律，那么心理学的独特价值在哪里？</strong> 答案是：在于揭示生成这些现象的功能机制。气象学在数值天气预报时代之前，主要依赖历史统计规律外推——它能够预报“明天降水概率60%”，但不能精确回答“明天下午3点某街道会不会下雨”。数值天气预报的范式跃迁发生在气象学家建立了大气的动力学方程之后——他们不再只依赖历史数据中的相关模式，而是通过同化观测数据到状态向量（风场、温压场），再对动力学方程进行数值积分，输出个体化的轨迹预测。</p>
 <p>心理学正站在类似的节点上。变量范式可以提供"焦虑与抑郁共病概率增加30%"的群体统计，但无法精确回答"这个具体个体在未来72小时内的M4-RES-D何时跌破阈值"。要回答后一个问题，心理学需要一套功能层的<strong>状态语法</strong>和<strong>动力学引擎</strong>——这正是INTRE的使命。更进一步，如果心理学要真正与AI系统形成协同（而非被替代），还需要一套标准化的<strong>神经接口</strong>——使AI不仅通过语言理解用户，还能通过神经信号（EEG、HRV等）感知用户的实时状态。UNIS（统一神经接口系统）正是为此设计的三模态感知体系中的神经通道。</p>
 <hr class="section-divider">
-<h3>1.5 INTRE方案：功能层作为缺失中间层</h3>
+<h2>1.5 INTRE方案：功能层作为缺失中间层</h2>
 <p><strong>马尔三层分析的启示</strong>。大卫·马尔在其经典著作《视觉》中提出了理解复杂信息处理系统的三层分析框架：计算层（系统要解决什么问题？输入输出关系是什么？）、算法/表征层（系统用什么表征格式和操作过程完成任务？）、实现层（这些表征和过程由什么物理载体实现？）。马尔的深刻洞见在于：理解一个信息处理系统，必须在三个层级上分别回答不同的问题，而不能将一个层级的解释压缩到另一个层级。</p>
 <p>将这一框架应用于心理学，可以识别出一个被长期忽略的层级——<strong>算法/表征层</strong>的心理学对应物：<strong>功能层</strong>。功能层描述的是心理系统在功能组织层面的运行方式：它使用什么表征格式（规则、连接、序列），执行什么操作（门控、调制、校准、重联），遵循什么动力学规律（资源消耗、调度切换、结构塑性）。功能层既不等同于神经实现层（硬件），也不等同于现象体验层（软件的输出结果）。</p>
 <p><strong>功能层的界定</strong>。在INTRE框架中，功能层被精确定义为：介于神经实现与现象体验之间，用于描述心理系统状态演化与干预操作的抽象层级。它的本体论依据是<strong>多重实现性原则</strong>：同一心理功能（如威胁评估、工作记忆刷新）可以由不同的神经配置在不同个体、不同物种、不同发展阶段中实现，但在功能描述层面是等价的。功能描述的真值不绑定于特定神经机制，这使得功能层能够作为独立于硬件的分析层级存在。</p>
 <p><strong>启发式类比：操作系统的定位</strong>。功能层在心理系统中的地位，可以借助计算机的操作系统来理解。操作系统运行在硬件之上，为应用软件提供统一的接口。它不关心底层硬件是Intel还是ARM，也不关心上层应用是浏览器还是文字处理器——它提供了一个中间抽象层，使得硬件和软件可以独立演化。功能层同样运行在神经硬件之上，为现象层输出和临床干预提供统一的接口。功能层是心理学的“操作系统内核”。<sup><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<p><sup><a href="#fn1" id="fnref1">[1]</a></sup>: 这是启发式类比，并非严格等同。操作系统是人工设计的确定性系统，功能层描述的是演化塑造的生物心理系统的功能组织原则。类比的价值在于帮助读者快速建立对“中间抽象层”的直观理解。</p>
+<p><sup><a href="#fn1-2" id="fnref1-2">[1]</a></sup>: 这是启发式类比，并非严格等同。操作系统是人工设计的确定性系统，功能层描述的是演化塑造的生物心理系统的功能组织原则。类比的价值在于帮助读者快速建立对“中间抽象层”的直观理解。</p>
 <p><strong>功能层的工程必要性</strong>。INTRE并不声称功能层“必然存在于心理系统中”——这是一个本体论主张，其证明负担极高。INTRE采取的是更谦逊、也更坚实的论证策略：<strong>功能层描述是解决多项关键心理学任务的工程上高效、可检验、可累积的方案</strong>。六项核心任务共同论证了这一必要性：神经科学与临床心理学之间的翻译低效、干预设计对机制靶点的需求、理论治理对可审计修正框架的需求、心理测量的构念效度困境、个体内波动与群体统计的不可通约性、干预机制的黑箱问题。这些任务在变量范式内都无法充分解决，而功能层提供了统一的工程化路径。</p>
 <hr class="section-divider">
-<h3>1.6 双名共存：功能层范式与结构范式</h3>
+<h2>1.6 双名共存：功能层范式与结构范式</h2>
 <p>INTRE框架在提出"功能层"概念的同时，也发展出了一套完整的描述语法(M-R-D-S)、操作语法(G-M-A-R)、知识基础设施(UPLS)、神经接口系统(UNIS)、行为测量系统(UBMS)、仿真引擎(PSE)和伦理约束架构(REVER)。这套体系在公理层、架构层、语法层、协议层和证据治理层形成了闭环。</p>
 <p>在命名上，存在两种可以共存的选择。<strong>使用指南</strong>：与变量范式对位辩论时用“结构范式”，正式自我定位、跨学科介绍时用“功能层范式”。</p>
 <p>“功能层范式（与变量范式辩论时亦称结构范式）”强调这个框架所占据的分析层级（区别于神经层和现象层）；“结构范式”强调其核心方法论——用结构化的状态空间替代离散变量作为基本描述单位，用系统动力学替代统计关联作为解释逻辑，用G-M-A-R原子操作替代流派经验作为干预依据。</p>
@@ -138,7 +138,7 @@
 2. 选择一个你熟悉的心理学概念，分别从变量范式和功能层范式两个视角描述它。</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -163,19 +163,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -240,8 +240,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -260,5 +260,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

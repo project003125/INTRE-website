@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第4章 范式批判：变量范式的边界与吸纳</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)精确陈述变量范式的第一性原理及其三重操作准则；(2)运用洞穴隐喻还原十种分析模式的影子几何本质；(3)区分统计中介与因果中介并列举因果中介成立的三组必要条件；(4)评估潜变量/网络/计算精神病学等当代方法的进化与边界；(5)阐述从变量到状态向量的三重解耦逻辑。</p></blockquote>
 <hr class="section-divider">
-<h3>4.1 元假设还原：变量范式的三条操作准则</h3>
+<h2>4.1 元假设还原：变量范式的三条操作准则</h2>
 <p>变量范式在过去一个世纪中主导了心理学的主流实践。它并非一个单一的理论，而是一套共享的本体论预设和方法论规则。要理解变量范式的边界，必须首先精确陈述其第一性原理。</p>
 <p><strong>批判对象的精确界定</strong>。变量范式内部存在重大差异——实验社会心理学家通过随机化识别因果效应，人格心理学家通过因子模型提取特质维度。本节及后续各节的批判对象，是变量范式的<strong>强版本</strong>——即直接将测量读数视为心理实体的定义、将统计中介解读为因果机制的主流实践。变量范式的弱版本（实验操纵、工具变量、随机对照试验）在因果识别上更为严格，但即便如此，它们也不回答“这个心理构念在功能架构中对应什么组件”——这是变量范式作为一个整体未被跨越的结构性边界。</p>
 <p><strong>元假设的精确陈述</strong>。变量范式的第一性原理可以表述为：<strong>心理现象可以被分解为相互独立、可量化的“变量”，而科学研究的任务就是发现这些变量之间的相关或因果关系</strong>。这一假设不是经验发现，而是操作预设——它是将心理现象纳入统计模型所必须付出的本体论代价。</p>
@@ -74,7 +74,7 @@
 <p>三条准则的共同特征是：它们不是对心理系统实在结构的发现，而是对实在的<strong>切割方式</strong>。问题不在于切割——所有科学研究都必须切割——而在于变量范式有时将切割的产物（变量）误认为实在本身。一个量表可以具有完美的信度和内部效度，却仍然与心理系统的实际功能组件不存在一一对应关系。</p>
 <p><strong>变量范式的自我修正及其边界</strong>。变量范式并非未反思过这一问题。构念效度与法则网络正是试图通过理论网络中的关系来定义构念，避免将测量分数直接等同于实体。网络心理学则放弃了潜变量实体假设，将症状之间的激活模式作为研究对象。然而，这些修正并未改变基本描述单位：无论是法则网络中的“构念”还是网络模型中的“节点”，其定义和识别仍然依赖现象层的观测读数。它们没有回答：<strong>这些读数在心理系统的功能架构中究竟对应什么组件？</strong></p>
 <hr class="section-divider">
-<h3>4.2 洞穴隐喻：十种分析模式的影子几何</h3>
+<h2>4.2 洞穴隐喻：十种分析模式的影子几何</h2>
 <p>为了更直观地把握变量范式的本体论困境，本节借用柏拉图“洞穴隐喻”作为认知脚手架——不是作为证明，而是作为帮助读者看见“观测数据、系统隐状态与环境参数之间非等价关系”的直观工具。</p>
 <p>在洞穴隐喻中，囚徒只能看到墙上的影子，误以为影子就是全部实在。变量范式的研究者同样只能观测到“影子”——量表分数、行为频率、自我报告——而心理系统的真实功能结构（M-R-D-S状态向量）是投射影子的三维物体。环境与情境参数则是光源的角度与强度——它们改变影子的形态，但不改变物体的结构。</p>
 <p><strong>十种分析模式的还原</strong>。以下将变量范式的十种主流分析模式逐一定位在这一隐喻空间中：</p>
@@ -140,7 +140,7 @@
 <p><strong>隐喻的边界</strong>。洞穴隐喻在本文中只承担认知脚手架功能，不承担证明功能。本文的核心论证不依赖“影子”这一意象本身，而依赖观测数据、系统隐状态与环境参数之间的非等价关系。隐喻的价值在于“翻译”，使我们能够“看见”那些原本只在抽象层面运作的逻辑结构。</p>
 <p><strong>变量范式的价值与边界</strong>。整体还原之下，变量范式的十种分析模式构成了一个完整的<strong>墙面观察与测量学派</strong>。它有极其精密的工具来定义、测量、预测、归纳墙上的二维画面；但若不引入额外的功能层假设、生成模型或干预识别设计，它并不自动触及“投影源内部到底发生了什么”这个问题。洞穴隐喻不意味着变量范式的工作没有价值——精确描述影子之间的关系本身就是科学的重要一步。变量范式积累的效应量、元分析结论和量表常模，在功能层范式下将被重新定位为观测函数和先验分布的经验来源。</p>
 <hr class="section-divider">
-<h3>4.3 中介解剖：统计中介与因果中介的鸿沟</h3>
+<h2>4.3 中介解剖：统计中介与因果中介的鸿沟</h2>
 <p>如果变量范式的工具体系是一座大厦，那么中介效应分析就是这座大厦中最常被赋予“因果机制”含义的那一部分。它是最接近于“因果机制”这一许诺的操作，也因而是整个范式的“核心标本”——解剖中介效应，就是解剖变量范式的本体论前提本身。</p>
 <p><strong>标准框架的精确复述</strong>。中介效应分析的标准框架包含三条回归方程。这一推论的成立依赖于三个隐含前提：(1)X、M、Y是三个<strong>独立存在</strong>的实体；(2)X到M的箭头和M到Y的箭头代表的是发生在心理系统内部的<strong>实际的因果过程</strong>；(3)这个因果过程可以被统计上的系数模式<strong>识别出来</strong>。在缺乏额外识别条件的典型情况下，这三个前提在心理学的绝大多数中介研究中并未得到满足。</p>
 <p><strong>直观比喻</strong>。考虑以下场景：你每天早晨观察三个现象——7:00地面是湿的，7:30气温回升，8:00冰融化了。将这三个观测放入中介模型，会得到“地面湿→气温回升→冰融化”的显著中介路径。但这里没有任何人接受这一因果解读——因为三者都是<strong>同一个底层事件</strong>的不同时间、不同观测点上的先后表现。这个比喻精确对应了心理学中介研究在缺乏额外识别条件时的逻辑跳跃。</p>
@@ -148,7 +148,7 @@
 <p>因果中介的成立至少需要三组条件：(1)<strong>M必须具有可识别的功能身份</strong>——在心理系统的功能架构中对应什么组件？(2)<strong>M的变化必须具有独立的识别路径</strong>——实验操纵、纵向先后关系、工具变量等；(3)<strong>必须对主要替代解释进行显式处理</strong>——未观测共同原因、反向因果、测量方法共享等。在典型的横截面或弱纵向自陈数据中，这些条件很少被满足。中介分析仍可提供有价值的统计描述和假说生成线索，但不宜直接被表述为机制发现。</p>
 <p><strong>分层评价：哪些中介分析更可靠？</strong> 本节批判的对象是心理学实践中最常见的一类中介分析——基于横截面或弱纵向自陈数据、缺乏独立功能组件测量、未排除替代解释的分析。对于满足更强识别条件的研究——(1)中介变量被实验独立操纵，(2)自变量、中介与因变量在时间上严格分离，(3)对主要替代解释进行了敏感性分析——其因果推断的可靠性显著更高。然而，即使满足这些条件，中介分析仍不能替代对功能组件的直接测量：它回答的是“效应是否通过M传递”，而非“M在功能系统中对应什么组件，其动力学方程是什么”。</p>
 <hr class="section-divider">
-<h3>4.4 当代边界：潜变量、网络与计算精神病学</h3>
+<h2>4.4 当代边界：潜变量、网络与计算精神病学</h2>
 <p>变量范式并非静止不变。它在其发展过程中已经发展出潜变量模型、图因果框架、密集纵向设计、症状网络、计算精神病学等当代扩展形态。这些方法显著提升了心理学在测量、因果推断、动态建模和预测上的严密性。然而，它们是否已经越过了“影子几何”的边界？本节的核心主张是：<strong>这些当代方法即使处于其最强形态，也并不自动完成观测变量到功能组件的本体映射</strong>。</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -186,7 +186,7 @@
 </table></div>
 <p><strong>小结</strong>。当代方法的最强形态并不是本文要否定的对象，而是结构范式必须吸收和整合的方法论资源。真正需要改变的，不是是否使用变量、统计模型或现代因果推断工具，而是这些工具所服务的<strong>基本描述单位</strong>。只要基本单位仍是未经功能层映射的现象变量，方法系统无论如何精密，都不自动回答“这个变量在心理系统的功能架构中对应什么”。</p>
 <hr class="section-divider">
-<h3>4.5 范式转换：从变量到状态向量的三重解耦</h3>
+<h2>4.5 范式转换：从变量到状态向量的三重解耦</h2>
 <p>变量范式在其百年历史中，并非没有遭遇过根本性的质疑。这些质疑分别从测量理论、方法论、科学哲学和社会理论角度指向同一个核心问题：<strong>“变量”是否适合作为心理系统的基本描述单位？</strong></p>
 <p><strong>四重质疑的系统梳理</strong>。第一，<strong>心理测量学内部质疑</strong>：心理属性是否具有等距或比率的定量属性？这一假设从未被经验证实。第二，<strong>个体-变量错配质疑</strong>：群体统计规律无法直接应用于个体。Molenaar从数学上证明，群体层面的结构方程模型与个体内部的动态结构存在不可通约性。第三，<strong>本体论错配质疑</strong>：心理现象的本体结构（意向性、意义性、历史性）与主流的定量方法之间存在根本性的不适配。第四，<strong>方法论中心主义质疑</strong>：研究者过于关注方法的精密性和可重复性，而忽略了问题的真正重要性。</p>
 <p><strong>INTRE的系统回应</strong>。INTRE框架通过引入功能层状态向量\(\Psi(t)\)作为基本描述单位，系统回应了这四重质疑：</p>
@@ -215,7 +215,7 @@
 3. 尝试为变量范式辩护：在哪些场景中变量范式的统计关联进路更有优势？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -240,19 +240,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -317,8 +317,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -337,5 +337,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

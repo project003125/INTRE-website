@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -57,7 +57,7 @@
         <h1 class="chapter-title">第24章 边界修订：从信号检测到概念修订</h1>
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE已识别的边界张力和未决问题；(2)描述自我修正决策树的运行流程；(3)理解M4-RES-B映射修正作为闭环运作的典型案例；(4)使用神经证据地位分层和工具地图评估不同功能组件的实证成熟度；(5)了解UNIS仲裁合约如何实现自动化边界修订。</p></blockquote>
 <hr class="section-divider">
-<h3>24.1 张力盘点：概念缺口、实证冲突与方法挑战</h3>
+<h2>24.1 张力盘点：概念缺口、实证冲突与方法挑战</h2>
 <p>一个成熟的理论框架不仅应展示其与现有证据的兼容之处，更应诚实记录其边界、张力和未解决的挑战。INTRE的神经层对接体系通过04-A-08系统归档了当前已识别的所有未决张力。</p>
 <p><strong>概念缺口（框架结构本身的不完备）</strong>：</p>
 <div class="table-wrap"><table>
@@ -177,7 +177,7 @@
 </table></div>
 <p><strong>沉默条款</strong>：若一项被标记的张力在三年内未被任何研究者跟进或提供新的独立证据，框架有权声明“此张力目前处于未激活状态”。</p>
 <hr class="section-divider">
-<h3>24.2 修正决策树：从信号确认到映射层重审</h3>
+<h2>24.2 修正决策树：从信号确认到映射层重审</h2>
 <p>当反向约束信号积累到触发阈值时，INTRE通过一套标准化的自我修正决策树来处理偏差。</p>
 <pre><code class="language-text">信号检测（来自神经层反馈或PSE-C残差）
     ↓
@@ -229,7 +229,7 @@
 <p><strong>工程意义</strong>：UNIS仲裁合约将边界修订从“事后人工评审”扩展为“运行时自动执行 + 事后审计”的双层机制。它不替代UPLS的概念映射层重审（那是慢变层），而是在参数层和模型层提供了实时自动化修正能力。</p>
 <p><strong>决策树的关键设计原则</strong>： 1. <strong>优先低层修正</strong>：先在参数层尝试，避免不必要的高层修订 2. <strong>假阳性保护</strong>：单次异常不触发高层修正；需要独立复现、跨模态稳健、低层修正无效三重条件 3. <strong>时间约束</strong>：每层有明确的响应时限 4. <strong>追溯更新义务</strong>：任何层级修正完成后，依赖被修正组件的下游文档有义务在60天内更新</p>
 <hr class="section-divider">
-<h3>24.3 案例示范：M4-RES-B的单点改组合映射</h3>
+<h2>24.3 案例示范：M4-RES-B的单点改组合映射</h2>
 <p>本节展示一个闭环修正案例——依恋安全感从单点映射到组合映射的演化过程。</p>
 <p><strong>初始映射（v1.0）</strong>：“依恋安全感”被单点映射为M4-RES-B（长期情绪安全基底）。</p>
 <p><strong>第一步：PSE-C发现系统性偏差</strong>。在长期治疗轨迹的贝叶斯校准中，对于经历显著关系修复的患者，模型系统性<strong>低估</strong>了长期情绪稳定改善的幅度。</p>
@@ -240,7 +240,7 @@
 <p><strong>第六步：修正为组合映射（v2.0）</strong>：<code>M4-RES-B (primary) + M2-STR-R (secondary) + M5-STR-C (context)</code>。PSE-C在新数据上验证：组合映射的预测残差比单点映射降低了62%（RMSE从12.4降至4.7）。</p>
 <p><strong>方法论的教训</strong>：闭环修正不是框架的“失败”，而是从实证反馈中学习的成功案例。</p>
 <hr class="section-divider">
-<h3>24.4 证据分层：L1-L4与M1-M3的分级体系</h3>
+<h2>24.4 证据分层：L1-L4与M1-M3的分级体系</h2>
 <p>并非所有功能组件都有同等的神经科学证据支持。INTRE按42个功能子单元提供证据地位分层：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -371,19 +371,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -448,8 +448,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -468,5 +468,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

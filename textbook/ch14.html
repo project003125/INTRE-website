@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list"></i> 目录
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -32,8 +32,8 @@
 <nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
@@ -58,7 +58,7 @@
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PCUI如何解决心理学的术语碎片化问题；(2)掌握PCUI编码格式和M-R-D-S坐标标注规则；(3)列举至少3个多流派同义词映射示例；(4)理解PCUI元数据标注的五项防御机制。</p></blockquote>
 <blockquote><p><strong>本章定位</strong>：PCUI是UPLS三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。</p></blockquote>
 <hr class="section-divider">
-<h3>14.1 医学先例：UMLS如何统一临床术语</h3>
+<h2>14.1 医学先例：UMLS如何统一临床术语</h2>
 <p>心理学并非第一个遭遇术语碎片化危机的学科。在医学领域，同一疾病在不同编码体系中拥有完全不同的标识符。1986年，美国国家医学图书馆启动了统一医学语言系统(UMLS)项目，旨在建立一个超越所有特定编码体系的元词典层。UMLS的三层架构——元词典（Metathesaurus）、语义网络（Semantic Network）、专家词典（Specialist Lexicon）——40年来从未改变。</p>
 <p>UPLS在设计上直接借鉴了UMLS的结构策略：不是在DSM-5、RDoC或各流派理论之上建立另一个“超级理论”，而是在它们之上建立一个<strong>功能层的元映射层</strong>，使所有体系的术语可以在同一坐标系中被定位、比较和转换。</p>
 <div class="table-wrap"><table>
@@ -87,7 +87,7 @@
 </table></div>
 <blockquote><p><strong>关键差异</strong>：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，UPLS必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
 <hr class="section-divider">
-<h3>14.2 PCUI编码体系</h3>
+<h2>14.2 PCUI编码体系</h2>
 <p>PCUI（Psychological Concept Unique Identifier）是UPLS为每个心理学概念分配的唯一结构化编码。其设计遵循三条原则：<strong>可读性</strong>（编码携带功能定位信息）、<strong>可扩展性</strong>（支持版本演进）、<strong>可计算性</strong>（支持机器解析）。</p>
 <p><strong>编码格式</strong>：</p>
 <pre><code>[CONCEPT_NAME].[DOMAIN].v[VERSION].[SEQUENCE]#[MODULE_SIGNATURE]</code></pre>
@@ -162,7 +162,7 @@
 </table></div>
 <p><strong>完整示例</strong>： - <code>CORE_BELIEF_NEGATIVE.UPLS.v3.0.007#M2-STR-R</code>：负性核心信念，定位于M2认知模块的规则结构层 - <code>CHRONIC_ANXIETY.UPLS.v2.0.001#M4C+M2I+M3I+M1S+M6O</code>：慢性焦虑，M4为核心，M2/M3受冲击，M1提供支撑，M6为输出通道</p>
 <hr class="section-divider">
-<h3>14.3 同义词映射：多流派术语的聚合</h3>
+<h2>14.3 同义词映射：多流派术语的聚合</h2>
 <p>心理学最令人困扰的问题之一是：同一现象在不同流派中拥有完全不同的名称。PCUI通过<strong>多流派同义词映射</strong>解决这一问题——所有指向同一功能实体的流派术语被聚合到同一个PCUI条目下。</p>
 <p><strong>五组代表性同义词映射</strong>：</p>
 <div class="table-wrap"><table>
@@ -219,7 +219,7 @@
 </table></div>
 <blockquote><p><strong>微案例：映射争议的解决</strong>：“防御机制”在精神分析中被定位为M4-STR-S，在CBT中被定位为M2-STR-S。PCUI经多流派评审后确定ModuleSignature为<code>#M4C+M2S+M3S</code>——M4为核心，M2和M3为支撑。每一方的理论解释保留在条目的“多流派解释”字段中，不强行归一。</p></blockquote>
 <hr class="section-divider">
-<h3>14.4 一词多义：上下文消歧规则</h3>
+<h2>14.4 一词多义：上下文消歧规则</h2>
 <p>同一术语在不同流派甚至同一流派的不同语境中，可以指代完全不同的功能实体。PCUI通过<strong>上下文消歧规则</strong>处理一词多义。</p>
 <p><strong>案例：“防御机制”的多义性</strong>：</p>
 <div class="table-wrap"><table>
@@ -252,7 +252,7 @@
 </table></div>
 <p><strong>消歧规则</strong>： - 若上下文包含“无意识”“焦虑”“压抑” → 映射到<code>DEFENSE_MECHANISM</code> - 若上下文包含“回避想法”“分心”“逃避思考” → 映射到<code>COGNITIVE_AVOIDANCE</code> - 若无明确上下文 → 返回备选项列表，要求人工确认</p>
 <hr class="section-divider">
-<h3>14.5 元数据标注：五项防御机制</h3>
+<h2>14.5 元数据标注：五项防御机制</h2>
 <p>每个PCUI条目包含一套完整的<strong>元数据标注</strong>，确保使用者了解该概念的实证基础和可信边界。这构成PCUI的<strong>五项防御机制</strong>：</p>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -290,7 +290,7 @@
 </table></div>
 <blockquote><p><strong>边界注释示例</strong>：在PCUI条目<code>ATTACHMENT_SECURITY.UPLS.v3.0.078#M4-RES-B</code>中，边界注释写道：“本条目将依恋安全感定位为M4-RES-B。但部分专家认为涉及M2-STR-R和M5-STR-C。若未来研究显示依恋安全感的变化可被M2/M5干预完全中介而不经过M4-RES-B，则本条目需修订为组合映射。”</p></blockquote>
 <hr class="section-divider">
-<h3>14.6 局部映射：预测性子单元(C类)的处理</h3>
+<h2>14.6 局部映射：预测性子单元(C类)的处理</h2>
 <p><strong>映射的必要性与不可完美性</strong>。UPLS必须将变量范式的构念映射到M-R-D-S坐标系——不映射则陷入理论隔绝。但完美映射不可达，因为：(1)心理现象是多维分布，非单点对应；(2)焦虑体验是多个功能子单元在时间中耦合放大的涌现整体；(3)M1-M6在功能维度上逻辑独立，任何映射都是选择性压缩。</p>
 <p><strong>局部映射协议</strong>——INTRE的策略是把不完美制度化：</p>
 <div class="table-wrap"><table>
@@ -324,7 +324,7 @@
 </table></div>
 <p><strong>预测性子单元：旧范式的盲区</strong>。在所有42个子单元中，有一类在变量范式中缺少成熟对应物——<strong>C类预测性子单元</strong>（约7个，占17%）。以<strong>M6-RES-D（行为启动能量）</strong>为例：传统心理学将“没有行动”笼统归因于动机不足。INTRE主张，行为从静止到启动需要额外资源条件——“想做”与“做得起来”不是同一件事。这一区分的经验支持来自：(1)准备电位在主观意识到“自己要动”之前就已出现；(2)帕金森病（启动困难）与抑郁症（动机缺失）的临床双重分离；(3)基底节门控机制。M6-RES-D不是“换了个名字”，而是对长期被吸收到“意志力”中的现象的再分离。</p>
 <hr class="section-divider">
-<h3>14.7 功能编译器：五层流水线从主诉到向量</h3>
+<h2>14.7 功能编译器：五层流水线从主诉到向量</h2>
 <p>UPLS并非静态术语对照词典，而是一个将现象层描述重编码为功能层表示的<strong>功能编译器</strong>。</p>
 <p><strong>五层编译流水线</strong>：</p>
 <div class="table-wrap"><table>
@@ -381,7 +381,7 @@
 3. 为什么UPLS不能直接照搬UMLS的设计？心理学缺少什么条件？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
-<h2>版本记录</h2>
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>版本</th>
@@ -406,19 +406,19 @@
         <div class="footer-brand">INTRE</div>
         <p style="font-size:0.88rem; opacity:0.6; margin:0.3rem 0 1rem;">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE" target="_blank">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank">REVER</a>
+            <a href="https://github.com/project003125/INTRE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
             <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
 
 
 <script>
@@ -483,8 +483,8 @@
         list.appendChild(link);
     });
 
-    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times"></i> 关闭'; } }
-    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list"></i> 目录'; } }
+    function open() { sidebar.classList.add('open'); if (overlay) overlay.classList.add('show'); if (toggleBtn) { toggleBtn.classList.add('is-open'); toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i> 关闭'; } }
+    function close() { sidebar.classList.remove('open'); if (overlay) overlay.classList.remove('show'); if (toggleBtn) { toggleBtn.classList.remove('is-open'); toggleBtn.innerHTML = '<i class="fas fa-list" aria-hidden="true"></i> 目录'; } }
 
     if (toggleBtn) toggleBtn.onclick = function(){ if(sidebar.classList.contains('open'))close();else open();};
     if (closeBtn) closeBtn.onclick = close;
@@ -503,5 +503,6 @@
 })();
 </script>
 
+    <script src="../shared/nav-toggle.js"></script>
 </body>
 </html>

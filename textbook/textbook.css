@@ -1,5 +1,5 @@
 /* ============================================
-   INTRE 教材样式 v2.3.1
+   INTRE 教材样式 v2.3.2
    继承 brand.css + components.css 的 Design Tokens
    本文件仅包含教材特有样式
    ============================================ */
@@ -467,9 +467,9 @@ body {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     width: 100%;
-    max-height: 65vh;
+    max-height: 72vh;
     background: var(--bg);
-    border-radius: 14px 14px 0 0;
+    border-radius: 16px 16px 0 0;
     padding: 0.5rem 0 calc(1.2rem + env(safe-area-inset-bottom, 0px));
     z-index: 50;
     transform: translateY(100%);
@@ -493,13 +493,13 @@ body {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
-    padding: 0.1rem 1rem 0.2rem;
+    padding: 0.3rem 1rem 0.4rem;
     position: sticky;
     top: 0;
     background: var(--bg);
     z-index: 1;
     border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
 .toc-sidebar-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
@@ -507,31 +507,33 @@ body {
 .toc-close-btn {
     background: var(--color-slate-100);
     border: none;
-    font-size: 1.2rem;
-    color: var(--color-slate-400);
+    font-size: 1.4rem;
+    color: var(--color-slate-600);
     cursor: pointer;
     padding: 0.4rem 0.6rem;
     line-height: 1;
     border-radius: var(--radius-sm);
-    min-width: 44px; min-height: 44px;
+    min-width: 48px; min-height: 48px;
     display: flex; align-items: center; justify-content: center;
 }
-.toc-close-btn:active { color: var(--text); background: var(--border); }
+.toc-close-btn:active { color: var(--color-navy-600); background: var(--color-slate-200); }
 
 .toc-sidebar-list { padding: 0.1rem 0; }
 
 .toc-sidebar-list .toc-item {
-    display: block;
-    padding: 0.55rem 1rem;
-    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
     color: var(--color-slate-500);
     text-decoration: none;
-    line-height: 1.45;
+    line-height: 1.5;
     border-radius: var(--radius-sm);
-    margin: 1px 0.5rem;
+    margin: 2px 0.5rem;
     transition: background 0.12s ease, color 0.12s ease;
     border-left: none;
     border-bottom: none;
+    min-height: 44px;
 }
 .toc-sidebar-list .toc-item:hover { color: var(--color-navy-600); background: var(--color-slate-100); }
 .toc-sidebar-list .toc-item:active { color: var(--color-navy-600); background: var(--color-slate-100); }
@@ -539,11 +541,14 @@ body {
 /* H2 items: bold, larger, with left accent */
 .toc-sidebar-list .toc-item.toc-h2 {
     font-weight: 600;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--text);
-    padding: 0.6rem 1rem;
+    padding: 0.75rem 1rem;
     margin-top: 4px;
     border-left: 3px solid var(--color-navy-600);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 /* H3 items: indented, lighter */
@@ -579,18 +584,21 @@ body {
 }
 .toc-toggle-btn:hover { box-shadow: var(--shadow-sm); }
 .toc-toggle-btn:active { transform: scale(0.97); }
-/* When sidebar is open, move button above the bottom sheet */
+/* When sidebar is open, hide the toggle button on mobile
+   (the header already has a close button) */
 .toc-toggle-btn.is-open {
-    bottom: calc(65vh + 0.5rem);
     background: var(--color-slate-600);
     box-shadow: var(--shadow-sm);
+}
+@media (max-width: 959px) {
+    .toc-toggle-btn.is-open { display: none !important; }
 }
 
 .toc-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.18);
     z-index: 49;
     -webkit-tap-highlight-color: transparent;
 }
@@ -744,6 +752,9 @@ body {
     .textbook-content h1.chapter-title { font-size: 1.55rem; }
     .textbook-content h2 { font-size: 1.25rem; }
     .textbook-content h3 { font-size: 1.08rem; }
+    .textbook-content p { line-height: 1.85; margin-bottom: 1.15rem; }
+    .textbook-content ul, .textbook-content ol { margin: 0.9rem 0 1.1rem; padding-left: 1.4rem; }
+    .textbook-content li { margin: 0.4rem 0; line-height: 1.75; }
     .nav-links { gap: 0.05rem; }
     .nav-links a { font-size: 0.72rem; padding: 0.5rem 0.7rem; min-height: 44px; display: flex; align-items: center; }
     .logo a { font-size: 1.2rem; }
@@ -763,6 +774,13 @@ body {
 @media (max-width: 480px) {
     .textbook-content h1.chapter-title { font-size: 1.35rem; }
     .textbook-content { padding: 1rem 1rem 1.5rem; }
+    .textbook-content p { font-size: 0.98rem; line-height: 1.9; }
+    .textbook-content h2 { font-size: 1.15rem; }
+    .textbook-content h3 { font-size: 1.02rem; }
     .toc-hero { padding: 2.2rem 1rem 1.8rem; }
     .toc-hero h1 { font-size: 1.35rem; }
+    .toc-sidebar { border-radius: 12px 12px 0 0; }
+    .toc-sidebar-header { padding: 0.2rem 0.8rem 0.3rem; }
+    .toc-sidebar-list .toc-item { padding: 0.65rem 0.8rem; font-size: 0.88rem; }
+    .toc-sidebar-list .toc-item.toc-h2 { padding: 0.7rem 0.8rem; font-size: 0.92rem; }
 }

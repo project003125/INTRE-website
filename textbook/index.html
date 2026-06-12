@@ -27,7 +27,7 @@
         .section-label { font-size:1rem; font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 0.8rem; padding-bottom:0.4rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); display:flex; align-items:center; gap:.5rem; }
         .section-label i { color:var(--color-navy-600); font-size:1.1rem; width:1.2rem; }
         .chapter-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:.5rem; margin:1rem 0; }
-        .chapter-card { background:white; border-radius:var(--radius-sharp); border:var(--stroke-hairline) solid var(--color-slate-200); padding:.8rem 1rem; transition:all .2s var(--ease-smooth); cursor:pointer; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
+        .chapter-card { background:var(--color-white); border-radius:var(--radius-sharp); border:var(--stroke-hairline) solid var(--color-slate-200); padding:.8rem 1rem; transition:all .2s var(--ease-smooth); cursor:pointer; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
         .chapter-card:hover { background:var(--color-slate-100); border-color:rgba(31,72,128,0.2); box-shadow:0 2px 12px rgba(31,72,128,0.06); }
         .chapter-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background-color:var(--color-navy-600); transform:scaleX(0); transition:transform .3s var(--ease-smooth); transform-origin:left; }
         .chapter-card:hover::after { transform:scaleX(1); }
@@ -36,7 +36,7 @@
         .chapter-card .ch-desc { color:var(--color-slate-500); font-size:.8rem; margin-top:.25rem; line-height:1.4; }
         .card-link-icon { color:var(--color-navy-600); font-size:.7rem; margin-left:.35rem; opacity:0; transition:opacity .12s; }
         .chapter-card:hover .card-link-icon { opacity:1; }
-        .phase-tag { display:inline-block; background:var(--color-navy-600); color:white; padding:.15rem .7rem; border-radius:4px; font-size:.75rem; margin-bottom:.4rem; }
+        .phase-tag { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.15rem .7rem; border-radius:4px; font-size:.75rem; margin-bottom:.4rem; }
         .appendices { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.2rem 1.5rem; margin:1.5rem 0; border:var(--stroke-hairline) solid var(--color-slate-200); }
         .appendix-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:.3rem; margin-top:.5rem; }
         .appendix-item { font-size:.85rem; color:var(--color-slate-700); padding:.45rem .7rem; border-radius:6px; transition:all .15s ease; text-decoration:none; display:block; }

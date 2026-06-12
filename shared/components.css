@@ -683,21 +683,6 @@ hr {
   margin: 0.3rem 0 1rem;
 }
 
-/* Channel badge — replaces inline style on subhead span */
-.channel-badge {
-  display: inline-block;
-  padding: 0.2rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
-  color: white;
-}
-.channel-badge.upls   { background: var(--color-upls); }
-.channel-badge.unis   { background: var(--color-navy-400); }
-.channel-badge.ubms   { background: var(--color-ubms); }
-.channel-badge.pse    { background: var(--color-pse); }
-.channel-badge.rever  { background: var(--color-rever); }
-
 /* Icon accent — replaces style="color:var(--color-navy-400)" on FA icons */
 .icon-accent {
   color: var(--color-navy-400);

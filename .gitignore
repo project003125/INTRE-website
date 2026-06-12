@@ -1,0 +1,13 @@
+# Tool metadata
+.workbuddy/
+
+# One-off maintenance scripts
+scripts/
+
+# Legacy conversion/migration tools
+textbook/_legacy/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

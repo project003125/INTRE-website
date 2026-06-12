@@ -105,7 +105,12 @@ nav.light .nav-links a.active {
   color: var(--color-white);
   font-size: 1.3rem;
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.8rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav.light .nav-toggle {
@@ -140,9 +145,12 @@ nav.light .nav-toggle {
   }
 
   .nav-links a {
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1rem;
     font-size: 0.9rem;
     border-radius: var(--radius-sm);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -644,6 +652,21 @@ hr {
 }
 
 /* ===== 响应式 ===== */
+@media (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .page-title {
+    font-size: 1.9rem;
+  }
+  .subhead {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
@@ -653,6 +676,18 @@ hr {
   }
   .page-title {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+  .subhead {
+    font-size: 1.1rem;
+  }
+  .container {
+    padding: 1.2rem;
   }
 }
 

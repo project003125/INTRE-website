@@ -485,7 +485,7 @@
 
         /* ---------- 响应式 ---------- */
         @media (max-width: 1024px) {
-            .fusion-grid { grid-template-columns: 1fr; }
+            .fusion-grid { grid-template-columns: repeat(2, 1fr); }
             .channel-subgrid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
@@ -497,6 +497,7 @@
             .fusion-section { padding: 2rem 1.5rem; }
             .cta-section { padding: 2rem 1.5rem; }
             .section-header h2 { font-size: 1.6rem; }
+            .fusion-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 2.2rem; }

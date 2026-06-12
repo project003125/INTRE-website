@@ -145,11 +145,38 @@
             margin: 2rem 0;
         }
 
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .subhead {
+                font-size: 1.2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
             .container { padding: 1.5rem; }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            .subhead {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding: 1.2rem;
+            }
         }
 
         .info-box {

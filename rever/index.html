@@ -60,7 +60,7 @@
         .section-label i {
             color: var(--color-navy-400);
             font-size: 1rem;
-            background: rgba(59, 111, 181, 0.08);
+            background: var(--color-navy-600-bg);
             border-radius: 50%;
             width: 2.2rem;
             height: 2.2rem;
@@ -112,7 +112,7 @@
 
         .table th {
             background-color: var(--color-navy-600);
-            color: white;
+            color: var(--color-white);
             font-weight: 600;
             padding: 0.9rem 1rem;
             text-align: left;
@@ -121,9 +121,9 @@
 
         .table td {
             padding: 0.9rem 1rem;
-            border-bottom: 0.5px solid #e2e8f0;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
             vertical-align: top;
-            background-color: white;
+            background-color: var(--color-white);
         }
 
         .table tr:last-child td {
@@ -131,7 +131,7 @@
         }
 
         .table tbody tr:hover td {
-            background-color: #f8fafc;
+            background-color: var(--color-slate-50);
         }
 
         /* 网格布局 */
@@ -187,7 +187,7 @@
 
         .info-box {
             background-color: var(--color-slate-100);
-            border-radius: 0.75rem;
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
             border: var(--stroke-hairline) solid var(--color-slate-200);
             margin: 1.5rem 0;
@@ -208,11 +208,11 @@
 
         .badge {
             background-color: var(--color-navy-400);
-            color: white;
+            color: var(--color-white);
             font-size: 0.75rem;
             font-weight: 600;
             padding: 0.2rem 0.6rem;
-            border-radius: 20px;
+            border-radius: var(--radius-pill);
             margin-left: 0.5rem;
             display: inline-block;
         }
@@ -220,9 +220,9 @@
         .phase-tag {
             display: inline-block;
             background-color: var(--color-navy-600);
-            color: white;
+            color: var(--color-white);
             padding: 0.3rem 1rem;
-            border-radius: 30px;
+            border-radius: var(--radius-pill);
             font-size: 0.9rem;
             font-weight: 600;
             margin-right: 0.5rem;
@@ -232,7 +232,7 @@
         .love-definition {
             background: var(--color-slate-100);
             border: var(--stroke-hairline) solid var(--color-slate-200);
-            border-radius: 0.75rem;
+            border-radius: var(--radius-lg);
             padding: 2rem;
             margin: 2rem 0;
             font-size: 1.2rem;
@@ -257,7 +257,11 @@
             border-left: 3px solid var(--color-navy-400);
             padding-left: 1.5rem;
             margin: 1.5rem 0;
-            color: #334155;
+            color: var(--color-slate-700);
+        }
+
+        .table-compact {
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -323,7 +327,7 @@
             <div class="card">
                 <h4><i class="fas fa-sitemap" aria-hidden="true"></i> 四层责任模型</h4>
                 <p>REVER 整合来自 UPLS/PSE 的主体性框架，形成正式的责任结构：</p>
-                <table class="table-full" style="font-size:0.85rem">
+                <table class="table-full table-compact">
                     <tr><th>层级</th><th>实体</th><th>责任</th></tr>
                     <tr><td>L1</td><td>人类监督者</td><td>最终临床/伦理责任</td></tr>
                     <tr><td>L2</td><td>REVER引擎</td><td>过程责任（伦理约束）</td></tr>

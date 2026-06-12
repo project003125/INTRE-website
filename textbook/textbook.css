@@ -27,7 +27,7 @@ em.formal-def {
 }
 
 :root {
-    --max-width: 740px;
+    --max-width: var(--reading-width);
 
     /* 语义别名 — 教材内部简化引用 */
     --text: var(--color-slate-900);
@@ -65,7 +65,7 @@ body {
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: color 0.15s;
+    transition: color var(--duration-fast);
 }
 
 .back-link:hover { color: var(--color-navy-600); }
@@ -154,7 +154,7 @@ body {
     color: var(--link);
     text-decoration: none;
     border-bottom: 0.5px solid transparent;
-    transition: border-color 0.15s;
+    transition: border-color var(--duration-fast);
 }
 
 .textbook-content a:hover { border-bottom-color: var(--link); }
@@ -284,7 +284,7 @@ body {
     color: var(--color-slate-500);
     padding: 0.45rem 0.9rem;
     border-radius: var(--radius-sm);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
 }
 
 .nav-link:hover { background: var(--color-slate-100); color: var(--color-navy-600); }
@@ -300,7 +300,7 @@ body {
    ============================================= */
 .toc-hero {
     background: var(--color-navy-600);
-    color: white;
+    color: var(--color-white);
     text-align: center;
     padding: 3rem 1.5rem 2.2rem;
 }
@@ -353,7 +353,7 @@ body {
     border-radius: var(--radius-sm);
     text-decoration: none;
     color: var(--text);
-    transition: background 0.12s ease;
+    transition: background var(--duration-xfast) ease;
     border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
 }
 .toc-item:hover { background: var(--color-slate-100); }
@@ -374,7 +374,7 @@ body {
     font-size: 0.78rem;
     flex-shrink: 0;
     opacity: 0;
-    transition: opacity 0.15s;
+    transition: opacity var(--duration-fast);
 }
 .toc-item:hover .arrow { opacity: 1; }
 
@@ -388,7 +388,7 @@ body {
     text-decoration: none;
     color: var(--color-slate-700);
     font-size: 0.88rem;
-    transition: background 0.12s ease;
+    transition: background var(--duration-xfast) ease;
     border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
 }
 .appendix-item:hover { background: var(--color-slate-100); color: var(--color-navy-600); }
@@ -444,7 +444,7 @@ body {
     color: var(--color-slate-500);
     text-decoration: none;
     border-radius: var(--radius-sm);
-    transition: background 0.12s ease, color 0.12s ease;
+    transition: background var(--duration-xfast) ease, color var(--duration-xfast) ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -469,11 +469,11 @@ body {
     width: 100%;
     max-height: 72vh;
     background: var(--bg);
-    border-radius: 16px 16px 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     padding: 0.5rem 0 calc(1.2rem + env(safe-area-inset-bottom, 0px));
     z-index: 50;
     transform: translateY(100%);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform var(--duration-slow) var(--ease-smooth);
     box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -530,7 +530,7 @@ body {
     line-height: 1.5;
     border-radius: var(--radius-sm);
     margin: 2px 0.5rem;
-    transition: background 0.12s ease, color 0.12s ease;
+    transition: background var(--duration-xfast) ease, color var(--duration-xfast) ease;
     border-left: none;
     border-bottom: none;
     min-height: 44px;
@@ -571,7 +571,7 @@ body {
     bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px)); right: 1.2rem;
     z-index: 55;
     background: var(--color-navy-600);
-    color: white;
+    color: var(--color-white);
     border: none;
     padding: 0.6rem 1.1rem;
     border-radius: var(--radius-pill);
@@ -579,7 +579,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--duration-fast), transform 0.1s, bottom 0.25s var(--ease-smooth), background var(--duration-fast);
+    transition: box-shadow var(--duration-fast), transform 0.1s, bottom var(--duration-slow) var(--ease-smooth), background var(--duration-fast);
     align-items: center; gap: 0.3rem;
 }
 .toc-toggle-btn:hover { box-shadow: var(--shadow-sm); }
@@ -655,15 +655,15 @@ body {
     /* Offset content for right sidebar */
     .page-header-inner {
         margin-right: 210px;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
     .textbook-content {
         margin-right: 210px;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
     .page-footer-nav {
         margin-right: 210px;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
 }
 
@@ -726,17 +726,17 @@ body {
     .page-header-inner {
         margin-left: calc(240px + (100vw - 1220px) / 2);
         margin-right: auto;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
     .textbook-content {
         margin-left: calc(240px + (100vw - 1220px) / 2);
         margin-right: auto;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
     .page-footer-nav {
         margin-left: calc(240px + (100vw - 1220px) / 2);
         margin-right: auto;
-        max-width: 740px;
+        max-width: var(--reading-width);
     }
 }
 

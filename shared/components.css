@@ -377,7 +377,7 @@ tbody tr:hover {
   display: inline-block;
   width: 8px;
   height: 8px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 .module-label.upls::before  { background-color: var(--color-upls);  }
@@ -493,7 +493,7 @@ hr {
   width: 50px;
   height: 3px;
   background: var(--color-navy-600);
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 /* ===== 页面副标题 ===== */
@@ -680,7 +680,7 @@ hr {
   bottom: 0.15rem;
   width: 3px;
   background: var(--color-navy-600);
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 .subpage-h4 {
@@ -741,7 +741,7 @@ hr {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-slate-400);
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
 }
 
 ::-webkit-scrollbar-thumb:hover {

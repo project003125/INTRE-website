@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <!-- Navy 800 background -->
+  <rect width="1280" height="640" fill="#122F5C"/>
+
+  <!-- INTRE logo text - centered -->
+  <text x="640" y="300" text-anchor="middle" dominant-baseline="central"
+        font-family="'Josefin Sans', 'Century Gothic', 'Futura', sans-serif"
+        font-size="96" font-weight="600" fill="#ffffff" letter-spacing="-0.03em"
+        opacity="0.85">INTRE</text>
+
+  <!-- Subtitle -->
+  <text x="640" y="400" text-anchor="middle" dominant-baseline="central"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="24" font-weight="400" fill="#ffffff" opacity="0.55"
+        letter-spacing="0.1em">INTEGRATIVE NEURAL REPRESENTATION</text>
+</svg>

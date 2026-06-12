@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="280" height="60">
   <title>INTRE Logo</title>
   <desc>INTRE 字标 — Josefin Sans 几何无衬线，统一颜色</desc>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600');
     text { font-family: 'Josefin Sans', sans-serif; }
   </style>
-  <text font-size="42" font-weight="600" letter-spacing="-1" fill="#0f172a" x="0" y="38">INTRE</text>
+  <text font-size="50" font-weight="600" letter-spacing="-1" fill="#0f172a" x="0" y="46">INTRE</text>
 </svg>

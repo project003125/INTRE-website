@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>INTRE · 功能层心理学 (FLP)</title>
     <meta name="description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
     <meta property="og:title" content="INTRE · 功能层心理学">
@@ -125,6 +125,7 @@
             transition: box-shadow var(--duration-normal) var(--ease-smooth);
             border-left: var(--stroke-hairline) solid var(--color-slate-200);
             font-style: normal;
+            display: flow-root;
         }
         .manifesto:hover {
             box-shadow: var(--shadow-sm);
@@ -396,7 +397,6 @@
             padding: 2rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
         .fusion-formula::before {
             content: '';
@@ -416,6 +416,11 @@
             letter-spacing: 0.02em;
             position: relative;
             z-index: 1;
+            display: inline-block;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
         }
         .fusion-formula p {
             color: rgba(255,255,255,0.55);
@@ -588,7 +593,7 @@
         <div class="hero-content">
             <span class="hero-label"><i class="fas fa-cube hero-label-icon" aria-hidden="true"></i> 功能层心理学</span>
             <h1>INTRE<span class="accent-dot"></span></h1>
-            <p class="hero-sub">连接现象与神经的形式化工具 —<br>让心理状态可描述、可仿真、可干预。</p>
+            <p class="hero-sub">连接现象与神经的形式化工具 —— 让心理状态可描述、可仿真、可干预。</p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-num"><span class="hero-stat-dot"></span>三通道</div>

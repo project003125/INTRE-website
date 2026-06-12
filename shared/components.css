@@ -206,6 +206,17 @@ footer {
   margin-top: var(--space-3);
 }
 
+/* ===== 响应式图片 (M6) ===== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== 触摸高亮优化 (M6) ===== */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ===== 卡片 ===== */
 .card {
   background-color: var(--color-white);
@@ -300,6 +311,34 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
   background-color: var(--color-navy-50);
+}
+
+/* ===== 移动端表格滑动提示 (M6) ===== */
+.table-responsive {
+  position: relative;
+}
+
+.table-responsive::after {
+  content: '← 滑动查看 →';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.8rem;
+  font-size: 0.72rem;
+  color: var(--color-slate-400);
+  background: var(--color-white);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-xs);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .table-responsive::after {
+    opacity: 1;
+  }
 }
 
 /* ===== 徽章 ===== */

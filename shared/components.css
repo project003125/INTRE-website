@@ -170,6 +170,17 @@ footer {
   text-align: center;
   padding: var(--space-7) var(--space-4);
   margin-top: var(--space-8);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
 }
 
 .footer-brand {
@@ -395,6 +406,17 @@ tbody tr:hover {
   overflow: hidden;
   padding: var(--space-8) var(--space-4);
   text-align: center;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(10, 30, 61, 0.3));
+  pointer-events: none;
 }
 
 .hero-content {
@@ -1155,13 +1177,28 @@ body.sidebar-open { overflow: hidden; }
 .fusion-item.pse    { border-left-color: var(--color-navy-600); }
 
 /* Index.html channel dots */
-.ch-dot.upls  { background: var(--color-navy-600); }
-.ch-dot.unis  { background: var(--color-navy-400); }
-.ch-dot.ubms  { background: var(--color-navy-400); }
+.ch-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.ch-dot.upls  { background: var(--color-upls); }
+.ch-dot.unis  { background: var(--color-unis); }
+.ch-dot.ubms  { background: var(--color-ubms); }
+.ch-dot.pse   { background: var(--color-pse); }
+.ch-dot.rever { background: var(--color-rever); }
 
 /* Table full width */
 .table-full {
   width: 100%;
+}
+
+/* Table compact variant */
+.table-compact {
+  font-size: 0.85rem;
 }
 
 /* Textbook index description spacing */

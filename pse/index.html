@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -294,37 +294,37 @@
 
         <div class="grid-3">
             <div class="card">
-                <h4><i class="fas fa-compass" aria-hidden="true"></i> MCT · 心智编译理论</h4>
+                <h3><i class="fas fa-compass" aria-hidden="true"></i> MCT · 心智编译理论</h3>
                 <p><strong>Mental Compilation Theory</strong></p>
                 <p>将临床观测（主诉、量表）编译为 M-R-D-S 状态向量。解决“现象→形式化”的映射问题。</p>
                 <div class="code-block code-block-sm">主诉“疲惫不堪”→ M1-RES-D↓</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-project-diagram" aria-hidden="true"></i> MTT · 心智拓扑理论</h4>
+                <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> MTT · 心智拓扑理论</h4>
                 <p><strong>Mental Topology Theory</strong></p>
                 <p>描述 M-R-D-S 组件间的连接结构与因果网络。定义依赖强度矩阵 w_base。</p>
                 <div class="code-block code-block-sm">M1-RES-D → M3-RES-D: 0.8</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-chart-line" aria-hidden="true"></i> MKT · 心智动力理论</h4>
+                <h3><i class="fas fa-chart-line" aria-hidden="true"></i> MKT · 心智动力理论</h4>
                 <p><strong>Mental Kinetics Theory</strong></p>
                 <p>资源与状态的演化方程，包含存量-流量-结构动力学。定义速率常数 k。</p>
                 <div class="code-block code-block-sm">d(RES-D)/dt = k_rec - k_cons</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sliders-h" aria-hidden="true"></i> MDT · 心智调度理论</h4>
+                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> MDT · 心智调度理论</h3>
                 <p><strong>Mental Dispatch Theory</strong></p>
                 <p>干预优化的决策理论，将 G-M-A-R 操作映射为控制信号。优化干预序列。</p>
                 <div class="code-block code-block-sm">选择 MODULATE+ 时机</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-dna" aria-hidden="true"></i> MPT · 心智塑性理论</h4>
+                <h3><i class="fas fa-dna" aria-hidden="true"></i> MPT · 心智塑性理论</h3>
                 <p><strong>Mental Plasticity Theory</strong></p>
                 <p>结构层（STR）的改变机制，描述学习与习惯化的速率。</p>
                 <div class="code-block code-block-sm">d(STR-R)/dt = η·Δ</div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-globe-asia" aria-hidden="true"></i> MET · 心智生态理论</h4>
+                <h3><i class="fas fa-globe-asia" aria-hidden="true"></i> MET · 心智生态理论</h3>
                 <p><strong>Mental Ecology Theory</strong></p>
                 <p>环境-系统耦合模型，描述 S-P 外感架构如何影响内感状态。</p>
                 <div class="code-block code-block-sm">P-M1-RES-D+ 来自社会支持</div>
@@ -337,22 +337,22 @@
         <div class="grid-4">
             <div class="card card-center">
                 <div class="phase-tag">PSE-I</div>
-                <h4>理论注入</h4>
+                <h3>理论注入</h3>
                 <p>将心智六论作为约束条件植入仿真引擎，定义状态空间与动力学方程。</p>
             </div>
             <div class="card card-center">
                 <div class="phase-tag">PSE-M</div>
-                <h4>蒙特卡罗仿真</h4>
+                <h3>蒙特卡罗仿真</h3>
                 <p>运行千万级虚拟个体，遍历参数空间，生成心理状态演化的先验分布。</p>
             </div>
             <div class="card card-center">
                 <div class="phase-tag">PSE-P</div>
-                <h4>先验提取</h4>
+                <h3>先验提取</h3>
                 <p>从仿真结果中提取参数分布、典型轨迹、临界点特征，构建先验知识库。</p>
             </div>
             <div class="card card-center">
                 <div class="phase-tag">PSE-C</div>
-                <h4>真实锚定</h4>
+                <h3>真实锚定</h3>
                 <p>用临床真实数据（量表、EMA）进行贝叶斯校准，更新后验参数。</p>
             </div>
         </div>
@@ -374,14 +374,14 @@
 
         <div class="grid-2">
             <div class="card">
-                <h4>资源演化方程</h4>
+                <h3>资源演化方程</h3>
                 <p><strong>调度资源 RES-D</strong></p>
                 <p>d(RES-D)/dt = k_recovery · (RES-B - RES-D) - k_consumption · DSP-F</p>
                 <p><strong>基底资源 RES-B</strong></p>
                 <p>d(RES-B)/dt = k_basal_growth · (1 - RES-B/RES-B_max) - k_basal_decay · (RES-B - RES-D)⁺</p>
             </div>
             <div class="card">
-                <h4>关键参数</h4>
+                <h3>关键参数</h3>
                 <table class="table-full">
                     <tr><td>k_recovery</td><td>0.1–0.3 /h</td><td>资源恢复速率</td></tr>
                     <tr><td>k_consumption</td><td>0.05–0.2 /h</td><td>资源消耗速率</td></tr>
@@ -452,27 +452,27 @@
 
         <div class="grid-3">
             <div class="card">
-                <h4>SID-P</h4>
+                <h3>SID-P</h3>
                 <p><strong>系统集成诊断协议</strong> (L1)</p>
                 <p>融合内外信息，生成《系统优化蓝图》。</p>
             </div>
             <div class="card">
-                <h4>CLM-SP</h4>
+                <h3>CLM-SP</h3>
                 <p><strong>因果循环建模子协议</strong> (L2)</p>
                 <p>识别主导回路与杠杆点，输出《系统动力模型》。</p>
             </div>
             <div class="card">
-                <h4>RCA-SP</h4>
+                <h3>RCA-SP</h3>
                 <p><strong>根因分析溯源子协议</strong> (L2)</p>
                 <p>定位问题层级与根因，输出《集成问题定位图》。</p>
             </div>
             <div class="card">
-                <h4>LEV-SP</h4>
+                <h3>LEV-SP</h3>
                 <p><strong>杠杆效益评估子协议</strong> (L2)</p>
                 <p>规划干预序列，输出《集成优化路径图》。</p>
             </div>
             <div class="card">
-                <h4>SSC-SP</h4>
+                <h3>SSC-SP</h3>
                 <p><strong>系统概览扫描子协议</strong> (L2)</p>
                 <p>集成功能态势描述，输出《集成功能状态图》。</p>
             </div>

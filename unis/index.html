@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -84,37 +84,37 @@
         <div class="grid-6">
             <div class="layer-card">
                 <span class="layer-num">L1</span>
-                <h4>NAP</h4>
+                <h3>NAP</h3>
                 <p class="layer-desc">Neural Acquisition Protocol</p>
                 <p class="layer-detail">定义采集规范、设备接口、元数据标准（兼容 BIDS v1.6+）。</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">L2</span>
-                <h4>SCL</h4>
+                <h3>SCL</h3>
                 <p class="layer-desc">Signal Calibration Layer</p>
                 <p class="layer-detail">标准化的信号预处理流程，跨平台（EEGLAB/MNE/FieldTrip）可重现。</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">L3</span>
-                <h4>NFD</h4>
+                <h3>NFD</h3>
                 <p class="layer-desc">Neural Feature Definition</p>
                 <p class="layer-detail">唯一标识的神经特征库（NFI），可跨实验室复现且具生理学解释。</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">L4</span>
-                <h4>NFM</h4>
+                <h3>NFM</h3>
                 <p class="layer-desc">Neuro-Functional Mapping</p>
                 <p class="layer-detail">从特征到功能似然的映射模型库，支持线性/非线性/DL模型。</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">L5</span>
-                <h4>NPL</h4>
+                <h3>NPL</h3>
                 <p class="layer-desc">Neuro Prior Library</p>
                 <p class="layer-detail">生理硬约束与人群统计先验，用于约束或裁剪 L4 输出。</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">L6</span>
-                <h4>RTE</h4>
+                <h3>RTE</h3>
                 <p class="layer-desc">Real-time Engine</p>
                 <p class="layer-detail">低延迟推理（Infer）+ 异步个体化校准（Cal），输出实时神经似然。</p>
             </div>
@@ -129,7 +129,7 @@
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-tachometer-alt" aria-hidden="true"></i> RTE-Infer</h4>
+                <h3><i class="fas fa-tachometer-alt" aria-hidden="true"></i> RTE-Infer</h3>
                 <p><strong>实时推理引擎</strong>— 无状态、低延迟、确定性计算。</p>
                 <ul class="list-indent" class="desc-spacing">
                     <li>管线：L2 数据流 → L3 特征计算 → L4 模型 → p(yₙ|Ψ)</li>
@@ -137,7 +137,7 @@
                 </ul>
             </div>
             <div class="card">
-                <h4><i class="fas fa-sliders-h" aria-hidden="true"></i> RTE-Cal</h4>
+                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> RTE-Cal</h3>
                 <p><strong>异步校准引擎</strong>— 有状态、精度优先、不阻塞推理快路径。</p>
                 <ul class="list-indent" class="desc-spacing">
                     <li>接收 RTE-Infer 输出 + PSE 状态估计</li>

@@ -17,7 +17,7 @@
     <!-- Google Fonts: Josefin Sans (Logo) + Inter (Body) + Noto Sans SC (中文) + JetBrains Mono (等宽) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- INTRE Shared CSS -->
@@ -25,553 +25,202 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="shared/brand.css">
     <link rel="stylesheet" href="shared/components.css">
+    <!-- 无 JS 兜底：滚动渐显元素默认可见，避免内容永久隐藏 -->
+    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
     <style>
-        /* ===== 主页专有样式 ===== */
+        /* ============================================================
+           主页专有样式（v2.4 形式崇高感深化）
+           设计系统主体位于 shared/components.css 的 v2.4 段落，
+           此处仅承载主页独有的布局与节奏。
+           ============================================================ */
 
-        /* ---------- Hero ---------- */
-        .hero h1 {
-            font-size: var(--text-4xl);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-        }
-
+        /* ---------- Hero 品牌点缀 ---------- */
         .accent-dot {
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--color-navy-400);
+            width: 10px;
+            height: 10px;
+            background: var(--color-amber-500);
             border-radius: 50%;
-            margin-left: 0.3rem;
+            margin-left: 0.45rem;
             vertical-align: super;
-            opacity: 0.8;
         }
 
-        .hero-sub {
-            font-size: var(--text-lg);
-            color: var(--color-white-65);
-            max-width: 640px;
-            margin: 0.5rem auto 2.2rem;
-            line-height: 1.65;
-        }
+        /* ---------- 章节垂直节奏 ---------- */
+        .home-section { margin: 5.5rem 0; }
 
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2.8rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat {
-            text-align: center;
-            padding: 0.4rem 0.6rem;
-        }
-
-        .hero-stat-num {
-            font-size: var(--text-xl);
-            font-weight: 700;
-            color: var(--color-white);
-            letter-spacing: -0.02em;
-        }
-
-        .hero-stat-num .hero-stat-dot {
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: var(--color-navy-400);
-            margin-right: 0.5rem;
-            vertical-align: middle;
-            opacity: 0.7;
-        }
-
-        .hero-stat-label {
-            font-size: 0.75rem;
-            color: var(--color-white-55);
-            font-weight: 400;
-            letter-spacing: 0.03em;
-            margin-top: 0.1rem;
-        }
-
-        .hero-divider {
-            height: 0;
-            border-top: var(--stroke-hairline) solid var(--color-slate-200);
-        }
-
-        /* ---------- 章节分隔装饰 ---------- */
-        .section-decoration {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.6rem;
-            margin: 1.5rem 0 0.5rem;
-            opacity: 0.25;
-        }
-        .section-decoration .line {
-            width: 40px;
-            height: 1px;
-            background-color: var(--color-navy-400);
-        }
-        .section-decoration .diamond {
-            width: 6px;
-            height: 6px;
-            background-color: var(--color-navy-600);
-            transform: rotate(45deg);
-        }
-
-        /* ---------- Manifesto ---------- */
-        .manifesto {
-            max-width: 880px;
-            margin: 0 auto 3rem;
-            background-color: var(--color-white);
-            border-radius: var(--radius-sharp);
-            padding: 2.5rem 3rem;
-            box-shadow: var(--shadow-xs);
-            position: relative;
+        /* ---------- Manifesto 宣言卡 ---------- */
+        .manifesto-quote {
+            background: var(--color-white);
             border: var(--stroke-hairline) solid var(--color-slate-200);
-            transition: box-shadow var(--duration-normal) var(--ease-smooth);
-            border-left: var(--stroke-hairline) solid var(--color-slate-200);
+            box-shadow: var(--shadow-xs);
+            border-radius: var(--radius-sharp);
+            padding: 2.6rem 2.8rem 2.6rem 3.4rem;
             font-style: normal;
-            display: flow-root;
         }
-        .manifesto:hover {
-            box-shadow: var(--shadow-sm);
-        }
-        .manifesto::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 2.5rem;
-            right: 2.5rem;
-            height: var(--stroke-core);
-            background-color: var(--color-navy-600);
-            border-radius: 0 0 var(--radius-xs) var(--radius-xs);
-        }
-        .manifesto-icon {
-            float: left;
-            font-size: var(--text-2xl);
-            color: var(--color-navy-400);
-            opacity: 0.35;
-            margin-right: 1rem;
-            margin-top: 0.15rem;
-            line-height: 1;
-            transition: opacity var(--duration-normal) var(--ease-smooth);
-        }
-        .manifesto p {
-            font-size: var(--text-md);
+        .manifesto-quote .tech-label { display: block; margin-bottom: 1.3rem; }
+        .manifesto-quote p {
+            font-size: 1.18rem;
+            line-height: 2.05;
             color: var(--color-slate-700);
-            line-height: 1.85;
+        }
+        .manifesto-quote p strong {
+            color: var(--color-navy-600);
+            font-weight: 600;
         }
 
         /* ---------- 模块卡片网格 ---------- */
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .section-header h2 {
-            font-size: var(--text-2xl);
-            font-weight: 700;
-            color: var(--color-navy-600);
-            letter-spacing: -0.03em;
-            position: relative;
-            display: inline-block;
-        }
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--color-navy-600);
-            border-radius: var(--radius-xs);
-        }
-        .section-header p {
-            color: var(--color-slate-500);
-            font-size: var(--text-base);
-            margin-top: 0.4rem;
-        }
-
+        .card-wrap { display: block; text-decoration: none; color: inherit; height: 100%; }
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 1.5rem;
-            margin: 0 0 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
         }
-
-        .card-link { text-decoration: none; color: inherit; display: block; }
-
         .card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-sharp);
-            padding: 1.5rem;
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            transition: all var(--duration-fast) var(--ease-smooth);
             position: relative;
-            height: 100%;
             display: flex;
             flex-direction: column;
-        }
-        .card:hover {
-            border-color: var(--color-navy-50);
-            background-color: var(--color-navy-50);
-            box-shadow: var(--shadow-xs);
+            height: 100%;
         }
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 1.5rem;
-            right: 1.5rem;
-            height: 2px;
-            background-color: var(--color-navy-600);
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--color-navy-600);
             opacity: 0;
             transition: opacity var(--duration-normal) var(--ease-smooth);
         }
         .card:hover::before { opacity: 1; }
+        .card[data-module="upls"]::before  { background: var(--color-upls); }
+        .card[data-module="unis"]::before  { background: var(--color-unis); }
+        .card[data-module="ubms"]::before  { background: var(--color-ubms); }
+        .card[data-module="pse"]::before   { background: var(--color-pse); }
+        .card[data-module="rever"]::before { background: var(--color-rever); }
 
         .card-icon {
-            font-size: var(--text-2xl);
+            font-size: 1.5rem;
             color: var(--color-navy-400);
             margin-bottom: 1rem;
             transition: transform var(--duration-normal) var(--ease-smooth);
         }
-        .card:hover .card-icon { transform: scale(1.06); }
-
+        .card:hover .card-icon { transform: translateY(-3px); }
         .card h2 {
-            font-family: var(--font-body);
-            font-size: var(--text-xl);
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--color-navy-600);
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             letter-spacing: -0.02em;
+            margin: 0.15rem 0 0;
         }
-        .card h2 .arrow {
-            font-size: var(--text-base);
-            color: var(--color-navy-400);
-            opacity: 0;
-            transform: translateX(-8px);
-            transition: all var(--duration-normal) var(--ease-smooth);
-        }
-        .card:hover h2 .arrow { opacity: 1; transform: translateX(0); }
-
         .card .badge {
             display: inline-block;
-            background-color: var(--color-navy-50);
+            background: var(--color-navy-50);
             color: var(--color-navy-600);
             font-size: var(--text-2xs);
             font-weight: 600;
-            padding: 0.2rem 0.8rem;
+            padding: 0.22rem 0.85rem;
             border-radius: var(--radius-pill);
-            margin-top: 0.6rem;
+            margin-top: 0.75rem;
             align-self: flex-start;
         }
-
         .card p {
             color: var(--color-slate-700);
-            font-size: var(--text-base);
-            line-height: 1.7;
+            font-size: 0.92rem;
+            line-height: 1.78;
             flex-grow: 1;
-            margin-top: 0.6rem;
+            margin-top: 0.85rem;
         }
+        .card .card-link { margin-top: 1.15rem; }
 
-        /* ---------- 三层架构 + 三通道融合 ---------- */
+        /* ---------- 融合区白色面板 ---------- */
         .fusion-section {
-            background-color: var(--color-white);
-            padding: 3rem;
-            margin: 3rem 0;
+            background: var(--color-white);
             border: var(--stroke-hairline) solid var(--color-slate-200);
             box-shadow: var(--shadow-xs);
-            transition: box-shadow var(--duration-normal) var(--ease-smooth);
-        }
-        .fusion-section:hover { box-shadow: var(--shadow-sm); }
-
-        .fusion-section h3 {
-            font-size: var(--text-2xl);
-            font-weight: 700;
-            color: var(--color-navy-600);
-            text-align: center;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.3rem;
-        }
-        .fusion-section > .sub {
-            text-align: center;
-            color: var(--color-slate-500);
-            font-size: var(--text-base);
-            margin-bottom: 2rem;
-        }
-
-        .fusion-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .fusion-item {
-            background-color: var(--color-navy-50);
-            padding: 1.8rem;
             border-radius: var(--radius-sharp);
-            border-left: 4px solid var(--color-navy-600);
-            transition: all var(--duration-slow) var(--ease-smooth);
-            position: relative;
-        }
-        .fusion-item:hover {
-            background-color: var(--color-navy-50);
-            transform: translateY(-2px);
-        }
-        .fusion-item .layer-num {
-            position: absolute;
-            top: 0.6rem;
-            right: 1rem;
-            font-size: var(--text-3xl);
-            font-weight: 800;
-            color: rgba(31,72,128,0.04);
-            line-height: 1;
-            letter-spacing: -0.05em;
-            pointer-events: none;
-        }
-        .fusion-item h4 {
-            font-size: var(--text-lg);
-            font-weight: 600;
-            color: var(--color-navy-600);
-            margin-bottom: 0.6rem;
-        }
-        .fusion-item p {
-            color: var(--color-slate-700);
-            font-size: var(--text-sm);
-            line-height: 1.6;
+            padding: 3.6rem 3rem 3.2rem;
         }
 
-        .channel-detail-box {
-            margin-top: 2rem;
-            padding: 1.8rem;
-            background-color: var(--color-navy-50);
-            border-radius: var(--radius-sharp);
-        }
-        .channel-detail-title {
-            font-weight: 600;
-            color: var(--color-navy-600);
-            font-size: var(--text-base);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .channel-subgrid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        .channel-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-sharp);
-            padding: 1.2rem;
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            transition: all var(--duration-fast) var(--ease-smooth);
-        }
-        .channel-card:hover {
-            box-shadow: var(--shadow-xs);
-            transform: translateY(-1px);
-        }
-        .channel-card .ch-name {
-            font-weight: 600;
-            color: var(--color-navy-600);
-            font-size: var(--text-sm);
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .channel-card .ch-name .ch-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .channel-card p {
-            font-size: var(--text-xs);
-            color: var(--color-slate-700);
-            line-height: 1.6;
-        }
-
+        /* ---------- 融合公式面板（Navy 深底） ---------- */
         .fusion-formula {
-            margin-top: 2rem;
-            background-color: var(--color-navy-800);
+            margin-top: 3.2rem;
+            background: var(--color-navy-800);
             border-radius: var(--radius-sharp);
-            padding: 2rem;
+            padding: 2.6rem 2.4rem 2.4rem;
             text-align: center;
-            position: relative;
         }
         .fusion-formula::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
             pointer-events: none;
         }
+        .fusion-formula > * { position: relative; z-index: 1; }
         .fusion-formula code {
             font-family: var(--font-mono);
-            font-size: var(--text-md);
-            font-weight: 500;
+            font-size: 0.95rem;
             color: var(--color-navy-50);
-            letter-spacing: 0.02em;
-            position: relative;
-            z-index: 1;
             display: inline-block;
             max-width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             white-space: nowrap;
+            margin-top: 1.7rem;
+            letter-spacing: 0.02em;
         }
-        .fusion-formula p {
+        .fusion-formula .formula-cap {
             color: var(--color-white-55);
-            font-size: var(--text-xs);
-            margin-top: 0.8rem;
-            position: relative;
-            z-index: 1;
+            font-size: 0.78rem;
+            margin-top: 0.95rem;
+            letter-spacing: 0.05em;
         }
 
-        /* ---------- 教材 CTA ---------- */
+        /* ---------- CTA（Navy 面板 + 几何装饰） ---------- */
         .cta-section {
-            background-color: var(--color-navy-50);
+            background: var(--color-navy-800);
             border-radius: var(--radius-sharp);
-            padding: 3rem;
-            margin: 3rem 0;
+            padding: 4.4rem 3rem;
             text-align: center;
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            box-shadow: var(--shadow-xs);
-            position: relative;
-            overflow: hidden;
-            transition: box-shadow var(--duration-normal) var(--ease-smooth);
         }
-        .cta-section:hover { box-shadow: var(--shadow-sm); }
         .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: var(--color-navy-600);
-        }
-        .cta-section h3 {
-            font-size: var(--text-2xl);
-            font-weight: 700;
-            color: var(--color-navy-600);
-            letter-spacing: -0.03em;
-        }
-        .cta-section p {
-            color: var(--color-slate-700);
-            margin: 0.8rem 0 1.5rem;
-            font-size: var(--text-base);
-        }
-
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            background-color: var(--color-navy-600);
-            color: var(--color-white);
-            padding: 0.9rem 2.5rem;
-            border-radius: var(--radius-pill);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: var(--text-base);
-            transition: all var(--duration-normal) var(--ease-smooth);
-            box-shadow: var(--shadow-navy-sm);
-        }
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-navy-md);
-        }
-        .cta-btn i {
-            transition: transform var(--duration-normal) var(--ease-smooth);
-        }
-        .cta-btn:hover i { transform: translateX(4px); }
-
-        /* ---------- 响应式 ---------- */
-        @media (max-width: 1024px) {
-            .fusion-grid { grid-template-columns: repeat(2, 1fr); }
-            .channel-subgrid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: var(--text-3xl); }
-            .hero-sub { font-size: var(--text-base); }
-            .hero-stats { gap: 1.5rem; }
-            .card-grid { gap: 1.2rem; }
-            .manifesto { padding: 1.8rem 1.5rem; }
-            .fusion-section { padding: 2rem 1.5rem; }
-            .cta-section { padding: 2rem 1.5rem; }
-            .section-header h2 { font-size: var(--text-xl); }
-            .fusion-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: var(--text-2xl); }
-        }
-
-        /* ---------- 动效 ---------- */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-content { animation: fadeUp 0.9s var(--ease-smooth) both; }
-        .manifesto    { animation: fadeUp 0.6s var(--ease-smooth) 0.2s both; }
-        .card-grid    { animation: fadeUp 0.6s var(--ease-smooth) 0.3s both; }
-        .fusion-section { animation: fadeUp 0.6s var(--ease-smooth) 0.4s both; }
-        .cta-section  { animation: fadeUp 0.6s var(--ease-smooth) 0.5s both; }
-
-        /* ---------- 品牌细节 ---------- */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-slate-100); }
-        ::-webkit-scrollbar-thumb { background: var(--color-slate-400); border-radius: var(--radius-xs); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-slate-500); }
-        ::selection { background-color: rgba(31,72,128,0.15); color: var(--color-slate-900); }
-
-        /* ---------- 精致化 ---------- */
-
-        /* D5 — Hero 网格纹理 */
-        .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 44px 44px;
             pointer-events: none;
-            z-index: 0;
         }
-
-        /* D6 — 模块卡片顶部色带 */
-        .card[data-module="upls"]::before  { background-color: var(--color-upls); }
-        .card[data-module="unis"]::before  { background-color: var(--color-unis); }
-        .card[data-module="ubms"]::before  { background-color: var(--color-ubms); }
-        .card[data-module="pse"]::before   { background-color: var(--color-pse); }
-        .card[data-module="rever"]::before { background-color: var(--color-rever); }
-
-        /* D7 — Manifesto 图标悬停 */
-        .manifesto:hover .manifesto-icon { opacity: 0.5; }
-
-        /* 行内样式替代 — hero-label-icon */
-        .hero-label-icon { margin-right: 0.4rem; }
-
-        /* 行内样式替代 — core-badge */
-        .core-badge {
-            background: var(--color-navy-600);
+        .cta-section > * { position: relative; z-index: 1; }
+        .cta-section h3 {
+            font-size: 2.1rem;
+            font-weight: 700;
             color: var(--color-white);
-            padding: 0.15rem 0.6rem;
-            border-radius: var(--radius-pill);
-            font-size: var(--text-2xs);
-            margin-left: 0.5rem;
+            letter-spacing: -0.02em;
+            margin: 1.1rem 0 0.7rem;
+        }
+        .cta-section p {
+            color: var(--color-white-65);
+            max-width: 560px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.85;
         }
 
-        /* 行内样式替代 — footer-desc */
-        .footer-desc { font-size: var(--text-sm); opacity: 0.6; margin: 0.3rem 0 1rem; }
+        /* ---------- 页脚描述 ---------- */
+        .footer-desc { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 2.6rem; }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 768px) {
+            .home-section { margin: 4rem 0; }
+            .fusion-section { padding: 2.6rem 1.4rem 2.2rem; }
+            .cta-section { padding: 3.2rem 1.6rem; }
+            .manifesto-quote { padding: 2.1rem 1.6rem 2.1rem 2.6rem; }
+            .manifesto-quote p { font-size: 1.04rem; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -612,179 +261,437 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <main id="main-content">
+
+    <!-- ==================== HERO · 状态空间 ==================== -->
     <section class="hero">
+        <canvas class="hero-canvas" id="stateSpaceCanvas" aria-hidden="true"></canvas>
+
+        <!-- 几何语汇：三角 = 三层架构 -->
+        <svg class="geo geo-triangle" viewBox="0 0 200 180" aria-hidden="true" focusable="false">
+            <polygon points="100,12 188,168 12,168" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+            <polygon points="100,58 156,152 44,152" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+            <circle cx="100" cy="120" r="3" fill="rgba(245,158,11,0.7)"/>
+        </svg>
+        <!-- 几何语汇：圆 = 状态向量 -->
+        <div class="geo geo-circle" aria-hidden="true"></div>
+
         <div class="hero-content">
-            <span class="hero-label"><i class="fas fa-cube hero-label-icon" aria-hidden="true"></i> 功能层心理学</span>
-            <h1>INTRE<span class="accent-dot"></span></h1>
-            <p class="hero-sub">连接现象与神经的形式化工具 —— 让心理状态可描述、可仿真、可干预。</p>
+            <span class="hero-eyebrow">功能层心理学 · FLP</span>
+            <h1 class="hero-title">INTRE<span class="accent-dot" aria-hidden="true"></span></h1>
+            <div class="hero-sub">
+                <span class="hero-zh">连接现象与神经的形式化工具</span>
+                <span class="hero-divider" aria-hidden="true"></span>
+                <span class="hero-en">Formal Bridge · Phenomenon ↔ Neuron</span>
+            </div>
+            <p class="hero-tagline">让心理状态可描述、可仿真、可干预。INTRE 以 M-R-D-S 状态语法与 G-M-A-R 操作语法，在现象层与神经层之间架设可计算的功能层。</p>
+
             <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-num"><span class="hero-stat-dot"></span>三通道</div>
-                    <div class="hero-stat-label">行为 · 语义 · 神经融合</div>
+                <div class="stat-card">
+                    <span class="stat-num">42<span class="stat-unit">维</span></span>
+                    <span class="stat-label">状态向量 Ψ(t) ∈ ℝ⁴²</span>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num"><span class="hero-stat-dot"></span>M‑R‑D‑S</div>
-                    <div class="hero-stat-label">形式化功能层语法</div>
+                <div class="stat-card">
+                    <span class="stat-num">3<span class="stat-unit">通道</span></span>
+                    <span class="stat-label">行为 · 语义 · 神经融合</span>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num"><span class="hero-stat-dot"></span>G‑M‑A‑R</div>
-                    <div class="hero-stat-label">原子操作协议</div>
+                <div class="stat-card">
+                    <span class="stat-num">5<span class="stat-unit">架构</span></span>
+                    <span class="stat-label">形式化语法体系</span>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num"><span class="hero-stat-dot"></span>42 维</div>
-                    <div class="hero-stat-label">状态向量表示</div>
+                <div class="stat-card">
+                    <span class="stat-num">8<span class="stat-unit">级</span></span>
+                    <span class="stat-label">IET v3.0 证据标签</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll" aria-hidden="true">Scroll</div>
+        <div class="hero-coord" aria-hidden="true">
+            <span class="coord-accent">Ψ(t)</span>&nbsp;=&nbsp;[&nbsp;M₁…M₆&nbsp;|&nbsp;R₁…R₂₁&nbsp;|&nbsp;D₁…D₉&nbsp;|&nbsp;S₁…S₆&nbsp;]&nbsp;∈&nbsp;ℝ⁴²
+        </div>
+    </section>
+
+    <!-- ==================== 身份数字带 · 42 维的构成 ==================== -->
+    <section class="identity-strip" aria-label="INTRE 核心数字">
+        <div class="identity-grid">
+            <div class="identity-item reveal">
+                <span class="identity-num">06</span>
+                <span class="identity-label">模块 · MODULES M₁–M₆</span>
+            </div>
+            <div class="identity-item reveal" data-delay="1">
+                <span class="identity-num">21</span>
+                <span class="identity-label">关系 · RELATIONS R₁–R₂₁</span>
+            </div>
+            <div class="identity-item reveal" data-delay="2">
+                <span class="identity-num">42</span>
+                <span class="identity-label">维状态向量 · Ψ ∈ ℝ⁴²</span>
+            </div>
+            <div class="identity-item reveal" data-delay="3">
+                <span class="identity-num">09</span>
+                <span class="identity-label">动力 · DYNAMICS D₁–D₉</span>
+            </div>
+            <div class="identity-item reveal" data-delay="4">
+                <span class="identity-num">06</span>
+                <span class="identity-label">状态 · STATES S₁–S₆</span>
             </div>
         </div>
     </section>
 
-    <!-- HERO → 内容过渡 -->
-    <div class="hero-divider"></div>
-
     <div class="container">
-        <!-- 装饰分隔 -->
-        <div class="section-decoration">
-            <span class="line"></span>
-            <span class="diamond"></span>
-            <span class="line"></span>
-        </div>
 
-        <!-- MANIFESTO -->
-        <blockquote class="manifesto">
-            <div class="manifesto-icon"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
-            <p>INTRE 提供一套严格的功能层语言（M‑R‑D‑S / G‑M‑A‑R）和工程化协议，使心理状态可描述、可仿真、可干预。</p>
-        </blockquote>
+        <!-- ==================== MANIFESTO ==================== -->
+        <section class="home-section reveal" aria-label="宣言">
+            <blockquote class="manifesto-quote">
+                <span class="tech-label">Manifesto · 我们的论点</span>
+                <p>心理学长期缺少一门<strong>可计算的功能层语言</strong>——现象层的体验无法被精确描述，神经层的信号无法被直接解读。INTRE 提供一套严格的功能层语法（<strong>M-R-D-S</strong> 状态语法 / <strong>G-M-A-R</strong> 操作语法）与工程化协议，使心理状态<strong>可描述、可仿真、可干预</strong>。</p>
+            </blockquote>
+        </section>
 
-        <!-- 核心模块卡片 -->
-        <div class="section-header">
-            <h2>核心模块</h2>
-        </div>
-
-        <div class="card-grid">
-            <!-- UPLS -->
-            <a href="/INTRE-website/upls/" class="card-link">
-                <div class="card" data-module="upls">
-                    <div class="card-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
-                    <h2>UPLS <span class="arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></h2>
-                    <div class="badge">语义通道 · 内感架构</div>
-                    <p>形式化元语言基础设施 — M‑R‑D‑S 状态语法 · G‑M‑A‑R 操作语法 · PCUI/PSA/PSL 知识库。</p>
-                </div>
-            </a>
-            <!-- UNIS -->
-            <a href="/INTRE-website/unis/" class="card-link">
-                <div class="card" data-module="unis">
-                    <div class="card-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
-                    <h2>UNIS <span class="arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></h2>
-                    <div class="badge">神经通道 · 实时推理</div>
-                    <p>原始神经信号→功能层似然的六层递进架构 — EEG/fNIRS/PPG 实时推理。</p>
-                </div>
-            </a>
-            <!-- UBMS -->
-            <a href="/INTRE-website/ubms/" class="card-link">
-                <div class="card" data-module="ubms">
-                    <div class="card-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div>
-                    <h2>UBMS <span class="arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></h2>
-                    <div class="badge">行为通道 · 三层管道</div>
-                    <p>结构化行为观测→行为似然的三层管道 — 量表·EMA·数字表型。</p>
-                </div>
-            </a>
-            <!-- PSE -->
-            <a href="/INTRE-website/pse/" class="card-link">
-                <div class="card" data-module="pse">
-                    <div class="card-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
-                    <h2>PSE <span class="arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></h2>
-                    <div class="badge">计算引擎</div>
-                    <p>基于心智六论的大规模仿真引擎 — 蒙特卡罗仿真 · 贝叶斯校准。</p>
-                </div>
-            </a>
-            <!-- REVER -->
-            <a href="/INTRE-website/rever/" class="card-link">
-                <div class="card" data-module="rever">
-                    <div class="card-icon"><i class="fas fa-heart icon-rever" aria-hidden="true"></i></div>
-                    <h2>REVER <span class="arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span></h2>
-                    <div class="badge">伦理门控 · 透明审计</div>
-                    <p>四层伦理架构 · 依赖雷达 Dₛ · 四点式门控 — 确保AI不诱导病理性依赖。</p>
-                </div>
-            </a>
-        </div>
-
-        <!-- 三层架构 + 三通道融合 -->
-        <div class="fusion-section">
-            <h3>三层架构 · 三通道融合</h3>
-            <p class="sub">本体论层级：现象层 → 功能层 → 神经层</p>
-
-            <div class="fusion-grid">
-                <div class="fusion-item" >
-                    <span class="layer-num">01</span>
-                    <h4>现象层</h4>
-                    <p>主观体验、行为表现、临床症状。可直接观测的心理现象，也是干预的最终目标层。</p>
-                </div>
-                <div class="fusion-item" >
-                    <span class="layer-num">02</span>
-                    <h4>功能层 <span class="core-badge">工程核心</span></h4>
-                    <p><strong>M‑R‑D‑S</strong> 内感架构 + <strong>S‑P</strong> 外感架构。心理状态在此层被形式化为 42 维状态向量，INTRE 的运算中心。</p>
-                </div>
-                <div class="fusion-item" >
-                    <span class="layer-num">03</span>
-                    <h4>神经层</h4>
-                    <p>生物实现，包括神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，但通过 UNIS 与神经科学校准。</p>
+        <!-- ==================== 核心模块 ==================== -->
+        <section class="home-section" aria-label="核心模块">
+            <div class="section-head reveal">
+                <span class="tech-label">Core Modules</span>
+                <h2>核心模块</h2>
+                <p class="section-sub">五大模块构成从形式语言、三通道观测到仿真引擎与伦理门控的完整闭环。</p>
+                <div class="head-rule" aria-hidden="true">
+                    <span class="rule-line"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-dot"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-line"></span>
                 </div>
             </div>
 
-            <!-- 三通道融合说明 -->
-            <div class="channel-detail-box">
-                <div class="channel-detail-title">
-                    <i class="fas fa-code-branch" aria-hidden="true"></i> 三通道融合 — 三条输入管线，汇聚于功能层 PSE
+            <div class="card-grid">
+                <a href="/INTRE-website/upls/" class="card-wrap reveal">
+                    <div class="card" data-module="upls">
+                        <div class="card-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·01 / SEMANTIC</span>
+                        <h2>UPLS</h2>
+                        <div class="badge">语义通道 · 内感架构</div>
+                        <p>形式化元语言基础设施 — M-R-D-S 状态语法 · G-M-A-R 操作语法 · PCUI/PSA/PSL 知识库。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a href="/INTRE-website/unis/" class="card-wrap reveal" data-delay="1">
+                    <div class="card" data-module="unis">
+                        <div class="card-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·02 / NEURAL</span>
+                        <h2>UNIS</h2>
+                        <div class="badge">神经通道 · 实时推理</div>
+                        <p>原始神经信号 → 功能层似然的六层递进架构 — EEG / fNIRS / PPG 实时推理。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a href="/INTRE-website/ubms/" class="card-wrap reveal" data-delay="2">
+                    <div class="card" data-module="ubms">
+                        <div class="card-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·03 / BEHAVIOR</span>
+                        <h2>UBMS</h2>
+                        <div class="badge">行为通道 · 三层管道</div>
+                        <p>结构化行为观测 → 行为似然的三层管道 — 量表 · EMA · 数字表型。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a href="/INTRE-website/pse/" class="card-wrap reveal" data-delay="3">
+                    <div class="card" data-module="pse">
+                        <div class="card-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·04 / ENGINE</span>
+                        <h2>PSE</h2>
+                        <div class="badge">计算引擎</div>
+                        <p>基于心智六论的大规模仿真引擎 — 蒙特卡罗仿真 · 贝叶斯校准。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a href="/INTRE-website/rever/" class="card-wrap reveal" data-delay="4">
+                    <div class="card" data-module="rever">
+                        <div class="card-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·05 / ETHICS</span>
+                        <h2>REVER</h2>
+                        <div class="badge">伦理门控 · 透明审计</div>
+                        <p>四层伦理架构 · 依赖雷达 Dₛ · 四点式门控 — 确保 AI 不诱导病理性依赖。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== 三层架构 · 三通道融合 ==================== -->
+        <section class="home-section fusion-section reveal" aria-label="三层架构与三通道融合">
+            <div class="section-head">
+                <span class="tech-label">Architecture</span>
+                <h2>三层架构 · 三通道融合</h2>
+                <p class="section-sub">本体论层级：现象层 → 功能层 → 神经层。三条观测管线汇聚于功能层，经贝叶斯融合估计状态向量。</p>
+                <div class="head-rule" aria-hidden="true">
+                    <span class="rule-line"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-dot"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-line"></span>
                 </div>
-                <div class="channel-subgrid">
-                    <div class="channel-card">
-                        <div class="ch-name"><span class="ch-dot ubms"></span>行为通道</div>
-                        <p>现象层的结构化行为观测 → <strong>UBMS</strong> 三层管道 → 功能层行为似然 p(y<sub>b</sub>|Ψ)</p>
+            </div>
+
+            <div class="layer-stack">
+                <div class="layer-node">
+                    <span class="layer-index">L1 / PHENOMENAL</span>
+                    <div class="layer-body">
+                        <span class="layer-name">现象层</span>
+                        <p class="layer-desc">主观体验、行为表现、临床症状——可直接观测的心理现象，也是干预的最终目标层。</p>
                     </div>
-                    <div class="channel-card">
-                        <div class="ch-name"><span class="ch-dot upls"></span>语义通道</div>
-                        <p>现象层的自然语言 → <strong>UPLS PSL</strong> 编译 → 功能层语义似然 p(y<sub>s</sub>|Ψ)</p>
+                </div>
+
+                <div class="layer-arrow" aria-hidden="true">
+                    <span class="arrow-line"></span>
+                    <span class="arrow-label">观测 · Observe</span>
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="layer-node is-core">
+                    <span class="layer-index">L2 / FUNCTIONAL</span>
+                    <div class="layer-body">
+                        <span class="layer-name">功能层</span><span class="layer-var">Ψ(t) ∈ ℝ⁴²</span>
+                        <p class="layer-desc">M-R-D-S 内感架构 + S-P 外感架构。心理状态在此被形式化为 42 维状态向量——INTRE 的运算中心。</p>
                     </div>
-                    <div class="channel-card">
-                        <div class="ch-name"><span class="ch-dot unis"></span>神经通道</div>
-                        <p>神经层的神经信号 → <strong>UNIS</strong> 六层架构 → 功能层神经似然 p(y<sub>n</sub>|Ψ)</p>
+                </div>
+
+                <div class="layer-arrow" aria-hidden="true">
+                    <i class="fas fa-arrow-up"></i>
+                    <span class="arrow-label">校准 · Calibrate</span>
+                    <span class="arrow-line"></span>
+                </div>
+
+                <div class="layer-node">
+                    <span class="layer-index">L3 / NEURAL</span>
+                    <div class="layer-body">
+                        <span class="layer-name">神经层</span><span class="layer-var">yₙ</span>
+                        <p class="layer-desc">神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，经 UNIS 与神经科学校准。</p>
                     </div>
                 </div>
             </div>
 
-            <div class="fusion-formula">
+            <div class="fusion-formula fusion-panel">
+                <span class="fusion-psi" aria-hidden="true">Ψ</span>
+                <span class="tech-label tech-label--amber">Three-Channel Fusion · 三通道贝叶斯融合</span>
+                <div class="fusion-channels">
+                    <div class="fusion-channel">
+                        <span class="fc-code">UBMS → p(y_b|Ψ)</span>
+                        <span class="fc-name">行为通道</span>
+                        <span class="fc-desc">现象层的结构化行为观测，经 UBMS 三层管道转化为行为似然。</span>
+                    </div>
+                    <div class="fusion-channel">
+                        <span class="fc-code">UPLS → p(y_s|Ψ)</span>
+                        <span class="fc-name">语义通道</span>
+                        <span class="fc-desc">现象层的自然语言，经 UPLS PSL 编译转化为语义似然。</span>
+                    </div>
+                    <div class="fusion-channel">
+                        <span class="fc-code">UNIS → p(y_n|Ψ)</span>
+                        <span class="fc-name">神经通道</span>
+                        <span class="fc-desc">神经层的神经信号，经 UNIS 六层架构转化为神经似然。</span>
+                    </div>
+                </div>
                 <code>p(Ψₜ | y<sub>b,t</sub>, y<sub>s,t</sub>, y<sub>n,t</sub>) ∝ p(y<sub>b</sub>|Ψ) · p(y<sub>s</sub>|Ψ) · p(y<sub>n</sub>|Ψ) · p(Ψₜ|Ψₜ₋₁)</code>
-                <p>行为似然 · 语义似然 · 神经似然 — 三通道贝叶斯融合</p>
+                <p class="formula-cap">行为似然 · 语义似然 · 神经似然 — 三通道贝叶斯融合，逐时刻估计状态向量</p>
             </div>
-        </div>
+        </section>
 
-        <!-- 教材 CTA -->
-        <div class="cta-section">
-            <h3><i class="fas fa-book-open icon-blue" aria-hidden="true"></i>导论教材</h3>
-            <p>完整的 INTRE 学习入口，29 章正文 + 14 篇附录，覆盖框架全部核心内容。</p>
-            <a href="/INTRE-website/textbook/" class="cta-btn">
+        <!-- ==================== 教材 CTA ==================== -->
+        <section class="home-section cta-section reveal" aria-label="导论教材">
+            <div class="geo geo-circle" aria-hidden="true"></div>
+            <span class="tech-label tech-label--amber">Textbook · 导论教材</span>
+            <h3>从零开始理解 INTRE</h3>
+            <p>29 章正文 + 14 篇附录，覆盖框架全部核心内容——从状态语法、三通道观测到仿真引擎与伦理门控。</p>
+            <a href="/INTRE-website/textbook/" class="btn btn-amber">
                 进入教材 <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
-        </div>
+        </section>
+
     </div>
+    </main>
 
-        </main>
-
-<footer>
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
         <div class="footer-brand">INTRE</div>
         <p class="footer-desc">功能层心理学 (FLP) · 开放知识入口</p>
-        <div class="footer-links">
-            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
-            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+
+        <div class="footer-sitemap">
+            <div class="fs-col">
+                <h4>Modules · 模块</h4>
+                <a href="/INTRE-website/upls/">UPLS · 语义通道</a>
+                <a href="/INTRE-website/unis/">UNIS · 神经通道</a>
+                <a href="/INTRE-website/ubms/">UBMS · 行为通道</a>
+                <a href="/INTRE-website/pse/">PSE · 计算引擎</a>
+                <a href="/INTRE-website/rever/">REVER · 伦理门控</a>
+            </div>
+            <div class="fs-col">
+                <h4>Learn · 学习</h4>
+                <a href="/INTRE-website/textbook/">导论教材</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+            <div class="fs-col">
+                <h4>Resources · 资源</h4>
+                <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE · Zenodo</a>
+                <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS · Zenodo</a>
+                <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER · Zenodo</a>
+            </div>
+            <div class="fs-col">
+                <h4>Framework · 框架</h4>
+                <a href="/INTRE-website/glossary/">状态语法 M-R-D-S</a>
+                <a href="/INTRE-website/glossary/">操作语法 G-M-A-R</a>
+                <a href="/INTRE-website/glossary/">证据标签 IET v3.0</a>
+            </div>
         </div>
+
         <div class="footer-meta">
-            <p>版本 v2.3 (2026-06-12) · CC0 1.0</p>
+            <span>版本 v2.4</span>
+            <span class="meta-dot" aria-hidden="true"></span>
+            <span>CC0 1.0</span>
+            <span class="meta-dot" aria-hidden="true"></span>
+            <span>功能层心理学 FLP</span>
         </div>
     </footer>
+
     <script src="shared/nav-toggle.js"></script>
+    <script>
+    /* ============================================================
+       主页交互（v2.4）
+       - 状态空间星座动画（Canvas）
+       - 滚动渐显（IntersectionObserver）
+       均尊重 prefers-reduced-motion。
+       ============================================================ */
+    (function () {
+        'use strict';
+        var reduceMotion = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* ---------- 滚动渐显 ---------- */
+        var revealEls = document.querySelectorAll('.reveal');
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            revealEls.forEach(function (el) { el.classList.add('reveal-visible'); });
+        } else {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(function (el) { io.observe(el); });
+        }
+
+        /* ---------- 状态空间星座动画 ---------- */
+        var canvas = document.getElementById('stateSpaceCanvas');
+        if (!canvas || !canvas.getContext) return;
+        var ctx = canvas.getContext('2d');
+        var hero = canvas.parentElement;
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var W = 0, H = 0;
+        var particles = [];
+        var LINK_DIST = 130;
+
+        // 品牌色（取自 brand.css）
+        var COL_NAVY = { r: 59, g: 111, b: 181 };   // navy-400 #3B6FB5
+        var COL_WHITE = { r: 255, g: 255, b: 255 };
+        var COL_AMBER = { r: 245, g: 158, b: 11 };  // amber-500 #F59E0B
+
+        function resize() {
+            W = hero.offsetWidth;
+            H = hero.offsetHeight;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            seed();
+        }
+
+        function seed() {
+            particles = [];
+            var count = Math.max(36, Math.min(80, Math.round(W * H / 16000)));
+            for (var i = 0; i < count; i++) {
+                var roll = Math.random();
+                var type = roll < 0.08 ? 'hub' : (roll < 0.14 ? 'amber' : 'dot');
+                particles.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.28,
+                    vy: (Math.random() - 0.5) * 0.28,
+                    r: type === 'hub' ? 3 : (type === 'amber' ? 2.2 : 1.4),
+                    type: type
+                });
+            }
+        }
+
+        function rgba(c, a) {
+            return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + a + ')';
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+
+            // 连线（星座）
+            for (var i = 0; i < particles.length; i++) {
+                for (var j = i + 1; j < particles.length; j++) {
+                    var a = particles[i], b = particles[j];
+                    var dx = a.x - b.x, dy = a.y - b.y;
+                    var d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < LINK_DIST) {
+                        var alpha = (1 - d / LINK_DIST) * 0.16;
+                        ctx.strokeStyle = rgba(COL_NAVY, alpha);
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // 节点
+            for (var k = 0; k < particles.length; k++) {
+                var p = particles[k];
+                var col = p.type === 'hub' ? COL_NAVY : (p.type === 'amber' ? COL_AMBER : COL_WHITE);
+                var baseA = p.type === 'hub' ? 0.85 : (p.type === 'amber' ? 0.8 : 0.5);
+                ctx.fillStyle = rgba(col, baseA);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+                // hub 光晕环
+                if (p.type === 'hub') {
+                    ctx.strokeStyle = rgba(COL_NAVY, 0.25);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r + 4, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function step() {
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+                if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+            }
+            draw();
+            window.requestAnimationFrame(step);
+        }
+
+        resize();
+        window.addEventListener('resize', function () {
+            resize();
+            if (reduceMotion) draw();
+        });
+
+        if (reduceMotion) {
+            draw(); // 降级：仅绘制静态一帧
+        } else {
+            window.requestAnimationFrame(step);
+        }
+    })();
+    </script>
 </body>
 </html>

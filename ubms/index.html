@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -94,7 +94,8 @@
         }
 
         .card-accent {
-            border-left: 4px solid var(--color-navy-400);
+            background-color: var(--color-navy-50);
+            border-color: var(--color-navy-50);
         }
 
         /* 表格样式 */
@@ -296,17 +297,17 @@
         <h3>3.2 复用现有心理测量标准</h3>
         <div class="grid-3">
             <div class="card">
-                <h4>CCT</h4>
+                <h3>CCT</h3>
                 <p><strong>经典测量理论</strong></p>
                 <p>信度指标（Cronbach's α、重测信度）作为 BHI 注册库的一等公民。</p>
             </div>
             <div class="card">
-                <h4>IRT</h4>
+                <h3>IRT</h3>
                 <p><strong>项目反应理论</strong></p>
                 <p>跨工具桥接的数学基础，实现不同量表分数的等价转换。</p>
             </div>
             <div class="card">
-                <h4>COSMIN</h4>
+                <h3>COSMIN</h3>
                 <p><strong>效度评估框架</strong></p>
                 <p>内容效度、结构效度、反应性——纳入 BHI 元数据。</p>
             </div>
@@ -322,7 +323,7 @@
 
         <div class="grid-2">
             <div class="card">
-                <h4><i class="fas fa-tag" aria-hidden="true"></i> BHI · 行为健康标识符</h4>
+                <h3><i class="fas fa-tag" aria-hidden="true"></i> BHI · 行为健康标识符</h3>
                 <p><strong>作用：</strong> 为每个标准化行为测量工具分配唯一标识符</p>
                 <p><strong>示例：</strong></p>
                 <div class="code-block code-block-xs">
@@ -335,7 +336,7 @@
                 </div>
             </div>
             <div class="card">
-                <h4><i class="fas fa-function" aria-hidden="true"></i> 观测函数</h4>
+                <h3><i class="fas fa-function" aria-hidden="true"></i> 观测函数</h3>
                 <p><strong>形式：</strong> y<sub>b</sub> = h(Ψ, c, θ<sub>i</sub>) + ε</p>
                 <p><strong>参数：</strong></p>
                 <ul class="feature-list">
@@ -369,17 +370,17 @@
 
         <div class="grid-3">
             <div class="card">
-                <h4>UBMS → UPLS</h4>
+                <h3>UBMS → UPLS</h3>
                 <p><strong>依赖关系：</strong> 数值桥接前必须经 UPLS 语义对齐</p>
                 <p>两个量表只有在 UPLS 确认测量同一 M-R-D-S 组件后才能 IRT 桥接</p>
             </div>
             <div class="card">
-                <h4>UBMS → UNIS</h4>
+                <h3>UBMS → UNIS</h3>
                 <p><strong>对等关系：</strong> 两条独立的输入通道</p>
                 <p>行为通道与神经通道各自提供独立似然，差异在 PSE 融合层解析</p>
             </div>
             <div class="card">
-                <h4>UBMS → PSE</h4>
+                <h3>UBMS → PSE</h3>
                 <p><strong>输出关系：</strong> 通过 L3 行为似然 API</p>
                 <p>p(y<sub>b</sub>|Ψ) 直接注入 PSE 贝叶斯融合器，与语义、神经似然联合估计状态后验</p>
             </div>

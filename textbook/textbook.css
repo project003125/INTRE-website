@@ -545,17 +545,28 @@ body {
 .toc-sidebar-list .toc-item:hover { color: var(--color-navy-600); background: var(--color-slate-100); }
 .toc-sidebar-list .toc-item:active { color: var(--color-navy-600); background: var(--color-slate-100); }
 
-/* H2 items: bold, larger, with left accent */
+/* H2 items: bold, larger, with left accent (dot, not bar) */
 .toc-sidebar-list .toc-item.toc-h2 {
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--text);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1rem 0.75rem 1.4rem;
     margin-top: 4px;
-    border-left: 3px solid var(--color-navy-600);
+    position: relative;
     min-height: 44px;
     display: flex;
     align-items: center;
+}
+.toc-sidebar-list .toc-item.toc-h2::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-navy-600);
+    border-radius: 50%;
 }
 
 /* H3 items: indented, lighter */

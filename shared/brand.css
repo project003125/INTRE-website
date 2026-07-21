@@ -2,6 +2,24 @@
    INTRE Brand Design Tokens v2.2.1
    基于 06-S-05-INTRE-品牌视觉规范
    设计哲学：包豪斯内核 + Apple 简约
+
+   ⚠️ AI 协作者必读：
+   本文件是规范的实现层。规范的权威定义在：
+   → 06-格式治理/06-S-05-INTRE-品牌视觉规范.md
+   AI 改任何 token 前必须先读规范。
+
+   AI 合规附录（10 条绝对禁令 + detector 已知误报表）：
+   → 06-格式治理/06-S-05.1-AI-Visual-Compliance.md
+
+   严禁事项（不读附录就动手会导致回归到 AI 默认值）：
+   ❌ 把 --font-logo 的 Josefin Sans 改成其他字体
+   ❌ 把 --font-body 的 Inter 改成其他字体
+   ❌ 把 Inter / Josefin 改成 IBM Plex Sans / Fraunces
+      （impeccable detector 报 overused-font 是已知误报，不要改）
+   ❌ 在 UI 区域用 linear-gradient（仅数据可视化例外）
+   ❌ 用 border-radius: >= 12px
+   ❌ 让单屏视口同时出现 ≥3 种大地通道色
+   ❌ 让 Amber 面积 > 5%
    ============================================================ */
 
 /* ---- 色彩系统 ---- */
@@ -55,6 +73,7 @@
   --color-rever: #8B6050;
 
   /* ---- 排版系统 ---- */
+  /* 字体族（遵循 06-S-05 品牌视觉规范） */
   --font-logo:    'Josefin Sans', 'Century Gothic', 'Futura', sans-serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -300,4 +319,38 @@ code, pre, .mono {
   clip: auto;
   clip-path: none;
   overflow: visible;
+}
+
+/* ==========================================================
+   扩展设计 Token（v2.4 视觉深化）
+   延续包豪斯 × 苹果简约哲学，新增形式崇高感所需变量
+   ========================================================== */
+:root {
+  /* 深层 Navy（Hero 纵深与暗面板） */
+  --color-navy-900: #0D2347;
+  --color-navy-975: #081831;
+
+  /* 硬边缘阴影（Type B）—— 深色底用变体 */
+  --shadow-hard-navy: 6px 6px 0 var(--color-navy-975);
+  --shadow-hard-navy-sm: 4px 4px 0 var(--color-navy-975);
+  --shadow-hard-slate: 5px 5px 0 var(--color-slate-200);
+
+  /* 结构描边（架构图 / 几何装饰） */
+  --stroke-geo: 1.5px;
+
+  /* 几何语汇尺寸（三角 = 三层架构，圆 = 状态向量） */
+  --geo-triangle: 220px;
+  --geo-circle: 340px;
+
+  /* 扩展动效 */
+  --duration-reveal: 700ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+
+  /* 悬浮阴影（层级节点 hover） */
+  --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.10);
+
+  /* 等宽技术标签字距 */
+  --tracking-tech: 0.14em;
 }

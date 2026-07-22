@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第20章 仿真校准：蒙特卡罗与贝叶斯 · INTRE 导论教材</title>
-    <meta name="description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
-    <meta property="og:title" content="第20章 仿真校准：蒙特卡罗与贝叶斯">
-    <meta property="og:description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
+    <title>绗?0绔?浠跨湡鏍″噯锛氳挋鐗瑰崱缃椾笌璐濆彾鏂?路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="PSE-M鐨勬牳蹇冧换鍔℃槸鍦ㄥ弬鏁扮┖闂翠腑澶ц妯￠噰鏍凤紝閫氳繃杩愯鏁扮櫨涓囦釜铏氭嫙鏅鸿兘浣撶殑鐘舵€佹紨鍖栵紝鐢熸垚鍚堟垚杞ㄨ抗鏁版嵁锛屽苟浠庝腑鎻愬彇缁熻瑙勫緥銆侾SE-M瑙ｅ喅浜嗗績鐞嗗鐮旂┒涓殑涓€涓牴鏈€у洶澧冿細鐪熷疄涓栫晫鐨勭旱鍚戞暟鎹█缂轰笖鏄傝吹锛岃€岀悊璁洪┍鍔ㄧ殑浠跨湡鍙互鍦ㄤ笉鏀堕泦鐪熷疄鏁版嵁鐨勬儏鍐典笅锛屽厛鏈熸帰绱㈠弬鏁扮┖闂寸殑琛屼负銆?>
+    <meta property="og:title" content="绗?0绔?浠跨湡鏍″噯锛氳挋鐗瑰崱缃椾笌璐濆彾鏂?>
+    <meta property="og:description" content="PSE-M鐨勬牳蹇冧换鍔℃槸鍦ㄥ弬鏁扮┖闂翠腑澶ц妯￠噰鏍凤紝閫氳繃杩愯鏁扮櫨涓囦釜铏氭嫙鏅鸿兘浣撶殑鐘舵€佹紨鍖栵紝鐢熸垚鍚堟垚杞ㄨ抗鏁版嵁锛屽苟浠庝腑鎻愬彇缁熻瑙勫緥銆侾SE-M瑙ｅ喅浜嗗績鐞嗗鐮旂┒涓殑涓€涓牴鏈€у洶澧冿細鐪熷疄涓栫晫鐨勭旱鍚戞暟鎹█缂轰笖鏄傝吹锛岃€岀悊璁洪┍鍔ㄧ殑浠跨湡鍙互鍦ㄤ笉鏀堕泦鐪熷疄鏁版嵁鐨勬儏鍐典笅锛屽厛鏈熸帰绱㈠弬鏁扮┖闂寸殑琛屼负銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch20.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch20.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第20章 仿真校准：蒙特卡罗与贝叶斯">
-    <meta name="twitter:description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
+    <meta name="twitter:title" content="绗?0绔?浠跨湡鏍″噯锛氳挋鐗瑰崱缃椾笌璐濆彾鏂?>
+    <meta name="twitter:description" content="PSE-M鐨勬牳蹇冧换鍔℃槸鍦ㄥ弬鏁扮┖闂翠腑澶ц妯￠噰鏍凤紝閫氳繃杩愯鏁扮櫨涓囦釜铏氭嫙鏅鸿兘浣撶殑鐘舵€佹紨鍖栵紝鐢熸垚鍚堟垚杞ㄨ抗鏁版嵁锛屽苟浠庝腑鎻愬彇缁熻瑙勫緥銆侾SE-M瑙ｅ喅浜嗗績鐞嗗鐮旂┒涓殑涓€涓牴鏈€у洶澧冿細鐪熷疄涓栫晫鐨勭旱鍚戞暟鎹█缂轰笖鏄傝吹锛岃€岀悊璁洪┍鍔ㄧ殑浠跨湡鍙互鍦ㄤ笉鏀堕泦鐪熷疄鏁版嵁鐨勬儏鍐典笅锛屽厛鏈熸帰绱㈠弬鏁扮┖闂寸殑琛屼负銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,281 +46,281 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第20章</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">绗?0绔?/span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第20章 仿真校准：蒙特卡罗与贝叶斯</h1>
+        <h1 class="chapter-title">绗?0绔?浠跨湡鏍″噯锛氳挋鐗瑰崱缃椾笌璐濆彾鏂?/h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIS神经似然注入；(4)描述RTE-Cal异步校准与UNIS↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
+<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗浣犲簲鑳藉锛?1)鐞嗚ВPSE-M澶ц妯¤挋鐗瑰崱缃椾豢鐪熺殑鐩殑锛?2)鎺屾彙PSE-P鍏堥獙鎻愬彇鐨勬ˉ鎺ョ瓥鐣ワ紱(3)鐞嗚ВPSE-C鐨勮礉鍙舵柉鏍″噯娴佺▼锛屽惈UNIS绁炵粡浼肩劧娉ㄥ叆锛?4)鎻忚堪RTE-Cal寮傛鏍″噯涓嶶NIS鈫擯SE鍙屽悜鍗忚锛?5)鎻忚堪涓嶇‘瀹氭€ч噺鍖栫殑鍩烘湰鏂规硶銆?/p></blockquote>
 
-<blockquote><p><strong>⚠️ 实证成熟度声明</strong>：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
+<blockquote><p><strong>鈿狅笍 瀹炶瘉鎴愮啛搴﹀０鏄?/strong>锛氭湰绔犳墍鏈夋暟鍊笺€佷豢鐪熺粨鏋滃拰棰勬祴鍧囦负鍩轰簬鐞嗚鎺ㄥ鐨勬ā鎷熸紨绀猴紝<strong>涓嶅彲鐢ㄤ簬涓村簥鍐崇瓥</strong>銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h2>
+<h2>20.1 PSE-M锛氬ぇ瑙勬ā钂欑壒鍗＄綏鏅鸿兘浣撲豢鐪?/h2>
 
-<p>PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。</p>
+<p>PSE-M鐨勬牳蹇冧换鍔℃槸鍦ㄥ弬鏁扮┖闂翠腑澶ц妯￠噰鏍凤紝閫氳繃杩愯鏁扮櫨涓囦釜铏氭嫙鏅鸿兘浣撶殑鐘舵€佹紨鍖栵紝鐢熸垚鍚堟垚杞ㄨ抗鏁版嵁锛屽苟浠庝腑鎻愬彇缁熻瑙勫緥銆侾SE-M瑙ｅ喅浜嗗績鐞嗗鐮旂┒涓殑涓€涓牴鏈€у洶澧冿細鐪熷疄涓栫晫鐨勭旱鍚戞暟鎹█缂轰笖鏄傝吹锛岃€岀悊璁洪┍鍔ㄧ殑浠跨湡鍙互鍦ㄤ笉鏀堕泦鐪熷疄鏁版嵁鐨勬儏鍐典笅锛屽厛鏈熸帰绱㈠弬鏁扮┖闂寸殑琛屼负銆?/p>
 
-<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括：</p>
+<p><strong>铏氭嫙鏅鸿兘浣撶殑瀹氫箟</strong>銆傛瘡涓櫄鎷熸櫤鑳戒綋鐢变竴缁勫弬鏁板悜閲廫(\theta\)瀹氫箟锛屽寘鎷細</p>
 <ul>
-<li>初始状态\(\Psi(0)\)（从生态位先验分布中采样）</li>
-<li>动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等</li>
-<li>耦合参数：依赖矩阵中的权重\(w_{ij}\)</li>
-<li>环境参数：S-P输入的强度、频率、持续时间</li>
+<li>鍒濆鐘舵€乗(\Psi(0)\)锛堜粠鐢熸€佷綅鍏堥獙鍒嗗竷涓噰鏍凤級</li>
+<li>鍔ㄥ姏瀛﹀弬鏁帮細娑堣€楅€熺巼\(\alpha_i\)銆佹仮澶嶉€熺巼\(\beta_i\)銆侀槇鍊糪(\theta_{\text{switch}}\)銆佸涔犵巼\(\eta\)绛?/li>
+<li>鑰﹀悎鍙傛暟锛氫緷璧栫煩闃典腑鐨勬潈閲峔(w_{ij}\)</li>
+<li>鐜鍙傛暟锛歋-P杈撳叆鐨勫己搴︺€侀鐜囥€佹寔缁椂闂?/li>
 </ul>
 
-<p><strong>蒙特卡罗仿真流程</strong>：</p>
+<p><strong>钂欑壒鍗＄綏浠跨湡娴佺▼</strong>锛?/p>
 <ol>
-<li><strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\)</li>
-<li><strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\)</li>
-<li><strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta）</li>
-<li><strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件</li>
-<li><strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</li>
+<li><strong>鍒濆鍖?/strong>锛氫粠鍏堥獙鍒嗗竷涓噰鏍穃(\theta\)鍜孿(\Psi(0)\)</li>
+<li><strong>鐜搴忓垪鐢熸垚</strong>锛氭牴鎹敓鎬佷綅鐨勫吀鍨婼-P閰嶇疆鐢熸垚鐜杈撳叆搴忓垪\(E(t)\)</li>
+<li><strong>鏁板€肩Н鍒?/strong>锛氫娇鐢∕KT寰垎鏂圭▼杩涜鏁板€肩Н鍒嗭紙鍥涢樁Runge-Kutta锛?/li>
+<li><strong>浜嬩欢璁板綍</strong>锛氳褰曡祫婧愭灟绔€佽皟搴﹀垏鎹€佺棁鐘跺彂浣滅瓑鍏抽敭浜嬩欢</li>
+<li><strong>骞查妯℃嫙锛堝彲閫夛級</strong>锛氬湪鐗瑰畾鏃堕棿鐐规柦鍔燝-M-A-R鎿嶄綔</li>
 </ol>
 
-<p>典型PSE-M仿真运行100万至1000万个智能体，每个仿真时长为数周到数月。借助GPU并行计算，千万级仿真可在数小时至数天内完成。</p>
+<p>鍏稿瀷PSE-M浠跨湡杩愯100涓囪嚦1000涓囦釜鏅鸿兘浣擄紝姣忎釜浠跨湡鏃堕暱涓烘暟鍛ㄥ埌鏁版湀銆傚€熷姪GPU骞惰璁＄畻锛屽崈涓囩骇浠跨湡鍙湪鏁板皬鏃惰嚦鏁板ぉ鍐呭畬鎴愩€?/p>
 
-<p><strong>PSE-M的输出</strong>：</p>
+<p><strong>PSE-M鐨勮緭鍑?/strong>锛?/p>
 <ul>
-<li><strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布</li>
-<li><strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”）</li>
-<li><strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布</li>
-<li><strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</li>
+<li><strong>鍙傛暟鍚庨獙鐨勫悎鎴愬厛楠?/strong>锛氬湪缁欏畾鐢熸€佷綅鍜屽共棰勬潯浠朵笅鐨勫弬鏁版潯浠跺垎甯?/li>
+<li><strong>杞ㄨ抗鑱氱被</strong>锛氶€氳繃鏃犵洃鐫ｅ涔犲皢杞ㄨ抗鑱氱被涓哄吀鍨嬫ā寮忥紙濡傗€滃揩閫熸仮澶嶅瀷鈥濃€滄寔缁伓鍖栧瀷鈥濓級</li>
+<li><strong>骞查鏁堟灉鐨勫垎甯?/strong>锛氭晥搴旈噺鍒嗗竷銆佽捣鏁堟椂闂村垎甯冦€佸鍙戠巼鍒嗗竷</li>
+<li><strong>鏃╂湡棰勮淇″彿</strong>锛氫复鐣岃浆鍙樺墠鑷浉鍏炽€佹柟宸殑鍙樺寲妯″紡</li>
 </ul>
 
-<p><strong>PSE-M的认识论地位</strong>：输出是<strong>理论导出的合成数据</strong>，而非经验发现。其价值在于探索理论的推论并生成可检验的预测。</p>
+<p><strong>PSE-M鐨勮璇嗚鍦颁綅</strong>锛氳緭鍑烘槸<strong>鐞嗚瀵煎嚭鐨勫悎鎴愭暟鎹?/strong>锛岃€岄潪缁忛獙鍙戠幇銆傚叾浠峰€煎湪浜庢帰绱㈢悊璁虹殑鎺ㄨ骞剁敓鎴愬彲妫€楠岀殑棰勬祴銆?/p>
 
 <hr class="section-divider">
 
-<h2>20.2 PSE-P：先验提取与生态位库</h2>
+<h2>20.2 PSE-P锛氬厛楠屾彁鍙栦笌鐢熸€佷綅搴?/h2>
 
-<p>PSE-P的任务是将PSE-M生成的海量合成数据以及变量范式积累的实证知识（元分析、量表常模、实验效应量），压缩为可供PSE-C使用的<strong>先验参数分布</strong>和<strong>生态位库</strong>。</p>
+<p>PSE-P鐨勪换鍔℃槸灏哖SE-M鐢熸垚鐨勬捣閲忓悎鎴愭暟鎹互鍙婂彉閲忚寖寮忕Н绱殑瀹炶瘉鐭ヨ瘑锛堝厓鍒嗘瀽銆侀噺琛ㄥ父妯°€佸疄楠屾晥搴旈噺锛夛紝鍘嬬缉涓哄彲渚汸SE-C浣跨敤鐨?strong>鍏堥獙鍙傛暟鍒嗗竷</strong>鍜?strong>鐢熸€佷綅搴?/strong>銆?/p>
 
-<p><strong>生态位的定义与分层</strong>。生态位是个体典型S-P环境配置与M-R-D-S基线状态的联合分布。分类维度包括：</p>
+<p><strong>鐢熸€佷綅鐨勫畾涔変笌鍒嗗眰</strong>銆傜敓鎬佷綅鏄釜浣撳吀鍨婼-P鐜閰嶇疆涓嶮-R-D-S鍩虹嚎鐘舵€佺殑鑱斿悎鍒嗗竷銆傚垎绫荤淮搴﹀寘鎷細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>维度</th>
-<th>示例取值</th>
-<th>影响参数</th>
+<th>缁村害</th>
+<th>绀轰緥鍙栧€?/th>
+<th>褰卞搷鍙傛暟</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>年龄/发展阶段</td>
-<td>儿童、青少年、成人、老年</td>
-<td>恢复速率、学习率</td>
+<td>骞撮緞/鍙戝睍闃舵</td>
+<td>鍎跨銆侀潚灏戝勾銆佹垚浜恒€佽€佸勾</td>
+<td>鎭㈠閫熺巼銆佸涔犵巼</td>
 </tr>
 <tr>
-<td>职业/角色</td>
-<td>知识工作者、体力劳动者、失业</td>
-<td>M3-RES-D消耗速率</td>
+<td>鑱屼笟/瑙掕壊</td>
+<td>鐭ヨ瘑宸ヤ綔鑰呫€佷綋鍔涘姵鍔ㄨ€呫€佸け涓?/td>
+<td>M3-RES-D娑堣€楅€熺巼</td>
 </tr>
 <tr>
-<td>社会支持</td>
-<td>高支持、中等、孤立</td>
-<td>M4-RES-B基线</td>
+<td>绀句細鏀寔</td>
+<td>楂樻敮鎸併€佷腑绛夈€佸绔?/td>
+<td>M4-RES-B鍩虹嚎</td>
 </tr>
 <tr>
-<td>文化背景</td>
-<td>个人主义、集体主义</td>
-<td>躯体化倾向、情绪表达</td>
+<td>鏂囧寲鑳屾櫙</td>
+<td>涓汉涓讳箟銆侀泦浣撲富涔?/td>
+<td>韬綋鍖栧€惧悜銆佹儏缁〃杈?/td>
 </tr>
 <tr>
-<td>临床特征</td>
-<td>焦虑为主、抑郁为主</td>
-<td>级联起始节点</td>
+<td>涓村簥鐗瑰緛</td>
+<td>鐒﹁檻涓轰富銆佹姂閮佷负涓?/td>
+<td>绾ц仈璧峰鑺傜偣</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>当前版本生态位库包含约20个常见生态位（如“青少年焦虑障碍”“高压知识工作者”），基于DSM-5流行病学数据和临床专家共识（F级）。</p>
+<p>褰撳墠鐗堟湰鐢熸€佷綅搴撳寘鍚害20涓父瑙佺敓鎬佷綅锛堝鈥滈潚灏戝勾鐒﹁檻闅滅鈥濃€滈珮鍘嬬煡璇嗗伐浣滆€呪€濓級锛屽熀浜嶥SM-5娴佽鐥呭鏁版嵁鍜屼复搴婁笓瀹跺叡璇嗭紙F绾э級銆?/p>
 
-<blockquote><p><strong>⚠️ 工程判断声明</strong>：生态位分类与先验分布为初始工程选择，随数据积累可修订、合并或增删。</p></blockquote>
+<blockquote><p><strong>鈿狅笍 宸ョ▼鍒ゆ柇澹版槑</strong>锛氱敓鎬佷綅鍒嗙被涓庡厛楠屽垎甯冧负鍒濆宸ョ▼閫夋嫨锛岄殢鏁版嵁绉疮鍙慨璁€佸悎骞舵垨澧炲垹銆?/p></blockquote>
 
-<p><strong>参数先验的提取流程</strong>：</p>
+<p><strong>鍙傛暟鍏堥獙鐨勬彁鍙栨祦绋?/strong>锛?/p>
 <ol>
-<li><strong>知识桥接</strong>：从变量范式中提取实证发现，转换为参数分布。当存在复制争议时，先验方差被扩大</li>
-<li><strong>仿真校准</strong>：在PSE-M中运行该生态位的智能体种群，调整参数使仿真输出与实证数据匹配</li>
-<li><strong>不确定性量化</strong>：记录参数估计的不确定性</li>
-<li><strong>生态位谱系构建</strong>：识别生态位间的层级关系，支持降级匹配</li>
+<li><strong>鐭ヨ瘑妗ユ帴</strong>锛氫粠鍙橀噺鑼冨紡涓彁鍙栧疄璇佸彂鐜帮紝杞崲涓哄弬鏁板垎甯冦€傚綋瀛樺湪澶嶅埗浜夎鏃讹紝鍏堥獙鏂瑰樊琚墿澶?/li>
+<li><strong>浠跨湡鏍″噯</strong>锛氬湪PSE-M涓繍琛岃鐢熸€佷綅鐨勬櫤鑳戒綋绉嶇兢锛岃皟鏁村弬鏁颁娇浠跨湡杈撳嚭涓庡疄璇佹暟鎹尮閰?/li>
+<li><strong>涓嶇‘瀹氭€ч噺鍖?/strong>锛氳褰曞弬鏁颁及璁＄殑涓嶇‘瀹氭€?/li>
+<li><strong>鐢熸€佷綅璋辩郴鏋勫缓</strong>锛氳瘑鍒敓鎬佷綅闂寸殑灞傜骇鍏崇郴锛屾敮鎸侀檷绾у尮閰?/li>
 </ol>
 
-<p><strong>先验分布的形式</strong>：Gamma分布（消耗速率）、Beta分布（0-1参数）、正态分布（截断）、Dirichlet分布（多类别权重）。</p>
+<p><strong>鍏堥獙鍒嗗竷鐨勫舰寮?/strong>锛欸amma鍒嗗竷锛堟秷鑰楅€熺巼锛夈€丅eta鍒嗗竷锛?-1鍙傛暟锛夈€佹鎬佸垎甯冿紙鎴柇锛夈€丏irichlet鍒嗗竷锛堝绫诲埆鏉冮噸锛夈€?/p>
 
-<p><strong>生态位库的伦理考量</strong>：每个生态位标注其数据来源的人群特征，在样本代表性不足时扩大先验不确定性。文化变体参数被显式编码为调节因子。</p>
+<p><strong>鐢熸€佷綅搴撶殑浼︾悊鑰冮噺</strong>锛氭瘡涓敓鎬佷綅鏍囨敞鍏舵暟鎹潵婧愮殑浜虹兢鐗瑰緛锛屽湪鏍锋湰浠ｈ〃鎬т笉瓒虫椂鎵╁ぇ鍏堥獙涓嶇‘瀹氭€с€傛枃鍖栧彉浣撳弬鏁拌鏄惧紡缂栫爜涓鸿皟鑺傚洜瀛愩€?/p>
 
 <hr class="section-divider">
 
-<h2>20.3 PSE-C：粒子滤波贝叶斯校准</h2>
+<h2>20.3 PSE-C锛氱矑瀛愭护娉㈣礉鍙舵柉鏍″噯</h2>
 
-<p>PSE-C将PSE-P提供的先验分布与个体的真实观测数据相结合，通过贝叶斯更新计算个体化的后验状态估计。</p>
+<p>PSE-C灏哖SE-P鎻愪緵鐨勫厛楠屽垎甯冧笌涓綋鐨勭湡瀹炶娴嬫暟鎹浉缁撳悎锛岄€氳繃璐濆彾鏂洿鏂拌绠椾釜浣撳寲鐨勫悗楠岀姸鎬佷及璁°€?/p>
 
-<p><strong>贝叶斯校准的数学框架</strong>：</p>
+<p><strong>璐濆彾鏂牎鍑嗙殑鏁板妗嗘灦</strong>锛?/p>
 
 $$
 p(\Psi(t), \theta \mid y_{1:t}) \propto p(y_{1:t} \mid \Psi(t), \theta) \cdot p(\Psi(0), \theta)
 $$
 
-<p>由于状态空间维度高（42维）、动力学非线性，PSE-C采用<strong>序贯蒙特卡罗（粒子滤波）</strong>或<strong>集合卡尔曼滤波(EnKF)</strong>进行近似推理。</p>
+<p>鐢变簬鐘舵€佺┖闂寸淮搴﹂珮锛?2缁达級銆佸姩鍔涘闈炵嚎鎬э紝PSE-C閲囩敤<strong>搴忚疮钂欑壒鍗＄綏锛堢矑瀛愭护娉級</strong>鎴?strong>闆嗗悎鍗″皵鏇兼护娉?EnKF)</strong>杩涜杩戜技鎺ㄧ悊銆?/p>
 
-<p><strong>校准流程</strong>：</p>
+<p><strong>鏍″噯娴佺▼</strong>锛?/p>
 <ol>
-<li><strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验分布</li>
-<li><strong>初始观测编译</strong>：使用VTS-P协议将初始评估数据编译为初始状态向量的似然</li>
-<li><strong>递推校准</strong>：每次新观测到达时：预测步（用MKT向前传播）→ 更新步（更新粒子权重）→ 重采样</li>
-<li><strong>收敛判断</strong>：当核心参数的后验分布标准差低于预设阈值时，达到临床可用精度</li>
-<li><strong>预测输出</strong>：基于当前后验分布，输出未来状态轨迹的概率预测</li>
+<li><strong>鐢熸€佷綅鍖归厤</strong>锛氬熀浜庢偅鑰呭熀鏈俊鎭尮閰嶆渶鐩镐技鐨勭敓鎬佷綅锛屽姞杞藉厛楠屽垎甯?/li>
+<li><strong>鍒濆瑙傛祴缂栬瘧</strong>锛氫娇鐢╒TS-P鍗忚灏嗗垵濮嬭瘎浼版暟鎹紪璇戜负鍒濆鐘舵€佸悜閲忕殑浼肩劧</li>
+<li><strong>閫掓帹鏍″噯</strong>锛氭瘡娆℃柊瑙傛祴鍒拌揪鏃讹細棰勬祴姝ワ紙鐢∕KT鍚戝墠浼犳挱锛夆啋 鏇存柊姝ワ紙鏇存柊绮掑瓙鏉冮噸锛夆啋 閲嶉噰鏍?/li>
+<li><strong>鏀舵暃鍒ゆ柇</strong>锛氬綋鏍稿績鍙傛暟鐨勫悗楠屽垎甯冩爣鍑嗗樊浣庝簬棰勮闃堝€兼椂锛岃揪鍒颁复搴婂彲鐢ㄧ簿搴?/li>
+<li><strong>棰勬祴杈撳嚭</strong>锛氬熀浜庡綋鍓嶅悗楠屽垎甯冿紝杈撳嚭鏈潵鐘舵€佽建杩圭殑姒傜巼棰勬祴</li>
 </ol>
 
-<p><strong>观测模型的设计</strong>。观测似然\(p(y \mid \Psi)\)定义不同类型观测数据到状态向量的映射：</p>
+<p><strong>瑙傛祴妯″瀷鐨勮璁?/strong>銆傝娴嬩技鐒禱(p(y \mid \Psi)\)瀹氫箟涓嶅悓绫诲瀷瑙傛祴鏁版嵁鍒扮姸鎬佸悜閲忕殑鏄犲皠锛?/p>
 <ul>
-<li><strong>量表分数</strong>：线性关系\(y = a + b\psi + \epsilon\)，系数通过桥接研究校准</li>
-<li><strong>EMA条目</strong>：伯努利分布或序数Logistic回归</li>
-<li><strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D</li>
-<li><strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</li>
+<li><strong>閲忚〃鍒嗘暟</strong>锛氱嚎鎬у叧绯籠(y = a + b\psi + \epsilon\)锛岀郴鏁伴€氳繃妗ユ帴鐮旂┒鏍″噯</li>
+<li><strong>EMA鏉＄洰</strong>锛氫集鍔埄鍒嗗竷鎴栧簭鏁癓ogistic鍥炲綊</li>
+<li><strong>鍙┛鎴存暟鎹?/strong>锛欻RV鏄犲皠鍒癕1-DSP-B鍜孧4-RES-D</li>
+<li><strong>琛屼负浠诲姟</strong>锛歋troop骞叉壈鏁堝簲鏄犲皠鍒癕3-DSP-F鏁堣兘</li>
 </ul>
 
-<p><strong>个体差异的处理</strong>：PSE-C同时估计状态轨迹\(\Psi(t)\)和个体的固定参数\(\theta\)（消耗速率、学习率），实现"个性化"。</p>
+<p><strong>涓綋宸紓鐨勫鐞?/strong>锛歅SE-C鍚屾椂浼拌鐘舵€佽建杩筡(\Psi(t)\)鍜屼釜浣撶殑鍥哄畾鍙傛暟\(\theta\)锛堟秷鑰楅€熺巼銆佸涔犵巼锛夛紝瀹炵幇"涓€у寲"銆?/p>
 
-<p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
+<p><strong>涓夐€氶亾璐濆彾鏂瀺鍚?/strong>銆侾SE-C鐨勫畬鏁翠技鐒舵潵鑷笁涓嫭绔嬮€氶亾鐨勪箻绉紙鍋囪鏉′欢鐙珛锛夛細</p>
 
 $$
-p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIS)}}
+p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{琛屼负浼肩劧}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{璇箟浼肩劧(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{绁炵粡浼肩劧(UNIS)}}
 $$
 
-<p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIS L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
+<p>鍏朵腑绁炵粡浼肩劧 \(p(y_n \mid \Psi)\) 鐢盪NIS L6 RTE瀹炴椂杈撳嚭銆傚綋鎵€鏈変笁涓€氶亾閮藉彲鐢ㄦ椂锛屽悗楠屽垎甯冪殑鏀舵暃閫熷害鏄捐憲蹇簬鍗曚竴閫氶亾锛涘綋鏌愪竴閫氶亾鏆傛椂涓嶅彲鐢ㄦ椂锛堝鐢ㄦ埛鏈僵鎴村彲绌挎埓璁惧锛夛紝PSE-C鑷姩閫€鍖栦负鍙岄€氶亾鎴栧崟閫氶亾妯″紡銆?/p>
 
-<h3>20.3.1 RTE-Cal：神经映射的异步个体化校准</h3>
+<h3>20.3.1 RTE-Cal锛氱缁忔槧灏勭殑寮傛涓綋鍖栨牎鍑?/h3>
 
-<p>RTE-Cal是UNIS L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
+<p>RTE-Cal鏄疷NIS L6 RTE涓嶱SE-C涔嬮棿鐨勫紓姝ュ弻鍚戞牎鍑嗗崗璁紝瑙ｅ喅鐨勬牳蹇冮棶棰樻槸锛?strong>缇や綋绾х殑NFM绁炵粡-鍔熻兘鏄犲皠妯″瀷濡備綍琚釜浣撳寲寰皟浠ラ€傚簲璇ョ敤鎴风殑鐙壒绁炵粡鐗瑰緛</strong>銆?/p>
 
-<p><strong>校准环路</strong>。RTE-Cal运行一个异步闭环：</p>
+<p><strong>鏍″噯鐜矾</strong>銆俁TE-Cal杩愯涓€涓紓姝ラ棴鐜細</p>
 
 <ol>
-<li><strong>前向通路</strong>（UNIS → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
-<li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \(p(\Psi_t \mid y_{1:t})\)</li>
-<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMS校准）和神经通道（经UNIS转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
-<li><strong>反向通路</strong>（PSE → UNIS）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
+<li><strong>鍓嶅悜閫氳矾</strong>锛圲NIS 鈫?PSE锛夛細RTE浠庡疄鏃剁缁忔暟鎹祦涓彁鍙朜FI鐗瑰緛鍊硷紝璋冪敤NFM妯″瀷杈撳嚭绁炵粡浼肩劧 \(p(y_n \mid \Psi_t^{\text{prior}})\)锛岄€氳繃 <code>/func_likelihood</code> 鍗忚浼犲叆PSE-C</li>
+<li><strong>鐘舵€佹帹鏂?/strong>锛圥SE鍐呴儴锛夛細PSE-C铻嶅悎琛屼负銆佽涔夈€佺缁忎笁閫氶亾浼肩劧锛岃绠楃姸鎬佸悗楠?\(p(\Psi_t \mid y_{1:t})\)</li>
+<li><strong>娈嬪樊璁＄畻</strong>锛圥SE鍐呴儴锛夛細褰撹涓洪€氶亾锛堢粡UBMS鏍″噯锛夊拰绁炵粡閫氶亾锛堢粡UNIS杞崲锛夊鍚屼竴瀛愬崟鍏冪殑鎺ㄦ柇鍑虹幇绯荤粺鎬у垎姝ф椂锛孭SE-C璁板綍鏍″噯娈嬪樊 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
+<li><strong>鍙嶅悜閫氳矾</strong>锛圥SE 鈫?UNIS锛夛細PSE閫氳繃 <code>/calibration_feedback</code> 鍗忚灏嗙疮绉畫宸彂閫佺粰RTE锛孯TE浣跨敤杩欎簺娈嬪樊瀵筃FM鐨勪釜浣撶骇鏄犲皠鍙傛暟杩涜璐濆彾鏂洿鏂?/li>
 </ol>
 
-<p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIS的分层更新纪律：</p>
+<p><strong>鍒嗗眰鏇存柊閫熺巼</strong>銆俁TE-Cal涓ユ牸閬靛畧UNIS鐨勫垎灞傛洿鏂扮邯寰嬶細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>更新目标</th>
-<th>速率</th>
-<th>触发条件</th>
+<th>鏇存柊鐩爣</th>
+<th>閫熺巼</th>
+<th>瑙﹀彂鏉′欢</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>NFM个体偏置参数</td>
-<td>每次会话</td>
-<td>新数据到达</td>
+<td>NFM涓綋鍋忕疆鍙傛暟</td>
+<td>姣忔浼氳瘽</td>
+<td>鏂版暟鎹埌杈?/td>
 </tr>
 <tr>
-<td>NFM个体缩放参数</td>
-<td>每5-10次会话</td>
-<td>残差稳定累积</td>
+<td>NFM涓綋缂╂斁鍙傛暟</td>
+<td>姣?-10娆′細璇?/td>
+<td>娈嬪樊绋冲畾绱Н</td>
 </tr>
 <tr>
-<td>NFM模型结构</td>
-<td>仅在群体级证据触发</td>
-<td>元分析或大规模验证</td>
+<td>NFM妯″瀷缁撴瀯</td>
+<td>浠呭湪缇や綋绾ц瘉鎹Е鍙?/td>
+<td>鍏冨垎鏋愭垨澶ц妯￠獙璇?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>工程意义</strong>。RTE-Cal使UNIS从一个"群体平均"的神经-功能映射系统升级为"个体自适应"的校准系统——这类似于脑电的个体化源定位：使用群体模板作为初始估计，再通过个体解剖数据进行微调。在PSE-C的概念设计阶段，RTE-Cal的完整实现依赖于NFM模型的群体级验证——当前所有NFI的映射模型均为探索性P级（详见Ch22）。</p>
+<p><strong>宸ョ▼鎰忎箟</strong>銆俁TE-Cal浣縐NIS浠庝竴涓?缇や綋骞冲潎"鐨勭缁?鍔熻兘鏄犲皠绯荤粺鍗囩骇涓?涓綋鑷€傚簲"鐨勬牎鍑嗙郴缁熲€斺€旇繖绫讳技浜庤剳鐢电殑涓綋鍖栨簮瀹氫綅锛氫娇鐢ㄧ兢浣撴ā鏉夸綔涓哄垵濮嬩及璁★紝鍐嶉€氳繃涓綋瑙ｅ墫鏁版嵁杩涜寰皟銆傚湪PSE-C鐨勬蹇佃璁￠樁娈碉紝RTE-Cal鐨勫畬鏁村疄鐜颁緷璧栦簬NFM妯″瀷鐨勭兢浣撶骇楠岃瘉鈥斺€斿綋鍓嶆墍鏈塏FI鐨勬槧灏勬ā鍨嬪潎涓烘帰绱㈡€绾э紙璇﹁Ch22锛夈€?/p>
 
 <hr class="section-divider">
 
-<h2>20.4 不确定性量化：集合预报与CRPS评分</h2>
+<h2>20.4 涓嶇‘瀹氭€ч噺鍖栵細闆嗗悎棰勬姤涓嶤RPS璇勫垎</h2>
 
-<p>PSE-C的输出是<strong>概率预测</strong>——以分布的形式表达预测的不确定性。</p>
+<p>PSE-C鐨勮緭鍑烘槸<strong>姒傜巼棰勬祴</strong>鈥斺€斾互鍒嗗竷鐨勫舰寮忚〃杈鹃娴嬬殑涓嶇‘瀹氭€с€?/p>
 
-<p><strong>不确定性的三个来源</strong>：</p>
+<p><strong>涓嶇‘瀹氭€х殑涓変釜鏉ユ簮</strong>锛?/p>
 <ol>
-<li><strong>状态估计不确定性（认识论）</strong>：因观测有限且存在噪声，随数据增加而减少</li>
-<li><strong>参数不确定性</strong>：个体动力学参数从数据中推断，也随数据增加而减少</li>
-<li><strong>固有随机性（偶然不确定性）</strong>：系统本身的随机性，无法消除</li>
+<li><strong>鐘舵€佷及璁′笉纭畾鎬э紙璁よ瘑璁猴級</strong>锛氬洜瑙傛祴鏈夐檺涓斿瓨鍦ㄥ櫔澹帮紝闅忔暟鎹鍔犺€屽噺灏?/li>
+<li><strong>鍙傛暟涓嶇‘瀹氭€?/strong>锛氫釜浣撳姩鍔涘鍙傛暟浠庢暟鎹腑鎺ㄦ柇锛屼篃闅忔暟鎹鍔犺€屽噺灏?/li>
+<li><strong>鍥烘湁闅忔満鎬э紙鍋剁劧涓嶇‘瀹氭€э級</strong>锛氱郴缁熸湰韬殑闅忔満鎬э紝鏃犳硶娑堥櫎</li>
 </ol>
 
-<p>PSE通过<strong>集合预报</strong>表示总不确定性：从PSE-C后验分布中采样M个粒子，将每个粒子前向积分，得到M条轨迹的集合分布。</p>
+<p>PSE閫氳繃<strong>闆嗗悎棰勬姤</strong>琛ㄧず鎬讳笉纭畾鎬э細浠嶱SE-C鍚庨獙鍒嗗竷涓噰鏍稭涓矑瀛愶紝灏嗘瘡涓矑瀛愬墠鍚戠Н鍒嗭紝寰楀埌M鏉¤建杩圭殑闆嗗悎鍒嗗竷銆?/p>
 
-<p><strong>预测区间的计算</strong>：</p>
+<p><strong>棰勬祴鍖洪棿鐨勮绠?/strong>锛?/p>
 <ul>
-<li><strong>中位数轨迹</strong>：M条轨迹在每一时间点的中位数</li>
-<li><strong>置信区间</strong>：第2.5和第97.5百分位数轨迹（95%预测区间）</li>
-<li><strong>事件概率</strong>：发生该事件的轨迹数 / M</li>
-<li><strong>最可能轨迹</strong>：具有最高后验密度的轨迹</li>
+<li><strong>涓綅鏁拌建杩?/strong>锛歁鏉¤建杩瑰湪姣忎竴鏃堕棿鐐圭殑涓綅鏁?/li>
+<li><strong>缃俊鍖洪棿</strong>锛氱2.5鍜岀97.5鐧惧垎浣嶆暟杞ㄨ抗锛?5%棰勬祴鍖洪棿锛?/li>
+<li><strong>浜嬩欢姒傜巼</strong>锛氬彂鐢熻浜嬩欢鐨勮建杩规暟 / M</li>
+<li><strong>鏈€鍙兘杞ㄨ抗</strong>锛氬叿鏈夋渶楂樺悗楠屽瘑搴︾殑杞ㄨ抗</li>
 </ul>
 
-<p><strong>临床决策中的不确定性表达</strong>。典型输出：“该患者在未来48小时内发生情绪崩溃（M4-RES-D < 20）的概率为30% [95%预测区间: 15%-45%]。主要风险因素是持续性睡眠不足。建议在明日上午安排一次休息窗口，可将概率降至15%以下。”</p>
+<p><strong>涓村簥鍐崇瓥涓殑涓嶇‘瀹氭€ц〃杈?/strong>銆傚吀鍨嬭緭鍑猴細鈥滆鎮ｈ€呭湪鏈潵48灏忔椂鍐呭彂鐢熸儏缁穿婧冿紙M4-RES-D < 20锛夌殑姒傜巼涓?0% [95%棰勬祴鍖洪棿: 15%-45%]銆備富瑕侀闄╁洜绱犳槸鎸佺画鎬х潯鐪犱笉瓒炽€傚缓璁湪鏄庢棩涓婂崍瀹夋帓涓€娆′紤鎭獥鍙ｏ紝鍙皢姒傜巼闄嶈嚦15%浠ヤ笅銆傗€?/p>
 
-<p><strong>校准检验</strong>。一个概率预测系统的核心质量指标是<strong>校准度</strong>：预测的概率是否与实际发生的频率一致。PSE需要对校准度进行持续监控——如果系统性偏离，触发闭环修正。</p>
+<p><strong>鏍″噯妫€楠?/strong>銆備竴涓鐜囬娴嬬郴缁熺殑鏍稿績璐ㄩ噺鎸囨爣鏄?strong>鏍″噯搴?/strong>锛氶娴嬬殑姒傜巼鏄惁涓庡疄闄呭彂鐢熺殑棰戠巼涓€鑷淬€侾SE闇€瑕佸鏍″噯搴﹁繘琛屾寔缁洃鎺р€斺€斿鏋滅郴缁熸€у亸绂伙紝瑙﹀彂闂幆淇銆?/p>
 
-<p><strong>预测精度的评估指标</strong>：RMSE（均方根误差）、CRPS（连续排序概率得分）、区间覆盖率、Brier评分。</p>
+<p><strong>棰勬祴绮惧害鐨勮瘎浼版寚鏍?/strong>锛歊MSE锛堝潎鏂规牴璇樊锛夈€丆RPS锛堣繛缁帓搴忔鐜囧緱鍒嗭級銆佸尯闂磋鐩栫巼銆丅rier璇勫垎銆?/p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLS）和神经（UNIS）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIS与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
+<p><strong>鏈珷灏忕粨</strong>锛歅SE鐨勪豢鐪熶笌鏍″噯鏂规硶鐢变笁涓樁娈垫瀯鎴愩€侾SE-M閫氳繃澶ц妯¤挋鐗瑰崱缃椾豢鐪熺敓鎴愬悎鎴愯建杩规暟鎹紝浠庣悊璁轰腑鎻愬彇缁熻瑙勫緥锛汸SE-P灏嗚繖浜涜寰嬪拰鏃㈡湁瀹炶瘉鐭ヨ瘑鍘嬬缉涓哄厛楠屽弬鏁板垎甯冿紝骞舵瀯寤虹敓鎬佷綅搴擄紱PSE-C閫氳繃璐濆彾鏂牎鍑嗗皢鍏堥獙涓庝釜浣撶湡瀹炶娴嬬浉缁撳悎锛岃緭鍑轰釜浣撳寲鐨勫悗楠岀姸鎬佷及璁°€侾SE-C鐨勫畬鏁翠技鐒舵潵鑷涓恒€佽涔夛紙UPLS锛夊拰绁炵粡锛圲NIS锛変笁涓€氶亾鐨勪箻绉€斺€斾笁閫氶亾铻嶅悎鏄捐憲鎻愬崌浜嗙姸鎬佸悗楠岀殑鏀舵暃閫熷害銆俁TE-Cal鏄疷NIS涓嶱SE涔嬮棿鐨勫紓姝ュ弻鍚戞牎鍑嗗崗璁細绁炵粡浼肩劧閫氳繃 <code>/func_likelihood</code> 鍓嶅悜浼犲叆PSE锛孭SE鐨勭姸鎬佹畫宸€氳繃 <code>/calibration_feedback</code> 鍙嶅悜浼犲洖RTE锛岀敤浜庝釜浣撳寲寰皟NFM鏄犲皠鍙傛暟銆備笉纭畾鎬ч噺鍖栨槸PSE鐨勬牳蹇冪壒寰佲€斺€斿畠鍖哄垎涓夌涓嶇‘瀹氭€ф潵婧愶紝閫氳繃闆嗗悎棰勬姤杈撳嚭棰勬祴鍖洪棿鍜屼簨浠舵鐜囥€?/p>
 
-<blockquote><p><strong>关键术语</strong>：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
+<blockquote><p><strong>鍏抽敭鏈</strong>锛氳挋鐗瑰崱缃椾豢鐪燂紝绮掑瓙婊ゆ尝锛岃礉鍙舵柉鏍″噯锛岄泦鍚堥鎶ワ紝CRPS锛岀敓鎬佷綅搴擄紝涓夐€氶亾铻嶅悎锛孯TE-Cal锛岀缁忎技鐒讹紝/calibration_feedback</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ "蒙特卡罗仿真就是计算机算命" → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。<br>- ❌ "PSE-C可以直接用于临床决策" → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。<br>- ❌ "神经似然是功能状态的'直接读数'" → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</p></blockquote>
+<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?"钂欑壒鍗＄綏浠跨湡灏辨槸璁＄畻鏈虹畻鍛? 鈫?鉁?浠跨湡涓嶈拷姹傜簿纭瑷€锛岃€屾槸鎺㈢储鍙傛暟绌洪棿涓殑鍙兘鎬у垎甯冨拰涓寸晫鏉′欢銆?br>- 鉂?"PSE-C鍙互鐩存帴鐢ㄤ簬涓村簥鍐崇瓥" 鈫?鉁?褰撳墠澶勪簬姒傚康璁捐闃舵锛屾墍鏈夋暟鍊间负妯℃嫙婕旂ず锛屼笉鍙敤浜庝复搴娿€?br>- 鉂?"绁炵粡浼肩劧鏄姛鑳界姸鎬佺殑'鐩存帴璇绘暟'" 鈫?鉁?绁炵粡浼肩劧鏄鐜囨槧灏勶紝闇€涓庤涓恒€佽涔変技鐒惰瀺鍚堝悗鎵嶅舰鎴愮姸鎬佷及璁°€?/p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 区分PSE-M蒙特卡罗仿真和PSE-C贝叶斯校准的功能定位。<br>2. 以一个具体的效应量为例，说明桥接的四层验证流程。<br>3. 集合预报在天气预报中已被广泛采用。讨论将这一思想应用于心理状态预测时面临的独特挑战。<br>4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
+<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 鍖哄垎PSE-M钂欑壒鍗＄綏浠跨湡鍜孭SE-C璐濆彾鏂牎鍑嗙殑鍔熻兘瀹氫綅銆?br>2. 浠ヤ竴涓叿浣撶殑鏁堝簲閲忎负渚嬶紝璇存槑妗ユ帴鐨勫洓灞傞獙璇佹祦绋嬨€?br>3. 闆嗗悎棰勬姤鍦ㄥぉ姘旈鎶ヤ腑宸茶骞挎硾閲囩敤銆傝璁哄皢杩欎竴鎬濇兂搴旂敤浜庡績鐞嗙姸鎬侀娴嬫椂闈复鐨勭嫭鐗规寫鎴樸€?br>4. RTE-Cal鍦ㄨ涓洪€氶亾涓庣缁忛€氶亾鍑虹幇绯荤粺鎬у垎姝ф椂濡備綍宸ヤ綔锛熷鏋滃垎姝ф寔缁棤娉曟秷瑙ｏ紝杩欏NFM鏄犲皠妯″瀷鎰忓懗鐫€浠€涔堬紵</p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-31</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">‹ 系统动力学</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="ch21.html" class="nav-link next">临床案例 ›</a></div>
+        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">鈥?绯荤粺鍔ㄥ姏瀛?/a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="ch21.html" class="nav-link next">涓村簥妗堜緥 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -328,7 +328,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

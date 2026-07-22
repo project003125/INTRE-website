@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第28章 研究方法：从N-of-1到状态空间建模 · INTRE 导论教材</title>
-    <meta name="description" content="功能层心理学的核心研究对象不是静态的“变量”，而是随时间演化的状态轨迹\(\Psi(t)\)。这一转变对研究设计提出了新的要求。">
-    <meta property="og:title" content="第28章 研究方法：从N-of-1到状态空间建模">
-    <meta property="og:description" content="功能层心理学的核心研究对象不是静态的“变量”，而是随时间演化的状态轨迹\(\Psi(t)\)。这一转变对研究设计提出了新的要求。">
+    <title>绗?8绔?鐮旂┒鏂规硶锛氫粠N-of-1鍒扮姸鎬佺┖闂村缓妯?路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="鍔熻兘灞傚績鐞嗗鐨勬牳蹇冪爺绌跺璞′笉鏄潤鎬佺殑鈥滃彉閲忊€濓紝鑰屾槸闅忔椂闂存紨鍖栫殑鐘舵€佽建杩筡(\Psi(t)\)銆傝繖涓€杞彉瀵圭爺绌惰璁℃彁鍑轰簡鏂扮殑瑕佹眰銆?>
+    <meta property="og:title" content="绗?8绔?鐮旂┒鏂规硶锛氫粠N-of-1鍒扮姸鎬佺┖闂村缓妯?>
+    <meta property="og:description" content="鍔熻兘灞傚績鐞嗗鐨勬牳蹇冪爺绌跺璞′笉鏄潤鎬佺殑鈥滃彉閲忊€濓紝鑰屾槸闅忔椂闂存紨鍖栫殑鐘舵€佽建杩筡(\Psi(t)\)銆傝繖涓€杞彉瀵圭爺绌惰璁℃彁鍑轰簡鏂扮殑瑕佹眰銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch28.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch28.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第28章 研究方法：从N-of-1到状态空间建模">
-    <meta name="twitter:description" content="功能层心理学的核心研究对象不是静态的“变量”，而是随时间演化的状态轨迹\(\Psi(t)\)。这一转变对研究设计提出了新的要求。">
+    <meta name="twitter:title" content="绗?8绔?鐮旂┒鏂规硶锛氫粠N-of-1鍒扮姸鎬佺┖闂村缓妯?>
+    <meta name="twitter:description" content="鍔熻兘灞傚績鐞嗗鐨勬牳蹇冪爺绌跺璞′笉鏄潤鎬佺殑鈥滃彉閲忊€濓紝鑰屾槸闅忔椂闂存紨鍖栫殑鐘舵€佽建杩筡(\Psi(t)\)銆傝繖涓€杞彉瀵圭爺绌惰璁℃彁鍑轰簡鏂扮殑瑕佹眰銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,318 +46,318 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第28章</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">绗?8绔?/span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第28章 研究方法：从N-of-1到状态空间建模</h1>
+        <h1 class="chapter-title">绗?8绔?鐮旂┒鏂规硶锛氫粠N-of-1鍒扮姸鎬佺┖闂村缓妯?/h1>
 
-<blockquote><p><strong>前置阅读</strong>：第22-24章建立了神经层对接的方法论基础——双向约束闭环、三级信号分类、分层响应机制。本章为这些方法论提供具体的操作工具：状态空间建模、贝叶斯参数估计、解析差异治理。读者可将本章视为第七部分的“工程操作手册”。</p></blockquote>
+<blockquote><p><strong>鍓嶇疆闃呰</strong>锛氱22-24绔犲缓绔嬩簡绁炵粡灞傚鎺ョ殑鏂规硶璁哄熀纭€鈥斺€斿弻鍚戠害鏉熼棴鐜€佷笁绾т俊鍙峰垎绫汇€佸垎灞傚搷搴旀満鍒躲€傛湰绔犱负杩欎簺鏂规硶璁烘彁渚涘叿浣撶殑鎿嶄綔宸ュ叿锛氱姸鎬佺┖闂村缓妯°€佽礉鍙舵柉鍙傛暟浼拌銆佽В鏋愬樊寮傛不鐞嗐€傝鑰呭彲灏嗘湰绔犺涓虹涓冮儴鍒嗙殑鈥滃伐绋嬫搷浣滄墜鍐屸€濄€?/p></blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)设计功能层研究的个体内密集追踪方案；(2)理解状态空间模型和贝叶斯校准的核心逻辑；(3)应用逻辑指纹体系进行概念映射的一致性检验；(4)遵循可重复性标准进行预注册和开放科学实践。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>28.1 研究设计：个体内密集追踪与分层贝叶斯</h2>
-
-<p>功能层心理学的核心研究对象不是静态的“变量”，而是随时间演化的<strong>状态轨迹</strong>\(\Psi(t)\)。这一转变对研究设计提出了新的要求。</p>
-
-<p><strong>个体内密集追踪设计</strong>。功能层研究不排斥群体研究。实际上，生态位库的构建、参数先验的提取都需要大样本人群数据。功能层研究的独特之处在于：它不将群体统计直接推论到个体，而是将群体数据作为个体模型的先验。在此基础上，功能层研究设计强调<strong>个体内密集追踪</strong>：通过EMA、可穿戴设备、行为日志等方法，在单个个体上收集数百至数千个时间点的观测数据。这种设计能够捕捉时间尺度分离（RES-D的分钟-小时波动、STR的周-月变化）、非线性动力学特征（阈值效应、临界慢化）和个体特异性。</p>
-
-<p><strong>N-of-1设计与分层贝叶斯</strong>。当研究目标是理解个体机制而非估计群体平均时，N-of-1设计是重要工具。同一被试在多个时间点接受不同的干预条件（随机顺序，设洗脱期），通过个体内比较推断因果机制。统计推断可通过<strong>分层贝叶斯模型</strong>将多个N-of-1研究进行部分池化：每个个体有自己的参数，但参数分布来自群体先验。</p>
-
-<p><strong>预注册与假说证伪</strong>。预注册内容应包括：</p>
-<ul>
-<li>状态向量的操作化定义（每个M-R-D-S子维度的测量方案）</li>
-<li>动力学假说的形式化表达（如“M3-RES-D在持续认知负荷下呈指数衰减，衰减速率α在0.10-0.15/h之间”）</li>
-<li>预测的量化阈值（如“M3-RES-D恢复速率在休息30分钟后显著高于对照组，p < 0.05”）</li>
-<li>证伪条件（如“若休息30分钟后M3-RES-D变化均值<5点且95%置信区间不包含10，则假说被削弱”）</li>
-</ul>
-
-<p><strong>干预研究的设计</strong>。核心是<strong>机制匹配</strong>，而非“疗法A vs 疗法B”的黑箱比较：</p>
-<ul>
-<li>前测：全面评估M-R-D-S状态向量，识别主导失调机制</li>
-<li>随机化分层：根据主导机制类型分层随机化</li>
-<li>干预操作化：将干预方案分解为G-M-A-R操作序列，通过录音编码检查治疗忠诚度</li>
-<li>机制测量：多次测量靶点状态分量，检验中介路径</li>
-<li>随访：根据结构改变的时间常数设定（ALIGN类1-3个月，RELINK类6-12个月）</li>
-</ul>
-
-<p><strong>替代模型竞争</strong>。应同时报告：(1)功能层模型的预测精度；(2)传统变量模型的预测精度；(3)纯数据驱动模型的预测精度。如果功能层模型在预测精度、可解释性、样本效率或跨情境泛化上显著优于替代模型，则其理论价值获得实证支持。</p>
+<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗浣犲簲鑳藉锛?1)璁捐鍔熻兘灞傜爺绌剁殑涓綋鍐呭瘑闆嗚拷韪柟妗堬紱(2)鐞嗚В鐘舵€佺┖闂存ā鍨嬪拰璐濆彾鏂牎鍑嗙殑鏍稿績閫昏緫锛?3)搴旂敤閫昏緫鎸囩汗浣撶郴杩涜姒傚康鏄犲皠鐨勪竴鑷存€ф楠岋紱(4)閬靛惊鍙噸澶嶆€ф爣鍑嗚繘琛岄娉ㄥ唽鍜屽紑鏀剧瀛﹀疄璺点€?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>28.2 数据采集：可穿戴、EMA与数字表型融合</h2>
+<h2>28.1 鐮旂┒璁捐锛氫釜浣撳唴瀵嗛泦杩借釜涓庡垎灞傝礉鍙舵柉</h2>
 
-<p>功能层研究的数据采集需要覆盖三个层次：实验室控制任务（高信度、低生态效度）、生态瞬时评估（中信度、中生态效度）、被动传感（低信度、高生态效度）。</p>
+<p>鍔熻兘灞傚績鐞嗗鐨勬牳蹇冪爺绌跺璞′笉鏄潤鎬佺殑鈥滃彉閲忊€濓紝鑰屾槸闅忔椂闂存紨鍖栫殑<strong>鐘舵€佽建杩?/strong>\(\Psi(t)\)銆傝繖涓€杞彉瀵圭爺绌惰璁℃彁鍑轰簡鏂扮殑瑕佹眰銆?/p>
 
-<p><strong>生态瞬时评估(EMA)设计要点</strong>：</p>
+<p><strong>涓綋鍐呭瘑闆嗚拷韪璁?/strong>銆傚姛鑳藉眰鐮旂┒涓嶆帓鏂ョ兢浣撶爺绌躲€傚疄闄呬笂锛岀敓鎬佷綅搴撶殑鏋勫缓銆佸弬鏁板厛楠岀殑鎻愬彇閮介渶瑕佸ぇ鏍锋湰浜虹兢鏁版嵁銆傚姛鑳藉眰鐮旂┒鐨勭嫭鐗逛箣澶勫湪浜庯細瀹冧笉灏嗙兢浣撶粺璁＄洿鎺ユ帹璁哄埌涓綋锛岃€屾槸灏嗙兢浣撴暟鎹綔涓轰釜浣撴ā鍨嬬殑鍏堥獙銆傚湪姝ゅ熀纭€涓婏紝鍔熻兘灞傜爺绌惰璁″己璋?strong>涓綋鍐呭瘑闆嗚拷韪?/strong>锛氶€氳繃EMA銆佸彲绌挎埓璁惧銆佽涓烘棩蹇楃瓑鏂规硶锛屽湪鍗曚釜涓綋涓婃敹闆嗘暟鐧捐嚦鏁板崈涓椂闂寸偣鐨勮娴嬫暟鎹€傝繖绉嶈璁¤兘澶熸崟鎹夋椂闂村昂搴﹀垎绂伙紙RES-D鐨勫垎閽?灏忔椂娉㈠姩銆丼TR鐨勫懆-鏈堝彉鍖栵級銆侀潪绾挎€у姩鍔涘鐗瑰緛锛堥槇鍊兼晥搴斻€佷复鐣屾參鍖栵級鍜屼釜浣撶壒寮傛€с€?/p>
+
+<p><strong>N-of-1璁捐涓庡垎灞傝礉鍙舵柉</strong>銆傚綋鐮旂┒鐩爣鏄悊瑙ｄ釜浣撴満鍒惰€岄潪浼拌缇や綋骞冲潎鏃讹紝N-of-1璁捐鏄噸瑕佸伐鍏枫€傚悓涓€琚瘯鍦ㄥ涓椂闂寸偣鎺ュ彈涓嶅悓鐨勫共棰勬潯浠讹紙闅忔満椤哄簭锛岃娲楄劚鏈燂級锛岄€氳繃涓綋鍐呮瘮杈冩帹鏂洜鏋滄満鍒躲€傜粺璁℃帹鏂彲閫氳繃<strong>鍒嗗眰璐濆彾鏂ā鍨?/strong>灏嗗涓狽-of-1鐮旂┒杩涜閮ㄥ垎姹犲寲锛氭瘡涓釜浣撴湁鑷繁鐨勫弬鏁帮紝浣嗗弬鏁板垎甯冩潵鑷兢浣撳厛楠屻€?/p>
+
+<p><strong>棰勬敞鍐屼笌鍋囪璇佷吉</strong>銆傞娉ㄥ唽鍐呭搴斿寘鎷細</p>
 <ul>
-<li><strong>采样方案</strong>：随机时间采样（每天6-8次）捕捉基线波动；事件触发采样捕捉极端状态；固定时间采样捕捉节律变化</li>
-<li><strong>条目设计</strong>：每个条目直接映射到特定M-R-D-S子维度，尽可能简短。EMA条目的映射效度应在实验室预研究中检验（收敛效度r > 0.5为可接受）</li>
-<li><strong>依从性管理</strong>：通过提醒、游戏化设计、短问卷（<2分钟）保持高依从性（目标>80%）</li>
+<li>鐘舵€佸悜閲忕殑鎿嶄綔鍖栧畾涔夛紙姣忎釜M-R-D-S瀛愮淮搴︾殑娴嬮噺鏂规锛?/li>
+<li>鍔ㄥ姏瀛﹀亣璇寸殑褰㈠紡鍖栬〃杈撅紙濡傗€淢3-RES-D鍦ㄦ寔缁鐭ヨ礋鑽蜂笅鍛堟寚鏁拌“鍑忥紝琛板噺閫熺巼伪鍦?.10-0.15/h涔嬮棿鈥濓級</li>
+<li>棰勬祴鐨勯噺鍖栭槇鍊硷紙濡傗€淢3-RES-D鎭㈠閫熺巼鍦ㄤ紤鎭?0鍒嗛挓鍚庢樉钁楅珮浜庡鐓х粍锛宲 < 0.05鈥濓級</li>
+<li>璇佷吉鏉′欢锛堝鈥滆嫢浼戞伅30鍒嗛挓鍚嶮3-RES-D鍙樺寲鍧囧€?5鐐逛笖95%缃俊鍖洪棿涓嶅寘鍚?0锛屽垯鍋囪琚墛寮扁€濓級</li>
 </ul>
 
-<p><strong>可穿戴设备的被动传感</strong>：</p>
+<p><strong>骞查鐮旂┒鐨勮璁?/strong>銆傛牳蹇冩槸<strong>鏈哄埗鍖归厤</strong>锛岃€岄潪鈥滅枟娉旳 vs 鐤楁硶B鈥濈殑榛戠姣旇緝锛?/p>
+<ul>
+<li>鍓嶆祴锛氬叏闈㈣瘎浼癕-R-D-S鐘舵€佸悜閲忥紝璇嗗埆涓诲澶辫皟鏈哄埗</li>
+<li>闅忔満鍖栧垎灞傦細鏍规嵁涓诲鏈哄埗绫诲瀷鍒嗗眰闅忔満鍖?/li>
+<li>骞查鎿嶄綔鍖栵細灏嗗共棰勬柟妗堝垎瑙ｄ负G-M-A-R鎿嶄綔搴忓垪锛岄€氳繃褰曢煶缂栫爜妫€鏌ユ不鐤楀繝璇氬害</li>
+<li>鏈哄埗娴嬮噺锛氬娆℃祴閲忛澏鐐圭姸鎬佸垎閲忥紝妫€楠屼腑浠嬭矾寰?/li>
+<li>闅忚锛氭牴鎹粨鏋勬敼鍙樼殑鏃堕棿甯告暟璁惧畾锛圓LIGN绫?-3涓湀锛孯ELINK绫?-12涓湀锛?/li>
+</ul>
+
+<p><strong>鏇夸唬妯″瀷绔炰簤</strong>銆傚簲鍚屾椂鎶ュ憡锛?1)鍔熻兘灞傛ā鍨嬬殑棰勬祴绮惧害锛?2)浼犵粺鍙橀噺妯″瀷鐨勯娴嬬簿搴︼紱(3)绾暟鎹┍鍔ㄦā鍨嬬殑棰勬祴绮惧害銆傚鏋滃姛鑳藉眰妯″瀷鍦ㄩ娴嬬簿搴︺€佸彲瑙ｉ噴鎬с€佹牱鏈晥鐜囨垨璺ㄦ儏澧冩硾鍖栦笂鏄捐憲浼樹簬鏇夸唬妯″瀷锛屽垯鍏剁悊璁轰环鍊艰幏寰楀疄璇佹敮鎸併€?/p>
+
+<hr class="section-divider">
+
+<h2>28.2 鏁版嵁閲囬泦锛氬彲绌挎埓銆丒MA涓庢暟瀛楄〃鍨嬭瀺鍚?/h2>
+
+<p>鍔熻兘灞傜爺绌剁殑鏁版嵁閲囬泦闇€瑕佽鐩栦笁涓眰娆★細瀹為獙瀹ゆ帶鍒朵换鍔★紙楂樹俊搴︺€佷綆鐢熸€佹晥搴︼級銆佺敓鎬佺灛鏃惰瘎浼帮紙涓俊搴︺€佷腑鐢熸€佹晥搴︼級銆佽鍔ㄤ紶鎰燂紙浣庝俊搴︺€侀珮鐢熸€佹晥搴︼級銆?/p>
+
+<p><strong>鐢熸€佺灛鏃惰瘎浼?EMA)璁捐瑕佺偣</strong>锛?/p>
+<ul>
+<li><strong>閲囨牱鏂规</strong>锛氶殢鏈烘椂闂撮噰鏍凤紙姣忓ぉ6-8娆★級鎹曟崏鍩虹嚎娉㈠姩锛涗簨浠惰Е鍙戦噰鏍锋崟鎹夋瀬绔姸鎬侊紱鍥哄畾鏃堕棿閲囨牱鎹曟崏鑺傚緥鍙樺寲</li>
+<li><strong>鏉＄洰璁捐</strong>锛氭瘡涓潯鐩洿鎺ユ槧灏勫埌鐗瑰畾M-R-D-S瀛愮淮搴︼紝灏藉彲鑳界畝鐭€侲MA鏉＄洰鐨勬槧灏勬晥搴﹀簲鍦ㄥ疄楠屽棰勭爺绌朵腑妫€楠岋紙鏀舵暃鏁堝害r > 0.5涓哄彲鎺ュ彈锛?/li>
+<li><strong>渚濅粠鎬х鐞?/strong>锛氶€氳繃鎻愰啋銆佹父鎴忓寲璁捐銆佺煭闂嵎锛?2鍒嗛挓锛変繚鎸侀珮渚濅粠鎬э紙鐩爣>80%锛?/li>
+</ul>
+
+<p><strong>鍙┛鎴磋澶囩殑琚姩浼犳劅</strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>信号</th>
-<th>提取指标</th>
-<th>M-R-D-S映射</th>
-<th>时间分辨率</th>
+<th>淇″彿</th>
+<th>鎻愬彇鎸囨爣</th>
+<th>M-R-D-S鏄犲皠</th>
+<th>鏃堕棿鍒嗚鲸鐜?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td>加速度计</td>
-<td>活动强度、步数</td>
-<td>M6-DSP-F、M1-RES-D</td>
-<td>分钟</td>
+<td>鍔犻€熷害璁?/td>
+<td>娲诲姩寮哄害銆佹鏁?/td>
+<td>M6-DSP-F銆丮1-RES-D</td>
+<td>鍒嗛挓</td>
 </tr>
 <tr>
 <td>HRV</td>
-<td>心率变异性</td>
-<td>M1-DSP-B、M4-RES-D</td>
-<td>连续</td>
+<td>蹇冪巼鍙樺紓鎬?/td>
+<td>M1-DSP-B銆丮4-RES-D</td>
+<td>杩炵画</td>
 </tr>
 <tr>
-<td>皮肤电活动</td>
-<td>皮肤电导水平</td>
+<td>鐨偆鐢垫椿鍔?/td>
+<td>鐨偆鐢靛姘村钩</td>
 <td>M4-DSP-B</td>
-<td>秒</td>
+<td>绉?/td>
 </tr>
 <tr>
-<td>睡眠</td>
-<td>总睡眠时间、效率</td>
-<td>M1-STR-S、M1-RES-D恢复</td>
-<td>夜</td>
+<td>鐫＄湢</td>
+<td>鎬荤潯鐪犳椂闂淬€佹晥鐜?/td>
+<td>M1-STR-S銆丮1-RES-D鎭㈠</td>
+<td>澶?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>注意</strong>：这些映射关系基于现有文献的理论推导（F级），尚未经过系统的收敛效度检验。研究者应报告在本研究样本中的效度检验结果。</p></blockquote>
+<blockquote><p><strong>娉ㄦ剰</strong>锛氳繖浜涙槧灏勫叧绯诲熀浜庣幇鏈夋枃鐚殑鐞嗚鎺ㄥ锛團绾э級锛屽皻鏈粡杩囩郴缁熺殑鏀舵暃鏁堝害妫€楠屻€傜爺绌惰€呭簲鎶ュ憡鍦ㄦ湰鐮旂┒鏍锋湰涓殑鏁堝害妫€楠岀粨鏋溿€?/p></blockquote>
 
-<p><strong>数字表型</strong>（智能手机日志数据）：</p>
+<p><strong>鏁板瓧琛ㄥ瀷</strong>锛堟櫤鑳芥墜鏈烘棩蹇楁暟鎹級锛?/p>
 <ul>
-<li>使用模式：屏幕解锁频率、应用切换次数 → M2-DSP-F/DSP-B、M3-RES-D</li>
-<li>键盘输入：打字速度、删除率 → M2-RES-D、M5-DSP-F</li>
-<li>GPS轨迹：位置熵、移动半径 → M3-DSP-F、M6-STR-S</li>
+<li>浣跨敤妯″紡锛氬睆骞曡В閿侀鐜囥€佸簲鐢ㄥ垏鎹㈡鏁?鈫?M2-DSP-F/DSP-B銆丮3-RES-D</li>
+<li>閿洏杈撳叆锛氭墦瀛楅€熷害銆佸垹闄ょ巼 鈫?M2-RES-D銆丮5-DSP-F</li>
+<li>GPS杞ㄨ抗锛氫綅缃喌銆佺Щ鍔ㄥ崐寰?鈫?M3-DSP-F銆丮6-STR-S</li>
 </ul>
 
-<p><strong>隐私保护</strong>：数据采集必须获得明确的知情同意，GPS模糊化到社区级别，数据存储和传输加密。参与者有权随时查看自己被收集的数据并退出研究。</p>
+<p><strong>闅愮淇濇姢</strong>锛氭暟鎹噰闆嗗繀椤昏幏寰楁槑纭殑鐭ユ儏鍚屾剰锛孏PS妯＄硦鍖栧埌绀惧尯绾у埆锛屾暟鎹瓨鍌ㄥ拰浼犺緭鍔犲瘑銆傚弬涓庤€呮湁鏉冮殢鏃舵煡鐪嬭嚜宸辫鏀堕泦鐨勬暟鎹苟閫€鍑虹爺绌躲€?/p>
 
-<p><strong>多模态融合协议</strong>：</p>
+<p><strong>澶氭ā鎬佽瀺鍚堝崗璁?/strong>锛?/p>
 <ul>
-<li>核心模态（所有参与者）：EMA（每日6次）+ 可穿戴设备（连续）</li>
-<li>补充模态（子样本）：实验室行为任务（每月1次）+ 数字表型（连续）</li>
-<li>核心模态最低完成标准：EMA依从率≥70%，可穿戴佩戴时间≥80%</li>
+<li>鏍稿績妯℃€侊紙鎵€鏈夊弬涓庤€咃級锛欵MA锛堟瘡鏃?娆★級+ 鍙┛鎴磋澶囷紙杩炵画锛?/li>
+<li>琛ュ厖妯℃€侊紙瀛愭牱鏈級锛氬疄楠屽琛屼负浠诲姟锛堟瘡鏈?娆★級+ 鏁板瓧琛ㄥ瀷锛堣繛缁級</li>
+<li>鏍稿績妯℃€佹渶浣庡畬鎴愭爣鍑嗭細EMA渚濅粠鐜団墺70%锛屽彲绌挎埓浣╂埓鏃堕棿鈮?0%</li>
 </ul>
 
 <hr class="section-divider">
 
-<h2>28.3 数据分析：时间序列、状态空间与机器学习融合</h2>
+<h2>28.3 鏁版嵁鍒嗘瀽锛氭椂闂村簭鍒椼€佺姸鎬佺┖闂翠笌鏈哄櫒瀛︿範铻嶅悎</h2>
 
-<p>功能层数据是多模态、高维、密集时间序列。以下方法成为核心分析工具。</p>
+<p>鍔熻兘灞傛暟鎹槸澶氭ā鎬併€侀珮缁淬€佸瘑闆嗘椂闂村簭鍒椼€備互涓嬫柟娉曟垚涓烘牳蹇冨垎鏋愬伐鍏枫€?/p>
 
-<p><strong>方法选择简则</strong>：若数据近似线性高斯→卡尔曼滤波(KF)；弱非线性→EKF/UKF；强非线性、非高斯→粒子滤波/EnKF；离线分析需完整后验→MCMC；快速迭代→变分贝叶斯。初学者可从EnKF+MCMC（离线估计参数）的组合开始。</p>
+<p><strong>鏂规硶閫夋嫨绠€鍒?/strong>锛氳嫢鏁版嵁杩戜技绾挎€ч珮鏂啋鍗″皵鏇兼护娉?KF)锛涘急闈炵嚎鎬р啋EKF/UKF锛涘己闈炵嚎鎬с€侀潪楂樻柉鈫掔矑瀛愭护娉?EnKF锛涚绾垮垎鏋愰渶瀹屾暣鍚庨獙鈫扢CMC锛涘揩閫熻凯浠ｂ啋鍙樺垎璐濆彾鏂€傚垵瀛﹁€呭彲浠嶦nKF+MCMC锛堢绾夸及璁″弬鏁帮級鐨勭粍鍚堝紑濮嬨€?/p>
 
-<p><strong>时间序列分析（探索性）</strong>：在进入复杂状态空间模型前，可使用自相关函数(ACF)检测依赖性、交叉相关函数(CCF)检测滞后相关性、去趋势波动分析(DFA)检测长程相关性、频谱分析检测周期性成分。</p>
+<p><strong>鏃堕棿搴忓垪鍒嗘瀽锛堟帰绱㈡€э級</strong>锛氬湪杩涘叆澶嶆潅鐘舵€佺┖闂存ā鍨嬪墠锛屽彲浣跨敤鑷浉鍏冲嚱鏁?ACF)妫€娴嬩緷璧栨€с€佷氦鍙夌浉鍏冲嚱鏁?CCF)妫€娴嬫粸鍚庣浉鍏虫€с€佸幓瓒嬪娍娉㈠姩鍒嗘瀽(DFA)妫€娴嬮暱绋嬬浉鍏虫€с€侀璋卞垎鏋愭娴嬪懆鏈熸€ф垚鍒嗐€?/p>
 
-<p><strong>状态空间建模</strong>。核心方法，将观测数据\(y_t\)与隐状态\(\Psi_t\)通过观测方程\(y_t = h(\Psi_t) + \epsilon_t\)联系，并用状态方程\(\Psi_{t+1} = f(\Psi_t, u_t, E_t; \theta) + \eta_t\)描述演化。估计方法包括：</p>
+<p><strong>鐘舵€佺┖闂村缓妯?/strong>銆傛牳蹇冩柟娉曪紝灏嗚娴嬫暟鎹甛(y_t\)涓庨殣鐘舵€乗(\Psi_t\)閫氳繃瑙傛祴鏂圭▼\(y_t = h(\Psi_t) + \epsilon_t\)鑱旂郴锛屽苟鐢ㄧ姸鎬佹柟绋媆(\Psi_{t+1} = f(\Psi_t, u_t, E_t; \theta) + \eta_t\)鎻忚堪婕斿寲銆備及璁℃柟娉曞寘鎷細</p>
 <ul>
-<li><strong>卡尔曼滤波(KF)</strong>：线性高斯模型</li>
-<li><strong>扩展卡尔曼滤波(EKF)</strong>：弱非线性，一阶泰勒展开</li>
-<li><strong>无迹卡尔曼滤波(UKF)</strong>：确定性采样，比EKF更精确</li>
-<li><strong>粒子滤波(PF)</strong>：强非线性、非高斯，计算成本高但最灵活</li>
-<li><strong>集合卡尔曼滤波(EnKF)</strong>：计算效率和精度的平衡选择</li>
+<li><strong>鍗″皵鏇兼护娉?KF)</strong>锛氱嚎鎬ч珮鏂ā鍨?/li>
+<li><strong>鎵╁睍鍗″皵鏇兼护娉?EKF)</strong>锛氬急闈炵嚎鎬э紝涓€闃舵嘲鍕掑睍寮€</li>
+<li><strong>鏃犺抗鍗″皵鏇兼护娉?UKF)</strong>锛氱‘瀹氭€ч噰鏍凤紝姣擡KF鏇寸簿纭?/li>
+<li><strong>绮掑瓙婊ゆ尝(PF)</strong>锛氬己闈炵嚎鎬с€侀潪楂樻柉锛岃绠楁垚鏈珮浣嗘渶鐏垫椿</li>
+<li><strong>闆嗗悎鍗″皵鏇兼护娉?EnKF)</strong>锛氳绠楁晥鐜囧拰绮惧害鐨勫钩琛￠€夋嫨</li>
 </ul>
 
-<p><strong>贝叶斯参数估计</strong>。同时估计状态和参数\(\theta\)：</p>
+<p><strong>璐濆彾鏂弬鏁颁及璁?/strong>銆傚悓鏃朵及璁＄姸鎬佸拰鍙傛暟\(\theta\)锛?/p>
 
 $$
 p(\Psi_{1:T}, \theta \mid y_{1:T}) \propto p(y_{1:T} \mid \Psi_{1:T}, \theta) \cdot p(\Psi_{1:T} \mid \theta) \cdot p(\theta)
 $$
 
-<p>常用方法：MCMC（离线，提供完整后验）、PMCMC（结合粒子滤波和MCMC）、变分贝叶斯（快速，可能低估不确定性）。</p>
+<p>甯哥敤鏂规硶锛歁CMC锛堢绾匡紝鎻愪緵瀹屾暣鍚庨獙锛夈€丳MCMC锛堢粨鍚堢矑瀛愭护娉㈠拰MCMC锛夈€佸彉鍒嗚礉鍙舵柉锛堝揩閫燂紝鍙兘浣庝及涓嶇‘瀹氭€э級銆?/p>
 
-<p><strong>机器学习方法的融合</strong>：</p>
+<p><strong>鏈哄櫒瀛︿範鏂规硶鐨勮瀺鍚?/strong>锛?/p>
 <ul>
-<li><strong>高斯过程(GP)</strong>：对未知函数（如观测函数\(h\)）进行非参数建模</li>
-<li><strong>循环神经网络(RNN/LSTM)</strong>：作为MKT方程的“替代模型”——当MKT方程未知或过于复杂时，用RNN从数据中学习状态演化。若RNN显著优于MKT方程，提示MKT方程需要修正</li>
-<li><strong>变分自编码器(VAE)</strong>：从高维观测中学习低维隐状态表示</li>
+<li><strong>楂樻柉杩囩▼(GP)</strong>锛氬鏈煡鍑芥暟锛堝瑙傛祴鍑芥暟\(h\)锛夎繘琛岄潪鍙傛暟寤烘ā</li>
+<li><strong>寰幆绁炵粡缃戠粶(RNN/LSTM)</strong>锛氫綔涓篗KT鏂圭▼鐨勨€滄浛浠ｆā鍨嬧€濃€斺€斿綋MKT鏂圭▼鏈煡鎴栬繃浜庡鏉傛椂锛岀敤RNN浠庢暟鎹腑瀛︿範鐘舵€佹紨鍖栥€傝嫢RNN鏄捐憲浼樹簬MKT鏂圭▼锛屾彁绀篗KT鏂圭▼闇€瑕佷慨姝?/li>
+<li><strong>鍙樺垎鑷紪鐮佸櫒(VAE)</strong>锛氫粠楂樼淮瑙傛祴涓涔犱綆缁撮殣鐘舵€佽〃绀?/li>
 </ul>
 
-<p><strong>模型比较与选择</strong>：留一法交叉验证(LOOCV)、信息准则(AIC/BIC)、贝叶斯因子(BF > 10为强证据)。</p>
+<p><strong>妯″瀷姣旇緝涓庨€夋嫨</strong>锛氱暀涓€娉曚氦鍙夐獙璇?LOOCV)銆佷俊鎭噯鍒?AIC/BIC)銆佽礉鍙舵柉鍥犲瓙(BF > 10涓哄己璇佹嵁)銆?/p>
 
 <hr class="section-divider">
 
-<h2>28.4 可重复性：预注册、数据共享与代码开源</h2>
+<h2>28.4 鍙噸澶嶆€э細棰勬敞鍐屻€佹暟鎹叡浜笌浠ｇ爜寮€婧?/h2>
 
-<p><strong>预注册的扩展内容</strong>。除了传统内容，功能层研究预注册还应包括：</p>
+<p><strong>棰勬敞鍐岀殑鎵╁睍鍐呭</strong>銆傞櫎浜嗕紶缁熷唴瀹癸紝鍔熻兘灞傜爺绌堕娉ㄥ唽杩樺簲鍖呮嫭锛?/p>
 <ul>
-<li>状态空间模型的完整规格（状态向量维度、观测方程形式、状态方程形式、参数先验分布）</li>
-<li>参数识别策略（哪些参数可从数据中唯一估计，哪些需固定）</li>
-<li>预测的量化形式（不仅是“M3-RES-D下降”，而是“在任务开始后t分钟下降到θ以下，95%预测区间为[t-10, t+10]”）</li>
-<li>证伪的具体标准</li>
+<li>鐘舵€佺┖闂存ā鍨嬬殑瀹屾暣瑙勬牸锛堢姸鎬佸悜閲忕淮搴︺€佽娴嬫柟绋嬪舰寮忋€佺姸鎬佹柟绋嬪舰寮忋€佸弬鏁板厛楠屽垎甯冿級</li>
+<li>鍙傛暟璇嗗埆绛栫暐锛堝摢浜涘弬鏁板彲浠庢暟鎹腑鍞竴浼拌锛屽摢浜涢渶鍥哄畾锛?/li>
+<li>棰勬祴鐨勯噺鍖栧舰寮忥紙涓嶄粎鏄€淢3-RES-D涓嬮檷鈥濓紝鑰屾槸鈥滃湪浠诲姟寮€濮嬪悗t鍒嗛挓涓嬮檷鍒拔镐互涓嬶紝95%棰勬祴鍖洪棿涓篬t-10, t+10]鈥濓級</li>
+<li>璇佷吉鐨勫叿浣撴爣鍑?/li>
 </ul>
 
-<p><strong>数据共享的隐私保护</strong>：</p>
+<p><strong>鏁版嵁鍏变韩鐨勯殣绉佷繚鎶?/strong>锛?/p>
 <ul>
-<li><strong>去标识化</strong>：移除直接标识符，泛化间接标识符</li>
-<li><strong>数据扰动</strong>：GPS模糊化（精度降至500米），时间戳随机偏移（±1小时）</li>
-<li><strong>访问控制</strong>：存放在受控访问存储库，研究人员签署数据使用协议</li>
-<li><strong>合成数据替代</strong>：无法公开原始数据时，发布从后验分布中采样的合成数据</li>
+<li><strong>鍘绘爣璇嗗寲</strong>锛氱Щ闄ょ洿鎺ユ爣璇嗙锛屾硾鍖栭棿鎺ユ爣璇嗙</li>
+<li><strong>鏁版嵁鎵板姩</strong>锛欸PS妯＄硦鍖栵紙绮惧害闄嶈嚦500绫筹級锛屾椂闂存埑闅忔満鍋忕Щ锛埪?灏忔椂锛?/li>
+<li><strong>璁块棶鎺у埗</strong>锛氬瓨鏀惧湪鍙楁帶璁块棶瀛樺偍搴擄紝鐮旂┒浜哄憳绛剧讲鏁版嵁浣跨敤鍗忚</li>
+<li><strong>鍚堟垚鏁版嵁鏇夸唬</strong>锛氭棤娉曞叕寮€鍘熷鏁版嵁鏃讹紝鍙戝竷浠庡悗楠屽垎甯冧腑閲囨牱鐨勫悎鎴愭暟鎹?/li>
 </ul>
 
-<p><strong>代码与模型开源</strong>：PSE的Python/Julia实现应开源，附带Docker容器确保可复现，提供模拟数据供测试，提供详细API文档。</p>
+<p><strong>浠ｇ爜涓庢ā鍨嬪紑婧?/strong>锛歅SE鐨凱ython/Julia瀹炵幇搴斿紑婧愶紝闄勫甫Docker瀹瑰櫒纭繚鍙鐜帮紝鎻愪緵妯℃嫙鏁版嵁渚涙祴璇曪紝鎻愪緵璇︾粏API鏂囨。銆?/p>
 
-<p><strong>复现研究的激励机制</strong>：学术共同体应鼓励“注册复现报告”——在数据收集前接受研究方案，无论结果如何都发表。</p>
+<p><strong>澶嶇幇鐮旂┒鐨勬縺鍔辨満鍒?/strong>锛氬鏈叡鍚屼綋搴旈紦鍔扁€滄敞鍐屽鐜版姤鍛娾€濃€斺€斿湪鏁版嵁鏀堕泦鍓嶆帴鍙楃爺绌舵柟妗堬紝鏃犺缁撴灉濡備綍閮藉彂琛ㄣ€?/p>
 
 <hr class="section-divider">
 
-<h2>28.5 差异治理：逻辑指纹与多视角共识</h2>
+<h2>28.5 宸紓娌荤悊锛氶€昏緫鎸囩汗涓庡瑙嗚鍏辫瘑</h2>
 
-<p>不同研究者在将临床现象翻译为M-R-D-S状态向量时，可能产生解析差异。INTRE通过<strong>逻辑指纹体系</strong>和<strong>共识编码协议</strong>来解决这一问题。（详细论述见第17章和附录F。）</p>
+<p>涓嶅悓鐮旂┒鑰呭湪灏嗕复搴婄幇璞＄炕璇戜负M-R-D-S鐘舵€佸悜閲忔椂锛屽彲鑳戒骇鐢熻В鏋愬樊寮傘€侷NTRE閫氳繃<strong>閫昏緫鎸囩汗浣撶郴</strong>鍜?strong>鍏辫瘑缂栫爜鍗忚</strong>鏉ヨВ鍐宠繖涓€闂銆傦紙璇︾粏璁鸿堪瑙佺17绔犲拰闄勫綍F銆傦級</p>
 
-<p><strong>四组逻辑指纹</strong>（速查）：</p>
+<p><strong>鍥涚粍閫昏緫鎸囩汗</strong>锛堥€熸煡锛夛細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>指纹类型</th>
-<th>判定问题</th>
-<th>取值示例</th>
+<th>鎸囩汗绫诲瀷</th>
+<th>鍒ゅ畾闂</th>
+<th>鍙栧€肩ず渚?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td>模块指纹</td>
-<td>涉及哪些模块？角色？</td>
+<td>妯″潡鎸囩汗</td>
+<td>娑夊強鍝簺妯″潡锛熻鑹诧紵</td>
 <td>`{(M4, primary), (M2, secondary)}`</td>
 </tr>
 <tr>
-<td>资源指纹</td>
-<td>消耗或保护哪类资源？方向？</td>
+<td>璧勬簮鎸囩汗</td>
+<td>娑堣€楁垨淇濇姢鍝被璧勬簮锛熸柟鍚戯紵</td>
 <td>`{(RES-D, -), (RES-B, +)}`</td>
 </tr>
 <tr>
-<td>层级指纹</td>
-<td>表现层与根源层？因果方向？</td>
-<td>表现: `DSP-B`；根源: `STR-C`；方向: 表现←根源</td>
+<td>灞傜骇鎸囩汗</td>
+<td>琛ㄧ幇灞備笌鏍规簮灞傦紵鍥犳灉鏂瑰悜锛?/td>
+<td>琛ㄧ幇: `DSP-B`锛涙牴婧? `STR-C`锛涙柟鍚? 琛ㄧ幇鈫愭牴婧?/td>
 </tr>
 <tr>
-<td>操作指纹</td>
-<td>优先干预操作序列？</td>
+<td>鎿嶄綔鎸囩汗</td>
+<td>浼樺厛骞查鎿嶄綔搴忓垪锛?/td>
 <td>`[GATE-, ALIGN, RELINK]`</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>错误解析判据（E1-E5）</strong>：完全遗漏公认核心模块(E1)、资源方向相反(E2)、层级因果方向颠倒(E3)、操作序列违背D→R→S(E4)、模块角色与三组指纹系统矛盾(E5)。任何触发之一即判定为错误解析。</p>
+<p><strong>閿欒瑙ｆ瀽鍒ゆ嵁锛圗1-E5锛?/strong>锛氬畬鍏ㄩ仐婕忓叕璁ゆ牳蹇冩ā鍧?E1)銆佽祫婧愭柟鍚戠浉鍙?E2)銆佸眰绾у洜鏋滄柟鍚戦鍊?E3)銆佹搷浣滃簭鍒楄繚鑳孌鈫扲鈫扴(E4)銆佹ā鍧楄鑹蹭笌涓夌粍鎸囩汗绯荤粺鐭涚浘(E5)銆備换浣曡Е鍙戜箣涓€鍗冲垽瀹氫负閿欒瑙ｆ瀽銆?/p>
 
-<p><strong>编码员间一致性检验</strong>：</p>
+<p><strong>缂栫爜鍛橀棿涓€鑷存€ф楠?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>指纹类型</th>
-<th>推荐指标</th>
-<th>可接受</th>
-<th>良好</th>
+<th>鎸囩汗绫诲瀷</th>
+<th>鎺ㄨ崘鎸囨爣</th>
+<th>鍙帴鍙?/th>
+<th>鑹ソ</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>模块指纹</td>
-<td>Cohen‘s κ / Fleiss’ κ</td>
-<td>κ ≥ 0.60</td>
-<td>κ ≥ 0.75</td>
+<td>妯″潡鎸囩汗</td>
+<td>Cohen鈥榮 魏 / Fleiss鈥?魏</td>
+<td>魏 鈮?0.60</td>
+<td>魏 鈮?0.75</td>
 </tr>
 <tr>
-<td>资源指纹</td>
-<td>加权κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
+<td>璧勬簮鎸囩汗</td>
+<td>鍔犳潈魏</td>
+<td>鈮?0.60</td>
+<td>鈮?0.75</td>
 </tr>
 <tr>
-<td>层级指纹</td>
-<td>Fleiss‘ κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
+<td>灞傜骇鎸囩汗</td>
+<td>Fleiss鈥?魏</td>
+<td>鈮?0.60</td>
+<td>鈮?0.75</td>
 </tr>
 <tr>
-<td>操作指纹</td>
-<td>位置一致率 + 编辑距离</td>
-<td>≥70%</td>
-<td>≥85%</td>
+<td>鎿嶄綔鎸囩汗</td>
+<td>浣嶇疆涓€鑷寸巼 + 缂栬緫璺濈</td>
+<td>鈮?0%</td>
+<td>鈮?5%</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>多视角共识的工程化</strong>（UPLS三阶段知识生产流水线）：</p>
+<p><strong>澶氳瑙掑叡璇嗙殑宸ョ▼鍖?/strong>锛圲PLS涓夐樁娈电煡璇嗙敓浜ф祦姘寸嚎锛夛細</p>
 <ul>
-<li><strong>PCC-P（采集协议）</strong>：从多流派文献、临床案例、文化特定表达中收集概念描述</li>
-<li><strong>PCF-P（编译协议）</strong>：多学科专家团队强制编译为M-R-D-S坐标，记录异议档案</li>
-<li><strong>PCV-P（验证协议）</strong>：独立评审团结构化评审，总体支持率≥80%，各主要流派≥60%</li>
+<li><strong>PCC-P锛堥噰闆嗗崗璁級</strong>锛氫粠澶氭祦娲炬枃鐚€佷复搴婃渚嬨€佹枃鍖栫壒瀹氳〃杈句腑鏀堕泦姒傚康鎻忚堪</li>
+<li><strong>PCF-P锛堢紪璇戝崗璁級</strong>锛氬瀛︾涓撳鍥㈤槦寮哄埗缂栬瘧涓篗-R-D-S鍧愭爣锛岃褰曞紓璁。妗?/li>
+<li><strong>PCV-P锛堥獙璇佸崗璁級</strong>锛氱嫭绔嬭瘎瀹″洟缁撴瀯鍖栬瘎瀹★紝鎬讳綋鏀寔鐜団墺80%锛屽悇涓昏娴佹淳鈮?0%</li>
 </ul>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：功能层心理学的研究方法从变量范式的研究设计转向个体内密集追踪、N-of-1设计和分层贝叶斯。数据采集融合EMA、可穿戴设备和数字表型，实现多模态、高时间分辨率的观测。数据分析采用状态空间模型（卡尔曼滤波、粒子滤波）、贝叶斯参数估计（MCMC、PMCMC）和机器学习方法（高斯过程、RNN作为替代模型）。可重复性通过扩展的预注册（包括模型规格、预测量化形式和证伪条件）、受控数据共享（去标识化、合成数据）和模型开源来保障。解析差异通过四组逻辑指纹（模块、资源、层级、操作）和多视角共识工程进行治理，编码员间一致性应达到κ ≥ 0.60。这些方法共同构成了功能层心理学从理论建构到实证检验的完整方法论基础设施。</p>
+<p><strong>鏈珷灏忕粨</strong>锛氬姛鑳藉眰蹇冪悊瀛︾殑鐮旂┒鏂规硶浠庡彉閲忚寖寮忕殑鐮旂┒璁捐杞悜涓綋鍐呭瘑闆嗚拷韪€丯-of-1璁捐鍜屽垎灞傝礉鍙舵柉銆傛暟鎹噰闆嗚瀺鍚圗MA銆佸彲绌挎埓璁惧鍜屾暟瀛楄〃鍨嬶紝瀹炵幇澶氭ā鎬併€侀珮鏃堕棿鍒嗚鲸鐜囩殑瑙傛祴銆傛暟鎹垎鏋愰噰鐢ㄧ姸鎬佺┖闂存ā鍨嬶紙鍗″皵鏇兼护娉€佺矑瀛愭护娉級銆佽礉鍙舵柉鍙傛暟浼拌锛圡CMC銆丳MCMC锛夊拰鏈哄櫒瀛︿範鏂规硶锛堥珮鏂繃绋嬨€丷NN浣滀负鏇夸唬妯″瀷锛夈€傚彲閲嶅鎬ч€氳繃鎵╁睍鐨勯娉ㄥ唽锛堝寘鎷ā鍨嬭鏍笺€侀娴嬮噺鍖栧舰寮忓拰璇佷吉鏉′欢锛夈€佸彈鎺ф暟鎹叡浜紙鍘绘爣璇嗗寲銆佸悎鎴愭暟鎹級鍜屾ā鍨嬪紑婧愭潵淇濋殰銆傝В鏋愬樊寮傞€氳繃鍥涚粍閫昏緫鎸囩汗锛堟ā鍧椼€佽祫婧愩€佸眰绾с€佹搷浣滐級鍜屽瑙嗚鍏辫瘑宸ョ▼杩涜娌荤悊锛岀紪鐮佸憳闂翠竴鑷存€у簲杈惧埌魏 鈮?0.60銆傝繖浜涙柟娉曞叡鍚屾瀯鎴愪簡鍔熻兘灞傚績鐞嗗浠庣悊璁哄缓鏋勫埌瀹炶瘉妫€楠岀殑瀹屾暣鏂规硶璁哄熀纭€璁炬柦銆?/p>
 
-<blockquote><p><strong>关键术语</strong>：N-of-1设计，状态空间模型，粒子滤波，逻辑指纹，编码员间一致性，分层贝叶斯</p></blockquote>
+<blockquote><p><strong>鍏抽敭鏈</strong>锛歂-of-1璁捐锛岀姸鎬佺┖闂存ā鍨嬶紝绮掑瓙婊ゆ尝锛岄€昏緫鎸囩汗锛岀紪鐮佸憳闂翠竴鑷存€э紝鍒嗗眰璐濆彾鏂?/p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “状态空间模型只是时间序列分析的另一种叫法” → ✅ 状态空间模型的核心是区分潜变量（功能状态）与观测变量，并利用动力学先验约束潜变量推断。<br>- ❌ “N-of-1设计不能推广到群体” → ✅ 多个N-of-1模型可通过分层贝叶斯在群体层面整合——先个体精准，再群体聚合。<br>- ❌ “κ≥0.60的要求太宽松” → ✅ 这是“可接受”的最低门槛（Landis & Koch中的“substantial”），临床决策要求κ≥0.75。</p></blockquote>
+<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥滅姸鎬佺┖闂存ā鍨嬪彧鏄椂闂村簭鍒楀垎鏋愮殑鍙︿竴绉嶅彨娉曗€?鈫?鉁?鐘舵€佺┖闂存ā鍨嬬殑鏍稿績鏄尯鍒嗘綔鍙橀噺锛堝姛鑳界姸鎬侊級涓庤娴嬪彉閲忥紝骞跺埄鐢ㄥ姩鍔涘鍏堥獙绾︽潫娼滃彉閲忔帹鏂€?br>- 鉂?鈥淣-of-1璁捐涓嶈兘鎺ㄥ箍鍒扮兢浣撯€?鈫?鉁?澶氫釜N-of-1妯″瀷鍙€氳繃鍒嗗眰璐濆彾鏂湪缇や綋灞傞潰鏁村悎鈥斺€斿厛涓綋绮惧噯锛屽啀缇や綋鑱氬悎銆?br>- 鉂?鈥溛衡墺0.60鐨勮姹傚お瀹芥澗鈥?鈫?鉁?杩欐槸鈥滃彲鎺ュ彈鈥濈殑鏈€浣庨棬妲涳紙Landis & Koch涓殑鈥渟ubstantial鈥濓級锛屼复搴婂喅绛栬姹偽衡墺0.75銆?/p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 解释为什么功能层研究需要个体内密集追踪设计而非传统横断面设计。<br>2. 为M3-RES-D是否独立于M1-RES-D这一研究问题设计一个预注册的N-of-1研究方案。<br>3. 粒子滤波和卡尔曼滤波都是状态估计的方法，在什么条件下应选择粒子滤波而非卡尔曼滤波？</p></blockquote>
+<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 瑙ｉ噴涓轰粈涔堝姛鑳藉眰鐮旂┒闇€瑕佷釜浣撳唴瀵嗛泦杩借釜璁捐鑰岄潪浼犵粺妯柇闈㈣璁°€?br>2. 涓篗3-RES-D鏄惁鐙珛浜嶮1-RES-D杩欎竴鐮旂┒闂璁捐涓€涓娉ㄥ唽鐨凬-of-1鐮旂┒鏂规銆?br>3. 绮掑瓙婊ゆ尝鍜屽崱灏旀浖婊ゆ尝閮芥槸鐘舵€佷及璁＄殑鏂规硶锛屽湪浠€涔堟潯浠朵笅搴旈€夋嫨绮掑瓙婊ゆ尝鑰岄潪鍗″皵鏇兼护娉紵</p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-30</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch27.html" class="nav-link prev">‹ 跨学科接口</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="ch29.html" class="nav-link next">未来方向 ›</a></div>
+        <div class="chapter-nav"><a href="ch27.html" class="nav-link prev">鈥?璺ㄥ绉戞帴鍙?/a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="ch29.html" class="nav-link next">鏈潵鏂瑰悜 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -365,7 +365,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

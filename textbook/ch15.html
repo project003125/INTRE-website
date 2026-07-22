@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第15章 语义架构：PSA推理与PSL编译 · INTRE 导论教材</title>
-    <meta name="description" content="如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
-    <meta property="og:title" content="第15章 语义架构：PSA推理与PSL编译">
-    <meta property="og:description" content="如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
+    <title>绗?5绔?璇箟鏋舵瀯锛歅SA鎺ㄧ悊涓嶱SL缂栬瘧 路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="濡傛灉UPLS鍙湁PCUI锛屽畠灏嗗彧鏄竴涓簿缇庣殑鏈璇嶅吀鈥斺€斾綘鍙互鏌ュ埌涓€涓蹇靛搴旂殑PCUI缂栫爜鍜孧-R-D-S鍧愭爣锛屼絾鏃犳硶鍥炵瓟璇稿鈥滃鏋淢4-DSP-B闀挎湡楂樻縺娲伙紝M3-RES-D浼氭€庢牱鍙樺寲锛熲€濊繖绫婚渶瑕佹帹鐞嗙殑闂銆?>
+    <meta property="og:title" content="绗?5绔?璇箟鏋舵瀯锛歅SA鎺ㄧ悊涓嶱SL缂栬瘧">
+    <meta property="og:description" content="濡傛灉UPLS鍙湁PCUI锛屽畠灏嗗彧鏄竴涓簿缇庣殑鏈璇嶅吀鈥斺€斾綘鍙互鏌ュ埌涓€涓蹇靛搴旂殑PCUI缂栫爜鍜孧-R-D-S鍧愭爣锛屼絾鏃犳硶鍥炵瓟璇稿鈥滃鏋淢4-DSP-B闀挎湡楂樻縺娲伙紝M3-RES-D浼氭€庢牱鍙樺寲锛熲€濊繖绫婚渶瑕佹帹鐞嗙殑闂銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch15.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch15.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第15章 语义架构：PSA推理与PSL编译">
-    <meta name="twitter:description" content="如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
+    <meta name="twitter:title" content="绗?5绔?璇箟鏋舵瀯锛歅SA鎺ㄧ悊涓嶱SL缂栬瘧">
+    <meta name="twitter:description" content="濡傛灉UPLS鍙湁PCUI锛屽畠灏嗗彧鏄竴涓簿缇庣殑鏈璇嶅吀鈥斺€斾綘鍙互鏌ュ埌涓€涓蹇靛搴旂殑PCUI缂栫爜鍜孧-R-D-S鍧愭爣锛屼絾鏃犳硶鍥炵瓟璇稿鈥滃鏋淢4-DSP-B闀挎湡楂樻縺娲伙紝M3-RES-D浼氭€庢牱鍙樺寲锛熲€濊繖绫婚渶瑕佹帹鐞嗙殑闂銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,78 +46,78 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第15章</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">绗?5绔?/span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
+        <h1 class="chapter-title">绗?5绔?璇箟鏋舵瀯锛歅SA鎺ㄧ悊涓嶱SL缂栬瘧</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
+<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗锛屼綘搴旇兘澶燂細(1)鐞嗚ВPSA濡備綍灏哖CUI浠庡瓧鍏稿崌绾т负鎺ㄧ悊绯荤粺锛?2)鎺屾彙渚濊禆鏉冮噸銆佺骇鑱旇矾寰勬ā鏉垮拰鎿嶄綔-缁勪欢鏄犲皠鐨勫熀鏈舰寮忥紱(3)鐞嗚ВPSL鐨勮嚜鐒惰瑷€鈫扨CUI鏄犲皠鏈哄埗鍜屾枃鍖栧彉浣撳鐞嗭紱(4)鎻忚堪PCUI鈫扨SA鈫扨SL鈫扨SE鐨勬帴鍙ｅ叧绯汇€?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>15.1 PSA定位：从词典到推理系统</h2>
+<h2>15.1 PSA瀹氫綅锛氫粠璇嶅吀鍒版帹鐞嗙郴缁?/h2>
 
-<p>如果UPLS只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要<strong>推理</strong>的问题。</p>
+<p>濡傛灉UPLS鍙湁PCUI锛屽畠灏嗗彧鏄竴涓簿缇庣殑鏈璇嶅吀鈥斺€斾綘鍙互鏌ュ埌涓€涓蹇靛搴旂殑PCUI缂栫爜鍜孧-R-D-S鍧愭爣锛屼絾鏃犳硶鍥炵瓟璇稿鈥滃鏋淢4-DSP-B闀挎湡楂樻縺娲伙紝M3-RES-D浼氭€庢牱鍙樺寲锛熲€濊繖绫婚渶瑕?strong>鎺ㄧ悊</strong>鐨勯棶棰樸€?/p>
 
-<p>PSA（Psychological Semantic Architecture，心理语义架构）正是为了解决这一问题而设计的。PSA定义了PCUI概念之间的形式化关系——模块依赖权重、级联路径模板、操作-组件映射规则——将UPLS从<strong>静态词典</strong>升级为<strong>推理系统</strong>。</p>
+<p>PSA锛圥sychological Semantic Architecture锛屽績鐞嗚涔夋灦鏋勶級姝ｆ槸涓轰簡瑙ｅ喅杩欎竴闂鑰岃璁＄殑銆侾SA瀹氫箟浜哖CUI姒傚康涔嬮棿鐨勫舰寮忓寲鍏崇郴鈥斺€旀ā鍧椾緷璧栨潈閲嶃€佺骇鑱旇矾寰勬ā鏉裤€佹搷浣?缁勪欢鏄犲皠瑙勫垯鈥斺€斿皢UPLS浠?strong>闈欐€佽瘝鍏?/strong>鍗囩骇涓?strong>鎺ㄧ悊绯荤粺</strong>銆?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>层级</th>
-<th>回答的问题</th>
-<th>示例</th>
+<th>灞傜骇</th>
+<th>鍥炵瓟鐨勯棶棰?/th>
+<th>绀轰緥</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>PCUI</td>
-<td>“是什么”</td>
-<td>慢性焦虑 = M4C+M2I+M3I+M1S+M6O</td>
+<td>鈥滄槸浠€涔堚€?/td>
+<td>鎱㈡€х劍铏?= M4C+M2I+M3I+M1S+M6O</td>
 </tr>
 <tr>
 <td>PSA</td>
-<td>“怎样关联”</td>
-<td>M4-DSP-B↑ → M3-RES-D消耗速率+30%，预计72h内跌破阈值</td>
+<td>鈥滄€庢牱鍏宠仈鈥?/td>
+<td>M4-DSP-B鈫?鈫?M3-RES-D娑堣€楅€熺巼+30%锛岄璁?2h鍐呰穼鐮撮槇鍊?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>微案例</strong>：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
+<blockquote><p><strong>寰渚?/strong>锛氭病鏈塒SA鏃讹紝鏌ヨ鈥滄參鎬х劍铏戔€濆彧寰楀埌鍧愭爣銆傛湁PSA鏃讹紝绯荤粺鑷姩鍔犺浇渚濊禆鐭╅樀锛岃緭鍑猴細M4-DSP-B鈫?鈫?M3-RES-D娑堣€楅€熺巼脳1.3锛堟潈閲?.75锛夛紝M2-DSP-B鈫?鈫?M4-DSP-B鈫戯紙鏉冮噸0.68锛夛紝棰勬祴锛氬綋鍓峂3-RES-D=42锛岃嫢涓嶅共棰勶紝绾?8h鍚庤穼鐮?0闃堝€笺€?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>15.2 核心编码：依赖矩阵、级联模板与操作映射</h2>
+<h2>15.2 鏍稿績缂栫爜锛氫緷璧栫煩闃点€佺骇鑱旀ā鏉夸笌鎿嶄綔鏄犲皠</h2>
 
-<p>PSA的核心编码包含三类信息：<strong>模块依赖权重</strong>、<strong>级联路径模板</strong>和<strong>操作-组件映射规则</strong>。</p>
+<p>PSA鐨勬牳蹇冪紪鐮佸寘鍚笁绫讳俊鎭細<strong>妯″潡渚濊禆鏉冮噸</strong>銆?strong>绾ц仈璺緞妯℃澘</strong>鍜?strong>鎿嶄綔-缁勪欢鏄犲皠瑙勫垯</strong>銆?/p>
 
-<h3>15.2.1 模块依赖权重</h3>
+<h3>15.2.1 妯″潡渚濊禆鏉冮噸</h3>
 
-<p>模块依赖权重定义了M1-M6之间因果影响的强度（0-1）。以下为理论推导的标准矩阵（权重≥0.65加粗）：</p>
+<p>妯″潡渚濊禆鏉冮噸瀹氫箟浜哅1-M6涔嬮棿鍥犳灉褰卞搷鐨勫己搴︼紙0-1锛夈€備互涓嬩负鐞嗚鎺ㄥ鐨勬爣鍑嗙煩闃碉紙鏉冮噸鈮?.65鍔犵矖锛夛細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>从↓ / 到→</th>
+<th>浠庘啌 / 鍒扳啋</th>
 <th>M1</th>
 <th>M2</th>
 <th>M3</th>
@@ -128,7 +128,7 @@
 <tbody>
 <tr>
 <td><strong>M1</strong></td>
-<td>—</td>
+<td>鈥?/td>
 <td>0.65</td>
 <td><strong>0.85</strong></td>
 <td>0.70</td>
@@ -138,7 +138,7 @@
 <tr>
 <td><strong>M2</strong></td>
 <td>0.20</td>
-<td>—</td>
+<td>鈥?/td>
 <td>0.55</td>
 <td><strong>0.65</strong></td>
 <td>0.50</td>
@@ -148,7 +148,7 @@
 <td><strong>M3</strong></td>
 <td>0.15</td>
 <td>0.50</td>
-<td>—</td>
+<td>鈥?/td>
 <td>0.40</td>
 <td>0.35</td>
 <td><strong>0.75</strong></td>
@@ -158,7 +158,7 @@
 <td>0.40</td>
 <td><strong>0.68</strong></td>
 <td><strong>0.75</strong></td>
-<td>—</td>
+<td>鈥?/td>
 <td>0.55</td>
 <td><strong>0.70</strong></td>
 </tr>
@@ -168,7 +168,7 @@
 <td>0.45</td>
 <td>0.30</td>
 <td>0.45</td>
-<td>—</td>
+<td>鈥?/td>
 <td>0.50</td>
 </tr>
 <tr>
@@ -178,175 +178,175 @@
 <td>0.15</td>
 <td>0.30</td>
 <td>0.25</td>
-<td>—</td>
+<td>鈥?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>关键依赖解读</strong>：</p>
+<p><strong>鍏抽敭渚濊禆瑙ｈ</strong>锛?/p>
 <ul>
-<li><strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据</li>
-<li><strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗</li>
-<li><strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加</li>
-<li><strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</li>
+<li><strong>M1鈫扢3锛?.85锛?/strong>锛氱敓鐞嗚兘閲忔槸鎰忓織璧勬簮鐨勪富瑕佷緵缁欐簮鈥斺€擠-R-S搴忓垪涓€滃厛琛ュ厖M1-RES-D鍐嶅鐞哅3鈥濈殑鍔ㄥ姏瀛︿緷鎹?/li>
+<li><strong>M4鈫扢3锛?.75锛?/strong>锛氭儏缁縺娲绘秷鑰楁剰蹇楄祫婧愨€斺€旂劍铏?鎶戦儊鎮ｈ€呪€滅疮鈥濆苟闈炴噿鎯帮紝鑰屾槸M4-DSP-B鎸佺画娑堣€?/li>
+<li><strong>M4鈫扢2锛?.68锛?/strong>锛氭儏缁┍鍔ㄨ鐭モ€斺€旂劍铏戞椂鑷姩璐熸€ф€濈淮澧炲姞</li>
+<li><strong>M3鈫扢6锛?.75锛?/strong>锛氭剰蹇楁帶鍒惰涓烘墽琛屸€斺€擬3-DSP-F澶辨晥鏃禡6-DSP-B鎺ョ</li>
 </ul>
 
-<h3>15.2.2 级联路径模板</h3>
+<h3>15.2.2 绾ц仈璺緞妯℃澘</h3>
 
-<p>级联路径模板描述失调从起始模块到下游模块的典型传播模式：</p>
+<p>绾ц仈璺緞妯℃澘鎻忚堪澶辫皟浠庤捣濮嬫ā鍧楀埌涓嬫父妯″潡鐨勫吀鍨嬩紶鎾ā寮忥細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>模板名称</th>
-<th>级联方向</th>
-<th>典型症状指纹</th>
-<th>最高杠杆干预靶点</th>
+<th>妯℃澘鍚嶇О</th>
+<th>绾ц仈鏂瑰悜</th>
+<th>鍏稿瀷鐥囩姸鎸囩汗</th>
+<th>鏈€楂樻潬鏉嗗共棰勯澏鐐?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>资源崩溃型</strong></td>
-<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
-<td>疲劳、拖延、冲动</td>
+<td><strong>璧勬簮宕╂簝鍨?/strong></td>
+<td>M1-RES-D鈫?鈫?M3-RES-D鈫?鈫?M3-DSP-F澶辨晥 鈫?M6-DSP-B鈫?/td>
+<td>鐤插姵銆佹嫋寤躲€佸啿鍔?/td>
 <td>MODULATE+ M1-RES-D</td>
 </tr>
 <tr>
-<td><strong>情绪驱动型</strong></td>
-<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
-<td>焦虑、反刍、回避</td>
-<td>RELINK M4-STR-C / GATE– M4-DSP-B</td>
+<td><strong>鎯呯华椹卞姩鍨?/strong></td>
+<td>M4-STR-C婵€娲?鈫?M4-DSP-B鈫?鈫?M3-RES-D鈫?鈫?M2-DSP-B鈫?/td>
+<td>鐒﹁檻銆佸弽鍒嶃€佸洖閬?/td>
+<td>RELINK M4-STR-C / GATE鈥?M4-DSP-B</td>
 </tr>
 <tr>
-<td><strong>习惯固化型</strong></td>
-<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
-<td>成瘾、强迫行为</td>
-<td>GATE– S-P触发 + GATE+替代行为</td>
+<td><strong>涔犳儻鍥哄寲鍨?/strong></td>
+<td>S-P瑙﹀彂 鈫?M6-DSP-B閲嶅 鈫?M6-STR-S宸╁浐 鈫?M3-DSP-F闂ㄦ帶澶辨晥</td>
+<td>鎴愮樉銆佸己杩涓?/td>
+<td>GATE鈥?S-P瑙﹀彂 + GATE+鏇夸唬琛屼负</td>
 </tr>
 <tr>
-<td><strong>规则扭曲型</strong></td>
-<td>M2-STR-R错误规则 → M4-STR-R威胁评估扭曲 → M4-DSP-B↑ → 回避行为</td>
-<td>完美主义、灾难化</td>
+<td><strong>瑙勫垯鎵洸鍨?/strong></td>
+<td>M2-STR-R閿欒瑙勫垯 鈫?M4-STR-R濞佽儊璇勪及鎵洸 鈫?M4-DSP-B鈫?鈫?鍥為伩琛屼负</td>
+<td>瀹岀編涓讳箟銆佺伨闅惧寲</td>
 <td>ALIGN M2-STR-R</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<h3>15.2.3 操作-组件映射规则</h3>
+<h3>15.2.3 鎿嶄綔-缁勪欢鏄犲皠瑙勫垯</h3>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>操作</th>
-<th>直接靶点</th>
-<th>间接影响</th>
-<th>操作合法性的充分必要条件</th>
+<th>鎿嶄綔</th>
+<th>鐩存帴闈剁偣</th>
+<th>闂存帴褰卞搷</th>
+<th>鎿嶄綔鍚堟硶鎬х殑鍏呭垎蹇呰鏉′欢</th>
 </tr></thead>
 <tbody>
 <tr>
 <td><strong>GATE</strong></td>
-<td>DSP-F, DSP-B, 运行中的STR-S</td>
-<td>RES-D消耗速率；STR-S长期削弱/强化</td>
-<td>靶点是运行中的过程，非静态结构</td>
+<td>DSP-F, DSP-B, 杩愯涓殑STR-S</td>
+<td>RES-D娑堣€楅€熺巼锛汼TR-S闀挎湡鍓婂急/寮哄寲</td>
+<td>闈剁偣鏄繍琛屼腑鐨勮繃绋嬶紝闈為潤鎬佺粨鏋?/td>
 </tr>
 <tr>
 <td><strong>MODULATE</strong></td>
 <td>RES-D</td>
-<td>DSP稳定性</td>
-<td>靶点是RES-D，非RES-B、非STR</td>
+<td>DSP绋冲畾鎬?/td>
+<td>闈剁偣鏄疪ES-D锛岄潪RES-B銆侀潪STR</td>
 </tr>
 <tr>
 <td><strong>ALIGN</strong></td>
 <td>STR-R</td>
-<td>STR-C情绪权重</td>
-<td>靶点是STR-R的规则内容，非连接</td>
+<td>STR-C鎯呯华鏉冮噸</td>
+<td>闈剁偣鏄疭TR-R鐨勮鍒欏唴瀹癸紝闈炶繛鎺?/td>
 </tr>
 <tr>
 <td><strong>RELINK</strong></td>
 <td>STR-C</td>
-<td>RES-B（涌现）</td>
-<td>靶点是STR-C的连接权重，非规则</td>
+<td>RES-B锛堟秾鐜帮級</td>
+<td>闈剁偣鏄疭TR-C鐨勮繛鎺ユ潈閲嶏紝闈炶鍒?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>临床意义</strong>：如果一个干预方案声称“用认知辩论治疗创伤连接”，PSA会标记为操作-组件错配（ALIGN不能直接替代RELINK），并推荐修正方案。</p>
+<p><strong>涓村簥鎰忎箟</strong>锛氬鏋滀竴涓共棰勬柟妗堝０绉扳€滅敤璁ょ煡杈╄娌荤枟鍒涗激杩炴帴鈥濓紝PSA浼氭爣璁颁负鎿嶄綔-缁勪欢閿欓厤锛圓LIGN涓嶈兘鐩存帴鏇夸唬RELINK锛夛紝骞舵帹鑽愪慨姝ｆ柟妗堛€?/p>
 
 <hr class="section-divider">
 
-<h2>15.3 PSL设计：自然语言到PCUI的映射接口</h2>
+<h2>15.3 PSL璁捐锛氳嚜鐒惰瑷€鍒癙CUI鐨勬槧灏勬帴鍙?/h2>
 
-<p>PSL（Psychological Specialist Lexicon，心理专项词汇库）是UPLS的自然语言接口层。它的任务是：将临床口语、患者主诉、文化隐喻等非结构化的语言输入，映射为标准化的PCUI标识符和M-R-D-S坐标。</p>
+<p>PSL锛圥sychological Specialist Lexicon锛屽績鐞嗕笓椤硅瘝姹囧簱锛夋槸UPLS鐨勮嚜鐒惰瑷€鎺ュ彛灞傘€傚畠鐨勪换鍔℃槸锛氬皢涓村簥鍙ｈ銆佹偅鑰呬富璇夈€佹枃鍖栭殣鍠荤瓑闈炵粨鏋勫寲鐨勮瑷€杈撳叆锛屾槧灏勪负鏍囧噯鍖栫殑PCUI鏍囪瘑绗﹀拰M-R-D-S鍧愭爣銆?/p>
 
-<p><strong>PSL-L五层结构</strong>：</p>
+<p><strong>PSL-L浜斿眰缁撴瀯</strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>层级</th>
-<th>内容</th>
-<th>功能</th>
+<th>灞傜骇</th>
+<th>鍐呭</th>
+<th>鍔熻兘</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>术语主表</td>
-<td>核心术语条目（5-10万）</td>
-<td>存储术语的规范形式、变体、定义</td>
+<td>鏈涓昏〃</td>
+<td>鏍稿績鏈鏉＄洰锛?-10涓囷級</td>
+<td>瀛樺偍鏈鐨勮鑼冨舰寮忋€佸彉浣撱€佸畾涔?/td>
 </tr>
 <tr>
-<td>语义映射层</td>
-<td>术语 ↔ PCUI + 置信度权重</td>
-<td>连接自然语言与PCUI</td>
+<td>璇箟鏄犲皠灞?/td>
+<td>鏈 鈫?PCUI + 缃俊搴︽潈閲?/td>
+<td>杩炴帴鑷劧璇█涓嶱CUI</td>
 </tr>
 <tr>
-<td>形态变体层</td>
-<td>同义词、缩写、词形变化</td>
-<td>归一化处理</td>
+<td>褰㈡€佸彉浣撳眰</td>
+<td>鍚屼箟璇嶃€佺缉鍐欍€佽瘝褰㈠彉鍖?/td>
+<td>褰掍竴鍖栧鐞?/td>
 </tr>
 <tr>
-<td>上下文规则层</td>
-<td>消歧规则、共现模式</td>
-<td>一词多义消歧</td>
+<td>涓婁笅鏂囪鍒欏眰</td>
+<td>娑堟瑙勫垯銆佸叡鐜版ā寮?/td>
+<td>涓€璇嶅涔夋秷姝?/td>
 </tr>
 <tr>
-<td>多语言对齐层</td>
-<td>中文 ↔ 英文 ↔ 其他</td>
-<td>跨语言映射</td>
+<td>澶氳瑷€瀵归綈灞?/td>
+<td>涓枃 鈫?鑻辨枃 鈫?鍏朵粬</td>
+<td>璺ㄨ瑷€鏄犲皠</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>临床口语到PCUI的映射示例</strong>：</p>
+<p><strong>涓村簥鍙ｈ鍒癙CUI鐨勬槧灏勭ず渚?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>患者主诉（中文）</th>
-<th>可能的PCUI映射</th>
-<th>M-R-D-S坐标</th>
-<th>消歧规则</th>
+<th>鎮ｈ€呬富璇夛紙涓枃锛?/th>
+<th>鍙兘鐨凱CUI鏄犲皠</th>
+<th>M-R-D-S鍧愭爣</th>
+<th>娑堟瑙勫垯</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>“心慌”</td>
-<td>焦虑语境→`ANXIETY_SOMATIC`</td>
-<td>M1-DSP-B↑ + M4-DSP-B↑</td>
-<td>若同时有“担心”→M4优先；仅躯体不适→M1优先</td>
+<td>鈥滃績鎱屸€?/td>
+<td>鐒﹁檻璇鈫抈ANXIETY_SOMATIC`</td>
+<td>M1-DSP-B鈫?+ M4-DSP-B鈫?/td>
+<td>鑻ュ悓鏃舵湁鈥滄媴蹇冣€濃啋M4浼樺厛锛涗粎韬綋涓嶉€傗啋M1浼樺厛</td>
 </tr>
 <tr>
-<td>“心里堵得慌”</td>
-<td>东亚文化躯体化→`SOMATIC_ANXIETY_EASTASIA`</td>
-<td>M1-DSP-B权重×1.3</td>
-<td>文化变体自动应用</td>
+<td>鈥滃績閲屽牭寰楁厡鈥?/td>
+<td>涓滀簹鏂囧寲韬綋鍖栤啋`SOMATIC_ANXIETY_EASTASIA`</td>
+<td>M1-DSP-B鏉冮噸脳1.3</td>
+<td>鏂囧寲鍙樹綋鑷姩搴旂敤</td>
 </tr>
 <tr>
-<td>“脑子里停不下来”</td>
+<td>鈥滆剳瀛愰噷鍋滀笉涓嬫潵鈥?/td>
 <td>`RUMINATION`</td>
-<td>M2-DSP-B↑ + M4-DSP-B↑</td>
-<td>默认M2-DSP-B，伴情绪痛苦则加M4</td>
+<td>M2-DSP-B鈫?+ M4-DSP-B鈫?/td>
+<td>榛樿M2-DSP-B锛屼即鎯呯华鐥涜嫤鍒欏姞M4</td>
 </tr>
 </tbody>
 </table>
@@ -354,144 +354,144 @@
 
 <hr class="section-divider">
 
-<h2>15.4 文化变体：参数化对抗WEIRD偏见</h2>
+<h2>15.4 鏂囧寲鍙樹綋锛氬弬鏁板寲瀵规姉WEIRD鍋忚</h2>
 
-<p>心理学的一个重大挑战是<strong>WEIRD偏见</strong>（研究基于西方、教育程度高、工业化、富裕、民主的人口）。UPLS通过<strong>文化变体参数</strong>在架构层面对抗这一偏见。</p>
+<p>蹇冪悊瀛︾殑涓€涓噸澶ф寫鎴樻槸<strong>WEIRD鍋忚</strong>锛堢爺绌跺熀浜庤タ鏂广€佹暀鑲茬▼搴﹂珮銆佸伐涓氬寲銆佸瘜瑁曘€佹皯涓荤殑浜哄彛锛夈€俇PLS閫氳繃<strong>鏂囧寲鍙樹綋鍙傛暟</strong>鍦ㄦ灦鏋勫眰闈㈠鎶楄繖涓€鍋忚銆?/p>
 
-<p><strong>文化变体的三层处理策略</strong>：</p>
+<p><strong>鏂囧寲鍙樹綋鐨勪笁灞傚鐞嗙瓥鐣?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>层级</th>
-<th>处理方式</th>
-<th>示例</th>
+<th>灞傜骇</th>
+<th>澶勭悊鏂瑰紡</th>
+<th>绀轰緥</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>PSL层</strong></td>
-<td>文化特定表达映射到标准PCUI，附带权重调整</td>
-<td>“神经衰弱”在东亚优先映射到`SOMATIC_ANXIETY`，M1权重×1.3</td>
+<td><strong>PSL灞?/strong></td>
+<td>鏂囧寲鐗瑰畾琛ㄨ揪鏄犲皠鍒版爣鍑哖CUI锛岄檮甯︽潈閲嶈皟鏁?/td>
+<td>鈥滅缁忚“寮扁€濆湪涓滀簹浼樺厛鏄犲皠鍒癭SOMATIC_ANXIETY`锛孧1鏉冮噸脳1.3</td>
 </tr>
 <tr>
-<td><strong>PCUI层</strong></td>
-<td>同一PCUI条目下存储多个文化的参数分布</td>
-<td>`ATTACHMENT_SECURITY`的东亚版本M4-RES-B基线低于西方版本</td>
+<td><strong>PCUI灞?/strong></td>
+<td>鍚屼竴PCUI鏉＄洰涓嬪瓨鍌ㄥ涓枃鍖栫殑鍙傛暟鍒嗗竷</td>
+<td>`ATTACHMENT_SECURITY`鐨勪笢浜氱増鏈琈4-RES-B鍩虹嚎浣庝簬瑗挎柟鐗堟湰</td>
 </tr>
 <tr>
-<td><strong>PSE层</strong></td>
-<td>文化变体在PSE-I阶段注入</td>
-<td>文化变体标签自动匹配生态位参数</td>
+<td><strong>PSE灞?/strong></td>
+<td>鏂囧寲鍙樹綋鍦≒SE-I闃舵娉ㄥ叆</td>
+<td>鏂囧寲鍙樹綋鏍囩鑷姩鍖归厤鐢熸€佷綅鍙傛暟</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>文化变体参数示例（东亚 vs 西方）</strong>：</p>
+<p><strong>鏂囧寲鍙樹綋鍙傛暟绀轰緥锛堜笢浜?vs 瑗挎柟锛?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>参数</th>
-<th>东亚版本</th>
-<th>西方版本（基线）</th>
-<th>说明</th>
+<th>鍙傛暟</th>
+<th>涓滀簹鐗堟湰</th>
+<th>瑗挎柟鐗堟湰锛堝熀绾匡級</th>
+<th>璇存槑</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>焦虑躯体化权重（M1-DSP-B）</td>
-<td>×1.30</td>
-<td>×1.00</td>
-<td>东亚文化中焦虑更多表现为躯体不适</td>
+<td>鐒﹁檻韬綋鍖栨潈閲嶏紙M1-DSP-B锛?/td>
+<td>脳1.30</td>
+<td>脳1.00</td>
+<td>涓滀簹鏂囧寲涓劍铏戞洿澶氳〃鐜颁负韬綋涓嶉€?/td>
 </tr>
 <tr>
-<td>情绪表达权重（M4-DSP-F）</td>
-<td>×0.85</td>
-<td>×1.00</td>
-<td>情绪表达内敛</td>
+<td>鎯呯华琛ㄨ揪鏉冮噸锛圡4-DSP-F锛?/td>
+<td>脳0.85</td>
+<td>脳1.00</td>
+<td>鎯呯华琛ㄨ揪鍐呮暃</td>
 </tr>
 <tr>
-<td>依恋安全感基线（M4-RES-B）</td>
-<td>均值-5</td>
-<td>均值+0</td>
-<td>集体主义文化中安全感更多来自关系</td>
+<td>渚濇亱瀹夊叏鎰熷熀绾匡紙M4-RES-B锛?/td>
+<td>鍧囧€?5</td>
+<td>鍧囧€?0</td>
+<td>闆嗕綋涓讳箟鏂囧寲涓畨鍏ㄦ劅鏇村鏉ヨ嚜鍏崇郴</td>
 </tr>
 <tr>
-<td>自我叙事独立性（M5-STR-R）</td>
-<td>互依型权重高</td>
-<td>独立型权重高</td>
-<td>文化自我构念差异</td>
+<td>鑷垜鍙欎簨鐙珛鎬э紙M5-STR-R锛?/td>
+<td>浜掍緷鍨嬫潈閲嶉珮</td>
+<td>鐙珛鍨嬫潈閲嶉珮</td>
+<td>鏂囧寲鑷垜鏋勫康宸紓</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>重要声明</strong>：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
+<blockquote><p><strong>閲嶈澹版槑</strong>锛氭枃鍖栧彉浣撳弬鏁板垵濮嬪€煎熀浜庤法鏂囧寲蹇冪悊瀛︽枃鐚拰涓撳鍏辫瘑锛團绾э級锛屽叾璺ㄦ枃鍖栫瓑鍊兼€т粛鏈夊緟PSE-C澶ц妯″鏂囧寲鏍锋湰鏍″噯楠岃瘉锛圥绾э級銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h2>
+<h2>15.5 鎺ュ彛鍏崇郴锛歅CUI鈫扨SA鈫扨SL鈫扨SE鏁版嵁娴?/h2>
 
-<p>UPLS静态三层与PSE动态引擎之间的接口关系，构成了从“静态知识”到“动态计算”的完整链路。</p>
+<p>UPLS闈欐€佷笁灞備笌PSE鍔ㄦ€佸紩鎿庝箣闂寸殑鎺ュ彛鍏崇郴锛屾瀯鎴愪簡浠庘€滈潤鎬佺煡璇嗏€濆埌鈥滃姩鎬佽绠椻€濈殑瀹屾暣閾捐矾銆?/p>
 
-<pre><code class="language-text">┌─────────────────────────────────────────────────────────────┐
-│                      自然语言输入                            │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSL-L：分词、术语识别、上下文消歧、文化变体匹配             │
-│  → 输出：候选PCUI列表 + 置信度权重                          │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PCUI-L：聚合为唯一PCUI，加载M-R-D-S坐标、参数分布、边界注释 │
-│  → 输出：初始M-R-D-S状态向量（概率分布）                     │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSA-L：加载依赖矩阵和级联模板，计算级联预测、推荐干预靶点   │
-│  → 输出：状态演化预测 + 干预优化建议                         │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSE：MCT编译状态向量，MKT动力学积分，MDT干预序列优化        │
-│  → 输出：个体化轨迹预测 + 干预处方                           │
-└─────────────────────────────────────────────────────────────┘</code></pre>
+<pre><code class="language-text">鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹?                     鑷劧璇█杈撳叆                            鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+                          鈻?
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹? PSL-L锛氬垎璇嶃€佹湳璇瘑鍒€佷笂涓嬫枃娑堟銆佹枃鍖栧彉浣撳尮閰?            鈹?
+鈹? 鈫?杈撳嚭锛氬€欓€塒CUI鍒楄〃 + 缃俊搴︽潈閲?                         鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+                          鈻?
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹? PCUI-L锛氳仛鍚堜负鍞竴PCUI锛屽姞杞組-R-D-S鍧愭爣銆佸弬鏁板垎甯冦€佽竟鐣屾敞閲?鈹?
+鈹? 鈫?杈撳嚭锛氬垵濮婱-R-D-S鐘舵€佸悜閲忥紙姒傜巼鍒嗗竷锛?                    鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+                          鈻?
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹? PSA-L锛氬姞杞戒緷璧栫煩闃靛拰绾ц仈妯℃澘锛岃绠楃骇鑱旈娴嬨€佹帹鑽愬共棰勯澏鐐?  鈹?
+鈹? 鈫?杈撳嚭锛氱姸鎬佹紨鍖栭娴?+ 骞查浼樺寲寤鸿                         鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+                          鈻?
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹? PSE锛歁CT缂栬瘧鐘舵€佸悜閲忥紝MKT鍔ㄥ姏瀛︾Н鍒嗭紝MDT骞查搴忓垪浼樺寲        鈹?
+鈹? 鈫?杈撳嚭锛氫釜浣撳寲杞ㄨ抗棰勬祴 + 骞查澶勬柟                           鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?/code></pre>
 
-<p><strong>关键接口协议</strong>：</p>
+<p><strong>鍏抽敭鎺ュ彛鍗忚</strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>接口</th>
-<th>方向</th>
-<th>数据格式</th>
-<th>触发条件</th>
+<th>鎺ュ彛</th>
+<th>鏂瑰悜</th>
+<th>鏁版嵁鏍煎紡</th>
+<th>瑙﹀彂鏉′欢</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>PSL → PCUI</td>
-<td>映射</td>
-<td>`(term, context) → list of (PCUI, confidence)`</td>
-<td>每次MCT编译时</td>
+<td>PSL 鈫?PCUI</td>
+<td>鏄犲皠</td>
+<td>`(term, context) 鈫?list of (PCUI, confidence)`</td>
+<td>姣忔MCT缂栬瘧鏃?/td>
 </tr>
 <tr>
-<td>PCUI → PSA</td>
-<td>加载</td>
-<td>PCUI编码 → M-R-D-S坐标 + 参数分布</td>
-<td>状态向量初始化时</td>
+<td>PCUI 鈫?PSA</td>
+<td>鍔犺浇</td>
+<td>PCUI缂栫爜 鈫?M-R-D-S鍧愭爣 + 鍙傛暟鍒嗗竷</td>
+<td>鐘舵€佸悜閲忓垵濮嬪寲鏃?/td>
 </tr>
 <tr>
-<td>PSA → PSE</td>
-<td>约束</td>
-<td>依赖权重、级联模板、操作-组件映射</td>
-<td>动力学积分和干预规划时</td>
+<td>PSA 鈫?PSE</td>
+<td>绾︽潫</td>
+<td>渚濊禆鏉冮噸銆佺骇鑱旀ā鏉裤€佹搷浣?缁勪欢鏄犲皠</td>
+<td>鍔ㄥ姏瀛︾Н鍒嗗拰骞查瑙勫垝鏃?/td>
 </tr>
 <tr>
-<td>PSE → PCUI</td>
-<td>反馈</td>
-<td>后验参数分布、校准后的权重</td>
-<td>PSE-C每轮更新后</td>
+<td>PSE 鈫?PCUI</td>
+<td>鍙嶉</td>
+<td>鍚庨獙鍙傛暟鍒嗗竷銆佹牎鍑嗗悗鐨勬潈閲?/td>
+<td>PSE-C姣忚疆鏇存柊鍚?/td>
 </tr>
 </tbody>
 </table>
@@ -499,90 +499,90 @@
 
 <hr class="section-divider">
 
-<h2>15.6 微案例：从主诉到PCUI的完整编译</h2>
+<h2>15.6 寰渚嬶細浠庝富璇夊埌PCUI鐨勫畬鏁寸紪璇?/h2>
 
-<p><strong>主诉</strong>：“我最近老是心慌，尤其是晚上一个人在家的时候。心跳得特别快，觉得要出事了，但去医院查了心脏没问题。”</p>
+<p><strong>涓昏瘔</strong>锛氣€滄垜鏈€杩戣€佹槸蹇冩厡锛屽挨鍏舵槸鏅氫笂涓€涓汉鍦ㄥ鐨勬椂鍊欍€傚績璺冲緱鐗瑰埆蹇紝瑙夊緱瑕佸嚭浜嬩簡锛屼絾鍘诲尰闄㈡煡浜嗗績鑴忔病闂銆傗€?/p>
 
-<p><strong>Step 1 – PSL分词与术语识别</strong>：</p>
+<p><strong>Step 1 鈥?PSL鍒嗚瘝涓庢湳璇瘑鍒?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>词元</th>
-<th>候选PCUI</th>
-<th>置信度</th>
-<th>消歧依据</th>
+<th>璇嶅厓</th>
+<th>鍊欓€塒CUI</th>
+<th>缃俊搴?/th>
+<th>娑堟渚濇嵁</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>“心慌”</td>
+<td>鈥滃績鎱屸€?/td>
 <td>`ANXIETY_SOMATIC`</td>
 <td>0.65</td>
-<td>焦虑躯体化</td>
+<td>鐒﹁檻韬綋鍖?/td>
 </tr>
 <tr>
 <td></td>
 <td>`CARDIAC_PALPITATION`</td>
 <td>0.20</td>
-<td>但下文“心脏没问题”降低此权重</td>
+<td>浣嗕笅鏂団€滃績鑴忔病闂鈥濋檷浣庢鏉冮噸</td>
 </tr>
 <tr>
-<td>“晚上一个人在家”</td>
+<td>鈥滄櫄涓婁竴涓汉鍦ㄥ鈥?/td>
 <td>`CONTEXTUAL_TRIGGER_ISOLATION`</td>
 <td>0.70</td>
-<td>情境触发</td>
+<td>鎯呭瑙﹀彂</td>
 </tr>
 <tr>
-<td>“觉得要出事了”</td>
+<td>鈥滆寰楄鍑轰簨浜嗏€?/td>
 <td>`CATASTROPHIZING`</td>
 <td>0.80</td>
-<td>灾难化思维</td>
+<td>鐏鹃毦鍖栨€濈淮</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>Step 2 – PCUI加载与M-R-D-S坐标</strong>：最终确定主PCUI为<code>ANXIETY_PANIC</code>，坐标：M4-DSP-B↑（78），M4-STR-R灾难化权重（0.72），M1-DSP-B↑（82），M2-STR-R威胁评估偏置（0.65）。</p>
+<p><strong>Step 2 鈥?PCUI鍔犺浇涓嶮-R-D-S鍧愭爣</strong>锛氭渶缁堢‘瀹氫富PCUI涓?code>ANXIETY_PANIC</code>锛屽潗鏍囷細M4-DSP-B鈫戯紙78锛夛紝M4-STR-R鐏鹃毦鍖栨潈閲嶏紙0.72锛夛紝M1-DSP-B鈫戯紙82锛夛紝M2-STR-R濞佽儊璇勪及鍋忕疆锛?.65锛夈€?/p>
 
-<p><strong>Step 3 – PSA推理</strong>：加载依赖矩阵后自动计算：M4-DSP-B↑ → M3-RES-D消耗速率+30%（预计3天后跌破40）；M4-DSP-B↑ → M2-DSP-B↑（反刍风险+25%）；推荐干预：先GATE– M4-DSP-B（接地技术）+ MODULATE+ M1-RES-D（睡眠锚定），待资源稳定后再ALIGN M4-STR-R（灾难化信念挑战）。</p>
+<p><strong>Step 3 鈥?PSA鎺ㄧ悊</strong>锛氬姞杞戒緷璧栫煩闃靛悗鑷姩璁＄畻锛歁4-DSP-B鈫?鈫?M3-RES-D娑堣€楅€熺巼+30%锛堥璁?澶╁悗璺岀牬40锛夛紱M4-DSP-B鈫?鈫?M2-DSP-B鈫戯紙鍙嶅垗椋庨櫓+25%锛夛紱鎺ㄨ崘骞查锛氬厛GATE鈥?M4-DSP-B锛堟帴鍦版妧鏈級+ MODULATE+ M1-RES-D锛堢潯鐪犻敋瀹氾級锛屽緟璧勬簮绋冲畾鍚庡啀ALIGN M4-STR-R锛堢伨闅惧寲淇″康鎸戞垬锛夈€?/p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLS静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使UPLS不仅是一个术语词典，更是一个可运行的、支持临床推理的知识基础设施。</p>
+<p><strong>鏈珷灏忕粨</strong>锛歅SA锛堝績鐞嗚涔夋灦鏋勶級鍜孭SL锛堝績鐞嗕笓椤硅瘝姹囧簱锛夋瀯鎴愪簡UPLS闈欐€佺煡璇嗕笁灞傜殑鏍稿績銆侾SA閫氳繃妯″潡渚濊禆鏉冮噸銆佺骇鑱旇矾寰勬ā鏉垮拰鎿嶄綔-缁勪欢鏄犲皠瑙勫垯锛屽皢PCUI浠庡绔嬬殑姒傚康鍧愭爣鍗囩骇涓哄彲鎺ㄧ悊鐨勫洜鏋滅綉缁滐紱PSL閫氳繃浜斿眰璇嶆眹浣撶郴鍜屼笂涓嬫枃娑堟瑙勫垯锛屽皢鑷劧璇█涓昏瘔缂栬瘧涓烘爣鍑嗗寲鐨凱CUI鏌ヨ銆傛枃鍖栧彉浣撳鐞嗗湪PSL鍜孭CUI灞傚垎鍒敞鍏ワ紝瀵规姉WEIRD鍋忚銆侾CUI鈫扨SA鈫扨SL鈫扨SE鐨勬帴鍙ｅ叧绯诲舰鎴愪簡浠庘€滈潤鎬佺煡璇嗏€濆埌鈥滃姩鎬佽绠椻€濈殑瀹屾暣閾捐矾锛屼娇UPLS涓嶄粎鏄竴涓湳璇瘝鍏革紝鏇存槸涓€涓彲杩愯鐨勩€佹敮鎸佷复搴婃帹鐞嗙殑鐭ヨ瘑鍩虹璁炬柦銆?/p>
 
-<blockquote><p><strong>关键术语</strong>：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
+<blockquote><p><strong>鍏抽敭鏈</strong>锛歅SA锛屼緷璧栫煩闃碉紝绾ц仈璺緞妯℃澘锛屾搷浣?缁勪欢鏄犲皠锛孭SL锛屾枃鍖栧彉浣擄紝WEIRD鍋忚锛屾帴鍙ｅ崗璁?/p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。<br>- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。<br>- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
+<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥淧SA鏄ぇ鑴戣繛鎺ョ粍鐨勬槧灏勨€?鈫?鉁?渚濊禆鐭╅樀鏄姛鑳藉眰鐨勫叧绯伙紝涓嶅０绉颁笌绁炵粡杩炴帴涓€涓€瀵瑰簲銆?br>- 鉂?鈥滄枃鍖栧彉浣撳弬鏁版槸鏀挎不姝ｇ‘鐨勮楗扳€?鈫?鉁?瀹冪洿鎺ュ奖鍝峂-R-D-S鍧愭爣鍜屽共棰勬帹鑽愶紝闇€瑕佸疄璇佹牎鍑嗐€?br>- 鉂?鈥淧SL娑堟瑙勫垯涓囨棤涓€澶扁€?鈫?鉁?褰撶疆淇″害杩囦綆鏃讹紝绯荤粺瑕佹眰浜哄伐纭鑰岄潪鑷姩鍐冲畾銆?/p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？<br>2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。<br>3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
+<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 鏌ラ槄鏈珷鐨勪緷璧栫煩闃碉紝瑙ｉ噴涓轰粈涔圡4鈫扢3鐨勬潈閲嶏紙0.75锛夐珮浜嶮2鈫扢3锛?.55锛夛紝杩欎竴宸紓鐨勪复搴婂惈涔夋槸浠€涔堬紵<br>2. 閫夋嫨涓€涓綘鐔熸倝鐨勬枃鍖栫兢浣擄紝鎻愬嚭涓€涓彲鑳界殑鏂囧寲鍙樹綋鍙傛暟璋冩暣寤鸿銆?br>3. 缁欏畾涓€鍙ヤ富璇夆€滄垜涓€鑰冭瘯灏辫倸瀛愮柤鈥濓紝妯℃嫙PSL鐨勬湳璇瘑鍒拰PCUI鏄犲皠杩囩▼銆?/p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-30</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 概念标识</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="ch16.html" class="nav-link next">共识工程 ›</a></div>
+        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">鈥?姒傚康鏍囪瘑</a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="ch16.html" class="nav-link next">鍏辫瘑宸ョ▼ 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -590,7 +590,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第19章 系统动力学：资源、调度与结构方程 · INTRE 导论教材</title>
-    <meta name="description" content="资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是恢复不对称定律：消耗速率通常大于恢复速率。">
-    <meta property="og:title" content="第19章 系统动力学：资源、调度与结构方程">
-    <meta property="og:description" content="资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是恢复不对称定律：消耗速率通常大于恢复速率。">
+    <title>绗?9绔?绯荤粺鍔ㄥ姏瀛︼細璧勬簮銆佽皟搴︿笌缁撴瀯鏂圭▼ 路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="璧勬簮鍔ㄥ姏瀛︽弿杩癛ES-D锛堝彲璋冨害璧勬簮锛夊垎閲忛殢鏃堕棿鐨勫彉鍖栬寰嬨€俁ES-D鍦ㄥ垎閽熷埌灏忔椂灏哄害涓婃尝鍔紝瀵逛换鍔¤礋鑽枫€佷紤鎭€佺潯鐪犻珮搴︽晱鎰熴€傛牳蹇冪壒寰佹槸鎭㈠涓嶅绉板畾寰嬶細娑堣€楅€熺巼閫氬父澶т簬鎭㈠閫熺巼銆?>
+    <meta property="og:title" content="绗?9绔?绯荤粺鍔ㄥ姏瀛︼細璧勬簮銆佽皟搴︿笌缁撴瀯鏂圭▼">
+    <meta property="og:description" content="璧勬簮鍔ㄥ姏瀛︽弿杩癛ES-D锛堝彲璋冨害璧勬簮锛夊垎閲忛殢鏃堕棿鐨勫彉鍖栬寰嬨€俁ES-D鍦ㄥ垎閽熷埌灏忔椂灏哄害涓婃尝鍔紝瀵逛换鍔¤礋鑽枫€佷紤鎭€佺潯鐪犻珮搴︽晱鎰熴€傛牳蹇冪壒寰佹槸鎭㈠涓嶅绉板畾寰嬶細娑堣€楅€熺巼閫氬父澶т簬鎭㈠閫熺巼銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch19.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch19.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第19章 系统动力学：资源、调度与结构方程">
-    <meta name="twitter:description" content="资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是恢复不对称定律：消耗速率通常大于恢复速率。">
+    <meta name="twitter:title" content="绗?9绔?绯荤粺鍔ㄥ姏瀛︼細璧勬簮銆佽皟搴︿笌缁撴瀯鏂圭▼">
+    <meta name="twitter:description" content="璧勬簮鍔ㄥ姏瀛︽弿杩癛ES-D锛堝彲璋冨害璧勬簮锛夊垎閲忛殢鏃堕棿鐨勫彉鍖栬寰嬨€俁ES-D鍦ㄥ垎閽熷埌灏忔椂灏哄害涓婃尝鍔紝瀵逛换鍔¤礋鑽枫€佷紤鎭€佺潯鐪犻珮搴︽晱鎰熴€傛牳蹇冪壒寰佹槸鎭㈠涓嶅绉板畾寰嬶細娑堣€楅€熺巼閫氬父澶т簬鎭㈠閫熺巼銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,105 +46,105 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第19章</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">绗?9绔?/span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第19章 系统动力学：资源、调度与结构方程</h1>
+        <h1 class="chapter-title">绗?9绔?绯荤粺鍔ㄥ姏瀛︼細璧勬簮銆佽皟搴︿笌缁撴瀯鏂圭▼</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)掌握RES-D的耗竭-恢复方程的基本形式及参数含义；(2)理解DSP-F/B切换的阈值模型；(3)描述STR-C权重更新和STR-R信念更新的学习规则；(4)理解模块间耦合的数学表达及其在依赖矩阵中的体现。</p></blockquote>
+<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗浣犲簲鑳藉锛?1)鎺屾彙RES-D鐨勮€楃-鎭㈠鏂圭▼鐨勫熀鏈舰寮忓強鍙傛暟鍚箟锛?2)鐞嗚ВDSP-F/B鍒囨崲鐨勯槇鍊兼ā鍨嬶紱(3)鎻忚堪STR-C鏉冮噸鏇存柊鍜孲TR-R淇″康鏇存柊鐨勫涔犺鍒欙紱(4)鐞嗚В妯″潡闂磋€﹀悎鐨勬暟瀛﹁〃杈惧強鍏跺湪渚濊禆鐭╅樀涓殑浣撶幇銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>19.1 资源动力学：耗竭-恢复与不对称定律</h2>
+<h2>19.1 璧勬簮鍔ㄥ姏瀛︼細鑰楃-鎭㈠涓庝笉瀵圭О瀹氬緥</h2>
 
-<p>资源动力学描述RES-D（可调度资源）分量随时间的变化规律。RES-D在分钟到小时尺度上波动，对任务负荷、休息、睡眠高度敏感。核心特征是<strong>恢复不对称定律</strong>：消耗速率通常大于恢复速率。</p>
+<p>璧勬簮鍔ㄥ姏瀛︽弿杩癛ES-D锛堝彲璋冨害璧勬簮锛夊垎閲忛殢鏃堕棿鐨勫彉鍖栬寰嬨€俁ES-D鍦ㄥ垎閽熷埌灏忔椂灏哄害涓婃尝鍔紝瀵逛换鍔¤礋鑽枫€佷紤鎭€佺潯鐪犻珮搴︽晱鎰熴€傛牳蹇冪壒寰佹槸<strong>鎭㈠涓嶅绉板畾寰?/strong>锛氭秷鑰楅€熺巼閫氬父澶т簬鎭㈠閫熺巼銆?/p>
 
-<p><strong>基本方程</strong>。单个RES-D分量的基本动力学方程为：</p>
+<p><strong>鍩烘湰鏂圭▼</strong>銆傚崟涓猂ES-D鍒嗛噺鐨勫熀鏈姩鍔涘鏂圭▼涓猴細</p>
 
 $$
 \frac{dR}{dt} = \text{Supply}(t) - \alpha \cdot R - \text{Demand}(\Psi, u, E)
 $$
 
-<p>其中\(R\)是当前资源水平（0-100），\(\text{Supply}(t)\)是来自上游模块的资源供给率，\(\alpha \cdot R\)是基线消耗项，\(\text{Demand}\)是任务或环境驱动的额外消耗。</p>
+<p>鍏朵腑\(R\)鏄綋鍓嶈祫婧愭按骞筹紙0-100锛夛紝\(\text{Supply}(t)\)鏄潵鑷笂娓告ā鍧楃殑璧勬簮渚涚粰鐜囷紝\(\alpha \cdot R\)鏄熀绾挎秷鑰楅」锛孿(\text{Demand}\)鏄换鍔℃垨鐜椹卞姩鐨勯澶栨秷鑰椼€?/p>
 
-<p>在简化临床模型中，常用指数衰减+恢复的形式：</p>
+<p>鍦ㄧ畝鍖栦复搴婃ā鍨嬩腑锛屽父鐢ㄦ寚鏁拌“鍑?鎭㈠鐨勫舰寮忥細</p>
 
 $$
 \frac{dR}{dt} = \beta (R_{\text{max}} - R) - \gamma \cdot A(t) \cdot R
 $$
 
-<p>其中\(\beta\)是恢复速率常数，\(\gamma\)是消耗速率常数，\(A(t)\)是当前活动强度。恢复不对称定律体现为\(\gamma > \beta\)。</p>
+<p>鍏朵腑\(\beta\)鏄仮澶嶉€熺巼甯告暟锛孿(\gamma\)鏄秷鑰楅€熺巼甯告暟锛孿(A(t)\)鏄綋鍓嶆椿鍔ㄥ己搴︺€傛仮澶嶄笉瀵圭О瀹氬緥浣撶幇涓篭(\gamma > \beta\)銆?/p>
 
-<blockquote><p><strong>⚠️ 工程判断声明</strong>：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
+<blockquote><p><strong>鈿狅笍 宸ョ▼鍒ゆ柇澹版槑</strong>锛氬綋鍓嶄娇鐢ㄦ寚鏁拌“鍑忎綔涓虹畝鍖栧舰寮忥紝鍙牴鎹疄璇佹暟鎹浛鎹负骞傚緥銆佸弻鎸囨暟鎴栧甫璁板繂椤圭瓑鏇村鏉傛ā鍨嬨€?/p></blockquote>
 
-<p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
+<p><strong>澶氳祫婧愮珵浜?/strong>銆傚涓猂ES-D鍒嗛噺鍙兘鍏变韩鍚屼竴涓婃父渚涚粰婧愩€傚綋鎬婚渶姹傝秴杩囦緵缁欐椂锛岃祫婧愬垎閰嶉伒寰珵浜夎鍒欙細</p>
 
 $$
 \text{Supply}_i(t) = \frac{w_i \cdot \text{Demand}_i(t)}{\sum_j w_j \cdot \text{Demand}_j(t)} \cdot \text{TotalSupply}(t)
 $$
 
-<p><strong>资源恢复的时间常数</strong>（理论占位符）：</p>
+<p><strong>璧勬簮鎭㈠鐨勬椂闂村父鏁?/strong>锛堢悊璁哄崰浣嶇锛夛細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>资源类型</th>
-<th>典型恢复时间常数</th>
-<th>临床意义</th>
+<th>璧勬簮绫诲瀷</th>
+<th>鍏稿瀷鎭㈠鏃堕棿甯告暟</th>
+<th>涓村簥鎰忎箟</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>M1-RES-D</td>
-<td>6-8小时（睡眠后完全恢复）</td>
-<td>睡眠锚定是最有效的资源补充</td>
+<td>6-8灏忔椂锛堢潯鐪犲悗瀹屽叏鎭㈠锛?/td>
+<td>鐫＄湢閿氬畾鏄渶鏈夋晥鐨勮祫婧愯ˉ鍏?/td>
 </tr>
 <tr>
 <td>M2-RES-D</td>
-<td>10-30分钟（短暂休息）</td>
-<td>番茄钟工作法</td>
+<td>10-30鍒嗛挓锛堢煭鏆備紤鎭級</td>
+<td>鐣寗閽熷伐浣滄硶</td>
 </tr>
 <tr>
 <td>M3-RES-D</td>
-<td>30-90分钟（部分恢复），过夜（完全）</td>
-<td>高决策负荷任务应安排在上午</td>
+<td>30-90鍒嗛挓锛堥儴鍒嗘仮澶嶏級锛岃繃澶滐紙瀹屽叏锛?/td>
+<td>楂樺喅绛栬礋鑽蜂换鍔″簲瀹夋帓鍦ㄤ笂鍗?/td>
 </tr>
 <tr>
 <td>M4-RES-D</td>
-<td>20-60分钟（情绪平复）</td>
-<td>情绪激动后需恢复窗口</td>
+<td>20-60鍒嗛挓锛堟儏缁钩澶嶏級</td>
+<td>鎯呯华婵€鍔ㄥ悗闇€鎭㈠绐楀彛</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>恢复不对称定律的经验基础</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\(\gamma / \beta > 1\)，典型比值2-5。</p>
+<p><strong>鎭㈠涓嶅绉板畾寰嬬殑缁忛獙鍩虹</strong>锛氳嚜鎴戞帶鍒朵换鍔¤〃鐜颁笅闄嶅湪鐭殏浼戞伅鍚庝粎閮ㄥ垎鎭㈠锛涚潯鐪犲墺澶哄悗鐨勮鐭ュ姛鑳介渶瑕佹洿闀跨殑鎭㈠鏃堕棿銆侾SE涓舰寮忓寲涓篭(\gamma / \beta > 1\)锛屽吀鍨嬫瘮鍊?-5銆?/p>
 
 <hr class="section-divider">
 
-<h2>19.2 调度动力学：阈值切换与DSP-B劫持</h2>
+<h2>19.2 璋冨害鍔ㄥ姏瀛︼細闃堝€煎垏鎹笌DSP-B鍔寔</h2>
 
-<p>调度动力学描述DSP-F和DSP-B之间的竞争与切换（秒到分钟尺度）。</p>
+<p>璋冨害鍔ㄥ姏瀛︽弿杩癉SP-F鍜孌SP-B涔嬮棿鐨勭珵浜変笌鍒囨崲锛堢鍒板垎閽熷昂搴︼級銆?/p>
 
-<p><strong>双过程竞争的Lotka-Volterra模型</strong>：</p>
+<p><strong>鍙岃繃绋嬬珵浜夌殑Lotka-Volterra妯″瀷</strong>锛?/p>
 
 $$
 \frac{dF}{dt} = r_F F \left(1 - \frac{F + \theta_{FB} B}{K_F}\right) - \delta_F F
@@ -153,192 +153,192 @@ $$
 \frac{dB}{dt} = r_B B \left(1 - \frac{B + \theta_{BF} F}{K_B}\right) - \delta_B B + \text{AutoTrigger}(E)
 $$
 
-<p>其中\(F\)和\(B\)是激活强度（0-1），\(\theta_{FB}, \theta_{BF}\)是交叉抑制系数（通常\(\theta_{BF} > \theta_{FB}\)），\(\text{AutoTrigger}(E)\)是环境自动触发部分。</p>
+<p>鍏朵腑\(F\)鍜孿(B\)鏄縺娲诲己搴︼紙0-1锛夛紝\(\theta_{FB}, \theta_{BF}\)鏄氦鍙夋姂鍒剁郴鏁帮紙閫氬父\(\theta_{BF} > \theta_{FB}\)锛夛紝\(\text{AutoTrigger}(E)\)鏄幆澧冭嚜鍔ㄨЕ鍙戦儴鍒嗐€?/p>
 
-<p><strong>切换阈值模型</strong>（临床更常用）：</p>
+<p><strong>鍒囨崲闃堝€兼ā鍨?/strong>锛堜复搴婃洿甯哥敤锛夛細</p>
 
 $$
 F_{\text{active}} = \mathbf{1}\left[ (\text{Novelty}(t) + \text{Conflict}(t) > \theta_{\text{switch}}) \land (R_{\text{res}} > \theta_{\text{res}}) \right]
 $$
 
-<p>其中\(\theta_{\text{switch}}\)是切换阈值，\(\theta_{\text{res}}\)是资源门槛（通常30-40/100）。在PSE仿真中用sigmoid函数平滑近似。</p>
+<p>鍏朵腑\(\theta_{\text{switch}}\)鏄垏鎹㈤槇鍊硷紝\(\theta_{\text{res}}\)鏄祫婧愰棬妲涳紙閫氬父30-40/100锛夈€傚湪PSE浠跨湡涓敤sigmoid鍑芥暟骞虫粦杩戜技銆?/p>
 
-<p><strong>DSP-B“劫持”的动力学</strong>：当资源枯竭(\(R_{\text{res}} < \theta_{\text{res}}\))时，DSP-F被迫让出控制权，DSP-B自由运行：</p>
+<p><strong>DSP-B鈥滃姭鎸佲€濈殑鍔ㄥ姏瀛?/strong>锛氬綋璧勬簮鏋(\(R_{\text{res}} < \theta_{\text{res}}\))鏃讹紝DSP-F琚揩璁╁嚭鎺у埗鏉冿紝DSP-B鑷敱杩愯锛?/p>
 
 $$
 \frac{dB}{dt} = \lambda \cdot (B_{\text{max}} - B) \quad \text{when } F=0 \text{ and AutoTrigger present}
 $$
 
-<p><strong>GATE操作的动力学效应</strong>：GATE–操作瞬时降低F或B的激活强度：</p>
+<p><strong>GATE鎿嶄綔鐨勫姩鍔涘鏁堝簲</strong>锛欸ATE鈥撴搷浣滅灛鏃堕檷浣嶧鎴朆鐨勬縺娲诲己搴︼細</p>
 
 $$
 B(t^+) = \max(0, B(t^-) - \Delta_{\text{GATE}})
 $$
 
-<p>单次GATE–效应短暂，需要反复应用才能降低DSP-B的基线激活水平。</p>
+<p>鍗曟GATE鈥撴晥搴旂煭鏆傦紝闇€瑕佸弽澶嶅簲鐢ㄦ墠鑳介檷浣嶥SP-B鐨勫熀绾挎縺娲绘按骞炽€?/p>
 
 <hr class="section-divider">
 
-<h2>19.3 结构动力学：学习规则与塑性窗口</h2>
+<h2>19.3 缁撴瀯鍔ㄥ姏瀛︼細瀛︿範瑙勫垯涓庡鎬х獥鍙?/h2>
 
-<p>结构动力学描述STR层分量的变化——慢变量，时间尺度从周到年。</p>
+<p>缁撴瀯鍔ㄥ姏瀛︽弿杩癝TR灞傚垎閲忕殑鍙樺寲鈥斺€旀參鍙橀噺锛屾椂闂村昂搴︿粠鍛ㄥ埌骞淬€?/p>
 
-<p><strong>STR-R的信念更新规则</strong>（贝叶斯式）：</p>
+<p><strong>STR-R鐨勪俊蹇垫洿鏂拌鍒?/strong>锛堣礉鍙舵柉寮忥級锛?/p>
 
 $$
 \frac{dW_r}{dt} = \eta_r \cdot (\text{PE}) \cdot (\text{Salience})
 $$
 
-<p>其中\(\eta_r\)是信念更新学习率，PE是预测误差（预期与实际之差），Salience是证据显著性。</p>
+<p>鍏朵腑\(\eta_r\)鏄俊蹇垫洿鏂板涔犵巼锛孭E鏄娴嬭宸紙棰勬湡涓庡疄闄呬箣宸級锛孲alience鏄瘉鎹樉钁楁€с€?/p>
 
-<p><strong>STR-C的连接权重更新（赫布学习）</strong>：</p>
+<p><strong>STR-C鐨勮繛鎺ユ潈閲嶆洿鏂帮紙璧竷瀛︿範锛?/strong>锛?/p>
 
 $$
 \frac{dW_{ij}}{dt} = \eta_c \cdot (x_i x_j - \lambda W_{ij}) \cdot g(\text{arousal})
 $$
 
-<p>其中\(x_i, x_j\)是节点激活强度，\(\lambda\)是遗忘项，\(g(\text{arousal})\)是情绪唤醒调制函数（高唤醒加速学习）。</p>
+<p>鍏朵腑\(x_i, x_j\)鏄妭鐐规縺娲诲己搴︼紝\(\lambda\)鏄仐蹇橀」锛孿(g(\text{arousal})\)鏄儏缁敜閱掕皟鍒跺嚱鏁帮紙楂樺敜閱掑姞閫熷涔狅級銆?/p>
 
-<p><strong>STR-S的习惯巩固</strong>：</p>
+<p><strong>STR-S鐨勪範鎯珐鍥?/strong>锛?/p>
 
 $$
 \frac{dS_k}{dt} = \eta_s \cdot (\text{Frequency}_k - \lambda S_k) \cdot \text{Reinforcement}_k
 $$
 
-<p><strong>塑性窗口原则</strong>。结构修改需要依次经历三阶段：</p>
+<p><strong>濉戞€х獥鍙ｅ師鍒?/strong>銆傜粨鏋勪慨鏀归渶瑕佷緷娆＄粡鍘嗕笁闃舵锛?/p>
 <ol>
-<li><strong>去稳定化/塑性窗口开放</strong>：现有结构被扰动到不稳定状态</li>
-<li><strong>修改期</strong>：在窗口内通过新体验修改结构</li>
-<li><strong>巩固期</strong>：修改后结构需要时间稳定，避免干扰</li>
+<li><strong>鍘荤ǔ瀹氬寲/濉戞€х獥鍙ｅ紑鏀?/strong>锛氱幇鏈夌粨鏋勮鎵板姩鍒颁笉绋冲畾鐘舵€?/li>
+<li><strong>淇敼鏈?/strong>锛氬湪绐楀彛鍐呴€氳繃鏂颁綋楠屼慨鏀圭粨鏋?/li>
+<li><strong>宸╁浐鏈?/strong>锛氫慨鏀瑰悗缁撴瀯闇€瑕佹椂闂寸ǔ瀹氾紝閬垮厤骞叉壈</li>
 </ol>
 
-<p><strong>能量-塑性耦合</strong>：</p>
+<p><strong>鑳介噺-濉戞€ц€﹀悎</strong>锛?/p>
 
 $$
 \frac{dW_{ij}}{dt} \propto \mathbf{1}[R_{\text{M4-RES-D}} > \theta_{\text{emotion}} \land R_{\text{M3-RES-D}} > \theta_{\text{volition}}] \cdot \text{LearningRule}
 $$
 
-<p>资源枯竭的患者无法从深度结构干预中充分受益。</p>
+<p>璧勬簮鏋鐨勬偅鑰呮棤娉曚粠娣卞害缁撴瀯骞查涓厖鍒嗗彈鐩娿€?/p>
 
 <hr class="section-divider">
 
-<h2>19.4 拓扑网络：MTT依赖矩阵与级联路径</h2>
+<h2>19.4 鎷撴墤缃戠粶锛歁TT渚濊禆鐭╅樀涓庣骇鑱旇矾寰?/h2>
 
-<p>MTT将心理系统建模为有向加权图，节点是M-R-D-S子单元（42个），边是功能依赖关系。</p>
+<p>MTT灏嗗績鐞嗙郴缁熷缓妯′负鏈夊悜鍔犳潈鍥撅紝鑺傜偣鏄疢-R-D-S瀛愬崟鍏冿紙42涓級锛岃竟鏄姛鑳戒緷璧栧叧绯汇€?/p>
 
-<p><strong>依赖矩阵的关键边</strong>（示例，完整见附录K）：</p>
+<p><strong>渚濊禆鐭╅樀鐨勫叧閿竟</strong>锛堢ず渚嬶紝瀹屾暣瑙侀檮褰昁锛夛細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>源 → 靶</th>
-<th>权重</th>
-<th>含义</th>
+<th>婧?鈫?闈?/th>
+<th>鏉冮噸</th>
+<th>鍚箟</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>M1-RES-D → M3-RES-D</td>
+<td>M1-RES-D 鈫?M3-RES-D</td>
 <td>0.85</td>
-<td>生理能量供给意志资源</td>
+<td>鐢熺悊鑳介噺渚涚粰鎰忓織璧勬簮</td>
 </tr>
 <tr>
-<td>M4-DSP-B → M3-RES-D</td>
+<td>M4-DSP-B 鈫?M3-RES-D</td>
 <td>0.75</td>
-<td>情绪消耗意志资源</td>
+<td>鎯呯华娑堣€楁剰蹇楄祫婧?/td>
 </tr>
 <tr>
-<td>M3-DSP-F → M6-DSP-B</td>
+<td>M3-DSP-F 鈫?M6-DSP-B</td>
 <td>0.75</td>
-<td>意志控制行为执行</td>
+<td>鎰忓織鎺у埗琛屼负鎵ц</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>枢纽节点与级联路径</strong>。MTT计算三种中心性：</p>
+<p><strong>鏋㈢航鑺傜偣涓庣骇鑱旇矾寰?/strong>銆侻TT璁＄畻涓夌涓績鎬э細</p>
 <ul>
-<li><strong>出度</strong>：节点影响他人的广度</li>
-<li><strong>入度</strong>：节点受他人影响的广度</li>
-<li><strong>介数中心性</strong>：节点在级联传播路径中出现的频率</li>
+<li><strong>鍑哄害</strong>锛氳妭鐐瑰奖鍝嶄粬浜虹殑骞垮害</li>
+<li><strong>鍏ュ害</strong>锛氳妭鐐瑰彈浠栦汉褰卞搷鐨勫箍搴?/li>
+<li><strong>浠嬫暟涓績鎬?/strong>锛氳妭鐐瑰湪绾ц仈浼犳挱璺緞涓嚭鐜扮殑棰戠巼</li>
 </ul>
 
-<p>在焦虑和抑郁谱系中，M4节点（尤其是M4-DSP-B和M4-STR-C）介数中心性最高。</p>
+<p>鍦ㄧ劍铏戝拰鎶戦儊璋辩郴涓紝M4鑺傜偣锛堝挨鍏舵槸M4-DSP-B鍜孧4-STR-C锛変粙鏁颁腑蹇冩€ф渶楂樸€?/p>
 
-<p><strong>典型级联模式</strong>：</p>
+<p><strong>鍏稿瀷绾ц仈妯″紡</strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>模式</th>
-<th>级联路径</th>
-<th>最高杠杆靶点</th>
+<th>妯″紡</th>
+<th>绾ц仈璺緞</th>
+<th>鏈€楂樻潬鏉嗛澏鐐?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td>资源崩溃型</td>
-<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
+<td>璧勬簮宕╂簝鍨?/td>
+<td>M1-RES-D鈫?鈫?M3-RES-D鈫?鈫?M3-DSP-F澶辨晥 鈫?M6-DSP-B鈫?/td>
 <td>MODULATE+ M1-RES-D</td>
 </tr>
 <tr>
-<td>情绪驱动型</td>
-<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
-<td>RELINK M4-STR-C 或 GATE– M4-DSP-B</td>
+<td>鎯呯华椹卞姩鍨?/td>
+<td>M4-STR-C婵€娲?鈫?M4-DSP-B鈫?鈫?M3-RES-D鈫?鈫?M2-DSP-B鈫?/td>
+<td>RELINK M4-STR-C 鎴?GATE鈥?M4-DSP-B</td>
 </tr>
 <tr>
-<td>习惯固化型</td>
-<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
-<td>GATE– S-P触发 + GATE+替代行为</td>
+<td>涔犳儻鍥哄寲鍨?/td>
+<td>S-P瑙﹀彂 鈫?M6-DSP-B閲嶅 鈫?M6-STR-S宸╁浐 鈫?M3-DSP-F闂ㄦ帶澶辨晥</td>
+<td>GATE鈥?S-P瑙﹀彂 + GATE+鏇夸唬琛屼负</td>
 </tr>
 <tr>
-<td>规则扭曲型</td>
-<td>M2-STR-R错误规则 → M4-STR-R扭曲 → M4-DSP-B↑ → 回避</td>
+<td>瑙勫垯鎵洸鍨?/td>
+<td>M2-STR-R閿欒瑙勫垯 鈫?M4-STR-R鎵洸 鈫?M4-DSP-B鈫?鈫?鍥為伩</td>
 <td>ALIGN M2-STR-R</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>反馈环路分析</strong>。正反馈回路（环路增益\(G>1\)）维持精神病理。例如反刍-失眠-情绪脆弱回路：M2-DSP-B↑ → M1-STR-S↓ → M1-RES-D↓ → M4-RES-D↓ → M4-DSP-B↑ → M2-DSP-B↑。打断任何一条边可瓦解回路。</p>
+<p><strong>鍙嶉鐜矾鍒嗘瀽</strong>銆傛鍙嶉鍥炶矾锛堢幆璺鐩奬(G>1\)锛夌淮鎸佺簿绁炵梾鐞嗐€備緥濡傚弽鍒?澶辩湢-鎯呯华鑴嗗急鍥炶矾锛歁2-DSP-B鈫?鈫?M1-STR-S鈫?鈫?M1-RES-D鈫?鈫?M4-RES-D鈫?鈫?M4-DSP-B鈫?鈫?M2-DSP-B鈫戙€傛墦鏂换浣曚竴鏉¤竟鍙摝瑙ｅ洖璺€?/p>
 
-<p><strong>从依赖矩阵到干预选择</strong>：MTT输出为MDT提供约束。应选择介数中心性最高的节点——虽不一定是病因源，但能最有效阻断级联扩散。</p>
+<p><strong>浠庝緷璧栫煩闃靛埌骞查閫夋嫨</strong>锛歁TT杈撳嚭涓篗DT鎻愪緵绾︽潫銆傚簲閫夋嫨浠嬫暟涓績鎬ф渶楂樼殑鑺傜偣鈥斺€旇櫧涓嶄竴瀹氭槸鐥呭洜婧愶紝浣嗚兘鏈€鏈夋晥闃绘柇绾ц仈鎵╂暎銆?/p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSE的状态动力学模型由三组方程构成。资源动力学描述RES-D的消耗与恢复，特征是恢复不对称定律（消耗快于恢复）。调度动力学描述DSP-F与DSP-B的竞争与切换，阈值模型解释资源枯竭时自动化过程的“劫持”。结构动力学描述STR-R、STR-C和STR-S的慢速更新，塑性窗口原则和能量-塑性耦合共同制约结构性改变的发生条件。模块间耦合的拓扑网络(MTT)定义42节点之间的有向依赖关系，通过枢纽节点识别、级联路径分析和反馈环路检测，为干预靶点选择提供量化依据。这三组动力学模型以不同的时间尺度协同工作，共同决定心理系统的演化轨迹。</p>
+<p><strong>鏈珷灏忕粨</strong>锛歅SE鐨勭姸鎬佸姩鍔涘妯″瀷鐢变笁缁勬柟绋嬫瀯鎴愩€傝祫婧愬姩鍔涘鎻忚堪RES-D鐨勬秷鑰椾笌鎭㈠锛岀壒寰佹槸鎭㈠涓嶅绉板畾寰嬶紙娑堣€楀揩浜庢仮澶嶏級銆傝皟搴﹀姩鍔涘鎻忚堪DSP-F涓嶥SP-B鐨勭珵浜変笌鍒囨崲锛岄槇鍊兼ā鍨嬭В閲婅祫婧愭灟绔椂鑷姩鍖栬繃绋嬬殑鈥滃姭鎸佲€濄€傜粨鏋勫姩鍔涘鎻忚堪STR-R銆丼TR-C鍜孲TR-S鐨勬參閫熸洿鏂帮紝濉戞€х獥鍙ｅ師鍒欏拰鑳介噺-濉戞€ц€﹀悎鍏卞悓鍒剁害缁撴瀯鎬ф敼鍙樼殑鍙戠敓鏉′欢銆傛ā鍧楅棿鑰﹀悎鐨勬嫇鎵戠綉缁?MTT)瀹氫箟42鑺傜偣涔嬮棿鐨勬湁鍚戜緷璧栧叧绯伙紝閫氳繃鏋㈢航鑺傜偣璇嗗埆銆佺骇鑱旇矾寰勫垎鏋愬拰鍙嶉鐜矾妫€娴嬶紝涓哄共棰勯澏鐐归€夋嫨鎻愪緵閲忓寲渚濇嵁銆傝繖涓夌粍鍔ㄥ姏瀛︽ā鍨嬩互涓嶅悓鐨勬椂闂村昂搴﹀崗鍚屽伐浣滐紝鍏卞悓鍐冲畾蹇冪悊绯荤粺鐨勬紨鍖栬建杩广€?/p>
 
-<blockquote><p><strong>关键术语</strong>：恢复不对称定律，Lotka-Volterra模型，塑性窗口，再巩固窗口，依赖矩阵，耦合权重</p></blockquote>
+<blockquote><p><strong>鍏抽敭鏈</strong>锛氭仮澶嶄笉瀵圭О瀹氬緥锛孡otka-Volterra妯″瀷锛屽鎬х獥鍙ｏ紝鍐嶅珐鍥虹獥鍙ｏ紝渚濊禆鐭╅樀锛岃€﹀悎鏉冮噸</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “动力学方程是虚构的” → ✅ 方程形式是理论假设，但参数通过PSE-C贝叶斯校准从数据中估计。<br>- ❌ “恢复不对称定律已被充分证实” → ✅ 它在多个领域有支持，但具体参数仍需PSE-C校准。</p></blockquote>
+<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥滃姩鍔涘鏂圭▼鏄櫄鏋勭殑鈥?鈫?鉁?鏂圭▼褰㈠紡鏄悊璁哄亣璁撅紝浣嗗弬鏁伴€氳繃PSE-C璐濆彾鏂牎鍑嗕粠鏁版嵁涓及璁°€?br>- 鉂?鈥滄仮澶嶄笉瀵圭О瀹氬緥宸茶鍏呭垎璇佸疄鈥?鈫?鉁?瀹冨湪澶氫釜棰嗗煙鏈夋敮鎸侊紝浣嗗叿浣撳弬鏁颁粛闇€PSE-C鏍″噯銆?/p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 写出M3-RES-D的标准资源动力学方程并解释每个参数的含义。<br>2. 模块间耦合通过什么数学形式进入动力学方程？以M4到M3的级联为例说明。<br>3. 当某个参数在现有数据中不可唯一辨识时，PSE应如何处理？</p></blockquote>
+<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 鍐欏嚭M3-RES-D鐨勬爣鍑嗚祫婧愬姩鍔涘鏂圭▼骞惰В閲婃瘡涓弬鏁扮殑鍚箟銆?br>2. 妯″潡闂磋€﹀悎閫氳繃浠€涔堟暟瀛﹀舰寮忚繘鍏ュ姩鍔涘鏂圭▼锛熶互M4鍒癕3鐨勭骇鑱斾负渚嬭鏄庛€?br>3. 褰撴煇涓弬鏁板湪鐜版湁鏁版嵁涓笉鍙敮涓€杈ㄨ瘑鏃讹紝PSE搴斿浣曞鐞嗭紵</p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-31</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch18.html" class="nav-link prev">‹ PSE架构</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="ch20.html" class="nav-link next">仿真校准 ›</a></div>
+        <div class="chapter-nav"><a href="ch18.html" class="nav-link prev">鈥?PSE鏋舵瀯</a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="ch20.html" class="nav-link next">浠跨湡鏍″噯 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -346,7 +346,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

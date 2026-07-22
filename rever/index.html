@@ -269,6 +269,12 @@
         .table-compact {
             font-size: 0.85rem;
         }
+
+        .case-study {
+            border-left: 3px solid var(--color-rever, #8B5E3C);
+            padding-left: 1.2rem;
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
 <body lang="zh">
@@ -334,11 +340,13 @@
                 <h3><i class="fas fa-sitemap" aria-hidden="true"></i> 四层责任模型</h3>
                 <p>REVER 整合来自 UPLS/PSE 的主体性框架，形成正式的责任结构：</p>
                 <table class="table-full table-compact">
-                    <tr><th>层级</th><th>实体</th><th>责任</th></tr>
+                    <thead><tr><th>层级</th><th>实体</th><th>责任</th></tr></thead>
+                    <tbody>
                     <tr><td>L1</td><td>人类监督者</td><td>最终临床/伦理责任</td></tr>
                     <tr><td>L2</td><td>REVER引擎</td><td>过程责任（伦理约束）</td></tr>
                     <tr><td>L3</td><td>INTRE/PSE框架</td><td>工具责任（技术功能）</td></tr>
                     <tr><td>L4</td><td>用户</td><td>最终决策权</td></tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -465,12 +473,14 @@
             <div class="card">
                 <h3>分层透明度要求</h3>
                 <table class="table-full">
-                    <tr><th>层</th><th>透明度机制</th></tr>
+                    <thead><tr><th>层</th><th>透明度机制</th></tr></thead>
+                    <tbody>
                     <tr><td>哲学层</td><td>公开公理与定义</td></tr>
                     <tr><td>架构层</td><td>开放约束文档</td></tr>
                     <tr><td>算法层</td><td>可解释决策路径</td></tr>
                     <tr><td>交互层</td><td>重复身份声明</td></tr>
                     <tr><td>数据层</td><td>完整审计日志</td></tr>
+                    </tbody>
                 </table>
             </div>
             <div class="card">

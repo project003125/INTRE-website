@@ -1,6 +1,6 @@
 // Shared navigation toggle script (M4)
 // Replaces inline onclick handlers with accessible JS
-// v2.4.2 — 断点回退 768px（P2-6a 修正：959px 导致平板横排导航折叠为汉堡菜单）
+// v2.4.3 — 断点回退 768px（P2-6a 修正：959px 导致平板横排导航折叠为汉堡菜单）
 (function() {
     var MOBILE_MQ = '(max-width: 768px)';
     function isMobile() {
@@ -86,7 +86,7 @@
         });
 
         // 视口切换时清理：从移动端切到桌面端，移除 aria-hidden
-        window.matchMedia(MOBILE_MQ).addListener(function() {
+        window.matchMedia(MOBILE_MQ).addEventListener('change', function() {
             if (!isMobile()) {
                 toggles.forEach(function(button) {
                     var menuId = button.getAttribute('aria-controls') || 'nav-menu';

@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第6章 状态维度：资源、调度与结构三轴 · INTRE 导论教材</title>
-    <meta name="description" content="功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：资源(Resource, R)、调度(Dispatch, D)、结构(Structure, S)。为什么恰好是这三个？">
-    <meta property="og:title" content="第6章 状态维度：资源、调度与结构三轴">
-    <meta property="og:description" content="功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：资源(Resource, R)、调度(Dispatch, D)、结构(Structure, S)。为什么恰好是这三个？">
+    <title>绗?绔?鐘舵€佺淮搴︼細璧勬簮銆佽皟搴︿笌缁撴瀯涓夎酱 路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="鍔熻兘灞傜殑鐘舵€佹弿杩伴渶瑕佷竴涓熀鏈淮搴︽鏋躲€侷NTRE鎻愬嚭鐨勭瓟妗堟槸涓夌粍姝ｄ氦缁村害锛氳祫婧?Resource, R)銆佽皟搴?Dispatch, D)銆佺粨鏋?Structure, S)銆備负浠€涔堟伆濂芥槸杩欎笁涓紵">
+    <meta property="og:title" content="绗?绔?鐘舵€佺淮搴︼細璧勬簮銆佽皟搴︿笌缁撴瀯涓夎酱">
+    <meta property="og:description" content="鍔熻兘灞傜殑鐘舵€佹弿杩伴渶瑕佷竴涓熀鏈淮搴︽鏋躲€侷NTRE鎻愬嚭鐨勭瓟妗堟槸涓夌粍姝ｄ氦缁村害锛氳祫婧?Resource, R)銆佽皟搴?Dispatch, D)銆佺粨鏋?Structure, S)銆備负浠€涔堟伆濂芥槸杩欎笁涓紵">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch06.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch06.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第6章 状态维度：资源、调度与结构三轴">
-    <meta name="twitter:description" content="功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：资源(Resource, R)、调度(Dispatch, D)、结构(Structure, S)。为什么恰好是这三个？">
+    <meta name="twitter:title" content="绗?绔?鐘舵€佺淮搴︼細璧勬簮銆佽皟搴︿笌缁撴瀯涓夎酱">
+    <meta name="twitter:description" content="鍔熻兘灞傜殑鐘舵€佹弿杩伴渶瑕佷竴涓熀鏈淮搴︽鏋躲€侷NTRE鎻愬嚭鐨勭瓟妗堟槸涓夌粍姝ｄ氦缁村害锛氳祫婧?Resource, R)銆佽皟搴?Dispatch, D)銆佺粨鏋?Structure, S)銆備负浠€涔堟伆濂芥槸杩欎笁涓紵">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,144 +46,144 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第6章</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">绗?绔?/span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第6章 状态维度：资源、调度与结构三轴</h1>
+        <h1 class="chapter-title">绗?绔?鐘舵€佺淮搴︼細璧勬簮銆佽皟搴︿笌缁撴瀯涓夎酱</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)从系统动力学的存量-流量-结构框架推导R-D-S三维的必要性；(2)区分RES-D与RES-B的时间尺度和干预接口；(3)区分DSP-F与DSP-B的意识参与度和资源消耗模式；(4)区分STR-R/C/S三种结构类型及其对应的G-M-A-R操作；(5)理解R-D-S的工程收敛解定位。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>6.1 为何三轴：系统动力学与工程收敛</h2>
-
-<p>功能层的状态描述需要一个基本维度框架。INTRE提出的答案是三组正交维度：<strong>资源(Resource, R)</strong>、<strong>调度(Dispatch, D)</strong>、<strong>结构(Structure, S)</strong>。为什么恰好是这三个？</p>
-
-<p><strong>系统动力学的基础</strong>。任何动态系统——无论是物理系统、生物系统还是社会系统——要描述其当前状态和未来演化，都需要回答三个根本问题：(1)系统此刻<strong>拥有什么</strong>（存量）？(2)系统此刻<strong>正在做什么</strong>（流量/过程）？(3)系统<strong>为何以这种方式运行</strong>（控制结构与规则）？这三个问题对应系统动力学中经典的<strong>存量-流量-结构</strong>三分框架。R-D-S正是这一框架在心理功能层的实例化。</p>
-
-<p><strong>皮卡-林德勒夫定理的启发性类比</strong>。常微分方程理论指出：在满足连续性条件的系统中，给定初始状态向量和演化动力学方程，系统的未来轨迹是唯一确定的。这为R-D-S三维的<strong>形式充分性</strong>提供了一个启发性类比——要完整确定演化轨迹，我们需要知道(1)当前存量（初始状态），(2)流量规则（微分方程），(3)结构参数（方程中的系数和拓扑）。需要强调的是，这一定理在此处提供的是启发性类比，而非数学完备性的证明。</p>
-
-<p><strong>工程约束的收敛</strong>。INTRE是一个<strong>工程框架</strong>，其设计受制于三组工程约束：(1)<strong>诊断精度</strong>——维度必须能够区分表面相似但机制不同的临床现象（如同为“拖延”，要能区分M3-RES-D枯竭型、M4-STR-C焦虑型、M2-STR-R完美主义型）；(2)<strong>干预指导力</strong>——每个维度必须对应明确的G-M-A-R操作靶点；(3)<strong>跨现象覆盖</strong>——维度必须能描述从基本情绪反应到复杂叙事自我整合的广泛心理现象。R-D-S是在这三组工程约束下收敛的最优解。</p>
-
-<p><strong>R-D-S的认识论定位</strong>：R-D-S是五重独立约束下被迫收敛的工程最优解，而非对心理实体结构的直接发现。完整的五重约束论证见第2章§2.5。</p>
+<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗浣犲簲鑳藉锛?1)浠庣郴缁熷姩鍔涘鐨勫瓨閲?娴侀噺-缁撴瀯妗嗘灦鎺ㄥR-D-S涓夌淮鐨勫繀瑕佹€э紱(2)鍖哄垎RES-D涓嶳ES-B鐨勬椂闂村昂搴﹀拰骞查鎺ュ彛锛?3)鍖哄垎DSP-F涓嶥SP-B鐨勬剰璇嗗弬涓庡害鍜岃祫婧愭秷鑰楁ā寮忥紱(4)鍖哄垎STR-R/C/S涓夌缁撴瀯绫诲瀷鍙婂叾瀵瑰簲鐨凣-M-A-R鎿嶄綔锛?5)鐞嗚ВR-D-S鐨勫伐绋嬫敹鏁涜В瀹氫綅銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>6.2 资源层：RES-D可调度与RES-B基底</h2>
+<h2>6.1 涓轰綍涓夎酱锛氱郴缁熷姩鍔涘涓庡伐绋嬫敹鏁?/h2>
 
-<p>资源层描述的是心理系统的<strong>存量状态</strong>——系统当前拥有多少可用的心理能量。它回答“系统此刻有多少燃料可用”。资源层被进一步区分为两个时间尺度和功能角色不同的子维度。</p>
+<p>鍔熻兘灞傜殑鐘舵€佹弿杩伴渶瑕佷竴涓熀鏈淮搴︽鏋躲€侷NTRE鎻愬嚭鐨勭瓟妗堟槸涓夌粍姝ｄ氦缁村害锛?strong>璧勬簮(Resource, R)</strong>銆?strong>璋冨害(Dispatch, D)</strong>銆?strong>缁撴瀯(Structure, S)</strong>銆備负浠€涔堟伆濂芥槸杩欎笁涓紵</p>
 
-<p><strong>RES-D（可调度资源）</strong>：这是快速波动的、即时可用的心理能量。其特征包括：时间尺度为分钟至天；敏感于睡眠、营养、急性应激和近期的认知/情绪负荷；可通过休息、放松、营养补充和行为激活在数小时至数天内恢复。RES-D的功能角色类似于一个组织的<strong>运营资本</strong>。M3-RES-D（意志资源）的耗竭表现为自我控制任务的失败、决策疲劳；M4-RES-D（情绪容限）的耗竭表现为情绪调节能力下降、易激惹。RES-D对应G-M-A-R中的<strong>MODULATE</strong>操作。</p>
+<p><strong>绯荤粺鍔ㄥ姏瀛︾殑鍩虹</strong>銆備换浣曞姩鎬佺郴缁熲€斺€旀棤璁烘槸鐗╃悊绯荤粺銆佺敓鐗╃郴缁熻繕鏄ぞ浼氱郴缁熲€斺€旇鎻忚堪鍏跺綋鍓嶇姸鎬佸拰鏈潵婕斿寲锛岄兘闇€瑕佸洖绛斾笁涓牴鏈棶棰橈細(1)绯荤粺姝ゅ埢<strong>鎷ユ湁浠€涔?/strong>锛堝瓨閲忥級锛?2)绯荤粺姝ゅ埢<strong>姝ｅ湪鍋氫粈涔?/strong>锛堟祦閲?杩囩▼锛夛紵(3)绯荤粺<strong>涓轰綍浠ヨ繖绉嶆柟寮忚繍琛?/strong>锛堟帶鍒剁粨鏋勪笌瑙勫垯锛夛紵杩欎笁涓棶棰樺搴旂郴缁熷姩鍔涘涓粡鍏哥殑<strong>瀛橀噺-娴侀噺-缁撴瀯</strong>涓夊垎妗嗘灦銆俁-D-S姝ｆ槸杩欎竴妗嗘灦鍦ㄥ績鐞嗗姛鑳藉眰鐨勫疄渚嬪寲銆?/p>
 
-<p><strong>RES-B（基底资源）</strong>：这是缓慢变化的、长期积累的心理资本。其特征包括：时间尺度为月至年；由长期的生活经历、关系质量、价值实现和安全感积累构成；抵抗快速变化，需要结构性干预才能持久提升。RES-B的功能角色类似于一个组织的<strong>核心资本</strong>。M4-RES-B（安全感基底）的薄弱表现为长期的防御性、过度警觉；M5-RES-B（叙事整合基底）的薄弱表现为自我叙事断裂。RES-B不能通过MODULATE直接补充——它需要通过ALIGN、RELINK和GATE等结构性操作间接建设。</p>
+<p><strong>鐨崱-鏋楀痉鍕掑か瀹氱悊鐨勫惎鍙戞€х被姣?/strong>銆傚父寰垎鏂圭▼鐞嗚鎸囧嚭锛氬湪婊¤冻杩炵画鎬ф潯浠剁殑绯荤粺涓紝缁欏畾鍒濆鐘舵€佸悜閲忓拰婕斿寲鍔ㄥ姏瀛︽柟绋嬶紝绯荤粺鐨勬湭鏉ヨ建杩规槸鍞竴纭畾鐨勩€傝繖涓篟-D-S涓夌淮鐨?strong>褰㈠紡鍏呭垎鎬?/strong>鎻愪緵浜嗕竴涓惎鍙戞€х被姣斺€斺€旇瀹屾暣纭畾婕斿寲杞ㄨ抗锛屾垜浠渶瑕佺煡閬?1)褰撳墠瀛橀噺锛堝垵濮嬬姸鎬侊級锛?2)娴侀噺瑙勫垯锛堝井鍒嗘柟绋嬶級锛?3)缁撴瀯鍙傛暟锛堟柟绋嬩腑鐨勭郴鏁板拰鎷撴墤锛夈€傞渶瑕佸己璋冪殑鏄紝杩欎竴瀹氱悊鍦ㄦ澶勬彁渚涚殑鏄惎鍙戞€х被姣旓紝鑰岄潪鏁板瀹屽鎬х殑璇佹槑銆?/p>
 
-<p><strong>RES-D与RES-B的临床区分意义</strong>。区分RES-D和RES-B直接指导干预决策。一个以RES-D枯竭为主的患者（如急性应激后的失眠）应优先接受MODULATE+型干预——睡眠卫生、运动、任务减负。一个以RES-B薄弱为主的患者（如长期依恋创伤导致的慢性不安全感）需要通过ALIGN/RELINK进行结构性修复——如果误用MODULATE+，其效果将是暂时的、不持久的。</p>
+<p><strong>宸ョ▼绾︽潫鐨勬敹鏁?/strong>銆侷NTRE鏄竴涓?strong>宸ョ▼妗嗘灦</strong>锛屽叾璁捐鍙楀埗浜庝笁缁勫伐绋嬬害鏉燂細(1)<strong>璇婃柇绮惧害</strong>鈥斺€旂淮搴﹀繀椤昏兘澶熷尯鍒嗚〃闈㈢浉浼间絾鏈哄埗涓嶅悓鐨勪复搴婄幇璞★紙濡傚悓涓衡€滄嫋寤垛€濓紝瑕佽兘鍖哄垎M3-RES-D鏋鍨嬨€丮4-STR-C鐒﹁檻鍨嬨€丮2-STR-R瀹岀編涓讳箟鍨嬶級锛?2)<strong>骞查鎸囧鍔?/strong>鈥斺€旀瘡涓淮搴﹀繀椤诲搴旀槑纭殑G-M-A-R鎿嶄綔闈剁偣锛?3)<strong>璺ㄧ幇璞¤鐩?/strong>鈥斺€旂淮搴﹀繀椤昏兘鎻忚堪浠庡熀鏈儏缁弽搴斿埌澶嶆潅鍙欎簨鑷垜鏁村悎鐨勫箍娉涘績鐞嗙幇璞°€俁-D-S鏄湪杩欎笁缁勫伐绋嬬害鏉熶笅鏀舵暃鐨勬渶浼樿В銆?/p>
 
-<hr class="section-divider">
-
-<h2>6.3 调度层：DSP-F前景与DSP-B后台</h2>
-
-<p>调度层描述的是心理系统的<strong>过程状态</strong>——哪些心理过程当前正在运行。它回答“系统此刻在做什么”。</p>
-
-<p><strong>DSP-F（前景调度）</strong>：这是需要意识参与、目标导向、资源消耗高的主动控制过程。其特征包括：执行慢、可被有意识地启动和终止、灵活性高、消耗RES-D。DSP-F对应卡尼曼“双系统理论”中的系统2——审慎推理、逻辑分析、冲动抑制。DSP-F对应G-M-A-R中的<strong>GATE+</strong>（启动一个前台过程）和<strong>GATE–</strong>（抑制一个前台过程）。</p>
-
-<p><strong>DSP-B（后台调度）</strong>：这是自动化、无需意识参与、资源消耗低的背景过程。其特征包括：执行快、难以被有意识地直接终止（需要间接调度）、固化后高度稳定。DSP-B对应卡尼曼的系统1——直觉反应、习惯性行为、自动化的情绪反应。DSP-B对应G-M-A-R中的<strong>GATE–</strong>（抑制一个后台过程）——这一操作通常不是直接“关掉”DSP-B，而是通过激活竞争性的DSP-F过程来间接压制。</p>
-
-<p><strong>DSP-F与DSP-B的神经科学基础</strong>。DSP-F/B的区分在大尺度脑网络层面获得了独立的兼容性支持。默认模式网络(DMN)在静息态、心智游移时激活，对应DSP-B；额顶控制网络(FPN)在执行外部任务时激活，对应DSP-F。两者在静息态下呈稳定的反相关。</p>
-
-<p><strong>DSP-B“劫持”的临床意义</strong>。当RES-D严重枯竭或DSP-F因疲劳而功能下降时，DSP-B过程可能“劫持”系统的控制权，导致自动化、适应不良的行为模式在没有意识许可的情况下持续运行。典型的例子包括：压力下的习惯性暴食、焦虑时的回避行为、失眠时的侵入性反刍思维。在这些情况下，试图通过“讲道理”（ALIGN STR-R）来改变行为往往是低效的——优先干预应该是通过感官锚定、行为激活或环境重新设计来<strong>GATE–</strong>失控的DSP-B过程。</p>
+<p><strong>R-D-S鐨勮璇嗚瀹氫綅</strong>锛歊-D-S鏄簲閲嶇嫭绔嬬害鏉熶笅琚揩鏀舵暃鐨勫伐绋嬫渶浼樿В锛岃€岄潪瀵瑰績鐞嗗疄浣撶粨鏋勭殑鐩存帴鍙戠幇銆傚畬鏁寸殑浜旈噸绾︽潫璁鸿瘉瑙佺2绔犅?.5銆?/p>
 
 <hr class="section-divider">
 
-<h2>6.4 结构层：STR-R规则、STR-C连接与STR-S序列</h2>
+<h2>6.2 璧勬簮灞傦細RES-D鍙皟搴︿笌RES-B鍩哄簳</h2>
 
-<p>结构层描述的是心理系统的<strong>配置状态</strong>——那些稳定地决定系统如何响应输入的深层参数。它回答“系统为何以这种方式运行”。</p>
+<p>璧勬簮灞傛弿杩扮殑鏄績鐞嗙郴缁熺殑<strong>瀛橀噺鐘舵€?/strong>鈥斺€旂郴缁熷綋鍓嶆嫢鏈夊灏戝彲鐢ㄧ殑蹇冪悊鑳介噺銆傚畠鍥炵瓟鈥滅郴缁熸鍒绘湁澶氬皯鐕冩枡鍙敤鈥濄€傝祫婧愬眰琚繘涓€姝ュ尯鍒嗕负涓や釜鏃堕棿灏哄害鍜屽姛鑳借鑹蹭笉鍚岀殑瀛愮淮搴︺€?/p>
 
-<p><strong>STR-R（规则结构）</strong>：这是命题性的、可被语言表述的知识——信念、规则、图式、价值观。STR-R以“如果-那么”的形式组织（如“如果我犯错，就说明我无能”）。其知识类型是陈述性知识（知道“是什么”）。STR-R的改变可以通过逻辑辩论、证据呈现和行为实验来实现——这些操作属于G-M-A-R中的<strong>ALIGN</strong>。</p>
+<p><strong>RES-D锛堝彲璋冨害璧勬簮锛?/strong>锛氳繖鏄揩閫熸尝鍔ㄧ殑銆佸嵆鏃跺彲鐢ㄧ殑蹇冪悊鑳介噺銆傚叾鐗瑰緛鍖呮嫭锛氭椂闂村昂搴︿负鍒嗛挓鑷冲ぉ锛涙晱鎰熶簬鐫＄湢銆佽惀鍏汇€佹€ユ€у簲婵€鍜岃繎鏈熺殑璁ょ煡/鎯呯华璐熻嵎锛涘彲閫氳繃浼戞伅銆佹斁鏉俱€佽惀鍏昏ˉ鍏呭拰琛屼负婵€娲诲湪鏁板皬鏃惰嚦鏁板ぉ鍐呮仮澶嶃€俁ES-D鐨勫姛鑳借鑹茬被浼间簬涓€涓粍缁囩殑<strong>杩愯惀璧勬湰</strong>銆侻3-RES-D锛堟剰蹇楄祫婧愶級鐨勮€楃琛ㄧ幇涓鸿嚜鎴戞帶鍒朵换鍔＄殑澶辫触銆佸喅绛栫柌鍔筹紱M4-RES-D锛堟儏缁闄愶級鐨勮€楃琛ㄧ幇涓烘儏缁皟鑺傝兘鍔涗笅闄嶃€佹槗婵€鎯广€俁ES-D瀵瑰簲G-M-A-R涓殑<strong>MODULATE</strong>鎿嶄綔銆?/p>
 
-<p><strong>STR-C（连接结构）</strong>：这是关联性的、非命题性的知识——情感连接、条件化联想、依恋模式、内隐态度。STR-C以加权网络的形式组织（如“亲密→被抛弃”的连接权重为0.78）。其知识类型是关联性知识（知道“什么与什么相连”）。STR-C的改变不能仅通过逻辑辩论实现——它需要通过新的体验（如矫正性情感体验）来重新加权连接。这些操作属于G-M-A-R中的<strong>RELINK</strong>。STR-C是INTRE在功能层对条件反射、情绪记忆、内隐联结和依恋模式等“连接权重”相关现象的理论整合创新。</p>
+<p><strong>RES-B锛堝熀搴曡祫婧愶級</strong>锛氳繖鏄紦鎱㈠彉鍖栫殑銆侀暱鏈熺Н绱殑蹇冪悊璧勬湰銆傚叾鐗瑰緛鍖呮嫭锛氭椂闂村昂搴︿负鏈堣嚦骞达紱鐢遍暱鏈熺殑鐢熸椿缁忓巻銆佸叧绯昏川閲忋€佷环鍊煎疄鐜板拰瀹夊叏鎰熺Н绱瀯鎴愶紱鎶垫姉蹇€熷彉鍖栵紝闇€瑕佺粨鏋勬€у共棰勬墠鑳芥寔涔呮彁鍗囥€俁ES-B鐨勫姛鑳借鑹茬被浼间簬涓€涓粍缁囩殑<strong>鏍稿績璧勬湰</strong>銆侻4-RES-B锛堝畨鍏ㄦ劅鍩哄簳锛夌殑钖勫急琛ㄧ幇涓洪暱鏈熺殑闃插尽鎬с€佽繃搴﹁瑙夛紱M5-RES-B锛堝彊浜嬫暣鍚堝熀搴曪級鐨勮杽寮辫〃鐜颁负鑷垜鍙欎簨鏂銆俁ES-B涓嶈兘閫氳繃MODULATE鐩存帴琛ュ厖鈥斺€斿畠闇€瑕侀€氳繃ALIGN銆丷ELINK鍜孏ATE绛夌粨鏋勬€ф搷浣滈棿鎺ュ缓璁俱€?/p>
 
-<p><strong>STR-S（序列结构）</strong>：这是程序性的、时序组织的知识——习惯脚本、行为序列、认知程序、仪式化动作。STR-S以步骤序列的形式组织（如“当感到焦虑时→回避社交→独处→短暂缓解→长期恶化”）。其知识类型是程序性知识（知道“怎么做”）。STR-S的改变需要通过重复练习、执行意图、行为排练来实现——这些操作属于G-M-A-R中的<strong>GATE</strong>的长期效应：通过反复启动(GATE+)或抑制(GATE–)某一序列，逐步重构STR-S。</p>
+<p><strong>RES-D涓嶳ES-B鐨勪复搴婂尯鍒嗘剰涔?/strong>銆傚尯鍒哛ES-D鍜孯ES-B鐩存帴鎸囧骞查鍐崇瓥銆備竴涓互RES-D鏋涓轰富鐨勬偅鑰咃紙濡傛€ユ€у簲婵€鍚庣殑澶辩湢锛夊簲浼樺厛鎺ュ彈MODULATE+鍨嬪共棰勨€斺€旂潯鐪犲崼鐢熴€佽繍鍔ㄣ€佷换鍔″噺璐熴€備竴涓互RES-B钖勫急涓轰富鐨勬偅鑰咃紙濡傞暱鏈熶緷鎭嬪垱浼ゅ鑷寸殑鎱㈡€т笉瀹夊叏鎰燂級闇€瑕侀€氳繃ALIGN/RELINK杩涜缁撴瀯鎬т慨澶嶁€斺€斿鏋滆鐢∕ODULATE+锛屽叾鏁堟灉灏嗘槸鏆傛椂鐨勩€佷笉鎸佷箙鐨勩€?/p>
 
-<p><strong>图灵机功能同构论证</strong>。STR-R/C/S三分法的一个理论支持来自计算理论：任何信息处理系统在功能上必须包含三个基本组件——(1)规则表（定义状态转移规则，对应STR-R），(2)存储纸带（存储信息与关联，对应STR-C），(3)读写头移动协议（定义操作的顺序，对应STR-S）。三分法不是心理学经验的归纳，而是从计算理论推导出的功能结构必然性。</p>
+<hr class="section-divider">
 
-<p><strong>STR三分法的临床区分意义</strong>。区分STR-R、STR-C和STR-S直接影响干预技术的选择：</p>
+<h2>6.3 璋冨害灞傦細DSP-F鍓嶆櫙涓嶥SP-B鍚庡彴</h2>
+
+<p>璋冨害灞傛弿杩扮殑鏄績鐞嗙郴缁熺殑<strong>杩囩▼鐘舵€?/strong>鈥斺€斿摢浜涘績鐞嗚繃绋嬪綋鍓嶆鍦ㄨ繍琛屻€傚畠鍥炵瓟鈥滅郴缁熸鍒诲湪鍋氫粈涔堚€濄€?/p>
+
+<p><strong>DSP-F锛堝墠鏅皟搴︼級</strong>锛氳繖鏄渶瑕佹剰璇嗗弬涓庛€佺洰鏍囧鍚戙€佽祫婧愭秷鑰楅珮鐨勪富鍔ㄦ帶鍒惰繃绋嬨€傚叾鐗瑰緛鍖呮嫭锛氭墽琛屾參銆佸彲琚湁鎰忚瘑鍦板惎鍔ㄥ拰缁堟銆佺伒娲绘€ч珮銆佹秷鑰桼ES-D銆侱SP-F瀵瑰簲鍗″凹鏇尖€滃弻绯荤粺鐞嗚鈥濅腑鐨勭郴缁?鈥斺€斿鎱庢帹鐞嗐€侀€昏緫鍒嗘瀽銆佸啿鍔ㄦ姂鍒躲€侱SP-F瀵瑰簲G-M-A-R涓殑<strong>GATE+</strong>锛堝惎鍔ㄤ竴涓墠鍙拌繃绋嬶級鍜?strong>GATE鈥?/strong>锛堟姂鍒朵竴涓墠鍙拌繃绋嬶級銆?/p>
+
+<p><strong>DSP-B锛堝悗鍙拌皟搴︼級</strong>锛氳繖鏄嚜鍔ㄥ寲銆佹棤闇€鎰忚瘑鍙備笌銆佽祫婧愭秷鑰椾綆鐨勮儗鏅繃绋嬨€傚叾鐗瑰緛鍖呮嫭锛氭墽琛屽揩銆侀毦浠ヨ鏈夋剰璇嗗湴鐩存帴缁堟锛堥渶瑕侀棿鎺ヨ皟搴︼級銆佸浐鍖栧悗楂樺害绋冲畾銆侱SP-B瀵瑰簲鍗″凹鏇肩殑绯荤粺1鈥斺€旂洿瑙夊弽搴斻€佷範鎯€ц涓恒€佽嚜鍔ㄥ寲鐨勬儏缁弽搴斻€侱SP-B瀵瑰簲G-M-A-R涓殑<strong>GATE鈥?/strong>锛堟姂鍒朵竴涓悗鍙拌繃绋嬶級鈥斺€旇繖涓€鎿嶄綔閫氬父涓嶆槸鐩存帴鈥滃叧鎺夆€滵SP-B锛岃€屾槸閫氳繃婵€娲荤珵浜夋€х殑DSP-F杩囩▼鏉ラ棿鎺ュ帇鍒躲€?/p>
+
+<p><strong>DSP-F涓嶥SP-B鐨勭缁忕瀛﹀熀纭€</strong>銆侱SP-F/B鐨勫尯鍒嗗湪澶у昂搴﹁剳缃戠粶灞傞潰鑾峰緱浜嗙嫭绔嬬殑鍏煎鎬ф敮鎸併€傞粯璁ゆā寮忕綉缁?DMN)鍦ㄩ潤鎭€併€佸績鏅烘父绉绘椂婵€娲伙紝瀵瑰簲DSP-B锛涢椤舵帶鍒剁綉缁?FPN)鍦ㄦ墽琛屽閮ㄤ换鍔℃椂婵€娲伙紝瀵瑰簲DSP-F銆備袱鑰呭湪闈欐伅鎬佷笅鍛堢ǔ瀹氱殑鍙嶇浉鍏炽€?/p>
+
+<p><strong>DSP-B鈥滃姭鎸佲€濈殑涓村簥鎰忎箟</strong>銆傚綋RES-D涓ラ噸鏋鎴朌SP-F鍥犵柌鍔宠€屽姛鑳戒笅闄嶆椂锛孌SP-B杩囩▼鍙兘鈥滃姭鎸佲€濈郴缁熺殑鎺у埗鏉冿紝瀵艰嚧鑷姩鍖栥€侀€傚簲涓嶈壇鐨勮涓烘ā寮忓湪娌℃湁鎰忚瘑璁稿彲鐨勬儏鍐典笅鎸佺画杩愯銆傚吀鍨嬬殑渚嬪瓙鍖呮嫭锛氬帇鍔涗笅鐨勪範鎯€ф毚椋熴€佺劍铏戞椂鐨勫洖閬胯涓恒€佸け鐪犳椂鐨勪镜鍏ユ€у弽鍒嶆€濈淮銆傚湪杩欎簺鎯呭喌涓嬶紝璇曞浘閫氳繃鈥滆閬撶悊鈥濓紙ALIGN STR-R锛夋潵鏀瑰彉琛屼负寰€寰€鏄綆鏁堢殑鈥斺€斾紭鍏堝共棰勫簲璇ユ槸閫氳繃鎰熷畼閿氬畾銆佽涓烘縺娲绘垨鐜閲嶆柊璁捐鏉?strong>GATE鈥?/strong>澶辨帶鐨凞SP-B杩囩▼銆?/p>
+
+<hr class="section-divider">
+
+<h2>6.4 缁撴瀯灞傦細STR-R瑙勫垯銆丼TR-C杩炴帴涓嶴TR-S搴忓垪</h2>
+
+<p>缁撴瀯灞傛弿杩扮殑鏄績鐞嗙郴缁熺殑<strong>閰嶇疆鐘舵€?/strong>鈥斺€旈偅浜涚ǔ瀹氬湴鍐冲畾绯荤粺濡備綍鍝嶅簲杈撳叆鐨勬繁灞傚弬鏁般€傚畠鍥炵瓟鈥滅郴缁熶负浣曚互杩欑鏂瑰紡杩愯鈥濄€?/p>
+
+<p><strong>STR-R锛堣鍒欑粨鏋勶級</strong>锛氳繖鏄懡棰樻€х殑銆佸彲琚瑷€琛ㄨ堪鐨勭煡璇嗏€斺€斾俊蹇点€佽鍒欍€佸浘寮忋€佷环鍊艰銆係TR-R浠モ€滃鏋?閭ｄ箞鈥濈殑褰㈠紡缁勭粐锛堝鈥滃鏋滄垜鐘敊锛屽氨璇存槑鎴戞棤鑳解€濓級銆傚叾鐭ヨ瘑绫诲瀷鏄檲杩版€х煡璇嗭紙鐭ラ亾鈥滄槸浠€涔堚€濓級銆係TR-R鐨勬敼鍙樺彲浠ラ€氳繃閫昏緫杈╄銆佽瘉鎹憟鐜板拰琛屼负瀹為獙鏉ュ疄鐜扳€斺€旇繖浜涙搷浣滃睘浜嶨-M-A-R涓殑<strong>ALIGN</strong>銆?/p>
+
+<p><strong>STR-C锛堣繛鎺ョ粨鏋勶級</strong>锛氳繖鏄叧鑱旀€х殑銆侀潪鍛介鎬х殑鐭ヨ瘑鈥斺€旀儏鎰熻繛鎺ャ€佹潯浠跺寲鑱旀兂銆佷緷鎭嬫ā寮忋€佸唴闅愭€佸害銆係TR-C浠ュ姞鏉冪綉缁滅殑褰㈠紡缁勭粐锛堝鈥滀翰瀵嗏啋琚姏寮冣€濈殑杩炴帴鏉冮噸涓?.78锛夈€傚叾鐭ヨ瘑绫诲瀷鏄叧鑱旀€х煡璇嗭紙鐭ラ亾鈥滀粈涔堜笌浠€涔堢浉杩炩€濓級銆係TR-C鐨勬敼鍙樹笉鑳戒粎閫氳繃閫昏緫杈╄瀹炵幇鈥斺€斿畠闇€瑕侀€氳繃鏂扮殑浣撻獙锛堝鐭鎬ф儏鎰熶綋楠岋級鏉ラ噸鏂板姞鏉冭繛鎺ャ€傝繖浜涙搷浣滃睘浜嶨-M-A-R涓殑<strong>RELINK</strong>銆係TR-C鏄疘NTRE鍦ㄥ姛鑳藉眰瀵规潯浠跺弽灏勩€佹儏缁蹇嗐€佸唴闅愯仈缁撳拰渚濇亱妯″紡绛夆€滆繛鎺ユ潈閲嶁€濈浉鍏崇幇璞＄殑鐞嗚鏁村悎鍒涙柊銆?/p>
+
+<p><strong>STR-S锛堝簭鍒楃粨鏋勶級</strong>锛氳繖鏄▼搴忔€х殑銆佹椂搴忕粍缁囩殑鐭ヨ瘑鈥斺€斾範鎯剼鏈€佽涓哄簭鍒椼€佽鐭ョ▼搴忋€佷华寮忓寲鍔ㄤ綔銆係TR-S浠ユ楠ゅ簭鍒楃殑褰㈠紡缁勭粐锛堝鈥滃綋鎰熷埌鐒﹁檻鏃垛啋鍥為伩绀句氦鈫掔嫭澶勨啋鐭殏缂撹В鈫掗暱鏈熸伓鍖栤€濓級銆傚叾鐭ヨ瘑绫诲瀷鏄▼搴忔€х煡璇嗭紙鐭ラ亾鈥滄€庝箞鍋氣€濓級銆係TR-S鐨勬敼鍙橀渶瑕侀€氳繃閲嶅缁冧範銆佹墽琛屾剰鍥俱€佽涓烘帓缁冩潵瀹炵幇鈥斺€旇繖浜涙搷浣滃睘浜嶨-M-A-R涓殑<strong>GATE</strong>鐨勯暱鏈熸晥搴旓細閫氳繃鍙嶅鍚姩(GATE+)鎴栨姂鍒?GATE鈥?鏌愪竴搴忓垪锛岄€愭閲嶆瀯STR-S銆?/p>
+
+<p><strong>鍥剧伒鏈哄姛鑳藉悓鏋勮璇?/strong>銆係TR-R/C/S涓夊垎娉曠殑涓€涓悊璁烘敮鎸佹潵鑷绠楃悊璁猴細浠讳綍淇℃伅澶勭悊绯荤粺鍦ㄥ姛鑳戒笂蹇呴』鍖呭惈涓変釜鍩烘湰缁勪欢鈥斺€?1)瑙勫垯琛紙瀹氫箟鐘舵€佽浆绉昏鍒欙紝瀵瑰簲STR-R锛夛紝(2)瀛樺偍绾稿甫锛堝瓨鍌ㄤ俊鎭笌鍏宠仈锛屽搴擲TR-C锛夛紝(3)璇诲啓澶寸Щ鍔ㄥ崗璁紙瀹氫箟鎿嶄綔鐨勯『搴忥紝瀵瑰簲STR-S锛夈€備笁鍒嗘硶涓嶆槸蹇冪悊瀛︾粡楠岀殑褰掔撼锛岃€屾槸浠庤绠楃悊璁烘帹瀵煎嚭鐨勫姛鑳界粨鏋勫繀鐒舵€с€?/p>
+
+<p><strong>STR涓夊垎娉曠殑涓村簥鍖哄垎鎰忎箟</strong>銆傚尯鍒哠TR-R銆丼TR-C鍜孲TR-S鐩存帴褰卞搷骞查鎶€鏈殑閫夋嫨锛?/p>
 <ul>
-<li>STR-R问题（如“我必须完美”的非理性信念）→ 优先使用ALIGN类技术（认知重构）</li>
-<li>STR-C问题（如创伤后“亲密→危险”的连接）→ 优先使用RELINK类技术（暴露、EMDR）</li>
-<li>STR-S问题（如习惯性回避行为序列）→ 优先使用GATE类技术（刺激控制、行为排练）</li>
+<li>STR-R闂锛堝鈥滄垜蹇呴』瀹岀編鈥濈殑闈炵悊鎬т俊蹇碉級鈫?浼樺厛浣跨敤ALIGN绫绘妧鏈紙璁ょ煡閲嶆瀯锛?/li>
+<li>STR-C闂锛堝鍒涗激鍚庘€滀翰瀵嗏啋鍗遍櫓鈥濈殑杩炴帴锛夆啋 浼樺厛浣跨敤RELINK绫绘妧鏈紙鏆撮湶銆丒MDR锛?/li>
+<li>STR-S闂锛堝涔犳儻鎬у洖閬胯涓哄簭鍒楋級鈫?浼樺厛浣跨敤GATE绫绘妧鏈紙鍒烘縺鎺у埗銆佽涓烘帓缁冿級</li>
 </ul>
 
-<p>将三类结构问题混为一谈，会导致干预靶点失焦——这是临床中“道理都懂但就是改不了”现象的常见原因。</p>
+<p>灏嗕笁绫荤粨鏋勯棶棰樻贩涓轰竴璋堬紝浼氬鑷村共棰勯澏鐐瑰け鐒︹€斺€旇繖鏄复搴婁腑鈥滈亾鐞嗛兘鎳備絾灏辨槸鏀逛笉浜嗏€濈幇璞＄殑甯歌鍘熷洜銆?/p>
 
 <hr class="section-divider">
 
-<h2>6.5 完备性论证：R-D-S的正交性与覆盖力</h2>
+<h2>6.5 瀹屽鎬ц璇侊細R-D-S鐨勬浜ゆ€т笌瑕嗙洊鍔?/h2>
 
-<p>R-D-S三维是否真正正交（即彼此独立，不可互相化约）？这一问题至关重要，因为如果三个维度存在本质上的重叠，那么42维状态空间就存在概念冗余。</p>
+<p>R-D-S涓夌淮鏄惁鐪熸姝ｄ氦锛堝嵆褰兼鐙珛锛屼笉鍙簰鐩稿寲绾︼級锛熻繖涓€闂鑷冲叧閲嶈锛屽洜涓哄鏋滀笁涓淮搴﹀瓨鍦ㄦ湰璐ㄤ笂鐨勯噸鍙狅紝閭ｄ箞42缁寸姸鎬佺┖闂村氨瀛樺湪姒傚康鍐椾綑銆?/p>
 
-<p><strong>正交性</strong>：R、D、S在概念定义上严格正交。资源描述存量，调度描述流量，结构描述控制规则。三者之间的共变是系统动力学的表现（并行激活、因果耦合、资源依赖），而非维度定义的重叠。没有发现不可分解的“本质捆绑”。</p>
+<p><strong>姝ｄ氦鎬?/strong>锛歊銆丏銆丼鍦ㄦ蹇靛畾涔変笂涓ユ牸姝ｄ氦銆傝祫婧愭弿杩板瓨閲忥紝璋冨害鎻忚堪娴侀噺锛岀粨鏋勬弿杩版帶鍒惰鍒欍€備笁鑰呬箣闂寸殑鍏卞彉鏄郴缁熷姩鍔涘鐨勮〃鐜帮紙骞惰婵€娲汇€佸洜鏋滆€﹀悎銆佽祫婧愪緷璧栵級锛岃€岄潪缁村害瀹氫箟鐨勯噸鍙犮€傛病鏈夊彂鐜颁笉鍙垎瑙ｇ殑鈥滄湰璐ㄦ崋缁戔€濄€?/p>
 
-<p><strong>完备性</strong>：是否可能用两个维度来描述心理状态？压力测试表明，这种简化会导致关键信息丢失。S层的结构参数决定了D层和R层的行为模式——一个具有“我必须完美”规则的系统，即使在RES-D充足的情况下，也会表现出与没有该规则的系统完全不同的调度模式和资源消耗模式。反之，增加维度（如节律相位）会产生与现有维度的重叠——可以被S-P的时间系统或STR-S的节律设定点吸收。</p>
+<p><strong>瀹屽鎬?/strong>锛氭槸鍚﹀彲鑳界敤涓や釜缁村害鏉ユ弿杩板績鐞嗙姸鎬侊紵鍘嬪姏娴嬭瘯琛ㄦ槑锛岃繖绉嶇畝鍖栦細瀵艰嚧鍏抽敭淇℃伅涓㈠け銆係灞傜殑缁撴瀯鍙傛暟鍐冲畾浜咲灞傚拰R灞傜殑琛屼负妯″紡鈥斺€斾竴涓叿鏈夆€滄垜蹇呴』瀹岀編鈥濊鍒欑殑绯荤粺锛屽嵆浣垮湪RES-D鍏呰冻鐨勬儏鍐典笅锛屼篃浼氳〃鐜板嚭涓庢病鏈夎瑙勫垯鐨勭郴缁熷畬鍏ㄤ笉鍚岀殑璋冨害妯″紡鍜岃祫婧愭秷鑰楁ā寮忋€傚弽涔嬶紝澧炲姞缁村害锛堝鑺傚緥鐩镐綅锛変細浜х敓涓庣幇鏈夌淮搴︾殑閲嶅彔鈥斺€斿彲浠ヨS-P鐨勬椂闂寸郴缁熸垨STR-S鐨勮妭寰嬭瀹氱偣鍚告敹銆?/p>
 
-<p><strong>结论</strong>：R-D-S三维在概念定义上正交，在现象覆盖上完备，在工程实践中是描述动态系统的最小完备维度集。它是INTRE作为功能层通用状态描述语言的核心骨架。</p>
+<p><strong>缁撹</strong>锛歊-D-S涓夌淮鍦ㄦ蹇靛畾涔変笂姝ｄ氦锛屽湪鐜拌薄瑕嗙洊涓婂畬澶囷紝鍦ㄥ伐绋嬪疄璺典腑鏄弿杩板姩鎬佺郴缁熺殑鏈€灏忓畬澶囩淮搴﹂泦銆傚畠鏄疘NTRE浣滀负鍔熻兘灞傞€氱敤鐘舵€佹弿杩拌瑷€鐨勬牳蹇冮鏋躲€?/p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：R-D-S三维状态语法从系统动力学的存量-流量-结构框架推导而来，在工程约束（诊断精度、干预指导力、跨现象覆盖）下收敛为最优解。资源层区分快速波动的RES-D和缓慢变化的RES-B，两者的临床区分意义在于干预路径的根本不同（MODULATE治标 vs 结构性操作治本）。调度层区分意识可调控的DSP-F和自动化的DSP-B，DSP-B“劫持”是临床中许多自动化失控现象的机制根源。结构层区分规则(STR-R)、连接(STR-C)和序列(STR-S)三种知识类型，对应ALIGN、RELINK和GATE三类不同的干预操作。R-D-S是INTRE作为功能层通用状态描述语言的核心骨架，也是连接描述（状态）与操作（干预）的关键枢纽。</p>
+<p><strong>鏈珷灏忕粨</strong>锛歊-D-S涓夌淮鐘舵€佽娉曚粠绯荤粺鍔ㄥ姏瀛︾殑瀛橀噺-娴侀噺-缁撴瀯妗嗘灦鎺ㄥ鑰屾潵锛屽湪宸ョ▼绾︽潫锛堣瘖鏂簿搴︺€佸共棰勬寚瀵煎姏銆佽法鐜拌薄瑕嗙洊锛変笅鏀舵暃涓烘渶浼樿В銆傝祫婧愬眰鍖哄垎蹇€熸尝鍔ㄧ殑RES-D鍜岀紦鎱㈠彉鍖栫殑RES-B锛屼袱鑰呯殑涓村簥鍖哄垎鎰忎箟鍦ㄤ簬骞查璺緞鐨勬牴鏈笉鍚岋紙MODULATE娌绘爣 vs 缁撴瀯鎬ф搷浣滄不鏈級銆傝皟搴﹀眰鍖哄垎鎰忚瘑鍙皟鎺х殑DSP-F鍜岃嚜鍔ㄥ寲鐨凞SP-B锛孌SP-B鈥滃姭鎸佲€濇槸涓村簥涓澶氳嚜鍔ㄥ寲澶辨帶鐜拌薄鐨勬満鍒舵牴婧愩€傜粨鏋勫眰鍖哄垎瑙勫垯(STR-R)銆佽繛鎺?STR-C)鍜屽簭鍒?STR-S)涓夌鐭ヨ瘑绫诲瀷锛屽搴擜LIGN銆丷ELINK鍜孏ATE涓夌被涓嶅悓鐨勫共棰勬搷浣溿€俁-D-S鏄疘NTRE浣滀负鍔熻兘灞傞€氱敤鐘舵€佹弿杩拌瑷€鐨勬牳蹇冮鏋讹紝涔熸槸杩炴帴鎻忚堪锛堢姸鎬侊級涓庢搷浣滐紙骞查锛夌殑鍏抽敭鏋㈢航銆?/p>
 
-<blockquote><p><strong>关键术语</strong>：R-D-S，RES-D，RES-B，DSP-F，DSP-B，STR-R，STR-C，STR-S，正交性，工程收敛解</p></blockquote>
+<blockquote><p><strong>鍏抽敭鏈</strong>锛歊-D-S锛孯ES-D锛孯ES-B锛孌SP-F锛孌SP-B锛孲TR-R锛孲TR-C锛孲TR-S锛屾浜ゆ€э紝宸ョ▼鏀舵暃瑙?/p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “42个维度太多可以合并” → ✅ 降维测试表明合并会导致关键功能区分的丢失（如拖延的不同亚型）。<br>- ❌ “RES-B可以通过MODULATE直接补充” → ✅ RES-B只能通过结构性操作（ALIGN/RELINK/GATE）间接建设。</p></blockquote>
+<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥?2涓淮搴﹀お澶氬彲浠ュ悎骞垛€?鈫?鉁?闄嶇淮娴嬭瘯琛ㄦ槑鍚堝苟浼氬鑷村叧閿姛鑳藉尯鍒嗙殑涓㈠け锛堝鎷栧欢鐨勪笉鍚屼簹鍨嬶級銆?br>- 鉂?鈥淩ES-B鍙互閫氳繃MODULATE鐩存帴琛ュ厖鈥?鈫?鉁?RES-B鍙兘閫氳繃缁撴瀯鎬ф搷浣滐紙ALIGN/RELINK/GATE锛夐棿鎺ュ缓璁俱€?/p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 从系统动力学的存量-流量-结构框架出发，解释为什么R-D-S是描述动态系统的最小完备维度集。<br>2. 考试焦虑在R-D-S语法中可以被分解为哪些组件？分别标注R、D、S维度的贡献。<br>3. 本章将R-D-S定位为工程收敛解而非对心理实体结构的发现。这一认识论定位对INTRE的科学性是增强还是削弱？</p></blockquote>
+<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 浠庣郴缁熷姩鍔涘鐨勫瓨閲?娴侀噺-缁撴瀯妗嗘灦鍑哄彂锛岃В閲婁负浠€涔圧-D-S鏄弿杩板姩鎬佺郴缁熺殑鏈€灏忓畬澶囩淮搴﹂泦銆?br>2. 鑰冭瘯鐒﹁檻鍦≧-D-S璇硶涓彲浠ヨ鍒嗚В涓哄摢浜涚粍浠讹紵鍒嗗埆鏍囨敞R銆丏銆丼缁村害鐨勮础鐚€?br>3. 鏈珷灏哛-D-S瀹氫綅涓哄伐绋嬫敹鏁涜В鑰岄潪瀵瑰績鐞嗗疄浣撶粨鏋勭殑鍙戠幇銆傝繖涓€璁よ瘑璁哄畾浣嶅INTRE鐨勭瀛︽€ф槸澧炲己杩樻槸鍓婂急锛?/p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-30</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch05.html" class="nav-link prev">‹ 架构推导</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="ch07.html" class="nav-link next">功能模块 ›</a></div>
+        <div class="chapter-nav"><a href="ch05.html" class="nav-link prev">鈥?鏋舵瀯鎺ㄥ</a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="ch07.html" class="nav-link next">鍔熻兘妯″潡 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -191,7 +191,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

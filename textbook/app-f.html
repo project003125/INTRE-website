@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>附录F：逻辑指纹——编码协议与PCUI JSON示例 · INTRE 导论教材</title>
-    <meta name="description" content="本附录提供INTRE框架中逻辑指纹体系的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。">
-    <meta property="og:title" content="附录F：逻辑指纹——编码协议与PCUI JSON示例">
-    <meta property="og:description" content="本附录提供INTRE框架中逻辑指纹体系的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。">
+    <title>闄勫綍F锛氶€昏緫鎸囩汗鈥斺€旂紪鐮佸崗璁笌PCUI JSON绀轰緥 路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="鏈檮褰曟彁渚汭NTRE妗嗘灦涓€昏緫鎸囩汗浣撶郴鐨勬爣鍑嗗寲缂栫爜鍗忚锛屼互鍙婂鐞嗕笉鍚屽垎鏋愯€呬箣闂磋В鏋愬樊寮傜殑宸ョ▼鍖栬В鍐虫柟妗堛€傞€昏緫鎸囩汗鏄垽瀹氫笉鍚岃В鏋愭槸鍚︽弿杩板悓涓€蹇冪悊瀹炰綋鐨勫洓缁勬浜ょ淮搴︹€斺€旀ā鍧楁寚绾广€佽祫婧愭寚绾广€佸眰绾ф寚绾广€佹搷浣滄寚绾光€斺€斾负璺ㄦ祦娲剧炕璇戙€佷复搴婅瘖鏂竴鑷存€с€丄I缂栬瘧鎻愪緵鍙搷浣滅殑鍒ゅ畾鏍囧昂銆?>
+    <meta property="og:title" content="闄勫綍F锛氶€昏緫鎸囩汗鈥斺€旂紪鐮佸崗璁笌PCUI JSON绀轰緥">
+    <meta property="og:description" content="鏈檮褰曟彁渚汭NTRE妗嗘灦涓€昏緫鎸囩汗浣撶郴鐨勬爣鍑嗗寲缂栫爜鍗忚锛屼互鍙婂鐞嗕笉鍚屽垎鏋愯€呬箣闂磋В鏋愬樊寮傜殑宸ョ▼鍖栬В鍐虫柟妗堛€傞€昏緫鎸囩汗鏄垽瀹氫笉鍚岃В鏋愭槸鍚︽弿杩板悓涓€蹇冪悊瀹炰綋鐨勫洓缁勬浜ょ淮搴︹€斺€旀ā鍧楁寚绾广€佽祫婧愭寚绾广€佸眰绾ф寚绾广€佹搷浣滄寚绾光€斺€斾负璺ㄦ祦娲剧炕璇戙€佷复搴婅瘖鏂竴鑷存€с€丄I缂栬瘧鎻愪緵鍙搷浣滅殑鍒ゅ畾鏍囧昂銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-f.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-f.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="附录F：逻辑指纹——编码协议与PCUI JSON示例">
-    <meta name="twitter:description" content="本附录提供INTRE框架中逻辑指纹体系的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。">
+    <meta name="twitter:title" content="闄勫綍F锛氶€昏緫鎸囩汗鈥斺€旂紪鐮佸崗璁笌PCUI JSON绀轰緥">
+    <meta name="twitter:description" content="鏈檮褰曟彁渚汭NTRE妗嗘灦涓€昏緫鎸囩汗浣撶郴鐨勬爣鍑嗗寲缂栫爜鍗忚锛屼互鍙婂鐞嗕笉鍚屽垎鏋愯€呬箣闂磋В鏋愬樊寮傜殑宸ョ▼鍖栬В鍐虫柟妗堛€傞€昏緫鎸囩汗鏄垽瀹氫笉鍚岃В鏋愭槸鍚︽弿杩板悓涓€蹇冪悊瀹炰綋鐨勫洓缁勬浜ょ淮搴︹€斺€旀ā鍧楁寚绾广€佽祫婧愭寚绾广€佸眰绾ф寚绾广€佹搷浣滄寚绾光€斺€斾负璺ㄦ祦娲剧炕璇戙€佷复搴婅瘖鏂竴鑷存€с€丄I缂栬瘧鎻愪緵鍙搷浣滅殑鍒ゅ畾鏍囧昂銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,120 +46,120 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录F</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">闄勫綍F</span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">附录F：逻辑指纹——编码协议与PCUI JSON示例</h1>
-<p>本附录提供INTRE框架中<strong>逻辑指纹体系</strong>的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。</p>
+        <h1 class="chapter-title">闄勫綍F锛氶€昏緫鎸囩汗鈥斺€旂紪鐮佸崗璁笌PCUI JSON绀轰緥</h1>
+<p>鏈檮褰曟彁渚汭NTRE妗嗘灦涓?strong>閫昏緫鎸囩汗浣撶郴</strong>鐨勬爣鍑嗗寲缂栫爜鍗忚锛屼互鍙婂鐞嗕笉鍚屽垎鏋愯€呬箣闂磋В鏋愬樊寮傜殑宸ョ▼鍖栬В鍐虫柟妗堛€傞€昏緫鎸囩汗鏄垽瀹氫笉鍚岃В鏋愭槸鍚︽弿杩板悓涓€蹇冪悊瀹炰綋鐨勫洓缁勬浜ょ淮搴︹€斺€旀ā鍧楁寚绾广€佽祫婧愭寚绾广€佸眰绾ф寚绾广€佹搷浣滄寚绾光€斺€斾负璺ㄦ祦娲剧炕璇戙€佷复搴婅瘖鏂竴鑷存€с€丄I缂栬瘧鎻愪緵鍙搷浣滅殑鍒ゅ畾鏍囧昂銆?/p>
 
-<p><strong>文档状态</strong>：v3.3.0（draft）</p>
+<p><strong>鏂囨。鐘舵€?/strong>锛歷3.3.0锛坉raft锛?/p>
 
-<p><strong>适用范围</strong>：所有将心理概念编译为M-R-D-S状态向量的工作，包括：跨流派概念映射、临床个案概念化、心理AI的MCT编译、功能层研究中的编码协议。</p>
+<p><strong>閫傜敤鑼冨洿</strong>锛氭墍鏈夊皢蹇冪悊姒傚康缂栬瘧涓篗-R-D-S鐘舵€佸悜閲忕殑宸ヤ綔锛屽寘鎷細璺ㄦ祦娲炬蹇垫槧灏勩€佷复搴婁釜妗堟蹇靛寲銆佸績鐞咥I鐨凪CT缂栬瘧銆佸姛鑳藉眰鐮旂┒涓殑缂栫爜鍗忚銆?/p>
 
 <hr class="section-divider">
 
-<h2>F.1 核心概念：解析差异的本质与逻辑指纹</h2>
+<h2>F.1 鏍稿績姒傚康锛氳В鏋愬樊寮傜殑鏈川涓庨€昏緫鎸囩汗</h2>
 
-<p><strong>解析差异的必然性</strong>。在将传统心理学概念转译为INTRE的M-R-D-S标准化表述时，不同分析者（人类专家或LLM）对同一心理实体的解析常产生显著的表层差异。这种差异不是框架逻辑矛盾，而是<strong>任何一个单一解析都仅构成对标准逻辑指纹的片面采样</strong>——由于分析者的聚焦效应（流程聚焦、结构聚焦、资源聚焦），解析差异自然存在。标准逻辑指纹本身并非解析自带的属性，而是<strong>通过跨视角综合与专家共识建构的规范实体</strong>。</p>
+<p><strong>瑙ｆ瀽宸紓鐨勫繀鐒舵€?/strong>銆傚湪灏嗕紶缁熷績鐞嗗姒傚康杞瘧涓篒NTRE鐨凪-R-D-S鏍囧噯鍖栬〃杩版椂锛屼笉鍚屽垎鏋愯€咃紙浜虹被涓撳鎴朙LM锛夊鍚屼竴蹇冪悊瀹炰綋鐨勮В鏋愬父浜х敓鏄捐憲鐨勮〃灞傚樊寮傘€傝繖绉嶅樊寮備笉鏄鏋堕€昏緫鐭涚浘锛岃€屾槸<strong>浠讳綍涓€涓崟涓€瑙ｆ瀽閮戒粎鏋勬垚瀵规爣鍑嗛€昏緫鎸囩汗鐨勭墖闈㈤噰鏍?/strong>鈥斺€旂敱浜庡垎鏋愯€呯殑鑱氱劍鏁堝簲锛堟祦绋嬭仛鐒︺€佺粨鏋勮仛鐒︺€佽祫婧愯仛鐒︼級锛岃В鏋愬樊寮傝嚜鐒跺瓨鍦ㄣ€傛爣鍑嗛€昏緫鎸囩汗鏈韩骞堕潪瑙ｆ瀽鑷甫鐨勫睘鎬э紝鑰屾槸<strong>閫氳繃璺ㄨ瑙掔患鍚堜笌涓撳鍏辫瘑寤烘瀯鐨勮鑼冨疄浣?/strong>銆?/p>
 
-<p><strong>四组逻辑指纹的定义</strong>。逻辑指纹由四个正交维度构成，用于判定两份解析是否描述同一心理实体：</p>
+<p><strong>鍥涚粍閫昏緫鎸囩汗鐨勫畾涔?/strong>銆傞€昏緫鎸囩汗鐢卞洓涓浜ょ淮搴︽瀯鎴愶紝鐢ㄤ簬鍒ゅ畾涓や唤瑙ｆ瀽鏄惁鎻忚堪鍚屼竴蹇冪悊瀹炰綋锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>指纹类型</th>
-<th>判定问题</th>
-<th>正交性保证</th>
-<th>示例（心理防御机制）</th>
+<th>鎸囩汗绫诲瀷</th>
+<th>鍒ゅ畾闂</th>
+<th>姝ｄ氦鎬т繚璇?/th>
+<th>绀轰緥锛堝績鐞嗛槻寰℃満鍒讹級</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>模块指纹</strong></td>
-<td>涉及哪些模块？各模块的角色？</td>
-<td>只回答“谁参与及角色”</td>
-<td>认知行为视角：`{(M2, primary), (M4, secondary)}`</td>
+<td><strong>妯″潡鎸囩汗</strong></td>
+<td>娑夊強鍝簺妯″潡锛熷悇妯″潡鐨勮鑹诧紵</td>
+<td>鍙洖绛斺€滆皝鍙備笌鍙婅鑹测€?/td>
+<td>璁ょ煡琛屼负瑙嗚锛歚{(M2, primary), (M4, secondary)}`</td>
 </tr>
 <tr>
-<td><strong>资源指纹</strong></td>
-<td>消耗或保护哪类资源？方向？</td>
-<td>只回答资源类型和方向</td>
+<td><strong>璧勬簮鎸囩汗</strong></td>
+<td>娑堣€楁垨淇濇姢鍝被璧勬簮锛熸柟鍚戯紵</td>
+<td>鍙洖绛旇祫婧愮被鍨嬪拰鏂瑰悜</td>
 <td>`{(RES-D, -), (RES-B, +)}`</td>
 </tr>
 <tr>
-<td><strong>层级指纹</strong></td>
-<td>表现层与根源层？因果关系方向？</td>
-<td>只回答哪层是表现、哪层是根源</td>
-<td>表现: `DSP-B`；根源: `{STR-R, STR-C}`；方向: `表现 ← 根源`</td>
+<td><strong>灞傜骇鎸囩汗</strong></td>
+<td>琛ㄧ幇灞備笌鏍规簮灞傦紵鍥犳灉鍏崇郴鏂瑰悜锛?/td>
+<td>鍙洖绛斿摢灞傛槸琛ㄧ幇銆佸摢灞傛槸鏍规簮</td>
+<td>琛ㄧ幇: `DSP-B`锛涙牴婧? `{STR-R, STR-C}`锛涙柟鍚? `琛ㄧ幇 鈫?鏍规簮`</td>
 </tr>
 <tr>
-<td><strong>操作指纹</strong></td>
-<td>优先干预操作？序列符合D→R→S？</td>
-<td>只回答操作类型和顺序</td>
+<td><strong>鎿嶄綔鎸囩汗</strong></td>
+<td>浼樺厛骞查鎿嶄綔锛熷簭鍒楃鍚圖鈫扲鈫扴锛?/td>
+<td>鍙洖绛旀搷浣滅被鍨嬪拰椤哄簭</td>
 <td>`[GATE-, ALIGN, RELINK]`</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>错误解析的判据</strong>。以下任一条件满足，即判定为错误解析（可证伪性保障）：</p>
+<p><strong>閿欒瑙ｆ瀽鐨勫垽鎹?/strong>銆備互涓嬩换涓€鏉′欢婊¤冻锛屽嵆鍒ゅ畾涓洪敊璇В鏋愶紙鍙瘉浼€т繚闅滐級锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>编号</th>
-<th>判据</th>
-<th>说明</th>
-<th>示例</th>
+<th>缂栧彿</th>
+<th>鍒ゆ嵁</th>
+<th>璇存槑</th>
+<th>绀轰緥</th>
 </tr></thead>
 <tbody>
 <tr>
 <td><strong>E1</strong></td>
-<td>完全遗漏公认核心模块</td>
-<td>多视角集合确认的核心模块完全未被提及</td>
-<td>防御机制解析中完全未涉及M4</td>
+<td>瀹屽叏閬楁紡鍏鏍稿績妯″潡</td>
+<td>澶氳瑙掗泦鍚堢‘璁ょ殑鏍稿績妯″潡瀹屽叏鏈鎻愬強</td>
+<td>闃插尽鏈哄埗瑙ｆ瀽涓畬鍏ㄦ湭娑夊強M4</td>
 </tr>
 <tr>
 <td><strong>E2</strong></td>
-<td>资源方向与标准完全相反</td>
-<td>资源方向（+/-）与标准颠倒</td>
-<td>将反刍思维描述为`{(RES-D, +)}`</td>
+<td>璧勬簮鏂瑰悜涓庢爣鍑嗗畬鍏ㄧ浉鍙?/td>
+<td>璧勬簮鏂瑰悜锛?/-锛変笌鏍囧噯棰犲€?/td>
+<td>灏嗗弽鍒嶆€濈淮鎻忚堪涓篳{(RES-D, +)}`</td>
 </tr>
 <tr>
 <td><strong>E3</strong></td>
-<td>层级因果方向颠倒</td>
-<td>因果方向与标准相反</td>
-<td>将创伤反应描述为`STR ← DSP`</td>
+<td>灞傜骇鍥犳灉鏂瑰悜棰犲€?/td>
+<td>鍥犳灉鏂瑰悜涓庢爣鍑嗙浉鍙?/td>
+<td>灏嗗垱浼ゅ弽搴旀弿杩颁负`STR 鈫?DSP`</td>
 </tr>
 <tr>
 <td><strong>E4</strong></td>
-<td>操作序列逻辑矛盾</td>
-<td>序列违背D→R→S深度逻辑</td>
-<td>对低功能系统给出`[RELINK, GATE-]`</td>
+<td>鎿嶄綔搴忓垪閫昏緫鐭涚浘</td>
+<td>搴忓垪杩濊儗D鈫扲鈫扴娣卞害閫昏緫</td>
+<td>瀵逛綆鍔熻兘绯荤粺缁欏嚭`[RELINK, GATE-]`</td>
 </tr>
 <tr>
 <td><strong>E5</strong></td>
-<td>模块角色与三组指纹系统矛盾</td>
-<td>导致资源/层级/操作指纹不可调和矛盾</td>
-<td>M1 primary却声称无RES-D消耗</td>
+<td>妯″潡瑙掕壊涓庝笁缁勬寚绾圭郴缁熺煕鐩?/td>
+<td>瀵艰嚧璧勬簮/灞傜骇/鎿嶄綔鎸囩汗涓嶅彲璋冨拰鐭涚浘</td>
+<td>M1 primary鍗村０绉版棤RES-D娑堣€?/td>
 </tr>
 </tbody>
 </table>
@@ -167,180 +167,180 @@
 
 <hr class="section-divider">
 
-<h2>F.2 逻辑指纹的取值规范与操作化流程</h2>
+<h2>F.2 閫昏緫鎸囩汗鐨勫彇鍊艰鑼冧笌鎿嶄綔鍖栨祦绋?/h2>
 
-<h2>F.2.1 模块指纹（M-fingerprint）</h2>
+<h2>F.2.1 妯″潡鎸囩汗锛圡-fingerprint锛?/h2>
 
-<p><strong>取值形式</strong>（v3.3多视角版）：多视角映射集合，每个视角给出有序对集合<code>{(Mi, role), (Mj, role), ...}</code>，role ∈ {primary（核心驱动）, secondary（参与）, context（背景）}。</p>
+<p><strong>鍙栧€煎舰寮?/strong>锛坴3.3澶氳瑙掔増锛夛細澶氳瑙掓槧灏勯泦鍚堬紝姣忎釜瑙嗚缁欏嚭鏈夊簭瀵归泦鍚?code>{(Mi, role), (Mj, role), ...}</code>锛宺ole 鈭?{primary锛堟牳蹇冮┍鍔級, secondary锛堝弬涓庯級, context锛堣儗鏅級}銆?/p>
 
-<p><strong>示例</strong>：</p>
+<p><strong>绀轰緥</strong>锛?/p>
 <ul>
-<li>反刍思维 → <code>{默认视角: {(M2, primary), (M4, primary)}}</code></li>
-<li>心理防御机制 → <code>{认知行为视角: {(M2, primary), (M4, secondary)}, 精神分析视角: {(M3, primary), (M4, primary)}, 整合共识视角: {(M2, primary/secondary), (M3, primary/secondary), (M4, primary)}}</code></li>
+<li>鍙嶅垗鎬濈淮 鈫?<code>{榛樿瑙嗚: {(M2, primary), (M4, primary)}}</code></li>
+<li>蹇冪悊闃插尽鏈哄埗 鈫?<code>{璁ょ煡琛屼负瑙嗚: {(M2, primary), (M4, secondary)}, 绮剧鍒嗘瀽瑙嗚: {(M3, primary), (M4, primary)}, 鏁村悎鍏辫瘑瑙嗚: {(M2, primary/secondary), (M3, primary/secondary), (M4, primary)}}</code></li>
 </ul>
 
-<p><strong>编码规则</strong>：</p>
+<p><strong>缂栫爜瑙勫垯</strong>锛?/p>
 <ul>
-<li>每个概念至少有一个primary模块。</li>
-<li>不同视角的模块指纹平行存储于PCUI的多视角集合中，而非强制统一。</li>
-<li>当新视角被提出时，可扩展多视角集合。</li>
+<li>姣忎釜姒傚康鑷冲皯鏈変竴涓猵rimary妯″潡銆?/li>
+<li>涓嶅悓瑙嗚鐨勬ā鍧楁寚绾瑰钩琛屽瓨鍌ㄤ簬PCUI鐨勫瑙嗚闆嗗悎涓紝鑰岄潪寮哄埗缁熶竴銆?/li>
+<li>褰撴柊瑙嗚琚彁鍑烘椂锛屽彲鎵╁睍澶氳瑙掗泦鍚堛€?/li>
 </ul>
 
-<h2>F.2.2 资源指纹（R-fingerprint）</h2>
+<h2>F.2.2 璧勬簮鎸囩汗锛圧-fingerprint锛?/h2>
 
-<p><strong>取值形式</strong>：<code>{(RES-D, ±), (RES-B, ±)}</code>，其中<code>+</code>表示补充/保护，<code>-</code>表示消耗。允许缺失。</p>
+<p><strong>鍙栧€煎舰寮?/strong>锛?code>{(RES-D, 卤), (RES-B, 卤)}</code>锛屽叾涓?code>+</code>琛ㄧず琛ュ厖/淇濇姢锛?code>-</code>琛ㄧず娑堣€椼€傚厑璁哥己澶便€?/p>
 
-<p><strong>示例</strong>：</p>
+<p><strong>绀轰緥</strong>锛?/p>
 <ul>
-<li>反刍思维 → <code>{(RES-D, -)}</code></li>
-<li>心理防御机制 → <code>{(RES-D, -), (RES-B, +)}</code></li>
-<li>正念冥想 → <code>{(RES-D, +)}</code>（通过降低消耗间接补充）</li>
+<li>鍙嶅垗鎬濈淮 鈫?<code>{(RES-D, -)}</code></li>
+<li>蹇冪悊闃插尽鏈哄埗 鈫?<code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>姝ｅ康鍐ユ兂 鈫?<code>{(RES-D, +)}</code>锛堥€氳繃闄嶄綆娑堣€楅棿鎺ヨˉ鍏咃級</li>
 </ul>
 
-<p><strong>编码规则</strong>：</p>
+<p><strong>缂栫爜瑙勫垯</strong>锛?/p>
 <ul>
-<li>资源方向必须与标准一致，否则触发E2。</li>
-<li>若解析中未提及某资源类型，可空缺；若提及但方向相反，判定为错误。</li>
+<li>璧勬簮鏂瑰悜蹇呴』涓庢爣鍑嗕竴鑷达紝鍚﹀垯瑙﹀彂E2銆?/li>
+<li>鑻ヨВ鏋愪腑鏈彁鍙婃煇璧勬簮绫诲瀷锛屽彲绌虹己锛涜嫢鎻愬強浣嗘柟鍚戠浉鍙嶏紝鍒ゅ畾涓洪敊璇€?/li>
 </ul>
 
-<h2>F.2.3 层级指纹（D/S-fingerprint）</h2>
+<h2>F.2.3 灞傜骇鎸囩汗锛圖/S-fingerprint锛?/h2>
 
-<p><strong>取值形式</strong>：</p>
+<p><strong>鍙栧€煎舰寮?/strong>锛?/p>
 <ul>
-<li>表现层：<code>{DSP-F, DSP-B, none}</code></li>
-<li>根源层：<code>{STR-R, STR-C, STR-S, 组合}</code></li>
-<li>因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></li>
+<li>琛ㄧ幇灞傦細<code>{DSP-F, DSP-B, none}</code></li>
+<li>鏍规簮灞傦細<code>{STR-R, STR-C, STR-S, 缁勫悎}</code></li>
+<li>鍥犳灉鏂瑰悜锛?code>琛ㄧ幇 鈫?鏍规簮</code> | <code>琛ㄧ幇 鈫?鏍规簮</code> | <code>鍙屽悜</code></li>
 </ul>
 
-<p><strong>示例</strong>：</p>
+<p><strong>绀轰緥</strong>锛?/p>
 <ul>
-<li>反刍思维 → 表现层<code>DSP-B</code>，根源层<code>{STR-C, STR-S}</code>，方向<code>表现 ← 根源</code></li>
-<li>惊恐发作 → 表现层<code>DSP-B</code>，根源层<code>{M4-STR-R, M4-STR-C}</code>，方向<code>表现 ← 根源</code></li>
-<li>行为激活 → 表现层<code>DSP-F</code>，根源层<code>M4-STR-C</code>，方向<code>表现 → 根源</code></li>
+<li>鍙嶅垗鎬濈淮 鈫?琛ㄧ幇灞?code>DSP-B</code>锛屾牴婧愬眰<code>{STR-C, STR-S}</code>锛屾柟鍚?code>琛ㄧ幇 鈫?鏍规簮</code></li>
+<li>鎯婃亹鍙戜綔 鈫?琛ㄧ幇灞?code>DSP-B</code>锛屾牴婧愬眰<code>{M4-STR-R, M4-STR-C}</code>锛屾柟鍚?code>琛ㄧ幇 鈫?鏍规簮</code></li>
+<li>琛屼负婵€娲?鈫?琛ㄧ幇灞?code>DSP-F</code>锛屾牴婧愬眰<code>M4-STR-C</code>锛屾柟鍚?code>琛ㄧ幇 鈫?鏍规簮</code></li>
 </ul>
 
-<p><strong>编码规则</strong>：</p>
+<p><strong>缂栫爜瑙勫垯</strong>锛?/p>
 <ul>
-<li>因果方向颠倒触发E3。</li>
-<li>根源层可允许多个STR子维度组合。</li>
+<li>鍥犳灉鏂瑰悜棰犲€掕Е鍙慐3銆?/li>
+<li>鏍规簮灞傚彲鍏佽澶氫釜STR瀛愮淮搴︾粍鍚堛€?/li>
 </ul>
 
-<h2>F.2.4 操作指纹（G-M-A-R-fingerprint）</h2>
+<h2>F.2.4 鎿嶄綔鎸囩汗锛圙-M-A-R-fingerprint锛?/h2>
 
-<p><strong>取值形式</strong>：有序列表<code>[op1, op2, ...]</code>，其中<code>op ∈ {GATE, MODULATE, ALIGN, RELINK}</code>。允许空列表。</p>
+<p><strong>鍙栧€煎舰寮?/strong>锛氭湁搴忓垪琛?code>[op1, op2, ...]</code>锛屽叾涓?code>op 鈭?{GATE, MODULATE, ALIGN, RELINK}</code>銆傚厑璁哥┖鍒楄〃銆?/p>
 
-<p><strong>示例</strong>：</p>
+<p><strong>绀轰緥</strong>锛?/p>
 <ul>
-<li>反刍思维 → <code>[GATE-, MODULATE+, RELINK/ALIGN]</code></li>
-<li>惊恐发作（急性） → <code>[GATE-, MODULATE+]</code></li>
-<li>认知重构（孤立技术） → <code>[ALIGN]</code></li>
+<li>鍙嶅垗鎬濈淮 鈫?<code>[GATE-, MODULATE+, RELINK/ALIGN]</code></li>
+<li>鎯婃亹鍙戜綔锛堟€ユ€э級 鈫?<code>[GATE-, MODULATE+]</code></li>
+<li>璁ょ煡閲嶆瀯锛堝绔嬫妧鏈級 鈫?<code>[ALIGN]</code></li>
 </ul>
 
-<p><strong>编码规则</strong>：</p>
+<p><strong>缂栫爜瑙勫垯</strong>锛?/p>
 <ul>
-<li>序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4。</li>
-<li>辅助操作可标注在括号中或作为子列表。</li>
+<li>搴忓垪蹇呴』绗﹀悎D鈫扲鈫扴娣卞害閫昏緫锛堝湪浣庡姛鑳界郴缁熶腑锛夛紝鍚﹀垯瑙﹀彂E4銆?/li>
+<li>杈呭姪鎿嶄綔鍙爣娉ㄥ湪鎷彿涓垨浣滀负瀛愬垪琛ㄣ€?/li>
 </ul>
 
-<h2>F.2.5 操作化判定流程</h2>
+<h2>F.2.5 鎿嶄綔鍖栧垽瀹氭祦绋?/h2>
 
-<pre><code class="language-text">步骤1: 提取模块指纹（多视角）
-       → 识别解析所属的理论视角，提取该视角下的模块角色分配
-       → 若视角不明，使用“默认视角”或“整合共识视角”
+<pre><code class="language-text">姝ラ1: 鎻愬彇妯″潡鎸囩汗锛堝瑙嗚锛?
+       鈫?璇嗗埆瑙ｆ瀽鎵€灞炵殑鐞嗚瑙嗚锛屾彁鍙栬瑙嗚涓嬬殑妯″潡瑙掕壊鍒嗛厤
+       鈫?鑻ヨ瑙掍笉鏄庯紝浣跨敤鈥滈粯璁よ瑙掆€濇垨鈥滄暣鍚堝叡璇嗚瑙掆€?
 
-步骤2: 提取资源指纹
-       → 识别资源类型（RES-D/RES-B）及变化方向（+/−）
+姝ラ2: 鎻愬彇璧勬簮鎸囩汗
+       鈫?璇嗗埆璧勬簮绫诲瀷锛圧ES-D/RES-B锛夊強鍙樺寲鏂瑰悜锛?/鈭掞級
 
-步骤3: 提取层级指纹
-       → 识别表现层（DSP-F/DSP-B）与根源层（STR-R/C/S），判定因果方向
+姝ラ3: 鎻愬彇灞傜骇鎸囩汗
+       鈫?璇嗗埆琛ㄧ幇灞傦紙DSP-F/DSP-B锛変笌鏍规簮灞傦紙STR-R/C/S锛夛紝鍒ゅ畾鍥犳灉鏂瑰悜
 
-步骤4: 提取操作指纹
-       → 提取干预操作序列（GATE/MODULATE/ALIGN/RELINK）
+姝ラ4: 鎻愬彇鎿嶄綔鎸囩汗
+       鈫?鎻愬彇骞查鎿嶄綔搴忓垪锛圙ATE/MODULATE/ALIGN/RELINK锛?
 
-步骤5: 综合判定
-       → 资源、层级、操作三组指纹一致，且模块指纹可纳入多视角集合 → 合法解析
-       → 出现E1-E5中任一条 → 错误解析</code></pre>
+姝ラ5: 缁煎悎鍒ゅ畾
+       鈫?璧勬簮銆佸眰绾с€佹搷浣滀笁缁勬寚绾逛竴鑷达紝涓旀ā鍧楁寚绾瑰彲绾冲叆澶氳瑙掗泦鍚?鈫?鍚堟硶瑙ｆ瀽
+       鈫?鍑虹幇E1-E5涓换涓€鏉?鈫?閿欒瑙ｆ瀽</code></pre>
 
 <hr class="section-divider">
 
-<h2>F.3 实例验证：心理防御机制</h2>
+<h2>F.3 瀹炰緥楠岃瘉锛氬績鐞嗛槻寰℃満鍒?/h2>
 
-<p><strong>解析A：认知行为视角（流程聚焦）</strong></p>
+<p><strong>瑙ｆ瀽A锛氳鐭ヨ涓鸿瑙掞紙娴佺▼鑱氱劍锛?/strong></p>
 
-<blockquote><p>“心理防御机制是心理系统（主要涉及M4与M2的协同）为应对内部冲突或情感过载（M4-RES-D消耗），而自动（DSP-B）调用的，旨在降低焦虑和保护自尊根基（保护M4-RES-B）的行为或认知序列协议（STR-S）。其干预需先中断自动化进程（GATE-），再修正底层信念与连接（ALIGN/RELINK）。”</p></blockquote>
+<blockquote><p>鈥滃績鐞嗛槻寰℃満鍒舵槸蹇冪悊绯荤粺锛堜富瑕佹秹鍙奙4涓嶮2鐨勫崗鍚岋級涓哄簲瀵瑰唴閮ㄥ啿绐佹垨鎯呮劅杩囪浇锛圡4-RES-D娑堣€楋級锛岃€岃嚜鍔紙DSP-B锛夎皟鐢ㄧ殑锛屾棬鍦ㄩ檷浣庣劍铏戝拰淇濇姢鑷皧鏍瑰熀锛堜繚鎶4-RES-B锛夌殑琛屼负鎴栬鐭ュ簭鍒楀崗璁紙STR-S锛夈€傚叾骞查闇€鍏堜腑鏂嚜鍔ㄥ寲杩涚▼锛圙ATE-锛夛紝鍐嶄慨姝ｅ簳灞備俊蹇典笌杩炴帴锛圓LIGN/RELINK锛夈€傗€?/p></blockquote>
 
-<p><strong>四组指纹提取</strong>：</p>
+<p><strong>鍥涚粍鎸囩汗鎻愬彇</strong>锛?/p>
 <ul>
-<li>模块指纹（认知行为视角）：<code>{(M2, primary), (M4, secondary)}</code></li>
-<li>资源指纹：<code>{(RES-D, -), (RES-B, +)}</code></li>
-<li>层级指纹：表现层<code>DSP-B</code>，根源层<code>STR-S</code>，方向<code>表现 ← 根源</code></li>
-<li>操作指纹：<code>[GATE-, ALIGN/RELINK]</code></li>
+<li>妯″潡鎸囩汗锛堣鐭ヨ涓鸿瑙掞級锛?code>{(M2, primary), (M4, secondary)}</code></li>
+<li>璧勬簮鎸囩汗锛?code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>灞傜骇鎸囩汗锛氳〃鐜板眰<code>DSP-B</code>锛屾牴婧愬眰<code>STR-S</code>锛屾柟鍚?code>琛ㄧ幇 鈫?鏍规簮</code></li>
+<li>鎿嶄綔鎸囩汗锛?code>[GATE-, ALIGN/RELINK]</code></li>
 </ul>
 
-<p><strong>解析B：精神分析视角（结构聚焦）</strong></p>
+<p><strong>瑙ｆ瀽B锛氱簿绁炲垎鏋愯瑙掞紙缁撴瀯鑱氱劍锛?/strong></p>
 
-<blockquote><p>“心理防御机制是由M3主导的自动化调度策略（DSP-B），其根源在于M4的结构性冲突（STR-R/C）。当内在欲望与自我概念冲突引发焦虑（消耗M4-RES-D）时，该机制被激活以降低焦虑。干预需在行为层面中断自动化进程（GATE-），并在结构层面整合冲突，修正信念与连接（ALIGN & RELINK）。”</p></blockquote>
+<blockquote><p>鈥滃績鐞嗛槻寰℃満鍒舵槸鐢盡3涓诲鐨勮嚜鍔ㄥ寲璋冨害绛栫暐锛圖SP-B锛夛紝鍏舵牴婧愬湪浜嶮4鐨勭粨鏋勬€у啿绐侊紙STR-R/C锛夈€傚綋鍐呭湪娆叉湜涓庤嚜鎴戞蹇靛啿绐佸紩鍙戠劍铏戯紙娑堣€桵4-RES-D锛夋椂锛岃鏈哄埗琚縺娲讳互闄嶄綆鐒﹁檻銆傚共棰勯渶鍦ㄨ涓哄眰闈腑鏂嚜鍔ㄥ寲杩涚▼锛圙ATE-锛夛紝骞跺湪缁撴瀯灞傞潰鏁村悎鍐茬獊锛屼慨姝ｄ俊蹇典笌杩炴帴锛圓LIGN & RELINK锛夈€傗€?/p></blockquote>
 
-<p><strong>四组指纹提取</strong>：</p>
+<p><strong>鍥涚粍鎸囩汗鎻愬彇</strong>锛?/p>
 <ul>
-<li>模块指纹（精神分析视角）：<code>{(M3, primary), (M4, primary)}</code></li>
-<li>资源指纹：<code>{(RES-D, -), (RES-B, +)}</code></li>
-<li>层级指纹：表现层<code>DSP-B</code>，根源层<code>{STR-R, STR-C}</code>，方向<code>表现 ← 根源</code></li>
-<li>操作指纹：<code>[GATE-, ALIGN, RELINK]</code></li>
+<li>妯″潡鎸囩汗锛堢簿绁炲垎鏋愯瑙掞級锛?code>{(M3, primary), (M4, primary)}</code></li>
+<li>璧勬簮鎸囩汗锛?code>{(RES-D, -), (RES-B, +)}</code></li>
+<li>灞傜骇鎸囩汗锛氳〃鐜板眰<code>DSP-B</code>锛屾牴婧愬眰<code>{STR-R, STR-C}</code>锛屾柟鍚?code>琛ㄧ幇 鈫?鏍规簮</code></li>
+<li>鎿嶄綔鎸囩汗锛?code>[GATE-, ALIGN, RELINK]</code></li>
 </ul>
 
-<p><strong>一致性验证</strong>：</p>
+<p><strong>涓€鑷存€ч獙璇?/strong>锛?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>逻辑指纹</th>
-<th>解析A</th>
-<th>解析B</th>
-<th>一致性判定</th>
+<th>閫昏緫鎸囩汗</th>
+<th>瑙ｆ瀽A</th>
+<th>瑙ｆ瀽B</th>
+<th>涓€鑷存€у垽瀹?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td>模块指纹</td>
+<td>妯″潡鎸囩汗</td>
 <td>`{(M2, primary), (M4, secondary)}`</td>
 <td>`{(M3, primary), (M4, primary)}`</td>
-<td>视角差异，均纳入多视角集合</td>
+<td>瑙嗚宸紓锛屽潎绾冲叆澶氳瑙掗泦鍚?/td>
 </tr>
 <tr>
-<td>资源指纹</td>
+<td>璧勬簮鎸囩汗</td>
 <td>`{(RES-D, -), (RES-B, +)}`</td>
 <td>`{(RES-D, -), (RES-B, +)}`</td>
-<td>✓ 一致</td>
+<td>鉁?涓€鑷?/td>
 </tr>
 <tr>
-<td>层级指纹</td>
-<td>表现: `DSP-B`；根源: `STR-S`</td>
-<td>表现: `DSP-B`；根源: `{STR-R, STR-C}`</td>
-<td>✓ 一致（STR-S与STR-R/C同属S层）</td>
+<td>灞傜骇鎸囩汗</td>
+<td>琛ㄧ幇: `DSP-B`锛涙牴婧? `STR-S`</td>
+<td>琛ㄧ幇: `DSP-B`锛涙牴婧? `{STR-R, STR-C}`</td>
+<td>鉁?涓€鑷达紙STR-S涓嶴TR-R/C鍚屽睘S灞傦級</td>
 </tr>
 <tr>
-<td>操作指纹</td>
+<td>鎿嶄綔鎸囩汗</td>
 <td>`[GATE-, ALIGN/RELINK]`</td>
 <td>`[GATE-, ALIGN, RELINK]`</td>
-<td>✓ 一致</td>
+<td>鉁?涓€鑷?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>结论</strong>：两份解析合法，差异源于视角不同，均被多视角指纹集合容纳。未触发错误判据E1-E5。</p>
+<p><strong>缁撹</strong>锛氫袱浠借В鏋愬悎娉曪紝宸紓婧愪簬瑙嗚涓嶅悓锛屽潎琚瑙嗚鎸囩汗闆嗗悎瀹圭撼銆傛湭瑙﹀彂閿欒鍒ゆ嵁E1-E5銆?/p>
 
 <hr class="section-divider">
 
-<h2>F.4 PCUI条目示例（v3.3多视角版）</h2>
+<h2>F.4 PCUI鏉＄洰绀轰緥锛坴3.3澶氳瑙掔増锛?/h2>
 
-<p>经过PCF-P和PCV-P后，标准化的PCUI条目发布至UPLS主库。以下为“心理防御机制”的PCUI编码示例（JSON格式）：</p>
+<p>缁忚繃PCF-P鍜孭CV-P鍚庯紝鏍囧噯鍖栫殑PCUI鏉＄洰鍙戝竷鑷砋PLS涓诲簱銆備互涓嬩负鈥滃績鐞嗛槻寰℃満鍒垛€濈殑PCUI缂栫爜绀轰緥锛圝SON鏍煎紡锛夛細</p>
 
 <pre><code class="language-json">{
   &quot;pcui&quot;: &quot;UPLS.PCUI.v1.1.004&quot;,
-  &quot;preferred_label&quot;: &quot;心理防御机制&quot;,
-  &quot;synonyms&quot;: [&quot;防御&quot;, &quot;心理防御&quot;, &quot;ego defense&quot;],
-  &quot;definition&quot;: &quot;心理系统为应对内部冲突或情感过载，自动调用的、旨在降低焦虑和保护自尊基底的认知-情绪调度策略。&quot;,
+  &quot;preferred_label&quot;: &quot;蹇冪悊闃插尽鏈哄埗&quot;,
+  &quot;synonyms&quot;: [&quot;闃插尽&quot;, &quot;蹇冪悊闃插尽&quot;, &quot;ego defense&quot;],
+  &quot;definition&quot;: &quot;蹇冪悊绯荤粺涓哄簲瀵瑰唴閮ㄥ啿绐佹垨鎯呮劅杩囪浇锛岃嚜鍔ㄨ皟鐢ㄧ殑銆佹棬鍦ㄩ檷浣庣劍铏戝拰淇濇姢鑷皧鍩哄簳鐨勮鐭?鎯呯华璋冨害绛栫暐銆?quot;,
   &quot;module_fingerprint&quot;: {
     &quot;storage_model&quot;: &quot;multi_perspective_dag&quot;,
     &quot;perspectives&quot;: {
@@ -349,9 +349,9 @@
       &quot;integrated_consensus&quot;: {&quot;M2&quot;: &quot;primary_secondary&quot;, &quot;M3&quot;: &quot;primary_secondary&quot;, &quot;M4&quot;: &quot;primary&quot;}
     },
     &quot;dag_edges&quot;: [
-      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;情绪驱动认知&quot;},
-      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M3&quot;, &quot;label&quot;: &quot;情绪触发调度&quot;},
-      {&quot;from&quot;: &quot;M3&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;调度调用认知策略&quot;}
+      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;鎯呯华椹卞姩璁ょ煡&quot;},
+      {&quot;from&quot;: &quot;M4&quot;, &quot;to&quot;: &quot;M3&quot;, &quot;label&quot;: &quot;鎯呯华瑙﹀彂璋冨害&quot;},
+      {&quot;from&quot;: &quot;M3&quot;, &quot;to&quot;: &quot;M2&quot;, &quot;label&quot;: &quot;璋冨害璋冪敤璁ょ煡绛栫暐&quot;}
     ]
   },
   &quot;resource_fingerprint&quot;: {&quot;RES-D&quot;: &quot;depletion&quot;, &quot;RES-B&quot;: &quot;protection&quot;},
@@ -368,123 +368,123 @@
 
 <hr class="section-divider">
 
-<h2>F.5 UPLS三阶段知识生产流水线</h2>
+<h2>F.5 UPLS涓夐樁娈电煡璇嗙敓浜ф祦姘寸嚎</h2>
 
-<p><strong>F.5.1 PCC-P：心理概念采集协议</strong></p>
+<p><strong>F.5.1 PCC-P锛氬績鐞嗘蹇甸噰闆嗗崗璁?/strong></p>
 
-<p>输入端收集关于某一心理现象的全方位、多源流描述（理论文献、临床案例、社区语言、跨文化表达）。此阶段不进行理论整合，只保留语义场的丰富性。</p>
+<p>杈撳叆绔敹闆嗗叧浜庢煇涓€蹇冪悊鐜拌薄鐨勫叏鏂逛綅銆佸婧愭祦鎻忚堪锛堢悊璁烘枃鐚€佷复搴婃渚嬨€佺ぞ鍖鸿瑷€銆佽法鏂囧寲琛ㄨ揪锛夈€傛闃舵涓嶈繘琛岀悊璁烘暣鍚堬紝鍙繚鐣欒涔夊満鐨勪赴瀵屾€с€?/p>
 
-<p><strong>F.5.2 PCF-P：心理概念形式化编译协议</strong></p>
+<p><strong>F.5.2 PCF-P锛氬績鐞嗘蹇靛舰寮忓寲缂栬瘧鍗忚</strong></p>
 
-<p>多学科专家团队将采集的材料强制编译为理论中立、结构统一的PCUI草案：</p>
+<p>澶氬绉戜笓瀹跺洟闃熷皢閲囬泦鐨勬潗鏂欏己鍒剁紪璇戜负鐞嗚涓珛銆佺粨鏋勭粺涓€鐨凱CUI鑽夋锛?/p>
 <ol>
-<li>识别跨流派功能共识锚点</li>
-<li>映射到M-R-D-S四组指纹（多视角模块指纹集合）</li>
-<li>参数化定义</li>
-<li>记录异议与冲突，形成“反对意见档案”</li>
+<li>璇嗗埆璺ㄦ祦娲惧姛鑳藉叡璇嗛敋鐐?/li>
+<li>鏄犲皠鍒癕-R-D-S鍥涚粍鎸囩汗锛堝瑙嗚妯″潡鎸囩汗闆嗗悎锛?/li>
+<li>鍙傛暟鍖栧畾涔?/li>
+<li>璁板綍寮傝涓庡啿绐侊紝褰㈡垚鈥滃弽瀵规剰瑙佹。妗堚€?/li>
 </ol>
 
-<p><strong>F.5.3 PCV-P：心理概念验证协议</strong></p>
+<p><strong>F.5.3 PCV-P锛氬績鐞嗘蹇甸獙璇佸崗璁?/strong></p>
 
-<p>独立专家评审团对草案进行结构化评审：</p>
+<p>鐙珛涓撳璇勫鍥㈠鑽夋杩涜缁撴瀯鍖栬瘎瀹★細</p>
 <ul>
-<li>跨流派同行评议（25-35名专家，各流派均衡代表）</li>
-<li>量化共识判定：总体支持率≥80%，每个主要流派支持率≥60%</li>
-<li>跨文化适配审核</li>
-<li>通过后发布为正式PCUI条目，附DOI和API端点</li>
+<li>璺ㄦ祦娲惧悓琛岃瘎璁紙25-35鍚嶄笓瀹讹紝鍚勬祦娲惧潎琛′唬琛級</li>
+<li>閲忓寲鍏辫瘑鍒ゅ畾锛氭€讳綋鏀寔鐜団墺80%锛屾瘡涓富瑕佹祦娲炬敮鎸佺巼鈮?0%</li>
+<li>璺ㄦ枃鍖栭€傞厤瀹℃牳</li>
+<li>閫氳繃鍚庡彂甯冧负姝ｅ紡PCUI鏉＄洰锛岄檮DOI鍜孉PI绔偣</li>
 </ul>
 
 <hr class="section-divider">
 
-<h2>F.6 编码员间一致性检验</h2>
+<h2>F.6 缂栫爜鍛橀棿涓€鑷存€ф楠?/h2>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>指纹类型</th>
-<th>变量类型</th>
-<th>推荐指标</th>
-<th>可接受</th>
-<th>良好</th>
+<th>鎸囩汗绫诲瀷</th>
+<th>鍙橀噺绫诲瀷</th>
+<th>鎺ㄨ崘鎸囨爣</th>
+<th>鍙帴鍙?/th>
+<th>鑹ソ</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>模块指纹</td>
-<td>名义类别</td>
-<td>Cohen‘s κ / Fleiss’ κ</td>
-<td>κ ≥ 0.60</td>
-<td>κ ≥ 0.75</td>
+<td>妯″潡鎸囩汗</td>
+<td>鍚嶄箟绫诲埆</td>
+<td>Cohen鈥榮 魏 / Fleiss鈥?魏</td>
+<td>魏 鈮?0.60</td>
+<td>魏 鈮?0.75</td>
 </tr>
 <tr>
-<td>资源指纹</td>
-<td>有序类别</td>
-<td>加权κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
+<td>璧勬簮鎸囩汗</td>
+<td>鏈夊簭绫诲埆</td>
+<td>鍔犳潈魏</td>
+<td>鈮?0.60</td>
+<td>鈮?0.75</td>
 </tr>
 <tr>
-<td>层级指纹</td>
-<td>名义+方向</td>
-<td>Fleiss’ κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
+<td>灞傜骇鎸囩汗</td>
+<td>鍚嶄箟+鏂瑰悜</td>
+<td>Fleiss鈥?魏</td>
+<td>鈮?0.60</td>
+<td>鈮?0.75</td>
 </tr>
 <tr>
-<td>操作指纹</td>
-<td>有序序列</td>
-<td>位置一致率 + 编辑距离</td>
-<td>≥70%</td>
-<td>≥85%</td>
+<td>鎿嶄綔鎸囩汗</td>
+<td>鏈夊簭搴忓垪</td>
+<td>浣嶇疆涓€鑷寸巼 + 缂栬緫璺濈</td>
+<td>鈮?0%</td>
+<td>鈮?5%</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>示例脚本</strong>（Python）：</p>
+<p><strong>绀轰緥鑴氭湰</strong>锛圥ython锛夛細</p>
 <pre><code class="language-python">from sklearn.metrics import cohen_kappa_score
 coder1 = [&#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M3&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M3&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;]
 coder2 = [&#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M3&#x27;, &#x27;M4&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;, &#x27;M3&#x27;, &#x27;M2&#x27;, &#x27;M4&#x27;]
 kappa = cohen_kappa_score(coder1, coder2)
-print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75</code></pre>
+print(f&quot;Kappa: {kappa:.2f}&quot;)  # 棰勬湡 &gt;0.75</code></pre>
 
 <hr class="section-divider">
 
-<h2>F.7 与心理测量学构念效度网络的关系</h2>
+<h2>F.7 涓庡績鐞嗘祴閲忓鏋勫康鏁堝害缃戠粶鐨勫叧绯?/h2>
 
-<p>逻辑指纹体系与Cronbach & Meehl的构念效度网络形成互补：</p>
+<p>閫昏緫鎸囩汗浣撶郴涓嶤ronbach & Meehl鐨勬瀯蹇垫晥搴︾綉缁滃舰鎴愪簰琛ワ細</p>
 <ul>
-<li><strong>构念效度网络</strong>验证构念的外部关系，基于实证测量</li>
-<li><strong>逻辑指纹</strong>验证构念的内部结构（功能模块、资源、层级、操作），基于概念分析与专家共识</li>
-<li><strong>互补关系</strong>：构念效度网络提供“外部锚定”，逻辑指纹提供“内部解剖”</li>
+<li><strong>鏋勫康鏁堝害缃戠粶</strong>楠岃瘉鏋勫康鐨勫閮ㄥ叧绯伙紝鍩轰簬瀹炶瘉娴嬮噺</li>
+<li><strong>閫昏緫鎸囩汗</strong>楠岃瘉鏋勫康鐨勫唴閮ㄧ粨鏋勶紙鍔熻兘妯″潡銆佽祫婧愩€佸眰绾с€佹搷浣滐級锛屽熀浜庢蹇靛垎鏋愪笌涓撳鍏辫瘑</li>
+<li><strong>浜掕ˉ鍏崇郴</strong>锛氭瀯蹇垫晥搴︾綉缁滄彁渚涒€滃閮ㄩ敋瀹氣€濓紝閫昏緫鎸囩汗鎻愪緵鈥滃唴閮ㄨВ鍓栤€?/li>
 </ul>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-30</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-e.html" class="nav-link prev">‹ 流派映射</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="app-g.html" class="nav-link next">术语对照 ›</a></div>
+        <div class="chapter-nav"><a href="app-e.html" class="nav-link prev">鈥?娴佹淳鏄犲皠</a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="app-g.html" class="nav-link next">鏈瀵圭収 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -492,7 +492,7 @@ print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75</code></pre>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

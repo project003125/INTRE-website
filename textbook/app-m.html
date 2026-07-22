@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>附录M：数学速成——函数、微分、概率与滤波 · INTRE 导论教材</title>
-    <meta name="description" content="```text">
-    <meta property="og:title" content="附录M：数学速成——函数、微分、概率与滤波">
-    <meta property="og:description" content="```text">
+    <title>闄勫綍M锛氭暟瀛﹂€熸垚鈥斺€斿嚱鏁般€佸井鍒嗐€佹鐜囦笌婊ゆ尝 路 INTRE 瀵艰鏁欐潗</title>
+    <meta name="description" content="INTRE 妗嗘灦鏁板鍩虹閫熸垚锛氱嚎鎬т唬鏁般€佹鐜囪銆佸井鍒嗘柟绋嬨€佽礉鍙舵柉鎺ㄦ柇绛夋牳蹇冩暟瀛︽蹇靛強鍏跺湪鍔熻兘灞傚績鐞嗗涓殑搴旂敤銆?>
+    <meta property="og:title" content="闄勫綍M锛氭暟瀛﹂€熸垚鈥斺€斿嚱鏁般€佸井鍒嗐€佹鐜囦笌婊ゆ尝">
+    <meta property="og:description" content="INTRE 妗嗘灦鏁板鍩虹閫熸垚锛氱嚎鎬т唬鏁般€佹鐜囪銆佸井鍒嗘柟绋嬨€佽礉鍙舵柉鎺ㄦ柇绛夋牳蹇冩暟瀛︽蹇靛強鍏跺湪鍔熻兘灞傚績鐞嗗涓殑搴旂敤銆?>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-m.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-m.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="附录M：数学速成——函数、微分、概率与滤波">
-    <meta name="twitter:description" content="```text">
+    <meta name="twitter:title" content="闄勫綍M锛氭暟瀛﹂€熸垚鈥斺€斿嚱鏁般€佸井鍒嗐€佹鐜囦笌婊ゆ尝">
+    <meta name="twitter:description" content="INTRE 妗嗘灦鏁板鍩虹閫熸垚锛氱嚎鎬т唬鏁般€佹鐜囪銆佸井鍒嗘柟绋嬨€佽礉鍙舵柉鎺ㄦ柇绛夋牳蹇冩暟瀛︽蹇靛強鍏跺湪鍔熻兘灞傚績鐞嗗涓殑搴旂敤銆?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +27,18 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">目录</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+            <span class="toc-sidebar-title">鐩綍</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
-        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
+        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
@@ -46,557 +46,555 @@
 <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/">棣栭〉</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a>
-                <a href="/INTRE-website/glossary/">术语表</a>
+                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
+                <a href="/INTRE-website/glossary/">鏈琛?/a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">附录M</span>
+            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
+            <span class="page-label">闄勫綍M</span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">附录M：数学速成——函数、微分、概率与滤波</h1>
+        <h1 class="chapter-title">闄勫綍M锛氭暟瀛﹂€熸垚鈥斺€斿嚱鏁般€佸井鍒嗐€佹鐜囦笌婊ゆ尝</h1>
 
-<blockquote><p><strong>目标读者</strong>：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
+<blockquote><p><strong>鐩爣璇昏€?/strong>锛氬叿澶囦腑鍥介珮鑰冧腑绛夋暟瀛︽按骞炽€佹鍦ㄥ涔犳垨浠庝簨蹇冪悊瀛︺€佽鐭ョ瀛︺€佷复搴婂尰瀛︾瓑涓撲笟鐨勫鐢熸垨鐮旂┒鑰呫€傛湰闄勫綍甯姪浣犲揩閫熸帉鎻￠槄璇荤8銆?9銆?0銆?8銆?9绔犳墍蹇呴渶鐨勬暟瀛︽蹇点€?/p></blockquote>
 
-<blockquote><p><strong>学习路线</strong>：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
+<blockquote><p><strong>瀛︿範璺嚎</strong>锛氬缓璁寜鈥溾啋鈥濋『搴忛槄璇伙紝姣忚妭绾?5-30鍒嗛挓銆傚彲鏍规嵁闇€瑕佽烦璺冦€?/p></blockquote>
 
-<pre><code class="language-text">函数与导数 → 微分方程 → 线性代数基础 → 概率与贝叶斯 → 状态估计思想 → 粒子滤波 → 非线性动力学
-    ↓            ↓           ↓              ↓              ↓               ↓            ↓
-  第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章</code></pre>
+<pre><code class="language-text">鍑芥暟涓庡鏁?鈫?寰垎鏂圭▼ 鈫?绾挎€т唬鏁板熀纭€ 鈫?姒傜巼涓庤礉鍙舵柉 鈫?鐘舵€佷及璁℃€濇兂 鈫?绮掑瓙婊ゆ尝 鈫?闈炵嚎鎬у姩鍔涘
+    鈫?           鈫?          鈫?             鈫?             鈫?              鈫?           鈫?
+  绗?绔?      绗?/19绔?   绗?绔狅紙鍚戦噺锛?  绗?0绔?       绗?0绔?         绗?0绔?     绗?9绔?/code></pre>
 
 <hr class="section-divider">
 
-<h2>M.1 函数与导数（高中回顾）</h2>
+<h2>M.1 鍑芥暟涓庡鏁帮紙楂樹腑鍥為【锛?/h2>
 
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是随时间变化的函数；导数描述“变化快慢”。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱8绔犵殑鐘舵€佸悜閲?\(\Psi(t)\) 鏄殢鏃堕棿鍙樺寲鐨勫嚱鏁帮紱瀵兼暟鎻忚堪鈥滃彉鍖栧揩鎱⑩€濄€?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>数学形式</th>
-<th>心理学例子</th>
+<th>姒傚康</th>
+<th>閫氫織瑙ｉ噴</th>
+<th>鏁板褰㈠紡</th>
+<th>蹇冪悊瀛︿緥瀛?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>函数</strong></td>
-<td>一个量随另一个量变化的规则</td>
+<td><strong>鍑芥暟</strong></td>
+<td>涓€涓噺闅忓彟涓€涓噺鍙樺寲鐨勮鍒?/td>
 <td>\(y = f(x)\)</td>
-<td>意志资源 \(R\) 随时间 \(t\) 变化：\(R(t)\)</td>
+<td>鎰忓織璧勬簮 \(R\) 闅忔椂闂?\(t\) 鍙樺寲锛歕(R(t)\)</td>
 </tr>
 <tr>
-<td><strong>导数</strong></td>
-<td>函数在某点的瞬时变化率</td>
-<td>\(\frac{dy}{dt}\) 或 \(y'\)</td>
-<td>意志资源的消耗速率 \(dR/dt\)</td>
+<td><strong>瀵兼暟</strong></td>
+<td>鍑芥暟鍦ㄦ煇鐐圭殑鐬椂鍙樺寲鐜?/td>
+<td>\(\frac{dy}{dt}\) 鎴?\(y'\)</td>
+<td>鎰忓織璧勬簮鐨勬秷鑰楅€熺巼 \(dR/dt\)</td>
 </tr>
 <tr>
-<td><strong>指数衰减</strong></td>
-<td>按当前值的固定比例减少</td>
+<td><strong>鎸囨暟琛板噺</strong></td>
+<td>鎸夊綋鍓嶅€肩殑鍥哄畾姣斾緥鍑忓皯</td>
 <td>\(\frac{dR}{dt} = -\alpha R\)</td>
-<td>资源消耗速率与当前资源量成正比</td>
+<td>璧勬簮娑堣€楅€熺巼涓庡綋鍓嶈祫婧愰噺鎴愭姣?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。</p>
-<blockquote><p>📌 你不需要会推导，只需知道：指数衰减意味着“越剩越少，减少得越慢”。</p></blockquote>
+<p><strong>鍏抽敭寮忓瓙</strong>锛氳嫢 \(\frac{dR}{dt} = -\alpha R\)锛屽垯 \(R(t) = R_0 e^{-\alpha t}\)锛堟寚鏁拌“鍑忥級銆?/p>
+<blockquote><p>馃搶 浣犱笉闇€瑕佷細鎺ㄥ锛屽彧闇€鐭ラ亾锛氭寚鏁拌“鍑忔剰鍛崇潃鈥滆秺鍓╄秺灏戯紝鍑忓皯寰楄秺鎱⑩€濄€?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.2 微分方程基础</h2>
+<h2>M.2 寰垎鏂圭▼鍩虹</h2>
 
-<p><strong>为什么需要</strong>：第8、19章用微分方程描述心理状态如何随时间演化。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱8銆?9绔犵敤寰垎鏂圭▼鎻忚堪蹇冪悊鐘舵€佸浣曢殢鏃堕棿婕斿寲銆?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>解释</th>
-<th>第19章对应</th>
+<th>姒傚康</th>
+<th>瑙ｉ噴</th>
+<th>绗?9绔犲搴?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>常微分方程（ODE）</strong></td>
-<td>包含未知函数及其导数的方程</td>
-<td>\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\)</td>
+<td><strong>甯稿井鍒嗘柟绋嬶紙ODE锛?/strong></td>
+<td>鍖呭惈鏈煡鍑芥暟鍙婂叾瀵兼暟鐨勬柟绋?/td>
+<td>\(\frac{dR}{dt} = \text{渚涚粰} - \alpha R - \text{娑堣€梷\)</td>
 </tr>
 <tr>
-<td><strong>解</strong></td>
-<td>满足方程的函数 \(R(t)\)</td>
-<td>资源随时间变化的轨迹</td>
+<td><strong>瑙?/strong></td>
+<td>婊¤冻鏂圭▼鐨勫嚱鏁?\(R(t)\)</td>
+<td>璧勬簮闅忔椂闂村彉鍖栫殑杞ㄨ抗</td>
 </tr>
 <tr>
-<td><strong>初始条件</strong></td>
-<td>\(t=0\) 时的状态值 \(R(0)\)</td>
-<td>初始评估时的资源水平</td>
+<td><strong>鍒濆鏉′欢</strong></td>
+<td>\(t=0\) 鏃剁殑鐘舵€佸€?\(R(0)\)</td>
+<td>鍒濆璇勪及鏃剁殑璧勬簮姘村钩</td>
 </tr>
 <tr>
-<td><strong>参数</strong></td>
-<td>方程中不变的常数（如 \(\alpha\)）</td>
-<td>消耗速率、恢复速率</td>
+<td><strong>鍙傛暟</strong></td>
+<td>鏂圭▼涓笉鍙樼殑甯告暟锛堝 \(\alpha\)锛?/td>
+<td>娑堣€楅€熺巼銆佹仮澶嶉€熺巼</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>核心思想</strong>：给定初始状态和演化规则，计算机可以通过数值积分（如欧拉方法）近似算出未来轨迹——<strong>你不必手工解方程</strong>，只需理解输入输出。</p>
+<p><strong>鏍稿績鎬濇兂</strong>锛氱粰瀹氬垵濮嬬姸鎬佸拰婕斿寲瑙勫垯锛岃绠楁満鍙互閫氳繃鏁板€肩Н鍒嗭紙濡傛鎷夋柟娉曪級杩戜技绠楀嚭鏈潵杞ㄨ抗鈥斺€?strong>浣犱笉蹇呮墜宸ヨВ鏂圭▼</strong>锛屽彧闇€鐞嗚В杈撳叆杈撳嚭銆?/p>
 
-<p><strong>欧拉方法直观</strong>：\(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\)，一步接一步，像动画片逐帧播放。</p>
+<p><strong>娆ф媺鏂规硶鐩磋</strong>锛歕(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\)锛屼竴姝ユ帴涓€姝ワ紝鍍忓姩鐢荤墖閫愬抚鎾斁銆?/p>
 
 <hr class="section-divider">
 
-<h2>M.3 线性代数基础（第8章必备）</h2>
+<h2>M.3 绾挎€т唬鏁板熀纭€锛堢8绔犲繀澶囷級</h2>
 
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱8绔犵殑鐘舵€佸悜閲?\(\Psi(t)\) 鏄?2缁村悜閲忥紝娑夊強鍚戦噺杩愮畻銆佹浜ゆ€с€佹姘忚窛绂荤瓑姒傚康銆?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>数学形式</th>
-<th>心理学例子</th>
+<th>姒傚康</th>
+<th>閫氫織瑙ｉ噴</th>
+<th>鏁板褰㈠紡</th>
+<th>蹇冪悊瀛︿緥瀛?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>向量</strong></td>
-<td>一组有序的数字列表</td>
+<td><strong>鍚戦噺</strong></td>
+<td>涓€缁勬湁搴忕殑鏁板瓧鍒楄〃</td>
 <td>\(\vec{v} = (v_1, v_2, \dots, v_n)\)</td>
-<td>42维状态向量 \(\Psi\)</td>
+<td>42缁寸姸鎬佸悜閲?\(\Psi\)</td>
 </tr>
 <tr>
-<td><strong>向量的模长（范数）</strong></td>
-<td>向量的长度</td>
-<td>\(\</td>
-<td>\vec{v}\</td>
-<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
-<td>状态向量的“总偏离”程度</td>
+<td><strong>鍚戦噺鐨勬ā闀匡紙鑼冩暟锛?/strong></td>
+<td>鍚戦噺鐨勯暱搴?/td>
+<td>\(\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
+<td>鐘舵€佸悜閲忕殑鈥滄€诲亸绂烩€濈▼搴?/td>
 </tr>
 <tr>
-<td><strong>向量点积（内积）</strong></td>
-<td>两向量对应分量乘积之和</td>
+<td><strong>鍚戦噺鐐圭Н锛堝唴绉級</strong></td>
+<td>涓ゅ悜閲忓搴斿垎閲忎箻绉箣鍜?/td>
 <td>\(\vec{u} \cdot \vec{v} = \sum u_i v_i\)</td>
-<td>用于计算相似度</td>
+<td>鐢ㄤ簬璁＄畻鐩镐技搴?/td>
 </tr>
 <tr>
-<td><strong>欧氏距离</strong></td>
-<td>两向量之间的直线距离</td>
+<td><strong>娆ф皬璺濈</strong></td>
+<td>涓ゅ悜閲忎箣闂寸殑鐩寸嚎璺濈</td>
 <td>\(d = \sqrt{\sum (u_i - v_i)^2}\)</td>
-<td>两个心理状态的相似性</td>
+<td>涓や釜蹇冪悊鐘舵€佺殑鐩镐技鎬?/td>
 </tr>
 <tr>
-<td><strong>正交</strong></td>
-<td>两向量点积为零，互相垂直</td>
+<td><strong>姝ｄ氦</strong></td>
+<td>涓ゅ悜閲忕偣绉负闆讹紝浜掔浉鍨傜洿</td>
 <td>\(\vec{u} \cdot \vec{v} = 0\)</td>
-<td>R、D、S维度功能独立</td>
+<td>R銆丏銆丼缁村害鍔熻兘鐙珛</td>
 </tr>
 <tr>
-<td><strong>矩阵</strong></td>
-<td>二维数字表格</td>
+<td><strong>鐭╅樀</strong></td>
+<td>浜岀淮鏁板瓧琛ㄦ牸</td>
 <td>\(A_{m \times n}\)</td>
-<td>依赖矩阵（42×42）</td>
+<td>渚濊禆鐭╅樀锛?2脳42锛?/td>
 </tr>
 <tr>
-<td><strong>转置</strong></td>
-<td>行列互换</td>
+<td><strong>杞疆</strong></td>
+<td>琛屽垪浜掓崲</td>
 <td>\(A^T\)</td>
-<td>用于计算协方差</td>
+<td>鐢ㄤ簬璁＄畻鍗忔柟宸?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p>📌 你不需要手算高维向量，只需理解：状态向量是心理系统在42个坐标轴上的读数；两个状态之间的距离越短，越相似。</p></blockquote>
+<blockquote><p>馃搶 浣犱笉闇€瑕佹墜绠楅珮缁村悜閲忥紝鍙渶鐞嗚В锛氱姸鎬佸悜閲忔槸蹇冪悊绯荤粺鍦?2涓潗鏍囪酱涓婄殑璇绘暟锛涗袱涓姸鎬佷箣闂寸殑璺濈瓒婄煭锛岃秺鐩镐技銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.4 概率与贝叶斯定理</h2>
+<h2>M.4 姒傜巼涓庤礉鍙舵柉瀹氱悊</h2>
 
-<p><strong>为什么需要</strong>：第20章用贝叶斯校准融合观测数据，更新对状态的不确定性。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱20绔犵敤璐濆彾鏂牎鍑嗚瀺鍚堣娴嬫暟鎹紝鏇存柊瀵圭姸鎬佺殑涓嶇‘瀹氭€с€?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>符号</th>
+<th>姒傚康</th>
+<th>閫氫織瑙ｉ噴</th>
+<th>绗﹀彿</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>概率</strong></td>
-<td>事件发生的可能性（0到1）</td>
+<td><strong>姒傜巼</strong></td>
+<td>浜嬩欢鍙戠敓鐨勫彲鑳芥€э紙0鍒?锛?/td>
 <td>\(P(A)\)</td>
 </tr>
 <tr>
-<td><strong>条件概率</strong></td>
-<td>在B发生下A的概率</td>
+<td><strong>鏉′欢姒傜巼</strong></td>
+<td>鍦˙鍙戠敓涓婣鐨勬鐜?/td>
 <td>\(P(A \mid B)\)</td>
 </tr>
 <tr>
-<td><strong>贝叶斯定理</strong></td>
-<td>已知 \(P(B \mid A)\) 求 \(P(A \mid B)\)</td>
+<td><strong>璐濆彾鏂畾鐞?/strong></td>
+<td>宸茬煡 \(P(B \mid A)\) 姹?\(P(A \mid B)\)</td>
 <td>\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\)</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>心理学解释</strong>：</p>
+<p><strong>蹇冪悊瀛﹁В閲?/strong>锛?/p>
 <ul>
-<li><strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验）</li>
-<li><strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性</li>
-<li><strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</li>
+<li><strong>鍏堥獙</strong> \(P(A)\)锛氳娴嬫暟鎹箣鍓嶇殑鍒濆淇″康锛堝鐢熸€佷綅鍏堥獙锛?/li>
+<li><strong>浼肩劧</strong> \(P(B \mid A)\)锛氬湪缁欏畾鐘舵€丄涓嬭娴嬪埌鏁版嵁B鐨勫彲鑳芥€?/li>
+<li><strong>鍚庨獙</strong> \(P(A \mid B)\)锛氳娴嬫暟鎹悗鏇存柊鐨勪俊蹇?/li>
 </ul>
 
-<p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
+<p><strong>渚嬪瓙</strong>锛氭€€鐤戞剰蹇楄祫婧愬緢浣庯紙A锛夈€傚仛浠诲姟琛ㄧ幇宸紙B锛夈€傚厛楠?0%锛屼技鐒?0%锛屽悗楠屸増68%銆傝繖灏辨槸<strong>鏍″噯</strong>銆?/p>
 
 <hr class="section-divider">
 
-<h2>M.5 状态估计的思想</h2>
+<h2>M.5 鐘舵€佷及璁＄殑鎬濇兂</h2>
 
-<p><strong>为什么需要</strong>：第20章的粒子滤波是卡尔曼滤波的推广。先理解核心思想。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱20绔犵殑绮掑瓙婊ゆ尝鏄崱灏旀浖婊ゆ尝鐨勬帹骞裤€傚厛鐞嗚В鏍稿績鎬濇兂銆?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>解释</th>
+<th>姒傚康</th>
+<th>瑙ｉ噴</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>状态</strong></td>
-<td>你关心的隐藏量（如真实意志资源水平）</td>
+<td><strong>鐘舵€?/strong></td>
+<td>浣犲叧蹇冪殑闅愯棌閲忥紙濡傜湡瀹炴剰蹇楄祫婧愭按骞筹級</td>
 </tr>
 <tr>
-<td><strong>观测</strong></td>
-<td>你能测到的量（如量表分数），但含噪声</td>
+<td><strong>瑙傛祴</strong></td>
+<td>浣犺兘娴嬪埌鐨勯噺锛堝閲忚〃鍒嗘暟锛夛紝浣嗗惈鍣０</td>
 </tr>
 <tr>
-<td><strong>状态估计</strong></td>
-<td>利用历史观测和动力学模型，猜出当前状态的最佳值</td>
+<td><strong>鐘舵€佷及璁?/strong></td>
+<td>鍒╃敤鍘嗗彶瑙傛祴鍜屽姩鍔涘妯″瀷锛岀寽鍑哄綋鍓嶇姸鎬佺殑鏈€浣冲€?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>卡尔曼滤波的四个步骤</strong>（只需记逻辑）：</p>
+<p><strong>鍗″皵鏇兼护娉㈢殑鍥涗釜姝ラ</strong>锛堝彧闇€璁伴€昏緫锛夛細</p>
 <ol>
-<li><strong>预测</strong>：用动力学方程推测下一时刻状态</li>
-<li><strong>观测</strong>：获得带噪声的读数</li>
-<li><strong>更新</strong>：结合预测和观测，按不确定性加权平均</li>
-<li><strong>重复</strong></li>
+<li><strong>棰勬祴</strong>锛氱敤鍔ㄥ姏瀛︽柟绋嬫帹娴嬩笅涓€鏃跺埢鐘舵€?/li>
+<li><strong>瑙傛祴</strong>锛氳幏寰楀甫鍣０鐨勮鏁?/li>
+<li><strong>鏇存柊</strong>锛氱粨鍚堥娴嬪拰瑙傛祴锛屾寜涓嶇‘瀹氭€у姞鏉冨钩鍧?/li>
+<li><strong>閲嶅</strong></li>
 </ol>
 
-<blockquote><p>📌 类比：开车进隧道前知道速度（预测），隧道内推算位置（预测），出隧道后GPS恢复（观测），结合修正（更新）。</p></blockquote>
+<blockquote><p>馃搶 绫绘瘮锛氬紑杞﹁繘闅ч亾鍓嶇煡閬撻€熷害锛堥娴嬶級锛岄毀閬撳唴鎺ㄧ畻浣嶇疆锛堥娴嬶級锛屽嚭闅ч亾鍚嶨PS鎭㈠锛堣娴嬶級锛岀粨鍚堜慨姝ｏ紙鏇存柊锛夈€?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.6 粒子滤波概念</h2>
+<h2>M.6 绮掑瓙婊ゆ尝姒傚康</h2>
 
-<p><strong>为什么需要</strong>：当系统是非线性、非高斯时（心理系统正是如此），卡尔曼滤波失效。粒子滤波是通用替代方法。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氬綋绯荤粺鏄潪绾挎€с€侀潪楂樻柉鏃讹紙蹇冪悊绯荤粺姝ｆ槸濡傛锛夛紝鍗″皵鏇兼护娉㈠け鏁堛€傜矑瀛愭护娉㈡槸閫氱敤鏇夸唬鏂规硶銆?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
+<th>姒傚康</th>
+<th>閫氫織瑙ｉ噴</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>粒子</strong></td>
-<td>一个“假设”——某个可能的状态值</td>
+<td><strong>绮掑瓙</strong></td>
+<td>涓€涓€滃亣璁锯€濃€斺€旀煇涓彲鑳界殑鐘舵€佸€?/td>
 </tr>
 <tr>
-<td><strong>粒子群</strong></td>
-<td>成千上万个假设，覆盖各种可能性</td>
+<td><strong>绮掑瓙缇?/strong></td>
+<td>鎴愬崈涓婁竾涓亣璁撅紝瑕嗙洊鍚勭鍙兘鎬?/td>
 </tr>
 <tr>
-<td><strong>权重</strong></td>
-<td>每个粒子与观测数据的符合程度</td>
+<td><strong>鏉冮噸</strong></td>
+<td>姣忎釜绮掑瓙涓庤娴嬫暟鎹殑绗﹀悎绋嬪害</td>
 </tr>
 <tr>
-<td><strong>重采样</strong></td>
-<td>删掉低权重粒子，复制高权重粒子</td>
+<td><strong>閲嶉噰鏍?/strong></td>
+<td>鍒犳帀浣庢潈閲嶇矑瀛愶紝澶嶅埗楂樻潈閲嶇矑瀛?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>粒子滤波循环</strong>：</p>
-<pre><code>初始粒子群（均匀散布）
-    ↓
-预测：根据动力学方程移动每个粒子
-    ↓
-观测：计算每个粒子的权重（与数据符合度）
-    ↓
-重采样：高权重粒子繁殖，低权重淘汰
-    ↓
-（循环）</code></pre>
+<p><strong>绮掑瓙婊ゆ尝寰幆</strong>锛?/p>
+<pre><code>鍒濆绮掑瓙缇わ紙鍧囧寑鏁ｅ竷锛?
+    鈫?
+棰勬祴锛氭牴鎹姩鍔涘鏂圭▼绉诲姩姣忎釜绮掑瓙
+    鈫?
+瑙傛祴锛氳绠楁瘡涓矑瀛愮殑鏉冮噸锛堜笌鏁版嵁绗﹀悎搴︼級
+    鈫?
+閲嶉噰鏍凤細楂樻潈閲嶇矑瀛愮箒娈栵紝浣庢潈閲嶆窐姹?
+    鈫?
+锛堝惊鐜級</code></pre>
 
-<p><strong>最终输出</strong>：粒子群聚集区 = 状态最佳估计；分散程度 = 不确定性。</p>
+<p><strong>鏈€缁堣緭鍑?/strong>锛氱矑瀛愮兢鑱氶泦鍖?= 鐘舵€佹渶浣充及璁★紱鍒嗘暎绋嬪害 = 涓嶇‘瀹氭€с€?/p>
 
-<blockquote><p>📌 类比：用一群侦探分头追踪嫌疑人，每步用新线索淘汰不靠谱侦探，让靠谱侦探繁殖。</p></blockquote>
+<blockquote><p>馃搶 绫绘瘮锛氱敤涓€缇や睛鎺㈠垎澶磋拷韪珜鐤戜汉锛屾瘡姝ョ敤鏂扮嚎绱㈡窐姹颁笉闈犺氨渚︽帰锛岃闈犺氨渚︽帰绻佹畺銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.7 集合预报与CRPS（第20章）</h2>
+<h2>M.7 闆嗗悎棰勬姤涓嶤RPS锛堢20绔狅級</h2>
 
-<p><strong>为什么需要</strong>：PSE输出概率预测，需要评估预测质量。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛歅SE杈撳嚭姒傜巼棰勬祴锛岄渶瑕佽瘎浼伴娴嬭川閲忋€?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>解释</th>
+<th>姒傚康</th>
+<th>瑙ｉ噴</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>集合预报</strong></td>
-<td>用多个粒子（成员）的轨迹集合表示预测分布</td>
-<td>类似气象学中的“台风路径集合”</td>
+<td><strong>闆嗗悎棰勬姤</strong></td>
+<td>鐢ㄥ涓矑瀛愶紙鎴愬憳锛夌殑杞ㄨ抗闆嗗悎琛ㄧず棰勬祴鍒嗗竷</td>
+<td>绫讳技姘旇薄瀛︿腑鐨勨€滃彴椋庤矾寰勯泦鍚堚€?/td>
 </tr>
 <tr>
-<td><strong>中位数轨迹</strong></td>
-<td>集合中排在中间的那条轨迹</td>
-<td>最可能的估计</td>
+<td><strong>涓綅鏁拌建杩?/strong></td>
+<td>闆嗗悎涓帓鍦ㄤ腑闂寸殑閭ｆ潯杞ㄨ抗</td>
+<td>鏈€鍙兘鐨勪及璁?/td>
 </tr>
 <tr>
-<td><strong>预测区间</strong></td>
-<td>2.5%和97.5%百分位数之间的区域</td>
-<td>95%置信区间</td>
+<td><strong>棰勬祴鍖洪棿</strong></td>
+<td>2.5%鍜?7.5%鐧惧垎浣嶆暟涔嬮棿鐨勫尯鍩?/td>
+<td>95%缃俊鍖洪棿</td>
 </tr>
 <tr>
-<td><strong>CRPS（连续排序概率得分）</strong></td>
-<td>评估整个预测分布与真实观测的吻合度</td>
-<td>越小越好，完美预测=0</td>
+<td><strong>CRPS锛堣繛缁帓搴忔鐜囧緱鍒嗭級</strong></td>
+<td>璇勪及鏁翠釜棰勬祴鍒嗗竷涓庣湡瀹炶娴嬬殑鍚诲悎搴?/td>
+<td>瓒婂皬瓒婂ソ锛屽畬缇庨娴?0</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p>📌 CRPS惩罚过宽（太保守）和过窄（太自信）的预测区间。</p></blockquote>
+<blockquote><p>馃搶 CRPS鎯╃綒杩囧锛堝お淇濆畧锛夊拰杩囩獎锛堝お鑷俊锛夌殑棰勬祴鍖洪棿銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.8 非线性动力学基本概念（第29章）</h2>
+<h2>M.8 闈炵嚎鎬у姩鍔涘鍩烘湰姒傚康锛堢29绔狅級</h2>
 
-<p><strong>为什么需要</strong>：第29章讨论混沌、吸引子、非线性系统。</p>
+<p><strong>涓轰粈涔堥渶瑕?/strong>锛氱29绔犺璁烘贩娌屻€佸惛寮曞瓙銆侀潪绾挎€х郴缁熴€?/p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
+<th>姒傚康</th>
+<th>閫氫織瑙ｉ噴</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>非线性系统</strong></td>
-<td>输出不与输入成正比，叠加原理不成立</td>
-<td>心理系统常见（如阈值效应）</td>
+<td><strong>闈炵嚎鎬х郴缁?/strong></td>
+<td>杈撳嚭涓嶄笌杈撳叆鎴愭姣旓紝鍙犲姞鍘熺悊涓嶆垚绔?/td>
+<td>蹇冪悊绯荤粺甯歌锛堝闃堝€兼晥搴旓級</td>
 </tr>
 <tr>
-<td><strong>相空间</strong></td>
-<td>状态向量 \(\Psi\) 所在的虚拟空间</td>
-<td>42维空间，每个点代表一种心理状态</td>
+<td><strong>鐩哥┖闂?/strong></td>
+<td>鐘舵€佸悜閲?\(\Psi\) 鎵€鍦ㄧ殑铏氭嫙绌洪棿</td>
+<td>42缁寸┖闂达紝姣忎釜鐐逛唬琛ㄤ竴绉嶅績鐞嗙姸鎬?/td>
 </tr>
 <tr>
-<td><strong>吸引子</strong></td>
-<td>系统长期趋向的“偏好区域”</td>
-<td>健康状态是一种吸引子，抑郁症是另一种</td>
+<td><strong>鍚稿紩瀛?/strong></td>
+<td>绯荤粺闀挎湡瓒嬪悜鐨勨€滃亸濂藉尯鍩熲€?/td>
+<td>鍋ュ悍鐘舵€佹槸涓€绉嶅惛寮曞瓙锛屾姂閮佺棁鏄彟涓€绉?/td>
 </tr>
 <tr>
-<td><strong>混沌</strong></td>
-<td>确定性但不可预测：初始微小差异导致巨大不同</td>
-<td>“蝴蝶效应”</td>
+<td><strong>娣锋矊</strong></td>
+<td>纭畾鎬т絾涓嶅彲棰勬祴锛氬垵濮嬪井灏忓樊寮傚鑷村法澶т笉鍚?/td>
+<td>鈥滆澊铦舵晥搴斺€?/td>
 </tr>
 <tr>
-<td><strong>临界慢化</strong></td>
-<td>系统靠近临界点（相变前）的恢复速度变慢</td>
-<td>心理崩溃前兆</td>
+<td><strong>涓寸晫鎱㈠寲</strong></td>
+<td>绯荤粺闈犺繎涓寸晫鐐癸紙鐩稿彉鍓嶏級鐨勬仮澶嶉€熷害鍙樻參</td>
+<td>蹇冪悊宕╂簝鍓嶅厗</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p>📌 这些概念只需定性理解，帮助读懂第29章的研究展望。</p></blockquote>
+<blockquote><p>馃搶 杩欎簺姒傚康鍙渶瀹氭€х悊瑙ｏ紝甯姪璇绘噦绗?9绔犵殑鐮旂┒灞曟湜銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.9 高级统计计算概念（第28章，可选）</h2>
+<h2>M.9 楂樼骇缁熻璁＄畻姒傚康锛堢28绔狅紝鍙€夛級</h2>
 
-<p>第28章涉及一些更专业的概念，对于理解PSE原理不是必须的。下表供好奇读者参考：</p>
+<p>绗?8绔犳秹鍙婁竴浜涙洿涓撲笟鐨勬蹇碉紝瀵逛簬鐞嗚ВPSE鍘熺悊涓嶆槸蹇呴』鐨勩€備笅琛ㄤ緵濂藉璇昏€呭弬鑰冿細</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>概念</th>
-<th>简短说明</th>
-<th>出现在第28章</th>
+<th>姒傚康</th>
+<th>绠€鐭鏄?/th>
+<th>鍑虹幇鍦ㄧ28绔?/th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>马尔可夫链蒙特卡罗（MCMC）</strong></td>
-<td>从复杂分布中采样的通用算法</td>
-<td>28.3节</td>
+<td><strong>椹皵鍙か閾捐挋鐗瑰崱缃楋紙MCMC锛?/strong></td>
+<td>浠庡鏉傚垎甯冧腑閲囨牱鐨勯€氱敤绠楁硶</td>
+<td>28.3鑺?/td>
 </tr>
 <tr>
-<td><strong>变分贝叶斯（VB）</strong></td>
-<td>用简单分布近似复杂后验，速度更快</td>
-<td>28.3节</td>
+<td><strong>鍙樺垎璐濆彾鏂紙VB锛?/strong></td>
+<td>鐢ㄧ畝鍗曞垎甯冭繎浼煎鏉傚悗楠岋紝閫熷害鏇村揩</td>
+<td>28.3鑺?/td>
 </tr>
 <tr>
-<td><strong>高斯过程（GP）</strong></td>
-<td>对未知函数进行非参数建模的贝叶斯方法</td>
-<td>28.3节</td>
+<td><strong>楂樻柉杩囩▼锛圙P锛?/strong></td>
+<td>瀵规湭鐭ュ嚱鏁拌繘琛岄潪鍙傛暟寤烘ā鐨勮礉鍙舵柉鏂规硶</td>
+<td>28.3鑺?/td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p>📌 初学阶段可跳过这些内容。PSE的实际校准使用粒子滤波，不要求掌握MCMC或VB。</p></blockquote>
+<blockquote><p>馃搶 鍒濆闃舵鍙烦杩囪繖浜涘唴瀹广€侾SE鐨勫疄闄呮牎鍑嗕娇鐢ㄧ矑瀛愭护娉紝涓嶈姹傛帉鎻CMC鎴朧B銆?/p></blockquote>
 
 <hr class="section-divider">
 
-<h2>M.10 总结：各章需要的数学知识速查表</h2>
+<h2>M.10 鎬荤粨锛氬悇绔犻渶瑕佺殑鏁板鐭ヨ瘑閫熸煡琛?/h2>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>章节</th>
-<th>需要的概念</th>
-<th>掌握要求</th>
-<th>本附录对应节</th>
+<th>绔犺妭</th>
+<th>闇€瑕佺殑姒傚康</th>
+<th>鎺屾彙瑕佹眰</th>
+<th>鏈檮褰曞搴旇妭</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>第8章</td>
-<td>函数、导数、向量、矩阵、欧氏距离、正交</td>
-<td>理解含义</td>
+<td>绗?绔?/td>
+<td>鍑芥暟銆佸鏁般€佸悜閲忋€佺煩闃点€佹姘忚窛绂汇€佹浜?/td>
+<td>鐞嗚В鍚箟</td>
 <td>M.1, M.3</td>
 </tr>
 <tr>
-<td>第19章</td>
-<td>微分方程、参数、数值积分</td>
-<td>会读方程</td>
+<td>绗?9绔?/td>
+<td>寰垎鏂圭▼銆佸弬鏁般€佹暟鍊肩Н鍒?/td>
+<td>浼氳鏂圭▼</td>
 <td>M.1, M.2</td>
 </tr>
 <tr>
-<td>第20章</td>
-<td>贝叶斯公式、先验/后验、粒子滤波逻辑、集合预报、CRPS</td>
-<td>理解流程</td>
+<td>绗?0绔?/td>
+<td>璐濆彾鏂叕寮忋€佸厛楠?鍚庨獙銆佺矑瀛愭护娉㈤€昏緫銆侀泦鍚堥鎶ャ€丆RPS</td>
+<td>鐞嗚В娴佺▼</td>
 <td>M.4, M.5, M.6, M.7</td>
 </tr>
 <tr>
-<td>第28章</td>
-<td>分层贝叶斯、MCMC（可选）</td>
-<td>知道存在即可</td>
+<td>绗?8绔?/td>
+<td>鍒嗗眰璐濆彾鏂€丮CMC锛堝彲閫夛級</td>
+<td>鐭ラ亾瀛樺湪鍗冲彲</td>
 <td>M.9</td>
 </tr>
 <tr>
-<td>第29章</td>
-<td>非线性、吸引子、混沌</td>
-<td>定性理解</td>
+<td>绗?9绔?/td>
+<td>闈炵嚎鎬с€佸惛寮曞瓙銆佹贩娌?/td>
+<td>瀹氭€х悊瑙?/td>
 <td>M.8</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>你不需要</strong>：</p>
+<p><strong>浣犱笉闇€瑕?/strong>锛?/p>
 <ul>
-<li>手工解微分方程 → 计算机数值积分</li>
-<li>手工做贝叶斯积分 → 粒子滤波自动完成</li>
-<li>推导MCMC算法 → 本书不要求</li>
-<li>计算高维向量内积 → 理解概念即可</li>
+<li>鎵嬪伐瑙ｅ井鍒嗘柟绋?鈫?璁＄畻鏈烘暟鍊肩Н鍒?/li>
+<li>鎵嬪伐鍋氳礉鍙舵柉绉垎 鈫?绮掑瓙婊ゆ尝鑷姩瀹屾垚</li>
+<li>鎺ㄥMCMC绠楁硶 鈫?鏈功涓嶈姹?/li>
+<li>璁＄畻楂樼淮鍚戦噺鍐呯Н 鈫?鐞嗚В姒傚康鍗冲彲</li>
 </ul>
 
 <hr class="section-divider">
 
-<h2>M.11 推荐自学资源（免费中文）</h2>
+<h2>M.11 鎺ㄨ崘鑷璧勬簮锛堝厤璐逛腑鏂囷級</h2>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>资源</th>
-<th>适合部分</th>
-<th>获取方式</th>
+<th>璧勬簮</th>
+<th>閫傚悎閮ㄥ垎</th>
+<th>鑾峰彇鏂瑰紡</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>可汗学院《微分方程》</td>
+<td>鍙睏瀛﹂櫌銆婂井鍒嗘柟绋嬨€?/td>
 <td>M.1, M.2</td>
-<td>网易公开课</td>
+<td>缃戞槗鍏紑璇?/td>
 </tr>
 <tr>
-<td>3Blue1Brown《贝叶斯定理》</td>
+<td>3Blue1Brown銆婅礉鍙舵柉瀹氱悊銆?/td>
 <td>M.4</td>
-<td>B站搜索</td>
+<td>B绔欐悳绱?/td>
 </tr>
 <tr>
-<td>3Blue1Brown《线性代数本质》</td>
+<td>3Blue1Brown銆婄嚎鎬т唬鏁版湰璐ㄣ€?/td>
 <td>M.3</td>
-<td>B站有中文字幕</td>
+<td>B绔欐湁涓枃瀛楀箷</td>
 </tr>
 <tr>
-<td>《统计之都》粒子滤波科普</td>
+<td>銆婄粺璁′箣閮姐€嬬矑瀛愭护娉㈢鏅?/td>
 <td>M.6</td>
-<td>公众号搜索</td>
+<td>鍏紬鍙锋悳绱?/td>
 </tr>
 <tr>
-<td>王梓坤《概率论基础》</td>
+<td>鐜嬫鍧ゃ€婃鐜囪鍩虹銆?/td>
 <td>M.4</td>
-<td>图书馆借阅</td>
+<td>鍥句功棣嗗€熼槄</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>学习策略</strong>：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。<strong>目标不是学会数学，而是能读懂PSE的输入输出逻辑</strong>。</p></blockquote>
+<blockquote><p><strong>瀛︿範绛栫暐</strong>锛氬厛閫氳鏈檮褰曪紝鐞嗚В鏍稿績鎬濇兂銆傞亣鍒版鏂囧叕寮忔椂鍥炴潵瀵圭収鈥滃績鐞嗗渚嬪瓙鈥濈被姣斻€?strong>鐩爣涓嶆槸瀛︿細鏁板锛岃€屾槸鑳借鎳侾SE鐨勮緭鍏ヨ緭鍑洪€昏緫</strong>銆?/p></blockquote>
 <hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
+
+<div class="version-record-title">鐗堟湰璁板綍</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
+<th>鐗堟湰</th>
+<th>鏃ユ湡</th>
+<th>鍙樻洿鍐呭</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>v1.0</td>
 <td>2026-05-30</td>
-<td>初始创建</td>
+<td>鍒濆鍒涘缓</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 架构速查</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
-<a href="app-n.html" class="nav-link next">概念速查 ›</a></div>
+        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">鈥?鏋舵瀯閫熸煡</a>
+<a href="index.html" class="nav-link up">鈽?鐩綍</a>
+<a href="app-n.html" class="nav-link next">姒傚康閫熸煡 鈥?/a></div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
+        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -604,7 +602,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
         </div>
     </footer>
 

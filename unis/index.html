@@ -131,7 +131,7 @@
             <div class="card">
                 <h3><i class="fas fa-tachometer-alt" aria-hidden="true"></i> RTE-Infer</h3>
                 <p><strong>实时推理引擎</strong>— 无状态、低延迟、确定性计算。</p>
-                <ul class="list-indent" class="desc-spacing">
+                <ul class="list-indent desc-spacing">
                     <li>管线：L2 数据流 → L3 特征计算 → L4 模型 → p(yₙ|Ψ)</li>
                     <li>分层延迟目标（95分位）：简单特征&thinsp;<30ms，中等&thinsp;<50ms，复杂&thinsp;<100ms</li>
                 </ul>
@@ -139,7 +139,7 @@
             <div class="card">
                 <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> RTE-Cal</h3>
                 <p><strong>异步校准引擎</strong>— 有状态、精度优先、不阻塞推理快路径。</p>
-                <ul class="list-indent" class="desc-spacing">
+                <ul class="list-indent desc-spacing">
                     <li>接收 RTE-Infer 输出 + PSE 状态估计</li>
                     <li>递归贝叶斯更新（卡尔曼/粒子滤波），个体化 L4 参数</li>
                     <li>校准目标：2分钟后 log-likelihood 损失降低 ≥10%</li>

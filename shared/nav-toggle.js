@@ -1,8 +1,8 @@
 // Shared navigation toggle script (M4)
 // Replaces inline onclick handlers with accessible JS
-// v2.4.1 — 桌面端不再设 aria-hidden（P0-2），移除 role="menu" 语义错误（P1-7）
+// v2.4.2 — 断点回退 768px（P2-6a 修正：959px 导致平板横排导航折叠为汉堡菜单）
 (function() {
-    var MOBILE_MQ = '(max-width: 959px)';
+    var MOBILE_MQ = '(max-width: 768px)';
     function isMobile() {
         return window.matchMedia(MOBILE_MQ).matches;
     }

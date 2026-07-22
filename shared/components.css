@@ -74,7 +74,7 @@ nav.site-nav {
   font-weight: 600;
 }
 
-/* 移动端汉堡菜单 — 桌面端隐藏，仅 ≤959px 显示（与 nav-toggle.js MOBILE_MQ 对齐） */
+/* 移动端汉堡菜单 — 桌面端隐藏，仅 ≤768px 显示（与 nav-toggle.js MOBILE_MQ 对齐） */
 .nav-toggle {
   display: none;
   background: none;
@@ -89,8 +89,7 @@ nav.site-nav {
   justify-content: center;
 }
 
-/* P2-6a: 断点 768px→959px 对齐 nav-toggle.js，消除 769–959px 区间的 CSS/JS 不一致 */
-@media (max-width: 959px) {
+@media (max-width: 768px) {
   .nav-toggle {
     display: block;
   }
@@ -877,7 +876,6 @@ hr {
   line-height: 1;
   color: var(--color-white);
   margin-bottom: 1.4rem;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.35);
 }
 .hero-sub {
   display: flex;

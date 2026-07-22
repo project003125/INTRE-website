@@ -139,18 +139,18 @@
      ⚠️ CSS 自定义属性无法用于 @media 查询，此处仅供 JS 读取与文档参考。
      实际媒体查询中请直接使用像素值，并严格遵循以下三档体系：
 
-     --bp-nav:    959px  — 导航折叠阈值（nav-toggle.js MOBILE_MQ 同步）
+     --bp-nav:    768px  — 导航折叠阈值（nav-toggle.js MOBILE_MQ 同步）
      --bp-mobile: 768px  — 内容布局移动端阈值（grid/表头/字号降级）
      --bp-tablet: 1024px — 平板阈值（grid 3→2 列降级）
      --bp-small:  480px  — 小屏子断点（logo/字号微调）
 
      断点使用规则：
-     1. 导航相关：统一使用 959px（与 nav-toggle.js 对齐）
+     1. 导航相关：统一使用 768px（与 nav-toggle.js 对齐）
      2. 内容布局：使用 768px / 1024px（grid、字号、容器内边距）
      3. 微调：仅 480px 用于小屏细节（logo 高度、字号缩放）
      4. 教材侧边栏：960px（平板固定面板）/ 1200px（桌面双栏）
   ---- */
-  --bp-nav:    959px;
+  --bp-nav:    768px;
   --bp-mobile: 768px;
   --bp-tablet: 1024px;
   --bp-small:  480px;

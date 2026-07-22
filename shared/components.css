@@ -45,6 +45,7 @@ nav.site-nav {
   display: flex;
   gap: 0.15rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -530,7 +531,8 @@ hr {
   border: var(--stroke-hairline) solid var(--color-slate-200);
   padding: 1.5rem;
   margin-bottom: 2rem;
-  transition: background-color 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth);
+  transition: background-color 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth),
+              transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
 }
 
 .subpage-card:hover {
@@ -1064,7 +1066,7 @@ hr {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: var(--tracking-tech);
-  color: var(--color-slate-400);
+  color: var(--color-slate-500);
   border: 1px solid var(--color-slate-200);
   border-radius: var(--radius-xs);
   padding: 0.18rem 0.55rem;
@@ -1111,12 +1113,12 @@ hr {
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: var(--tracking-tech);
-  color: var(--color-slate-400);
+  color: var(--color-slate-500);
   writing-mode: vertical-rl;
   text-orientation: mixed;
   flex-shrink: 0;
 }
-.layer-node .layer-body { flex: 1; }
+.layer-node .layer-body { flex: 1; min-width: 0; }
 .layer-node .layer-name {
   font-size: 1.25rem;
   font-weight: 700;
@@ -1259,7 +1261,7 @@ footer { position: relative; }
   font-size: 0.68rem;
   letter-spacing: var(--tracking-tech);
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 1rem;
 }
 .footer-sitemap .fs-col a {
@@ -1280,7 +1282,7 @@ footer { position: relative; }
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.55);
 }
 .footer-meta .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--color-amber-500); }
 
@@ -1396,7 +1398,7 @@ body.sidebar-open { overflow: hidden; }
 
 .textbook-sidebar-link:hover {
   color: var(--color-navy-600);
-  background: var(--color-slate-100);
+  background: var(--color-slate-200);
 }
 
 .textbook-sidebar-link.active {

@@ -188,18 +188,6 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-            .subhead {
-                font-size: 1.1rem;
-            }
-            .container {
-                padding: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
             .container { padding: 1.2rem; }
             h1 { font-size: 1.6rem; }
             .subhead { font-size: 0.95rem; }
@@ -209,7 +197,7 @@
 
         .info-box {
             background-color: var(--color-slate-100);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-sm);
             padding: 1.5rem;
             border: var(--stroke-hairline) solid var(--color-slate-200);
             margin: 1.5rem 0;
@@ -255,7 +243,7 @@
         .case-study {
             background: var(--color-slate-100);
             border: var(--stroke-hairline) solid var(--color-slate-200);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-sm);
             padding: 2rem;
             margin: 2rem 0;
         }
@@ -382,13 +370,18 @@
             </div>
             <div class="card">
                 <h3>关键参数</h3>
-                <table class="table-full">
-                    <tr><td>k_recovery</td><td>0.1–0.3 /h</td><td>资源恢复速率</td></tr>
-                    <tr><td>k_consumption</td><td>0.05–0.2 /h</td><td>资源消耗速率</td></tr>
-                    <tr><td>τ_D</td><td>2–6 h</td><td>RES-D 时间常数</td></tr>
-                    <tr><td>τ_B</td><td>7–30 d</td><td>RES-B 时间常数</td></tr>
-                    <tr><td>w_base</td><td>0–1</td><td>依赖强度矩阵</td></tr>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>取值范围</th><th>含义</th></tr></thead>
+                        <tbody>
+                        <tr><td>k_recovery</td><td>0.1–0.3 /h</td><td>资源恢复速率</td></tr>
+                        <tr><td>k_consumption</td><td>0.05–0.2 /h</td><td>资源消耗速率</td></tr>
+                        <tr><td>τ_D</td><td>2–6 h</td><td>RES-D 时间常数</td></tr>
+                        <tr><td>τ_B</td><td>7–30 d</td><td>RES-B 时间常数</td></tr>
+                        <tr><td>w_base</td><td>0–1</td><td>依赖强度矩阵</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

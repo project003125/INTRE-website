@@ -221,11 +221,10 @@ body {
     text-align: left;
     padding: 0.6rem 0.8rem;
     border-bottom: var(--stroke-hairline) solid var(--border);
-    color: var(--text);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--color-slate-500);
+    color: var(--color-slate-600);
 }
 
 .textbook-content td {
@@ -767,20 +766,21 @@ body.toc-open {
     }
 
     /* Center content between sidebars
-       Formula: left_offset = 240px + (viewport - 480px - 740px) / 2
-       480px = left sidebar(240) + right sidebar(240) */
+       Formula: left_offset = max(240px, 240px + (viewport - 1220px) / 2)
+       max() ensures margin-left never drops below sidebar width (240px),
+       preventing content overlap at 1200-1220px viewport range */
     .page-header-inner {
-        margin-left: calc(240px + (100vw - 1220px) / 2);
+        margin-left: max(240px, calc(240px + (100vw - 1220px) / 2));
         margin-right: auto;
         max-width: var(--reading-width);
     }
     .textbook-content {
-        margin-left: calc(240px + (100vw - 1220px) / 2);
+        margin-left: max(240px, calc(240px + (100vw - 1220px) / 2));
         margin-right: auto;
         max-width: var(--reading-width);
     }
     .page-footer-nav {
-        margin-left: calc(240px + (100vw - 1220px) / 2);
+        margin-left: max(240px, calc(240px + (100vw - 1220px) / 2));
         margin-right: auto;
         max-width: var(--reading-width);
     }
@@ -836,7 +836,7 @@ body.toc-open {
     .textbook-content h3 { font-size: 1.02rem; }
     .toc-hero { padding: 2.2rem 1rem 1.8rem; }
     .toc-hero h1 { font-size: 1.35rem; }
-    .toc-sidebar { border-radius: 12px 12px 0 0; }
+    .toc-sidebar { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
     .toc-sidebar-header { padding: 0.2rem 0.8rem 0.3rem; }
     .toc-sidebar-list .toc-item { padding: 0.65rem 0.8rem; font-size: 0.88rem; }
     .toc-sidebar-list .toc-item.toc-h2 { padding: 0.7rem 0.8rem; font-size: 0.92rem; }

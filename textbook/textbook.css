@@ -290,7 +290,7 @@ body {
 .nav-link:hover { background: var(--color-slate-100); color: var(--color-navy-600); }
 
 .nav-link.prev { margin-right: auto; }
-.nav-link.next { margin-left: auto; color: var(--color-navy-600-light); }
+.nav-link.next { margin-left: auto; color: var(--color-navy-500); }
 .nav-link.next:hover { color: var(--color-navy-600); }
 .nav-link.up { color: var(--color-slate-400); font-size: 0.82rem; }
 .nav-link.up:hover { color: var(--color-slate-900); }
@@ -361,7 +361,7 @@ body {
 .toc-item .num {
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--color-navy-600-light);
+    color: var(--color-navy-500);
     min-width: 2rem;
     text-align: right;
     flex-shrink: 0;
@@ -392,7 +392,7 @@ body {
     border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
 }
 .appendix-item:hover { background: var(--color-slate-100); color: var(--color-navy-600); }
-.appendix-item strong { color: var(--color-navy-600-light); margin-right: 0.3rem; }
+.appendix-item strong { color: var(--color-navy-500); margin-right: 0.3rem; }
 
 /* Stats bar on TOC page */
 .toc-stats {
@@ -497,7 +497,7 @@ body {
 }
 
 .toc-sidebar-header {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.3rem 1rem 0.4rem;
@@ -617,7 +617,7 @@ body {
     box-shadow: var(--shadow-sm);
 }
 @media (max-width: 959px) {
-    .toc-toggle-btn.is-open { display: none !important; }
+    .toc-toggle-btn.is-open { display: none; }
 }
 
 .toc-overlay {
@@ -655,15 +655,15 @@ body.toc-open {
         border-top: none;
         border-bottom: none;
         padding: 1rem 0.5rem;
-        transform: none !important;
+        transform: none;
         transition: none;
         box-shadow: none;
         overflow-y: auto;
     }
 
     .toc-sidebar::before { display: none; }
-    .toc-sidebar-header { display: none !important; }
-    .toc-sidebar.open { transform: none !important; }
+    .toc-sidebar-header { display: none; }
+    .toc-sidebar.open { transform: none; }
 
     .toc-sidebar-list { padding: 0; }
 
@@ -682,8 +682,8 @@ body.toc-open {
         margin-top: 2px;
     }
 
-    .toc-toggle-btn { display: none !important; }
-    .toc-overlay, .toc-overlay.show { display: none !important; }
+    .toc-toggle-btn { display: none; }
+    .toc-overlay, .toc-overlay.show { display: none; }
 
     /* Tablet TOC is also a side panel — unlock body scroll */
     body.toc-open {
@@ -729,15 +729,15 @@ body.toc-open {
         border-top: none;
         border-bottom: none;
         padding: 1.2rem 0.6rem 1rem;
-        transform: none !important;
+        transform: none;
         transition: none;
         box-shadow: none;
         overflow-y: auto;
     }
 
     .toc-sidebar::before { display: none; }
-    .toc-sidebar-header { display: none !important; }
-    .toc-sidebar.open { transform: none !important; }
+    .toc-sidebar-header { display: none; }
+    .toc-sidebar.open { transform: none; }
 
     .toc-sidebar-list { padding: 0; }
 
@@ -757,8 +757,8 @@ body.toc-open {
         margin-top: 2px;
     }
 
-    .toc-toggle-btn { display: none !important; }
-    .toc-overlay, .toc-overlay.show { display: none !important; }
+    .toc-toggle-btn { display: none; }
+    .toc-overlay, .toc-overlay.show { display: none; }
 
     /* Desktop TOC is a side panel, not an overlay — unlock body scroll */
     body.toc-open {
@@ -788,7 +788,18 @@ body.toc-open {
 
 /* Mobile: show toggle button for bottom-sheet TOC */
 @media (max-width: 959px) {
-    .toc-toggle-btn { display: flex; }
+    .toc-toggle-btn {
+        display: flex;
+        /* 上移，为右下角章节 FAB（48px 圆钮）让位，
+           两浮动按钮垂直堆叠，避免坐标相同而重叠 */
+        bottom: calc(1.2rem + 48px + 0.6rem + env(safe-area-inset-bottom, 0px));
+    }
+    /* 章节抽屉打开时，隐藏页内目录浮动按钮，避免压在抽屉之上 */
+    body.sidebar-open .toc-toggle-btn {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(16px);
+    }
 }
 
 /* ========== RESPONSIVE ========== */

@@ -9,7 +9,7 @@
     <meta property="og:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="INTRE · 功能层心理学">
     <meta name="twitter:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
@@ -228,7 +228,7 @@
       "@type": "WebSite",
       "name": "INTRE",
       "url": "https://project003125.github.io/INTRE-website/",
-      "description": "INTRE — 整合神经表征框架，探索认知科学的统一理论",
+      "description": "INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。",
       "publisher": {
         "@type": "Organization",
         "name": "INTRE",
@@ -244,7 +244,7 @@
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -308,7 +308,7 @@
 
         <div class="hero-scroll" aria-hidden="true">Scroll</div>
         <div class="hero-coord" aria-hidden="true">
-            <span class="coord-accent">Ψ(t)</span>&nbsp;=&nbsp;[&nbsp;M₁…M₆&nbsp;|&nbsp;R₁…R₂₁&nbsp;|&nbsp;D₁…D₉&nbsp;|&nbsp;S₁…S₆&nbsp;]&nbsp;∈&nbsp;ℝ⁴²
+            <span class="coord-accent">Ψ(t)</span>&nbsp;=&nbsp;[&nbsp;M₁…M₆&nbsp;×&nbsp;{R:2&nbsp;·&nbsp;D:2&nbsp;·&nbsp;S:3}&nbsp;]&nbsp;∈&nbsp;ℝ⁴²
         </div>
     </section>
 
@@ -320,20 +320,20 @@
                 <span class="identity-label">模块 · MODULES M₁–M₆</span>
             </div>
             <div class="identity-item reveal" data-delay="1">
-                <span class="identity-num">21</span>
-                <span class="identity-label">关系 · RELATIONS R₁–R₂₁</span>
+                <span class="identity-num">07</span>
+                <span class="identity-label">子维度 · SUB-DIMS R(2)+D(2)+S(3)</span>
             </div>
             <div class="identity-item reveal" data-delay="2">
                 <span class="identity-num">42</span>
                 <span class="identity-label">维状态向量 · Ψ ∈ ℝ⁴²</span>
             </div>
             <div class="identity-item reveal" data-delay="3">
-                <span class="identity-num">09</span>
-                <span class="identity-label">动力 · DYNAMICS D₁–D₉</span>
+                <span class="identity-num">03</span>
+                <span class="identity-label">内感层 · R-D-S LAYERS</span>
             </div>
             <div class="identity-item reveal" data-delay="4">
-                <span class="identity-num">06</span>
-                <span class="identity-label">状态 · STATES S₁–S₆</span>
+                <span class="identity-num">08</span>
+                <span class="identity-label">证据级 · IET v3.0 TAGS</span>
             </div>
         </div>
     </section>
@@ -510,7 +510,7 @@
     </main>
 
     <!-- ==================== FOOTER ==================== -->
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-desc">功能层心理学 (FLP) · 开放知识入口</p>
 
@@ -677,7 +677,37 @@
                 if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
             }
             draw();
-            window.requestAnimationFrame(step);
+            rafId = window.requestAnimationFrame(step);
+        }
+
+        /* P2-5: 离屏/后台暂停 rAF，省电省 CPU */
+        var rafId = null;
+        var isVisible = true;
+        var inViewport = true;
+
+        function startAnim() {
+            if (!rafId && isVisible && inViewport && !reduceMotion) {
+                rafId = window.requestAnimationFrame(step);
+            }
+        }
+        function stopAnim() {
+            if (rafId) {
+                window.cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        document.addEventListener('visibilitychange', function () {
+            isVisible = !document.hidden;
+            if (isVisible) startAnim(); else stopAnim();
+        });
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                inViewport = entries[0].isIntersecting;
+                if (inViewport) startAnim(); else stopAnim();
+            }, { threshold: 0.01 });
+            io.observe(canvas);
         }
 
         resize();
@@ -689,7 +719,7 @@
         if (reduceMotion) {
             draw(); // 降级：仅绘制静态一帧
         } else {
-            window.requestAnimationFrame(step);
+            startAnim();
         }
     })();
     </script>

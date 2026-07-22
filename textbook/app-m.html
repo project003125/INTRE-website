@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="```text">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-m.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-m.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录M：数学速成——函数、微分、概率与滤波">
     <meta name="twitter:description" content="```text">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -94,19 +94,19 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**函数**</td>
+<td><strong>函数</strong></td>
 <td>一个量随另一个量变化的规则</td>
 <td>\(y = f(x)\)</td>
 <td>意志资源 \(R\) 随时间 \(t\) 变化：\(R(t)\)</td>
 </tr>
 <tr>
-<td>**导数**</td>
+<td><strong>导数</strong></td>
 <td>函数在某点的瞬时变化率</td>
 <td>\(\frac{dy}{dt}\) 或 \(y'\)</td>
 <td>意志资源的消耗速率 \(dR/dt\)</td>
 </tr>
 <tr>
-<td>**指数衰减**</td>
+<td><strong>指数衰减</strong></td>
 <td>按当前值的固定比例减少</td>
 <td>\(\frac{dR}{dt} = -\alpha R\)</td>
 <td>资源消耗速率与当前资源量成正比</td>
@@ -133,22 +133,22 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**常微分方程（ODE）**</td>
+<td><strong>常微分方程（ODE）</strong></td>
 <td>包含未知函数及其导数的方程</td>
 <td>\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\)</td>
 </tr>
 <tr>
-<td>**解**</td>
+<td><strong>解</strong></td>
 <td>满足方程的函数 \(R(t)\)</td>
 <td>资源随时间变化的轨迹</td>
 </tr>
 <tr>
-<td>**初始条件**</td>
+<td><strong>初始条件</strong></td>
 <td>\(t=0\) 时的状态值 \(R(0)\)</td>
 <td>初始评估时的资源水平</td>
 </tr>
 <tr>
-<td>**参数**</td>
+<td><strong>参数</strong></td>
 <td>方程中不变的常数（如 \(\alpha\)）</td>
 <td>消耗速率、恢复速率</td>
 </tr>
@@ -176,13 +176,13 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**向量**</td>
+<td><strong>向量</strong></td>
 <td>一组有序的数字列表</td>
 <td>\(\vec{v} = (v_1, v_2, \dots, v_n)\)</td>
 <td>42维状态向量 \(\Psi\)</td>
 </tr>
 <tr>
-<td>**向量的模长（范数）**</td>
+<td><strong>向量的模长（范数）</strong></td>
 <td>向量的长度</td>
 <td>\(\</td>
 <td>\vec{v}\</td>
@@ -190,31 +190,31 @@
 <td>状态向量的“总偏离”程度</td>
 </tr>
 <tr>
-<td>**向量点积（内积）**</td>
+<td><strong>向量点积（内积）</strong></td>
 <td>两向量对应分量乘积之和</td>
 <td>\(\vec{u} \cdot \vec{v} = \sum u_i v_i\)</td>
 <td>用于计算相似度</td>
 </tr>
 <tr>
-<td>**欧氏距离**</td>
+<td><strong>欧氏距离</strong></td>
 <td>两向量之间的直线距离</td>
 <td>\(d = \sqrt{\sum (u_i - v_i)^2}\)</td>
 <td>两个心理状态的相似性</td>
 </tr>
 <tr>
-<td>**正交**</td>
+<td><strong>正交</strong></td>
 <td>两向量点积为零，互相垂直</td>
 <td>\(\vec{u} \cdot \vec{v} = 0\)</td>
 <td>R、D、S维度功能独立</td>
 </tr>
 <tr>
-<td>**矩阵**</td>
+<td><strong>矩阵</strong></td>
 <td>二维数字表格</td>
 <td>\(A_{m \times n}\)</td>
 <td>依赖矩阵（42×42）</td>
 </tr>
 <tr>
-<td>**转置**</td>
+<td><strong>转置</strong></td>
 <td>行列互换</td>
 <td>\(A^T\)</td>
 <td>用于计算协方差</td>
@@ -240,17 +240,17 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**概率**</td>
+<td><strong>概率</strong></td>
 <td>事件发生的可能性（0到1）</td>
 <td>\(P(A)\)</td>
 </tr>
 <tr>
-<td>**条件概率**</td>
+<td><strong>条件概率</strong></td>
 <td>在B发生下A的概率</td>
 <td>\(P(A \mid B)\)</td>
 </tr>
 <tr>
-<td>**贝叶斯定理**</td>
+<td><strong>贝叶斯定理</strong></td>
 <td>已知 \(P(B \mid A)\) 求 \(P(A \mid B)\)</td>
 <td>\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\)</td>
 </tr>
@@ -281,15 +281,15 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**状态**</td>
+<td><strong>状态</strong></td>
 <td>你关心的隐藏量（如真实意志资源水平）</td>
 </tr>
 <tr>
-<td>**观测**</td>
+<td><strong>观测</strong></td>
 <td>你能测到的量（如量表分数），但含噪声</td>
 </tr>
 <tr>
-<td>**状态估计**</td>
+<td><strong>状态估计</strong></td>
 <td>利用历史观测和动力学模型，猜出当前状态的最佳值</td>
 </tr>
 </tbody>
@@ -320,19 +320,19 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**粒子**</td>
+<td><strong>粒子</strong></td>
 <td>一个“假设”——某个可能的状态值</td>
 </tr>
 <tr>
-<td>**粒子群**</td>
+<td><strong>粒子群</strong></td>
 <td>成千上万个假设，覆盖各种可能性</td>
 </tr>
 <tr>
-<td>**权重**</td>
+<td><strong>权重</strong></td>
 <td>每个粒子与观测数据的符合程度</td>
 </tr>
 <tr>
-<td>**重采样**</td>
+<td><strong>重采样</strong></td>
 <td>删掉低权重粒子，复制高权重粒子</td>
 </tr>
 </tbody>
@@ -368,22 +368,22 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**集合预报**</td>
+<td><strong>集合预报</strong></td>
 <td>用多个粒子（成员）的轨迹集合表示预测分布</td>
 <td>类似气象学中的“台风路径集合”</td>
 </tr>
 <tr>
-<td>**中位数轨迹**</td>
+<td><strong>中位数轨迹</strong></td>
 <td>集合中排在中间的那条轨迹</td>
 <td>最可能的估计</td>
 </tr>
 <tr>
-<td>**预测区间**</td>
+<td><strong>预测区间</strong></td>
 <td>2.5%和97.5%百分位数之间的区域</td>
 <td>95%置信区间</td>
 </tr>
 <tr>
-<td>**CRPS（连续排序概率得分）**</td>
+<td><strong>CRPS（连续排序概率得分）</strong></td>
 <td>评估整个预测分布与真实观测的吻合度</td>
 <td>越小越好，完美预测=0</td>
 </tr>
@@ -407,27 +407,27 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**非线性系统**</td>
+<td><strong>非线性系统</strong></td>
 <td>输出不与输入成正比，叠加原理不成立</td>
 <td>心理系统常见（如阈值效应）</td>
 </tr>
 <tr>
-<td>**相空间**</td>
+<td><strong>相空间</strong></td>
 <td>状态向量 \(\Psi\) 所在的虚拟空间</td>
 <td>42维空间，每个点代表一种心理状态</td>
 </tr>
 <tr>
-<td>**吸引子**</td>
+<td><strong>吸引子</strong></td>
 <td>系统长期趋向的“偏好区域”</td>
 <td>健康状态是一种吸引子，抑郁症是另一种</td>
 </tr>
 <tr>
-<td>**混沌**</td>
+<td><strong>混沌</strong></td>
 <td>确定性但不可预测：初始微小差异导致巨大不同</td>
 <td>“蝴蝶效应”</td>
 </tr>
 <tr>
-<td>**临界慢化**</td>
+<td><strong>临界慢化</strong></td>
 <td>系统靠近临界点（相变前）的恢复速度变慢</td>
 <td>心理崩溃前兆</td>
 </tr>
@@ -452,17 +452,17 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**马尔可夫链蒙特卡罗（MCMC）**</td>
+<td><strong>马尔可夫链蒙特卡罗（MCMC）</strong></td>
 <td>从复杂分布中采样的通用算法</td>
 <td>28.3节</td>
 </tr>
 <tr>
-<td>**变分贝叶斯（VB）**</td>
+<td><strong>变分贝叶斯（VB）</strong></td>
 <td>用简单分布近似复杂后验，速度更快</td>
 <td>28.3节</td>
 </tr>
 <tr>
-<td>**高斯过程（GP）**</td>
+<td><strong>高斯过程（GP）</strong></td>
 <td>对未知函数进行非参数建模的贝叶斯方法</td>
 <td>28.3节</td>
 </tr>
@@ -594,7 +594,7 @@
 <a href="app-n.html" class="nav-link next">概念速查 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -604,7 +604,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="REVER（Relational Ethics via Verified Engineered Response）是INTRE框架在AI伦理治理领域的应用扩展。它解决的问题是：当AI系统（特别是拟人化聊天机器人、心理健康助手）与用户建立长期关系时，如何从架构层面防止情感依赖、欺骗性交互和用户自主性的侵蚀。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch25.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch25.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第25章 REVER：结构伦理、依赖雷达与门控">
     <meta name="twitter:description" content="REVER（Relational Ethics via Verified Engineered Response）是INTRE框架在AI伦理治理领域的应用扩展。它解决的问题是：当AI系统（特别是拟人化聊天机器人、心理健康助手）与用户建立长期关系时，如何从架构层面防止情感依赖、欺骗性交互和用户自主性的侵蚀。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -288,22 +288,22 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**L1: 治理层**</td>
+<td><strong>L1: 治理层</strong></td>
 <td>开发、部署、监管、责任分配</td>
 <td>责任与问责；权力集中；法律监管；商业激励冲突</td>
 </tr>
 <tr>
-<td>**L2: 算法层**</td>
+<td><strong>L2: 算法层</strong></td>
 <td>模型本身的技术特性</td>
 <td>偏见与歧视；透明度；鲁棒性；隐私；AGI对齐</td>
 </tr>
 <tr>
-<td>**L3: 交互层**</td>
+<td><strong>L3: 交互层</strong></td>
 <td>AI与用户的直接交互界面</td>
-<td>自主性侵蚀（操纵、成瘾设计）；**情感依赖与欺骗**；身份透明；安全性</td>
+<td>自主性侵蚀（操纵、成瘾设计）；<strong>情感依赖与欺骗</strong>；身份透明；安全性</td>
 </tr>
 <tr>
-<td>**L4: 社会层**</td>
+<td><strong>L4: 社会层</strong></td>
 <td>对社会结构、文化的宏观影响</td>
 <td>就业与收入；社会关系与隔离；环境；军事应用</td>
 </tr>
@@ -329,12 +329,12 @@
 <tr>
 <td>L2 算法层</td>
 <td>不涉及偏见、可解释性（除身份透明外）</td>
-<td>**无覆盖**</td>
+<td><strong>无覆盖</strong></td>
 </tr>
 <tr>
 <td>L3 交互层</td>
 <td>依赖雷达、分级干预、非人格化设计、四道门控</td>
-<td>**强覆盖**</td>
+<td><strong>强覆盖</strong></td>
 </tr>
 <tr>
 <td>L4 社会层</td>
@@ -392,7 +392,7 @@
 <a href="ch26.html" class="nav-link next">心理AI ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -402,7 +402,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

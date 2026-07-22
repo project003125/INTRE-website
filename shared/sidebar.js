@@ -399,6 +399,9 @@
     if (closeBtn) closeBtn.onclick = closeToc;
     if (overlay) overlay.onclick = closeToc;
 
+    // 移动端滚动时自动收起目录浮动按钮（桌面按钮隐藏，监听无副作用）
+    if (toggleBtn) autoHideOnScroll(toggleBtn);
+
     // Swipe down to close on mobile
     var touchStartY = 0;
     var touchCurrentY = 0;
@@ -457,9 +460,6 @@
   }
 
   /* ================================================================
-    // Auto-hide toggle button on scroll
-    autoHideOnScroll(toggleBtn);
-
      Init
      ================================================================ */
   function init() {

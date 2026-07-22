@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="定位：第15章（语义架构）的配套速查手册，提供可直接用于仿真、教学和临床推理的标准依赖矩阵与级联模板。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-k.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-k.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录K：PSA依赖——矩阵、级联模板与文化参数">
     <meta name="twitter:description" content="定位：第15章（语义架构）的配套速查手册，提供可直接用于仿真、教学和临床推理的标准依赖矩阵与级联模板。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -91,15 +91,15 @@
 <th>M4</th>
 <th>M5</th>
 <th>M6</th>
-<th>**出度总和**</th>
-<th>**最高出度靶点**</th>
+<th><strong>出度总和</strong></th>
+<th><strong>最高出度靶点</strong></th>
 </tr></thead>
 <tbody>
 <tr>
-<td>**M1**</td>
+<td><strong>M1</strong></td>
 <td>—</td>
 <td>0.65</td>
-<td>**0.85**</td>
+<td><strong>0.85</strong></td>
 <td>0.70</td>
 <td>0.30</td>
 <td>0.60</td>
@@ -107,40 +107,40 @@
 <td>M3 (0.85)</td>
 </tr>
 <tr>
-<td>**M2**</td>
+<td><strong>M2</strong></td>
 <td>0.20</td>
 <td>—</td>
 <td>0.55</td>
-<td>**0.65**</td>
+<td><strong>0.65</strong></td>
 <td>0.50</td>
 <td>0.45</td>
 <td>2.35</td>
 <td>M4 (0.65)</td>
 </tr>
 <tr>
-<td>**M3**</td>
+<td><strong>M3</strong></td>
 <td>0.15</td>
 <td>0.50</td>
 <td>—</td>
 <td>0.40</td>
 <td>0.35</td>
-<td>**0.75**</td>
+<td><strong>0.75</strong></td>
 <td>2.15</td>
 <td>M6 (0.75)</td>
 </tr>
 <tr>
-<td>**M4**</td>
+<td><strong>M4</strong></td>
 <td>0.40</td>
-<td>**0.68**</td>
-<td>**0.75**</td>
+<td><strong>0.68</strong></td>
+<td><strong>0.75</strong></td>
 <td>—</td>
 <td>0.55</td>
-<td>**0.70**</td>
+<td><strong>0.70</strong></td>
 <td>3.08</td>
 <td>M3 (0.75)</td>
 </tr>
 <tr>
-<td>**M5**</td>
+<td><strong>M5</strong></td>
 <td>0.10</td>
 <td>0.45</td>
 <td>0.30</td>
@@ -151,7 +151,7 @@
 <td>M2/M4 (0.45)</td>
 </tr>
 <tr>
-<td>**M6**</td>
+<td><strong>M6</strong></td>
 <td>0.25</td>
 <td>0.20</td>
 <td>0.15</td>
@@ -162,7 +162,7 @@
 <td>M4 (0.30)</td>
 </tr>
 <tr>
-<td>**入度总和**</td>
+<td><strong>入度总和</strong></td>
 <td>1.10</td>
 <td>2.48</td>
 <td>2.60</td>
@@ -173,7 +173,7 @@
 <td>—</td>
 </tr>
 <tr>
-<td>**最高入度来源**</td>
+<td><strong>最高入度来源</strong></td>
 <td>M1(0.40)</td>
 <td>M4(0.68)</td>
 <td>M4(0.75)</td>
@@ -279,7 +279,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**资源崩溃型**</td>
+<td><strong>资源崩溃型</strong></td>
 <td>“先累后拖再冲动”</td>
 <td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
 <td>拖延、冲动消费、决策疲劳</td>
@@ -287,7 +287,7 @@
 <td>易与情绪驱动型混淆，区别在M4-STR-C是否激活</td>
 </tr>
 <tr>
-<td>**情绪驱动型**</td>
+<td><strong>情绪驱动型</strong></td>
 <td>“先怕后累再反刍”</td>
 <td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
 <td>焦虑、反刍、回避行为</td>
@@ -295,7 +295,7 @@
 <td>易与资源崩溃型混淆，区别在级联起点（M4 vs M1）</td>
 </tr>
 <tr>
-<td>**习惯固化型**</td>
+<td><strong>习惯固化型</strong></td>
 <td>“先做后忘再失控”</td>
 <td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
 <td>成瘾、强迫行为、习惯性拖延</td>
@@ -303,7 +303,7 @@
 <td>易与资源崩溃型混淆，区别在M1资源是否正常</td>
 </tr>
 <tr>
-<td>**规则扭曲型**</td>
+<td><strong>规则扭曲型</strong></td>
 <td>“先信后怕再逃避”</td>
 <td>M2-STR-R错误规则 → M4-STR-R威胁评估扭曲 → M4-DSP-B↑ → 回避行为</td>
 <td>完美主义、灾难化、社交焦虑</td>
@@ -360,49 +360,49 @@ M6-DSP-B（自动化拖延）接管
 </tr></thead>
 <tbody>
 <tr>
-<td>**拖延**</td>
+<td><strong>拖延</strong></td>
 <td>资源崩溃型 > 情绪驱动型 > 规则扭曲型</td>
 <td>M3-RES-D vs M4-STR-C vs M2-STR-R</td>
 <td>问“是累、怕、还是觉得必须完美？”</td>
 </tr>
 <tr>
-<td>**反刍**</td>
+<td><strong>反刍</strong></td>
 <td>情绪驱动型 > 资源崩溃型</td>
 <td>M4-DSP-B vs M3-RES-D</td>
 <td>问“是焦虑触发还是疲劳后失控？”</td>
 </tr>
 <tr>
-<td>**冲动消费/进食**</td>
+<td><strong>冲动消费/进食</strong></td>
 <td>习惯固化型 > 资源崩溃型</td>
 <td>M6-STR-S vs M3-RES-D</td>
 <td>问“是习惯动作还是自控力耗尽？”</td>
 </tr>
 <tr>
-<td>**回避社交**</td>
+<td><strong>回避社交</strong></td>
 <td>情绪驱动型 > 规则扭曲型</td>
 <td>M4-STR-C vs M2-STR-R</td>
 <td>问“是怕被伤害还是觉得自己不行？”</td>
 </tr>
 <tr>
-<td>**失眠**</td>
+<td><strong>失眠</strong></td>
 <td>资源崩溃型 > 情绪驱动型</td>
 <td>M1-RES-D节律 vs M4-DSP-B</td>
 <td>问“是身体不累还是脑子停不下来？”</td>
 </tr>
 <tr>
-<td>**完美主义**</td>
+<td><strong>完美主义</strong></td>
 <td>规则扭曲型</td>
 <td>M2-STR-R</td>
 <td>问“是否认为不完美就是失败？”</td>
 </tr>
 <tr>
-<td>**成瘾复发**</td>
+<td><strong>成瘾复发</strong></td>
 <td>习惯固化型 > 资源崩溃型</td>
 <td>S-P触发 vs M3-RES-D</td>
 <td>问“是看到线索就自动做，还是意志薄弱时做？”</td>
 </tr>
 <tr>
-<td>**惊恐发作（急性）**</td>
+<td><strong>惊恐发作（急性）</strong></td>
 <td>情绪驱动型</td>
 <td>M4-DSP-B</td>
 <td>问“是否有突然的恐惧反应，无前兆？”</td>
@@ -436,7 +436,7 @@ M6-DSP-B（自动化拖延）接管
 </tr></thead>
 <tbody>
 <tr>
-<td>**GATE**</td>
+<td><strong>GATE</strong></td>
 <td>DSP-F, DSP-B（运行中的过程）；运行中的STR-S序列</td>
 <td>GATE STR-R（“门控一个信念”）</td>
 <td>无效，信念不是进程</td>
@@ -457,7 +457,7 @@ M6-DSP-B（自动化拖延）接管
 <td>反复GATE–执行触发过程来削弱</td>
 </tr>
 <tr>
-<td>**MODULATE**</td>
+<td><strong>MODULATE</strong></td>
 <td>RES-D（所有模块）</td>
 <td>MODULATE RES-B</td>
 <td>无效，基底资源不能直接补充</td>
@@ -471,7 +471,7 @@ M6-DSP-B（自动化拖延）接管
 <td>ALIGN/RELINK</td>
 </tr>
 <tr>
-<td>**ALIGN**</td>
+<td><strong>ALIGN</strong></td>
 <td>STR-R（所有模块）</td>
 <td>ALIGN STR-C</td>
 <td>“道理都懂但感觉不变”</td>
@@ -485,7 +485,7 @@ M6-DSP-B（自动化拖延）接管
 <td>GATE+重复 + 行为排练</td>
 </tr>
 <tr>
-<td>**RELINK**</td>
+<td><strong>RELINK</strong></td>
 <td>STR-C（所有模块）</td>
 <td>RELINK STR-R</td>
 <td>“体验了但无法概括”</td>
@@ -522,7 +522,7 @@ M6-DSP-B（自动化拖延）接管
 </tr></thead>
 <tbody>
 <tr>
-<td>**焦虑躯体化权重**（M1-DSP-B）</td>
+<td><strong>焦虑躯体化权重</strong>（M1-DSP-B）</td>
 <td>×1.30</td>
 <td>×1.15</td>
 <td>×1.10</td>
@@ -530,7 +530,7 @@ M6-DSP-B（自动化拖延）接管
 <td>焦虑更多表现为躯体不适</td>
 </tr>
 <tr>
-<td>**情绪表达权重**（M4-DSP-F）</td>
+<td><strong>情绪表达权重</strong>（M4-DSP-F）</td>
 <td>×0.85</td>
 <td>×0.90</td>
 <td>×1.10</td>
@@ -538,7 +538,7 @@ M6-DSP-B（自动化拖延）接管
 <td>内敛 vs 外放的文化规范</td>
 </tr>
 <tr>
-<td>**依恋安全感基线**（M4-RES-B均值偏移）</td>
+<td><strong>依恋安全感基线</strong>（M4-RES-B均值偏移）</td>
 <td>-5</td>
 <td>-3</td>
 <td>+2</td>
@@ -546,7 +546,7 @@ M6-DSP-B（自动化拖延）接管
 <td>集体主义中安全感更多来自关系</td>
 </tr>
 <tr>
-<td>**自我叙事独立性**（M5-STR-R）</td>
+<td><strong>自我叙事独立性</strong>（M5-STR-R）</td>
 <td>互依型</td>
 <td>混合型</td>
 <td>独立型</td>
@@ -554,7 +554,7 @@ M6-DSP-B（自动化拖延）接管
 <td>自我构念差异</td>
 </tr>
 <tr>
-<td>**求助行为权重**（M5-DSP-F）</td>
+<td><strong>求助行为权重</strong>（M5-DSP-F）</td>
 <td>×0.70</td>
 <td>×0.80</td>
 <td>×0.90</td>
@@ -562,7 +562,7 @@ M6-DSP-B（自动化拖延）接管
 <td>文化对心理求助的污名化程度</td>
 </tr>
 <tr>
-<td>**社会赞许性偏差**（观测噪声）</td>
+<td><strong>社会赞许性偏差</strong>（观测噪声）</td>
 <td>高</td>
 <td>中高</td>
 <td>中</td>
@@ -607,7 +607,7 @@ M6-DSP-B（自动化拖延）接管
 <a href="app-l.html" class="nav-link next">架构速查 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -617,7 +617,7 @@ M6-DSP-B（自动化拖延）接管
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="定位：第14章（概念标识）的配套速查手册，供研究者和开发者日常查阅。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-j.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-j.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录J：PCUI规范——角色标签、映射与消歧">
     <meta name="twitter:description" content="定位：第14章（概念标识）的配套速查手册，供研究者和开发者日常查阅。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -145,35 +145,35 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**C**</td>
+<td><strong>C</strong></td>
 <td>Core</td>
 <td>核心失调位点</td>
 <td>`M4C` = M4是该概念的核心模块</td>
 <td>每个PCUI至少1个C，通常不超过2个</td>
 </tr>
 <tr>
-<td>**I**</td>
+<td><strong>I</strong></td>
 <td>Impact</td>
 <td>次级受冲击模块</td>
 <td>`M2I` = M2受冲击</td>
 <td>不能与C同时用于同一模块</td>
 </tr>
 <tr>
-<td>**S**</td>
+<td><strong>S</strong></td>
 <td>Support</td>
 <td>支撑/资源供给模块</td>
 <td>`M1S` = M1提供能量支撑</td>
 <td>不能与C同时用于同一模块</td>
 </tr>
 <tr>
-<td>**T**</td>
+<td><strong>T</strong></td>
 <td>Trigger</td>
 <td>触发条件模块</td>
 <td>`M4T` = M4状态变化触发</td>
 <td>可选</td>
 </tr>
 <tr>
-<td>**O**</td>
+<td><strong>O</strong></td>
 <td>Output</td>
 <td>行为/体验输出通道</td>
 <td>`M6O` = M6是行为输出通道</td>
@@ -327,7 +327,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**防御机制**</td>
+<td><strong>防御机制</strong></td>
 <td>“无意识”“焦虑”“压抑”</td>
 <td>`DEFENSE_MECHANISM`</td>
 <td>高(≥0.8)</td>
@@ -348,7 +348,7 @@
 <td>返回备选项，要求人工确认</td>
 </tr>
 <tr>
-<td>**抑郁**</td>
+<td><strong>抑郁</strong></td>
 <td>“情绪低落”“没劲”“快感缺失”</td>
 <td>`DEPRESSED_MOOD`</td>
 <td>高</td>
@@ -369,7 +369,7 @@
 <td>—</td>
 </tr>
 <tr>
-<td>**焦虑**</td>
+<td><strong>焦虑</strong></td>
 <td>“担心未来”“灾难化思维”</td>
 <td>`ANXIETY_COGNITIVE`</td>
 <td>高</td>
@@ -569,7 +569,7 @@
 <a href="app-k.html" class="nav-link next">PSA依赖 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -579,7 +579,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

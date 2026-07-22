@@ -1,22 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>INTRE · PSE 心理系统工程</title>
+    <title>INTRE · PSE 心理状态仿真引擎</title>
     <meta name="description" content="PSE（心理状态仿真引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
     <meta property="og:title" content="PSE · 心理状态仿真引擎 · INTRE">
     <meta property="og:description" content="PSE（心理状态仿真引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/pse/">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PSE · 心理状态仿真引擎 · INTRE">
     <meta name="twitter:description" content="PSE（心理状态仿真引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/pse/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -263,7 +263,7 @@
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -300,13 +300,13 @@
                 <div class="code-block code-block-sm">主诉“疲惫不堪”→ M1-RES-D↓</div>
             </div>
             <div class="card">
-                <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> MTT · 心智拓扑理论</h4>
+                <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> MTT · 心智拓扑理论</h3>
                 <p><strong>Mental Topology Theory</strong></p>
                 <p>描述 M-R-D-S 组件间的连接结构与因果网络。定义依赖强度矩阵 w_base。</p>
                 <div class="code-block code-block-sm">M1-RES-D → M3-RES-D: 0.8</div>
             </div>
             <div class="card">
-                <h3><i class="fas fa-chart-line" aria-hidden="true"></i> MKT · 心智动力理论</h4>
+                <h3><i class="fas fa-chart-line" aria-hidden="true"></i> MKT · 心智动力理论</h3>
                 <p><strong>Mental Kinetics Theory</strong></p>
                 <p>资源与状态的演化方程，包含存量-流量-结构动力学。定义速率常数 k。</p>
                 <div class="code-block code-block-sm">d(RES-D)/dt = k_rec - k_cons</div>
@@ -493,7 +493,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 开放知识入口</p>
         <div class="footer-links">
@@ -503,7 +503,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.3 (2026-06-12) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
     <script src="../shared/nav-toggle.js"></script>

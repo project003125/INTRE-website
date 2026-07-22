@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的下行推导过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch05.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch05.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第5章 架构推导：从元公理到操作系统">
     <meta name="twitter:description" content="INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的下行推导过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -91,35 +91,35 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**N-S-R**</td>
+<td><strong>N-S-R</strong></td>
 <td>Need-Structure-Realization</td>
 <td>道（元公理）</td>
 <td>智能系统如何存在与运作？</td>
 <td>第一性原理（起点）</td>
 </tr>
 <tr>
-<td>**M-R-P**</td>
+<td><strong>M-R-P</strong></td>
 <td>Module-Ring-Playbook</td>
 <td>法（通用架构）</td>
 <td>目标驱动智能体的通用蓝图是什么？</td>
 <td>N-S-R的S被操作化定义</td>
 </tr>
 <tr>
-<td>**M-R-D-S**</td>
+<td><strong>M-R-D-S</strong></td>
 <td>Module-Resource-Dispatch-Structure</td>
 <td>术（诊断侧）</td>
 <td>心智系统此刻的内部状态如何？</td>
 <td>M-R-P在人类心智上的特化</td>
 </tr>
 <tr>
-<td>**G-M-A-R**</td>
+<td><strong>G-M-A-R</strong></td>
 <td>Gate-Modulate-Align-Relink</td>
 <td>术（干预侧）</td>
 <td>如何修正心智系统的非理想状态？</td>
 <td>从R-D-S状态空间自然导出</td>
 </tr>
 <tr>
-<td>**S-P**</td>
+<td><strong>S-P</strong></td>
 <td>Source-Pattern</td>
 <td>境（环境参照系）</td>
 <td>系统在什么样的环境中运行？</td>
@@ -216,37 +216,37 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M1**</td>
+<td><strong>M1</strong></td>
 <td>具身</td>
 <td>能量与稳态基底</td>
 <td>为所有心理活动提供生物能量边界</td>
 </tr>
 <tr>
-<td>**M2**</td>
+<td><strong>M2</strong></td>
 <td>认知</td>
 <td>世界建模与预测</td>
 <td>构建关于世界、自我和未来的内部模型</td>
 </tr>
 <tr>
-<td>**M3**</td>
+<td><strong>M3</strong></td>
 <td>意志</td>
 <td>中央调度与决策</td>
 <td>M-R-P 中调度环（Ring）的核心载体</td>
 </tr>
 <tr>
-<td>**M4**</td>
+<td><strong>M4</strong></td>
 <td>情绪</td>
 <td>价值评估与动机</td>
 <td>识别需要（N）的价值信号</td>
 </tr>
 <tr>
-<td>**M5**</td>
+<td><strong>M5</strong></td>
 <td>言语</td>
 <td>符号化与社会协调</td>
 <td>内部叙事和外部沟通</td>
 </tr>
 <tr>
-<td>**M6**</td>
+<td><strong>M6</strong></td>
 <td>行为</td>
 <td>行动执行与习惯</td>
 <td>将决策转化为物理行动（R 的执行端）</td>
@@ -282,19 +282,19 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**R（资源）**</td>
+<td><strong>R（资源）</strong></td>
 <td>系统此刻拥有什么？</td>
 <td>存量（积分量）</td>
 <td>系统的瞬时状态属性</td>
 </tr>
 <tr>
-<td>**D（调度）**</td>
+<td><strong>D（调度）</strong></td>
 <td>系统此刻正在如何变化？</td>
 <td>流量（微分量）</td>
 <td>系统的过程动态属性</td>
 </tr>
 <tr>
-<td>**S（结构）**</td>
+<td><strong>S（结构）</strong></td>
 <td>系统为何以此方式运行？</td>
 <td>控制方程与拓扑</td>
 <td>系统的因果配置属性</td>
@@ -382,25 +382,25 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**MODULATE**</td>
+<td><strong>MODULATE</strong></td>
 <td>RES-D</td>
 <td>即时燃料失衡（数量问题）</td>
 <td>R 维度的存量特性 → 需要数量调节操作</td>
 </tr>
 <tr>
-<td>**GATE**</td>
+<td><strong>GATE</strong></td>
 <td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
 <td>过程/序列失控（过程问题）</td>
 <td>D 维度的流量特性 → 需要通道开关操作</td>
 </tr>
 <tr>
-<td>**ALIGN**</td>
+<td><strong>ALIGN</strong></td>
 <td>STR-R</td>
 <td>内部规则错误（内容问题）</td>
 <td>S-R 的命题性 → 需要逻辑修正操作</td>
 </tr>
 <tr>
-<td>**RELINK**</td>
+<td><strong>RELINK</strong></td>
 <td>STR-C</td>
 <td>价值连接断裂（关系问题）</td>
 <td>S-C 的关联性 → 需要体验重塑操作</td>
@@ -420,22 +420,22 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**GATE**</td>
+<td><strong>GATE</strong></td>
 <td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
 <td>GATE STR-R, GATE STR-C</td>
 </tr>
 <tr>
-<td>**MODULATE**</td>
+<td><strong>MODULATE</strong></td>
 <td>RES-D</td>
 <td>MODULATE RES-B, MODULATE STR</td>
 </tr>
 <tr>
-<td>**ALIGN**</td>
+<td><strong>ALIGN</strong></td>
 <td>STR-R</td>
 <td>ALIGN STR-C, ALIGN STR-S</td>
 </tr>
 <tr>
-<td>**RELINK**</td>
+<td><strong>RELINK</strong></td>
 <td>STR-C</td>
 <td>RELINK STR-R, RELINK STR-S</td>
 </tr>
@@ -518,7 +518,7 @@
 <a href="ch06.html" class="nav-link next">状态维度 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -528,7 +528,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="本附录提供INTRE框架中逻辑指纹体系的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-f.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-f.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录F：逻辑指纹——编码协议与PCUI JSON示例">
     <meta name="twitter:description" content="本附录提供INTRE框架中逻辑指纹体系的标准化编码协议，以及处理不同分析者之间解析差异的工程化解决方案。逻辑指纹是判定不同解析是否描述同一心理实体的四组正交维度——模块指纹、资源指纹、层级指纹、操作指纹——为跨流派翻译、临床诊断一致性、AI编译提供可操作的判定标尺。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -93,25 +93,25 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**模块指纹**</td>
+<td><strong>模块指纹</strong></td>
 <td>涉及哪些模块？各模块的角色？</td>
 <td>只回答“谁参与及角色”</td>
 <td>认知行为视角：`{(M2, primary), (M4, secondary)}`</td>
 </tr>
 <tr>
-<td>**资源指纹**</td>
+<td><strong>资源指纹</strong></td>
 <td>消耗或保护哪类资源？方向？</td>
 <td>只回答资源类型和方向</td>
 <td>`{(RES-D, -), (RES-B, +)}`</td>
 </tr>
 <tr>
-<td>**层级指纹**</td>
+<td><strong>层级指纹</strong></td>
 <td>表现层与根源层？因果关系方向？</td>
 <td>只回答哪层是表现、哪层是根源</td>
 <td>表现: `DSP-B`；根源: `{STR-R, STR-C}`；方向: `表现 ← 根源`</td>
 </tr>
 <tr>
-<td>**操作指纹**</td>
+<td><strong>操作指纹</strong></td>
 <td>优先干预操作？序列符合D→R→S？</td>
 <td>只回答操作类型和顺序</td>
 <td>`[GATE-, ALIGN, RELINK]`</td>
@@ -132,31 +132,31 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**E1**</td>
+<td><strong>E1</strong></td>
 <td>完全遗漏公认核心模块</td>
 <td>多视角集合确认的核心模块完全未被提及</td>
 <td>防御机制解析中完全未涉及M4</td>
 </tr>
 <tr>
-<td>**E2**</td>
+<td><strong>E2</strong></td>
 <td>资源方向与标准完全相反</td>
 <td>资源方向（+/-）与标准颠倒</td>
 <td>将反刍思维描述为`{(RES-D, +)}`</td>
 </tr>
 <tr>
-<td>**E3**</td>
+<td><strong>E3</strong></td>
 <td>层级因果方向颠倒</td>
 <td>因果方向与标准相反</td>
 <td>将创伤反应描述为`STR ← DSP`</td>
 </tr>
 <tr>
-<td>**E4**</td>
+<td><strong>E4</strong></td>
 <td>操作序列逻辑矛盾</td>
 <td>序列违背D→R→S深度逻辑</td>
 <td>对低功能系统给出`[RELINK, GATE-]`</td>
 </tr>
 <tr>
-<td>**E5**</td>
+<td><strong>E5</strong></td>
 <td>模块角色与三组指纹系统矛盾</td>
 <td>导致资源/层级/操作指纹不可调和矛盾</td>
 <td>M1 primary却声称无RES-D消耗</td>
@@ -482,7 +482,7 @@ print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75</code></pre>
 <a href="app-g.html" class="nav-link next">术语对照 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -492,7 +492,7 @@ print(f&quot;Kappa: {kappa:.2f}&quot;)  # 预期 &gt;0.75</code></pre>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

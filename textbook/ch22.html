@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="INTRE的功能层必须向“上”与现象层对接——接管变量范式的概念遗产；也必须向“下”与神经层对接——接受神经实现施加的物理边界约束。两条对接路径服务于完全不同的目的。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch22.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch22.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第22章 神经对接：翻译与约束的根本差异">
     <meta name="twitter:description" content="INTRE的功能层必须向“上”与现象层对接——接管变量范式的概念遗产；也必须向“下”与神经层对接——接受神经实现施加的物理边界约束。两条对接路径服务于完全不同的目的。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -146,7 +146,7 @@
 <tr>
 <td>神经生物学→功能层</td>
 <td>极高</td>
-<td>**松而不脱**</td>
+<td><strong>松而不脱</strong></td>
 <td>威胁评估可由多种神经通路实现</td>
 </tr>
 </tbody>
@@ -231,19 +231,19 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**硬约束**（物理极限）</td>
+<td><strong>硬约束</strong>（物理极限）</td>
 <td>生理硬约束 + 统计规律约束（高稳健）</td>
 <td>自动裁剪L4模型输出至边界，记录仲裁事件</td>
 <td>突触延迟下限1ms → RTE窗口不能更短</td>
 </tr>
 <tr>
-<td>**软约束**（测量极限）</td>
+<td><strong>软约束</strong>（测量极限）</td>
 <td>统计规律约束（低稳健） + 赋能信号</td>
 <td>注入为贝叶斯软先验，不强制裁剪</td>
 <td>前额叶-杏仁核连接方向性 → 模型偏离时仅降权</td>
 </tr>
 <tr>
-<td>**兼容性信号**（结构对应）</td>
+<td><strong>兼容性信号</strong>（结构对应）</td>
 <td>不参与运行时约束，存入兼容性证据库</td>
 <td>用于增强对功能划分的信心，不修改模型输出</td>
 <td>DMN/FPN反相关 ↔ DSP-F/B区分</td>
@@ -393,7 +393,7 @@
 <a href="ch23.html" class="nav-link next">双向约束 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -403,7 +403,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

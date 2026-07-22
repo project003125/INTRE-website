@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="功能层测量的核心挑战在于：M-R-D-S中的大多数子单元是潜变量——它们需要从多种可观测信号中间接推断。INTRE对此采取的立场不是“等待完美的直接测量工具”，而是接受测量的间接性和概率性，并通过方法论创新将其转化为可管理的工程问题。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch09.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch09.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第9章 测量方法：ABC分类与桥接校准">
     <meta name="twitter:description" content="功能层测量的核心挑战在于：M-R-D-S中的大多数子单元是潜变量——它们需要从多种可观测信号中间接推断。INTRE对此采取的立场不是“等待完美的直接测量工具”，而是接受测量的间接性和概率性，并通过方法论创新将其转化为可管理的工程问题。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -105,7 +105,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**行为通道**</td>
+<td><strong>行为通道</strong></td>
 <td>量表、行为任务、EMA、数字表型</td>
 <td>UBMS（L1–L3）</td>
 <td>行为似然 p(y_b \</td>
@@ -113,7 +113,7 @@
 <td>秒至天</td>
 </tr>
 <tr>
-<td>**语义通道**</td>
+<td><strong>语义通道</strong></td>
 <td>自然语言叙述、临床访谈</td>
 <td>UPLS / PSL</td>
 <td>语义似然 p(y_s \</td>
@@ -121,7 +121,7 @@
 <td>分钟至小时</td>
 </tr>
 <tr>
-<td>**神经通道**</td>
+<td><strong>神经通道</strong></td>
 <td>EEG、fNIRS、PPG、HRV等</td>
 <td>UNIS</td>
 <td>神经似然 p(y_n \</td>
@@ -161,21 +161,21 @@ $$
 </tr></thead>
 <tbody>
 <tr>
-<td>**A类（实证锚定）**</td>
+<td><strong>A类（实证锚定）</strong></td>
 <td>≥8/10</td>
 <td>至少两种以上成熟方法</td>
 <td>直接复用并重标定</td>
 <td>~17</td>
 </tr>
 <tr>
-<td>**B类（整合性）**</td>
+<td><strong>B类（整合性）</strong></td>
 <td>6-8/10</td>
 <td>分散在不同传统中</td>
 <td>组合测量与结构验证</td>
 <td>~18</td>
 </tr>
 <tr>
-<td>**C类（预测性）**</td>
+<td><strong>C类（预测性）</strong></td>
 <td><6/10</td>
 <td>变量范式中无直接对应</td>
 <td>原创工具开发+过渡性代理</td>
@@ -618,7 +618,7 @@ $$
 <a href="ch10.html" class="nav-link next">原子操作 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -628,7 +628,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

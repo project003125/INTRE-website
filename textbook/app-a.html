@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="本附录提供INTRE框架核心状态空间——42维M-R-D-S向量的完整定义。每一维度由功能模块(M1-M6)与状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-a.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-a.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录A：42子维度列表——符号、定义、分类与测量">
     <meta name="twitter:description" content="本附录提供INTRE框架核心状态空间——42维M-R-D-S向量的完整定义。每一维度由功能模块(M1-M6)与状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -95,49 +95,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M1-RES-D**</td>
+<td><strong>M1-RES-D</strong></td>
 <td>当前可用的生理能量水平（精力、体力），分钟至天尺度</td>
 <td>A</td>
 <td>可穿戴设备（活动量、HRV）、主观疲劳量表（VAS）</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M1-RES-B**</td>
+<td><strong>M1-RES-B</strong></td>
 <td>长期健康根基——生理系统的慢性负荷、代谢弹性、恢复能力</td>
 <td>B</td>
 <td>慢性病指标、心肺功能测试、健康相关生活质量问卷</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M1-DSP-F**</td>
+<td><strong>M1-DSP-F</strong></td>
 <td>需意识参与的生理调节（深呼吸、放松训练、疼痛管理）</td>
 <td>A</td>
 <td>生物反馈任务、调节策略自陈量表</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M1-DSP-B**</td>
+<td><strong>M1-DSP-B</strong></td>
 <td>自主神经系统运行——自动稳态维持（心率、呼吸、消化）</td>
 <td>A</td>
 <td>静息HRV、皮肤电导、呼吸频率</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M1-STR-R**</td>
+<td><strong>M1-STR-R</strong></td>
 <td>身体信念规则（暂未细化）</td>
 <td>—</td>
 <td>（待开发）</td>
 <td>—</td>
 </tr>
 <tr>
-<td>**M1-STR-C**</td>
+<td><strong>M1-STR-C</strong></td>
 <td>内感受-情感连接——身体感觉与情绪意义之间的关联权重</td>
 <td>C</td>
 <td>内感受准确性任务、身体觉知问卷(BAQ)</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M1-STR-S**</td>
+<td><strong>M1-STR-S</strong></td>
 <td>生理节律脚本——睡眠-觉醒周期的固化模式、进食节律</td>
 <td>A</td>
 <td>睡眠日志、体动记录仪、昼夜节律问卷</td>
@@ -162,49 +162,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M2-RES-D**</td>
+<td><strong>M2-RES-D</strong></td>
 <td>当前可用的注意带宽与工作记忆容量</td>
 <td>A</td>
 <td>n-back任务、数字广度、操作广度</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M2-RES-B**</td>
+<td><strong>M2-RES-B</strong></td>
 <td>长期知识库/晶体智力——词汇量、领域专业知识</td>
 <td>A</td>
 <td>词汇测验、知识面测验</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M2-DSP-F**</td>
+<td><strong>M2-DSP-F</strong></td>
 <td>受控的、序列的推理过程（逻辑分析、算术、计划）</td>
 <td>A</td>
 <td>任务切换范式、Stroop任务、计划任务（TOL）</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M2-DSP-B**</td>
+<td><strong>M2-DSP-B</strong></td>
 <td>自动化的认知过程——模式识别、直觉、联想、心智游移</td>
 <td>B</td>
 <td>思维取样（EMA）、心智游移问卷、内隐联想测验</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M2-STR-R**</td>
+<td><strong>M2-STR-R</strong></td>
 <td>认知规则与信念——如果-那么规则、刻板印象、归因风格</td>
 <td>A</td>
 <td>核心信念问卷（如DAS）、归因风格问卷</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M2-STR-C**</td>
+<td><strong>M2-STR-C</strong></td>
 <td>语义联想网络——概念之间的连接权重</td>
 <td>B</td>
 <td>自由联想范式、语义流畅性、网络分析</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M2-STR-S**</td>
+<td><strong>M2-STR-S</strong></td>
 <td>认知程序——问题解决脚本、决策流程、思维习惯序列</td>
 <td>B</td>
 <td>出声思维编码、决策日志</td>
@@ -229,49 +229,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M3-RES-D**</td>
+<td><strong>M3-RES-D</strong></td>
 <td>当前可用的意志资源（自我控制能量、决策疲劳程度）</td>
 <td>A</td>
 <td>自我控制量表(SCS)、疲劳自评、Stroop坚持时间、HRV</td>
 <td>F1r（注：自我损耗复制争议需注意）</td>
 </tr>
 <tr>
-<td>**M3-RES-B**</td>
+<td><strong>M3-RES-B</strong></td>
 <td>长期意志韧性——目标承诺的持久性、挫折后恢复能力</td>
 <td>B</td>
 <td>韧性量表(RS)、自我效能量表、目标坚持追踪</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M3-DSP-F**</td>
+<td><strong>M3-DSP-F</strong></td>
 <td>前景执行控制——有意识的抑制、切换、计划</td>
 <td>A</td>
 <td>抑制控制任务（Go/No-go）、任务切换、延迟满足</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M3-DSP-B**</td>
+<td><strong>M3-DSP-B</strong></td>
 <td>背景意志调度——习惯性的目标放弃、默认被动顺从倾向</td>
 <td>C</td>
 <td>放弃决策EMA（“此刻我感到想放弃”）、被动顺从问卷</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M3-STR-R**</td>
+<td><strong>M3-STR-R</strong></td>
 <td>价值与决策规则——“什么重要”“什么值得追求”的规则层级</td>
 <td>A</td>
 <td>价值卡片排序、优先级任务、动机问卷</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M3-STR-C**</td>
+<td><strong>M3-STR-C</strong></td>
 <td>目标-行动-自我连接——目标与身份之间的绑定强度</td>
 <td>C</td>
 <td>自我-目标重叠量表(IOS)、动机强度IAT</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M3-STR-S**</td>
+<td><strong>M3-STR-S</strong></td>
 <td>自我管理程序——拖延脚本、坚持脚本、任务启动的固化模式</td>
 <td>B</td>
 <td>拖延行为日志、执行意图问卷</td>
@@ -296,49 +296,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M4-RES-D**</td>
+<td><strong>M4-RES-D</strong></td>
 <td>当前情绪调节资源（情绪容限——能承受多大强度情绪而不崩溃）</td>
 <td>A</td>
 <td>情绪调节困难量表(DERS)、HRV、情绪恢复速度</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M4-RES-B**</td>
+<td><strong>M4-RES-B</strong></td>
 <td>长期情绪安全基底——依恋安全感、基本信任感</td>
 <td>B</td>
 <td>依恋风格问卷(ECR)、基本信任量表、安全感问卷</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M4-DSP-F**</td>
+<td><strong>M4-DSP-F</strong></td>
 <td>前景情绪调节——有意识地重新评估、情绪标签化、表达控制</td>
 <td>A</td>
 <td>情绪调节问卷(ERQ)、认知重评任务</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M4-DSP-B**</td>
+<td><strong>M4-DSP-B</strong></td>
 <td>背景情绪自动激活——条件化恐惧、自动情绪启动、情绪传染</td>
 <td>A</td>
 <td>情绪Stroop、惊跳反射、皮肤电导(SCR)</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M4-STR-R**</td>
+<td><strong>M4-STR-R</strong></td>
 <td>情绪评价规则——“情绪是危险的”“表达情绪会被惩罚”等规则</td>
 <td>B</td>
 <td>情绪信念问卷、元情绪问卷</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M4-STR-C**</td>
+<td><strong>M4-STR-C</strong></td>
 <td>情绪连接网络——刺激与情感之间的联结权重（如创伤连接）</td>
 <td>C</td>
 <td>关系主题编码、依恋访谈(AAI)、暴露治疗中的SUDS曲线</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M4-STR-S**</td>
+<td><strong>M4-STR-S</strong></td>
 <td>情绪应对程序——回避-压抑-爆发的行为脚本</td>
 <td>B</td>
 <td>情绪行为日志、应对方式问卷</td>
@@ -363,49 +363,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M5-RES-D**</td>
+<td><strong>M5-RES-D</strong></td>
 <td>当前叙事整合资源——语言表达的流畅性、叙事组织的在线能力</td>
 <td>B</td>
 <td>言语流畅性任务、叙事连贯性评分（在线）</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M5-RES-B**</td>
+<td><strong>M5-RES-B</strong></td>
 <td>长期叙事资本——自传体记忆的丰富性、身份叙事的连贯性</td>
 <td>B</td>
 <td>自传体记忆访谈、叙事身份量表、生命线绘制</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M5-DSP-F**</td>
+<td><strong>M5-DSP-F</strong></td>
 <td>前景叙事加工——有意识地组织语言表达、写作、公开演讲</td>
 <td>A</td>
 <td>叙述任务、写作样本分析</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M5-DSP-B**</td>
+<td><strong>M5-DSP-B</strong></td>
 <td>背景叙事自动流——内在独白、自动化的自我对话</td>
 <td>C</td>
 <td>内在独白问卷、经验取样(EMA)、思维列表</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M5-STR-R**</td>
+<td><strong>M5-STR-R</strong></td>
 <td>叙事规则与身份框架——“我是谁”的叙事规则、语法规则</td>
 <td>B</td>
 <td>叙事身份编码（McAdams）、自我定义记忆任务</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M5-STR-C**</td>
+<td><strong>M5-STR-C</strong></td>
 <td>叙事连接网络——人生事件之间的因果与情感连接</td>
 <td>C</td>
 <td>生命线因果连接编码、叙事网络分析</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M5-STR-S**</td>
+<td><strong>M5-STR-S</strong></td>
 <td>人际语言脚本——请求帮助的脚本、争辩脚本、安抚脚本</td>
 <td>B</td>
 <td>社会互动日志、沟通行为量表</td>
@@ -430,49 +430,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**M6-RES-D**</td>
+<td><strong>M6-RES-D</strong></td>
 <td>当前行为启动能量——从静止到启动的瞬时门槛（“起动力”）</td>
 <td>C</td>
 <td>行为启动延迟（指令到动作时间）、启动困难自评</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**M6-RES-B**</td>
+<td><strong>M6-RES-B</strong></td>
 <td>长期行为可执行基底——日常活动的规律性、行为库的丰富性</td>
 <td>B</td>
 <td>日常活动日志、身体活动加速度计</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M6-DSP-F**</td>
+<td><strong>M6-DSP-F</strong></td>
 <td>前景行为调度——有意识启动的、需努力维持的目标导向动作</td>
 <td>A</td>
 <td>行为激活日志、任务完成率</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M6-DSP-B**</td>
+<td><strong>M6-DSP-B</strong></td>
 <td>背景行为自动化——习惯性行为、仪式化动作、条件化回避</td>
 <td>A</td>
 <td>习惯量表(SRHI)、行为日志、生态瞬时评估(EMA)</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**M6-STR-R**</td>
+<td><strong>M6-STR-R</strong></td>
 <td>行为规则与执行准则——“应该先做A再做B”“永远不要做C”等规则</td>
 <td>B</td>
 <td>行为规则访谈、执行意图问卷</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M6-STR-C**</td>
+<td><strong>M6-STR-C</strong></td>
 <td>行为-情境连接网络——刺激与习惯行为之间的触发-响应映射</td>
 <td>B</td>
 <td>情境-行为日志、内隐习惯IAT</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**M6-STR-S**</td>
+<td><strong>M6-STR-S</strong></td>
 <td>行为程序与习惯脚本——固化的动作序列（成瘾行为链等）</td>
 <td>A</td>
 <td>行为链分析、录像编码、动作序列分析</td>
@@ -497,49 +497,49 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**S-P-RES-D**</td>
+<td><strong>S-P-RES-D</strong></td>
 <td>环境对即时资源的补充或消耗（如社会支持、工作负荷）</td>
 <td>A</td>
 <td>社会支持问卷、工作负荷量表</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**S-P-RES-B**</td>
+<td><strong>S-P-RES-B</strong></td>
 <td>环境对基底资源的长期塑造（如社区安全、文化安全感）</td>
 <td>B</td>
 <td>社区安全感问卷、社会资本量表</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**S-P-DSP-F**</td>
+<td><strong>S-P-DSP-F</strong></td>
 <td>环境对前景调度的要求或支持（如任务结构、时间压力）</td>
 <td>A</td>
 <td>任务结构化问卷、工作控制量表</td>
 <td>F1r</td>
 </tr>
 <tr>
-<td>**S-P-DSP-B**</td>
+<td><strong>S-P-DSP-B</strong></td>
 <td>环境对自动化过程的触发（如线索暴露、社会传染）</td>
 <td>B</td>
 <td>线索暴露评估、社会网络分析</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**S-P-STR-R**</td>
+<td><strong>S-P-STR-R</strong></td>
 <td>环境中的规则结构（家庭规则、组织规范、文化脚本）</td>
 <td>B</td>
 <td>家庭环境量表(FES)、组织文化问卷</td>
 <td>F2s</td>
 </tr>
 <tr>
-<td>**S-P-STR-C**</td>
+<td><strong>S-P-STR-C</strong></td>
 <td>环境中的关系连接结构（社会网络、家庭联盟、社区纽带）</td>
 <td>C</td>
 <td>社会网络分析、家庭结构图</td>
 <td>P2i-m</td>
 </tr>
 <tr>
-<td>**S-P-STR-S**</td>
+<td><strong>S-P-STR-S</strong></td>
 <td>环境中的互动序列（家庭仪式、组织流程、文化惯例）</td>
 <td>B</td>
 <td>互动日志、家庭仪式问卷</td>
@@ -583,7 +583,7 @@
 <a href="app-b.html" class="nav-link next">G-M-A-R速… ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -593,7 +593,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,17 @@
     <meta property="og:description" content="双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch23.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch23.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第23章 双向约束：正向预测与反向信号">
     <meta name="twitter:description" content="双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
+    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -312,21 +312,21 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**参数层**</td>
+<td><strong>参数层</strong></td>
 <td>快变</td>
 <td>每次新观测到达时</td>
 <td>参数后验分布</td>
 <td>M1-RES-D恢复速率上限被代谢研究校准</td>
 </tr>
 <tr>
-<td>**模型层**</td>
+<td><strong>模型层</strong></td>
 <td>中速变</td>
 <td>跨多任务、多样本的参数残差持续同向</td>
 <td>模型形式</td>
 <td>从线性改为非线性</td>
 </tr>
 <tr>
-<td>**概念映射层**</td>
+<td><strong>概念映射层</strong></td>
 <td>慢变</td>
 <td>跨情境稳健残差，低层修正无效</td>
 <td>UPLS概念映射重审</td>
@@ -497,7 +497,7 @@
 <a href="ch24.html" class="nav-link next">边界修订 ›</a></div>
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -507,7 +507,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
 

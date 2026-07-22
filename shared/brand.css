@@ -27,15 +27,13 @@
   /* Navy 主色系 — 承担 90% 品牌表达 */
   --color-navy-950: #0A1E3D;
   --color-navy-800: #122F5C;
-  --color-navy-700: #0E264A;
+  --color-navy-700: #1A3866;  /* P2-1: 修正倒挂——原 #0E264A 比 800 更暗 */
   --color-navy-600: #1F4880;
-  --color-navy-600-light: #2A5DA0;
   --color-navy-600-bg: rgba(31, 72, 128, 0.08);
   --color-navy-600-bg-subtle: rgba(31, 72, 128, 0.06);
   --color-navy-600-border: rgba(31, 72, 128, 0.12);
   --color-navy-500: #2A5DA0;
   --color-navy-400: #3B6FB5;
-  --color-navy-300: #5A8ACC;  /* 新增：用于渐变中间色 */
   --color-navy-50:  #D6E5F3;
 
   /* 兼容别名 — 用于首页架构图等 */
@@ -44,6 +42,7 @@
 
   /* Amber 强调色 — 仅 CTA / 重点标记 */
   --color-amber-900: #78350F;
+  --color-amber-700: #B45309;  /* P1-4: btn-amber 对比度修复，白字≥4.5:1 */
   --color-amber-600: #D97706;
   --color-amber-500: #F59E0B;
   --color-amber-100: #FDE68A;
@@ -75,7 +74,7 @@
   /* ---- 排版系统 ---- */
   /* 字体族（遵循 06-S-05 品牌视觉规范） */
   --font-logo:    'Josefin Sans', 'Century Gothic', 'Futura', sans-serif;
-  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-mono:    'JetBrains Mono', 'Consolas', 'Monaco', monospace;
 
@@ -130,11 +129,31 @@
   --duration-fast: 150ms;
   --duration-medium: 200ms;
   --duration-normal: 300ms;
-  --duration-slow: 250ms;
+  --duration-slow: 400ms;  /* P2-1: 修正倒挂——原 250ms < normal 300ms */
 
   /* ---- 布局 ---- */
   --grid-container: 1180px;
   --reading-width:  740px;
+
+  /* ---- 响应式断点（P2-6c 文档化）
+     ⚠️ CSS 自定义属性无法用于 @media 查询，此处仅供 JS 读取与文档参考。
+     实际媒体查询中请直接使用像素值，并严格遵循以下三档体系：
+
+     --bp-nav:    959px  — 导航折叠阈值（nav-toggle.js MOBILE_MQ 同步）
+     --bp-mobile: 768px  — 内容布局移动端阈值（grid/表头/字号降级）
+     --bp-tablet: 1024px — 平板阈值（grid 3→2 列降级）
+     --bp-small:  480px  — 小屏子断点（logo/字号微调）
+
+     断点使用规则：
+     1. 导航相关：统一使用 959px（与 nav-toggle.js 对齐）
+     2. 内容布局：使用 768px / 1024px（grid、字号、容器内边距）
+     3. 微调：仅 480px 用于小屏细节（logo 高度、字号缩放）
+     4. 教材侧边栏：960px（平板固定面板）/ 1200px（桌面双栏）
+  ---- */
+  --bp-nav:    959px;
+  --bp-mobile: 768px;
+  --bp-tablet: 1024px;
+  --bp-small:  480px;
 }
 
 /* ---- Reset ---- */
@@ -241,10 +260,8 @@ a[data-emphasis="amber"]:hover {
 }
 
 /* 中文正文 */
-body[lang|="zh"],
-[lang|="zh"] {
-  font-family: var(--font-chinese);
-}
+/* P1-5: 移除 [lang|="zh"] 字体覆盖——--font-body 已含 CJK 回退，
+   浏览器按字符回退：拉丁用 Inter，CJK 用 Noto Sans SC */
 
 /* 等宽包裹 */
 code, pre, .mono {
@@ -286,8 +303,9 @@ code, pre, .mono {
 .bg-rever    { background-color: var(--color-rever); }
 
 /* ---- 无障碍 ---- */
+/* P1-4: 焦点态改用琥珀色 3px 轮廓——navy 在暗底（footer/hero/nav）不可见 */
 :focus-visible {
-  outline: 2px solid var(--color-navy-600);
+  outline: 3px solid var(--color-amber-600);
   outline-offset: 2px;
 }
 

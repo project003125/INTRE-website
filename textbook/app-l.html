@@ -9,17 +9,17 @@
     <meta property="og:description" content="本附录定位：改编自INTRE项目源文档02-A-17（架构论证概要v2.4），是第5章“架构推导链”的完整展开。本速查版保留核心推导逻辑和关键结论，省略详细论证材料和替代方案比较。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-l.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-l.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录L：架构速查——推导链与公理体系">
     <meta name="twitter:description" content="本附录定位：改编自INTRE项目源文档02-A-17（架构论证概要v2.4），是第5章“架构推导链”的完整展开。本速查版保留核心推导逻辑和关键结论，省略详细论证材料和替代方案比较。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -43,7 +43,7 @@
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav class="site-nav">
+<nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
@@ -87,31 +87,31 @@
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>N-S-R</strong></td>
+<td>**N-S-R**</td>
 <td>Need-Structure-Realization</td>
 <td>道（元公理）</td>
 <td>智能系统如何存在与运作？</td>
 </tr>
 <tr>
-<td><strong>M-R-P</strong></td>
+<td>**M-R-P**</td>
 <td>Module-Ring-Playbook</td>
 <td>法（通用架构）</td>
 <td>目标驱动智能体的通用蓝图？</td>
 </tr>
 <tr>
-<td><strong>M-R-D-S</strong></td>
+<td>**M-R-D-S**</td>
 <td>Module-Resource-Dispatch-Structure</td>
 <td>术（诊断侧）</td>
 <td>心智此刻的内部状态？</td>
 </tr>
 <tr>
-<td><strong>G-M-A-R</strong></td>
+<td>**G-M-A-R**</td>
 <td>Gate-Modulate-Align-Relink</td>
 <td>术（干预侧）</td>
 <td>如何修正非理想状态？</td>
 </tr>
 <tr>
-<td><strong>S-P</strong></td>
+<td>**S-P**</td>
 <td>Source-Pattern</td>
 <td>境（环境参照系）</td>
 <td>系统在什么环境中运行？</td>
@@ -219,7 +219,7 @@
 </table>
 </div>
 
-<p><strong>完备性的三重担保</strong>：</p>
+<p><strong>工程完备性的三重支撑</strong>（属工程合理性，非公理级别主张）：</p>
 <ol>
 <li><strong>逻辑推导</strong>：六模块展开并承载N-S-R循环的关键功能节点</li>
 <li><strong>工程验证</strong>：否定性特异崩溃论证——每模块缺失导致独特、不可补偿的崩溃模式</li>
@@ -316,7 +316,7 @@
 </table>
 </div>
 
-<p><strong>干预序列的逻辑必然性</strong>：在严重失调情境下，默认优先级为 <strong>D层稳定 → R层恢复 → S层重建</strong>。在调度失控时补充资源低效，在资源枯竭时结构干预高风险。</p>
+<p><strong>干预序列的工程合理性</strong>：在严重失调情境下，默认优先级为 <strong>D层稳定 → R层恢复 → S层重建</strong>。在调度失控时补充资源低效，在资源枯竭时结构干预高风险。</p>
 
 <p><strong>序列刚性与失调程度正相关</strong>：Oᵢ越低序列越严格，高功能系统中可并行推进。</p>
 
@@ -446,7 +446,7 @@
 
 <p><strong>S-层（Source）</strong>：六层次环境分类——微系统、中系统、外系统、宏系统、时间系统、数字系统</p>
 
-<p><strong>P-层（Pattern）</strong>：与M-R-D-S同构的命名规则，如<code>P-M4-RES-D-</code>表示环境消耗情绪资源</p>
+<p><strong>P-层（Pattern）</strong>：与M-R-D-S可类比的命名规则，如<code>P-M4-RES-D-</code>表示环境消耗情绪资源</p>
 
 <p><strong>战略调制功能</strong>：S-P不改变G-M-A-R定义，但决定执行优先级、时序和风险阈值</p>
 
@@ -468,24 +468,24 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>C1: M1-M6完备性</td>
+<td>C1: M1-M6 **工程覆盖充分性**</td>
 <td>发现无法归入六模块的新心理功能</td>
 </tr>
 <tr>
-<td>C2: R-D-S完备性</td>
+<td>C2: R-D-S **工程覆盖充分性**</td>
 <td>发现无法用R/D/S描述的状态变化维度</td>
 </tr>
 <tr>
-<td>C3: G-M-A-R完备性</td>
+<td>C3: G-M-A-R **操作空间覆盖充分性**</td>
 <td>发现不可分解的新干预机制</td>
 </tr>
 <tr>
-<td>C4: D→R→S序列必然性</td>
+<td>C4: D→R→S序列默认优先级</td>
 <td>低功能系统中跳过序列效果更优</td>
 </tr>
 <tr>
 <td>C5: M3-RES-D独立存在</td>
-<td><strong>强证伪</strong>：相关均<0.20；<strong>灰区</strong>：0.20-0.25；<strong>支持</strong>：>0.25</td>
+<td>**强证伪**：相关均<0.20；**灰区**：0.20-0.25；**支持**：>0.25</td>
 </tr>
 </tbody>
 </table>
@@ -602,6 +602,43 @@
 
 <hr class="section-divider">
 
+<p><strong>版本记录</strong></p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>v1.1.2</td>
+<td>2026-07-21</td>
+<td>术语"三重担保"→"三重支撑"</td>
+</tr>
+<tr>
+<td>v1.1.1</td>
+<td>2026-07-20</td>
+<td>全局术语同步：INTRE内部架构"同构"→"可类比"（与02-A-06 v2.5.0一致）</td>
+</tr>
+<tr>
+<td>v1.1.0</td>
+<td>2026-07-20</td>
+<td>按06-S-08协议将D→R→S序列定位修订为严重失调情境下的工程合理性与默认优先级</td>
+</tr>
+<tr>
+<td>v1.0</td>
+<td>2026-05-29</td>
+<td>速查版，改编自02-A-17</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+<hr class="section-divider">
+<hr class="section-divider">
 <div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
@@ -611,7 +648,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0</td>
+<td>v1.1.1</td>
 <td>2026-05-30</td>
 <td>初始创建</td>
 </tr>
@@ -625,7 +662,7 @@
 <a href="app-m.html" class="nav-link next">数学速成 ›</a></div>
     </div>
 
-    <footer class="site-footer">
+    <footer>
         <div class="footer-brand">INTRE</div>
         <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
@@ -635,7 +672,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>绗?3绔?鍙屽悜绾︽潫锛氭鍚戦娴嬩笌鍙嶅悜淇″彿 路 INTRE 瀵艰鏁欐潗</title>
-    <meta name="description" content="鍙屽悜绾︽潫闂幆鏄缁忓眰瀵规帴浣撶郴鐨勬牳蹇冭繍琛屾灦鏋勩€傚畠灏嗗姛鑳藉眰涓庣缁忓眰涔嬮棿鐨勪俊鎭祦鍔ㄧ粍缁囦负涓€涓寔缁殑銆佽嚜鎴戜慨姝ｇ殑鍙嶉寰幆銆?>
-    <meta property="og:title" content="绗?3绔?鍙屽悜绾︽潫锛氭鍚戦娴嬩笌鍙嶅悜淇″彿">
-    <meta property="og:description" content="鍙屽悜绾︽潫闂幆鏄缁忓眰瀵规帴浣撶郴鐨勬牳蹇冭繍琛屾灦鏋勩€傚畠灏嗗姛鑳藉眰涓庣缁忓眰涔嬮棿鐨勪俊鎭祦鍔ㄧ粍缁囦负涓€涓寔缁殑銆佽嚜鎴戜慨姝ｇ殑鍙嶉寰幆銆?>
+    <title>第23章 双向约束：正向预测与反向信号 · INTRE 导论教材</title>
+    <meta name="description" content="双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。">
+    <meta property="og:title" content="第23章 双向约束：正向预测与反向信号">
+    <meta property="og:description" content="双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch23.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch23.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="绗?3绔?鍙屽悜绾︽潫锛氭鍚戦娴嬩笌鍙嶅悜淇″彿">
-    <meta name="twitter:description" content="鍙屽悜绾︽潫闂幆鏄缁忓眰瀵规帴浣撶郴鐨勬牳蹇冭繍琛屾灦鏋勩€傚畠灏嗗姛鑳藉眰涓庣缁忓眰涔嬮棿鐨勪俊鎭祦鍔ㄧ粍缁囦负涓€涓寔缁殑銆佽嚜鎴戜慨姝ｇ殑鍙嶉寰幆銆?>
+    <meta name="twitter:title" content="第23章 双向约束：正向预测与反向信号">
+    <meta name="twitter:description" content="双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -27,151 +27,151 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">鐩綍</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
-        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav class="site-nav">
+<nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">棣栭〉</a>
+                <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
-                <a href="/INTRE-website/glossary/">鏈琛?/a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
-            <span class="page-label">绗?3绔?/span>
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第23章</span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">绗?3绔?鍙屽悜绾︽潫锛氭鍚戦娴嬩笌鍙嶅悜淇″彿</h1>
+        <h1 class="chapter-title">第23章 双向约束：正向预测与反向信号</h1>
 
-<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗锛屼綘搴旇兘澶燂細(1)鎻忚堪鍙屽悜绾︽潫闂幆鐨勬鍙嶄袱鏉¤矾寰勫強鍏惰繍琛岄€昏緫锛?2)鍖哄垎纭害鏉熴€佽蒋绾︽潫銆佸吋瀹规€т俊鍙蜂笁绫诲弽棣堜俊鍙峰強鍏跺鐞嗚鍒欙紱(3)鐞嗚В鍒嗗眰鍝嶅簲鏈哄埗锛堝弬鏁板眰/妯″瀷灞?鏄犲皠灞傦級鐨勮璁″師鐞嗭紱(4)闄堣堪绾ц仈澶辨晥棰勬祴鍛介鍙婂叾璇佷吉鏉′欢锛?5)浜嗚ВUNIS RTE-Cal濡備綍瀹炵幇鍙嶅悜绾︽潫鐨勫伐绋嬮棴鐜€?/p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述双向约束闭环的正反两条路径及其运行逻辑；(2)区分硬约束、软约束、兼容性信号三类反馈信号及其处理规则；(3)理解分层响应机制（参数层/模型层/映射层）的设计原理；(4)陈述级联失效预测命题及其证伪条件；(5)了解UNIS RTE-Cal如何实现反向约束的工程闭环。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>23.1 闂幆鏋舵瀯锛氬姛鑳藉眰鈫掔缁忓眰鈫掑姛鑳藉眰</h2>
+<h2>23.1 闭环架构：功能层→神经层→功能层</h2>
 
-<p>鍙屽悜绾︽潫闂幆鏄缁忓眰瀵规帴浣撶郴鐨勬牳蹇冭繍琛屾灦鏋勩€傚畠灏嗗姛鑳藉眰涓庣缁忓眰涔嬮棿鐨勪俊鎭祦鍔ㄧ粍缁囦负涓€涓寔缁殑銆佽嚜鎴戜慨姝ｇ殑鍙嶉寰幆銆?/p>
+<p>双向约束闭环是神经层对接体系的核心运行架构。它将功能层与神经层之间的信息流动组织为一个持续的、自我修正的反馈循环。</p>
 
-<pre><code class="language-text">鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                     鍙屽悜绾︽潫闂幆                                 鈹?
-鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹? 鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                     鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?         鈹?
-鈹? 鈹? 鍔熻兘灞?    鈹?鈹€鈹€鈹€鈹€ 姝ｅ悜璺緞 鈹€鈹€鈹€鈹€鈫?鈹? 绁炵粡灞?    鈹?         鈹?
-鈹? 鈹? (INTRE)    鈹?  鈥?绾ц仈棰勬祴        鈹? (绁炵粡绉戝)  鈹?         鈹?
-鈹? 鈹?            鈹?  鈥?鏁村悎鍧愭爣绯?     鈹?            鈹?         鈹?
-鈹? 鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                     鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?         鈹?
-鈹?        鈫?                                   鈹?                 鈹?
-鈹?        鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€ 鍙嶅悜璺緞 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                 鈹?
-鈹?             鈥?纭害鏉燂紙鐗╃悊鏋侀檺锛?                               鈹?
-鈹?             鈥?杞害鏉燂紙娴嬮噺鏋侀檺锛?                               鈹?
-鈹?             鈥?鍏煎鎬т俊鍙凤紙缁撴瀯瀵瑰簲锛?                           鈹?
-鈹?                                                                鈹?
-鈹? 鍒嗗眰鍝嶅簲鏈哄埗锛氬弬鏁板眰蹇彉 鈫?妯″瀷灞備腑閫熷彉 鈫?姒傚康鏄犲皠灞傛參鍙?        鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?/code></pre>
+<pre><code class="language-text">┌─────────────────────────────────────────────────────────────────┐
+│                      双向约束闭环                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐                      ┌─────────────┐          │
+│  │  功能层     │ ──── 正向路径 ────→ │  神经层     │          │
+│  │  (INTRE)    │   • 级联预测        │  (神经科学)  │          │
+│  │             │   • 整合坐标系      │             │          │
+│  └─────────────┘                      └─────────────┘          │
+│         ↑                                    │                  │
+│         └──────── 反向路径 ──────────────────┘                  │
+│              • 硬约束（物理极限）                                │
+│              • 软约束（测量极限）                                │
+│              • 兼容性信号（结构对应）                            │
+│                                                                 │
+│  分层响应机制：参数层快变 → 模型层中速变 → 概念映射层慢变         │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
 
 <ul>
-<li><strong>姝ｅ悜璺緞锛堝姛鑳藉眰鈫掔缁忓眰锛?/strong>锛氬姛鑳藉眰鍩轰簬鑷韩鍔ㄥ姏瀛︾粨鏋勭敓鎴愬彲妫€楠岀殑绾ц仈棰勬祴锛屽苟涓虹缁忕瀛︽彁渚涚粺涓€鐨勫姛鑳藉潗鏍囩郴銆?/li>
-<li><strong>鍙嶅悜璺緞锛堢缁忓眰鈫掑姛鑳藉眰锛?/strong>锛氱缁忓眰鐨勫弽棣堣鍒嗙被涓轰笁绾т俊鍙凤紝鍔熻兘灞傛寜鍒嗗眰鍝嶅簲瑙勫垯澶勭悊銆?/li>
-<li><strong>杩唬</strong>锛氬鐞嗗悗鐨勪俊鍙峰弽棣堝埌鍔熻兘灞傦紝绮惧寲鍙傛暟鍜屾ā鍨嬪舰寮忥紝浜х敓鏇寸簿纭殑棰勬祴銆?/li>
+<li><strong>正向路径（功能层→神经层）</strong>：功能层基于自身动力学结构生成可检验的级联预测，并为神经科学提供统一的功能坐标系。</li>
+<li><strong>反向路径（神经层→功能层）</strong>：神经层的反馈被分类为三级信号，功能层按分层响应规则处理。</li>
+<li><strong>迭代</strong>：处理后的信号反馈到功能层，精化参数和模型形式，产生更精确的预测。</li>
 </ul>
 
-<p><strong>绁炵粡绉戝鍦ㄩ棴鐜腑鐨勪笁閲嶈鑹?/strong>锛?/p>
+<p><strong>神经科学在闭环中的三重角色</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>瑙掕壊</th>
-<th>鎻忚堪</th>
-<th>瀵瑰簲璺緞</th>
+<th>角色</th>
+<th>描述</th>
+<th>对应路径</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>杈圭晫鏉′欢鏍″噯鑰?/td>
-<td>鎻愪緵纭害鏉燂紙鐗╃悊鏋侀檺锛?/td>
-<td>鍙嶅悜璺緞</td>
+<td>边界条件校准者</td>
+<td>提供硬约束（物理极限）</td>
+<td>反向路径</td>
 </tr>
 <tr>
-<td>寮傚父妫€娴嬪櫒</td>
-<td>鍔熻兘灞傞娴嬩笌绁炵粡瑙傛祴浜х敓绯荤粺鎬у亸宸椂鎻愮ず璋冩暣</td>
-<td>鍙嶅悜璺緞</td>
+<td>异常检测器</td>
+<td>功能层预测与神经观测产生系统性偏差时提示调整</td>
+<td>反向路径</td>
 </tr>
 <tr>
-<td>娴嬮噺鏁堝害楠岃瘉鑰?/td>
-<td>鎻愪緵鍏煎鎬т俊鍙凤紝澧炲己瀵瑰姛鑳芥瀯蹇电殑淇″績</td>
-<td>鍙嶅悜璺緞锛堝吋瀹规€т俊鍙凤級</td>
+<td>测量效度验证者</td>
+<td>提供兼容性信号，增强对功能构念的信心</td>
+<td>反向路径（兼容性信号）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>鍔熻兘灞傚悓鏍锋壙鎷呬富鍔ㄨ鑹测€斺€旈€氳繃绾ц仈棰勬祴鍚戠缁忕瀛︽彁闂紝浠庘€滀笅娓告帴鏀惰€呪€濊浆鍙樹负鈥滈棶棰樺畾涔夎€呪€濄€?/p>
+<p>功能层同样承担主动角色——通过级联预测向神经科学提问，从“下游接收者”转变为“问题定义者”。</p>
 
 <hr class="section-divider">
 
-<h2>23.2 姝ｅ悜璺緞锛氱骇鑱旈娴嬩笌鏁村悎鍧愭爣绯?/h2>
+<h2>23.2 正向路径：级联预测与整合坐标系</h2>
 
-<p><strong>绾ц仈棰勬祴鐨勭敓鎴愭満鍒?/strong>銆傜骇鑱旈娴嬩粠鍔熻兘灞傜殑鍏堥獙缁撴瀯涓紨缁庤€屾潵锛?/p>
+<p><strong>级联预测的生成机制</strong>。级联预测从功能层的先验结构中演绎而来：</p>
 <ol>
-<li>浠嶮TT渚濊禆鐭╅樀涓瘑鍒笂涓嬫父鍏崇郴锛堝M1鈫扢3渚濊禆杈规潈閲?.85锛?/li>
-<li>浠嶮KT涓紩鍏ユ椂搴忕害鏉燂紙M1-RES-D娑堣€楅€熺巼绾?.15/h锛?/li>
-<li>鎺ㄥ鍑哄寘鍚粸鍚庡弬鏁扮殑鏃跺簭鍋囪锛歁1-RES-D鏋鍚庣害3-6灏忔椂锛孧3-RES-D灏嗚穼鐮村姛鑳介槇鍊?/li>
+<li>从MTT依赖矩阵中识别上下游关系（如M1→M3依赖边权重0.85）</li>
+<li>从MKT中引入时序约束（M1-RES-D消耗速率约0.15/h）</li>
+<li>推导出包含滞后参数的时序假说：M1-RES-D枯竭后约3-6小时，M3-RES-D将跌破功能阈值</li>
 </ol>
 
-<p><strong>鏁村悎妗嗘灦锛氬皢闆舵暎绁炵粡鍙戠幇缁勭粐杩涚粺涓€鍧愭爣绯?/strong>锛?/p>
+<p><strong>整合框架：将零散神经发现组织进统一坐标系</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>绁炵粡鍙戠幇</th>
-<th>鍔熻兘灞傚潗鏍?/th>
-<th>鏁村悎浠峰€?/th>
+<th>神经发现</th>
+<th>功能层坐标</th>
+<th>整合价值</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>鎭愭儳鏉′欢鍖栵紙CS-US鑱旂粨锛?/td>
+<td>恐惧条件化（CS-US联结）</td>
 <td>M4-STR-C</td>
-<td>绾冲叆鎯呮劅杩炴帴缁撴瀯璇濊</td>
+<td>纳入情感连接结构话语</td>
 </tr>
 <tr>
-<td>鏉忎粊鏍稿揩閫熼€氳矾</td>
+<td>杏仁核快速通路</td>
 <td>M4-DSP-B</td>
-<td>涓衡€滃悗鍙拌皟搴︹€濇彁渚涚缁忓弬鐓?/td>
+<td>为“后台调度”提供神经参照</td>
 </tr>
 <tr>
-<td>DMN/FPN鍙嶇浉鍏?/td>
-<td>DSP-F/B璧勬簮绔炰簤</td>
-<td>杩炴帴鑴戠綉缁滃彂鐜颁笌鍙岃繃绋嬬悊璁?/td>
+<td>DMN/FPN反相关</td>
+<td>DSP-F/B资源竞争</td>
+<td>连接脑网络发现与双过程理论</td>
 </tr>
 <tr>
-<td>璁板繂鍐嶅珐鍥虹獥鍙?/td>
-<td>RELINK鐨勬椂闂寸害鏉?/td>
-<td>涓烘搷浣滆娉曟彁渚涚缁忔椂闂村父鏁?/td>
+<td>记忆再巩固窗口</td>
+<td>RELINK的时间约束</td>
+<td>为操作语法提供神经时间常数</td>
 </tr>
 </tbody>
 </table>
@@ -179,327 +179,327 @@
 
 <hr class="section-divider">
 
-<h2>23.3 鍙嶅悜淇″彿锛氱‖绾︽潫銆佽蒋绾︽潫涓庡吋瀹规€т俊鍙?/h2>
+<h2>23.3 反向信号：硬约束、软约束与兼容性信号</h2>
 
-<p>褰撶缁忓眰鐨勫弽棣堣繘鍏ュ姛鑳藉眰鏃讹紝瀹冧笉鏄€滄敮鎸佲€濇垨鈥滃惁瀹氣€濈殑浜屽厓鍒ゅ喅锛岃€屾槸闇€瑕佽鍒嗗眰澶勭悊鐨勪笁绫讳俊鍙枫€?/p>
+<p>当神经层的反馈进入功能层时，它不是“支持”或“否定”的二元判决，而是需要被分层处理的三类信号。</p>
 
-<p><strong>绗竴绫伙細纭害鏉燂紙涓嶅彲杩濆弽鐨勭墿鐞嗘瀬闄愶級</strong>銆傜缁忕敓鐗╁宸茬粡绋冲畾纭珛鐨勫畾閲忚竟鐣岋紝鍔熻兘灞傚弬鏁颁笉鑳借繚鍙嶃€?/p>
+<p><strong>第一类：硬约束（不可违反的物理极限）</strong>。神经生物学已经稳定确立的定量边界，功能层参数不能违反。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>绫诲瀷</th>
-<th>绀轰緥</th>
-<th>鍔熻兘灞傚搷搴斾箟鍔?/th>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>鏃堕棿灏哄害</td>
-<td>鍔ㄤ綔鐢典綅浼犲閫熷害銆佺獊瑙︿紶閫掑欢杩?/td>
-<td>MKT鏃堕棿甯告暟涓嶈兘璁惧緱鏇村揩</td>
+<td>时间尺度</td>
+<td>动作电位传导速度、突触传递延迟</td>
+<td>MKT时间常数不能设得更快</td>
 </tr>
 <tr>
-<td>鑳介噺浠ｈ阿</td>
-<td>ATP鍚堟垚閫熺巼銆佽憽钀勭硸杈撻€佹晥鐜?/td>
-<td>RES-D鎭㈠閫熺巼蹇呴』鍦ㄦ绾︽潫鍐?/td>
+<td>能量代谢</td>
+<td>ATP合成速率、葡萄糖输送效率</td>
+<td>RES-D恢复速率必须在此约束内</td>
 </tr>
 <tr>
-<td>鍙鎬х獥鍙?/td>
-<td>铔嬬櫧璐ㄥ悎鎴愪緷璧栫殑鍐嶅珐鍥虹獥鍙ｏ紙绾?灏忔椂锛?/td>
-<td>RELINK鎿嶄綔绐楀彛鍙傛暟蹇呴』鍦ㄦ鑼冨洿鍐?/td>
+<td>可塑性窗口</td>
+<td>蛋白质合成依赖的再巩固窗口（约6小时）</td>
+<td>RELINK操作窗口参数必须在此范围内</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>绗簩绫伙細杞害鏉燂紙褰撳墠鎶€鏈潯浠朵笅鐨勬祴閲忔瀬闄愶級</strong>銆傚綋鍓嶆祴閲忓伐鍏风殑淇℃晥搴﹀鍔熻兘灞傚弬鏁颁及璁＄簿搴︾殑闄愬埗銆?/p>
+<p><strong>第二类：软约束（当前技术条件下的测量极限）</strong>。当前测量工具的信效度对功能层参数估计精度的限制。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>绫诲瀷</th>
-<th>绀轰緥</th>
-<th>鍔熻兘灞傚搷搴斾箟鍔?/th>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>娴嬮噺绮惧害</td>
-<td>M4-STR-C鏃犳垚鐔熺殑鍗曠偣绁炵粡鏍囪鐗?/td>
-<td>鏍囨敞楂樹笉纭畾鎬э紝浼樺厛寮€鍙戞祴閲忓伐鍏?/td>
+<td>测量精度</td>
+<td>M4-STR-C无成熟的单点神经标记物</td>
+<td>标注高不确定性，优先开发测量工具</td>
 </tr>
 <tr>
-<td>淇″害闄愬埗</td>
-<td>M6-RES-D渚濊禆浠ｇ悊鎸囨爣</td>
-<td>闇€缁勫悎楠岃瘉锛屾殏涓嶇敤浜庨珮绮惧害鍐崇瓥</td>
+<td>信度限制</td>
+<td>M6-RES-D依赖代理指标</td>
+<td>需组合验证，暂不用于高精度决策</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>绗笁绫伙細鍏煎鎬т俊鍙凤紙闈炵害鏉熸€х殑缁撴瀯瀵瑰簲锛?/strong>銆傛彁绀哄姛鑳藉眰姒傚康鍒掑垎鍙兘鍦ㄢ€滃垏鍓茶嚜鐒跺叧鑺傗€濄€?/p>
+<p><strong>第三类：兼容性信号（非约束性的结构对应）</strong>。提示功能层概念划分可能在“切割自然关节”。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>绫诲瀷</th>
-<th>绀轰緥</th>
-<th>鍔熻兘灞傚搷搴斾箟鍔?/th>
+<th>类型</th>
+<th>示例</th>
+<th>功能层响应义务</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>鐙珛姹囪仛</td>
-<td>RELINK涓庤蹇嗗啀宸╁浐鐨勬眹鑱?/td>
-<td>澧炲己淇″績锛岃褰曞綊妗?/td>
+<td>独立汇聚</td>
+<td>RELINK与记忆再巩固的汇聚</td>
+<td>增强信心，记录归档</td>
 </tr>
 <tr>
-<td>缁撴瀯瀵瑰簲</td>
-<td>DSP-F/B鍖哄垎涓嶥MN/FPN鍙嶇浉鍏?/td>
-<td>鏇存柊鍏煎鎬у鏌ユ姤鍛?/td>
+<td>结构对应</td>
+<td>DSP-F/B区分与DMN/FPN反相关</td>
+<td>更新兼容性审查报告</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>涓夌被淇″彿鐨勭害鏉熷己搴﹀姣?/strong>锛?/p>
+<p><strong>三类信号的约束强度对比</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>淇″彿绫诲瀷</th>
-<th>绾︽潫寮哄害</th>
-<th>鍔熻兘灞傚搷搴?/th>
-<th>璇佷吉鍔熻兘涓诲紶鐨勮祫鏍?/th>
+<th>信号类型</th>
+<th>约束强度</th>
+<th>功能层响应</th>
+<th>证伪功能主张的资格</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>纭害鏉?/td>
-<td>鏈€寮?/td>
-<td>蹇呴』淇鍙傛暟</td>
-<td>鍚︼紙鍙爣璁颁笉鍙兘锛?/td>
+<td>硬约束</td>
+<td>最强</td>
+<td>必须修正参数</td>
+<td>否（只标记不可能）</td>
 </tr>
 <tr>
-<td>杞害鏉?/td>
-<td>涓瓑</td>
-<td>鏍囨敞涓嶇‘瀹氭€э紝浼樺厛寮€鍙?/td>
-<td>鍚︼紙鍙爣璁版祴涓嶅噯锛?/td>
+<td>软约束</td>
+<td>中等</td>
+<td>标注不确定性，优先开发</td>
+<td>否（只标记测不准）</td>
 </tr>
 <tr>
-<td>鍏煎鎬т俊鍙?/td>
-<td>鏈€寮?/td>
-<td>褰掓。锛屽寮轰俊蹇?/td>
-<td>鍚︼紙鍙彁渚涗俊蹇冿級</td>
+<td>兼容性信号</td>
+<td>最弱</td>
+<td>归档，增强信心</td>
+<td>否（只提供信心）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>鍏抽敭缁撹</strong>锛氫笁绫讳俊鍙蜂腑锛屾病鏈変换浣曚竴绫绘湁璧勬牸鍗曟柟闈㈣瘉浼竴涓姛鑳戒富寮犮€傝瘉浼彧鑳藉湪鍔熻兘灞傚唴閮ㄥ畬鎴愩€?/p>
+<p><strong>关键结论</strong>：三类信号中，没有任何一类有资格单方面证伪一个功能主张。证伪只能在功能层内部完成。</p>
 
 <hr class="section-divider">
 
-<h2>23.4 鍒嗗眰鍝嶅簲锛氬弬鏁板揩鍙樸€佹ā鍨嬩腑鍙樹笌鏄犲皠鎱㈠彉</h2>
+<h2>23.4 分层响应：参数快变、模型中变与映射慢变</h2>
 
-<p>鍙嶅悜绾︽潫鐨勪俊鍙锋寜<strong>鍒嗗眰鍝嶅簲瑙勫垯</strong>澶勭悊锛岀‘淇濈郴缁熸棦涓嶄細鍥犲伓鐒跺櫔澹拌€岄绻佷慨鏀规牳蹇冩蹇碉紝涔熶笉浼氬绯荤粺鎬у亸宸鑰屼笉瑙併€?/p>
+<p>反向约束的信号按<strong>分层响应规则</strong>处理，确保系统既不会因偶然噪声而频繁修改核心概念，也不会对系统性偏差视而不见。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>灞傜骇</th>
-<th>鍝嶅簲閫熷害</th>
-<th>瑙﹀彂鏉′欢</th>
-<th>淇鑼冨洿</th>
-<th>绀轰緥</th>
+<th>层级</th>
+<th>响应速度</th>
+<th>触发条件</th>
+<th>修正范围</th>
+<th>示例</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>鍙傛暟灞?/strong></td>
-<td>蹇彉</td>
-<td>姣忔鏂拌娴嬪埌杈炬椂</td>
-<td>鍙傛暟鍚庨獙鍒嗗竷</td>
-<td>M1-RES-D鎭㈠閫熺巼涓婇檺琚唬璋㈢爺绌舵牎鍑?/td>
+<td>**参数层**</td>
+<td>快变</td>
+<td>每次新观测到达时</td>
+<td>参数后验分布</td>
+<td>M1-RES-D恢复速率上限被代谢研究校准</td>
 </tr>
 <tr>
-<td><strong>妯″瀷灞?/strong></td>
-<td>涓€熷彉</td>
-<td>璺ㄥ浠诲姟銆佸鏍锋湰鐨勫弬鏁版畫宸寔缁悓鍚?/td>
-<td>妯″瀷褰㈠紡</td>
-<td>浠庣嚎鎬ф敼涓洪潪绾挎€?/td>
+<td>**模型层**</td>
+<td>中速变</td>
+<td>跨多任务、多样本的参数残差持续同向</td>
+<td>模型形式</td>
+<td>从线性改为非线性</td>
 </tr>
 <tr>
-<td><strong>姒傚康鏄犲皠灞?/strong></td>
-<td>鎱㈠彉</td>
-<td>璺ㄦ儏澧冪ǔ鍋ユ畫宸紝浣庡眰淇鏃犳晥</td>
-<td>UPLS姒傚康鏄犲皠閲嶅</td>
-<td>M4-RES-B浠庡崟鐐规敼涓虹粍鍚堟槧灏?/td>
+<td>**概念映射层**</td>
+<td>慢变</td>
+<td>跨情境稳健残差，低层修正无效</td>
+<td>UPLS概念映射重审</td>
+<td>M4-RES-B从单点改为组合映射</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>鍒嗗眰鍝嶅簲鐨勯€昏緫</strong>锛氫俊鍙风殑寮哄害涓庡搷搴旀垚鏈殑鍖归厤銆傚弬鏁版牎鍑嗕綆鎴愭湰锛堟瘡娆MA鏇存柊锛夛紝妯″瀷璋冩暣涓瓑鎴愭湰锛屾蹇甸噸瀹￠珮鎴愭湰鈥斺€旇Е鍙戦棬妲涜冻澶熼珮銆?/p>
+<p><strong>分层响应的逻辑</strong>：信号的强度与响应成本的匹配。参数校准低成本（每次EMA更新），模型调整中等成本，概念重审高成本——触发门槛足够高。</p>
 
-<p><strong>鍋囬槼鎬т繚鎶ゆ満鍒?/strong>锛?/p>
+<p><strong>假阳性保护机制</strong>：</p>
 <ul>
-<li>鍙傛暟灞傛洿鏂帮細姣忔鏂拌娴嬪埌杈炬椂鎵ц锛屾棤闂ㄦ</li>
-<li>妯″瀷灞傝皟鏁磋Е鍙戯細鑷冲皯3涓嫭绔嬫牱鏈腑瑙傚療鍒板悓鍚戞畫宸?/li>
-<li>姒傚康鏄犲皠灞傞噸瀹¤Е鍙戯細璺ㄨ嚦灏?涓疄楠屽銆?绉嶆祴閲忔ā鎬併€佸涓复搴婃儏澧冪殑绋冲仴娈嬪樊</li>
+<li>参数层更新：每次新观测到达时执行，无门槛</li>
+<li>模型层调整触发：至少3个独立样本中观察到同向残差</li>
+<li>概念映射层重审触发：跨至少2个实验室、3种测量模态、多个临床情境的稳健残差</li>
 </ul>
 
 <hr class="section-divider">
 
-<h2>23.5 宸ョ▼妗堜緥锛歎NIS RTE-Cal鐨勫弽鍚戠害鏉熼棴鐜疄鐜?/h2>
+<h2>23.5 工程案例：UNIS RTE-Cal的反向约束闭环实现</h2>
 
-<p>鍓嶅洓鑺備粠鍝插鍜岀畻娉曞眰闈㈡弿杩颁簡鍙嶅悜绾︽潫鐨勫垎绫讳笌鍒嗗眰鍝嶅簲銆傛湰鑺傚睍绀鸿繖涓€鏈哄埗鍦║NIS涓殑宸ョ▼瀹炵幇鈥斺€旂壒鍒槸RTE-Cal锛堝疄鏃跺紩鎿庣殑鏍″噯瀛愭ā鍧楋級濡備綍灏嗏€滃弽鍚戠害鏉熲€濅粠鎶借薄鍘熷垯杞寲涓哄彲杩愯鐨勪釜浣撳寲闂幆銆?/p>
+<p>前四节从哲学和算法层面描述了反向约束的分类与分层响应。本节展示这一机制在UNIS中的工程实现——特别是RTE-Cal（实时引擎的校准子模块）如何将“反向约束”从抽象原则转化为可运行的个体化闭环。</p>
 
-<h3>23.5.1 浠庨潤鎬佺害鏉熷埌鍔ㄦ€佹牎鍑?/h3>
+<h3>23.5.1 从静态约束到动态校准</h3>
 
-<p>濡傜22.5鑺傛墍杩帮紝UNIS鐨凩5绁炵粡鍏堥獙搴擄紙NPL锛夊瓨鍌ㄤ簡纭害鏉熷拰杞厛楠岋紝鐢ㄤ簬鍦ㄦ帹鐞嗘椂瑁佸壀鎴栫害鏉烲4妯″瀷鐨勮緭鍑恒€備絾杩欎粛鐒舵槸<strong>闈欐€?/strong>鐨勨€斺€旂害鏉熷湪杩愯鏃惰搴旂敤锛屼絾涓嶉殢涓綋鏁版嵁鍙樺寲鑰屾洿鏂般€?/p>
+<p>如第22.5节所述，UNIS的L5神经先验库（NPL）存储了硬约束和软先验，用于在推理时裁剪或约束L4模型的输出。但这仍然是<strong>静态</strong>的——约束在运行时被应用，但不随个体数据变化而更新。</p>
 
-<p>RTE-Cal灏嗗弽鍚戠害鏉熸帹杩涘埌<strong>鍔ㄦ€?/strong>灞傞潰锛氬畠鎺ユ敹PSE鍙嶉鐨勭姸鎬佷及璁″拰鏍″噯娈嬪樊锛岄€掑綊鏇存柊涓綋鍖栫殑妯″瀷鍙傛暟銆傝繖涓繃绋嬬殑鏈川鏄細<strong>绁炵粡灞備笉浠呭鍔熻兘灞傛柦鍔犵害鏉燂紝杩橀€氳繃PSE鐨勭姸鎬佷及璁¤幏寰楀弽棣堬紝杩涜€岃皟鏁磋嚜宸卞鍔熻兘鐘舵€佺殑鏄犲皠</strong>銆?/p>
+<p>RTE-Cal将反向约束推进到<strong>动态</strong>层面：它接收PSE反馈的状态估计和校准残差，递归更新个体化的模型参数。这个过程的本质是：<strong>神经层不仅对功能层施加约束，还通过PSE的状态估计获得反馈，进而调整自己对功能状态的映射</strong>。</p>
 
-<h3>23.5.2 闂幆璺緞涓庡崗璁?/h3>
+<h3>23.5.2 闭环路径与协议</h3>
 
-<p>UNIS涓嶱SE涔嬮棿鐨勫弻鍚戦€氫俊鍗忚瀹氫箟浜嗕笁鏉￠€氶亾锛?/p>
+<p>UNIS与PSE之间的双向通信协议定义了三条通道：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>鏂瑰悜</th>
-<th>閫氶亾</th>
-<th>鍐呭</th>
-<th>浣滅敤</th>
+<th>方向</th>
+<th>通道</th>
+<th>内容</th>
+<th>作用</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>UNIS 鈫?PSE</td>
+<td>UNIS → PSE</td>
 <td>`/func_likelihood`</td>
-<td>绁炵粡浼肩劧 \( p(y_n \mid \Psi_t) \) + 缃俊搴?/td>
-<td>鎻愪緵绁炵粡瑙傛祴璇佹嵁</td>
+<td>神经似然 \( p(y_n \mid \Psi_t) \) + 置信度</td>
+<td>提供神经观测证据</td>
 </tr>
 <tr>
-<td>PSE 鈫?UNIS</td>
+<td>PSE → UNIS</td>
 <td>`/state_estimate`</td>
-<td>褰撳墠鏈€浼樼姸鎬佷及璁?\( \hat{\Psi}(t) \)</td>
-<td>涓篣NIS鎻愪緵鏍″噯鐩爣</td>
+<td>当前最优状态估计 \( \hat{\Psi}(t) \)</td>
+<td>为UNIS提供校准目标</td>
 </tr>
 <tr>
-<td>PSE 鈫?UNIS</td>
+<td>PSE → UNIS</td>
 <td>`/calibration_feedback`</td>
-<td>鏍″噯娈嬪樊 + 鍙傛暟璋冩暣寤鸿</td>
-<td>椹卞姩UNIS妯″瀷涓綋鍖?/td>
+<td>校准残差 + 参数调整建议</td>
+<td>驱动UNIS模型个体化</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>RTE-Cal鐨勬牎鍑嗗惊鐜?/strong>锛?/p>
+<p><strong>RTE-Cal的校准循环</strong>：</p>
 
 <ol>
-<li><strong>鍒濆闃舵</strong>锛歎NIS浣跨敤缇や綋鍏堥獙锛圠5 NPL锛夊垵濮嬪寲L4妯″瀷鍙傛暟</li>
-<li><strong>杩愯鏃?/strong>锛歊TE-Infer瀹炴椂杈撳嚭绁炵粡浼肩劧锛汸SE铻嶅悎澶氶€氶亾鏁版嵁锛岃緭鍑虹姸鎬佷及璁?/li>
-<li><strong>鍙嶉</strong>锛歅SE璁＄畻UNIS浼肩劧涓庡疄闄呯姸鎬佷及璁′箣闂寸殑娈嬪樊锛岄€氳繃 <code>/calibration_feedback</code> 鍙戝洖UNIS</li>
-<li><strong>鏇存柊</strong>锛歊TE-Cal寮傛鎵ц閫掑綊璐濆彾鏂洿鏂帮紙鍗″皵鏇兼护娉㈡垨绮掑瓙婊ゆ尝锛夛紝璋冩暣L4妯″瀷鍙傛暟</li>
-<li><strong>杩唬</strong>锛氭洿鏂板悗鐨勫弬鏁板湪鍚庣画鎺ㄧ悊涓娇鐢紝娈嬪樊鎸佺画鍑忓皬</li>
+<li><strong>初始阶段</strong>：UNIS使用群体先验（L5 NPL）初始化L4模型参数</li>
+<li><strong>运行时</strong>：RTE-Infer实时输出神经似然；PSE融合多通道数据，输出状态估计</li>
+<li><strong>反馈</strong>：PSE计算UNIS似然与实际状态估计之间的残差，通过 <code>/calibration_feedback</code> 发回UNIS</li>
+<li><strong>更新</strong>：RTE-Cal异步执行递归贝叶斯更新（卡尔曼滤波或粒子滤波），调整L4模型参数</li>
+<li><strong>迭代</strong>：更新后的参数在后续推理中使用，残差持续减小</li>
 </ol>
 
-<h3>23.5.3 宸ョ▼鎰忎箟锛氬弽鍚戠害鏉熺殑鍙璁℃墽琛?/h3>
+<h3>23.5.3 工程意义：反向约束的可审计执行</h3>
 
-<p>杩欎竴璁捐浣跨23.2-23.4鑺備腑鎻忚堪鐨勨€滃弽鍚戠害鏉熲€濅笉鍐嶆槸鎶借薄鐨勫摬瀛﹀師鍒欐垨涓€娆℃€х殑浜嬪悗淇锛岃€屾槸锛?/p>
+<p>这一设计使第23.2-23.4节中描述的“反向约束”不再是抽象的哲学原则或一次性的事后修正，而是：</p>
 
 <ul>
-<li><strong>鍙墽琛岀殑</strong>锛氱害鏉燂紙纭害鏉熴€佽蒋鍏堥獙锛夊湪L5涓紪鐮侊紝杩愯鏃惰嚜鍔ㄨ鍓紱涓綋鍖栨牎鍑嗙敱RTE-Cal鑷姩瀹屾垚</li>
-<li><strong>鍙璁＄殑</strong>锛氭瘡娆′徊瑁佷簨浠讹紙瑁佸壀銆侀檷鏉冦€佹柟鍚戝啿绐侊級閮借璁板綍鍦ㄤ徊瑁佹棩蹇椾腑锛屽彲渚涗笅娓稿垎鏋?/li>
-<li><strong>鍙瘉浼殑</strong>锛氬鏋淩TE-Cal鐨勬牎鍑嗕笉鑳芥寔缁噺灏忔畫宸紙濡傚湪寮哄弽渚婼C4涓€斺€攙3.0瑕佹眰RTE-Cal鏍″噯鍚巐og-likelihood鎹熷け闄嶄綆鈮?0%涓斾紭浜庢湸绱犲崱灏旀浖婊ゆ尝鍩虹嚎锛夛紝鍒橴NIS鐨勫湪绾挎牎鍑嗘柟娉曡璇佷吉</li>
+<li><strong>可执行的</strong>：约束（硬约束、软先验）在L5中编码，运行时自动裁剪；个体化校准由RTE-Cal自动完成</li>
+<li><strong>可审计的</strong>：每次仲裁事件（裁剪、降权、方向冲突）都被记录在仲裁日志中，可供下游分析</li>
+<li><strong>可证伪的</strong>：如果RTE-Cal的校准不能持续减小残差（如在强反例SC4中——v3.0要求RTE-Cal校准后log-likelihood损失降低≥10%且优于朴素卡尔曼滤波基线），则UNIS的在线校准方法被证伪</li>
 </ul>
 
-<p><strong>涓幝?2.4涓夊眰杩囨护瑙勫垯鐨勫搴?/strong>锛?/p>
+<p><strong>与§22.4三层过滤规则的对应</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>涓夊眰杩囨护锛堝摬瀛︼級</th>
-<th>UNIS宸ョ▼瀹炵幇</th>
+<th>三层过滤（哲学）</th>
+<th>UNIS工程实现</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>纭害鏉熷鏌?/td>
-<td>L5纭害鏉?鈫?鑷姩瑁佸壀锛岃鍏ヤ徊瑁佹棩蹇?/td>
+<td>硬约束审查</td>
+<td>L5硬约束 → 自动裁剪，记入仲裁日志</td>
 </tr>
 <tr>
-<td>杞害鏉熸牎鍑?/td>
-<td>L5杞厛楠?鈫?璐濆彾鏂蒋绾︽潫锛屼笉寮哄埗瑁佸壀</td>
+<td>软约束校准</td>
+<td>L5软先验 → 贝叶斯软约束，不强制裁剪</td>
 </tr>
 <tr>
-<td>鍏煎鎬у綊妗?/td>
-<td>鍏煎鎬ц瘉鎹簱锛屼笉鍙備笌杩愯鏃惰鍐?/td>
+<td>兼容性归档</td>
+<td>兼容性证据库，不参与运行时裁决</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>RTE-Cal灏嗏€滃弽鍚戣矾寰勨€濅粠涓€娆℃€т俊鍙峰鐞嗗崌绾т负鎸佺画杩愯鐨勯棴鐜涔犵郴缁燂紝浣垮姛鑳藉眰涓庣缁忓眰涔嬮棿鐨勭害鏉熷叧绯讳笉鍐嶆槸鍗曞悜鐨勨€滅缁忊啋鍔熻兘鈥濆己鍒讹紝鑰屾槸鍙屽悜鐨勩€佹笎杩涙牎鍑嗙殑鍗忓悓杩囩▼銆?/p>
+<p>RTE-Cal将“反向路径”从一次性信号处理升级为持续运行的闭环学习系统，使功能层与神经层之间的约束关系不再是单向的“神经→功能”强制，而是双向的、渐进校准的协同过程。</p>
 
 <hr class="section-divider">
 
-<h2>23.6 绾ц仈鍛介锛氬彲璇佷吉鐨勬牳蹇冮娴?/h2>
+<h2>23.6 级联命题：可证伪的核心预测</h2>
 
-<p>浠ヤ笅棰勬祴鏄姛鑳藉眰鍚戠缁忕瀛﹁緭鍑虹殑鏍稿績浜у嚭锛屽寘鍚槑纭瘉浼潯浠躲€?/p>
+<p>以下预测是功能层向神经科学输出的核心产出，包含明确证伪条件。</p>
 
-<p><strong>Cascade-1锛氳祫婧愬穿濉岀骇鑱旂殑鏃跺簭楠岃瘉</strong></p>
+<p><strong>Cascade-1：资源崩塌级联的时序验证</strong></p>
 
-<blockquote><p><strong>棰勬祴鍐呭</strong>锛氬湪鎸佺画瑙夐啋鐘舵€佷笅锛孧1-RES-D鐨勪笅闄嶅皢鍏堜簬M3-RES-D鐨勪笅闄嶇害3-6灏忔椂锛汳3-RES-D涓嬮檷鑷冲熀绾?0%浠ヤ笅鏃讹紝M6-DSP-B鐨勮Е鍙戦鐜囧皢鏄捐憲涓婂崌銆?/p></blockquote>
+<blockquote><p><strong>预测内容</strong>：在持续觉醒状态下，M1-RES-D的下降将先于M3-RES-D的下降约3-6小时；M3-RES-D下降至基线30%以下时，M6-DSP-B的触发频率将显著上升。</p></blockquote>
 
-<p><strong>妫€楠屾柟妗?/strong>锛?0鍚嶅仴搴锋垚骞翠汉锛?4灏忔椂鐫＄湢鍓ュず銆傛祴閲廙1-RES-D锛堜富瑙傜柌鍔?HRV锛夈€丮3-RES-D锛圙o/No-Go浠诲姟琛ㄧ幇锛夈€丮6-DSP-B锛堜範鎯Е鍙戦鐜囷級銆?/p>
+<p><strong>检验方案</strong>：30名健康成年人，24小时睡眠剥夺。测量M1-RES-D（主观疲劳+HRV）、M3-RES-D（Go/No-Go任务表现）、M6-DSP-B（习惯触发频率）。</p>
 
-<p><strong>璇佷吉鏉′欢</strong>锛?/p>
+<p><strong>证伪条件</strong>：</p>
 <ul>
-<li>鏉′欢涓€锛歁1-RES-D涓嶮3-RES-D鐨勪笅闄嶄笉瀛樺湪鏄捐憲鏃跺簭鍏堝悗鍏崇郴</li>
-<li>鏉′欢浜岋細M6-DSP-B鐨勪笂鍗囧彲浠ヨM2-RES-D鐨勪笅闄嶅畬鍏ㄨВ閲?/li>
-<li>鏉′欢涓夛細鐫＄湢鍓ュず鍚庯紝绾鐭ョ瓥鐣ュ彲缁存寔M3-DSP-F鍩虹嚎姘村钩</li>
+<li>条件一：M1-RES-D与M3-RES-D的下降不存在显著时序先后关系</li>
+<li>条件二：M6-DSP-B的上升可以被M2-RES-D的下降完全解释</li>
+<li>条件三：睡眠剥夺后，纯认知策略可维持M3-DSP-F基线水平</li>
 </ul>
 
 
-<p><strong>棰勬祴鐨勫け璐ュ悗鏋滃垎灞?/strong>锛堜互Cascade-1涓轰緥锛夛細鑻ヤ粎鏉′欢涓€琚弧瓒筹紝鍙傛暟灞傚彈鎹燂紙璋冩暣婊炲悗鍙傛暟锛夛紱鑻ユ潯浠朵簩鎴栦笁琚弧瓒筹紝缁勪欢灞傚彈鎹燂紙M3-RES-D鐨勭嫭绔嬪湴浣嶅彈鎸戞垬锛夛紱鑻ヤ笁椤瑰潎琚弧瓒筹紝绾ц仈鍋囪鏍稿績缁撴瀯琚弗閲嶅墛寮便€?/p>
+<p><strong>预测的失败后果分层</strong>（以Cascade-1为例）：若仅条件一被满足，参数层受损（调整滞后参数）；若条件二或三被满足，组件层受损（M3-RES-D的独立地位受挑战）；若三项均被满足，级联假设核心结构被严重削弱。</p>
 
-<blockquote><p><strong>娉?/strong>锛欳ascade-2锛堢粨鏋勯噸濉戠獥鍙ｇ殑绁炵粡鍙鎬у弻璺緞妫€楠岋級鍜孋ascade-3锛堝共棰勫簭鍒楃殑绁炵粡鏁堝簲宸紓妫€楠岋級鍦╲3.0棰勬祴娓呭崟淇涓闄嶇骇绉婚櫎銆侰ascade-2鐨勫垹闄ょ悊鐢变负"蹇冪悊骞查鍙犲姞鏁堝簲閫氬父涓嶆樉钁楋紝涓庢牳蹇冩鏋跺叧鑱斿急"锛汣ascade-3鐨勫垹闄ょ悊鐢变负"闀挎椂绋媐MRI涓粙鏋侀毦妫€娴嬶紝鏍锋湰闇€姹傝繃澶?銆傝瑙?5-M-02-INTRE鏍稿績棰勬祴娓呭崟-v3.0绗簲鑺傘€?/p></blockquote>
+<blockquote><p><strong>注</strong>：Cascade-2（结构重塑窗口的神经可塑性双路径检验）和Cascade-3（干预序列的神经效应差异检验）在v3.0预测清单修订中被降级移除。Cascade-2的删除理由为"心理干预叠加效应通常不显著，与核心框架关联弱"；Cascade-3的删除理由为"长时程fMRI中介极难检测，样本需求过大"。详见05-M-02-INTRE核心预测清单-v3.0第五节。</p></blockquote>
 
 <hr class="section-divider">
 
-<p><strong>鏈珷灏忕粨</strong>锛氬弻鍚戠害鏉熼棴鐜槸绁炵粡灞傚鎺ヤ綋绯荤殑鏍稿績杩愯鏋舵瀯銆傛鍚戣矾寰勪腑锛屽姛鑳藉眰鍩轰簬MTT鍜孧KT鐢熸垚鍙楠岀殑绾ц仈棰勬祴锛涘弽鍚戣矾寰勪腑锛岀缁忓眰鍙嶉琚垎绫讳负纭害鏉熴€佽蒋绾︽潫鍜屽吋瀹规€т俊鍙凤紝鍒嗗埆瑙﹀彂鍙傛暟灞傚揩鍙樸€佹ā鍨嬪眰涓€熷彉鍜屾蹇垫槧灏勫眰鎱㈠彉鐨勫垎灞傚搷搴斻€俇NIS RTE-Cal灏嗗弽鍚戠害鏉熷伐绋嬪寲涓烘寔缁殑闂幆鏍″噯锛氭帴鏀禤SE鐨勭姸鎬佷及璁″弽棣堬紝閫掑綊鏇存柊涓綋鍖栨ā鍨嬪弬鏁帮紝浣库€滃弻鍚戠害鏉熲€濅粠鍝插鍘熷垯鍙樹负鍙璁°€佸彲璇佷吉鐨勮繍琛屾椂绯荤粺銆侰ascade-1绾ц仈棰勬祴鍛介鈥斺€旇祫婧愬穿濉岀骇鑱旂殑鏃跺簭楠岃瘉鈥斺€旀槸鍔熻兘灞傚悜绁炵粡绉戝杈撳嚭鐨勬牳蹇冧骇鍑猴紝鍖呭惈鏄庣‘鐨勬楠屾柟妗堝拰璇佷吉鏉′欢銆傦紙Cascade-2鍜孋ascade-3宸插湪v3.0棰勬祴娓呭崟涓檷绾хЩ闄ゃ€傦級杩欎竴闂幆璁捐浣垮姛鑳藉眰鏃㈣兘浠庣缁忕瀛︾殑鍙嶉涓寔缁涔狅紝鍙堜笉鍥犲伓鐒跺櫔澹拌€岄绻佸姩鎽囨牳蹇冩灦鏋勩€?/p>
+<p><strong>本章小结</strong>：双向约束闭环是神经层对接体系的核心运行架构。正向路径中，功能层基于MTT和MKT生成可检验的级联预测；反向路径中，神经层反馈被分类为硬约束、软约束和兼容性信号，分别触发参数层快变、模型层中速变和概念映射层慢变的分层响应。UNIS RTE-Cal将反向约束工程化为持续的闭环校准：接收PSE的状态估计反馈，递归更新个体化模型参数，使“双向约束”从哲学原则变为可审计、可证伪的运行时系统。Cascade-1级联预测命题——资源崩塌级联的时序验证——是功能层向神经科学输出的核心产出，包含明确的检验方案和证伪条件。（Cascade-2和Cascade-3已在v3.0预测清单中降级移除。）这一闭环设计使功能层既能从神经科学的反馈中持续学习，又不因偶然噪声而频繁动摇核心架构。</p>
 
-<blockquote><p><strong>鍏抽敭鏈</strong>锛氬弻鍚戠害鏉熼棴鐜紝姝ｅ悜璺緞锛屽弽鍚戣矾寰勶紝纭害鏉燂紝杞害鏉燂紝鍏煎鎬т俊鍙凤紝鍒嗗眰鍝嶅簲锛岀骇鑱旈娴嬶紝UNIS锛孯TE-Cal锛屼徊瑁佹棩蹇?/p></blockquote>
+<blockquote><p><strong>关键术语</strong>：双向约束闭环，正向路径，反向路径，硬约束，软约束，兼容性信号，分层响应，级联预测，UNIS，RTE-Cal，仲裁日志</p></blockquote>
 
-<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥滅骇鑱旈娴嬪彧鏄吋瀹规€ц瘉鎹殑鍙︿竴绉嶈娉曗€?鈫?鉁?绾ц仈棰勬祴鍖呭惈鍏煎鎬ц瘉鎹湭鑳芥彁渚涚殑鏂拌娴嬮」锛堟椂搴忔粸鍚庛€佷腑浠嬭矾寰勶級锛屾槸浜嬪墠婕旂粠鑰岄潪浜嬪悗褰掔撼銆?br>- 鉂?鈥滆蒋绾︽潫鎰忓懗鐫€缁勪欢涓嶅瓨鍦ㄢ€?鈫?鉁?杞害鏉熸爣璁扮殑鏄祴閲忓伐鍏风殑涓嶆垚鐔燂紝鑰岄潪娴嬮噺瀵硅薄鐨勪笉瀛樺湪銆?br>- 鉂?鈥滃鏋滈娴嬪け璐ワ紝鏁翠釜妗嗘灦灏卞穿婧冣€?鈫?鉁?棰勬祴鐨勮瘉浼悗鏋滄槸鍒嗗眰鐨勶細鍙傛暟澶辫触浠呮牎鍑嗗弬鏁帮紝缁勪欢澶辫触鎵嶉渶淇缁勪欢銆?br>- 鉂?鈥淩TE-Cal鏄彲鏈夊彲鏃犵殑闄勫姞鍔熻兘鈥?鈫?鉁?RTE-Cal鏄弽鍚戠害鏉熼棴鐜殑鏍稿績鎵ц鑰呪€斺€旀病鏈夊畠锛屽弽鍚戣矾寰勫彧鏄竴娆℃€т俊鍙峰鐞嗭紝鏃犳硶褰㈡垚鎸佺画瀛︿範銆?/p></blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “级联预测只是兼容性证据的另一种说法” → ✅ 级联预测包含兼容性证据未能提供的新观测项（时序滞后、中介路径），是事前演绎而非事后归纳。<br>- ❌ “软约束意味着组件不存在” → ✅ 软约束标记的是测量工具的不成熟，而非测量对象的不存在。<br>- ❌ “如果预测失败，整个框架就崩溃” → ✅ 预测的证伪后果是分层的：参数失败仅校准参数，组件失败才需修订组件。<br>- ❌ “RTE-Cal是可有可无的附加功能” → ✅ RTE-Cal是反向约束闭环的核心执行者——没有它，反向路径只是一次性信号处理，无法形成持续学习。</p></blockquote>
 
-<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 鎻忚堪鍙屽悜绾︽潫闂幆鐨勬鍙嶄袱鏉¤矾寰勫強鍏跺悇鑷殑鍔熻兘銆?br>2. 纭害鏉熴€佽蒋绾︽潫銆佸吋瀹规€т俊鍙蜂笁绫诲弽棣堜俊鍙风殑鍖哄埆鏄粈涔堬紵鍚勮嚜瑙﹀彂浠€涔堝搷搴旓紵<br>3. 閫夋嫨绾ц仈棰勬祴鍛介锛圕ascade-1锛夛紝璁捐涓€涓畝鍖栫殑瀹為獙鏂规鏉ユ楠屽畠銆?br>4. UNIS RTE-Cal濡備綍瀹炵幇鈥滃弽鍚戠害鏉熲€濈殑宸ョ▼闂幆锛熷畠涓幝?2.4鐨勪笁灞傝繃婊よ鍒欐湁浣曞搴斿叧绯伙紵</p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 描述双向约束闭环的正反两条路径及其各自的功能。<br>2. 硬约束、软约束、兼容性信号三类反馈信号的区别是什么？各自触发什么响应？<br>3. 选择级联预测命题（Cascade-1），设计一个简化的实验方案来检验它。<br>4. UNIS RTE-Cal如何实现“反向约束”的工程闭环？它与§22.4的三层过滤规则有何对应关系？</p></blockquote>
 <hr class="section-divider">
-
-<div class="version-record-title">鐗堟湰璁板綍</div>
+<hr class="section-divider">
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>鐗堟湰</th>
-<th>鏃ユ湡</th>
-<th>鍙樻洿鍐呭</th>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0</td>
+<td>v1.0.0</td>
 <td>2026-05-30</td>
-<td>鍒濆鍒涘缓</td>
+<td>初始创建</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch22.html" class="nav-link prev">鈥?绁炵粡瀵规帴</a>
-<a href="index.html" class="nav-link up">鈽?鐩綍</a>
-<a href="ch24.html" class="nav-link next">杈圭晫淇 鈥?/a></div>
+        <div class="chapter-nav"><a href="ch22.html" class="nav-link prev">‹ 神经对接</a>
+<a href="index.html" class="nav-link up">☰ 目录</a>
+<a href="ch24.html" class="nav-link next">边界修订 ›</a></div>
     </div>
 
-    <footer class="site-footer">
+    <footer>
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
+        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -507,7 +507,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 

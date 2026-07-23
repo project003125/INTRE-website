@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>绗?绔?鏋舵瀯鎺ㄥ锛氫粠鍏冨叕鐞嗗埌鎿嶄綔绯荤粺 路 INTRE 瀵艰鏁欐潗</title>
-    <meta name="description" content="INTRE鐨勪簲澶ф牳蹇冩灦鏋勯伒寰€滈亾鈫掓硶鈫掓湳鈫掑鈥濈殑灞傜骇鐢熸垚鍏崇郴銆傝繖鏄竴涓弗鏍肩殑涓嬭鎺ㄥ杩囩▼锛氭瘡涓笂灞傛蹇佃鎿嶄綔鍖栧畾涔変负涓嬪眰姒傚康锛屼笅灞傛蹇电户鎵夸笂灞傛蹇电殑鍏ㄩ儴閫昏緫绾︽潫锛屽苟澧炲姞棰嗗煙鐗瑰寲鐨勫唴瀹广€?>
-    <meta property="og:title" content="绗?绔?鏋舵瀯鎺ㄥ锛氫粠鍏冨叕鐞嗗埌鎿嶄綔绯荤粺">
-    <meta property="og:description" content="INTRE鐨勪簲澶ф牳蹇冩灦鏋勯伒寰€滈亾鈫掓硶鈫掓湳鈫掑鈥濈殑灞傜骇鐢熸垚鍏崇郴銆傝繖鏄竴涓弗鏍肩殑涓嬭鎺ㄥ杩囩▼锛氭瘡涓笂灞傛蹇佃鎿嶄綔鍖栧畾涔変负涓嬪眰姒傚康锛屼笅灞傛蹇电户鎵夸笂灞傛蹇电殑鍏ㄩ儴閫昏緫绾︽潫锛屽苟澧炲姞棰嗗煙鐗瑰寲鐨勫唴瀹广€?>
+    <title>第5章 架构推导：从元公理到操作系统 · INTRE 导论教材</title>
+    <meta name="description" content="INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的下行推导过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。">
+    <meta property="og:title" content="第5章 架构推导：从元公理到操作系统">
+    <meta property="og:description" content="INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的下行推导过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch05.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch05.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="绗?绔?鏋舵瀯鎺ㄥ锛氫粠鍏冨叕鐞嗗埌鎿嶄綔绯荤粺">
-    <meta name="twitter:description" content="INTRE鐨勪簲澶ф牳蹇冩灦鏋勯伒寰€滈亾鈫掓硶鈫掓湳鈫掑鈥濈殑灞傜骇鐢熸垚鍏崇郴銆傝繖鏄竴涓弗鏍肩殑涓嬭鎺ㄥ杩囩▼锛氭瘡涓笂灞傛蹇佃鎿嶄綔鍖栧畾涔変负涓嬪眰姒傚康锛屼笅灞傛蹇电户鎵夸笂灞傛蹇电殑鍏ㄩ儴閫昏緫绾︽潫锛屽苟澧炲姞棰嗗煙鐗瑰寲鐨勫唴瀹广€?>
+    <meta name="twitter:title" content="第5章 架构推导：从元公理到操作系统">
+    <meta name="twitter:description" content="INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的下行推导过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -27,415 +27,415 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">鐩綍</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
-        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav class="site-nav">
+<nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">棣栭〉</a>
+                <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
-                <a href="/INTRE-website/glossary/">鏈琛?/a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
-            <span class="page-label">绗?绔?/span>
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">第5章</span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">绗?绔?鏋舵瀯鎺ㄥ锛氫粠鍏冨叕鐞嗗埌鎿嶄綔绯荤粺</h1>
+        <h1 class="chapter-title">第5章 架构推导：从元公理到操作系统</h1>
 
-<blockquote><p><strong>鏈珷瀹氫綅</strong>锛氭湰绔犲睍绀烘帹瀵奸摼鐨勯€昏緫楠ㄦ灦銆傚畬鏁寸殑璁鸿瘉鏉愭枡銆佹浛浠ｆ柟妗堟瘮杈冨拰鏁板缁嗚妭瑙?strong>闄勫綍L</strong>銆傚缓璁鑰呭厛閫氳鏈珷鑾峰緱鏁翠綋鍥炬櫙锛屽啀鏍规嵁闇€瑕佹煡闃呴檮褰曘€?/p></blockquote>
+<blockquote><p><strong>本章定位</strong>：本章展示推导链的逻辑骨架。完整的论证材料、替代方案比较和数学细节见<strong>附录L</strong>。建议读者先通读本章获得整体图景，再根据需要查阅附录。</p></blockquote>
 
-<blockquote><p><strong>瀛︿範鐩爣</strong>锛氬畬鎴愭湰绔犲悗锛屼綘搴旇兘澶燂細(1) 鐢诲嚭浠?N-S-R 鍏冨叕鐞嗗埌 G-M-A-R 鎿嶄綔璇硶鐨勫畬鏁存帹瀵奸摼锛?2) 瑙ｉ噴姣忎竴姝ユ帹瀵间腑鈥滀笂浣嶆蹇靛浣曡鎿嶄綔鍖栧畾涔変负涓嬩綅姒傚康鈥濓紱(3) 闄堣堪 R-D-S 涓夌淮浣滀负瀛橀噺-娴侀噺-缁撴瀯鍦ㄧ郴缁熷姩鍔涘涓殑鏁板瀵瑰簲锛?4) 鐞嗚В G-M-A-R 鍥涙搷浣滅殑闈剁偣鍚堟硶鎬х煩闃垫槸濡備綍浠?R-D-S 鐘舵€佺┖闂磋嚜鐒跺鍑虹殑锛?5) 璇存槑涓轰粈涔?INTRE 鐨勭粍浠朵笉鏄€滆鍙戞槑鈥濈殑锛岃€屾槸鈥滆鎺ㄥ鈥濈殑銆?/p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 画出从 N-S-R 元公理到 G-M-A-R 操作语法的完整推导链；(2) 解释每一步推导中“上位概念如何被操作化定义为下位概念”；(3) 陈述 R-D-S 三维作为存量-流量-结构在系统动力学中的数学对应；(4) 理解 G-M-A-R 四操作的靶点合法性矩阵是如何从 R-D-S 状态空间自然导出的；(5) 说明为什么 INTRE 的组件不是“被发明”的，而是“被推导”的。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>5.1 鎺ㄥ閾炬€昏锛氫簲澶ф灦鏋勭殑鐢熸垚閫昏緫</h2>
+<h2>5.1 推导链总览：五大架构的生成逻辑</h2>
 
-<p>INTRE鐨勪簲澶ф牳蹇冩灦鏋勯伒寰€滈亾鈫掓硶鈫掓湳鈫掑鈥濈殑灞傜骇鐢熸垚鍏崇郴銆傝繖鏄竴涓弗鏍肩殑<strong>涓嬭鎺ㄥ</strong>杩囩▼锛氭瘡涓笂灞傛蹇佃鎿嶄綔鍖栧畾涔変负涓嬪眰姒傚康锛屼笅灞傛蹇电户鎵夸笂灞傛蹇电殑鍏ㄩ儴閫昏緫绾︽潫锛屽苟澧炲姞棰嗗煙鐗瑰寲鐨勫唴瀹广€?/p>
+<p>INTRE的五大核心架构遵循“道→法→术→境”的层级生成关系。这是一个严格的<strong>下行推导</strong>过程：每个上层概念被操作化定义为下层概念，下层概念继承上层概念的全部逻辑约束，并增加领域特化的内容。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>鏋舵瀯</th>
-<th>绗﹀彿</th>
-<th>灞傜骇瀹氫綅</th>
-<th>鏍稿績杩介棶</th>
-<th>鎺ㄥ鏉ユ簮</th>
+<th>架构</th>
+<th>符号</th>
+<th>层级定位</th>
+<th>核心追问</th>
+<th>推导来源</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>N-S-R</strong></td>
+<td>**N-S-R**</td>
 <td>Need-Structure-Realization</td>
-<td>閬擄紙鍏冨叕鐞嗭級</td>
-<td>鏅鸿兘绯荤粺濡備綍瀛樺湪涓庤繍浣滐紵</td>
-<td>绗竴鎬у師鐞嗭紙璧风偣锛?/td>
+<td>道（元公理）</td>
+<td>智能系统如何存在与运作？</td>
+<td>第一性原理（起点）</td>
 </tr>
 <tr>
-<td><strong>M-R-P</strong></td>
+<td>**M-R-P**</td>
 <td>Module-Ring-Playbook</td>
-<td>娉曪紙閫氱敤鏋舵瀯锛?/td>
-<td>鐩爣椹卞姩鏅鸿兘浣撶殑閫氱敤钃濆浘鏄粈涔堬紵</td>
-<td>N-S-R鐨凷琚搷浣滃寲瀹氫箟</td>
+<td>法（通用架构）</td>
+<td>目标驱动智能体的通用蓝图是什么？</td>
+<td>N-S-R的S被操作化定义</td>
 </tr>
 <tr>
-<td><strong>M-R-D-S</strong></td>
+<td>**M-R-D-S**</td>
 <td>Module-Resource-Dispatch-Structure</td>
-<td>鏈紙璇婃柇渚э級</td>
-<td>蹇冩櫤绯荤粺姝ゅ埢鐨勫唴閮ㄧ姸鎬佸浣曪紵</td>
-<td>M-R-P鍦ㄤ汉绫诲績鏅轰笂鐨勭壒鍖?/td>
+<td>术（诊断侧）</td>
+<td>心智系统此刻的内部状态如何？</td>
+<td>M-R-P在人类心智上的特化</td>
 </tr>
 <tr>
-<td><strong>G-M-A-R</strong></td>
+<td>**G-M-A-R**</td>
 <td>Gate-Modulate-Align-Relink</td>
-<td>鏈紙骞查渚э級</td>
-<td>濡備綍淇蹇冩櫤绯荤粺鐨勯潪鐞嗘兂鐘舵€侊紵</td>
-<td>浠嶳-D-S鐘舵€佺┖闂磋嚜鐒跺鍑?/td>
+<td>术（干预侧）</td>
+<td>如何修正心智系统的非理想状态？</td>
+<td>从R-D-S状态空间自然导出</td>
 </tr>
 <tr>
-<td><strong>S-P</strong></td>
+<td>**S-P**</td>
 <td>Source-Pattern</td>
-<td>澧冿紙鐜鍙傜収绯伙級</td>
-<td>绯荤粺鍦ㄤ粈涔堟牱鐨勭幆澧冧腑杩愯锛?/td>
-<td>琛ュ叏M-R-D-S缂哄け鐨勭幆澧冪淮搴?/td>
+<td>境（环境参照系）</td>
+<td>系统在什么样的环境中运行？</td>
+<td>补全M-R-D-S缺失的环境维度</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>杩欎釜鎺ㄥ閾剧殑鍏抽敭鐗瑰緛鍦ㄤ簬锛?strong>姣忎竴姝ラ兘鏄搷浣滃寲瀹氫箟锛岃€岄潪缁忛獙褰掔撼銆?/strong> INTRE涓嶅０绉扳€滈€氳繃鐮旂┒澶ч噺蹇冪悊鐜拌薄锛屾垜浠彂鐜版伆濂芥湁涓変釜缁村害鈥濃€斺€斿畠澹扮О鈥滀粠N-S-R鍏冨叕鐞嗗嚭鍙戯紝濡傛灉鎴戜滑瑕佹眰鎻忚堪璇█婊¤冻瀛橀噺-娴侀噺-缁撴瀯鐨勭郴缁熷姩鍔涘瀹屽鎬э紝鍒橰-D-S涓夌淮鏄€昏緫蹇呯劧鐨勨€濄€?/p>
+<p>这个推导链的关键特征在于：<strong>每一步都是操作化定义，而非经验归纳。</strong> INTRE不声称“通过研究大量心理现象，我们发现恰好有三个维度”——它声称“从N-S-R元公理出发，如果我们要求描述语言满足存量-流量-结构的系统动力学工程覆盖充分性，则R-D-S三维是逻辑必然的”。</p>
 
 <pre><code class="language-mermaid">flowchart TD
-    A[&quot;N-S-R 鍏冨叕鐞?lt;br&gt;闇€瑕佲啋缁撴瀯鈫掑疄鐜板惊鐜?quot;]
-    A -- &quot;S 琚搷浣滃寲瀹氫箟涓?quot; --&gt; B[&quot;M-R-P 閫氱敤鏋舵瀯&lt;br&gt;妯″潡 + 璋冨害鐜?+ 鍓ф湰&quot;]
-    B -- &quot;鐗瑰寲鍒颁汉绫诲績鏅?quot; --&gt; C[&quot;M1-M6 鍏姛鑳芥ā鍧?quot;]
-    B -- &quot;鐘舵€佹弿杩伴渶姹?quot; --&gt; D[&quot;M-R-D-S 鐘舵€佽娉?lt;br&gt;璧勬簮路璋冨害路缁撴瀯 涓夌淮&quot;]
-    D -- &quot;骞查闇€姹傝嚜鐒跺鍑?quot; --&gt; E[&quot;G-M-A-R 鎿嶄綔璇硶&lt;br&gt;闂ㄦ帶路璋冨埗路鏍″噯路閲嶈仈&quot;]
-    B -- &quot;鐜瀹屾暣鎬?quot; --&gt; F[&quot;S-P 澶栨劅鏋舵瀯&lt;br&gt;婧惵锋ā寮?鍏眰娆?quot;]
+    A[&quot;N-S-R 元公理&lt;br&gt;需要→结构→实现循环&quot;]
+    A -- &quot;S 被操作化定义为&quot; --&gt; B[&quot;M-R-P 通用架构&lt;br&gt;模块 + 调度环 + 剧本&quot;]
+    B -- &quot;特化到人类心智&quot; --&gt; C[&quot;M1-M6 六功能模块&quot;]
+    B -- &quot;状态描述需求&quot; --&gt; D[&quot;M-R-D-S 状态语法&lt;br&gt;资源·调度·结构 三维&quot;]
+    D -- &quot;干预需求自然导出&quot; --&gt; E[&quot;G-M-A-R 操作语法&lt;br&gt;门控·调制·校准·重联&quot;]
+    B -- &quot;环境完整性&quot; --&gt; F[&quot;S-P 外感架构&lt;br&gt;源·模式 六层次&quot;]
     E &lt;--&gt; F
     D &lt;--&gt; F</code></pre>
 
 <hr class="section-divider">
 
-<h2>5.2 鍏冨叕鐞嗭細N-S-R涓庢墍鏈夋櫤鑳界郴缁熺殑瀛樺湪閫昏緫</h2>
+<h2>5.2 元公理：N-S-R与所有智能系统的存在逻辑</h2>
 
-<p><strong>鍏悊闄堣堪</strong>銆侼-S-R 鏄?INTRE 浣撶郴鐨勯€昏緫璧风偣锛?/p>
+<p><strong>公理陈述</strong>。N-S-R 是 INTRE 体系的逻辑起点：</p>
 
-<blockquote><p>鏅鸿兘绯荤粺閫氳繃鎰熺煡鍐呭湪鎴栧鍦ㄧ殑鈥滈渶瑕佲€濓紙Need, N锛夛紝璋冪敤鎴栨瀯寤虹浉搴旂殑鈥滅粨鏋勨€濓紙Structure, S锛夛紝骞堕€氳繃璇ョ粨鏋勭殑杩愪綔锛岃揪鎴愮洰鏍囩殑鈥滃疄鐜扳€濓紙Realization, R锛夈€?/p></blockquote>
+<blockquote><p>智能系统通过感知内在或外在的“需要”（Need, N），调用或构建相应的“结构”（Structure, S），并通过该结构的运作，达成目标的“实现”（Realization, R）。</p></blockquote>
 
-<p>涓夎€呭叧绯诲彲褰㈠紡鍖栬〃杩颁负 <strong>R = f(N, S)</strong>銆?/p>
+<p>三者关系可形式化表述为 <strong>R = f(N, S)</strong>。</p>
 
 <ul>
-<li><strong>N锛堥渶瑕侊級</strong>锛氱郴缁熷綋鍓嶇姸鎬佷笌鐞嗘兂鐘舵€佷箣闂寸殑鍋忓樊銆?/li>
-<li><strong>S锛堢粨鏋勶級</strong>锛氱郴缁熶负瀹炵幇闇€瑕佹墍鏋勫缓鎴栬皟鐢ㄧ殑鍐呴儴鍥犳灉閫氳矾涓庤繍琛屾満鍒躲€傚湪姝ゅ叕鐞嗗眰闈紝S 鏄竴涓?strong>鍐呭寮€鏀剧殑姒傚康妲?/strong>銆?/li>
-<li><strong>R锛堝疄鐜帮級</strong>锛氱粨鏋勮繍浣滃悗浜х敓鐨勫疄闄呮晥鏋滐紝鍙嶉缁欓渶瑕佹劅鐭ワ紝褰㈡垚闂幆銆?/li>
+<li><strong>N（需要）</strong>：系统当前状态与理想状态之间的偏差。</li>
+<li><strong>S（结构）</strong>：系统为实现需要所构建或调用的内部因果通路与运行机制。在此公理层面，S 是一个<strong>内容开放的概念槽</strong>。</li>
+<li><strong>R（实现）</strong>：结构运作后产生的实际效果，反馈给需要感知，形成闭环。</li>
 </ul>
 
-<p><strong>涓轰粈涔?N-S-R 鏄叕鐞嗚€屼笉鏄亣璁?/strong>銆侼-S-R 涓嶆潵鑷粡楠屽綊绾筹紝鑰屾槸<strong>閫昏緫鍒嗘瀽</strong>鐨勪骇鐗╋細鍦?INTRE 鎵€瀹氫箟鐨勭洰鏍囬┍鍔ㄣ€佽嚜閫傚簲銆佸彲鍙嶉璋冭妭绯荤粺涓紝鍏惰繍浣滈€昏緫涓婂繀椤诲寘鍚笁涓姛鑳界粍浠垛€斺€旂洰鏍囪瘑鍒紙N锛夈€佹墜娈垫彁渚涳紙S锛夈€佹晥鏋滆瘎浼帮紙R锛夈€傜己澶变换涓€鐜妭锛岀郴缁熷皢鏃犳硶瀹屾垚浠庘€滄劅鐭ラ渶瑕佲€濆埌鈥滃疄鐜扮洰鏍団€濈殑瀹屾暣闂幆銆?/p>
+<p><strong>为什么 N-S-R 是公理而不是假设</strong>。N-S-R 不来自经验归纳，而是<strong>逻辑分析</strong>的产物：在 INTRE 所定义的目标驱动、自适应、可反馈调节系统中，其运作逻辑上必须包含三个功能组件——目标识别（N）、手段提供（S）、效果评估（R）。缺失任一环节，系统将无法完成从“感知需要”到“实现目标”的完整闭环。</p>
 
-<p><strong>寮哄弽渚嬭Е鍙戞潯浠?/strong>锛氳嫢鍙戠幇鏌愪竴瀹屾暣鐨勮嚜閫傚簲绯荤粺灞傜骇鐨勮繍浣滄ā寮忔棤娉曡鍚堢悊鍦版槧灏勪负 N鈫扴鈫扲 鐨勯棴鐜紝鍒?N-S-R 鐨勮法灞傜骇鏅€傛€т富寮犻渶瑕佽淇鎴栭檺瀹氥€?/p>
+<p><strong>强反例触发条件</strong>：若发现某一完整的自适应系统层级的运作模式无法被合理地映射为 N→S→R 的闭环，则 N-S-R 的跨层级普适性主张需要被修正或限定。</p>
 
-<p><strong>鍏抽敭鍖哄垎鈥斺€擭-S-R 涓?M-R-D-S 涓?S 鐨勫弻閲嶅惈涔?/strong>锛?/p>
+<p><strong>关键区分——N-S-R 与 M-R-D-S 中 S 的双重含义</strong>：</p>
 <ul>
-<li>N-S-R 鐨?S = Structure锛堟蹇垫Ы锛夛紝璺ㄥ煙閫氱敤鐨勭粨鏋勫舰鎬?/li>
-<li>M-R-D-S 鐨?S = Structure锛堝疄渚嬪寲锛夛紝棰嗗煙鐗瑰寲涓?STR-R/C/S 涓夊垎娉?/li>
+<li>N-S-R 的 S = Structure（概念槽），跨域通用的结构形态</li>
+<li>M-R-D-S 的 S = Structure（实例化），领域特化为 STR-R/C/S 三分法</li>
 </ul>
 
-<p>鍏蜂綋鑰岃█锛孨-S-R 涓殑 S 鏄竴涓法鍩熼€氱敤鐨?strong>姒傚康妲?/strong>銆傚湪鍚庣画鎺ㄥ涓紝杩欎釜 S 琚€愭瀹炰緥鍖栵細鍦?M-R-P 灞傦紝S 琚搷浣滃寲瀹氫箟涓衡€滄ā鍧?璋冨害鐜?鍓ф湰鈥濓紱鍦?M-R-D-S 灞傦紝S 杩涗竴姝ヨ鐗瑰寲涓?STR-R銆丼TR-C 鍜?STR-S銆備笁鑰呮槸鈥滀笂浣嶆蹇?鈫?瀹炰緥鍖栤€濈殑鎺ㄥ鍏崇郴銆?/p>
+<p>具体而言，N-S-R 中的 S 是一个跨域通用的<strong>概念槽</strong>。在后续推导中，这个 S 被逐步实例化：在 M-R-P 层，S 被操作化定义为“模块+调度环+剧本”；在 M-R-D-S 层，S 进一步被特化为 STR-R、STR-C 和 STR-S。三者是“上位概念 → 实例化”的推导关系。</p>
 
 <hr class="section-divider">
 
-<h2>5.3 閫氱敤鏋舵瀯锛歁-R-P浣滀负S鐨勬搷浣滃寲瀹氫箟</h2>
+<h2>5.3 通用架构：M-R-P作为S的操作化定义</h2>
 
-<p><strong>浠庡叕鐞嗗埌鏋舵瀯鐨勫叧閿竴璺?/strong>銆侼-S-R 鏄竴涓摬瀛﹀叕鐞嗐€備絾瑕佽瀹冩垚涓哄彲鎿嶄綔鐨勫伐绋嬫鏋讹紝蹇呴』鍥炵瓟锛氬叕鐞嗕腑鐨?S锛堢粨鏋勶級鍏蜂綋鏄粈涔堬紵</p>
+<p><strong>从公理到架构的关键一跃</strong>。N-S-R 是一个哲学公理。但要让它成为可操作的工程框架，必须回答：公理中的 S（结构）具体是什么？</p>
 
-<p>INTRE 鐨勫洖绛旀槸涓€涓?strong>瑙勫畾鎬у畾涔?/strong>锛氬湪 INTRE 浣撶郴鍐呴儴锛屽叕鐞嗕腑鐨勨€滅粨鏋勶紙S锛夆€濊鎿嶄綔鍖栧畾涔変负 <strong>M-R-P 閫氱敤鏋舵瀯</strong>銆?/p>
+<p>INTRE 的回答是一个<strong>规定性定义</strong>：在 INTRE 体系内部，公理中的“结构（S）”被操作化定义为 <strong>M-R-P 通用架构</strong>。</p>
 
-<p><strong>M-R-P 鐨勪笁缁勪欢</strong>锛?/p>
+<p><strong>M-R-P 的三组件</strong>：</p>
 
 <ul>
-<li><strong>M锛圡odule 妯″潡锛?/strong>锛氱郴缁熺殑鍔熻兘缁勪欢闆嗕笌鑳藉姏杈圭晫銆傚洖绛斺€滅敤浠€涔堟潵鍋氣€濈殑闂銆?/li>
-<li><strong>R锛圧ing 璋冨害鐜級</strong>锛歊1鈫扲5 璐熷弽棣堟帶鍒舵祦绋嬨€傚洖绛斺€滃浣曟寔缁皟鏁粹€濈殑闂銆?/li>
-<li><strong>P锛圥laybook 鍓ф湰锛?/strong>锛氬彲閰嶇疆鐨勫叿浣撶瓥鐣ヤ笌浠峰€煎崗璁€傚洖绛斺€滃叿浣撴€庝箞鍋氣€濈殑闂銆?/li>
+<li><strong>M（Module 模块）</strong>：系统的功能组件集与能力边界。回答“用什么来做”的问题。</li>
+<li><strong>R（Ring 调度环）</strong>：R1→R5 负反馈控制流程。回答“如何持续调整”的问题。</li>
+<li><strong>P（Playbook 剧本）</strong>：可配置的具体策略与价值协议。回答“具体怎么做”的问题。</li>
 </ul>
 
-<p><strong>鏅€傛€ц璇?/strong>銆侻-R-P 鐨勫己澶т箣澶勫湪浜庘€滅粨鏋勪笌鍐呭鐨勫垎绂烩€濓細</p>
+<p><strong>普适性论证</strong>。M-R-P 的强大之处在于“结构与内容的分离”：</p>
 <ul>
-<li><strong>浜虹被蹇冪悊</strong>锛歁 = M1-M6 鍔熻兘妯″潡锛孭 = CBT 鎴?ACT 绛夋不鐤楀墽鏈?/li>
-<li><strong>L4 绾ц嚜鍔ㄩ┚椹?/strong>锛歁 = 鎰熺煡/瀹氫綅/瑙勫垝/鎺у埗妯″潡锛孭 = 楂橀€熷叕璺贰鑸墽鏈?/li>
-<li><strong>宸ヤ笟鏈哄櫒浜?/strong>锛歁 = 浼犳劅/鏈烘鑷傦紝P = 瑁呴厤搴忓垪</li>
+<li><strong>人类心理</strong>：M = M1-M6 功能模块，P = CBT 或 ACT 等治疗剧本</li>
+<li><strong>L4 级自动驾驶</strong>：M = 感知/定位/规划/控制模块，P = 高速公路巡航剧本</li>
+<li><strong>工业机器人</strong>：M = 传感/机械臂，P = 装配序列</li>
 </ul>
 
-<p><strong>绗﹀彿娑堟</strong>锛歁-R-P 涓殑 R 鎸?Ring锛堣皟搴︾幆锛夛紝涓?N-S-R 涓殑 R锛圧ealization锛夊拰 M-R-D-S 涓殑 R锛圧esource锛夊惈涔変笉鍚屻€?/p>
+<p><strong>符号消歧</strong>：M-R-P 中的 R 指 Ring（调度环），与 N-S-R 中的 R（Realization）和 M-R-D-S 中的 R（Resource）含义不同。</p>
 
-<blockquote><p><strong>绗﹀彿娑堟锛堜笁 R 鎬昏锛?/strong>锛欼NTRE 浣撶郴涓湁涓変釜 R锛屽惈涔夊悇涓嶇浉鍚岋細<br>- N-S-R 涓殑 R = Realization锛堝疄鐜帮級锛屾寚琛屼负杈撳嚭<br>- M-R-P 涓殑 R = Ring锛堣皟搴︾幆锛夛紝鎸囨ā鍧楅棿鐨勪俊鎭皟搴︾幆璺?br>- M-R-D-S 涓殑 R = Resource锛堣祫婧愶級锛屾寚鑳借€椾笌鏃堕棿棰勭畻</p></blockquote>
+<blockquote><p><strong>符号消歧（三 R 总览）</strong>：INTRE 体系中有三个 R，含义各不相同：<br>- N-S-R 中的 R = Realization（实现），指行为输出<br>- M-R-P 中的 R = Ring（调度环），指模块间的信息调度环路<br>- M-R-D-S 中的 R = Resource（资源），指能耗与时间预算</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>5.4 蹇冩櫤鐗瑰寲锛歁1-M6鍏姛鑳芥ā鍧楃殑瀵煎嚭</h2>
+<h2>5.4 心智特化：M1-M6六功能模块的导出</h2>
 
-<p>M-R-P 鏄€滀竾鑳藉鍣ㄢ€濄€備絾 INTRE 鐨勭洰鏍囨槸涓?strong>浜虹被蹇冩櫤</strong>鎻愪緵鍔熻兘灞傛弿杩拌娉曘€傚洜姝わ紝涓嬩竴姝ユ槸灏?M-R-P 涓殑 M锛堟ā鍧楋級鐗瑰寲涓轰汉绫诲績鏅虹殑鍏蜂綋鍔熻兘妯″潡銆?/p>
+<p>M-R-P 是“万能容器”。但 INTRE 的目标是为<strong>人类心智</strong>提供功能层描述语法。因此，下一步是将 M-R-P 中的 M（模块）特化为人类心智的具体功能模块。</p>
 
-<p><strong>鍚﹀畾鎬х壒寮傚穿婧冭璇?/strong>鏄ā鍧楀垝鍒嗙殑鏍稿績宸ョ▼楠岃瘉锛氭瘡涓ā鍧楃殑缂哄け浼氬紩鍙戠嫭鐗圭殑銆佸叾浠栨ā鍧楅毦浠ュ畬鍏ㄤ唬鍋跨殑绯荤粺宕╂簝妯″紡銆備緥濡傦紝M1锛堝叿韬級缂烘崯瀵艰嚧鍏ㄥ眬鑳介噺宕╂簝锛堝閲嶅害鎶戦儊鐨勮函浣撶棁鐘讹級锛孧3锛堟剰蹇楋級缂烘崯瀵艰嚧鍐崇瓥鐦棯锛堝鍒烘縺-鍙嶅簲妯″紡锛夛紝M4锛堟儏缁級缂烘崯瀵艰嚧浠峰€肩洸锛堝绮剧鍒嗚鐥囬槾鎬х棁鐘讹級銆傝繖浜涚壒寮傛€у穿婧冩ā寮忎负妯″潡鐨勭嫭绔嬪姛鑳借鑹叉彁渚涗簡闂存帴鐨勫伐绋嬮獙璇併€?/p>
+<p><strong>否定性特异崩溃论证</strong>是模块划分的核心工程验证：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统崩溃模式。例如，M1（具身）缺损导致全局能量崩溃（如重度抑郁的躯体症状），M3（意志）缺损导致决策瘫痪（如刺激-反应模式），M4（情绪）缺损导致价值盲（如精神分裂症阴性症状）。这些特异性崩溃模式为模块的独立功能角色提供了间接的工程验证。</p>
 
-<p>鍩轰簬姝わ紝INTRE 灏嗕汉绫诲績鏅哄湪鍔熻兘灞傚垎瑙ｄ负鍏釜妯″潡锛圡1-M6锛夛細</p>
+<p>基于此，INTRE 将人类心智在功能层分解为六个模块（M1-M6）：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>妯″潡</th>
-<th>鍚嶇О</th>
-<th>鏍稿績鍔熻兘</th>
-<th>鍦?N-S-R 涓殑瑙掕壊</th>
+<th>模块</th>
+<th>名称</th>
+<th>核心功能</th>
+<th>在 N-S-R 中的角色</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>M1</strong></td>
-<td>鍏疯韩</td>
-<td>鑳介噺涓庣ǔ鎬佸熀搴?/td>
-<td>涓烘墍鏈夊績鐞嗘椿鍔ㄦ彁渚涚敓鐗╄兘閲忚竟鐣?/td>
+<td>**M1**</td>
+<td>具身</td>
+<td>能量与稳态基底</td>
+<td>为所有心理活动提供生物能量边界</td>
 </tr>
 <tr>
-<td><strong>M2</strong></td>
-<td>璁ょ煡</td>
-<td>涓栫晫寤烘ā涓庨娴?/td>
-<td>鏋勫缓鍏充簬涓栫晫銆佽嚜鎴戝拰鏈潵鐨勫唴閮ㄦā鍨?/td>
+<td>**M2**</td>
+<td>认知</td>
+<td>世界建模与预测</td>
+<td>构建关于世界、自我和未来的内部模型</td>
 </tr>
 <tr>
-<td><strong>M3</strong></td>
-<td>鎰忓織</td>
-<td>涓ぎ璋冨害涓庡喅绛?/td>
-<td>M-R-P 涓皟搴︾幆锛圧ing锛夌殑鏍稿績杞戒綋</td>
+<td>**M3**</td>
+<td>意志</td>
+<td>中央调度与决策</td>
+<td>M-R-P 中调度环（Ring）的核心载体</td>
 </tr>
 <tr>
-<td><strong>M4</strong></td>
-<td>鎯呯华</td>
-<td>浠峰€艰瘎浼颁笌鍔ㄦ満</td>
-<td>璇嗗埆闇€瑕侊紙N锛夌殑浠峰€间俊鍙?/td>
+<td>**M4**</td>
+<td>情绪</td>
+<td>价值评估与动机</td>
+<td>识别需要（N）的价值信号</td>
 </tr>
 <tr>
-<td><strong>M5</strong></td>
-<td>瑷€璇?/td>
-<td>绗﹀彿鍖栦笌绀句細鍗忚皟</td>
-<td>鍐呴儴鍙欎簨鍜屽閮ㄦ矡閫?/td>
+<td>**M5**</td>
+<td>言语</td>
+<td>符号化与社会协调</td>
+<td>内部叙事和外部沟通</td>
 </tr>
 <tr>
-<td><strong>M6</strong></td>
-<td>琛屼负</td>
-<td>琛屽姩鎵ц涓庝範鎯?/td>
-<td>灏嗗喅绛栬浆鍖栦负鐗╃悊琛屽姩锛圧 鐨勬墽琛岀锛?/td>
+<td>**M6**</td>
+<td>行为</td>
+<td>行动执行与习惯</td>
+<td>将决策转化为物理行动（R 的执行端）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>瀹屽鎬х殑涓夐噸鎷呬繚</strong>锛?/p>
+<p><strong>工程完备性的三重担保</strong>（属工程合理性，非公理级别主张）：</p>
 <ol>
-<li><strong>閫昏緫鎺ㄥ</strong>锛氬叚妯″潡鍒嗗埆灞曞紑骞舵壙杞?N-S-R 寰幆鍦ㄤ汉绫诲績鏅轰腑鐨勫叧閿姛鑳借妭鐐广€?/li>
-<li><strong>宸ョ▼楠岃瘉</strong>锛氬惁瀹氭€х壒寮傚穿婧冭璇佲€斺€旀瘡涓ā鍧楃殑缂哄け瀵艰嚧鐙壒鐨勩€佷笉鍙ˉ鍋跨殑绯荤粺宕╂簝妯″紡銆?/li>
-<li><strong>杩涘寲鍚彂鎬ф敮鎸?/strong>锛氬叚妯″潡澶ц嚧瀵瑰簲鐢熷懡杩涘寲鍙蹭笂鍔熻兘鍦板眰鐨勯€愬眰鍙犲姞锛堝惎鍙戞€ф敮鎸侊紝闈炰弗鏍肩郴缁熷彂鐢熷鏂█锛夈€?/li>
+<li><strong>逻辑推导</strong>：六模块分别展开并承载 N-S-R 循环在人类心智中的关键功能节点。</li>
+<li><strong>工程验证</strong>：否定性特异崩溃论证——每个模块的缺失导致独特的、不可补偿的系统崩溃模式。</li>
+<li><strong>进化启发性支持</strong>：六模块大致对应生命进化史上功能地层的逐层叠加（启发性支持，非严格系统发生学断言）。</li>
 </ol>
 
-<p><strong>宸ョ▼鍒ゆ柇澹版槑</strong>锛歁1-M6 鍏ā鍧楀垝鍒嗘槸閽堝浜虹被蹇冩櫤鍔熻兘鍒嗚В鐨勫伐绋嬫渶浼橀€夋嫨锛屽睘宸ョ▼鍒ゆ柇锛坋ngineering judgment锛夛紝闈炲叕鐞嗙骇鍒殑瀹屽鎬ф媴淇濓紝涓嶉€傜敤浜庢墍鏈夋櫤鑳戒綋绫诲瀷銆傚畠鏄綋鍓嶆渶浼樼殑宸ョ▼閫夋嫨锛岃€岄潪閫昏緫涓婂敮涓€鍙兘鐨勫垎瑙ｆ柟寮忋€?/p>
+<p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性支撑，不适用于所有智能体类型。它是当前最优的工程选择，而非逻辑上唯一可能的分解方式。</p>
 
 <hr class="section-divider">
 
-<h2>5.5 鐘舵€佽娉曪細R-D-S涓夌淮鐨勬帹瀵?/h2>
+<h2>5.5 状态语法：R-D-S三维的推导</h2>
 
-<p>纭珛浜嗗姛鑳藉疄浣撳悗锛屽浣曠簿纭弿杩拌繖浜涙ā鍧楀湪浠讳竴鏃跺埢鐨勭姸鎬侊紵</p>
+<p>确立了功能实体后，如何精确描述这些模块在任一时刻的状态？</p>
 
-<p>INTRE 鐨勭瓟妗堟槸 <strong>R-D-S 涓夌淮鐘舵€佽娉?/strong>锛?/p>
+<p>INTRE 的答案是 <strong>R-D-S 三维状态语法</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>缁村害</th>
-<th>鏍稿績杩介棶</th>
-<th>鏁板瀵瑰簲</th>
-<th>鍔熻兘灞炴€?/th>
+<th>维度</th>
+<th>核心追问</th>
+<th>数学对应</th>
+<th>功能属性</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>R锛堣祫婧愶級</strong></td>
-<td>绯荤粺姝ゅ埢鎷ユ湁浠€涔堬紵</td>
-<td>瀛橀噺锛堢Н鍒嗛噺锛?/td>
-<td>绯荤粺鐨勭灛鏃剁姸鎬佸睘鎬?/td>
+<td>**R（资源）**</td>
+<td>系统此刻拥有什么？</td>
+<td>存量（积分量）</td>
+<td>系统的瞬时状态属性</td>
 </tr>
 <tr>
-<td><strong>D锛堣皟搴︼級</strong></td>
-<td>绯荤粺姝ゅ埢姝ｅ湪濡備綍鍙樺寲锛?/td>
-<td>娴侀噺锛堝井鍒嗛噺锛?/td>
-<td>绯荤粺鐨勮繃绋嬪姩鎬佸睘鎬?/td>
+<td>**D（调度）**</td>
+<td>系统此刻正在如何变化？</td>
+<td>流量（微分量）</td>
+<td>系统的过程动态属性</td>
 </tr>
 <tr>
-<td><strong>S锛堢粨鏋勶級</strong></td>
-<td>绯荤粺涓轰綍浠ユ鏂瑰紡杩愯锛?/td>
-<td>鎺у埗鏂圭▼涓庢嫇鎵?/td>
-<td>绯荤粺鐨勫洜鏋滈厤缃睘鎬?/td>
+<td>**S（结构）**</td>
+<td>系统为何以此方式运行？</td>
+<td>控制方程与拓扑</td>
+<td>系统的因果配置属性</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>涓轰粈涔堟伆濂芥槸杩欎笁涓淮搴︼紵</strong> 绛旀鍦ㄧ郴缁熷姩鍔涘鐨勫熀鏈寖鐣翠腑锛氫换浣曞姩鎬佺郴缁熻瀹屾暣鎻忚堪鍏剁姸鎬佸拰婕斿寲锛岄兘闇€瑕佸洖绛斾笁涓棶棰樷€斺€斿瓨閲忋€佹祦閲忋€佺粨鏋勩€俁-D-S 姝ｆ槸杩欎竴瀛橀噺-娴侀噺-缁撴瀯妗嗘灦鍦ㄥ績鐞嗗姛鑳藉眰鐨勫疄渚嬪寲銆?/p>
+<p><strong>为什么恰好是这三个维度？</strong> 答案在系统动力学的基本范畴中：任何动态系统要完整描述其状态和演化，都需要回答三个问题——存量、流量、结构。R-D-S 正是这一存量-流量-结构框架在心理功能层的实例化。</p>
 
-<p><strong>姣忎釜缁村害鐨勫唴閮ㄧ粏鍒?/strong>锛?/p>
+<p><strong>每个维度的内部细分</strong>：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>瀛愮淮搴?/th>
-<th>鍚嶇О</th>
-<th>鍏抽敭鍖哄垎</th>
-<th>骞查閫昏緫</th>
+<th>子维度</th>
+<th>名称</th>
+<th>关键区分</th>
+<th>干预逻辑</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>RES-D</td>
-<td>璋冨害璧勬簮</td>
-<td>鍒嗛挓鑷冲ぉ绾э紝鍗虫椂杩愯惀璧勬湰</td>
-<td>MODULATE锛堟垬鏈ˉ鍏咃級</td>
+<td>调度资源</td>
+<td>分钟至天级，即时运营资本</td>
+<td>MODULATE（战术补充）</td>
 </tr>
 <tr>
 <td>RES-B</td>
-<td>鍩哄簳璧勬簮</td>
-<td>鏈堣嚦骞寸骇锛岄暱鏈熸牳蹇冭祫鏈?/td>
-<td>ALIGN/RELINK/GATE锛堟垬鐣ュ缓璁撅級</td>
+<td>基底资源</td>
+<td>月至年级，长期核心资本</td>
+<td>ALIGN/RELINK/GATE（战略建设）</td>
 </tr>
 <tr>
 <td>DSP-F</td>
-<td>鍓嶅彴璋冨害</td>
-<td>闇€鎰忚瘑鍙備笌锛岄珮鑳借€?/td>
+<td>前台调度</td>
+<td>需意识参与，高能耗</td>
 <td>GATE+/GATE-</td>
 </tr>
 <tr>
 <td>DSP-B</td>
-<td>鍚庡彴璋冨害</td>
-<td>鑷姩鍖栬繍琛岋紝浣庤兘鑰?/td>
-<td>GATE-锛堥渶闂存帴璋冩帶锛?/td>
+<td>后台调度</td>
+<td>自动化运行，低能耗</td>
+<td>GATE-（需间接调控）</td>
 </tr>
 <tr>
 <td>STR-R</td>
-<td>瑙勫垯缁撴瀯</td>
-<td>闄堣堪鎬х煡璇嗭紙鈥滄槸浠€涔堚€濓級</td>
-<td>ALIGN锛堥€昏緫淇锛?/td>
+<td>规则结构</td>
+<td>陈述性知识（“是什么”）</td>
+<td>ALIGN（逻辑修正）</td>
 </tr>
 <tr>
 <td>STR-C</td>
-<td>杩炴帴缁撴瀯</td>
-<td>鍏宠仈鎬х煡璇嗭紙鈥滀粈涔堜笌浠€涔堢浉杩炩€濓級</td>
-<td>RELINK锛堜綋楠岄噸濉戯級</td>
+<td>连接结构</td>
+<td>关联性知识（“什么与什么相连”）</td>
+<td>RELINK（体验重塑）</td>
 </tr>
 <tr>
 <td>STR-S</td>
-<td>搴忓垪缁撴瀯</td>
-<td>绋嬪簭鎬х煡璇嗭紙鈥滄€庝箞鍋氣€濓級</td>
-<td>GATE锛堝弽澶嶈缁冿級</td>
+<td>序列结构</td>
+<td>程序性知识（“怎么做”）</td>
+<td>GATE（反复训练）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>M1-M6锛?涓ā鍧楋級涓?R-D-S 鐨?涓瓙缁村害鏋勬垚绗涘崱灏旂Н锛岀敓鎴?<strong>42缁寸姸鎬佺┖闂?/strong>鈥斺€旇繖灏辨槸INTRE涓哄績鐞嗙姸鎬佺殑绮剧‘璇婃柇鎻愪緵鐨勭粺涓€鍧愭爣绯汇€?/p>
+<p>M1-M6（6个模块）与 R-D-S 的7个子维度构成笛卡尔积，生成 <strong>42维状态空间</strong>——这就是INTRE为心理状态的精确诊断提供的统一坐标系。</p>
 
 <hr class="section-divider">
 
-<h2>5.6 鎿嶄綔璇硶锛欸-M-A-R鍥涙搷浣滅殑瀵煎嚭</h2>
+<h2>5.6 操作语法：G-M-A-R四操作的导出</h2>
 
-<p>鏈変簡绮剧‘鐨勭姸鎬佺┖闂村悗锛屼竴涓嚜鐒剁殑闂鏄細閽堝杩欎釜鐘舵€佺┖闂寸殑姣忎釜缁村害锛屾垜浠彲浠ユ墽琛屼粈涔堟搷浣滄潵鏀瑰彉瀹冿紵</p>
+<p>有了精确的状态空间后，一个自然的问题是：针对这个状态空间的每个维度，我们可以执行什么操作来改变它？</p>
 
-<p>G-M-A-R 鏄粠 R-D-S 鐘舵€佺┖闂寸殑鎷撴墤缁撴瀯涓?strong>鑷劧瀵煎嚭</strong>鐨勩€傛瘡涓搷浣滃搴旂姸鎬佺┖闂翠腑涓€涓壒瀹氱殑銆佷笉鍙浉浜掓浛浠ｇ殑鍔熻兘闈剁偣锛?/p>
+<p>G-M-A-R 是从 R-D-S 状态空间的拓扑结构中<strong>自然导出</strong>的。每个操作对应状态空间中一个特定的、不可相互替代的功能靶点：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>鎿嶄綔</th>
-<th>鐩存帴鍚堟硶闈剁偣</th>
-<th>闂鏈川</th>
-<th>瀵煎嚭閫昏緫</th>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>问题本质</th>
+<th>导出逻辑</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>MODULATE</strong></td>
+<td>**MODULATE**</td>
 <td>RES-D</td>
-<td>鍗虫椂鐕冩枡澶辫　锛堟暟閲忛棶棰橈級</td>
-<td>R 缁村害鐨勫瓨閲忕壒鎬?鈫?闇€瑕佹暟閲忚皟鑺傛搷浣?/td>
+<td>即时燃料失衡（数量问题）</td>
+<td>R 维度的存量特性 → 需要数量调节操作</td>
 </tr>
 <tr>
-<td><strong>GATE</strong></td>
-<td>DSP-F, DSP-B, 杩愯涓殑 STR-S 搴忓垪</td>
-<td>杩囩▼/搴忓垪澶辨帶锛堣繃绋嬮棶棰橈級</td>
-<td>D 缁村害鐨勬祦閲忕壒鎬?鈫?闇€瑕侀€氶亾寮€鍏虫搷浣?/td>
+<td>**GATE**</td>
+<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
+<td>过程/序列失控（过程问题）</td>
+<td>D 维度的流量特性 → 需要通道开关操作</td>
 </tr>
 <tr>
-<td><strong>ALIGN</strong></td>
+<td>**ALIGN**</td>
 <td>STR-R</td>
-<td>鍐呴儴瑙勫垯閿欒锛堝唴瀹归棶棰橈級</td>
-<td>S-R 鐨勫懡棰樻€?鈫?闇€瑕侀€昏緫淇鎿嶄綔</td>
+<td>内部规则错误（内容问题）</td>
+<td>S-R 的命题性 → 需要逻辑修正操作</td>
 </tr>
 <tr>
-<td><strong>RELINK</strong></td>
+<td>**RELINK**</td>
 <td>STR-C</td>
-<td>浠峰€艰繛鎺ユ柇瑁傦紙鍏崇郴闂锛?/td>
-<td>S-C 鐨勫叧鑱旀€?鈫?闇€瑕佷綋楠岄噸濉戞搷浣?/td>
+<td>价值连接断裂（关系问题）</td>
+<td>S-C 的关联性 → 需要体验重塑操作</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>闈剁偣鍚堟硶鎬х煩闃?/strong>鈥斺€擥-M-A-R 褰㈠紡璇硶鐨勬牳蹇冭鍒欙細</p>
+<p><strong>靶点合法性矩阵</strong>——G-M-A-R 形式语法的核心规则：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>鎿嶄綔</th>
-<th>鐩存帴鍚堟硶闈剁偣</th>
-<th>绂佹琛ㄨ堪</th>
+<th>操作</th>
+<th>直接合法靶点</th>
+<th>禁止表述</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>GATE</strong></td>
-<td>DSP-F, DSP-B, 杩愯涓殑 STR-S 搴忓垪</td>
+<td>**GATE**</td>
+<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
 <td>GATE STR-R, GATE STR-C</td>
 </tr>
 <tr>
-<td><strong>MODULATE</strong></td>
+<td>**MODULATE**</td>
 <td>RES-D</td>
 <td>MODULATE RES-B, MODULATE STR</td>
 </tr>
 <tr>
-<td><strong>ALIGN</strong></td>
+<td>**ALIGN**</td>
 <td>STR-R</td>
 <td>ALIGN STR-C, ALIGN STR-S</td>
 </tr>
 <tr>
-<td><strong>RELINK</strong></td>
+<td>**RELINK**</td>
 <td>STR-C</td>
 <td>RELINK STR-R, RELINK STR-S</td>
 </tr>
@@ -443,84 +443,84 @@
 </table>
 </div>
 
-<p><strong>D鈫扲鈫扴 骞查搴忓垪</strong>鈥斺€斾粠鐘舵€佺┖闂存嫇鎵戣嚜鐒跺鍑虹殑鎺ㄨ锛?/p>
+<p><strong>D→R→S 干预序列</strong>——从状态空间拓扑自然导出的推论：</p>
 <ul>
-<li>鍦ㄨ皟搴﹀け鎺э紙D 灞傦級鏃惰ˉ鍏呰祫婧愶紙R 灞傦級鏄綆鏁堢殑</li>
-<li>鍦ㄨ祫婧愭灟绔紙R 灞傦級鏃惰繘琛岀粨鏋勯噸寤猴紙S 灞傦級鏄珮椋庨櫓鐨?/li>
-<li>鍥犳锛岄粯璁ゅ共棰勫簭鍒椾负 <strong>D 灞傜ǔ瀹?鈫?R 灞傛仮澶?鈫?S 灞傞噸寤?/strong></li>
+<li>在调度失控（D 层）时补充资源（R 层）是低效的</li>
+<li>在资源枯竭（R 层）时进行结构重建（S 层）是高风险的</li>
+<li>因此，默认干预序列为 <strong>D 层稳定 → R 层恢复 → S 层重建</strong></li>
 </ul>
 
 <hr class="section-divider">
 
-<h2>5.7 鐜鍙傜収锛歋-P澶栨劅鏋舵瀯鐨勮ˉ鍏?/h2>
+<h2>5.7 环境参照：S-P外感架构的补全</h2>
 
-<p>M-R-D-S 鎻忚堪鍐呴儴鐘舵€侊紝G-M-A-R 瀹氫箟骞查鎿嶄綔锛屼絾杩樼己灏戜竴涓叧閿淮搴︼細<strong>绯荤粺鍦ㄤ粈涔堟牱鐨勭幆澧冧腑杩愯锛?/strong></p>
+<p>M-R-D-S 描述内部状态，G-M-A-R 定义干预操作，但还缺少一个关键维度：<strong>系统在什么样的环境中运行？</strong></p>
 
-<p>S-P锛堟簮-妯″紡锛夊鎰熸灦鏋勮ˉ鍏ㄤ簡杩欎釜缂哄け鐨勭淮搴︼細</p>
+<p>S-P（源-模式）外感架构补全了这个缺失的维度：</p>
 
 <ul>
-<li><strong>S-灞傦紙Source锛?/strong>锛氱幆澧冪殑灞傜骇鍒嗙被銆傞噰鐢ㄥ苟鎷撳睍甯冩湕鑺竷浼︾撼鐨勭敓鎬佺郴缁熺悊璁衡€斺€斿井绯荤粺銆佷腑绯荤粺銆佸绯荤粺銆佸畯绯荤粺銆佹椂闂寸郴缁熴€佹暟瀛楃郴缁熴€?/li>
-<li><strong>P-灞傦紙Pattern锛?/strong>锛氱幆澧冨奖鍝嶇殑妯″紡鍖栨弿杩般€傞噰鐢ㄤ笌 M-R-D-S 鍚屾瀯鐨勬爣璁版硶鈥斺€斾緥濡?<code>P-M4-RES-D-</code> 琛ㄧず鐜瀵?M4 鐨勮皟搴﹁祫婧愪骇鐢熸秷鑰楁晥搴斻€?/li>
+<li><strong>S-层（Source）</strong>：环境的层级分类。采用并拓展布朗芬布伦纳的生态系统理论——微系统、中系统、外系统、宏系统、时间系统、数字系统。</li>
+<li><strong>P-层（Pattern）</strong>：环境影响的模式化描述。采用与 M-R-D-S 可类比的标记法——例如 <code>P-M4-RES-D-</code> 表示环境对 M4 的调度资源产生消耗效应。</li>
 </ul>
 
-<p>S-P 鏋舵瀯涓嶆敼鍙?G-M-A-R 鍘熷瓙鎿嶄綔鐨勫姛鑳藉畾涔夛紝浣嗕綔涓?strong>鎴樼暐涓婁笅鏂囨敞鍏ュ櫒</strong>锛屽喅瀹氬叾鎵ц浼樺厛绾с€佹椂搴忓拰椋庨櫓闃堝€笺€?/p>
+<p>S-P 架构不改变 G-M-A-R 原子操作的功能定义，但作为<strong>战略上下文注入器</strong>，决定其执行优先级、时序和风险阈值。</p>
 
-<p><strong>S-P涓嶶NIS鐨勪簰琛?/strong>銆係-P澶栨劅鏋舵瀯鎻忚堪鐨勬槸鐜淇℃伅鐨?strong>绫诲埆鍜屾ā寮?/strong>锛?浠€涔堢幆澧冨洜绱犲湪褰卞搷绯荤粺"锛夛紝鑰孶NIS绁炵粡鎺ュ彛绯荤粺鎻忚堪鐨勬槸鐜淇℃伅閫氳繃绁炵粡閫氶亾鐨?strong>娴嬮噺鍜岃浆鍖?/strong>锛?濡備綍灏嗙幆澧冨绁炵粡绯荤粺鐨勫瑙傚奖鍝嶈浆鍖栦负鍔熻兘浼肩劧"锛夈€備袱鑰呯殑鍏崇郴鏄細S-P瀹氫箟浜嗙幆澧冭緭鍏ョ殑鏉ユ簮鍒嗙被锛堝井绯荤粺鍒版暟瀛楃郴缁熴€丳-鍒嗛噺鏂瑰悜锛夛紝UNIS鎻愪緵浜嗗叾涓竴绫烩€斺€旂缁忕敓鐞嗕俊鍙封€斺€旂殑鏍囧噯鍖栭噰闆嗐€佹牎鍑嗗拰鏄犲皠绠￠亾銆備緥濡傦紝S-P鏍囨敞"鏁板瓧绯荤粺鐜鈫扢4-DSP-B锛堟儏缁敜閱掞級"杩欎竴鐜杈撳叆璺緞锛孶NIS鍒欓€氳繃EEG鈫扤FD鈫扤FM鈫扲TE绠￠亾灏嗗叾杞寲涓哄彲閲忓寲鐨勭缁忎技鐒讹紝浼犲叆PSE銆係-P鏄?strong>璇箟妗嗘灦</strong>锛?浠€涔堝湪鍙戠敓"锛夛紝UNIS鏄?strong>娴嬮噺瀹炵幇</strong>锛?濡備綍閲忓寲妫€娴?锛夈€備袱鑰呭叡鍚屾瀯鎴愬姛鑳藉眰鐨勭幆澧冩劅鐭ヤ綋绯汇€?/p>
+<p><strong>S-P与UNIS的互补</strong>。S-P外感架构描述的是环境信息的<strong>类别和模式</strong>（"什么环境因素在影响系统"），而UNIS神经接口系统描述的是环境信息通过神经通道的<strong>测量和转化</strong>（"如何将环境对神经系统的客观影响转化为功能似然"）。两者的关系是：S-P定义了环境输入的来源分类（微系统到数字系统、P-分量方向），UNIS提供了其中一类——神经生理信号——的标准化采集、校准和映射管道。例如，S-P标注"数字系统环境→M4-DSP-B（情绪唤醒）"这一环境输入路径，UNIS则通过EEG→NFD→NFM→RTE管道将其转化为可量化的神经似然，传入PSE。S-P是<strong>语义框架</strong>（"什么在发生"），UNIS是<strong>测量实现</strong>（"如何量化检测"）。两者共同构成功能层的环境感知体系。</p>
 
 <hr class="section-divider">
 
-<h2>5.8 鏂规硶璁烘剰涔夛細浠庤鐐归泦鍚堝埌婕旂粠绯荤粺</h2>
+<h2>5.8 方法论意义：从观点集合到演绎系统</h2>
 
-<p><strong>浠庘€滆鐐归泦鍚堚€濆埌鈥滄紨缁庣郴缁熲€?/strong>銆侷NTRE 鐨勭粍浠朵笉鏄鈥滃彂鏄庘€濈殑锛岃€屾槸琚€滄帹瀵尖€濈殑銆傚鏋滀綘鎺ュ彈 N-S-R 鍏冨叕鐞嗭紝鎺ュ彈 M-R-P 浣滀负 S 鐨勬搷浣滃寲瀹氫箟锛屾帴鍙楀瓨閲?娴侀噺-缁撴瀯浣滀负鍔ㄦ€佺郴缁熸弿杩扮殑蹇呰鑼冪暣锛岄偅涔?M1-M6銆丷-D-S銆丟-M-A-R 鍜?S-P 灏辨槸浠庤繖浜涘墠鎻愪腑<strong>蹇呯劧瀵煎嚭</strong>鐨勭粨鏋勩€?/p>
+<p><strong>从“观点集合”到“演绎系统”</strong>。INTRE 的组件不是被“发明”的，而是被“推导”的。如果你接受 N-S-R 元公理，接受 M-R-P 作为 S 的操作化定义，接受存量-流量-结构作为动态系统描述的必要范畴，那么在 INTRE 的设计框架内，M1-M6、R-D-S、G-M-A-R 和 S-P 就是从这些前提中<strong>逻辑导出</strong>的结构。</p>
 
-<p><strong>鍙瘉浼€х殑绮剧‘閿氬畾</strong>銆傛帹瀵奸摼浣?INTRE 鐨勫彲璇佷吉鎬т粠妯＄硦鍙樹负绮剧‘銆傝璇佷吉 INTRE锛屼綘涓嶉渶瑕佹敾鍑绘暣涓鏋垛€斺€斾綘鍙渶瑕佹敾鍑绘帹瀵奸摼涓殑鏌愪竴鐜細</p>
+<p><strong>可证伪性的精确锚定</strong>。推导链使 INTRE 的可证伪性从模糊变为精确。要证伪 INTRE，你不需要攻击整个框架——你只需要攻击推导链中的某一环：</p>
 <ul>
-<li>鏀诲嚮鍏冨叕鐞嗗眰锛氳瘉鏄?N-S-R 涓嶆槸閫傚簲鎬х郴缁熺殑蹇呰閫昏緫</li>
-<li>鏀诲嚮鏋舵瀯鍏悊灞傦細璇佹槑 M-R-P 涓嶆槸鐩爣椹卞姩鏅鸿兘浣撶殑鏈€浼橀€氱敤鏋舵瀯</li>
-<li>鏀诲嚮鐗瑰寲鎺ㄨ灞傦細璇佹槑 M1-M6 涓嶆槸浜虹被蹇冩櫤鍔熻兘鍒嗚В鐨勬渶浼樺伐绋嬮€夋嫨</li>
-<li>鏀诲嚮褰㈠紡鍏呭垎鎬э細璇佹槑瀛橀噺-娴侀噺-缁撴瀯涓嶉€傜敤浜庡績鐞嗗姛鑳藉眰</li>
-<li>鏀诲嚮鎿嶄綔鎺ㄨ锛氳瘉鏄?G-M-A-R 鐨勫洓鎿嶄綔闆嗕笉瑕嗙洊宸茬煡鐨勬湁鏁堝共棰勬満鍒?/li>
+<li>攻击元公理层：证明 N-S-R 不是适应性系统的必要逻辑</li>
+<li>攻击架构公理层：证明 M-R-P 不是目标驱动智能体的最优通用架构</li>
+<li>攻击特化推论层：证明 M1-M6 不是人类心智功能分解的最优工程选择</li>
+<li>攻击形式充分性：证明存量-流量-结构不适用于心理功能层</li>
+<li>攻击操作推论：证明 G-M-A-R 的四操作集不覆盖已知的有效干预机制</li>
 </ul>
 
-<p><strong>妯″潡鍖栧彲淇鎬?/strong>銆傛帹瀵奸摼鐨勫眰绾х粨鏋勪娇妗嗘灦鍙互<strong>灞€閮ㄤ慨姝ｈ€屼笉鏁翠綋宕╁</strong>銆傚鏋滃疄璇佽瘉鏄?M3-RES-D 涓嶆槸鐙珛鐨勬剰蹇楄祫婧愭睜锛岃繖涓嶄細褰卞搷 N-S-R 鍏冨叕鐞嗐€丮-R-P 閫氱敤鏋舵瀯鍜?R-D-S 鐨勫舰寮忓厖鍒嗘€р€斺€斾慨姝ｅ彧鍙戠敓鍦ㄥ弬鏁板眰鍜屾ā鍨嬪眰銆?/p>
+<p><strong>模块化可修正性</strong>。推导链的层级结构使框架可以<strong>局部修正而不整体崩塌</strong>。如果实证证明 M3-RES-D 不是独立的意志资源池，这不会影响 N-S-R 元公理、M-R-P 通用架构和 R-D-S 的形式充分性——修正只发生在参数层和模型层。</p>
 
 <hr class="section-divider">
 
-<p><strong>鏈珷灏忕粨</strong>锛欼NTRE 鐨勪簲澶ф牳蹇冩灦鏋勪笉鏄绔嬬殑鍙戞槑锛岃€屾槸浠庝竴涓畝娲佺殑鍏冨叕鐞嗗嚭鍙戯紝缁忚繃灞傚眰鎿嶄綔鍖栧畾涔夎鎺ㄥ鍑烘潵鐨勫畬鏁存紨缁庣郴缁熴€侼-S-R 鍏冨叕鐞嗙‘绔嬩簡鈥滈渶瑕佲啋缁撴瀯鈫掑疄鐜扳€濈殑鍏冮€昏緫锛汳-R-P 灏?S 鎿嶄綔鍖栧畾涔変负鈥滄ā鍧?璋冨害鐜?鍓ф湰鈥濓紱M1-M6 灏?M 鐗瑰寲涓轰汉绫诲績鏅虹殑鍏釜鍔熻兘妯″潡锛汻-D-S 鍦ㄥ瓨閲?娴侀噺-缁撴瀯鐨勭郴缁熷姩鍔涘妗嗘灦涓嬩负姣忎釜妯″潡鎻愪緵涓夌淮鐘舵€佹弿杩拌娉曪紱G-M-A-R 浠?R-D-S 鐨勭姸鎬佺┖闂存嫇鎵戜腑鑷劧瀵煎嚭鍥涗釜鍘熷瓙骞查鎿嶄綔锛汼-P 琛ュ叏浜嗙幆澧冨弬鐓х郴銆傝繖涓帹瀵奸摼浣?INTRE 鍖哄埆浜庘€滆鐐归泦鍚堚€濓紝鍗囩骇涓衡€滄紨缁庣郴缁熲€濄€?/p>
+<p><strong>本章小结</strong>：INTRE 的五大核心架构不是孤立的发明，而是从一个简洁的元公理出发，经过层层操作化定义被推导出来的完整演绎系统。N-S-R 元公理确立了“需要→结构→实现”的元逻辑；M-R-P 将 S 操作化定义为“模块+调度环+剧本”；M1-M6 将 M 特化为人类心智的六个功能模块；R-D-S 在存量-流量-结构的系统动力学框架下为每个模块提供三维状态描述语法；G-M-A-R 从 R-D-S 的状态空间拓扑中自然导出四个原子干预操作；S-P 补全了环境参照系。这个推导链使 INTRE 区别于“观点集合”，升级为“演绎系统”。</p>
 
-<blockquote><p><strong>鍏抽敭鏈</strong>锛歂-S-R 鍏冨叕鐞嗭紝M-R-P 閫氱敤鏋舵瀯锛屾帹瀵奸摼锛屾搷浣滃寲瀹氫箟锛屽瓨閲?娴侀噺-缁撴瀯锛岄澏鐐瑰悎娉曟€х煩闃碉紝S-P涓嶶NIS浜掕ˉ</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：N-S-R 元公理，M-R-P 通用架构，推导链，操作化定义，存量-流量-结构，靶点合法性矩阵，S-P与UNIS互补</p></blockquote>
 
-<blockquote><p><strong>甯歌璇尯</strong>锛?br>- 鉂?鈥淚NTRE 鐨勭粍浠舵槸浠庡績鐞嗗缁忛獙涓綊绾冲嚭鏉ョ殑鈥?鈫?鉁?缁勪欢鏄粠 N-S-R 鍏冨叕鐞嗗嚭鍙戯紝缁忚繃灞傚眰鎿嶄綔鍖栧畾涔夎<strong>鎺ㄥ</strong>鍑烘潵鐨勩€傜粡楠屾暟鎹殑浣滅敤鏄牎鍑嗗弬鏁板拰妫€楠岄娴嬶紝鑰岄潪鐢熸垚鏋舵瀯銆?br>- 鉂?鈥淩-D-S 鐨勪笁涓淮搴︽槸鈥樻伆濂藉彂鐜扳€欑殑鈥?鈫?鉁?R-D-S 鏉ヨ嚜瀛橀噺-娴侀噺-缁撴瀯鐨勭郴缁熷姩鍔涘妗嗘灦鈥斺€斾换浣曞姩鎬佺郴缁熸弿杩伴兘蹇呯劧闇€瑕佽繖涓変釜鑼冪暣銆?/p></blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “INTRE 的组件是从心理学经验中归纳出来的” → ✅ 组件是从 N-S-R 元公理出发，经过层层操作化定义被<strong>推导</strong>出来的。经验数据的作用是校准参数和检验预测，而非生成架构。<br>- ❌ “R-D-S 的三个维度是‘恰好发现’的” → ✅ R-D-S 来自存量-流量-结构的系统动力学框架——在系统动力学的标准框架下，动态系统描述通常需要这三个范畴。</p></blockquote>
 
-<blockquote><p><strong>缁冧範棰?/strong>锛?br>1. 鐢诲嚭浠?N-S-R 鍒?G-M-A-R 鐨勫畬鏁存帹瀵奸摼锛屾爣娉ㄦ瘡涓€姝ユ帹瀵间腑鐨勨€滀笂浣嶆蹇碘€濆拰鈥滄搷浣滃寲瀹氫箟鈥濄€?br>2. R-D-S 涓夌淮琚璇佷负瀛橀噺-娴侀噺-缁撴瀯鐨勫疄渚嬪寲銆傞€夋嫨涓€涓潪蹇冪悊瀛︾殑鍔ㄦ€佺郴缁燂紙濡傛箹娉婄敓鎬佺郴缁燂級锛屽皾璇曠敤 R-D-S 鐨勮寖鐣存弿杩板畠銆?br>3. 濡傛灉鏈潵瀹炶瘉鐮旂┒璇佹槑瀛橀噺-娴侀噺-缁撴瀯妗嗘灦涓嶉€傜敤浜庡績鐞嗗姛鑳藉眰锛孖NTRE 鐨勫摢浜涚粍浠朵細鍙楀奖鍝嶏紵鍝簺鍙兘骞稿瓨锛?/p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 画出从 N-S-R 到 G-M-A-R 的完整推导链，标注每一步推导中的“上位概念”和“操作化定义”。<br>2. R-D-S 三维被论证为存量-流量-结构的实例化。选择一个非心理学的动态系统（如湖泊生态系统），尝试用 R-D-S 的范畴描述它。<br>3. 如果未来实证研究证明存量-流量-结构框架不适用于心理功能层，INTRE 的哪些组件会受影响？哪些可能幸存？</p></blockquote>
 <hr class="section-divider">
-
-<div class="version-record-title">鐗堟湰璁板綍</div>
+<hr class="section-divider">
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>鐗堟湰</th>
-<th>鏃ユ湡</th>
-<th>鍙樻洿鍐呭</th>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0</td>
+<td>v1.1.1</td>
 <td>2026-05-30</td>
-<td>鍒濆鍒涘缓</td>
+<td>初始创建</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch04.html" class="nav-link prev">鈥?鑼冨紡鎵瑰垽</a>
-<a href="index.html" class="nav-link up">鈽?鐩綍</a>
-<a href="ch06.html" class="nav-link next">鐘舵€佺淮搴?鈥?/a></div>
+        <div class="chapter-nav"><a href="ch04.html" class="nav-link prev">‹ 范式批判</a>
+<a href="index.html" class="nav-link up">☰ 目录</a>
+<a href="ch06.html" class="nav-link next">状态维度 ›</a></div>
     </div>
 
-    <footer class="site-footer">
+    <footer>
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
+        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -528,7 +528,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 

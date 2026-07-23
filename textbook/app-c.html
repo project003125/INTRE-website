@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>闄勫綍C锛歅SE蹇€熷叆闂ㄢ€斺€斾唬鐮佺ず渚嬩笌浠跨湡妯℃澘 路 INTRE 瀵艰鏁欐潗</title>
-    <meta name="description" content="鏈檮褰曟彁渚汸SE锛圥sychological System Engine锛夊紑婧愬紩鎿庣殑蹇€熶笂鎵嬫寚鍗椼€侾SE鏄敤Python瀹炵幇鐨勪豢鐪熸鏋讹紝鐢ㄤ簬杩愯M-R-D-S鐘舵€佹紨鍖栥€佽挋鐗瑰崱缃楁櫤鑳戒綋浠跨湡鍜岃礉鍙舵柉鏍″噯銆傛湰闄勫綍闈㈠悜鏈変竴瀹歅ython鍩虹鐨勭爺绌惰€呭拰寮€鍙戣€咃紝鎻愪緵浠庡畨瑁呫€佸熀鏈姸鎬佸畾涔夈€佽繍琛屼豢鐪熷埌鍙鍖栫殑鏈€灏忓伐浣滅ず渚嬨€?>
-    <meta property="og:title" content="闄勫綍C锛歅SE蹇€熷叆闂ㄢ€斺€斾唬鐮佺ず渚嬩笌浠跨湡妯℃澘">
-    <meta property="og:description" content="鏈檮褰曟彁渚汸SE锛圥sychological System Engine锛夊紑婧愬紩鎿庣殑蹇€熶笂鎵嬫寚鍗椼€侾SE鏄敤Python瀹炵幇鐨勪豢鐪熸鏋讹紝鐢ㄤ簬杩愯M-R-D-S鐘舵€佹紨鍖栥€佽挋鐗瑰崱缃楁櫤鑳戒綋浠跨湡鍜岃礉鍙舵柉鏍″噯銆傛湰闄勫綍闈㈠悜鏈変竴瀹歅ython鍩虹鐨勭爺绌惰€呭拰寮€鍙戣€咃紝鎻愪緵浠庡畨瑁呫€佸熀鏈姸鎬佸畾涔夈€佽繍琛屼豢鐪熷埌鍙鍖栫殑鏈€灏忓伐浣滅ず渚嬨€?>
+    <title>附录C：PSE快速入门——代码示例与仿真模板 · INTRE 导论教材</title>
+    <meta name="description" content="本附录提供PSE（Psychological System Engine）开源引擎的快速上手指南。PSE是用Python实现的仿真框架，用于运行M-R-D-S状态演化、蒙特卡罗智能体仿真和贝叶斯校准。本附录面向有一定Python基础的研究者和开发者，提供从安装、基本状态定义、运行仿真到可视化的最小工作示例。">
+    <meta property="og:title" content="附录C：PSE快速入门——代码示例与仿真模板">
+    <meta property="og:description" content="本附录提供PSE（Psychological System Engine）开源引擎的快速上手指南。PSE是用Python实现的仿真框架，用于运行M-R-D-S状态演化、蒙特卡罗智能体仿真和贝叶斯校准。本附录面向有一定Python基础的研究者和开发者，提供从安装、基本状态定义、运行仿真到可视化的最小工作示例。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-c.html">
-    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-c.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="闄勫綍C锛歅SE蹇€熷叆闂ㄢ€斺€斾唬鐮佺ず渚嬩笌浠跨湡妯℃澘">
-    <meta name="twitter:description" content="鏈檮褰曟彁渚汸SE锛圥sychological System Engine锛夊紑婧愬紩鎿庣殑蹇€熶笂鎵嬫寚鍗椼€侾SE鏄敤Python瀹炵幇鐨勪豢鐪熸鏋讹紝鐢ㄤ簬杩愯M-R-D-S鐘舵€佹紨鍖栥€佽挋鐗瑰崱缃楁櫤鑳戒綋浠跨湡鍜岃礉鍙舵柉鏍″噯銆傛湰闄勫綍闈㈠悜鏈変竴瀹歅ython鍩虹鐨勭爺绌惰€呭拰寮€鍙戣€咃紝鎻愪緵浠庡畨瑁呫€佸熀鏈姸鎬佸畾涔夈€佽繍琛屼豢鐪熷埌鍙鍖栫殑鏈€灏忓伐浣滅ず渚嬨€?>
+    <meta name="twitter:title" content="附录C：PSE快速入门——代码示例与仿真模板">
+    <meta name="twitter:description" content="本附录提供PSE（Psychological System Engine）开源引擎的快速上手指南。PSE是用Python实现的仿真框架，用于运行M-R-D-S状态演化、蒙特卡罗智能体仿真和贝叶斯校准。本附录面向有一定Python基础的研究者和开发者，提供从安装、基本状态定义、运行仿真到可视化的最小工作示例。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=10">
     <link rel="stylesheet" href="../shared/brand.css">
     <link rel="stylesheet" href="../shared/components.css">
-    <link rel="stylesheet" href="textbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
@@ -27,78 +27,78 @@
 </head>
 <body lang="zh">
 
-    <a href="#main-content" class="skip-nav">璺宠浆鍒颁富瑕佸唴瀹?/a>
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
 
     <nav class="toc-sidebar" id="tocSidebar">
         <div class="toc-sidebar-header">
-            <span class="toc-sidebar-title">鐩綍</span>
-            <button class="toc-close-btn" id="tocCloseBtn" aria-label="鍏抽棴鐩綍">&times;</button>
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
         </div>
         <div class="toc-sidebar-list" id="tocSidebarList"></div>
     </nav>
 
-    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="鎵撳紑鐩綍">
-        <i class="fas fa-list" aria-hidden="true"></i> 鐩綍
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
     </button>
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav class="site-nav">
+<nav>
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
-            <button class="nav-toggle" aria-label="鑿滃崟" aria-expanded="false" aria-controls="nav-menu">鈽?/button>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
-                <a href="/INTRE-website/">棣栭〉</a>
+                <a href="/INTRE-website/">首页</a>
                 <a href="/INTRE-website/upls/">UPLS</a>
                 <a href="/INTRE-website/unis/">UNIS</a>
                 <a href="/INTRE-website/ubms/">UBMS</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">鏁欐潗</a>
-                <a href="/INTRE-website/glossary/">鏈琛?/a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="page-header-inner">
-            <a href="index.html" class="back-link">鈫?杩斿洖鐩綍</a>
-            <span class="page-label">闄勫綍C</span>
+            <a href="index.html" class="back-link">← 返回目录</a>
+            <span class="page-label">附录C</span>
         </div>
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">闄勫綍C锛歅SE蹇€熷叆闂ㄢ€斺€斾唬鐮佺ず渚嬩笌浠跨湡妯℃澘</h1>
-<p>鏈檮褰曟彁渚汸SE锛圥sychological System Engine锛夊紑婧愬紩鎿庣殑蹇€熶笂鎵嬫寚鍗椼€侾SE鏄敤Python瀹炵幇鐨勪豢鐪熸鏋讹紝鐢ㄤ簬杩愯M-R-D-S鐘舵€佹紨鍖栥€佽挋鐗瑰崱缃楁櫤鑳戒綋浠跨湡鍜岃礉鍙舵柉鏍″噯銆傛湰闄勫綍闈㈠悜鏈変竴瀹歅ython鍩虹鐨勭爺绌惰€呭拰寮€鍙戣€咃紝鎻愪緵浠庡畨瑁呫€佸熀鏈姸鎬佸畾涔夈€佽繍琛屼豢鐪熷埌鍙鍖栫殑鏈€灏忓伐浣滅ず渚嬨€?/p>
+        <h1 class="chapter-title">附录C：PSE快速入门——代码示例与仿真模板</h1>
+<p>本附录提供PSE（Psychological System Engine）开源引擎的快速上手指南。PSE是用Python实现的仿真框架，用于运行M-R-D-S状态演化、蒙特卡罗智能体仿真和贝叶斯校准。本附录面向有一定Python基础的研究者和开发者，提供从安装、基本状态定义、运行仿真到可视化的最小工作示例。</p>
 
-<p><strong>鐜瑕佹眰</strong>锛歅ython 3.9+锛屽缓璁娇鐢ˋnaconda鎴朚iniconda绠＄悊鐜銆傛帹鑽愬畨瑁呬互涓嬩緷璧栧簱锛?/p>
+<p><strong>环境要求</strong>：Python 3.9+，建议使用Anaconda或Miniconda管理环境。推荐安装以下依赖库：</p>
 <ul>
-<li><code>numpy</code>锛堟暟鍊艰绠楋級</li>
-<li><code>scipy</code>锛堝井鍒嗘柟绋嬫眰瑙ｃ€佺粺璁″垎甯冿級</li>
-<li><code>matplotlib</code>锛堝彲瑙嗗寲锛?/li>
-<li><code>pandas</code>锛堟暟鎹鐞嗭級</li>
-<li><code>numba</code>锛堝彲閫夛紝鍔犻€熻挋鐗瑰崱缃椾豢鐪燂級</li>
-<li><code>jax</code>锛堝彲閫夛紝鑷姩寰垎涓嶨PU鍔犻€燂級</li>
+<li><code>numpy</code>（数值计算）</li>
+<li><code>scipy</code>（微分方程求解、统计分布）</li>
+<li><code>matplotlib</code>（可视化）</li>
+<li><code>pandas</code>（数据处理）</li>
+<li><code>numba</code>（可选，加速蒙特卡罗仿真）</li>
+<li><code>jax</code>（可选，自动微分与GPU加速）</li>
 </ul>
 
-<p>瀹屾暣浠ｇ爜搴撳強鏂囨。璇疯闂細<code>https://github.com/INTRE/PSE</code>锛堢ず渚嬪湴鍧€锛?/p>
+<p>完整代码库及文档请访问：<code>https://github.com/INTRE/PSE</code>（示例地址）</p>
 
 <hr class="section-divider">
 
-<h2>C.1 瀹夎涓庣幆澧冮厤缃?/h2>
+<h2>C.1 安装与环境配置</h2>
 
-<pre><code class="language-bash"># 鍒涘缓铏氭嫙鐜锛堟帹鑽愶級
+<pre><code class="language-bash"># 创建虚拟环境（推荐）
 conda create -n pse python=3.9
 conda activate pse
 
-# 瀹夎鏍稿績渚濊禆
+# 安装核心依赖
 pip install numpy scipy matplotlib pandas</code></pre>
 
-<p>濡傞渶瀹屾暣鍔熻兘锛堝寘鍚玃SE-M钂欑壒鍗＄綏寮曟搸锛夛紝璇峰畨瑁呴澶栦緷璧栵細</p>
+<p>如需完整功能（包含PSE-M蒙特卡罗引擎），请安装额外依赖：</p>
 
 <pre><code class="language-bash">pip install numba jax jaxlib</code></pre>
 
-<p>楠岃瘉瀹夎锛?/p>
+<p>验证安装：</p>
 
 <pre><code class="language-python">import numpy as np
 from scipy.integrate import odeint
@@ -108,64 +108,64 @@ print(&quot;PSE environment ready.&quot;)</code></pre>
 
 <hr class="section-divider">
 
-<h2>C.2 瀹氫箟M-R-D-S鐘舵€佺┖闂?/h2>
+<h2>C.2 定义M-R-D-S状态空间</h2>
 
-<p>PSE鐨勬牳蹇冩暟鎹粨鏋勬槸42缁寸姸鎬佸悜閲?code>Psi</code>銆傛湰绀轰緥瀹氫箟鐘舵€佸悜閲忕殑绱㈠紩鏄犲皠鍜屽垵濮嬬姸鎬併€?/p>
+<p>PSE的核心数据结构是42维状态向量<code>Psi</code>。本示例定义状态向量的索引映射和初始状态。</p>
 
-<pre><code class="language-python"># 瀹氫箟瀛愮淮搴︾储寮曪紙绠€鍖栫増锛屼粎鍒楀嚭閮ㄥ垎鏍稿績缁村害锛?
+<pre><code class="language-python"># 定义子维度索引（简化版，仅列出部分核心维度）
 STATE_INDICES = {
-    # M1 鍏疯韩
+    # M1 具身
     &#x27;M1_RES_D&#x27;: 0,
     &#x27;M1_RES_B&#x27;: 1,
     &#x27;M1_DSP_F&#x27;: 2,
     &#x27;M1_DSP_B&#x27;: 3,
-    # M2 璁ょ煡
+    # M2 认知
     &#x27;M2_RES_D&#x27;: 4,
     &#x27;M2_RES_B&#x27;: 5,
     &#x27;M2_DSP_F&#x27;: 6,
     &#x27;M2_DSP_B&#x27;: 7,
-    &#x27;M2_STR_R&#x27;: 8,   # 淇″康瑙勫垯寮哄害锛?-1锛?
-    # M3 鎰忓織
+    &#x27;M2_STR_R&#x27;: 8,   # 信念规则强度（0-1）
+    # M3 意志
     &#x27;M3_RES_D&#x27;: 9,
     &#x27;M3_RES_B&#x27;: 10,
     &#x27;M3_DSP_F&#x27;: 11,
     &#x27;M3_DSP_B&#x27;: 12,
     &#x27;M3_STR_R&#x27;: 13,
-    # M4 鎯呯华
+    # M4 情绪
     &#x27;M4_RES_D&#x27;: 14,
     &#x27;M4_RES_B&#x27;: 15,
     &#x27;M4_DSP_F&#x27;: 16,
     &#x27;M4_DSP_B&#x27;: 17,
     &#x27;M4_STR_R&#x27;: 18,
-    &#x27;M4_STR_C&#x27;: 19,   # 鎯呮劅杩炴帴鏉冮噸锛?-1锛?
-    # M5 瑷€璇紙绠€鍖栵級
+    &#x27;M4_STR_C&#x27;: 19,   # 情感连接权重（0-1）
+    # M5 言语（简化）
     &#x27;M5_RES_D&#x27;: 20,
     &#x27;M5_STR_R&#x27;: 21,
-    # M6 琛屼负
+    # M6 行为
     &#x27;M6_RES_D&#x27;: 22,
     &#x27;M6_DSP_F&#x27;: 23,
     &#x27;M6_DSP_B&#x27;: 24,
-    &#x27;M6_STR_S&#x27;: 25,   # 涔犳儻搴忓垪寮哄害
+    &#x27;M6_STR_S&#x27;: 25,   # 习惯序列强度
 }
-DIM = len(STATE_INDICES)  # 26缁达紙瀹屾暣42缁磋浣跨敤棰勫畾涔夊父閲忥級
+DIM = len(STATE_INDICES)  # 26维（完整42维请使用预定义常量）
 
-# 鍒涘缓鍒濆鐘舵€佸悜閲忥紙鍋ュ悍鍩虹嚎锛?
+# 创建初始状态向量（健康基线）
 def initial_healthy_state():
     psi = np.zeros(DIM)
-    # 璁剧疆榛樿鍊硷紙0-100灏哄害锛屼俊蹇?杩炴帴涓?-1锛?
+    # 设置默认值（0-100尺度，信念/连接为0-1）
     psi[STATE_INDICES[&#x27;M1_RES_D&#x27;]] = 75.0
     psi[STATE_INDICES[&#x27;M2_RES_D&#x27;]] = 80.0
     psi[STATE_INDICES[&#x27;M3_RES_D&#x27;]] = 70.0
     psi[STATE_INDICES[&#x27;M3_DSP_F&#x27;]] = 80.0
     psi[STATE_INDICES[&#x27;M4_RES_D&#x27;]] = 75.0
     psi[STATE_INDICES[&#x27;M4_RES_B&#x27;]] = 70.0
-    psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] = 30.0   # 浣庤儗鏅劍铏?
-    psi[STATE_INDICES[&#x27;M4_STR_R&#x27;]] = 0.3    # 鍋ュ悍鐨勫▉鑳佽瘎浼?
+    psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] = 30.0   # 低背景焦虑
+    psi[STATE_INDICES[&#x27;M4_STR_R&#x27;]] = 0.3    # 健康的威胁评估
     psi[STATE_INDICES[&#x27;M6_RES_D&#x27;]] = 70.0
     psi[STATE_INDICES[&#x27;M6_DSP_F&#x27;]] = 75.0
     return psi
 
-# 鍒涘缓鐒﹁檻鐘舵€侊紙M4-DSP-B楂橈紝璧勬簮浣庯級
+# 创建焦虑状态（M4-DSP-B高，资源低）
 def initial_anxious_state():
     psi = initial_healthy_state()
     psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] = 85.0
@@ -176,50 +176,50 @@ def initial_anxious_state():
 
 <hr class="section-divider">
 
-<h2>C.3 瀹氫箟鍔ㄥ姏瀛︽柟绋嬶紙MKT绠€鍖栫増锛?/h2>
+<h2>C.3 定义动力学方程（MKT简化版）</h2>
 
-<p>鏈ず渚嬪疄鐜癕KT璧勬簮鍔ㄥ姏瀛﹀拰璋冨害鍒囨崲鐨勭畝鍖栫増鏈€?/p>
+<p>本示例实现MKT资源动力学和调度切换的简化版本。</p>
 
 <pre><code class="language-python">def mkt_equations(psi, t, params, external_stress=0.0):
     &quot;&quot;&quot;
-    鐘舵€佹紨鍖栧井鍒嗘柟绋?
-    psi: 鐘舵€佸悜閲忥紙褰撳墠鍊硷級
-    t: 鏃堕棿锛堝皬鏃讹級
-    params: 鍙傛暟瀛楀吀
-    external_stress: 澶栭儴鍘嬪姏锛?-100锛?
+    状态演化微分方程
+    psi: 状态向量（当前值）
+    t: 时间（小时）
+    params: 参数字典
+    external_stress: 外部压力（0-100）
     &quot;&quot;&quot;
     dpsi = np.zeros_like(psi)
     
-    # 1. 璧勬簮鍔ㄥ姏瀛︼細M3-RES-D锛堟剰蹇楄祫婧愶級
+    # 1. 资源动力学：M3-RES-D（意志资源）
     # dR/dt = supply - alpha * R - demand
     R3 = psi[STATE_INDICES[&#x27;M3_RES_D&#x27;]]
-    supply_m3 = params.get(&#x27;supply_m3&#x27;, 15.0)   # 鏉ヨ嚜M1鐨勫熀纭€渚涚粰锛?h锛?
-    alpha = params.get(&#x27;alpha_m3&#x27;, 0.12)        # 娑堣€楅€熺巼甯告暟
-    # 闇€姹傦細鏉ヨ嚜浠诲姟鍘嬪姏 + M4-DSP-B鐨勬秷鑰?
+    supply_m3 = params.get(&#x27;supply_m3&#x27;, 15.0)   # 来自M1的基础供给（/h）
+    alpha = params.get(&#x27;alpha_m3&#x27;, 0.12)        # 消耗速率常数
+    # 需求：来自任务压力 + M4-DSP-B的消耗
     demand = params.get(&#x27;base_demand&#x27;, 5.0) + external_stress * 0.1
     demand += psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] * 0.15
     dpsi[STATE_INDICES[&#x27;M3_RES_D&#x27;]] = supply_m3 - alpha * R3 - demand
     
-    # 2. 璧勬簮鍔ㄥ姏瀛︼細M4-RES-D锛堟儏缁闄愶級
+    # 2. 资源动力学：M4-RES-D（情绪容限）
     R4 = psi[STATE_INDICES[&#x27;M4_RES_D&#x27;]]
     supply_m4 = params.get(&#x27;supply_m4&#x27;, 10.0)
     beta = params.get(&#x27;beta_m4&#x27;, 0.10)
     consumption_m4 = psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] * 0.2
     dpsi[STATE_INDICES[&#x27;M4_RES_D&#x27;]] = supply_m4 - beta * R4 - consumption_m4
     
-    # 3. 璋冨害鍔ㄥ姏瀛︼細M4-DSP-B锛堣嚜鍔ㄦ儏缁縺娲伙級鐨勯槇鍊兼ā鍨?
+    # 3. 调度动力学：M4-DSP-B（自动情绪激活）的阈值模型
     B4 = psi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]]
-    # 婵€娲婚┍鍔ㄥ姏锛氬▉鑳佷俊蹇?M4_STR_R) + 澶栭儴鍘嬪姏
+    # 激活驱动力：威胁信念(M4_STR_R) + 外部压力
     drive = psi[STATE_INDICES[&#x27;M4_STR_R&#x27;]] * 50.0 + external_stress * 0.5
-    # 婵€娲婚€熺巼闅忚祫婧愪笅闄嶈€屽崌楂橈紙鍘绘姂鍒讹級
-    inhibition = 1.0 / (1.0 + np.exp(-(R3 - 40.0) / 10.0))  # 璧勬簮楂樹簬40鏃舵姂鍒跺己
+    # 激活速率随资源下降而升高（去抑制）
+    inhibition = 1.0 / (1.0 + np.exp(-(R3 - 40.0) / 10.0))  # 资源高于40时抑制强
     activation_rate = params.get(&#x27;activation_rate&#x27;, 0.3) * drive * (1 - inhibition)
-    # 鑷劧鎭㈠锛堝悜鍩虹嚎鍥炲綊锛?
+    # 自然恢复（向基线回归）
     recovery_rate = params.get(&#x27;recovery_rate_b4&#x27;, 0.1)
-    target_b4 = 30.0  # 鍋ュ悍鍩虹嚎
+    target_b4 = 30.0  # 健康基线
     dpsi[STATE_INDICES[&#x27;M4_DSP_B&#x27;]] = activation_rate - recovery_rate * (B4 - target_b4)
     
-    # 4. 缁撴瀯鍔ㄥ姏瀛︼細M4_STR_R锛堝▉鑳佷俊蹇佃鍒欙級缂撴參鏇存柊
+    # 4. 结构动力学：M4_STR_R（威胁信念规则）缓慢更新
     S4 = psi[STATE_INDICES[&#x27;M4_STR_R&#x27;]]
     learning = params.get(&#x27;learning_rate&#x27;, 0.01) * (B4 / 100.0) * (external_stress / 100.0)
     decay = 0.002
@@ -230,23 +230,23 @@ def initial_anxious_state():
 
 <hr class="section-divider">
 
-<h2>C.4 杩愯浠跨湡涓庡彲瑙嗗寲</h2>
+<h2>C.4 运行仿真与可视化</h2>
 
-<pre><code class="language-python"># 璁剧疆浠跨湡鍙傛暟
-t_max = 72  # 灏忔椂
+<pre><code class="language-python"># 设置仿真参数
+t_max = 72  # 小时
 dt = 0.1
 t_eval = np.arange(0, t_max, dt)
 
-# 瀹氫箟澶栭儴鍘嬪姏搴忓垪锛堜緥濡傦細宸ヤ綔鍘嬪姏鏈夋棩鑺傚緥锛?
+# 定义外部压力序列（例如：工作压力有日节律）
 def external_stress_profile(t):
     hour = t % 24
     if 9 &lt;= hour &lt; 18:
-        stress = 60.0 + 20 * np.sin((hour - 9) / 9 * np.pi)  # 宄板€?0
+        stress = 60.0 + 20 * np.sin((hour - 9) / 9 * np.pi)  # 峰值80
     else:
         stress = 10.0
     return stress
 
-# 鍑嗗姹傝В
+# 准备求解
 psi0 = initial_anxious_state()
 params = {
     &#x27;supply_m3&#x27;: 15.0,
@@ -259,60 +259,60 @@ params = {
     &#x27;learning_rate&#x27;: 0.01,
 }
 
-# 灏嗗閮ㄥ帇鍔涗綔涓烘椂闂寸殑鍑芥暟浼犻€?
+# 将外部压力作为时间的函数传递
 def psi_derivative_wrapper(psi, t, params):
     stress = external_stress_profile(t)
     return mkt_equations(psi, t, params, external_stress=stress)
 
-# 姹傝ВODE
+# 求解ODE
 from scipy.integrate import odeint
 sol = odeint(psi_derivative_wrapper, psi0, t_eval, args=(params,))
 
-# 鎻愬彇鍏抽敭鍙橀噺
+# 提取关键变量
 M3_RES_D = sol[:, STATE_INDICES[&#x27;M3_RES_D&#x27;]]
 M4_DSP_B = sol[:, STATE_INDICES[&#x27;M4_DSP_B&#x27;]]
 M4_STR_R = sol[:, STATE_INDICES[&#x27;M4_STR_R&#x27;]]
 
-# 缁樺埗
+# 绘制
 fig, axes = plt.subplots(3, 1, figsize=(10, 8), sharex=True)
-axes[0].plot(t_eval, M3_RES_D, label=&#x27;M3-RES-D (鎰忓織璧勬簮)&#x27;, color=&#x27;blue&#x27;)
-axes[0].axhline(y=30, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;鍔熻兘闃堝€?(30)&#x27;)
-axes[0].set_ylabel(&#x27;璧勬簮姘村钩 (0-100)&#x27;)
+axes[0].plot(t_eval, M3_RES_D, label=&#x27;M3-RES-D (意志资源)&#x27;, color=&#x27;blue&#x27;)
+axes[0].axhline(y=30, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;功能阈值 (30)&#x27;)
+axes[0].set_ylabel(&#x27;资源水平 (0-100)&#x27;)
 axes[0].legend()
 axes[0].grid(True)
 
-axes[1].plot(t_eval, M4_DSP_B, label=&#x27;M4-DSP-B (鑷姩鎯呯华婵€娲?&#x27;, color=&#x27;orange&#x27;)
-axes[1].axhline(y=70, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;楂樻縺娲婚槇鍊?(70)&#x27;)
-axes[1].set_ylabel(&#x27;婵€娲诲己搴?(0-100)&#x27;)
+axes[1].plot(t_eval, M4_DSP_B, label=&#x27;M4-DSP-B (自动情绪激活)&#x27;, color=&#x27;orange&#x27;)
+axes[1].axhline(y=70, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;高激活阈值 (70)&#x27;)
+axes[1].set_ylabel(&#x27;激活强度 (0-100)&#x27;)
 axes[1].legend()
 axes[1].grid(True)
 
-axes[2].plot(t_eval, M4_STR_R, label=&#x27;M4-STR-R (濞佽儊淇″康鏉冮噸)&#x27;, color=&#x27;green&#x27;)
-axes[2].set_xlabel(&#x27;鏃堕棿 (灏忔椂)&#x27;)
-axes[2].set_ylabel(&#x27;淇″康鏉冮噸 (0-1)&#x27;)
+axes[2].plot(t_eval, M4_STR_R, label=&#x27;M4-STR-R (威胁信念权重)&#x27;, color=&#x27;green&#x27;)
+axes[2].set_xlabel(&#x27;时间 (小时)&#x27;)
+axes[2].set_ylabel(&#x27;信念权重 (0-1)&#x27;)
 axes[2].legend()
 axes[2].grid(True)
 
-plt.suptitle(&#x27;PSE浠跨湡锛氱劍铏戠姸鎬?2灏忔椂婕斿寲&#x27;)
+plt.suptitle(&#x27;PSE仿真：焦虑状态72小时演化&#x27;)
 plt.tight_layout()
 plt.savefig(&#x27;pse_simulation_example.png&#x27;, dpi=150)
 plt.show()</code></pre>
 
-<p><strong>棰勬湡杈撳嚭</strong>锛氬浘涓樉绀篗3-RES-D闅忔椂闂撮€愭笎涓嬮檷锛屽湪绾?0-40灏忔椂杈惧埌闃堝€硷紱M4-DSP-B鍦ㄦ棩闂村帇鍔涗笅鍛ㄦ湡鎬ч珮宄帮紝涓旈殢璧勬簮鏋鍩虹嚎閫愭笎涓婂崌锛汳4-STR-R缂撴參涓婂崌銆?/p>
+<p><strong>预期输出</strong>：图中显示M3-RES-D随时间逐渐下降，在约30-40小时达到阈值；M4-DSP-B在日间压力下周期性高峰，且随资源枯竭基线逐渐上升；M4-STR-R缓慢上升。</p>
 
 <hr class="section-divider">
 
-<h2>C.5 钂欑壒鍗＄綏浠跨湡锛圥SE-M锛夌ず渚?/h2>
+<h2>C.5 蒙特卡罗仿真（PSE-M）示例</h2>
 
-<p>鐢熸垚1000涓櫄鎷熶釜浣擄紝鍙傛暟浠庡厛楠屽垎甯冧腑閲囨牱锛屾ā鎷熺兢浣撳彉寮傛€с€?/p>
+<p>生成1000个虚拟个体，参数从先验分布中采样，模拟群体变异性。</p>
 
-<pre><code class="language-python"># 鍙傛暟鍏堥獙鍒嗗竷
+<pre><code class="language-python"># 参数先验分布
 def sample_parameters(n_samples):
     alphas = np.random.gamma(shape=12, scale=0.01, size=n_samples)  # mean=0.12
     betas = np.random.gamma(shape=10, scale=0.01, size=n_samples)   # mean=0.10
     return {&#x27;alpha_m3&#x27;: alphas, &#x27;beta_m4&#x27;: betas}
 
-# 钂欑壒鍗＄綏浠跨湡鍑芥暟
+# 蒙特卡罗仿真函数
 def monte_carlo_simulation(n_samples, t_max=72, dt=0.1):
     t_eval = np.arange(0, t_max, dt)
     param_samples = sample_parameters(n_samples)
@@ -327,80 +327,80 @@ def monte_carlo_simulation(n_samples, t_max=72, dt=0.1):
         trajectories.append(sol[:, STATE_INDICES[&#x27;M3_RES_D&#x27;]])
     return np.array(trajectories)
 
-# 杩愯锛堟敞鎰忥細n_samples杈冨ぇ鏃惰€楁椂杈冮暱锛屽彲浣跨敤numba鍔犻€燂級
-traj_m3 = monte_carlo_simulation(200)  # 200涓牱鏈紨绀?
+# 运行（注意：n_samples较大时耗时较长，可使用numba加速）
+traj_m3 = monte_carlo_simulation(200)  # 200个样本演示
 
-# 璁＄畻鍒嗕綅鏁?
+# 计算分位数
 p2_5 = np.percentile(traj_m3, 2.5, axis=0)
 p50 = np.percentile(traj_m3, 50, axis=0)
 p97_5 = np.percentile(traj_m3, 97.5, axis=0)
 
 plt.figure(figsize=(10, 5))
-plt.fill_between(t_eval, p2_5, p97_5, alpha=0.3, label=&#x27;95%棰勬祴鍖洪棿&#x27;)
-plt.plot(t_eval, p50, &#x27;b-&#x27;, label=&#x27;涓綅鏁拌建杩?#x27;)
-plt.axhline(y=30, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;鍔熻兘闃堝€?#x27;)
-plt.xlabel(&#x27;鏃堕棿 (灏忔椂)&#x27;)
-plt.ylabel(&#x27;M3-RES-D (鎰忓織璧勬簮)&#x27;)
-plt.title(&#x27;钂欑壒鍗＄綏浠跨湡锛氳祫婧愭秷鑰楄建杩圭殑棰勬祴鍖洪棿&#x27;)
+plt.fill_between(t_eval, p2_5, p97_5, alpha=0.3, label=&#x27;95%预测区间&#x27;)
+plt.plot(t_eval, p50, &#x27;b-&#x27;, label=&#x27;中位数轨迹&#x27;)
+plt.axhline(y=30, color=&#x27;r&#x27;, linestyle=&#x27;--&#x27;, label=&#x27;功能阈值&#x27;)
+plt.xlabel(&#x27;时间 (小时)&#x27;)
+plt.ylabel(&#x27;M3-RES-D (意志资源)&#x27;)
+plt.title(&#x27;蒙特卡罗仿真：资源消耗轨迹的预测区间&#x27;)
 plt.legend()
 plt.grid(True)
 plt.show()</code></pre>
 
 <hr class="section-divider">
 
-<h2>C.6 绠€鍗曡礉鍙舵柉鏍″噯锛圥SE-C锛夌ず渚?/h2>
+<h2>C.6 简单贝叶斯校准（PSE-C）示例</h2>
 
-<p>浣跨敤绮掑瓙婊ゆ尝浠庡惈鍣娴嬩腑浼拌涓綋鐨凪3-RES-D鐘舵€併€?/p>
+<p>使用粒子滤波从含噪观测中估计个体的M3-RES-D状态。</p>
 
-<pre><code class="language-python"># 鐢熸垚妯℃嫙瑙傛祴鏁版嵁锛堜粠鐪熷疄鐘舵€佷腑鍔犲叆鍣０锛?
+<pre><code class="language-python"># 生成模拟观测数据（从真实状态中加入噪声）
 def generate_observations(true_state, t_eval, noise_std=5.0):
     obs = true_state + np.random.normal(0, noise_std, size=len(true_state))
     return np.clip(obs, 0, 100)
 
-# 绮掑瓙婊ゆ尝锛圔ootstrap Filter锛?
+# 粒子滤波（Bootstrap Filter）
 def particle_filter(observations, t_eval, n_particles=500, process_noise_std=2.0):
     particles = np.random.uniform(20, 80, size=n_particles)
     weights = np.ones(n_particles) / n_particles
     estimated_states = []
     for t_idx, y in enumerate(observations):
-        # 棰勬祴姝ラ
+        # 预测步骤
         particles = particles + np.random.normal(0, process_noise_std, size=n_particles)
         particles = np.clip(particles, 0, 100)
-        # 鏇存柊鏉冮噸
+        # 更新权重
         likelihood = np.exp(-0.5 * ((particles - y) / 5.0)**2)
         weights = likelihood * weights
         weights += 1e-300
         weights /= np.sum(weights)
         est = np.sum(particles * weights)
         estimated_states.append(est)
-        # 閲嶉噰鏍?
+        # 重采样
         if 1 / np.sum(weights**2) &lt; n_particles / 2:
             indices = np.random.choice(n_particles, size=n_particles, p=weights)
             particles = particles[indices]
             weights = np.ones(n_particles) / n_particles
     return np.array(estimated_states)
 
-# 杩愯绀轰緥锛堜娇鐢ㄤ箣鍓嶄豢鐪熺殑鐪熷疄杞ㄨ抗锛?
-true_traj = sol[:, STATE_INDICES[&#x27;M3_RES_D&#x27;]]  # 涔嬪墠浠跨湡鐨勮建杩?
+# 运行示例（使用之前仿真的真实轨迹）
+true_traj = sol[:, STATE_INDICES[&#x27;M3_RES_D&#x27;]]  # 之前仿真的轨迹
 obs = generate_observations(true_traj, t_eval, noise_std=6.0)
 filtered = particle_filter(obs, t_eval, n_particles=500)
 
 plt.figure(figsize=(10, 5))
-plt.plot(t_eval, true_traj, &#x27;g-&#x27;, label=&#x27;鐪熷疄鐘舵€侊紙鏈煡锛?#x27;)
-plt.scatter(t_eval[::10], obs[::10], color=&#x27;red&#x27;, s=10, alpha=0.5, label=&#x27;鍚櫔瑙傛祴&#x27;)
-plt.plot(t_eval, filtered, &#x27;b--&#x27;, label=&#x27;绮掑瓙婊ゆ尝浼拌&#x27;)
-plt.xlabel(&#x27;鏃堕棿 (灏忔椂)&#x27;)
+plt.plot(t_eval, true_traj, &#x27;g-&#x27;, label=&#x27;真实状态（未知）&#x27;)
+plt.scatter(t_eval[::10], obs[::10], color=&#x27;red&#x27;, s=10, alpha=0.5, label=&#x27;含噪观测&#x27;)
+plt.plot(t_eval, filtered, &#x27;b--&#x27;, label=&#x27;粒子滤波估计&#x27;)
+plt.xlabel(&#x27;时间 (小时)&#x27;)
 plt.ylabel(&#x27;M3-RES-D&#x27;)
-plt.title(&#x27;璐濆彾鏂牎鍑嗙ず渚嬶細浠庡惈鍣娴嬩腑浼拌鐘舵€?#x27;)
+plt.title(&#x27;贝叶斯校准示例：从含噪观测中估计状态&#x27;)
 plt.legend()
 plt.grid(True)
 plt.show()</code></pre>
 
 <hr class="section-divider">
 
-<h2>C.7 浠跨湡瀹為獙妯℃澘</h2>
+<h2>C.7 仿真实验模板</h2>
 
-<p>浠ヤ笅鏄竴涓畬鏁寸殑PSE瀹為獙鑴氭湰妯℃澘锛屽彲鐢ㄤ簬鐮旂┒鐗瑰畾骞查鎿嶄綔鐨勬晥鏋溿€?/p>
+<p>以下是一个完整的PSE实验脚本模板，可用于研究特定干预操作的效果。</p>
 
 <pre><code class="language-python">def run_intervention_simulation(intervention_schedule, baseline_params, t_max=168):
     &quot;&quot;&quot;
@@ -412,7 +412,7 @@ plt.show()</code></pre>
     times = [0]
     
     for t_next in t_eval[1:]:
-        # 妫€鏌ュ共棰?
+        # 检查干预
         for (t_op, op, target, intensity) in intervention_schedule:
             if times[-1] &lt; t_op &lt;= t_next:
                 idx = STATE_INDICES[target]
@@ -420,7 +420,7 @@ plt.show()</code></pre>
                     psi[idx] = min(100, psi[idx] + intensity)
                 elif op == &#x27;GATE-&#x27;:
                     psi[idx] = max(0, psi[idx] - intensity)
-        # 婕斿寲涓€姝?
+        # 演化一步
         dt = t_next - times[-1]
         stress = external_stress_profile(t_next)
         dpsi = mkt_equations(psi, t_next, baseline_params, stress)
@@ -431,50 +431,50 @@ plt.show()</code></pre>
     
     return np.array(times), np.array(states)
 
-# 绀轰緥锛氬湪24灏忔椂鏂藉姞涓€娆ODULATE+ M1-RES_D
+# 示例：在24小时施加一次MODULATE+ M1-RES_D
 intervention = [(24.0, &#x27;MODULATE+&#x27;, &#x27;M1_RES_D&#x27;, 20)]
 t, states = run_intervention_simulation(intervention, params, t_max=72)
-# 缁樺埗缁撴灉...</code></pre>
+# 绘制结果...</code></pre>
 
 <hr class="section-divider">
 
-<h2>C.8 鍦ㄧ嚎璧勬簮涓庤繘涓€姝ュ涔?/h2>
+<h2>C.8 在线资源与进一步学习</h2>
 
 <ol>
-<li><strong>瀹屾暣鏂囨。</strong>锛歔https://project003125.github.io/INTRE/PSE](https://project003125.github.io/INTRE/PSE)锛堢ず渚嬪湴鍧€锛?/li>
-<li><strong>鍙傛暟搴?/strong>锛氱敓鎬佷綅鍏堥獙鍙傛暟锛圝SON鏍煎紡锛夊彲浠庨」鐩粨搴撲笅杞姐€?/li>
-<li><strong>绀轰緥瀹為獙</strong>锛氬寘鍚箍娉涙€х劍铏戙€丳TSD銆佹姂閮佸鍙戜笁涓渚嬬殑瀹屾暣浠跨湡绗旇鏈€?/li>
-<li><strong>API鍙傝€?/strong>锛?code>pse.engine</code>, <code>pse.monte_carlo</code>, <code>pse.calibration</code>妯″潡銆?/li>
-<li><strong>绀惧尯</strong>锛欸itHub Issues銆丏iscord棰戦亾鐢ㄤ簬闂璁ㄨ涓庤础鐚€?/li>
+<li><strong>完整文档</strong>：[https://project003125.github.io/INTRE/PSE](https://project003125.github.io/INTRE/PSE)（示例地址）</li>
+<li><strong>参数库</strong>：生态位先验参数（JSON格式）可从项目仓库下载。</li>
+<li><strong>示例实验</strong>：包含广泛性焦虑、PTSD、抑郁复发三个案例的完整仿真笔记本。</li>
+<li><strong>API参考</strong>：<code>pse.engine</code>, <code>pse.monte_carlo</code>, <code>pse.calibration</code>模块。</li>
+<li><strong>社区</strong>：GitHub Issues、Discord频道用于问题讨论与贡献。</li>
 </ol>
 <hr class="section-divider">
-
-<div class="version-record-title">鐗堟湰璁板綍</div>
+<hr class="section-divider">
+<div class="version-record-title">版本记录</div>
 <div class="table-wrap"><table>
 <thead><tr>
-<th>鐗堟湰</th>
-<th>鏃ユ湡</th>
-<th>鍙樻洿鍐呭</th>
+<th>版本</th>
+<th>日期</th>
+<th>变更内容</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0</td>
+<td>v1.0.0</td>
 <td>2026-05-30</td>
-<td>鍒濆鍒涘缓</td>
+<td>初始创建</td>
 </tr>
 </tbody>
 </table></div>
     </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-b.html" class="nav-link prev">鈥?G-M-A-R閫熲€?/a>
-<a href="index.html" class="nav-link up">鈽?鐩綍</a>
-<a href="app-d.html" class="nav-link next">REVER瀹¤ 鈥?/a></div>
+        <div class="chapter-nav"><a href="app-b.html" class="nav-link prev">‹ G-M-A-R速…</a>
+<a href="index.html" class="nav-link up">☰ 目录</a>
+<a href="app-d.html" class="nav-link next">REVER审计 ›</a></div>
     </div>
 
-    <footer class="site-footer">
+    <footer>
         <div class="footer-brand">INTRE</div>
-        <p class="footer-watermark">鍔熻兘灞傚績鐞嗗 (FLP) 路 瀵艰鏁欐潗</p>
+        <p class="footer-watermark">功能层心理学 (FLP) · 导论教材</p>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
@@ -482,7 +482,7 @@ t, states = run_intervention_simulation(intervention, params, t_max=72)
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>鐗堟湰 v2.4 (2026-07-22) 路 CC0 1.0</p>
+            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
         </div>
     </footer>
 

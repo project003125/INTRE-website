@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>INTRE · 功能层心理学 (FLP)</title>
-    <meta name="description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta name="description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
     <meta property="og:title" content="INTRE · 功能层心理学">
-    <meta property="og:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta property="og:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="INTRE · 功能层心理学">
-    <meta name="twitter:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta name="twitter:description" content="INTRE（功能层心理学 FLP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/">
     <!-- Google Fonts: Josefin Sans (Logo) + Inter (Body) + Noto Sans SC (中文) + JetBrains Mono (等宽) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,32 @@
             border-radius: 50%;
             margin-left: 0.45rem;
             vertical-align: super;
+        }
+
+        /* ---------- Hero 3D 体验入口 ---------- */
+        .hero-cta-3d {
+            margin: 0 auto 2.6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .hero-cta-3d .btn-amber {
+            padding: 0.85rem 1.9rem;
+            font-size: 0.98rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-hard-navy-sm);
+        }
+        .hero-cta-3d .btn-amber:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--color-navy-975);
+        }
+        .hero-cta-3d-sub {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: var(--tracking-tech);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
         }
 
         /* ---------- 章节垂直节奏 ---------- */
@@ -213,6 +239,17 @@
         /* ---------- 页脚描述 ---------- */
         .footer-desc { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 2.6rem; }
 
+        /* ---------- OS 类比注释 ---------- */
+        .os-analogy {
+            font-size: 0.82rem;
+            color: var(--color-slate-500);
+            text-align: center;
+            margin: 1.8rem auto 0;
+            max-width: 580px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
         /* ---------- 响应式 ---------- */
         @media (max-width: 768px) {
             .home-section { margin: 4rem 0; }
@@ -220,6 +257,8 @@
             .cta-section { padding: 3.2rem 1.6rem; }
             .manifesto-quote { padding: 2.1rem 1.6rem 2.1rem 2.6rem; }
             .manifesto-quote p { font-size: 1.04rem; }
+            .hero-cta-3d { margin-bottom: 2.2rem; }
+            .hero-cta-3d .btn-amber { padding: 0.8rem 1.6rem; font-size: 0.92rem; }
         }
     </style>
     <script type="application/ld+json">
@@ -228,7 +267,7 @@
       "@type": "WebSite",
       "name": "INTRE",
       "url": "https://project003125.github.io/INTRE-website/",
-      "description": "INTRE（功能层心理学 FLP）：连接现象与神经的形式化工具，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。",
+      "description": "INTRE（功能层心理学 FLP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。",
       "publisher": {
         "@type": "Organization",
         "name": "INTRE",
@@ -280,11 +319,20 @@
             <span class="hero-eyebrow">功能层心理学 · FLP</span>
             <h1 class="hero-title">INTRE<span class="accent-dot" aria-hidden="true"></span></h1>
             <div class="hero-sub">
-                <span class="hero-zh">连接现象与神经的形式化工具</span>
+                <span class="hero-zh">连接现象与神经的形式化建模</span>
                 <span class="hero-divider" aria-hidden="true"></span>
-                <span class="hero-en">Formal Bridge · Phenomenon ↔ Neuron</span>
+                <span class="hero-en">Formal Modeling · Phenomenon ↔ Neuron</span>
             </div>
             <p class="hero-tagline">让心理状态可描述、可仿真、可干预。INTRE 以 M-R-D-S 状态语法与 G-M-A-R 操作语法，在现象层与神经层之间架设可计算的功能层。</p>
+
+            <div class="hero-cta-3d">
+                <a href="../hero/" class="btn btn-amber">
+                    <i class="fas fa-cube" aria-hidden="true"></i>
+                    进入 3D 体验
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+                <span class="hero-cta-3d-sub">沉浸式功能层探索</span>
+            </div>
 
             <div class="hero-stats">
                 <div class="stat-card">
@@ -469,6 +517,8 @@
                     </div>
                 </div>
             </div>
+
+            <p class="os-analogy">如同操作系统衔接硬件与应用，功能层衔接神经实现与现象体验——它不"是"心理，而是心理得以被工程化描述的中间层。</p>
 
             <div class="fusion-formula fusion-panel">
                 <span class="fusion-psi" aria-hidden="true">Ψ</span>

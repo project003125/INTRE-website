@@ -70,11 +70,11 @@
     </nav>
     <main id="main-content" class="container">
         <h1>UNIS</h1>
-        <div class="subhead">统一神经接口系统 · 生理信号→功能层似然的标准化管道 <span class="channel-badge unis">神经通道</span></div>
+        <div class="subhead">统一神经接口系统 · PSE 感知层 <strong>L1-N 神经模态输入端口</strong> <span class="channel-badge unis">神经通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UNIS 将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。
+            UNIS 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。
         </div>
 
         <!-- 一、六层架构 -->
@@ -183,7 +183,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>UNIS 的定位</strong>：UNIS 是 FLP 三通道架构中的神经通道，与 UPLS（语义通道）、PSE-M（行为通道）并列。三者通过贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIS 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
+            <p><strong>UNIS 的定位（2026-07 管线体系更新）</strong>：UNIS 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>神经模态输入端口（L1-N）</strong>，与 UPLS（语义端口 L1-S）、UBMS（行为端口 L1-B）并列，构成 IODS 三输入端口。三个端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIS 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
         </div>
     </main>
 

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRE 3D · 样式对比 v3</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; width: 100%; }
+        body { background: #0A1E3D; color: #fff; font-family: 'Inter', 'Noto Sans SC', sans-serif; overflow: hidden; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        #canvas-container canvas { display: block; }
+
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(180deg, rgba(10,30,61,0.75) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .brand-badge {
+            font-family: 'Josefin Sans', 'Segoe UI', sans-serif; font-size: 1.3rem; font-weight: 600;
+            letter-spacing: -0.02em; color: rgba(255,255,255,0.85);
+        }
+        .variant-tag {
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.68rem;
+            color: rgba(245,158,11,0.5); letter-spacing: 0.1em; text-transform: uppercase;
+        }
+
+        .variant-switcher {
+            position: fixed; top: 1.1rem; left: 50%; transform: translateX(-50%);
+            z-index: 20; display: flex; gap: 0.4rem;
+            background: rgba(10,30,61,0.7);
+            border: 1px solid rgba(107,157,214,0.15); border-radius: 10px;
+            padding: 0.35rem;
+        }
+        .variant-btn {
+            font-family: 'Noto Sans SC', sans-serif; font-size: 0.82rem; font-weight: 500;
+            color: rgba(255,255,255,0.45); background: transparent; border: none;
+            padding: 0.5rem 1.3rem; border-radius: 7px; cursor: pointer;
+            transition: all 0.2s; pointer-events: auto; white-space: nowrap;
+            text-align: center;
+        }
+        .variant-btn:hover { color: rgba(255,255,255,0.8); background: rgba(107,157,214,0.08); }
+        .variant-btn.active {
+            color: #F59E0B; background: rgba(245,158,11,0.1);
+            box-shadow: inset 0 0 0 1px rgba(245,158,11,0.2);
+        }
+        .v-tag {
+            display: block; font-family: 'Consolas', monospace; font-size: 0.58rem;
+            color: rgba(255,255,255,0.25); margin-top: 0.15rem; letter-spacing: 0.06em;
+        }
+        .variant-btn.active .v-tag { color: rgba(245,158,11,0.4); }
+
+        .bottom-panel {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+            padding: 1.5rem 2rem 2rem;
+            background: linear-gradient(0deg, rgba(10,30,61,0.92) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .bottom-panel .inner { max-width: 720px; }
+        .scheme-title {
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif; font-size: 1.15rem; font-weight: 600;
+            color: #D6E5F3; margin-bottom: 0.5rem;
+        }
+        .scheme-text {
+            font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.55);
+            margin-bottom: 0.4rem;
+        }
+        .scheme-metaphor {
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.72rem;
+            color: rgba(245,158,11,0.55); letter-spacing: 0.03em;
+        }
+        .drag-hint {
+            position: fixed; bottom: 1.8rem; right: 2rem; z-index: 10;
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.65rem;
+            color: rgba(255,255,255,0.25); letter-spacing: 0.08em; pointer-events: none;
+        }
+        #loading-msg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 5; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem;
+            font-family: 'Consolas', monospace; letter-spacing: 0.05em;
+        }
+        #error-msg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 5; text-align: center; color: rgba(245,158,11,0.7); font-size: 0.85rem;
+            font-family: 'Consolas', monospace; max-width: 400px; line-height: 1.6;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="brand-badge">INTRE</div>
+        <div class="variant-tag" id="v-tag">DEEP SPACE · 最大密度 · 有机分布</div>
+    </div>
+
+    <div class="variant-switcher">
+        <button class="variant-btn active" data-variant="A">A · 深空交响<span class="v-tag">DEEP SPACE</span></button>
+        <button class="variant-btn" data-variant="B">B · 漏斗收敛<span class="v-tag">FUNNEL</span></button>
+        <button class="variant-btn" data-variant="C">C · 悬浮晶体<span class="v-tag">CRYSTAL</span></button>
+    </div>
+
+    <div id="canvas-container"></div>
+    <div id="loading-msg">Loading 3D scene...</div>
+    <div id="error-msg">Three.js 加载失败</div>
+
+    <div class="bottom-panel">
+        <div class="inner">
+            <div class="scheme-title" id="s-title">深空交响 · 最大密度的复杂度呈现</div>
+            <div class="scheme-text" id="s-text">24 个星座与 200 颗散星构成密集星野，象征现象世界的无穷丰富。中间 27 节点晶格将混沌压缩为 42 维形式化描述，下方 20 束 DTI 纤维展开为神经实现的繁复连接。密度对比本身就是叙事——越多越乱的现象，越需要精简的中介。</div>
+            <div class="scheme-metaphor" id="s-metaphor">复杂（320+ 星点）→ 精简（27 节点 · 42 维）→ 复杂（230+ 纤维）</div>
+        </div>
+    </div>
+    <div class="drag-hint">拖动旋转 · 点击上方按钮切换样式</div>
+
+    <script>
+        window.__threeLoaded = false;
+        window.__threeTimeout = setTimeout(function() {
+            if (!window.__threeLoaded) {
+                document.getElementById('loading-msg').style.display = 'none';
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }, 8000);
+    </script>
+
+    <script type="module">
+        try {
+            const THREE = await import('./three.module.js');
+            window.__threeLoaded = true;
+            clearTimeout(window.__threeTimeout);
+            document.getElementById('loading-msg').style.display = 'none';
+            initScene(THREE);
+        } catch(e) {
+            console.error('Three.js load failed:', e);
+            clearTimeout(window.__threeTimeout);
+            document.getElementById('loading-msg').style.display = 'none';
+            document.getElementById('error-msg').textContent = 'Three.js 加载失败: ' + e.message;
+            document.getElementById('error-msg').style.display = 'block';
+        }
+
+        function initScene(THREE) {
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function vw() { return window.innerWidth || document.documentElement.clientWidth || 1024; }
+            function vh() { return window.innerHeight || document.documentElement.clientHeight || 768; }
+
+            /* ===== 常量 ===== */
+            const NAVY = { 300: 0x6B9DD6, 400: 0x3B6FB5, 500: 0x2A5DA0, 600: 0x1F4880, 700: 0x163A6B, 800: 0x122F5C };
+            const CH = { upls: 0x5A8270, unis: 0x5B7080 };
+            const AMBER = 0xF59E0B;
+
+            /* ===== 三种样式配置 ===== */
+            const VARIANTS = {
+                A: {
+                    name: '深空交响', tag: 'DEEP SPACE', tagline: '最大密度 · 有机分布',
+                    title: '深空交响 · 最大密度的复杂度呈现',
+                    desc: '24 个星座与 200 颗散星构成密集星野，象征现象世界的无穷丰富。中间 27 节点晶格将混沌压缩为 42 维形式化描述，下方 20 束 DTI 纤维展开为神经实现的繁复连接。密度对比本身就是叙事——越多越乱的现象，越需要精简的中介。',
+                    metaphor: '复杂（320+ 星点）→ 精简（27 节点 · 42 维）→ 复杂（230+ 纤维）',
+                    YP: 5.5, YN: -5.5, cameraY: 4, cameraDist: 13,
+                    phen: { constellations: 24, scatterStars: 200, spread: 7,
+                        starSizeMin: 0.03, starSizeMax: 0.11, brightRatio: 0.35, lineProb: 0.55,
+                        arrangement: 'organic', starColor: 0xFFF5E8, dimStarColor: 0xB8C8E0,
+                        scatterSize: 0.05, scatterOpacity: 0.5 },
+                    lattice: { step: 1.15, nodeSize: 0.075, centerSize: 0.14, edgeOpacity: 0.35, centerGlow: 1.0 },
+                    neural: { bundles: 20, minFibers: 10, maxFibers: 18, spread: 0.5,
+                        arrangement: 'organic', opacityMin: 0.15, opacityMax: 0.45 },
+                    connections: { perNode: 3, opacityMin: 0.15, opacityMax: 0.30 }
+                },
+                B: {
+                    name: '漏斗收敛', tag: 'FUNNEL', tagline: '漏斗几何 · 压缩隐喻',
+                    title: '漏斗收敛 · 压缩的几何隐喻',
+                    desc: '星座在上半球面以 Fibonacci 分布排列，视觉上自然汇聚向中心。所有连接线形成漏斗状通道，将 180+ 个现象点收敛到 27 节点晶格，再以扇形展开为 200+ 条 DTI 纤维。漏斗的"颈"就是功能层——最窄处恰是信息量最丰富处。',
+                    metaphor: '收敛（漏斗）→ 压缩（颈）→ 发散（扇形）',
+                    YP: 4.8, YN: -4.8, cameraY: 3.5, cameraDist: 12,
+                    phen: { constellations: 18, scatterStars: 120, spread: 6.5,
+                        starSizeMin: 0.02, starSizeMax: 0.09, brightRatio: 0.3, lineProb: 0.5,
+                        arrangement: 'dome', starColor: 0xE8F1FA, dimStarColor: 0x8FAEC8,
+                        scatterSize: 0.04, scatterOpacity: 0.4 },
+                    lattice: { step: 1.15, nodeSize: 0.08, centerSize: 0.15, edgeOpacity: 0.45, centerGlow: 1.2 },
+                    neural: { bundles: 16, minFibers: 10, maxFibers: 16, spread: 0.4,
+                        arrangement: 'fan', opacityMin: 0.2, opacityMax: 0.5 },
+                    connections: { perNode: 4, opacityMin: 0.2, opacityMax: 0.4 }
+                },
+                C: {
+                    name: '悬浮晶体', tag: 'CRYSTAL', tagline: '晶格主导 · 氤氲环绕',
+                    title: '悬浮晶体 · 晶格为中心的宇宙观',
+                    desc: '250 颗微粒如星尘环绕，10 个星座若隐若现。晶格被放大并强化光晕，成为画面绝对主角。下方 14 束纤维如薄雾般展开。这里强调的不是数量，而是对比——在浩瀚的星尘与薄雾之间，42 维的晶格是唯一坚实的存在。',
+                    metaphor: '氤氲（星尘）→ 坚实（晶格）→ 薄雾（纤维）',
+                    YP: 6.5, YN: -6.5, cameraY: 5, cameraDist: 14,
+                    phen: { constellations: 10, scatterStars: 250, spread: 8,
+                        starSizeMin: 0.015, starSizeMax: 0.06, brightRatio: 0.25, lineProb: 0.4,
+                        arrangement: 'dust', starColor: 0xE8F1FA, dimStarColor: 0x6B9DD6,
+                        scatterSize: 0.03, scatterOpacity: 0.3 },
+                    lattice: { step: 1.4, nodeSize: 0.1, centerSize: 0.2, edgeOpacity: 0.5, centerGlow: 1.5 },
+                    neural: { bundles: 14, minFibers: 8, maxFibers: 14, spread: 0.35,
+                        arrangement: 'mist', opacityMin: 0.1, opacityMax: 0.3 },
+                    connections: { perNode: 2, opacityMin: 0.1, opacityMax: 0.2 }
+                }
+            };
+
+            /* ===== 场景设置 ===== */
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0A1E3D);
+            scene.fog = new THREE.Fog(0x0A1E3D, 22, 55);
+
+            const camera = new THREE.PerspectiveCamera(38, vw() / vh(), 0.1, 100);
+            camera.position.set(9, 4, 13);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer.setSize(vw(), vh());
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setClearColor(0x0A1E3D, 1);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+            const keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            keyLight.position.set(6, 10, 6); scene.add(keyLight);
+            const fillLight = new THREE.DirectionalLight(0xD6E5F3, 0.2);
+            fillLight.position.set(-5, 2, -3); scene.add(fillLight);
+            const rimLight = new THREE.DirectionalLight(0x3B6FB5, 0.18);
+            rimLight.position.set(0, -3, -8); scene.add(rimLight);
+
+            const mainGroup = new THREE.Group();
+            scene.add(mainGroup);
+
+            /* ===== 工具函数 ===== */
+            function label(text, color, scale) {
+                scale = scale || 1;
+                const c = document.createElement('canvas');
+                const x = c.getContext('2d');
+                const fs = 56;
+                x.font = '500 ' + fs + 'px "Noto Sans SC","Segoe UI",sans-serif';
+                const w = Math.ceil(x.measureText(text).width) + 24;
+                c.width = w; c.height = fs + 20;
+                x.font = '500 ' + fs + 'px "Noto Sans SC","Segoe UI",sans-serif';
+                x.fillStyle = color || '#D6E5F3';
+                x.textAlign = 'center'; x.textBaseline = 'middle';
+                x.fillText(text, c.width/2, c.height/2);
+                const t = new THREE.CanvasTexture(c);
+                t.minFilter = THREE.LinearFilter;
+                const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false }));
+                s.scale.set(c.width/80*scale, c.height/80*scale, 1);
+                return s;
+            }
+            function codeLabel(text, color, scale) {
+                scale = scale || 0.6;
+                const c = document.createElement('canvas');
+                const x = c.getContext('2d');
+                const fs = 42;
+                x.font = '400 ' + fs + 'px "Consolas",monospace';
+                const w = Math.ceil(x.measureText(text).width) + 20;
+                c.width = w; c.height = fs + 16;
+                x.font = '400 ' + fs + 'px "Consolas",monospace';
+                x.fillStyle = color || 'rgba(255,255,255,0.5)';
+                x.textAlign = 'center'; x.textBaseline = 'middle';
+                x.fillText(text, c.width/2, c.height/2);
+                const t = new THREE.CanvasTexture(c);
+                t.minFilter = THREE.LinearFilter;
+                const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false }));
+                s.scale.set(c.width/80*scale, c.height/80*scale, 1);
+                return s;
+            }
+            function makeStarTexture() {
+                const c = document.createElement('canvas');
+                c.width = c.height = 32;
+                const ctx = c.getContext('2d');
+                const g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+                g.addColorStop(0, 'rgba(255,255,255,1)');
+                g.addColorStop(0.4, 'rgba(255,255,255,0.5)');
+                g.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = g; ctx.fillRect(0, 0, 32, 32);
+                return new THREE.CanvasTexture(c);
+            }
+            const starTexture = makeStarTexture();
+
+            /* ===== 动画状态 ===== */
+            let currentVariant = 'A';
+            let currentCfg = VARIANTS.A;
+            let isRebuilding = false;
+            const animState = {
+                phenStars: [], latticeNodes: [], fiberLines: [],
+                fiberEndpoints: [], flowParticles: [],
+                latticeGroup: null, scatterPoints: null
+            };
+
+            /* ================================================================
+               现象层构建
+               ================================================================ */
+            function buildPhenomenon(cfg) {
+                const pcfg = cfg.phen;
+                const YP = cfg.YP;
+                const conLinePos = [];
+                const haloPos = [];
+
+                for (let ci = 0; ci < pcfg.constellations; ci++) {
+                    var cx, cy, cz;
+                    if (pcfg.arrangement === 'organic') {
+                        cx = (Math.random() - 0.5) * pcfg.spread * 2;
+                        cz = (Math.random() - 0.5) * pcfg.spread * 2;
+                        cy = YP + 0.3 + Math.random() * 1.5;
+                    } else if (pcfg.arrangement === 'dome') {
+                        var phi = Math.acos(1 - (ci + 0.5) / pcfg.constellations * 0.7);
+                        var theta = Math.PI * (1 + Math.sqrt(5)) * ci;
+                        var r = pcfg.spread;
+                        cx = r * Math.sin(phi) * Math.cos(theta);
+                        cz = r * Math.sin(phi) * Math.sin(theta);
+                        cy = YP + 0.5 + r * Math.cos(phi) * 0.3;
+                    } else {
+                        var ang = (ci / pcfg.constellations) * Math.PI * 2 + Math.random() * 0.3;
+                        var rr = pcfg.spread * (0.4 + Math.random() * 0.6);
+                        cx = Math.cos(ang) * rr;
+                        cz = Math.sin(ang) * rr;
+                        cy = YP + 0.5 + Math.random() * 2.5;
+                    }
+
+                    var starCount = 3 + Math.floor(Math.random() * 5);
+                    var conSpread = 0.6 + Math.random() * 1.2;
+                    var baseAngle = Math.random() * Math.PI * 2;
+                    var conStarPos = [];
+
+                    for (var si = 0; si < starCount; si++) {
+                        var angle = baseAngle + (si / starCount) * Math.PI * 2 * (0.8 + Math.random() * 0.4);
+                        var r2 = conSpread * (0.3 + Math.random() * 0.7);
+                        var sx = cx + Math.cos(angle) * r2;
+                        var sy = cy + (Math.random() - 0.5) * conSpread * 0.5;
+                        var sz = cz + Math.sin(angle) * r2;
+
+                        var isBright = si === 0 || Math.random() < pcfg.brightRatio;
+                        var size = isBright
+                            ? pcfg.starSizeMin + (pcfg.starSizeMax - pcfg.starSizeMin) * (0.5 + Math.random() * 0.5)
+                            : pcfg.starSizeMin + (pcfg.starSizeMax - pcfg.starSizeMin) * Math.random() * 0.4;
+                        var color = isBright ? pcfg.starColor : pcfg.dimStarColor;
+                        var opacity = isBright ? 0.7 + Math.random() * 0.3 : 0.3 + Math.random() * 0.3;
+
+                        var star = new THREE.Mesh(
+                            new THREE.OctahedronGeometry(size, 0),
+                            new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity })
+                        );
+                        star.position.set(sx, sy, sz);
+                        mainGroup.add(star);
+
+                        animState.phenStars.push({
+                            mesh: star, pos: new THREE.Vector3(sx, sy, sz),
+                            bright: isBright, phase: Math.random() * Math.PI * 2
+                        });
+                        conStarPos.push(new THREE.Vector3(sx, sy, sz));
+
+                        if (isBright) {
+                            var hs = size * 3;
+                            haloPos.push(sx - hs, sy, sz, sx + hs, sy, sz);
+                            haloPos.push(sx, sy - hs, sz, sx, sy + hs, sz);
+                        }
+                    }
+
+                    for (var i = 0; i < conStarPos.length; i++)
+                        for (var j = i + 1; j < conStarPos.length; j++)
+                            if (Math.random() < pcfg.lineProb && conStarPos[i].distanceTo(conStarPos[j]) < conSpread * 1.5) {
+                                conLinePos.push(conStarPos[i].x, conStarPos[i].y, conStarPos[i].z);
+                                conLinePos.push(conStarPos[j].x, conStarPos[j].y, conStarPos[j].z);
+                            }
+                }
+
+                if (conLinePos.length > 0) {
+                    var clGeo = new THREE.BufferGeometry();
+                    clGeo.setAttribute('position', new THREE.Float32BufferAttribute(conLinePos, 3));
+                    mainGroup.add(new THREE.LineSegments(clGeo,
+                        new THREE.LineBasicMaterial({ color: pcfg.dimStarColor, transparent: true, opacity: 0.15 })));
+                }
+                if (haloPos.length > 0) {
+                    var hGeo = new THREE.BufferGeometry();
+                    hGeo.setAttribute('position', new THREE.Float32BufferAttribute(haloPos, 3));
+                    mainGroup.add(new THREE.LineSegments(hGeo,
+                        new THREE.LineBasicMaterial({ color: pcfg.starColor, transparent: true, opacity: 0.2 })));
+                }
+
+                /* 散星 — Points 单次绘制 */
+                var N = pcfg.scatterStars;
+                var sPos = new Float32Array(N * 3);
+                var sCol = new Float32Array(N * 3);
+                var dimC = new THREE.Color(pcfg.dimStarColor);
+                var starC = new THREE.Color(pcfg.starColor);
+                for (var i = 0; i < N; i++) {
+                    var px, py, pz;
+                    if (pcfg.arrangement === 'dome') {
+                        var ph = Math.acos(1 - Math.random() * 0.7);
+                        var th = Math.random() * Math.PI * 2;
+                        var pr = pcfg.spread * (0.3 + Math.random() * 0.7);
+                        px = pr * Math.sin(ph) * Math.cos(th);
+                        pz = pr * Math.sin(ph) * Math.sin(th);
+                        py = YP + 0.3 + pr * Math.cos(ph) * 0.3 + Math.random() * 0.5;
+                    } else {
+                        px = (Math.random() - 0.5) * pcfg.spread * 2;
+                        pz = (Math.random() - 0.5) * pcfg.spread * 2;
+                        py = YP + 0.2 + Math.random() * 2.5;
+                    }
+                    sPos[i*3] = px; sPos[i*3+1] = py; sPos[i*3+2] = pz;
+                    var bright = Math.random() < 0.12;
+                    var c = bright ? starC : dimC;
+                    var intens = bright ? 0.6 + Math.random() * 0.4 : 0.15 + Math.random() * 0.3;
+                    sCol[i*3] = c.r * intens; sCol[i*3+1] = c.g * intens; sCol[i*3+2] = c.b * intens;
+                }
+                var sGeo = new THREE.BufferGeometry();
+                sGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
+                sGeo.setAttribute('color', new THREE.BufferAttribute(sCol, 3));
+                var sMat = new THREE.PointsMaterial({
+                    size: pcfg.scatterSize, vertexColors: true, transparent: true,
+                    opacity: pcfg.scatterOpacity, sizeAttenuation: true,
+                    map: starTexture, blending: THREE.AdditiveBlending, depthWrite: false
+                });
+                var sp = new THREE.Points(sGeo, sMat);
+                mainGroup.add(sp);
+                animState.scatterPoints = sp;
+            }
+
+            /* ================================================================
+               晶格构建
+               ================================================================ */
+            function buildLattice(cfg) {
+                var lcfg = cfg.lattice;
+                var lg = new THREE.Group();
+                var step = lcfg.step;
+                var half = 1;
+
+                for (var xi = -half; xi <= half; xi++)
+                    for (var yi = -half; yi <= half; yi++)
+                        for (var zi = -half; zi <= half; zi++) {
+                            var pos = new THREE.Vector3(xi * step, yi * step, zi * step);
+                            var isCenter = (xi === 0 && yi === 0 && zi === 0);
+                            var ns = isCenter ? lcfg.centerSize : lcfg.nodeSize;
+                            var nc = isCenter ? AMBER : NAVY[400];
+
+                            var nd = new THREE.Mesh(
+                                new THREE.OctahedronGeometry(ns, 0),
+                                new THREE.MeshLambertMaterial({ color: nc, flatShading: true, transparent: true, opacity: 0.9 })
+                            );
+                            nd.position.copy(pos);
+                            lg.add(nd);
+                            animState.latticeNodes.push({ mesh: nd, pos: pos.clone(), isCenter: isCenter, phase: (xi + yi + zi) * 0.5 });
+
+                            if (isCenter) {
+                                for (var r = 0; r < 2; r++) {
+                                    var rp = [];
+                                    var rr = (0.22 + r * 0.08) * lcfg.centerGlow;
+                                    for (var k = 0; k <= 48; k++) {
+                                        var a = (k / 48) * Math.PI * 2;
+                                        rp.push(new THREE.Vector3(Math.cos(a) * rr, 0, Math.sin(a) * rr));
+                                    }
+                                    lg.add(new THREE.LineLoop(
+                                        new THREE.BufferGeometry().setFromPoints(rp),
+                                        new THREE.LineBasicMaterial({ color: AMBER, transparent: true, opacity: (0.45 - r * 0.15) * lcfg.centerGlow })
+                                    ));
+                                }
+                                if (lcfg.centerGlow > 1.3) {
+                                    var glow = new THREE.Mesh(
+                                        new THREE.OctahedronGeometry(lcfg.centerSize * 2.5, 0),
+                                        new THREE.MeshBasicMaterial({ color: AMBER, transparent: true, opacity: 0.06, blending: THREE.AdditiveBlending, depthWrite: false })
+                                    );
+                                    lg.add(glow);
+                                }
+                            }
+                        }
+
+                var eM1 = new THREE.LineBasicMaterial({ color: NAVY[400], transparent: true, opacity: lcfg.edgeOpacity * 0.7 });
+                var eM2 = new THREE.LineBasicMaterial({ color: NAVY[300], transparent: true, opacity: lcfg.edgeOpacity });
+                for (var i = 0; i < animState.latticeNodes.length; i++)
+                    for (var j = i + 1; j < animState.latticeNodes.length; j++) {
+                        var d = animState.latticeNodes[i].pos.distanceTo(animState.latticeNodes[j].pos);
+                        if (Math.abs(d - step) < 0.01) {
+                            var isSurf = (Math.abs(animState.latticeNodes[i].pos.x) === half || Math.abs(animState.latticeNodes[j].pos.x) === half) &&
+                                         (Math.abs(animState.latticeNodes[i].pos.y) === half || Math.abs(animState.latticeNodes[j].pos.y) === half);
+                            lg.add(new THREE.Line(
+                                new THREE.BufferGeometry().setFromPoints([animState.latticeNodes[i].pos, animState.latticeNodes[j].pos]),
+                                isSurf ? eM2 : eM1
+                            ));
+                        }
+                    }
+                mainGroup.add(lg);
+                animState.latticeGroup = lg;
+            }
+
+            /* ================================================================
+               神经层构建
+               ================================================================ */
+            function createFibers(bundle, ncfg) {
+                var bColors = [CH.unis, NAVY[400], NAVY[500], CH.unis, NAVY[400], NAVY[300]];
+                var bc = bColors[bundle.ci];
+                var cps = bundle.points.map(function(p) { return new THREE.Vector3(p[0], p[1], p[2]); });
+
+                for (var f = 0; f < bundle.count; f++) {
+                    var jit = cps.map(function(p) {
+                        return new THREE.Vector3(
+                            p.x + (Math.random() - 0.5) * bundle.spread,
+                            p.y + (Math.random() - 0.5) * bundle.spread * 0.5,
+                            p.z + (Math.random() - 0.5) * bundle.spread
+                        );
+                    });
+                    var curve = new THREE.CatmullRomCurve3(jit);
+                    var cp = curve.getPoints(28);
+                    var op = ncfg.opacityMin + Math.random() * (ncfg.opacityMax - ncfg.opacityMin);
+                    var fl = new THREE.Line(
+                        new THREE.BufferGeometry().setFromPoints(cp),
+                        new THREE.LineBasicMaterial({ color: bc, transparent: true, opacity: op })
+                    );
+                    mainGroup.add(fl);
+                    animState.fiberLines.push({ line: fl, baseOpacity: op });
+
+                    if (f < 4) {
+                        [0, jit.length - 1].forEach(function(idx) {
+                            var node = new THREE.Mesh(
+                                new THREE.SphereGeometry(0.035, 8, 8),
+                                new THREE.MeshLambertMaterial({ color: bc, flatShading: true, transparent: true, opacity: 0.5 })
+                            );
+                            node.position.copy(jit[idx]);
+                            mainGroup.add(node);
+                            animState.fiberEndpoints.push(jit[idx].clone());
+                        });
+                    }
+                }
+            }
+
+            function buildNeural(cfg) {
+                var ncfg = cfg.neural;
+                var YN = cfg.YN;
+
+                if (ncfg.arrangement === 'organic') {
+                    var bundles = [
+                        { points: [[-3.2,YN+0.2,0],[-1.8,YN+0.6,0.3],[-0.3,YN+0.8,0],[1.2,YN+0.6,-0.3],[3.0,YN+0.2,0]], count: 18, spread: 0.5, ci: 0 },
+                        { points: [[-2.8,YN+0.1,-2],[-2.3,YN+0.4,-1],[-2.0,YN+0.7,0.3],[-2.4,YN+0.5,1.6],[-2.9,YN+0.1,2.5]], count: 15, spread: 0.4, ci: 1 },
+                        { points: [[2.8,YN+0.1,-2],[2.3,YN+0.4,-1],[2.0,YN+0.7,0.3],[2.4,YN+0.5,1.6],[2.9,YN+0.1,2.5]], count: 15, spread: 0.4, ci: 2 },
+                        { points: [[-1.0,YN+0.0,-2.5],[-0.6,YN+0.3,-1.5],[-0.3,YN+0.6,-0.3],[-0.2,YN+0.5,0.8],[-0.4,YN+0.2,2.0]], count: 14, spread: 0.35, ci: 3 },
+                        { points: [[1.0,YN+0.0,-2.5],[0.6,YN+0.3,-1.5],[0.3,YN+0.6,-0.3],[0.2,YN+0.5,0.8],[0.4,YN+0.2,2.0]], count: 14, spread: 0.35, ci: 4 },
+                        { points: [[-2.5,YN+0.3,1.5],[-1.5,YN+0.5,0.8],[-0.5,YN+0.4,0.2],[0.5,YN+0.5,0.8],[1.5,YN+0.3,1.5],[2.5,YN+0.2,0.5]], count: 12, spread: 0.3, ci: 5 },
+                        { points: [[0,YN+0.8,-2.5],[-0.5,YN+0.5,-1.5],[-0.8,YN+0.2,-0.3],[-0.5,YN+0.0,1.0],[0,YN+0.2,2.2]], count: 10, spread: 0.3, ci: 0 },
+                        { points: [[0,YN+0.8,2.5],[0.5,YN+0.5,1.5],[0.8,YN+0.2,0.3],[0.5,YN+0.0,-1.0],[0,YN+0.2,-2.2]], count: 10, spread: 0.3, ci: 0 },
+                        { points: [[-2.0,YN+0.1,-1.0],[-1.5,YN+0.25,-0.8],[-1.0,YN+0.1,-0.6]], count: 8, spread: 0.25, ci: 1 },
+                        { points: [[1.5,YN+0.1,0.5],[1.0,YN+0.25,0.8],[0.5,YN+0.1,1.0]], count: 8, spread: 0.25, ci: 2 },
+                        { points: [[-1.0,YN+0.1,1.5],[-0.5,YN+0.25,1.2],[0,YN+0.1,0.8]], count: 8, spread: 0.25, ci: 3 },
+                        { points: [[1.0,YN+0.1,-1.5],[0.5,YN+0.25,-1.2],[0,YN+0.1,-0.8]], count: 8, spread: 0.25, ci: 4 },
+                        { points: [[-3.5,YN+0.2,-1.5],[-2.5,YN+0.4,-0.5],[-1.5,YN+0.6,0.5],[-0.5,YN+0.4,1.0]], count: 12, spread: 0.4, ci: 5 },
+                        { points: [[3.5,YN+0.2,1.5],[2.5,YN+0.4,0.5],[1.5,YN+0.6,-0.5],[0.5,YN+0.4,-1.0]], count: 12, spread: 0.4, ci: 1 },
+                        { points: [[-1.5,YN+0.0,-3.0],[-1.0,YN+0.3,-2.0],[0,YN+0.6,-1.0],[1.0,YN+0.3,-2.0],[1.5,YN+0.0,-3.0]], count: 14, spread: 0.35, ci: 2 },
+                        { points: [[-1.5,YN+0.0,3.0],[-1.0,YN+0.3,2.0],[0,YN+0.6,1.0],[1.0,YN+0.3,2.0],[1.5,YN+0.0,3.0]], count: 14, spread: 0.35, ci: 3 },
+                        { points: [[-3.0,YN+0.5,0],[-2.0,YN+0.7,0.5],[-1.0,YN+0.4,0.5]], count: 8, spread: 0.3, ci: 4 },
+                        { points: [[3.0,YN+0.5,0],[2.0,YN+0.7,-0.5],[1.0,YN+0.4,-0.5]], count: 8, spread: 0.3, ci: 5 },
+                        { points: [[0,YN+0.3,-3.5],[0.5,YN+0.5,-2.5],[0.8,YN+0.3,-1.5]], count: 8, spread: 0.25, ci: 0 },
+                        { points: [[0,YN+0.3,3.5],[-0.5,YN+0.5,2.5],[-0.8,YN+0.3,1.5]], count: 8, spread: 0.25, ci: 0 }
+                    ];
+                    bundles.forEach(function(b) { createFibers(b, ncfg); });
+
+                } else if (ncfg.arrangement === 'fan') {
+                    for (var i = 0; i < ncfg.bundles; i++) {
+                        var angle = (i / ncfg.bundles) * Math.PI * 2;
+                        var endR = 3.0 + (i % 3) * 0.5;
+                        var endX = Math.cos(angle) * endR;
+                        var endZ = Math.sin(angle) * endR;
+                        var midX = Math.cos(angle) * endR * 0.4;
+                        var midZ = Math.sin(angle) * endR * 0.4;
+                        var count = ncfg.minFibers + Math.floor(Math.random() * (ncfg.maxFibers - ncfg.minFibers));
+                        createFibers({
+                            points: [[0,YN+0.6,0],[midX*0.5,YN+0.4,midZ*0.5],[midX,YN+0.2,midZ],[endX*0.8,YN+0.0,endZ*0.8],[endX,YN+0.1,endZ]],
+                            count: count, spread: ncfg.spread, ci: i % 3
+                        }, ncfg);
+                    }
+
+                } else {
+                    var mistSeeds = [
+                        { points: [[-3.2,YN+0.2,0],[-1.8,YN+0.5,0.3],[-0.3,YN+0.7,0],[1.2,YN+0.5,-0.3],[3.0,YN+0.2,0]], count: 10, ci: 0 },
+                        { points: [[-2.8,YN+0.1,-2],[-2.0,YN+0.5,0],[-2.5,YN+0.2,2]], count: 10, ci: 1 },
+                        { points: [[2.8,YN+0.1,-2],[2.0,YN+0.5,0],[2.5,YN+0.2,2]], count: 10, ci: 2 },
+                        { points: [[-1.0,YN+0.0,-2.5],[0,YN+0.4,0],[0.5,YN+0.1,2.0]], count: 9, ci: 3 },
+                        { points: [[1.0,YN+0.0,-2.5],[0,YN+0.4,0],[-0.5,YN+0.1,2.0]], count: 9, ci: 4 },
+                        { points: [[-2.5,YN+0.3,1.5],[0,YN+0.5,0.5],[2.5,YN+0.3,-0.5]], count: 10, ci: 0 },
+                        { points: [[0,YN+0.7,-2.5],[0,YN+0.3,0],[0,YN+0.5,2.5]], count: 8, ci: 1 },
+                        { points: [[-3.0,YN+0.2,-1.5],[-1.5,YN+0.5,0],[0,YN+0.2,1.5]], count: 8, ci: 2 },
+                        { points: [[3.0,YN+0.2,1.5],[1.5,YN+0.5,0],[0,YN+0.2,-1.5]], count: 8, ci: 3 },
+                        { points: [[-2.0,YN+0.1,-1.0],[-1.0,YN+0.3,-0.5],[0,YN+0.1,0]], count: 8, ci: 4 },
+                        { points: [[2.0,YN+0.1,1.0],[1.0,YN+0.3,0.5],[0,YN+0.1,0]], count: 8, ci: 0 },
+                        { points: [[-1.5,YN+0.0,-2.5],[0,YN+0.4,-1.0],[1.5,YN+0.0,-2.5]], count: 8, ci: 1 },
+                        { points: [[-1.5,YN+0.0,2.5],[0,YN+0.4,1.0],[1.5,YN+0.0,2.5]], count: 8, ci: 2 },
+                        { points: [[-3.5,YN+0.3,0],[-2.0,YN+0.5,1.0],[-0.5,YN+0.3,2.0]], count: 9, ci: 3 }
+                    ];
+                    mistSeeds.forEach(function(b) { b.spread = ncfg.spread; createFibers(b, ncfg); });
+                }
+
+                var npGeo = new THREE.BoxGeometry(9, 0.03, 9);
+                var np = new THREE.Mesh(npGeo, new THREE.MeshLambertMaterial({ color: NAVY[800], transparent: true, opacity: 0.25, flatShading: true }));
+                np.position.y = YN; mainGroup.add(np);
+                var npE = new THREE.LineSegments(new THREE.EdgesGeometry(npGeo), new THREE.LineBasicMaterial({ color: NAVY[500], transparent: true, opacity: 0.15 }));
+                npE.position.y = YN; mainGroup.add(npE);
+            }
+
+            /* ================================================================
+               层间连接
+               ================================================================ */
+            function buildConnections(cfg) {
+                var ccfg = cfg.connections;
+                var step = cfg.lattice.step;
+                var half = 1;
+                var uplsCurves = [];
+
+                animState.latticeNodes.filter(function(n) { return n.pos.y === half * step; }).forEach(function(n) {
+                    var nearby = animState.phenStars
+                        .map(function(s) { return { pos: s.pos, dist: n.pos.distanceTo(s.pos) }; })
+                        .sort(function(a, b) { return a.dist - b.dist; })
+                        .slice(0, ccfg.perNode);
+                    nearby.forEach(function(s, idx) {
+                        if (s.dist < 10) {
+                            var mid = new THREE.Vector3(
+                                (n.pos.x + s.pos.x) / 2 + (Math.random() - 0.5) * 0.3,
+                                (n.pos.y + s.pos.y) / 2,
+                                (n.pos.z + s.pos.z) / 2 + (Math.random() - 0.5) * 0.3
+                            );
+                            var curve = new THREE.QuadraticBezierCurve3(s.pos.clone(), mid, n.pos.clone());
+                            var op = ccfg.opacityMin + idx * (ccfg.opacityMax - ccfg.opacityMin) / ccfg.perNode;
+                            mainGroup.add(new THREE.Line(
+                                new THREE.BufferGeometry().setFromPoints(curve.getPoints(16)),
+                                new THREE.LineBasicMaterial({ color: CH.upls, transparent: true, opacity: op })
+                            ));
+                            uplsCurves.push(curve);
+                        }
+                    });
+                });
+
+                var unisCurves = [];
+                animState.latticeNodes.filter(function(n) { return n.pos.y === -half * step; }).forEach(function(n) {
+                    var nearby = animState.fiberEndpoints
+                        .map(function(ep) { return { pos: ep, dist: n.pos.distanceTo(ep) }; })
+                        .sort(function(a, b) { return a.dist - b.dist; })
+                        .slice(0, ccfg.perNode);
+                    nearby.forEach(function(s, idx) {
+                        if (s.dist < 10) {
+                            var mid = new THREE.Vector3(
+                                (n.pos.x + s.pos.x) / 2 + (Math.random() - 0.5) * 0.3,
+                                (n.pos.y + s.pos.y) / 2,
+                                (n.pos.z + s.pos.z) / 2 + (Math.random() - 0.5) * 0.3
+                            );
+                            var curve = new THREE.QuadraticBezierCurve3(n.pos.clone(), mid, s.pos.clone());
+                            var op = ccfg.opacityMin + idx * (ccfg.opacityMax - ccfg.opacityMin) / ccfg.perNode;
+                            mainGroup.add(new THREE.Line(
+                                new THREE.BufferGeometry().setFromPoints(curve.getPoints(16)),
+                                new THREE.LineBasicMaterial({ color: CH.unis, transparent: true, opacity: op })
+                            ));
+                            unisCurves.push(curve);
+                        }
+                    });
+                });
+
+                uplsCurves.forEach(function(curve) {
+                    var p = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), new THREE.MeshBasicMaterial({ color: CH.upls, transparent: true }));
+                    animState.flowParticles.push({ mesh: p, curve: curve, progress: Math.random(), speed: 0.06 + Math.random() * 0.05 });
+                    mainGroup.add(p);
+                });
+                unisCurves.forEach(function(curve) {
+                    var p = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), new THREE.MeshBasicMaterial({ color: CH.unis, transparent: true }));
+                    animState.flowParticles.push({ mesh: p, curve: curve, progress: Math.random(), speed: 0.06 + Math.random() * 0.05 });
+                    mainGroup.add(p);
+                });
+            }
+
+            function buildLabels(cfg) {
+                var lP = label('现象层 · 星座', 'rgba(214,229,243,0.65)', 0.75);
+                lP.position.set(-4.5, cfg.YP + 1.8, 3); mainGroup.add(lP);
+                var lF = label('功能层', '#F59E0B', 1.1);
+                lF.position.set(3.5, 1.5, 2); mainGroup.add(lF);
+                var lG = codeLabel('42 维 · 形式化降维', 'rgba(245,158,11,0.4)', 0.5);
+                lG.position.set(3.5, 0.5, 2); mainGroup.add(lG);
+                var lN = label('神经层 · DTI 纤维束', 'rgba(214,229,243,0.65)', 0.75);
+                lN.position.set(-4.5, cfg.YN - 0.7, 3); mainGroup.add(lN);
+                var lC1 = codeLabel('UPLS · 语义通道', 'rgba(90,130,112,0.6)', 0.45);
+                lC1.position.set(-3.5, cfg.YP * 0.5, 1.5); mainGroup.add(lC1);
+                var lC2 = codeLabel('UNIS · 神经通道', 'rgba(91,112,128,0.6)', 0.45);
+                lC2.position.set(3.5, cfg.YN * 0.5, -1.5); mainGroup.add(lC2);
+            }
+
+            /* ===== 背景星点（共享，不随变体清除） ===== */
+            var bgCount = 400;
+            var bgGeo = new THREE.BufferGeometry();
+            var bgPos = new Float32Array(bgCount * 3);
+            for (var i = 0; i < bgCount; i++) {
+                bgPos[i*3] = (Math.random() - 0.5) * 55;
+                bgPos[i*3+1] = (Math.random() - 0.5) * 40;
+                bgPos[i*3+2] = (Math.random() - 0.5) * 40 - 8;
+            }
+            bgGeo.setAttribute('position', new THREE.BufferAttribute(bgPos, 3));
+            var bgPoints = new THREE.Points(bgGeo, new THREE.PointsMaterial({ color: NAVY[300], size: 0.025, transparent: true, opacity: 0.25 }));
+            scene.add(bgPoints);
+
+            /* ===== 场景管理 ===== */
+            function clearMainGroup() {
+                while (mainGroup.children.length > 0) {
+                    var child = mainGroup.children[0];
+                    child.traverse(function(obj) {
+                        if (obj.geometry) obj.geometry.dispose();
+                        if (obj.material) {
+                            if (Array.isArray(obj.material)) obj.material.forEach(function(m) { m.dispose(); });
+                            else obj.material.dispose();
+                        }
+                    });
+                    mainGroup.remove(child);
+                }
+            }
+            function resetAnimState() {
+                animState.phenStars = []; animState.latticeNodes = [];
+                animState.fiberLines = []; animState.fiberEndpoints = [];
+                animState.flowParticles = []; animState.latticeGroup = null;
+                animState.scatterPoints = null;
+            }
+
+            function buildVariant(key) {
+                isRebuilding = true;
+                currentVariant = key;
+                currentCfg = VARIANTS[key];
+                clearMainGroup();
+                resetAnimState();
+                buildPhenomenon(currentCfg);
+                buildLattice(currentCfg);
+                buildNeural(currentCfg);
+                buildConnections(currentCfg);
+                buildLabels(currentCfg);
+
+                document.getElementById('s-title').textContent = currentCfg.title;
+                document.getElementById('s-text').textContent = currentCfg.desc;
+                document.getElementById('s-metaphor').textContent = currentCfg.metaphor;
+                document.getElementById('v-tag').textContent = currentCfg.tag + ' · ' + currentCfg.tagline;
+
+                camera.position.set(9, currentCfg.cameraY, currentCfg.cameraDist);
+                camera.lookAt(0, 0, 0);
+                isRebuilding = false;
+            }
+
+            /* ===== 交互 ===== */
+            var targetRotY = 0, targetRotX = 0, dragRotY = 0, dragRotX = 0;
+            var isDragging = false, dragSX = 0, dragSY = 0, mouseX = 0, mouseY = 0;
+            var autoRotY = 0;
+            container.style.cursor = 'grab';
+
+            function onDown(x, y) { isDragging = true; dragSX = x; dragSY = y; container.style.cursor = 'grabbing'; }
+            function onMove(x, y) {
+                if (isDragging) {
+                    targetRotY = dragRotY + (x - dragSX) * 0.006;
+                    targetRotX = Math.max(-0.5, Math.min(0.5, dragRotX + (y - dragSY) * 0.004));
+                } else {
+                    mouseX = (x / vw() - 0.5) * 2;
+                    mouseY = (y / vh() - 0.5) * 2;
+                }
+            }
+            function onUp() { isDragging = false; dragRotY = targetRotY; dragRotX = targetRotX; container.style.cursor = 'grab'; }
+            container.addEventListener('mousedown', function(e) { onDown(e.clientX, e.clientY); });
+            window.addEventListener('mousemove', function(e) { onMove(e.clientX, e.clientY); });
+            window.addEventListener('mouseup', onUp);
+            container.addEventListener('touchstart', function(e) { if (e.touches.length === 1) onDown(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+            container.addEventListener('touchmove', function(e) { if (e.touches.length === 1) { e.preventDefault(); onMove(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: false });
+            container.addEventListener('touchend', onUp);
+
+            document.querySelectorAll('.variant-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var key = btn.dataset.variant;
+                    if (key === currentVariant) return;
+                    document.querySelectorAll('.variant-btn').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    buildVariant(key);
+                });
+            });
+
+            renderer.domElement.addEventListener('webglcontextlost', function(e) { e.preventDefault(); }, false);
+            renderer.domElement.addEventListener('webglcontextrestored', function() {
+                renderer.setClearColor(0x0A1E3D, 1);
+                renderer.setSize(vw(), vh());
+            }, false);
+
+            /* ===== 动画 ===== */
+            var clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                var dt = Math.min(clock.getDelta(), 0.05);
+                var t = clock.getElapsedTime();
+
+                if (isRebuilding) { renderer.render(scene, camera); return; }
+
+                if (!reducedMotion) {
+                    if (!isDragging) autoRotY += dt * 0.08;
+                    mainGroup.rotation.y = targetRotY + autoRotY;
+                    mainGroup.rotation.x = targetRotX;
+                    camera.position.x = 9 + mouseX * 0.4;
+                    camera.position.y = currentCfg.cameraY - mouseY * 0.3;
+                    camera.lookAt(0, 0, 0);
+                    bgPoints.rotation.y += dt * 0.006;
+
+                    animState.phenStars.forEach(function(s) {
+                        var tw = s.bright
+                            ? 0.65 + Math.sin(t * 2.5 + s.phase) * 0.3
+                            : 0.3 + Math.sin(t * 1.5 + s.phase) * 0.2;
+                        s.mesh.material.opacity = tw;
+                    });
+
+                    if (animState.scatterPoints) {
+                        animState.scatterPoints.material.opacity = currentCfg.phen.scatterOpacity * (0.85 + Math.sin(t * 0.5) * 0.15);
+                    }
+
+                    animState.latticeNodes.forEach(function(n) {
+                        var pulse = n.isCenter
+                            ? 1 + Math.sin(t * 2.5) * 0.1
+                            : 1 + Math.sin(t * 1.8 + n.phase) * 0.05;
+                        n.mesh.scale.set(pulse, pulse, pulse);
+                        if (n.isCenter) n.mesh.material.opacity = 0.8 + Math.sin(t * 2.5) * 0.15;
+                    });
+
+                    if (animState.latticeGroup) {
+                        var breath = 1 + Math.sin(t * 0.5) * 0.012;
+                        animState.latticeGroup.scale.set(breath, breath, breath);
+                    }
+
+                    animState.fiberLines.forEach(function(fl, i) {
+                        fl.line.material.opacity = fl.baseOpacity + Math.sin(t * 0.8 + i * 0.1) * 0.04;
+                    });
+
+                    animState.flowParticles.forEach(function(fp) {
+                        fp.progress += dt * fp.speed;
+                        if (fp.progress > 1) fp.progress = 0;
+                        fp.mesh.position.copy(fp.curve.getPoint(fp.progress));
+                        fp.mesh.material.opacity = Math.sin(fp.progress * Math.PI) * 0.8;
+                    });
+                }
+
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', function() {
+                var w = vw(), h = vh();
+                if (w > 0 && h > 0) {
+                    camera.aspect = w / h;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(w, h);
+                }
+            });
+
+            buildVariant('A');
+            animate();
+        }
+    </script>
+</body>
+</html>

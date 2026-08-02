@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S2 · Instanced Ribbon Fibers — RCT4 Lab</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "../intre-3d-hero/lib/three.module.js",
+    "three/addons/": "../intre-3d-hero/lib/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { buildFibers, TRACTS } from './shared/fibers.js';
+import { decFromTangent } from './shared/dec.js';
+import { buildShellGroup } from './shared/brain-shell.js';
+import { createLab, attachTractToggles } from './shared/rig.js';
+
+window.THREE = THREE;  // 诊断用
+
+/* ================================================================
+   S2 核心思路：InstancedBufferGeometry + 相机朝向 billboard 带状纤维
+   每根纤维的每个线段 = 1 个 instanced quad（4 顶点 2 三角形）
+   顶点着色器中用 cross(tangent, viewDir) 展开宽度 → 真 3D 体积感
+   ================================================================ */
+
+const S2_SAMPLES = 40;  // 40 采样点：曲线更平滑，接近参考图的丝滑感
+
+/* ============ Ribbon Vertex Shader ============ */
+const VERT = /* glsl */`
+// 基础 quad 角点 (-1,-1)..(1,1)
+// 实例属性：纤维段中心、切线方向、DEC 色、参数 u、随机种子、束索引、径向标记、宽度缩放
+attribute vec3 iCenter;
+attribute vec3 iTangent;
+attribute vec3 iColor;
+attribute float iU;
+attribute float iRand;
+attribute float iTractIdx;
+attribute float iRadial;
+attribute float iWidthScale;
+
+uniform float uTime;
+uniform float uRibbonWidth;
+uniform float uPulseSpeed;
+uniform vec3 uCamPos;
+
+varying vec3 vColor;
+varying float vU;
+varying float vRand;
+varying float vY;
+varying float vTractIdx;
+varying float vRadial;
+varying float vEdge;  // quad 横向边缘 0..1，用于边缘柔化
+
+void main(){
+  vColor     = iColor;
+  vU         = iU;
+  vRand      = iRand;
+  vTractIdx  = iTractIdx;
+  vRadial    = iRadial;
+  vEdge      = abs(position.x);  // 0=中心 1=边缘
+
+  // 世界空间中心 & 切线
+  vec4 wCenter = modelMatrix * vec4(iCenter, 1.0);
+  vec3 wTan    = normalize(mat3(modelMatrix) * iTangent);
+  vY = wCenter.y;
+
+  // 相机朝向 billboard 展开（带退化回退）
+  vec3 viewDir = normalize(uCamPos - wCenter.xyz);
+  vec3 right   = cross(wTan, viewDir);
+  float rightLen = length(right);
+  if (rightLen < 0.0001) {
+    // 切线与视线平行时，用世界上向量回退
+    right = normalize(cross(wTan, vec3(0.0, 1.0, 0.0)));
+    if (length(right) < 0.0001) right = vec3(1.0, 0.0, 0.0);
+  } else {
+    right = normalize(right);
+  }
+  vec3 up      = normalize(cross(right, wTan));
+
+  // 端点锥形收束（毛刷感）— 温和收束
+  float taper = smoothstep(0.0, 0.05, vU) * smoothstep(1.0, 0.92, vU);
+
+  // 电流脉冲经过时微微膨胀
+  float ph    = fract(uTime * 0.10 * uPulseSpeed + iRand * 0.9 - vU);
+  float pulse = exp(-ph * 28.0);
+  float widthMod = 1.0 + pulse * 0.6;
+
+  float w = uRibbonWidth * iWidthScale * taper * widthMod;
+
+  // quad 展开：position.x = 横向(-1..1)，position.y = 沿纤维(-1..1)
+  // 沿纤维方向必须覆盖整个段长度，确保相邻 quad 重叠形成连续带
+  // 段长 ≈ 2*brainRadius/samples ≈ 0.06，而 w ≈ 0.006，所以需要 ~10x
+  float alongLen = w * 20.0;
+  vec3 offset = right * position.x * w + up * position.y * alongLen;
+  vec3 worldPos = wCenter.xyz + offset;
+
+  gl_Position = projectionMatrix * viewMatrix * vec4(worldPos, 1.0);
+}
+`;
+
+/* ============ Ribbon Fragment Shader ============ */
+const FRAG = /* glsl */`
+uniform float uTime;
+uniform float uPulseAmp;
+uniform float uPulseSpeed;
+uniform float uSweepAmp;
+uniform float uBase;
+uniform float uAlpha;
+
+varying vec3 vColor;
+varying float vU;
+varying float vRand;
+varying float vY;
+varying float vTractIdx;
+varying float vRadial;
+varying float vEdge;
+
+void main(){
+  // 诊断模式：固定输出 DEC 色，全不透明
+  gl_FragColor = vec4(vColor, 0.8);
+
+  /* 原始代码（暂时禁用）
+  // 沿纤维行进的彗星脉冲
+  float ph    = fract(uTime * 0.10 * uPulseSpeed + vRand * 0.9 - vU);
+  float comet = exp(-ph * 28.0);
+
+  // 自下而上扫描波
+  float waveY = mix(-0.95, 1.05, fract(uTime * 0.06));
+  float sweep = exp(-pow((vY - waveY) * 4.0, 2.0));
+
+  // 呼吸
+  float breath = 0.93 + 0.07 * sin(uTime * 0.4 + vRand * 6.2831);
+
+  // 横向边缘柔化 → 丝带圆润感（非硬边矩形）
+  float edgeSoft = 1.0 - smoothstep(0.45, 1.0, vEdge);
+
+  // 基础色：DEC 色 * 亮度
+  vec3 baseCol   = vColor * uBase * breath * 1.5;
+  float baseAlpha = uAlpha * breath * edgeSoft;
+
+  // 放射丝调制：中心淡出防白雾
+  float radialFade = mix(1.0, smoothstep(0.06, 0.55, vU), vRadial);
+  float radialAmp  = mix(1.0, 0.50, vRadial);
+  baseAlpha *= radialFade * radialAmp;
+
+  // 扫描波提亮
+  vec3 sweepCol = baseCol * sweep * uSweepAmp * 0.4;
+  baseAlpha += sweep * uSweepAmp * 0.05;
+
+  // 电流脉冲：HDR 白芯 + DEC 边 → bloom 只点亮火花
+  vec3 sparkCol   = (vColor * 2.2 + vec3(0.7)) * comet * uPulseAmp;
+  float sparkAlpha = comet * 0.35 * uPulseAmp * edgeSoft;
+
+  vec3  finalCol   = baseCol + sweepCol + sparkCol;
+  float finalAlpha = baseAlpha + sparkAlpha;
+
+  gl_FragColor = vec4(finalCol, clamp(finalAlpha, 0.0, 0.92));
+  */
+}
+`;
+
+/* ============ 构建场景 ============ */
+const lab = createLab({
+  tag: 'S2 / 5',
+  title: 'Instanced Ribbon Fibers',
+  desc: 'InstancedBufferGeometry 带状纤维：每段 = 相机朝向 billboard quad，顶点着色器展开宽度，真 3D 体积感 + DEC 方向编码色 + 电流脉冲 bloom。',
+  bloom: { strength: 0.70, radius: 0.35, threshold: 0.45 },
+  camera: { x: 2.0, y: 0.6, z: 2.8 },
+});
+
+// 降低曝光，防止 ACES tonemapping 后过亮
+lab.renderer.toneMappingExposure = 1.05;
+
+lab.uniforms.uBase            = { value: 1.0 };
+lab.uniforms.uAlpha           = { value: 0.18 };
+lab.uniforms.uRibbonWidth     = { value: 0.008 };
+lab.uniforms.uCamPos      = { value: new THREE.Vector3() };
+
+const ribbonMat = new THREE.ShaderMaterial({
+  vertexShader:   VERT,
+  fragmentShader: FRAG,
+  uniforms:       lab.uniforms,
+  transparent: true,
+  depthWrite:  false,
+  depthTest:   true,
+  blending:    THREE.AdditiveBlending,
+  side:        THREE.DoubleSide,
+});
+
+let shell = null;
+const tractMeshes = {};
+
+function build(density, jitterScale) {
+  // 清理旧 mesh
+  for (const k of Object.keys(tractMeshes)) {
+    lab.brainGroup.remove(tractMeshes[k]);
+    tractMeshes[k].geometry.dispose();
+    delete tractMeshes[k];
+  }
+  if (shell) { lab.brainGroup.remove(shell); shell = null; }
+
+  // 幽灵壳
+  shell = buildShellGroup({ opacity: 0.18 });
+  shell.renderOrder = 1;
+  lab.brainGroup.add(shell);
+
+  // 纤维（32 采样点）
+  const { fibers, meta } = buildFibers(density, 20260725, jitterScale, S2_SAMPLES);
+
+  // 按 tract 分组
+  const byTract = {};
+  for (let fi = 0; fi < fibers.length; fi++) {
+    const f = fibers[fi];
+    (byTract[f.tract.id] = byTract[f.tract.id] || []).push({ f, fi });
+  }
+
+  // 基础 quad 模板
+  const baseQuad = new THREE.PlaneGeometry(2, 2, 1, 1);
+
+  let tractIdx = 0;
+  for (const tract of TRACTS) {
+    const list = byTract[tract.id] || [];
+    if (list.length === 0) { tractIdx++; continue; }
+
+    const segsPerFiber = S2_SAMPLES - 1;
+    const instanceCount = list.length * segsPerFiber;
+    const isRadial = tract.kind === 'radial' ? 1.0 : 0.0;
+    const wScale   = isRadial > 0.5 ? 0.75 : 1.0;  // 放射丝稍窄
+
+    // 实例属性数组
+    const centers    = new Float32Array(instanceCount * 3);
+    const tangents   = new Float32Array(instanceCount * 3);
+    const colors     = new Float32Array(instanceCount * 3);
+    const us         = new Float32Array(instanceCount);
+    const rands      = new Float32Array(instanceCount);
+    const tractIdxs  = new Float32Array(instanceCount);
+    const radials    = new Float32Array(instanceCount);
+    const widthScales = new Float32Array(instanceCount);
+
+    let ii = 0;
+    for (const { f } of list) {
+      for (let s = 0; s < segsPerFiber; s++) {
+        const i0 = s, i1 = s + 1;
+        // 段中心
+        const cx = (f.pts[i0*3]   + f.pts[i1*3])   * 0.5;
+        const cy = (f.pts[i0*3+1] + f.pts[i1*3+1]) * 0.5;
+        const cz = (f.pts[i0*3+2] + f.pts[i1*3+2]) * 0.5;
+        // 段切线（归一化）
+        let tx = f.pts[i1*3]   - f.pts[i0*3];
+        let ty = f.pts[i1*3+1] - f.pts[i0*3+1];
+        let tz = f.pts[i1*3+2] - f.pts[i0*3+2];
+        const tl = Math.hypot(tx, ty, tz) || 1;
+        tx /= tl; ty /= tl; tz /= tl;
+        // DEC 色（段中点切线）
+        const [cr, cg, cb] = decFromTangent(
+          (f.tan[i0*3]   + f.tan[i1*3])   * 0.5,
+          (f.tan[i0*3+1] + f.tan[i1*3+1]) * 0.5,
+          (f.tan[i0*3+2] + f.tan[i1*3+2]) * 0.5
+        );
+
+        centers[ii*3] = cx; centers[ii*3+1] = cy; centers[ii*3+2] = cz;
+        tangents[ii*3] = tx; tangents[ii*3+1] = ty; tangents[ii*3+2] = tz;
+        colors[ii*3] = cr; colors[ii*3+1] = cg; colors[ii*3+2] = cb;
+        us[ii]        = (s + 0.5) / segsPerFiber;
+        rands[ii]     = f.rand;
+        tractIdxs[ii] = tractIdx;
+        radials[ii]   = isRadial;
+        widthScales[ii] = wScale;
+        ii++;
+      }
+    }
+
+    // InstancedBufferGeometry（clone 防止 dispose 后失效）
+    const geo = new THREE.InstancedBufferGeometry();
+    geo.index = baseQuad.index.clone();
+    geo.setAttribute('position', baseQuad.getAttribute('position').clone());
+
+    geo.setAttribute('iCenter',    new THREE.InstancedBufferAttribute(centers, 3));
+    geo.setAttribute('iTangent',   new THREE.InstancedBufferAttribute(tangents, 3));
+    geo.setAttribute('iColor',     new THREE.InstancedBufferAttribute(colors, 3));
+    geo.setAttribute('iU',         new THREE.InstancedBufferAttribute(us, 1));
+    geo.setAttribute('iRand',      new THREE.InstancedBufferAttribute(rands, 1));
+    geo.setAttribute('iTractIdx',  new THREE.InstancedBufferAttribute(tractIdxs, 1));
+    geo.setAttribute('iRadial',    new THREE.InstancedBufferAttribute(radials, 1));
+    geo.setAttribute('iWidthScale', new THREE.InstancedBufferAttribute(widthScales, 1));
+    geo.instanceCount = instanceCount;
+
+    const mesh = new THREE.Mesh(geo, ribbonMat);
+    mesh.renderOrder = 2;
+    mesh.frustumCulled = false;
+    mesh.userData.name = tract.name;
+    lab.brainGroup.add(mesh);
+    tractMeshes[tract.id] = mesh;
+    tractIdx++;
+  }
+
+  baseQuad.dispose();
+  return { fibers, meta };
+}
+
+let meta = build(3.0, 0.40).meta;
+window.__renderer = lab.renderer;
+window.__composer = lab.composer;
+window.__camera = lab.camera;
+window.__scene = lab.scene;
+
+/* ============ GUI ============ */
+lab.gui.section('BLOOM');
+lab.gui.slider('强度 strength', 0, 2.5, 0.05, 0.70, v => lab.setBloom(v, null, null));
+lab.gui.slider('半径 radius', 0, 1, 0.05, 0.35, v => lab.setBloom(null, v, null));
+lab.gui.slider('阈值 threshold', 0, 1.5, 0.02, 0.45, v => lab.setBloom(null, null, v));
+
+lab.gui.section('电流动画');
+lab.gui.slider('脉冲幅度', 0, 3, 0.05, lab.uniforms.uPulseAmp.value, v => lab.uniforms.uPulseAmp.value = v);
+lab.gui.slider('脉冲速度', 0, 3, 0.05, lab.uniforms.uPulseSpeed.value, v => lab.uniforms.uPulseSpeed.value = v);
+lab.gui.slider('扫描波幅度', 0, 2.5, 0.05, lab.uniforms.uSweepAmp.value, v => lab.uniforms.uSweepAmp.value = v);
+lab.gui.slider('基础亮度', 0.1, 1.5, 0.01, lab.uniforms.uBase.value, v => lab.uniforms.uBase.value = v);
+lab.gui.slider('带 alpha', 0.01, 0.30, 0.005, lab.uniforms.uAlpha.value, v => lab.uniforms.uAlpha.value = v);
+lab.gui.slider('带宽 width', 0.001, 0.015, 0.0005, lab.uniforms.uRibbonWidth.value, v => lab.uniforms.uRibbonWidth.value = v);
+
+lab.gui.section('场景');
+lab.gui.slider('纤维密度', 1, 8, 0.5, 3.0, v => {
+  meta = build(v, 0.40).meta;
+  attachTractToggles(lab, tractMeshes, meta);
+});
+lab.gui.toggle('自动旋转', true, v => lab.controls.autoRotate = v);
+lab.gui.toggle('幽灵壳脑', true, v => { if (shell) shell.visible = v; });
+lab.gui.toggle('参考图对比', true, v => lab.refEl.style.opacity = v ? 1 : 0);
+
+attachTractToggles(lab, tractMeshes, meta);
+
+/* ============ 每帧更新相机位置 uniform ============ */
+const _origLoop = lab.renderer.getAnimationLoop;
+// 利用 rig.js 的 onFrame 机制不可行（已启动），直接 hack animationLoop
+// 更简洁：在 rig 返回后追加一个 pre-render hook
+// 实际上 rig.js 的 setAnimationLoop 已启动，我们在外部无法插入
+// 解决方案：覆写 composer.render 前更新 uniform
+const _origRender = lab.composer.render.bind(lab.composer);
+lab.composer.render = function(...args) {
+  lab.uniforms.uCamPos.value.copy(lab.camera.position);
+  return _origRender(...args);
+};
+</script>
+</body>
+</html>

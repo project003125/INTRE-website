@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Approach 01 — 3D DTI Brain Visualization</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    background: #000000;
+    overflow: hidden;
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  #scene { display: block; position: fixed; inset: 0; }
+
+  /* ---- subtle radial deepening so the black field reads as a void, not a flat fill ---- */
+  .vignette {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    background: radial-gradient(120% 120% at 50% 46%,
+                rgba(0,0,0,0) 52%, rgba(0,0,0,0.55) 100%);
+  }
+
+  /* ---- top-left HUD: medical-imaging style label block ---- */
+  .hud {
+    position: fixed; top: 26px; left: 30px; z-index: 3;
+    pointer-events: none; user-select: none;
+    color: rgba(176, 198, 230, 0.78);
+  }
+  .hud .eyebrow {
+    font-size: 10px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: rgba(120, 160, 210, 0.62);
+    margin-bottom: 9px;
+  }
+  .hud .title {
+    font-size: 19px; font-weight: 600; letter-spacing: 0.06em;
+    color: rgba(214, 228, 248, 0.92);
+    line-height: 1.15;
+  }
+  .hud .title em { font-style: normal; color: rgba(120, 178, 255, 0.95); }
+  .hud .rule {
+    width: 46px; height: 1px; margin: 12px 0 11px;
+    background: linear-gradient(90deg, rgba(120,178,255,0.7), rgba(120,178,255,0));
+  }
+  .hud .meta {
+    font-size: 10.5px; letter-spacing: 0.16em; line-height: 1.85;
+    color: rgba(150, 172, 205, 0.55); text-transform: uppercase;
+  }
+  .hud .meta b { color: rgba(196, 214, 240, 0.82); font-weight: 600; }
+
+  /* ---- DEC legend, top-right ---- */
+  .legend {
+    position: fixed; top: 26px; right: 30px; z-index: 3;
+    pointer-events: none; user-select: none;
+    display: grid; gap: 7px; justify-items: end;
+  }
+  .legend .row { display: flex; align-items: center; gap: 9px; }
+  .legend .sw { width: 22px; height: 3px; border-radius: 2px; box-shadow: 0 0 8px currentColor; }
+  .legend .lbl {
+    font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(150, 172, 205, 0.5);
+  }
+
+  /* ---- corner framing brackets (imaging viewport feel) ---- */
+  .corner { position: fixed; width: 26px; height: 26px; z-index: 3; pointer-events: none;
+            border-color: rgba(120, 160, 210, 0.28); border-style: solid; border-width: 0; }
+  .corner.tl { top: 16px; left: 16px; border-top-width: 1px; border-left-width: 1px; }
+  .corner.tr { top: 16px; right: 16px; border-top-width: 1px; border-right-width: 1px; }
+  .corner.bl { bottom: 16px; left: 16px; border-bottom-width: 1px; border-left-width: 1px; }
+  .corner.br { bottom: 16px; right: 16px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  /* ---- bottom caption (required) ---- */
+  .caption {
+    position: fixed; left: 0; right: 0; bottom: 20px; z-index: 3;
+    text-align: center; pointer-events: none; user-select: none;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(150, 170, 200, 0.5);
+  }
+  .caption span { color: rgba(120, 178, 255, 0.72); }
+
+  #boot {
+    position: fixed; inset: 0; z-index: 5; display: flex;
+    align-items: center; justify-content: center;
+    color: rgba(150,172,205,0.55); font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; background: #000; transition: opacity 0.8s ease;
+  }
+  #boot.hide { opacity: 0; pointer-events: none; }
+</style>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div class="vignette"></div>
+
+  <div class="hud">
+    <div class="eyebrow">Diffusion Tensor Imaging</div>
+    <div class="title">Tractography <em>/ DEC</em></div>
+    <div class="rule"></div>
+    <div class="meta">
+      Fibers <b id="m-fibers">—</b><br/>
+      Draw calls <b>merged</b><br/>
+      Render <b>selective bloom</b>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="row"><span class="lbl">Left–Right</span><span class="sw" style="color:#e0523d;background:#e0523d"></span></div>
+    <div class="row"><span class="lbl">Ant–Post</span><span class="sw" style="color:#45b06b;background:#45b06b"></span></div>
+    <div class="row"><span class="lbl">Sup–Inf</span><span class="sw" style="color:#4f80e0;background:#4f80e0"></span></div>
+    <div class="row"><span class="lbl">Brainstem</span><span class="sw" style="color:#e8853a;background:#e8853a"></span></div>
+  </div>
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="caption">Approach 01: TubeGeometry + Selective Bloom + DEC + <span>Electric Flow</span></div>
+
+  <div id="boot">reconstructing tracts…</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+
+/* ------------------------------------------------------------------ *
+ *  Color management OFF so authored 0..1 floats display verbatim and
+ *  the additive / bloom math stays in a predictable stylized space.
+ * ------------------------------------------------------------------ */
+THREE.ColorManagement.enabled = false;
+
+const BLOOM_LAYER = 1;
+
+/* ============================ RENDERER ============================ */
+const canvas = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 1);
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+
+/* ============================== SCENE ============================= */
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(4.6, 1.9, 10.4);  // gentle 3/4: keeps the symmetric fan but tilts enough to reveal the ant-post (green) tracts that a pure-coronal view hides
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.3;
+controls.enablePan = false;
+controls.minDistance = 8;
+controls.maxDistance = 26;
+controls.target.set(0, -0.1, 0);
+
+/* No Light objects — everything is emissive / MeshBasic / shader-driven. */
+
+/* ====================== VALUE-NOISE HELPERS ====================== */
+function hash3(x, y, z) {
+  const n = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453123;
+  return n - Math.floor(n);
+}
+function vnoise(x, y, z) {
+  const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+  const xf = x - xi, yf = y - yi, zf = z - zi;
+  const u = xf * xf * (3 - 2 * xf);
+  const v = yf * yf * (3 - 2 * yf);
+  const w = zf * zf * (3 - 2 * zf);
+  const h = (i, j, k) => hash3(xi + i, yi + j, zi + k);
+  const x00 = h(0,0,0) + (h(1,0,0) - h(0,0,0)) * u;
+  const x10 = h(0,1,0) + (h(1,1,0) - h(0,1,0)) * u;
+  const x01 = h(0,0,1) + (h(1,0,1) - h(0,0,1)) * u;
+  const x11 = h(0,1,1) + (h(1,1,1) - h(0,1,1)) * u;
+  const y0 = x00 + (x10 - x00) * v;
+  const y1 = x01 + (x11 - x01) * v;
+  return y0 + (y1 - y0) * w;
+}
+function fbm(x, y, z) {
+  let t = 0, a = 0.5, f = 1;
+  for (let i = 0; i < 4; i++) { t += a * vnoise(x * f, y * f, z * f); f *= 2.0; a *= 0.5; }
+  return t;
+}
+
+/* ====================== GHOST BRAIN SHELL ======================= */
+function buildBrainGeometry() {
+  const geo = new THREE.IcosahedronGeometry(5, 5);
+  const pos = geo.attributes.position;
+  const v = new THREE.Vector3();
+  const dir = new THREE.Vector3();
+  for (let i = 0; i < pos.count; i++) {
+    v.fromBufferAttribute(pos, i);
+    dir.copy(v).normalize();
+    const x = dir.x, y = dir.y, z = dir.z;
+    const r = v.length();
+
+    // lobe modulation -> frontal / occipital / temporal bulges + central sulcus groove
+    const frontal   = Math.max(0, z) * 0.95 * Math.max(0, 0.35 + y);
+    const occipital = Math.max(0, -z) * 0.70 * Math.max(0, 0.25 - y * 0.4);
+    const temporal  = Math.max(0, Math.abs(x) - 0.42) * 0.85 * Math.max(0, -y + 0.35);
+    const sulcus    = -0.75 * Math.exp(-((y - 0.55) * (y - 0.55)) / 0.12 - (z * z) / 0.28);
+    const n         = (fbm(x * 2.1 + 5.0, y * 2.1 + 1.0, z * 2.1 + 3.0) - 0.5) * 0.95;
+
+    const rr = r + frontal + occipital + temporal + sulcus + n;
+    const out = dir.multiplyScalar(rr);
+    // egg / brain ellipsoid proportions (front-back elongated)
+    out.x *= 0.92;
+    out.z *= 1.13;
+    out.y *= 1.0;
+    pos.setXYZ(i, out.x, out.y, out.z);
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
+
+const shellGeo = buildBrainGeometry();
+
+const shellVert = /* glsl */`
+  varying vec3 vN;
+  varying vec3 vView;
+  void main() {
+    vec4 wp = modelMatrix * vec4(position, 1.0);
+    vN = normalize(wp.xyz);                 // smooth star-convex approx -> no faceting
+    vView = normalize(cameraPosition - wp.xyz);
+    gl_Position = projectionMatrix * viewMatrix * wp;
+  }
+`;
+const shellFrag = /* glsl */`
+  uniform vec3  uColor;
+  uniform float uOpacity;
+  uniform float uPow;
+  varying vec3 vN;
+  varying vec3 vView;
+  void main() {
+    float f = 1.0 - abs(dot(normalize(vN), normalize(vView)));
+    f = pow(clamp(f, 0.0, 1.0), uPow);
+    float a = uOpacity * (0.22 + f * 1.7);
+    vec3  c = uColor * (0.55 + f * 1.1);
+    gl_FragColor = vec4(c, a);
+  }
+`;
+
+const shellGroup = new THREE.Group();
+
+// BackSide layer — gives the deep inner rim glow
+const shellBack = new THREE.Mesh(shellGeo, new THREE.ShaderMaterial({
+  uniforms: {
+    uColor:   { value: new THREE.Color(0.169, 0.290, 0.471) }, // #2b4a78
+    uOpacity: { value: 0.09 },
+    uPow:     { value: 2.7 }
+  },
+  vertexShader: shellVert, fragmentShader: shellFrag,
+  transparent: true, depthWrite: false, side: THREE.BackSide,
+  blending: THREE.AdditiveBlending
+}));
+
+// FrontSide layer — faint outer membrane
+const shellFront = new THREE.Mesh(shellGeo, new THREE.ShaderMaterial({
+  uniforms: {
+    uColor:   { value: new THREE.Color(0.169, 0.290, 0.471) },
+    uOpacity: { value: 0.045 },
+    uPow:     { value: 3.3 }
+  },
+  vertexShader: shellVert, fragmentShader: shellFrag,
+  transparent: true, depthWrite: false, side: THREE.FrontSide,
+  blending: THREE.AdditiveBlending
+}));
+
+shellGroup.add(shellBack, shellFront);
+// shell stays on layer 0 only -> never enters the bloom pass
+scene.add(shellGroup);
+
+/* ===================== FIBER TRACT GENERATION ==================== */
+const RED   = { r: 0.88, g: 0.32, b: 0.24 };  // left-right
+const GREEN = { r: 0.27, g: 0.69, b: 0.42 };  // ant-post
+const BLUE  = { r: 0.31, g: 0.50, b: 0.88 };  // sup-inf
+const ORANGE= { r: 0.91, g: 0.52, b: 0.23 };  // brainstem bundle
+
+const FIBER_COUNT = 380;
+const BRAINSTEM_FRAC = 0.13;
+
+// deterministic-ish RNG so the composition is reproducible & balanced
+let seed = 1337;
+function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+function rndRange(a, b) { return a + (b - a) * rnd(); }
+function gauss() { return (rnd() + rnd() + rnd() + rnd() - 2) * 0.5; }
+function sstep(e0, e1, x) { const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); }
+
+const curves = [];          // keep curves for the travelling signal dots
+const tubeGeos = [];
+
+const _start = new THREE.Vector3();
+const _end   = new THREE.Vector3();
+const _mid   = new THREE.Vector3();
+const _c1    = new THREE.Vector3();
+const _c2    = new THREE.Vector3();
+const _dir   = new THREE.Vector3();
+const _perp  = new THREE.Vector3();
+const _up    = new THREE.Vector3(0, 1, 0);
+const _tan   = new THREE.Vector3();   // local fibre tangent (for per-vertex DEC)
+const colV   = { r: 0, g: 0, b: 0 };  // per-vertex DEC colour scratch
+
+function decColor(dx, dy, dz, out) {
+  const ax = Math.abs(dx), ay = Math.abs(dy), az = Math.abs(dz);
+  const s = ax + ay + az + 1e-6;
+  const wx = ax / s, wy = ay / s, wz = az / s;
+  // axis -> palette per spec:  X(left-right)->RED,  Y(up-down)->BLUE,  Z(front-back)->GREEN.
+  // (wy is the Y component, wz the Z component — NOT swapped, this is what makes the
+  //  diagonal X+Y crown read magenta and the verticals read blue.)
+  out.r = RED.r * wx + BLUE.r * wy + GREEN.r * wz;
+  out.g = RED.g * wx + BLUE.g * wy + GREEN.g * wz;
+  out.b = RED.b * wx + BLUE.b * wy + GREEN.b * wz;
+  // max-normalize -> vivid, saturated hues like the reference (magenta/cyan emerge from mixed axes).
+  // bright peak so a single outer strand reads as a luminous coloured tube; the compact
+  // brainstem knot (faded in via the shader) is the only place dense overlap clips to white.
+  const m = Math.max(out.r, out.g, out.b, 1e-4);
+  const k = 0.85 / m;
+  out.r = Math.min(1, out.r * k);
+  out.g = Math.min(1, out.g * k);
+  out.b = Math.min(1, out.b * k);
+}
+
+const col = { r: 0, g: 0, b: 0 };
+const _radial = new THREE.Vector3();
+const _side   = new THREE.Vector3();
+const _endDir = new THREE.Vector3();
+
+// Cortical tract families biased along world axes so the DEC palette
+// reproduces the reference dome: magenta crown, pink lateral fans,
+// green ant-post band, cyan longitudinal, blue verticals.
+function sampleCorticalDir() {
+  const r = rnd();
+  let x, y, z;
+  // Each family's endpoint direction is chosen so the MEAN brainstem->cortex vector
+  // (which drives the DEC hue) lands on the reference palette. sideScale is kept LOW
+  // everywhere because the lateral-jitter axis resolves to an off-plane component that
+  // would otherwise inject a wrong-hue wash (green on the X-Y families, red on the Z ones).
+  let bowScale = 1.0, liftScale = 1.0, sideScale = 0.3;
+  if (r < 0.34) {                       // commissural / callosal  -> magenta crown + pink shoulders
+    if (rnd() < 0.5) {                  //   shoulders: strong lateral + mid-high vertical = red+blue
+      x = (rnd() < 0.5 ? -1 : 1) * rndRange(0.62, 0.96);
+      y = rndRange(0.42, 0.82);
+    } else {                            //   crown arch: moderate lateral + top vertical = violet/magenta over the apex
+      x = (rnd() < 0.5 ? -1 : 1) * rndRange(0.26, 0.60);
+      y = rndRange(0.80, 1.0);
+    }
+    z = gauss() * 0.22;
+    bowScale = 1.35; liftScale = 0.55; sideScale = 0.25;
+  } else if (r < 0.54) {                // lateral projection      -> red / pink fan
+    x = (rnd() < 0.5 ? -1 : 1) * rndRange(0.72, 1.0);
+    y = rndRange(-0.10, 0.50);
+    z = gauss() * 0.26;
+    bowScale = 1.0;  liftScale = 0.75; sideScale = 0.30;
+  } else if (r < 0.74) {                // association / arcuate   -> green (ant-post), flat so it stays green
+    x = gauss() * 0.30;
+    y = rndRange(-0.22, 0.30);
+    z = (rnd() < 0.5 ? -1 : 1) * rndRange(0.74, 1.0);
+    bowScale = 0.5;  liftScale = 0.22; sideScale = 0.20;
+  } else if (r < 0.90) {                // longitudinal            -> green+blue = cyan
+    x = gauss() * 0.26 + (rnd() < 0.5 ? -0.20 : 0.20);
+    y = rndRange(0.30, 0.70);
+    z = (rnd() < 0.5 ? -1 : 1) * rndRange(0.58, 0.92);
+    bowScale = 0.9;  liftScale = 0.7;  sideScale = 0.30;
+  } else {                              // vertical projection     -> blue (sup-inf), narrow lateral so it stays blue
+    x = gauss() * 0.32;
+    y = rndRange(0.78, 1.0);
+    z = gauss() * 0.24;
+    bowScale = 0.7;  liftScale = 1.0;  sideScale = 0.25;
+  }
+  return { x, y, z, bowScale, liftScale, sideScale };
+}
+
+for (let i = 0; i < FIBER_COUNT; i++) {
+  // ---- origin: tight brainstem cluster at the base ----
+  _start.set(gauss() * 0.46, rndRange(-3.80, -2.55), gauss() * 0.46);
+
+  const isStem = rnd() < BRAINSTEM_FRAC;
+  let bowScale = 1.0, liftScale = 1.0, sideScale = 1.0;
+
+  if (isStem) {
+    // short vertical-ish stalk / cerebellar peduncle fibres -> orange
+    _end.set(gauss() * 0.7, rndRange(-4.4, -2.1), gauss() * 0.7);
+    col.r = ORANGE.r; col.g = ORANGE.g; col.b = ORANGE.b;
+  } else {
+    const d = sampleCorticalDir();
+    bowScale = d.bowScale; liftScale = d.liftScale; sideScale = d.sideScale;
+    const endR = rndRange(3.4, 4.5);
+    // direction already encodes the axis mix; normalise then scale to shell interior
+    _endDir.set(d.x, d.y, d.z).normalize();
+    _end.set(_endDir.x * endR * 0.92, _endDir.y * endR, _endDir.z * endR * 1.13);
+    // small organic scatter at the cortical endpoint
+    _end.x += gauss() * 0.25; _end.y += gauss() * 0.25; _end.z += gauss() * 0.25;
+    decColor(_end.x - _start.x, _end.y - _start.y, _end.z - _start.z, col);
+  }
+
+  // ---- build a flowing outward-bowing arc (not a straight spoke) ----
+  _endDir.subVectors(_end, _start);
+  const len = _endDir.length();
+  _endDir.normalize();
+  _radial.set(_end.x, 0, _end.z);
+  if (_radial.lengthSq() < 1e-4) _radial.set(1, 0, 0);
+  _radial.normalize();
+  _side.crossVectors(_endDir, _up);
+  if (_side.lengthSq() < 1e-4) _side.set(1, 0, 0);
+  _side.normalize();
+
+  const bow = rndRange(0.55, 1.45) * bowScale;
+  const lift = rndRange(0.15, 0.75) * liftScale;
+  const tanJit = gauss() * 1.1 * sideScale;
+
+  _c1.copy(_start).addScaledVector(_endDir, len * 0.32)
+     .addScaledVector(_radial, bow * 0.7)
+     .addScaledVector(_side, tanJit)
+     .addScaledVector(_up, lift);
+  _c2.copy(_start).addScaledVector(_endDir, len * 0.68)
+     .addScaledVector(_radial, bow)
+     .addScaledVector(_side, tanJit * 0.6)
+     .addScaledVector(_up, lift * 0.7);
+  // (no sideways hook: it rotated crown tangents vertical and killed the magenta)
+
+  const curve = new THREE.CatmullRomCurve3(
+    [_start.clone(), _c1.clone(), _c2.clone(), _end.clone()],
+    false, 'catmullrom', 0.5
+  );
+  curves.push(curve);
+
+  const radius = isStem ? rndRange(0.020, 0.032) : rndRange(0.011, 0.019);
+  const tube = new THREE.TubeGeometry(curve, 24, radius, 5, false);
+
+  // bake per-vertex DEC colour (by LOCAL tangent -> hue shifts along each arc,
+  // giving the authentic magenta->cyan gradients) + flow phase offset.
+  const cnt = tube.attributes.position.count;
+  const aColor = new Float32Array(cnt * 3);
+  const aPhase = new Float32Array(cnt);
+  const phase = rnd();
+  const speedJit = 0.7 + rnd() * 0.7;          // per-fibre flow speed variation
+  const uvAttr = tube.attributes.uv;           // uv.x = position along the curve (0..1)
+  for (let j = 0; j < cnt; j++) {
+    const u = THREE.MathUtils.clamp(uvAttr.getX(j), 0, 1);
+    if (isStem) {
+      colV.r = ORANGE.r; colV.g = ORANGE.g; colV.b = ORANGE.b;
+    } else {
+      curve.getTangentAt(u, _tan);             // local orientation at this vertex
+      // Anchor the hue to the tract's MEAN direction (_endDir = normalised brainstem->cortex),
+      // which is what real DEC encodes; the local tangent only adds a faint organic gradient.
+      const bx = _endDir.x * 0.82 + _tan.x * 0.18;
+      const by = _endDir.y * 0.82 + _tan.y * 0.18;
+      const bz = _endDir.z * 0.82 + _tan.z * 0.18;
+      decColor(bx, by, bz, colV);
+    }
+    // bake the convergence fade into the colour itself: cortical strands emerge from
+    // near-black at the brainstem (collapsing the additive white column into a tight knot)
+    // while stem fibres stay fully lit so the knot reads orange.
+    const fade = isStem ? 1.0 : (0.05 + 0.95 * sstep(0.0, 0.5, u));
+    aColor[j * 3 + 0] = colV.r * fade;
+    aColor[j * 3 + 1] = colV.g * fade;
+    aColor[j * 3 + 2] = colV.b * fade;
+    aPhase[j] = phase * 10.0 + speedJit;       // pack phase + speed hint into one float
+  }
+  tube.setAttribute('aColor', new THREE.BufferAttribute(aColor, 3));
+  tube.setAttribute('aPhase', new THREE.BufferAttribute(aPhase, 1));
+  tubeGeos.push(tube);
+}
+
+const mergedFibers = mergeGeometries(tubeGeos, false);
+// free the pieces
+for (const g of tubeGeos) g.dispose();
+
+const fiberUniforms = { uTime: { value: 0 } };
+
+const fiberMaterial = new THREE.ShaderMaterial({
+  uniforms: fiberUniforms,
+  vertexShader: /* glsl */`
+    attribute vec3  aColor;
+    attribute float aPhase;
+    varying vec2  vUv;
+    varying vec3  vColor;
+    varying float vPhase;
+    varying float vSpeed;
+    varying float vBright;
+    void main() {
+      vUv    = uv;
+      vColor = aColor;
+      vPhase = fract(aPhase * 0.1);     // 0..1 phase offset
+      vSpeed = fract(aPhase);           // packed per-fibre speed factor
+      vBright = 0.58 + 0.45 * fract(aPhase * 3.14159);  // per-fibre intensity jitter -> texture & gaps
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: /* glsl */`
+    uniform float uTime;
+    varying vec2  vUv;
+    varying vec3  vColor;
+    varying float vPhase;
+    varying float vSpeed;
+    varying float vBright;
+    void main() {
+      // travelling pulse head, moving 0 -> 1 along the tube (brainstem -> cortex)
+      float speed = 0.16 + vSpeed * 0.20;
+      float head  = fract(uTime * speed + vPhase);
+
+      // signed distance along tube from the head (+ahead / -behind), wrapped
+      float delta = fract(vUv.x - head + 0.5) - 0.5;
+
+      // thin over-exposed white core at the head
+      float core = smoothstep(0.007, 0.0, abs(delta));
+      // comet tail trailing behind the head
+      float tail = smoothstep(-0.20, 0.0, delta) * (1.0 - smoothstep(0.0, 0.028, delta));
+
+      float pulse = max(core, tail * 0.30);
+
+      // the convergence fade is baked into vColor on the CPU, so the dense
+      // brainstem knot collapses to a tight orange tangle instead of a white cone;
+      // out on the dome the strands glow at full saturated strength.
+      vec3 base = vColor * 0.78 * vBright;
+      vec3 surge = vColor * pulse * 0.60 * vBright;
+      vec3 whiteCore = vec3(1.0) * core * 0.18;
+      vec3 color = base + surge + whiteCore;
+
+      float alpha = 0.42 + 0.26 * pulse;
+      gl_FragColor = vec4(color, alpha);
+    }
+  `,
+  transparent: true,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending
+});
+
+const fiberMesh = new THREE.Mesh(mergedFibers, fiberMaterial);
+fiberMesh.frustumCulled = false;
+fiberMesh.layers.enable(BLOOM_LAYER);   // fibres drive the bloom
+scene.add(fiberMesh);
+
+document.getElementById('m-fibers').textContent = FIBER_COUNT;
+
+/* =================== TRAVELLING SIGNAL DOTS ==================== */
+const AMBER = new THREE.Color(0.96, 0.62, 0.04); // #F59E0B verbatim
+const dotGeo = new THREE.SphereGeometry(0.06, 10, 10);
+const DOT_COUNT = 42;
+const dots = [];
+for (let i = 0; i < DOT_COUNT; i++) {
+  const mat = new THREE.MeshBasicMaterial({ color: AMBER.clone(), transparent: true, opacity: 0.95 });
+  const m = new THREE.Mesh(dotGeo, mat);
+  m.layers.enable(BLOOM_LAYER);
+  scene.add(m);
+  dots.push({
+    mesh: m,
+    curve: curves[(Math.random() * curves.length) | 0],
+    t: Math.random(),
+    speed: 0.06 + Math.random() * 0.12
+  });
+}
+
+/* ===================== SELECTIVE BLOOM SETUP ==================== */
+const renderScene = new RenderPass(scene, camera);
+
+const bloomPass = new UnrealBloomPass(
+  new THREE.Vector2(window.innerWidth, window.innerHeight),
+  0.40, // strength
+  0.12, // radius  (very tight halo -> glow hugs each strand, NO frame-filling white fog)
+  0.72  // threshold (only the travelling pulse cores bloom; saturated bodies stay crisp & coloured)
+);
+
+// Bloom composer: renders ONLY layer-1 objects (camera mask) onto black,
+// then blooms them. The dim shell (layer 0) is excluded entirely.
+const bloomComposer = new EffectComposer(renderer);
+bloomComposer.renderToScreen = false;
+bloomComposer.addPass(renderScene);
+bloomComposer.addPass(bloomPass);
+
+// Final mix shader: base render + bloom texture, additive.
+const finalShader = {
+  uniforms: {
+    baseTexture:  { value: null },
+    bloomTexture: { value: null }   // assigned after construction to avoid RT-clone warning
+  },
+  vertexShader: /* glsl */`
+    varying vec2 vUv;
+    void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }
+  `,
+  fragmentShader: /* glsl */`
+    uniform sampler2D baseTexture;
+    uniform sampler2D bloomTexture;
+    varying vec2 vUv;
+    void main() {
+      vec4 base  = texture2D(baseTexture, vUv);
+      vec4 bloom = texture2D(bloomTexture, vUv);
+      gl_FragColor = base + bloom;
+    }
+  `
+};
+
+const finalComposer = new EffectComposer(renderer);
+finalComposer.addPass(new RenderPass(scene, camera));
+const mixPass = new ShaderPass(finalShader, 'baseTexture');
+mixPass.uniforms.bloomTexture.value = bloomComposer.renderTarget2.texture;
+mixPass.needsSwap = true;
+finalComposer.addPass(mixPass);
+finalComposer.addPass(new OutputPass());
+
+/* ============================ RESIZE ============================ */
+function onResize() {
+  const w = window.innerWidth, h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+  bloomComposer.setSize(w, h);
+  finalComposer.setSize(w, h);
+}
+window.addEventListener('resize', onResize);
+
+/* ============================ ANIMATE =========================== */
+const clock = new THREE.Clock();
+const TWO_PI = Math.PI * 2;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t  = clock.elapsedTime;
+
+  controls.update();
+
+  // electric-flow time
+  fiberUniforms.uTime.value = t;
+
+  // travelling signal dots along their fibres
+  for (const d of dots) {
+    d.t += d.speed * dt;
+    if (d.t > 1) { d.t -= 1; d.curve = curves[(Math.random() * curves.length) | 0]; }
+    d.curve.getPointAt(d.t, d.mesh.position);
+    // pulse the dot brightness with the flow
+    const glow = 0.7 + 0.3 * Math.sin((d.t + d.speed) * TWO_PI * 2.0);
+    d.mesh.material.opacity = glow;
+  }
+
+  // ghost-shell slow breathing: scale 1.0 -> 1.02 over a 7s cycle
+  const breath = 1.0 + 0.02 * (0.5 + 0.5 * Math.sin(t * TWO_PI / 7.0 - Math.PI * 0.5));
+  shellGroup.scale.setScalar(breath);
+
+  // ---- selective bloom render: camera sees only the bloom layer ----
+  camera.layers.set(BLOOM_LAYER);
+  bloomComposer.render();
+
+  // ---- final composite: camera sees everything ----
+  camera.layers.enableAll();
+  finalComposer.render();
+}
+
+// hide boot screen on first frame
+requestAnimationFrame(() => {
+  animate();
+  setTimeout(() => document.getElementById('boot').classList.add('hide'), 120);
+});
+</script>
+</body>
+</html>

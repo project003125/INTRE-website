@@ -1,0 +1,2823 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRE · 功能层心理学 — 3D 交互体验</title>
+    <meta name="description" content="INTRE（功能层心理学）3D 交互原型：在现象与神经之间，建立可计算的功能层。42 维状态向量、六模块×七维度晶格、DTI 神经纤维束可视化。">
+    <meta name="keywords" content="INTRE, 功能层心理学, FLP, UPLS, UNIS, UBMS, PSE, REVER, 心理工程, 认知建模">
+    <meta property="og:title" content="INTRE · 功能层心理学 — 3D 交互体验">
+    <meta property="og:description" content="在现象与神经之间，建立可计算的功能层。42 维状态向量、六模块×七维度晶格、DTI 神经纤维束可视化。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="INTRE · 功能层心理学 — 3D 交互体验">
+    <meta name="twitter:description" content="在现象与神经之间，建立可计算的功能层。42 维状态向量、六模块×七维度晶格、DTI 神经纤维束可视化。">
+    <meta name="twitter:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- v2.5 项目品牌 CSS · 来源 06-格式治理/06-S-05-INTRE-品牌视觉规范.md v2.3.0 -->
+    <link rel="stylesheet" href="../colors_and_type.css">
+    <style id="theme-vars">
+/* ============================================================
+   INTRE 3D Hero 概念原型 — 项目品牌 CSS
+   来源：06-格式治理/06-S-05-INTRE-品牌视觉规范.md v2.3.0
+   brandPrefix: intre
+   ============================================================ */
+
+:root {
+  /* Navy 6 阶（规范 §3.1） */
+  --intre-navy-950: #0A1E3D;
+  --intre-navy-800: #122F5C;
+  --intre-navy-600: #1F4880;
+  --intre-navy-500: #2A5DA0;
+  --intre-navy-400: #3B6FB5;
+  --intre-navy-50:  #D6E5F3;
+  /* 深色场景派生 */
+  --intre-scene-text: rgba(255, 255, 255, 0.85);
+  --intre-scene-text-secondary: var(--intre-navy-50);
+  --intre-scene-text-muted: rgba(214, 229, 243, 0.65);  /* 深空场景弱文字：Navy 50 @65%，对 Navy 950 约 6:1（原 Navy 400 仅 3.2:1，深背景下不可读） */
+  --intre-scene-border: var(--intre-navy-600);
+  --intre-scene-surface: var(--intre-navy-800);
+  /* 语义别名 */
+  --intre-background: var(--intre-navy-950);
+  --intre-foreground: var(--intre-scene-text);
+  --intre-card: var(--intre-scene-surface);
+  --intre-card-foreground: var(--intre-scene-text-secondary);
+  --intre-primary: var(--intre-navy-500);
+  --intre-primary-foreground: var(--intre-navy-50);
+  --intre-muted: var(--intre-navy-800);
+  --intre-muted-foreground: var(--intre-scene-text-muted);
+  --intre-border: var(--intre-scene-border);
+  --intre-input: var(--intre-navy-800);
+  --intre-ring: var(--intre-navy-400);
+  /* 圆角（规范 §5.3） */
+  --intre-radius-sm: 4px;
+  --intre-radius-md: 8px;
+  --intre-radius-pill: 999px;
+  /* Amber（规范 §3.2） */
+  --intre-amber-600: #D97706;
+  --intre-amber-500: #F59E0B;
+  /* 通道色（品牌规范 v2.3 §4.3 大地色系，与 3D 粒子色一致） */
+  --intre-upls: #5A8270;   /* UPLS 大地绿 */
+  --intre-unis: #5B7080;   /* UNIS 大地蓝 */
+  --intre-ubms: #8B7360;   /* UBMS 大地棕 */
+  /* 字体（规范 §4.1） */
+  /* 字体族（与 2D 网站 shared/brand.css 对齐） */
+  --intre-font-display: 'Josefin Sans', 'Century Gothic', 'Futura', sans-serif;  /* Logo / 大标题 */
+  --intre-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;  /* 正文（含 CJK 回退） */
+  --intre-font-cjk: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;  /* 纯中文场景备用 */
+  --intre-font-mono: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;  /* 等宽 */
+  /* 字号阶梯（与 2D 网站 --text-2xs..5xl 对齐，9 级 rem 标尺） */
+  --text-2xs: 0.72rem;    /* ~11.5px — 微型标签（status-bar） */
+  --text-xs:  0.8125rem;  /* 13px — 小标签（晶格 row/legend/hint） */
+  --text-sm:  0.875rem;  /* 14px — 小正文（brand-sub/feat-tag） */
+  --text-base: 1rem;     /* 16px — 正文（act-body） */
+  --text-lg:  1.25rem;   /* 20px — 大号（act-sub） */
+  --text-xl:  1.5rem;    /* 24px — 小标题（wordmark/fallback-title） */
+  --text-2xl: 2rem;      /* 32px — 标题（act-h2 移动端覆盖值） */
+  --text-3xl: 2.5rem;    /* 40px — 大标题 */
+  /* 角色别名 — 对应视觉位置 */
+  --type-display: clamp(4.5rem, 9vw, 8rem);  /* INTRE h1 — Hero 基准（联动锚点，移动端在 media 中覆盖） */
+  --type-h2: var(--text-3xl);                 /* 幕标题 2.5rem / 40px */
+  --type-sub: var(--text-lg);                 /* 副标题 1.25rem / 20px */
+  --type-body: var(--text-base);              /* 正文 1rem / 16px */
+  --type-kicker: var(--text-2xs);             /* 小标 kicker ~11.5px */
+  --type-brand: var(--text-xl);               /* 左上角品牌标志 1.5rem / 24px */
+  --type-brand-sub: var(--text-sm);           /* 品牌副标 0.875rem / 14px */
+  --type-label: var(--text-xs);               /* 晶格标签/图例 13px */
+  --type-mono: var(--text-2xs);               /* 等宽小字（badge-42/rail/tip）~11.5px */
+  --type-mono-xs: var(--text-2xs);            /* 等宽极小字（HUD/hint）~11.5px */
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--intre-background);
+    --color-foreground: var(--intre-foreground);
+    --color-card: var(--intre-card);
+    --color-card-foreground: var(--intre-card-foreground);
+    --color-primary: var(--intre-primary);
+    --color-primary-foreground: var(--intre-primary-foreground);
+    --color-muted: var(--intre-muted);
+    --color-muted-foreground: var(--intre-muted-foreground);
+    --color-border: var(--intre-border);
+    --color-input: var(--intre-input);
+    --color-ring: var(--intre-ring);
+    --radius-sm: var(--intre-radius-sm);
+    --radius-md: var(--intre-radius-md);
+    --radius-lg: var(--intre-radius-md);
+  }
+  @layer base {
+    body { background: var(--intre-background); color: var(--intre-foreground); font-family: var(--intre-font-body); }
+  }
+    </style>
+
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+      <!-- Three.js 滚动驱动场景画布 -->
+      <canvas id="gl" aria-hidden="true"></canvas>
+
+      <!-- WebGL 不可用时的 2D 静帧降级 -->
+      <div id="fallback" role="img" aria-label="INTRE 功能层心理学静帧视图">
+        <div class="fallback-inner">
+          <p class="fallback-title">INTRE · 功能层心理学</p>
+          <p class="fallback-sub">在现象与神经之间，建立可计算的功能层</p>
+          <p class="fallback-note">WEBGL UNAVAILABLE · STATIC FALLBACK</p>
+          <p class="fallback-cta">建议使用桌面浏览器（Chrome / Edge / Firefox）获得完整 3D 交互体验</p>
+        </div>
+      </div>
+
+      <!-- 移动端顶部提示 banner -->
+      <div id="mobile-banner" aria-hidden="true">
+        <span class="mb-text">用桌面浏览器获得完整 3D 交互体验</span>
+        <span class="mb-close">×</span>
+      </div>
+
+      <!-- 滚动驱动区：1170vh（非线性节奏重映射 pace()） -->
+      <div id="scroll-space" aria-hidden="true"></div>
+
+      <!-- 顶栏：参考 2D 网站导航栏样式 -->
+      <nav class="site-nav" id="hud-top">
+        <div class="nav-container">
+          <a class="nav-logo" href="https://project003125.github.io/INTRE-website/" target="_blank" rel="noopener noreferrer">
+            <span class="wordmark">INTRE</span>
+          </a>
+          <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+          <div class="nav-links" id="nav-menu">
+            <a href="https://project003125.github.io/INTRE-website/" target="_blank" rel="noopener noreferrer">首页</a>
+            <a href="https://project003125.github.io/INTRE-website/upls/" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://project003125.github.io/INTRE-website/unis/" target="_blank" rel="noopener noreferrer">UNIS</a>
+            <a href="https://project003125.github.io/INTRE-website/ubms/" target="_blank" rel="noopener noreferrer">UBMS</a>
+            <a href="https://project003125.github.io/INTRE-website/pse/" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://project003125.github.io/INTRE-website/rever/" target="_blank" rel="noopener noreferrer">REVER</a>
+            <a href="https://project003125.github.io/INTRE-website/textbook/" target="_blank" rel="noopener noreferrer">教材</a>
+            <a href="https://project003125.github.io/INTRE-website/glossary/" target="_blank" rel="noopener noreferrer">术语表</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- 公式芯片（Act 1 场景元素，随开场淡出） -->
+      <a id="formula-chip" href="https://project003125.github.io/INTRE-website/glossary/" target="_blank" rel="noopener noreferrer" aria-hidden="true" style="text-decoration: none;">Ψ(t) ∈ ℝ⁴² · 6 × 7</a>
+
+      <!-- 右侧三层指示器 -->
+      <nav id="hud-rail" aria-label="三层结构指示器">
+        <div class="rail-item is-active" data-act="0"><span class="rail-dot"></span><span class="rail-label">现象层</span></div>
+        <div class="rail-item" data-act="1"><span class="rail-dot"></span><span class="rail-label">功能层</span></div>
+        <div class="rail-item" data-act="2"><span class="rail-dot"></span><span class="rail-label">神经层</span></div>
+        <span class="feat-tag" style="position: absolute; bottom: -16px; right: 0;">#01</span>
+      </nav>
+
+      <!-- Act 1 · 开场 -->
+      <section class="act" id="act-1" aria-label="开场">
+        <p class="kicker">FUNCTIONAL LAYER PSYCHOLOGY</p>
+        <h1 class="act-h1" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">INTRE</h1>
+        <p class="act-sub">在现象与神经之间，建立可计算的功能层<span class="feat-tag" style="position: relative; top: 0; right: 0; display: inline; margin-left: 8px;">#12</span></p>
+      </section>
+
+      <!-- Act 2 · 现象层 -->
+      <section class="act" id="act-2" aria-label="现象层">
+        <p class="kicker">01 · 现象层</p>
+        <h2 class="act-h2" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">从无限到有限</h2>
+        <p class="act-body">漫天繁星被心智勾勒为星座——大五人格、认知类型、行为模式。人类模式识别，是从无限特征到有限标签的第一步。</p>
+      </section>
+
+      <!-- Act 3 · 功能层 -->
+      <section class="act" id="act-3" aria-label="功能层">
+        <p class="kicker">02 · 功能层</p>
+        <h2 class="act-h2" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">六模块 × 七维度</h2>
+        <p class="act-body">M1 具身 · M2 认知 · M3 意志 · M4 情绪 · M5 言语 · M6 行为。每一个节点都可被测量、被定位、被干预。</p>
+        <a class="badge-42" href="https://project003125.github.io/INTRE-website/textbook/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">42 / 42 可数<span class="feat-tag" style="position: relative; top: 0; right: 0; display: inline; margin-left: 8px;">#13</span></a>
+      </section>
+
+      <!-- Act 4 · 神经层 -->
+      <section class="act" id="act-4" aria-label="神经层">
+        <p class="kicker">03 · 神经层</p>
+        <h2 class="act-h2" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">向下扎根</h2>
+        <p class="act-body">功能层不是终点。UPLS 统一语义，UBMS 校准行为，UNIS 对接神经——三通道似然经 PSE 贝叶斯融合，更新状态后验。42 维并未消失——它们被锚定在每一束纤维之上。功能层，是神经层之上的另一层真实。</p>
+        <div class="legend">
+          <a class="legend-item" href="https://project003125.github.io/INTRE-website/upls/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><span class="legend-dot" style="background: var(--intre-upls); color: var(--intre-upls);"></span>UPLS 语义通道</a>
+          <a class="legend-item" href="https://project003125.github.io/INTRE-website/unis/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><span class="legend-dot" style="background: var(--intre-unis); color: var(--intre-unis);"></span>UNIS 神经通道</a>
+          <a class="legend-item" href="https://project003125.github.io/INTRE-website/ubms/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><span class="legend-dot" style="background: var(--intre-ubms); color: var(--intre-ubms);"></span>UBMS 行为通道</a>
+          <span class="feat-tag" style="position: relative; top: 0; right: 0; display: inline; margin-left: 8px;">#15</span>
+        </div>
+        <!-- P1.7: 收尾功能 — 重看4幕 + 反馈邮箱 -->
+        <div class="act-end-actions">
+          <button class="end-btn" id="replay-btn" type="button">重看 4 幕</button>
+          <a class="end-link" href="mailto:intre.framework@gmail.com?subject=INTRE%203D%20%E4%BD%93%E9%AA%8C%E5%8F%8D%E9%A6%88&body=%E6%88%91%E5%88%9A%E4%BD%93%E9%AA%8C%E4%BA%86%20INTRE%203D%20%E4%BA%A4%E4%BA%92%E5%8E%9F%E5%9E%8B%EF%BC%8C%E4%BB%A5%E4%B8%8B%E6%98%AF%E6%88%91%E7%9A%84%E5%8F%8D%E9%A6%88%EF%BC%9A%0A%0A">反馈体验 →</a>
+        </div>
+      </section>
+
+      <!-- 滚动提示 -->
+      <div id="scroll-hint" aria-hidden="true">
+        <span class="hint-text">向下滚动 · 按 1-4 跳转 <span class="feat-tag" style="position: relative; top: 0; right: 0; display: inline; margin-left: 4px;">#05</span></span>
+        <span class="hint-track"><span class="hint-drop"></span></span>
+      </div>
+
+      <!-- 晶格列标签（HTML 投影，JS 每帧写入屏幕坐标） -->
+      <div id="col-labels" aria-hidden="true">
+        <div class="col-label">M1 具身</div>
+        <div class="col-label">M2 认知</div>
+        <div class="col-label">M3 意志</div>
+        <div class="col-label">M4 情绪</div>
+        <div class="col-label">M5 言语</div>
+        <div class="col-label">M6 行为</div>
+        <!-- 行号：R-D-S 三层七维度（与列标签同投影机制，uLattice>0.7 时渐显） -->
+        <div class="row-label">RES-D</div>
+        <div class="row-label">RES-B</div>
+        <div class="row-label">DSP-F</div>
+        <div class="row-label">DSP-B</div>
+        <div class="row-label">STR-R</div>
+        <div class="row-label">STR-C</div>
+        <div class="row-label">STR-S</div>
+      </div>
+
+      <!-- 节点悬停提示 -->
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <!-- A2 噪点叠加 -->
+      <div id="noise-overlay" aria-hidden="true"><span class="feat-tag">#06</span></div>
+
+      <!-- A4 自定义光标 -->
+      <div id="custom-cursor" aria-hidden="true">
+        <div class="cursor-ring"></div>
+        <div class="cursor-dot"></div>
+        <span class="feat-tag">#08</span>
+      </div>
+
+      <!-- B3 节点点击展开面板 -->
+      <div id="node-detail" aria-hidden="true">
+        <div class="nd-header"><span class="nd-code"></span><span class="nd-close">×</span></div>
+        <div class="nd-title"></div>
+        <div class="nd-body"></div>
+        <div class="nd-markers"></div>
+        <a class="nd-link" href="#" target="_blank" rel="noopener noreferrer">查看教材详解 →</a>
+        <span class="feat-tag">#14</span>
+      </div>
+
+      <!-- B4 鼠标拖尾画布 -->
+      <canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+      <!-- C4 粒子爆发容器 -->
+      <div id="burst-container" aria-hidden="true"><span class="feat-tag">#11</span></div>
+
+      <!-- 底部状态条：遥测 + 坐标合并 -->
+      <div id="status-bar" aria-hidden="true">
+        <div id="coord-readout">
+          <span>X<b class="cr-x">0.00</b></span>
+          <span>Y<b class="cr-y">0.00</b></span>
+          <span>Z<b class="cr-z">0.00</b></span>
+        </div>
+        <div id="telemetry">
+          <span class="tel-label">SYS</span>
+          <span class="tel-line">FPS <b class="tel-fps">--</b></span>
+          <span class="tel-line">ACT <b class="tel-act">--</b></span>
+          <span class="tel-line">SCR <b class="tel-scr">--</b>%</span>
+          <span class="tel-line">LAT <b class="tel-lat">--</b></span>
+        </div>
+        <span class="feat-tag">#04</span>
+      </div>
+
+      <!-- D3 数据流连线 SVG -->
+      <svg id="data-flow-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path id="flow-path" d="" stroke="#3B6FB5" stroke-opacity="0.5" stroke-width="1.5" fill="none" stroke-dasharray="4 8"/>
+      </svg>
+      <span class="feat-tag" style="position: fixed; bottom: 4px; right: 4px; z-index: 16;">#02</span>
+    </main>
+
+    <style>
+      /* ================= 页面专属样式（free-explore：重复模式 + 关键帧 + 投影标签） ================= */
+      html, body { overflow-x: hidden; }
+      body { background: var(--intre-navy-950); }
+
+      /* ---------- 3D 画布与滚动驱动区 ---------- */
+      #gl { position: fixed; inset: 0; z-index: 0; display: block; }
+      #scroll-space { height: 1170vh; }
+
+      /* ---------- WebGL 降级层 ---------- */
+      #fallback {
+        display: none;
+        position: fixed; inset: 0; z-index: 0;
+        align-items: center; justify-content: center; text-align: center;
+        background: var(--intre-navy-950);
+      }
+      #fallback.is-shown { display: flex; }
+      .fallback-inner { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 0 24px; }
+      .fallback-title { margin: 0; font-family: var(--intre-font-display); font-weight: 600; font-size: var(--type-brand); letter-spacing: -0.01em; color: var(--intre-navy-50); }
+      .fallback-sub { margin: 0; font-family: var(--intre-font-cjk); font-size: var(--type-body); color: var(--intre-scene-text-muted); }
+      .fallback-note { margin: 0; font-family: var(--intre-font-mono); font-size: var(--type-kicker); letter-spacing: 0.16em; color: var(--intre-scene-text-muted); }
+      .fallback-cta { margin: 14px 0 0; font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); color: var(--intre-amber-500); line-height: 1.6; max-width: 320px; }
+
+      /* ---------- 移动端顶部提示 banner ---------- */
+      #mobile-banner {
+        display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+        padding: 8px 16px; background: rgba(10, 30, 61, 0.96);
+        border-bottom: 1px solid var(--intre-amber-600);
+        align-items: center; justify-content: space-between;
+        font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); color: var(--intre-navy-50);
+      }
+      #mobile-banner.is-shown { display: flex; }
+      .mb-close { font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: pointer; line-height: 1; padding: 0 4px; }
+
+      /* ---------- P1.7: 生产模式 (?prod=1) 隐藏 HUD ---------- */
+      body.prod-mode #status-bar,
+      body.prod-mode #custom-cursor,
+      body.prod-mode .feat-tag,
+      body.prod-mode #trail-canvas,
+      body.prod-mode #burst-container,
+      body.prod-mode #scroll-hint,
+      body.prod-mode #noise-overlay { display: none !important; }
+      body.prod-mode { cursor: auto; }
+      body.prod-mode a, body.prod-mode button, body.prod-mode .rail-item,
+      body.prod-mode .legend-item, body.prod-mode .badge-42, body.prod-mode .nd-close,
+      body.prod-mode .nd-link, body.prod-mode .end-btn, body.prod-mode .end-link,
+      body.prod-mode .mb-close, body.prod-mode .nav-toggle { cursor: pointer; }
+
+      /* ---------- P1.7: 收尾按钮 ---------- */
+      .act-end-actions { display: flex; align-items: center; gap: 20px; margin-top: 28px; flex-wrap: wrap; }
+      .end-btn {
+        padding: 10px 24px; border-radius: var(--intre-radius-pill);
+        border: 1px solid var(--intre-amber-600); background: transparent;
+        font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); font-weight: 500;
+        color: var(--intre-amber-500); cursor: none; transition: all 0.2s;
+      }
+      .end-btn:hover { background: var(--intre-amber-600); color: var(--intre-navy-950); }
+      .end-link {
+        font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub);
+        color: var(--intre-scene-text-muted); text-decoration: none; cursor: none;
+      }
+      .end-link:hover { color: var(--intre-navy-50); }
+
+      /* ---------- Act 面板（fixed 覆盖层，靠 opacity 切换） ---------- */
+      .act {
+        position: fixed; left: 6vw; bottom: 12vh; z-index: 30;
+        max-width: 560px; text-align: left;
+        opacity: 0; pointer-events: none;
+      }
+      #act-1 { bottom: 16vh; }
+      .kicker {
+        margin: 0 0 12px;
+        font-family: var(--intre-font-mono); font-size: var(--type-kicker); font-weight: 400;
+        letter-spacing: 0.16em; color: var(--intre-scene-text-muted);
+      }
+      .act-h1 {
+        margin: 0 0 22px;
+        font-family: var(--intre-font-display); font-weight: 600;
+        font-size: var(--type-display); line-height: 1.02; letter-spacing: -0.03em;
+        color: var(--intre-navy-50);
+      }
+      .act-sub { margin: 0; font-family: var(--intre-font-cjk); font-weight: 400; font-size: var(--type-sub); line-height: 1.8; color: var(--intre-scene-text); }
+      .act-h2 {
+        margin: 0 0 18px;
+        font-family: var(--intre-font-body), var(--intre-font-cjk); font-weight: 600;
+        font-size: var(--type-h2); line-height: 1.15; letter-spacing: 0;
+        color: var(--intre-navy-50);
+      }
+      .act-body { margin: 0; max-width: 480px; font-family: var(--intre-font-cjk); font-weight: 400; font-size: var(--type-body); line-height: 1.9; color: var(--intre-navy-50); }
+      .badge-42 {
+        display: inline-flex; align-items: center; margin: 22px 0 0;
+        padding: 6px 12px; border-radius: var(--intre-radius-pill);
+        border: 1px solid color-mix(in srgb, var(--intre-amber-600) 40%, transparent);
+        font-family: var(--intre-font-mono); font-size: var(--type-mono); letter-spacing: 0.08em;
+        color: var(--intre-amber-500); white-space: nowrap;
+      }
+      .legend { display: flex; gap: 24px; margin: 22px 0 0; }
+      .legend-item { display: inline-flex; align-items: center; gap: 8px; font-family: var(--intre-font-mono); font-size: var(--type-label); letter-spacing: 0.04em; color: var(--intre-scene-text-muted); white-space: nowrap; }
+      .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+      /* ---------- 顶栏 HUD ---------- */
+      /* ===== 顶栏导航（参考 2D 网站 site-nav 样式） ===== */
+      .site-nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+        background: transparent;
+        border-bottom: none;
+        padding: 0 1.5rem;
+        pointer-events: auto;
+      }
+      .nav-container {
+        max-width: 1280px; margin: 0 auto;
+        display: flex; justify-content: space-between; align-items: center;
+        height: 3.2rem;
+      }
+      .nav-logo {
+        display: flex; align-items: baseline; gap: 0.5rem;
+        text-decoration: none; color: var(--intre-scene-text);
+      }
+      .wordmark { font-family: var(--intre-font-display); font-weight: 600; font-size: var(--type-brand); letter-spacing: -0.02em; color: var(--intre-scene-text); }
+      .nav-links {
+        display: flex; gap: 0.15rem; align-items: center; flex-wrap: wrap;
+      }
+      .nav-links a {
+        color: rgba(214, 229, 243, 0.75); text-decoration: none;
+        font-family: var(--intre-font-cjk); font-weight: 500; font-size: var(--type-body);
+        padding: 0.3rem 0.7rem; border-radius: var(--intre-radius-sm);
+        transition: color 0.2s, background-color 0.2s; white-space: nowrap;
+      }
+      .nav-links a:hover {
+        color: var(--intre-scene-text);
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+      .nav-toggle {
+        display: none; background: none; border: none;
+        color: var(--intre-scene-text); font-size: 1.3rem;
+        cursor: pointer; padding: 0.6rem 0.8rem;
+        min-width: 44px; min-height: 44px;
+        align-items: center; justify-content: center;
+      }
+
+      /* ---------- 公式芯片 ---------- */
+      #formula-chip {
+        position: fixed; top: 96px; right: 6vw; z-index: 20;
+        padding: 8px 14px; border-radius: var(--intre-radius-md);
+        border: 1px solid var(--intre-navy-600);
+        font-family: var(--intre-font-mono); font-size: var(--type-mono); letter-spacing: 0.04em;
+        color: var(--intre-scene-text-muted); pointer-events: auto;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      #formula-chip:hover { color: var(--intre-scene-text); border-color: var(--intre-navy-400); }
+
+      /* ---------- 右侧层指示器 ---------- */
+      #hud-rail {
+        position: fixed; right: 6vw; top: 50%; transform: translateY(-50%); z-index: 20;
+        display: flex; flex-direction: column; gap: 28px; pointer-events: none;
+        padding: 16px 12px; border-radius: var(--intre-radius-md);
+        background: rgba(10, 30, 61, 0.35); backdrop-filter: blur(6px);
+        border: 1px solid rgba(214, 229, 243, 0.08);
+      }
+      .rail-item { display: flex; flex-direction: row-reverse; align-items: center; gap: 10px; }
+      .rail-dot {
+        width: 12px; height: 12px; border-radius: 50%;
+        border: 2px solid var(--intre-navy-400); background: transparent;
+        transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+      }
+      .rail-label {
+        font-family: var(--intre-font-cjk); font-size: var(--type-label); font-weight: 500; letter-spacing: 0.08em;
+        color: rgba(214, 229, 243, 0.85); white-space: nowrap; transition: color 0.3s;
+      }
+      .rail-item.is-active .rail-dot {
+        background: var(--intre-navy-400); border-color: var(--intre-navy-50);
+        box-shadow: 0 0 8px rgba(59, 111, 181, 0.6);
+      }
+      .rail-item.is-active .rail-label { color: var(--intre-navy-50); font-weight: 600; }
+
+      /* ---------- 滚动提示 ---------- */
+      #scroll-hint {
+        position: fixed; bottom: 8vh; left: 50%; transform: translateX(-50%); z-index: 20;
+        display: flex; flex-direction: column; align-items: center; gap: 10px;
+        pointer-events: none; transition: opacity 0.4s;
+      }
+      .hint-text { font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.14em; color: var(--intre-scene-text-muted); }
+      .hint-track { position: relative; width: 1px; height: 48px; overflow: hidden; background: var(--intre-navy-500); }
+      .hint-drop { position: absolute; left: 0; top: 0; width: 1px; height: 12px; background: var(--intre-amber-500); animation: hint-fall 2s ease-in-out infinite; }
+      @keyframes hint-fall {
+        0% { transform: translateY(-12px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translateY(48px); opacity: 0; }
+      }
+
+      /* ---------- 晶格列标签（3D 投影） ---------- */
+      #col-labels { position: fixed; inset: 0; z-index: 30; overflow: hidden; pointer-events: none; }
+      .col-label {
+        position: absolute; left: 0; top: 0;
+        font-family: var(--intre-font-mono); font-size: var(--type-label); font-weight: 600; letter-spacing: 0.10em;
+        color: var(--intre-navy-50); white-space: nowrap;
+        text-shadow: 0 0 6px rgba(10,22,40,0.95), 0 1px 3px rgba(10,22,40,0.9);
+        opacity: 0;
+      }
+      /* ---------- 晶格行号（3D 投影，棋谱式坐标轴） ---------- */
+      .row-label {
+        position: absolute; left: 0; top: 0;
+        font-family: var(--intre-font-mono); font-size: var(--type-label); font-weight: 500; letter-spacing: 0.08em;
+        color: var(--intre-navy-50); white-space: nowrap; text-align: right;
+        text-shadow: 0 0 6px rgba(10,22,40,0.95), 0 1px 3px rgba(10,22,40,0.9);
+        opacity: 0;
+      }
+
+      /* ---------- 节点悬停提示（两行：模块名加粗 + 子维度代码 mono） ---------- */
+      #tooltip {
+        position: fixed; left: 0; top: 0; z-index: 40;
+        display: flex; flex-direction: column; gap: 3px;
+        padding: 7px 11px; border-radius: var(--intre-radius-sm);
+        border: 1px solid var(--intre-navy-600); background: var(--intre-navy-800);
+        white-space: nowrap;
+        pointer-events: none; opacity: 0; transition: opacity 0.15s;
+      }
+      .tip-mod { font-family: var(--intre-font-cjk); font-weight: 500; font-size: var(--type-mono); letter-spacing: 0.02em; color: var(--intre-navy-50); }
+      .tip-sub { font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.1em; color: var(--intre-scene-text-muted); }
+
+      /* 品牌规范：焦点指示 2px 实线 + 2px 偏移；深色场景用 Navy 50 保证可见性 */
+      :focus-visible { outline: 2px solid var(--intre-navy-50); outline-offset: 2px; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hint-drop { animation: none; }
+        .legend-dot::after { animation: none; }
+      }
+
+      /* ====================== 通用功能标签 ====================== */
+      .feat-tag {
+        position: absolute; top: 2px; right: 4px; z-index: 1;
+        font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.08em;
+        color: rgba(214, 229, 243, 0.35); pointer-events: none; user-select: none;
+        display: none;  /* 默认隐藏，按 H 键切换 */
+      }
+      body.show-tags .feat-tag { display: inline; }
+
+      /* ====================== A2 噪点叠加 ====================== */
+      #noise-overlay {
+        position: fixed; inset: 0; z-index: 150; pointer-events: none;
+        opacity: 0.02; mix-blend-mode: soft-light;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        background-repeat: repeat;
+      }
+
+      /* 自定义光标仅在 JS 启用且为精确指针时生效（.has-cursor 由 JS 添加）。
+       修复：原先无条件 cursor:none，JS 禁用/加载失败时桌面无光标可用 */
+    body.has-cursor, body.has-cursor * { cursor: none; }
+      #custom-cursor {
+        position: fixed; left: 0; top: 0; z-index: 300; pointer-events: none;
+        transition: transform 0.08s ease-out;
+      }
+      .cursor-ring {
+        position: absolute; left: -12px; top: -12px;
+        width: 24px; height: 24px; border-radius: 50%;
+        border: 1px solid rgba(214, 229, 243, 0.5);
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, opacity 0.2s;
+      }
+      .cursor-dot {
+        position: absolute; left: -2px; top: -2px;
+        width: 4px; height: 4px; border-radius: 50%;
+        background: var(--intre-navy-400);
+        transition: background 0.2s;
+      }
+      #custom-cursor.is-hover .cursor-ring { transform: scale(1.5); border-color: var(--intre-amber-500); }
+      #custom-cursor.is-hover .cursor-dot { background: var(--intre-amber-500); }
+
+      /* ====================== B3 节点详情面板 ====================== */
+      #node-detail {
+        position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); z-index: 100;
+        width: 360px; padding: 0; border-radius: var(--intre-radius-md);
+        border: 1px solid var(--intre-navy-500); background: var(--intre-navy-800);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.25s, transform 0.25s;
+      }
+      #node-detail.is-shown { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+      .nd-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--intre-navy-600); }
+      .nd-code { font-family: var(--intre-font-mono); font-size: var(--type-label); letter-spacing: 0.06em; color: var(--intre-amber-500); }
+      .nd-close { font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: none; pointer-events: auto; line-height: 1; }
+      .nd-close:hover { color: var(--intre-navy-50); }
+      .nd-body { padding: 16px 18px; font-family: var(--intre-font-cjk); font-size: var(--type-body); line-height: 1.8; color: var(--intre-navy-50); }
+      .nd-title { padding: 8px 18px 0; font-family: var(--intre-font-cjk); font-size: var(--type-sub); font-weight: 500; color: var(--intre-navy-50); line-height: 1.5; }
+      .nd-markers { padding: 0 18px 14px; font-family: var(--intre-font-mono); font-size: var(--type-mono); line-height: 1.7; color: var(--intre-scene-text-muted); border-bottom: 1px solid var(--intre-navy-600); }
+      .nd-markers::before { content: '生物标记 '; color: var(--intre-amber-500); font-weight: 500; }
+      .nd-link { display: block; padding: 10px 18px 14px; font-family: var(--intre-font-cjk); font-size: var(--type-mono); color: var(--intre-amber-500); text-decoration: none; border-top: 1px solid var(--intre-navy-600); cursor: none; }
+      .nd-link:hover { color: var(--intre-navy-50); }
+
+      /* ====================== B4 拖尾画布 ====================== */
+      #trail-canvas { position: fixed; inset: 0; z-index: 50; pointer-events: none; }
+
+      /* ====================== C4 粒子爆发 ====================== */
+      #burst-container { position: fixed; inset: 0; z-index: 55; pointer-events: none; }
+      .burst-particle {
+        position: absolute; width: 4px; height: 4px; border-radius: 50%;
+        opacity: 0;
+      }
+
+      /* ====================== 底部状态条（遥测+坐标合并） ====================== */
+      #status-bar {
+        position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 80;
+        display: flex; align-items: center; gap: 20px;
+        padding: 6px 16px; border-radius: var(--intre-radius-pill);
+        border: none; background: transparent;
+        font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.04em;
+        color: var(--intre-scene-text-muted); pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+      /* P1-4: 3秒无操作自动淡出 */
+      #status-bar.is-idle { opacity: 0.25; }
+      #telemetry { display: flex; align-items: center; gap: 14px; }
+      .tel-label { color: var(--intre-amber-500); font-weight: 400; letter-spacing: 0.12em; }
+      .tel-line b { color: var(--intre-navy-50); font-weight: 500; }
+      #coord-readout { display: flex; gap: 12px; }
+      #coord-readout b { color: var(--intre-navy-50); font-weight: 500; margin-left: 4px; }
+
+      /* ====================== D3 数据流连线 ====================== */
+      #data-flow-svg {
+        position: fixed; inset: 0; z-index: 15; pointer-events: none;
+        width: 100%; height: 100%;
+      }
+
+      /* ====================== B2 指示器可点击 ====================== */
+      #hud-rail { pointer-events: auto; }
+      .rail-item { cursor: none; }
+
+      /* ====================== C2 数字滚动 ====================== */
+      .badge-42 .badge-num { display: inline-block; }
+
+      /* ====================== D2 通道状态灯 ====================== */
+      .legend-dot { position: relative; }
+      .legend-dot::after {
+        content: ''; position: absolute; inset: -3px; border-radius: 50%;
+        border: 1px solid currentColor; opacity: 0;
+        animation: legend-pulse 2s ease-in-out infinite;
+      }
+      /* 三通道错相脉冲，避免同步呼吸的机械感 */
+      .legend-item:nth-child(2) .legend-dot::after { animation-delay: 0.66s; }
+      .legend-item:nth-child(3) .legend-dot::after { animation-delay: 1.33s; }
+      @keyframes legend-pulse {
+        0%, 100% { opacity: 0; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.6); }
+      }
+
+      /* ====================== #5 移动端适配 ====================== */
+
+      @media (max-width: 768px) {
+        :root {
+          --type-display: clamp(2.5rem, 12vw, 4rem);  /* 移动端 INTRE h1 缩小到 2.5-4rem 区间，与 2D --text-3xl/4xl 对齐 */
+        }
+        .nav-toggle { display: flex; }
+        .nav-links {
+          display: none;
+          position: absolute; top: 3.2rem; left: 0; right: 0;
+          flex-direction: column;
+          background-color: rgba(10, 30, 61, 0.96);
+          padding: 0.5rem; gap: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .nav-links.open { display: flex; }
+        .nav-links a {
+          padding: 0.75rem 1rem; font-size: var(--type-body);
+          border-radius: var(--intre-radius-sm);
+          min-height: 44px; display: flex; align-items: center;
+        }
+        .act { left: 5vw; right: 5vw; bottom: 8vh; max-width: none; }
+        .act-body { max-width: none; }
+        .act-h2 { font-size: var(--text-2xl); }
+        .legend { flex-wrap: wrap; gap: 12px 20px; }
+        #hud-rail { display: none; }
+        #status-bar { padding: 4px 12px; gap: 12px; }
+        #telemetry { gap: 8px; }
+        #coord-readout { display: none; }
+        #scroll-hint { display: none; }
+        #noise-overlay { opacity: 0.01; }
+        /* P1.5: 移动端节点面板全屏 */
+        #node-detail {
+          width: 100vw; max-width: none; height: 100vh; height: 100dvh;
+          top: 0; left: 0; transform: scale(0.95); border-radius: 0; border: none;
+          overflow-y: auto; -webkit-overflow-scrolling: touch;
+        }
+        #node-detail.is-shown { transform: scale(1); }
+        .nd-close { font-size: 28px; padding: 4px 8px; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; }
+      }
+
+      /* ====================== 触摸设备关闭自定义光标 ====================== */
+      @media (pointer: coarse) {
+        body { cursor: auto; }
+        #custom-cursor { display: none; }
+        .rail-item, .nd-close, .nd-link, .nav-links a, .nav-logo, .legend-item, #formula-chip, .badge-42, .end-btn, .end-link, .mb-close { cursor: pointer; }
+      }
+    </style>
+
+    <script>
+      /* ====================== A4 自定义光标 ====================== */
+      /* #3: 功能标签 H 键切换 + ?dev=1 自动显示 */
+      if (new URLSearchParams(location.search).get('dev') === '1') { document.body.classList.add('show-tags'); }
+      /* P1.7: ?prod=1 隐藏 HUD 元素（生产模式） */
+      const isProd = new URLSearchParams(location.search).get('prod') === '1';
+      if (isProd) { document.body.classList.add('prod-mode'); }
+      /* v2.7: ?lite=<density> 低负载模式 — 弱设备降级/无头验证用：
+         值 = 纤维密度倍率（如 ?lite=0.2 → 20% 纤维），同时跳过 bloom */
+      const liteDensity = parseFloat(new URLSearchParams(location.search).get('lite') || '0') || 0;
+      const liteMode = liteDensity > 0;
+      if (liteMode) { document.body.classList.add('lite-mode'); }
+      /* P1.4: 移动端顶部 banner */
+      const mobileBanner = document.getElementById('mobile-banner');
+      const coarsePointer = matchMedia('(pointer: coarse)').matches;
+      if (coarsePointer && !sessionStorage.getItem('mb-dismissed')) {
+        mobileBanner.classList.add('is-shown');
+        mobileBanner.setAttribute('aria-hidden', 'false');
+      }
+      mobileBanner.querySelector('.mb-close').addEventListener('click', () => {
+        mobileBanner.classList.remove('is-shown');
+        mobileBanner.setAttribute('aria-hidden', 'true');
+        sessionStorage.setItem('mb-dismissed', '1');
+      });
+      /* P1.7: 重看4幕按钮 */
+      document.getElementById('replay-btn').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      addEventListener('keydown', (e) => {
+        if (e.key === 'h' || e.key === 'H') { document.body.classList.toggle('show-tags'); }
+      });
+      /* #5: 移动端汉堡菜单（2D 风格 .nav-links.open） */
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      navToggle.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }));
+      /* P1-4: 底部状态条 3秒无操作自动淡出 */
+      const statusBar = document.getElementById('status-bar');
+      let idleTimer = null;
+      const resetIdle = () => {
+        statusBar.classList.remove('is-idle');
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => statusBar.classList.add('is-idle'), 3000);
+      };
+      addEventListener('pointermove', resetIdle);
+      addEventListener('keydown', resetIdle);
+      addEventListener('scroll', resetIdle, { passive: true });
+      resetIdle();
+    </script>
+
+    <!-- v2.6 修订：importmap —— three 核心 + addons（Line2 纤维束需要） -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "../lib/three.module.js",
+        "three/addons/": "../lib/addons/"
+      }
+    }
+    </script>
+
+    <!-- 42 节点详情数据（6模块×7维度，window.INTRE_NODES） -->
+    <script src="../lib/node-details.js"></script>
+    <!-- v2.9: 真实大脑矢状面轮廓数据（241 点 Catmull-Rom 插值，解剖标志点） -->
+    <script src="../lib/brain-outline-data.js"></script>
+    <script type="module">
+    (async () => {
+      'use strict';
+      /* 全局错误捕获：防止未捕获异常导致页面空白无反馈 */
+      const _fatal = (msg) => { console.error('[INTRE 3D Hero] Fatal:', msg); };
+      try {
+      const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+      const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+      const ss = (p, a, b) => { const t = clamp01((p - a) / (b - a)); return t * t * (3 - 2 * t); };
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      /* ================= DOM 引用 ================= */
+      const canvas = document.getElementById('gl');
+      const fallbackEl = document.getElementById('fallback');
+      const actEls = Array.prototype.slice.call(document.querySelectorAll('.act'));
+      const chipEl = document.getElementById('formula-chip');
+      const hintEl = document.getElementById('scroll-hint');
+      const railEls = Array.prototype.slice.call(document.querySelectorAll('.rail-item'));
+      const tooltipEl = document.getElementById('tooltip');
+      const labelEls = Array.prototype.slice.call(document.querySelectorAll('.col-label'));
+      const rowLabelEls = Array.prototype.slice.call(document.querySelectorAll('.row-label'));
+
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const coarsePointer = matchMedia('(pointer: coarse)').matches;
+      const isTouch = 'ontouchstart' in window;   /* 触摸设备检测（移动端适配用） */
+
+      /* ================= 滚动进度 ================= */
+      let pTarget = 0, pCur = 0;
+      /* 节奏重映射：把线性滚轮进度 raw 映射为场景进度 pm。
+         设计目标：RCT1→2 紧凑快切，RCT2/3/4 满屏画面 sticky 停留，后段整体更松弛。
+         [raw, pm] 控制点——raw 间距大→该段需要更多滚轮（松弛/停留）；raw 间距小→快切。 */
+      const PACE_KNOTS = [
+        [0.00, 0.00],   /* 起点：RCT1 满天星辰 */
+        [0.06, 0.04],   /* RCT1 开场短暂停留 */
+        [0.14, 0.32],   /* ★ RCT1→2 快切：8% raw 跨 28% pm（紧凑） */
+        [0.30, 0.38],   /* RCT2 星座满屏停留（16% raw 仅推进 6% pm） */
+        [0.50, 0.60],   /* 汇聚→晶格成型（松弛） */
+        [0.64, 0.70],   /* 逼近 RCT3 棋盘满显（松弛） */
+        [0.80, 0.76],   /* RCT3 棋盘满屏停留（16% raw 仅推进 6% pm） */
+        [0.90, 0.90],   /* RCT3→4 脑图透出（松弛） */
+        [1.00, 1.00],   /* RCT4 脑图满屏停留到结束 */
+      ];
+      /* Fritsch-Carlson 单调三次插值：过所有控制点且严格单调，
+         段间速度连续（C1），消除分段线性的折点顿挫感 */
+      const pace = (() => {
+        const xs = PACE_KNOTS.map((k) => k[0]);
+        const ys = PACE_KNOTS.map((k) => k[1]);
+        const n = xs.length;
+        const dx = [], m = [];
+        for (let i = 0; i < n - 1; i++) {
+          dx.push(xs[i + 1] - xs[i]);
+          m.push((ys[i + 1] - ys[i]) / dx[i]);
+        }
+        const t = [m[0]];
+        for (let i = 1; i < n - 1; i++) {
+          t.push(m[i - 1] * m[i] <= 0 ? 0 : (m[i - 1] + m[i]) / 2);
+        }
+        t.push(m[n - 2]);
+        for (let i = 0; i < n - 1; i++) {
+          if (m[i] === 0) { t[i] = 0; t[i + 1] = 0; continue; }
+          const a = t[i] / m[i], b = t[i + 1] / m[i];
+          const s = a * a + b * b;
+          if (s > 9) { const tau = 3 / Math.sqrt(s); t[i] = tau * a * m[i]; t[i + 1] = tau * b * m[i]; }
+        }
+        return (x) => {
+          if (x <= xs[0]) return ys[0];
+          if (x >= xs[n - 1]) return ys[n - 1];
+          let i = 0;
+          while (i < n - 2 && x > xs[i + 1]) i++;
+          const h = dx[i], u = (x - xs[i]) / h, u2 = u * u, u3 = u2 * u;
+          return (2 * u3 - 3 * u2 + 1) * ys[i] + (u3 - 2 * u2 + u) * h * t[i]
+               + (-2 * u3 + 3 * u2) * ys[i + 1] + (u3 - u2) * h * t[i + 1];
+        };
+      })();
+      const readScroll = () => {
+        const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+        pTarget = pace(clamp01((window.scrollY || 0) / max));
+      };
+
+      /* ================= HUD（正常模式与降级模式共用） ================= */
+      const ACT_RANGES = [
+        { instant: true, outA: 0.16, outB: 0.24 },
+        { inA: 0.26, inB: 0.34, outA: 0.44, outB: 0.52 },
+        { inA: 0.56, inB: 0.66, outA: 0.74, outB: 0.82 },
+        { inA: 0.80, inB: 0.88, outA: 9, outB: 9 },
+      ];
+      const actOpacity = (p, r) => {
+        const fi = r.instant ? 1 : ss(p, r.inA, r.inB);
+        const fo = r.outA > 1 ? 0 : ss(p, r.outA, r.outB);
+        return fi * (1 - fo);
+      };
+      /* 幕内子元素逐行淡入：kicker 先行，标题、正文依次跟进（约 200ms 级差） */
+      const actParts = actEls.map((el) => ({
+        kicker: el.querySelector('.kicker'),
+        head: el.querySelector('.act-h1') || el.querySelector('.act-h2'),
+        body: el.querySelector('.act-sub') || el.querySelector('.act-body'),
+        extras: Array.prototype.slice.call(el.querySelectorAll('.badge-42, .legend')),
+      }));
+      const updateHUD = (p) => {
+        for (let i = 0; i < actEls.length; i++) {
+          const o = actOpacity(p, ACT_RANGES[i]);
+          actEls[i].style.opacity = '1';   /* 容器不再承担淡入，opacity 下放给子元素 */
+          actEls[i].style.visibility = o > 0.001 ? 'visible' : 'hidden';  /* 不可见时隐藏容器（含 background 渐变），避免叠盖其他幕 */
+          actEls[i].style.pointerEvents = o > 0.001 ? 'auto' : 'none';
+          actEls[i].style.transform = 'translateY(' + ((1 - o) * 12).toFixed(2) + 'px)';
+          const k = o;
+          const h = clamp01((o - 0.1) / 0.9);
+          const b = clamp01((o - 0.2) / 0.8);
+          const parts = actParts[i];
+          if (parts.kicker) parts.kicker.style.opacity = k.toFixed(3);
+          if (parts.head) parts.head.style.opacity = h.toFixed(3);
+          if (parts.body) parts.body.style.opacity = b.toFixed(3);
+          for (let x = 0; x < parts.extras.length; x++) parts.extras[x].style.opacity = b.toFixed(3);
+        }
+        chipEl.style.opacity = actOpacity(p, ACT_RANGES[0]).toFixed(3);
+        hintEl.style.opacity = p > 0.05 ? '0' : '1';
+        const active = p < 0.52 ? 0 : p < 0.80 ? 1 : 2;
+        railEls.forEach((el, i) => el.classList.toggle('is-active', i === active));
+      };
+
+      const showFallback = () => {
+        canvas.style.display = 'none';
+        fallbackEl.classList.add('is-shown');
+      };
+
+      /* ====================== A4 自定义光标 ====================== */
+      const cursorEl = document.getElementById('custom-cursor');
+      let cursorX = 0, cursorY = 0;
+      if (!coarsePointer) {
+        addEventListener('pointermove', (e) => { cursorX = e.clientX; cursorY = e.clientY; cursorEl.style.transform = 'translate(' + cursorX + 'px,' + cursorY + 'px)'; });
+        addEventListener('pointerdown', () => { cursorEl.classList.add('is-hover'); });
+        addEventListener('pointerup', () => { cursorEl.classList.remove('is-hover'); });
+        /* P0-1: 所有可交互元素 hover 时触发自定义光标放大 */
+        document.querySelectorAll('a, button, .nav-links a, .nav-logo, .rail-item, .legend-item, .badge-42, .nd-close, .nd-link, .end-btn, .end-link').forEach(el => {
+          el.addEventListener('pointerenter', () => cursorEl.classList.add('is-hover'));
+          el.addEventListener('pointerleave', () => cursorEl.classList.remove('is-hover'));
+        });
+      } else { cursorEl.style.display = 'none'; }
+
+      /* ====================== B1 键盘切幕 + B2 指示器可点击 ====================== */
+      /* 跳转落点对齐各幕 inB（满显位置），避免落点偏早导致面板半透明 */
+      const ACT_SCROLL_TARGETS = [0, 0.30, 0.58, 0.88];
+      const scrollToAct = (idx) => {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        window.scrollTo({ top: max * ACT_SCROLL_TARGETS[idx], behavior: 'smooth' });
+      };
+      addEventListener('keydown', (e) => {
+        if (e.key >= '1' && e.key <= '4') { scrollToAct(parseInt(e.key) - 1); triggerBurst(); }
+        if (e.key === 'ArrowDown') { e.preventDefault(); const a = pCur < 0.3 ? 1 : pCur < 0.52 ? 2 : 3; scrollToAct(a); triggerBurst(); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); const a = pCur < 0.3 ? 0 : pCur < 0.52 ? 0 : pCur < 0.80 ? 1 : 2; scrollToAct(a); triggerBurst(); }
+        if (e.key === 'Escape') { closeNodeDetail(); }
+      });
+      railEls.forEach((el, i) => { el.addEventListener('click', () => { scrollToAct(i + 1); triggerBurst(); }); });
+
+      /* ====================== B3 节点点击展开 ====================== */
+      const nodeDetailEl = document.getElementById('node-detail');
+      const ndCode = nodeDetailEl.querySelector('.nd-code');
+      const ndBody = nodeDetailEl.querySelector('.nd-body');
+      const ndClose = nodeDetailEl.querySelector('.nd-close');
+      const closeNodeDetail = () => { nodeDetailEl.classList.remove('is-shown'); nodeDetailEl.setAttribute('aria-hidden', 'true'); };
+      ndClose.addEventListener('click', closeNodeDetail);
+      window.__intreOpenNodeDetail = (col, row) => {
+        const idx = col * 7 + row;
+        const node = (window.INTRE_NODES && window.INTRE_NODES[idx]) || null;
+        const ndTitle = nodeDetailEl.querySelector('.nd-title');
+        const ndMarkers = nodeDetailEl.querySelector('.nd-markers');
+        const ndLink = nodeDetailEl.querySelector('.nd-link');
+        if (node) {
+          ndCode.textContent = node.code;
+          ndTitle.textContent = node.title;
+          ndBody.textContent = node.desc;
+          ndMarkers.textContent = node.markers;
+          /* Q3 决策：教材映射暂用 # 占位，v1.1 精细分章 */
+          ndLink.href = '#';
+          ndLink.textContent = '教材详解（v1.1 上线） →';
+        } else {
+          ndCode.textContent = 'M' + (col + 1) + ' × R' + (row + 1);
+          ndTitle.textContent = '';
+          ndBody.textContent = '节点数据加载中…';
+          ndMarkers.textContent = '';
+          ndLink.href = '#';
+          ndLink.textContent = '教材详解（v1.1 上线） →';
+        }
+        nodeDetailEl.classList.add('is-shown');
+        nodeDetailEl.setAttribute('aria-hidden', 'false');
+      };
+      window.__intreCloseNodeDetail = closeNodeDetail;
+
+      /* ====================== B4 鼠标拖尾 ====================== */
+      const trailCanvas = document.getElementById('trail-canvas');
+      const trailCtx = trailCanvas.getContext('2d');
+      const resizeTrail = () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; };
+      resizeTrail(); addEventListener('resize', resizeTrail);
+      const trailPoints = [];
+      let lastTrailTime = 0;
+      addEventListener('pointermove', (e) => {
+        if (coarsePointer) return;
+        const now = performance.now();
+        if (now - lastTrailTime < 16) return;
+        lastTrailTime = now;
+        trailPoints.push({ x: e.clientX, y: e.clientY, life: 1.0 });
+        if (trailPoints.length > 40) trailPoints.shift();
+      });
+      const renderTrail = (dt) => {
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        /* 相邻点连线：快速移动时圆点不再断成虚线 */
+        for (let i = 1; i < trailPoints.length; i++) {
+          const a = trailPoints[i - 1], b = trailPoints[i];
+          if (a.life <= 0 || b.life <= 0) continue;
+          const lm = Math.min(a.life, b.life);
+          trailCtx.beginPath();
+          trailCtx.moveTo(a.x, a.y); trailCtx.lineTo(b.x, b.y);
+          trailCtx.strokeStyle = 'rgba(59, 111, 181, ' + (lm * 0.22) + ')';
+          trailCtx.lineWidth = 1.5 * lm;
+          trailCtx.stroke();
+        }
+        for (let i = 0; i < trailPoints.length; i++) {
+          const p = trailPoints[i];
+          p.life -= dt * 2.4;   /* ≈0.04/帧@60fps，帧率归一 */
+          if (p.life <= 0) continue;
+          trailCtx.beginPath();
+          trailCtx.arc(p.x, p.y, 2.5 * p.life, 0, Math.PI * 2);
+          trailCtx.fillStyle = 'rgba(59, 111, 181, ' + (p.life * 0.4) + ')';
+          trailCtx.fill();
+        }
+        while (trailPoints.length > 0 && trailPoints[0].life <= 0) trailPoints.shift();
+      };
+
+      /* ====================== C4 粒子爆发 ====================== */
+      const burstContainer = document.getElementById('burst-container');
+      let lastActIdx = -1;
+      const triggerBurst = () => {
+        if (reducedMotion) return;
+        const cx = innerWidth / 2, cy = innerHeight / 2;
+        const colors = ['#3B6FB5', '#D6E5F3', '#F59E0B'];   /* 品牌 Amber 500 */
+        for (let i = 0; i < 24; i++) {
+          const p = document.createElement('div');
+          p.className = 'burst-particle';
+          const ang = (i / 24) * Math.PI * 2;
+          const dist = 80 + Math.random() * 120;
+          const col = colors[i % colors.length];
+          /* 初始 opacity 1（CSS 默认 0 会导致粒子全程不可见） */
+          p.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;background:' + col + ';box-shadow:0 0 6px ' + col + ';opacity:1;';
+          burstContainer.appendChild(p);
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            p.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease-out';
+            p.style.transform = 'translate(' + (Math.cos(ang) * dist) + 'px,' + (Math.sin(ang) * dist) + 'px) scale(0.3)';
+            p.style.opacity = '0';
+          }));
+          setTimeout(() => p.remove(), 850);
+        }
+      };
+      /* 幕切换阈值与 ACT_RANGES 边界统一：0.30 / 0.52 / 0.80 */
+      const checkActChange = (p) => {
+        const idx = p < 0.3 ? 0 : p < 0.52 ? 1 : p < 0.80 ? 2 : 3;
+        if (idx !== lastActIdx) {
+          if (lastActIdx >= 0) { triggerBurst(); }
+          lastActIdx = idx;
+        }
+      };
+
+      /* ====================== C2 数字滚动 ====================== */
+      const badgeEl = document.querySelector('.badge-42');
+      let badgeAnimated = false;
+      const animateBadge = () => {
+        if (badgeAnimated || !badgeEl) return;
+        badgeAnimated = true;
+        badgeEl.innerHTML = '<span class="badge-num">0</span> / 42 可数<span class="feat-tag" style="position: relative; top: 0; right: 0; display: inline; margin-left: 8px;">#13</span>';
+        const numEl = badgeEl.querySelector('.badge-num');
+        /* 900ms easeOutCubic：先快后慢，收束到 42 时有"落定"感（原 n+=2/帧 帧率依赖且匀速无节奏） */
+        const t0 = performance.now();
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+        const tick = (now) => {
+          const t = clamp01((now - t0) / 900);
+          numEl.textContent = String(Math.round(42 * easeOutCubic(t)));
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+
+      /* ====================== C3 打字机效果 ====================== */
+      const typeWriter = (el, text, speed) => {
+        if (!el || el.dataset.typed) return;
+        el.dataset.typed = '1';
+        el.textContent = '';
+        let i = 0;
+        const type = () => {
+          if (i >= text.length) return;
+          el.textContent += text[i];
+          i++;
+          setTimeout(type, speed);
+        };
+        type();
+      };
+      const actTexts = [
+        { body: '在现象与神经之间，建立可计算的功能层' },
+        { body: '漫天繁星被心智勾勒为星座——大五人格、认知类型、行为模式。人类模式识别，是从无限特征到有限标签的第一步。' },
+        { body: 'M1 具身 · M2 认知 · M3 意志 · M4 情绪 · M5 言语 · M6 行为。每一个节点都可被测量、被定位、被干预。' },
+        { body: '功能层不是终点。UPLS 统一语义，UBMS 校准行为，UNIS 对接神经——三通道似然经 PSE 贝叶斯融合，更新状态后验。42 维并未消失——它们被锚定在每一束纤维之上。功能层，是神经层之上的另一层真实。' },
+      ];
+      let typedActs = [false, false, false, false];
+
+      /* ====================== D1 遥测 HUD ====================== */
+      const telFps = document.querySelector('.tel-fps');
+      const telAct = document.querySelector('.tel-act');
+      const telScr = document.querySelector('.tel-scr');
+      const telLat = document.querySelector('.tel-lat');
+      let frameCount = 0, fpsTime = performance.now();
+      const updateTelemetry = (p) => {
+        frameCount++;
+        const now = performance.now();
+        if (now - fpsTime >= 500) {
+          telFps.textContent = Math.round(frameCount * 1000 / (now - fpsTime));
+          frameCount = 0; fpsTime = now;
+        }
+        telAct.textContent = (p < 0.3 ? 1 : p < 0.52 ? 2 : p < 0.80 ? 3 : 4);
+        telScr.textContent = (p * 100).toFixed(1);
+        telLat.textContent = (dt_last * 1000).toFixed(0) + 'ms';
+      };
+      let dt_last = 0.016;
+
+      /* ====================== D3 数据流连线 ====================== */
+      const flowSvg = document.getElementById('data-flow-svg');
+      const flowPath = document.getElementById('flow-path');
+      const updateFlowPath = (p) => {
+        const w = innerWidth, h = innerHeight;
+        const railX = w - innerWidth * 0.06 - 10;
+        const y1 = h * 0.3, y2 = h * 0.5, y3 = h * 0.7;
+        const active = p < 0.3 ? 0 : p < 0.52 ? 1 : 2;
+        const ys = [y1, y2, y3];
+        const ya = ys[active], yb = ys[Math.min(active + 1, 2)];
+        const ctrlY = (ya + yb) / 2;
+        flowPath.setAttribute('d', 'M' + railX + ',' + ya + ' C' + (railX - 60) + ',' + ctrlY + ' ' + (railX - 60) + ',' + ctrlY + ' ' + railX + ',' + yb);
+        flowPath.style.strokeDashoffset = -(performance.now() * 0.05) % 100;
+      };
+
+      /* ====================== D4 坐标读数 ====================== */
+      const crX = document.querySelector('.cr-x');
+      const crY = document.querySelector('.cr-y');
+      const crZ = document.querySelector('.cr-z');
+      window.__intreUpdateCoords = (x, y, z) => {
+        crX.textContent = x.toFixed(2);
+        crY.textContent = y.toFixed(2);
+        crZ.textContent = z.toFixed(2);
+      };
+
+      /* 文字与 HUD 状态先行生效（不等待 three.js 加载）：首帧标题即可读，中途刷新页面也不闪幕 */
+      readScroll();
+      pCur = pTarget;
+      updateHUD(pCur);
+
+      /* ================= Three.js 初始化（失败则降级） ================= */
+      let THREE = null;
+      try { THREE = await import('three'); } catch (err) {
+        /* importmap 可能不被支持（file:// 协议或旧浏览器），尝试直接路径 */
+        try { THREE = await import('../lib/three.module.js'); } catch (e2) { THREE = null; }
+      }
+
+      /* v2.7 修订：选择性 Bloom 后处理（恢复 D32 方案，修复"白色蒙皮"根因）
+         根因分析（2026-07-24 诊断）：旧方案 threshold=0.98 仍被"皮层纹理 + DTI 贴图"
+         的明亮区域整体触发，高斯模糊链把 Navy 950 底色抬升成白蒙皮。
+         本版方案：① 脑模型改为暗色幽灵壳（低亮度，永不触发阈值）
+         ② 高亮主体 = 纤维电流扫描波 / 琥珀信号 / 注光粒子
+         ③ threshold=0.90 只让高亮元素辉光，底色保持纯净 Navy 950
+         ④ UnrealBloomPass 仅加法叠加亮区，暗区不扩散（消除渐变嫌疑） */
+      let EffectComposer = null, RenderPass = null, UnrealBloomPass = null, OutputPass = null;
+      try {
+        const pe = await import('three/addons/postprocessing/EffectComposer.js');
+        const rp = await import('three/addons/postprocessing/RenderPass.js');
+        const ub = await import('three/addons/postprocessing/UnrealBloomPass.js');
+        const op = await import('three/addons/postprocessing/OutputPass.js');
+        EffectComposer = pe.EffectComposer;
+        RenderPass = rp.RenderPass;
+        UnrealBloomPass = ub.UnrealBloomPass;
+        OutputPass = op.OutputPass;
+      } catch (err) {
+        console.warn('[INTRE 3D Hero] Bloom 模块加载失败，回退直接渲染:', err);
+      }
+
+      /* v2.6: 加载 DTI 纤维束系统（Line2 + DEC 顶点色 + 电流扫描波） */
+      let dtiFiberSystem = null;
+      try {
+        const dtiMod = await import('../lib/dti/dti-fibers.js');
+        dtiFiberSystem = dtiMod;
+      } catch (err) {
+        console.warn('[INTRE 3D Hero] DTI fiber module load failed:', err);
+        dtiFiberSystem = null;
+      }
+
+      /* v2.9: 加载真实大脑轮廓多角度展开系统（取代 v2.7 程序化球壳） */
+      let brainShellSystem = null;
+      try {
+        const bssMod = await import('../lib/brain-shell-shells.js');
+        brainShellSystem = bssMod;
+      } catch (err) {
+        console.warn('[INTRE 3D Hero] Brain shell module load failed:', err);
+        brainShellSystem = null;
+      }
+
+      let renderer = null;
+      if (THREE) {
+        try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true }); }  /* v2.7 RX-08: 移除 preserveDrawingBuffer（白耗显存带宽） */
+        catch (err) { renderer = null; }
+      }
+      if (!THREE || !renderer) {
+        showFallback();
+        const onScroll = () => { readScroll(); pCur = pTarget; updateHUD(pCur); };
+        addEventListener('scroll', onScroll, { passive: true });
+        readScroll(); pCur = pTarget; updateHUD(pCur);
+        return;
+      }
+
+      const PR = Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2);   /* 触摸设备像素比上限 1.5 */
+      renderer.setPixelRatio(PR);
+      renderer.setSize(innerWidth, innerHeight);
+      /* v2.9: ACT4 神经层基底 — 按品牌规范 §3.1 用 Navy 800 #122F5C（深色模式底色）
+         之前 v2.8 用 #000000 纯黑违反品牌规范 §3.5 第 4 点"渐变禁止"对应："所有 UI 和品牌视觉使用纯色填充"，
+         纯黑与品牌色系脱节。Navy 800 既符合"深空蓝"美学、又与导航栏/深色模式一致。 */
+      const NAVY_800 = 0x122F5C;   /* 品牌规范 §3.1：深色导航栏背景 */
+      const NAVY_600 = 0x1F4880;   /* 品牌规范 §3.1：主色 */
+      const NAVY_400 = 0x3B6FB5;   /* 品牌规范 §3.1：辅助色 */
+      const AMBER_600 = 0xD97706;  /* 品牌规范 §3.2：强调色（CTA/链接/重要标记） */
+      renderer.setClearColor(NAVY_800, 1);
+      /* v2.9: 关闭 ACES tone mapping — 让品牌色精确显示（NavY 800 = #122F5C 不被 ACES 压成 #001D55）
+         原 v2.8 ACES 解决了 HDR 白爆，但牺牲了品牌色精度。
+         替代方案：纤维/脉冲通过 bloom threshold 控制亮度，不需要全局 ACES 压暗 */
+      renderer.toneMapping = THREE.NoToneMapping;
+      renderer.toneMappingExposure = 1.0;
+
+      const scene = new THREE.Scene();
+      /* v2.9: scene.background 用 Color 而非 setClearColor（Color 不受 tone mapping 影响） */
+      scene.background = new THREE.Color(NAVY_800);
+      scene.fog = new THREE.FogExp2(NAVY_800, 0);   /* v2.9: 雾色用 Navy 800 */
+      const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 200);
+      const worldGroup = new THREE.Group(); /* 视差旋转专用组，绝不作用于相机 */
+      scene.add(worldGroup);
+
+      /* v2.8: 选择性 Bloom 后处理管线 — 参数全面收紧
+         诊断结论：0.50 strength + 0.90 threshold 导致纤维基色大面积过阈值 → 白爆
+         参考图美学：纯黑场 + 极克制的辉光，仅电流脉冲/接驳火花超阈值 */
+      let composer = null, bloomPass = null;
+      const forceFx = new URLSearchParams(location.search).get('fx') === '1';
+      if (EffectComposer && RenderPass && UnrealBloomPass && (!liteMode || forceFx)) {
+        try {
+          composer = new EffectComposer(renderer);
+          /* v2.9: RenderPass 显式传入 clearColor = Navy 800（修复：RenderPass 默认 autoClearColor=false
+             不清屏，导致 readBuffer 残留纯黑。显式传入 clearColor 让 RenderPass 用 Navy 800 清屏） */
+          composer.addPass(new RenderPass(scene, camera, null, NAVY_800, 1.0));
+          bloomPass = new UnrealBloomPass(
+            new THREE.Vector2(innerWidth, innerHeight),
+            0.25,                   /* v2.8c: strength 再降（0.30→0.25） */
+            0.15,                   /* v2.8c: radius 再收（0.20→0.15） */
+            1.8                     /* v2.8c: threshold 大幅提高（1.05→1.8），仅脉冲/火花超阈值 */
+          );
+          if (reducedMotion) bloomPass.strength = 0.12;
+          composer.addPass(bloomPass);
+          /* v2.8: OutputPass 做 Linear→sRGB 色彩空间转换，ACES 正确输出 */
+          if (OutputPass) composer.addPass(new OutputPass());
+        } catch (err) {
+          console.warn('[INTRE 3D Hero] Bloom 管线初始化失败，回退直接渲染:', err);
+          composer = null;
+        }
+      }
+
+      /* ================= 星场（现象层）：1500 随机星 + 49 星座星，散布 → 星座连线 → 漏斗收敛 ================= */
+      const RANDOM_N = 1500;
+      /* v2.5 D34: 真实天文星座数据（IAU 传统连线模式，归一化坐标） */
+      /* 8 星座布局：左上=北斗七星，右上=小熊座，中上=仙后座，左中=猎户座，
+         中中=天鹅座，右中=天蝎座，左下=双子座，中下=狮子座 */
+      const CONSTELLATIONS = [
+        /* 北斗七星 (Big Dipper) — 勺形：4 星斗 + 3 星柄 */
+        { stars: [[0.06,0.92],[0.06,0.84],[0.12,0.82],[0.12,0.89],[0.17,0.90],[0.22,0.93],[0.27,0.96]],
+          lines: [[0,1],[1,2],[2,3],[3,0],[3,4],[4,5],[5,6]] },
+        /* 小熊座 (Ursa Minor) — 含北极星，小勺形 */
+        { stars: [[0.82,0.96],[0.80,0.90],[0.78,0.84],[0.82,0.80],[0.88,0.79],[0.90,0.85],[0.86,0.88]],
+          lines: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,3]] },
+        /* 仙后座 (Cassiopeia) — W 形 5 星 */
+        { stars: [[0.38,0.88],[0.42,0.95],[0.47,0.87],[0.52,0.94],[0.56,0.86]],
+          lines: [[0,1],[1,2],[2,3],[3,4]] },
+        /* 猎户座 (Orion) — 肩+腰带+脚 */
+        { stars: [[0.06,0.62],[0.14,0.60],[0.08,0.52],[0.10,0.50],[0.12,0.48],[0.07,0.40],[0.14,0.39]],
+          lines: [[0,1],[0,2],[1,4],[2,3],[3,4],[2,5],[4,6]] },
+        /* 天鹅座 (Cygnus) — 十字/北十字 */
+        { stars: [[0.45,0.65],[0.45,0.55],[0.38,0.55],[0.52,0.55],[0.45,0.45]],
+          lines: [[0,1],[1,4],[2,1],[1,3]] },
+        /* 天蝎座 (Scorpius) — J 形弯尾 */
+        { stars: [[0.78,0.62],[0.80,0.56],[0.82,0.50],[0.84,0.44],[0.87,0.40],[0.90,0.38],[0.92,0.42],[0.91,0.47]],
+          lines: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]] },
+        /* 双子座 (Gemini) — 双平行线 + 头星 */
+        { stars: [[0.08,0.28],[0.14,0.27],[0.07,0.20],[0.13,0.19],[0.06,0.12],[0.12,0.11]],
+          lines: [[0,2],[2,4],[1,3],[3,5],[0,1]] },
+        /* 狮子座 (Leo) — 镰刀 + 三角 */
+        { stars: [[0.40,0.22],[0.43,0.28],[0.48,0.26],[0.47,0.18],[0.42,0.15],[0.55,0.20],[0.60,0.14],[0.54,0.10]],
+          lines: [[0,1],[1,2],[2,3],[3,4],[4,0],[3,5],[5,6],[6,7],[7,3]] },
+      ];
+      let CONST_N = 0;
+      CONSTELLATIONS.forEach((c) => { CONST_N += c.stars.length; });
+      const STAR_N = RANDOM_N + CONST_N;
+      const scatter = new Float32Array(STAR_N * 3);
+      const funnel = new Float32Array(STAR_N * 3);
+      const phase = new Float32Array(STAR_N);
+      const starSize = new Float32Array(STAR_N);
+      const starColor = new Float32Array(STAR_N * 3);
+      const cDim = new THREE.Color(0x3B6FB5), cBright = new THREE.Color(0xD6E5F3), cTmp = new THREE.Color();
+      /* 写入单颗星：scatter 位置 + 对应漏斗收敛目标 */
+      const setStar = (i, x, y, z, size, col) => {
+        scatter[i * 3] = x; scatter[i * 3 + 1] = y; scatter[i * 3 + 2] = z;
+        const ang = Math.atan2(z, x);
+        const h = clamp01((y - 12) / 43);           /* 归一化高度 */
+        const fr = 1.2 + 12.8 * h;                  /* 漏斗半径 → 1.2 */
+        const fy = 2 + 24 * h;                      /* 漏斗 y → 2 */
+        funnel[i * 3] = Math.cos(ang) * fr;
+        funnel[i * 3 + 1] = fy;
+        funnel[i * 3 + 2] = Math.sin(ang) * fr;
+        phase[i] = Math.random();
+        starSize[i] = size;
+        /* 色温抖动：每颗星在基准色上做微小 HSL 偏移，避免整片星场色温完全一致的"塑料感" */
+        cTmp.copy(col);
+        cTmp.offsetHSL((Math.random() - 0.5) * 0.03, 0, (Math.random() - 0.5) * 0.08);
+        starColor[i * 3] = cTmp.r; starColor[i * 3 + 1] = cTmp.g; starColor[i * 3 + 2] = cTmp.b;
+      };
+      /* 随机星：80% 暗淡（0.05..0.12），20% 亮星（0.25..0.45） */
+      for (let i = 0; i < RANDOM_N; i++) {
+        const ang = Math.random() * Math.PI * 2;
+        const r = 8 + Math.random() * 34;           /* 半径 8..42 */
+        const y = -8 + Math.random() * 56;          /* y -8..48，覆盖全屏高度 */
+        const bright = Math.random() < 0.20;
+        /* 暗星/亮星尺寸缩小（约 ×0.4），让满天星辰做底图不抢戏；暗星下限 0.03 保证远距离可见 */
+        const size = bright ? (0.10 + Math.random() * 0.08) : (0.03 + Math.random() * 0.03);
+        setStar(i, Math.cos(ang) * r, y, Math.sin(ang) * r, size, bright ? cBright : cDim);
+      }
+      /* 星座星：归一化坐标映射到场景空间（Navy 50） */
+      const constPairs = [];
+      let ci = RANDOM_N;
+      CONSTELLATIONS.forEach((con) => {
+        const offset = ci;
+        con.stars.forEach((s) => {
+          const sx = (s[0] - 0.5) * 60;
+          const sy = -5 + s[1] * 45;               /* sy -5..40，向下扩展覆盖中下部 */
+          const sz = (Math.random() - 0.5) * 8;
+          setStar(ci, sx, sy, sz, 0.18 + Math.random() * 0.08, cBright);
+          ci++;
+        });
+        con.lines.forEach((ln) => constPairs.push([offset + ln[0], offset + ln[1]]));
+      });
+      const starGeo = new THREE.BufferGeometry();
+      starGeo.setAttribute('position', new THREE.BufferAttribute(scatter.slice(), 3));
+      starGeo.setAttribute('aScatter', new THREE.BufferAttribute(scatter, 3));
+      starGeo.setAttribute('aFunnel', new THREE.BufferAttribute(funnel, 3));
+      starGeo.setAttribute('aPhase', new THREE.BufferAttribute(phase, 1));
+      starGeo.setAttribute('aSize', new THREE.BufferAttribute(starSize, 1));
+      starGeo.setAttribute('aColor', new THREE.BufferAttribute(starColor, 3));
+      /* 棋盘散布目标：每颗星随机落在棋盘平面范围内，z 跨越节点平面 ±2.5 让星辰与节点重叠穿插 */
+      const latticeSpread = new Float32Array(STAR_N * 3);
+      for (let i = 0; i < STAR_N; i++) {
+        latticeSpread[i * 3]     = (Math.random() - 0.5) * 14;    /* x: -7..+7，略宽于棋盘 ±6 */
+        latticeSpread[i * 3 + 1] = (Math.random() - 0.5) * 12;    /* y: -6..+6，略宽于棋盘 ±5.1 */
+        latticeSpread[i * 3 + 2] = (Math.random() - 0.5) * 5;     /* z: ±2.5 跨越节点平面，让星辰与节点重叠 */
+      }
+      starGeo.setAttribute('aLatticeSpread', new THREE.BufferAttribute(latticeSpread, 3));
+      const starMat = new THREE.ShaderMaterial({
+        uniforms: {
+          uConverge: { value: 0 },
+          uTime: { value: 0 },
+          uScale: { value: 600 * PR },
+          uStarFade: { value: 1 },
+          uDimFade: { value: 1 },
+          uLatticeSpread: { value: 0 },
+        },
+        vertexShader: [
+          'attribute vec3 aScatter;',
+          'attribute vec3 aFunnel;',
+          'attribute vec3 aLatticeSpread;',
+          'attribute float aPhase;',
+          'attribute float aSize;',
+          'attribute vec3 aColor;',
+          'uniform float uConverge;',
+          'uniform float uLatticeSpread;',
+          'uniform float uTime;',
+          'uniform float uScale;',
+          'varying vec3 vColor;',
+          'varying float vGlow;',
+          'void main() {',
+          '  vColor = aColor;',
+          '  vGlow = smoothstep(0.05, 0.13, aSize);',
+          '  float c = clamp(uConverge + (aPhase - 0.5) * 0.4, 0.0, 1.0);',
+          '  c = c * c * (3.0 - 2.0 * c);',
+          '  vec3 p = mix(aScatter, aFunnel, c);',
+          '  /* 第二阶段：汇聚完成后散开铺满棋盘平面（现象层→子维度投射） */',
+          '  p = mix(p, aLatticeSpread, uLatticeSpread);',
+          '  p.x += 0.15 * sin(uTime * 0.62 + aPhase * 21.0);',
+          '  p.y += 0.15 * sin(uTime * 0.47 + aPhase * 33.0);',
+          '  p.z += 0.15 * cos(uTime * 0.53 + aPhase * 27.0);',
+          '  vec4 mv = modelViewMatrix * vec4(p, 1.0);',
+          '  gl_PointSize = aSize * uScale / max(0.1, -mv.z);',
+          '  gl_Position = projectionMatrix * mv;',
+          '}'
+        ].join('\n'),
+        fragmentShader: [
+          'varying vec3 vColor;',
+          'varying float vGlow;',
+          'uniform float uStarFade;',
+          'uniform float uDimFade;',
+          'void main() {',
+          '  float d = length(gl_PointCoord - 0.5);',
+          '  float core = smoothstep(0.5, 0.06, d);',
+          '  float halo = smoothstep(0.5, 0.0, d) * smoothstep(0.5, 0.0, d);',
+          '  /* 暗星（vGlow≈0）受 uDimFade 控制；亮星/星座星（vGlow≈1）不受影响 */',
+          '  float dimMul = mix(uDimFade, 1.0, vGlow);',
+          '  float a = (core + halo * 0.45 * vGlow) * 0.85 * uStarFade * dimMul;',
+          '  gl_FragColor = vec4(vColor, a);',
+          '}'
+        ].join('\n'),
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      const stars = new THREE.Points(starGeo, starMat);
+      stars.frustumCulled = false;
+      worldGroup.add(stars);
+
+      /* ================= 星座连线：前 60 颗星最近邻配对，约 40 段 ================= */
+      const CN = 60;
+      const pairs = [];
+      const seenPair = {};
+      for (let i = 0; i < CN && pairs.length < 40; i++) {
+        let best = -1, bestD = Infinity;
+        for (let j = 0; j < CN; j++) {
+          if (j === i) continue;
+          const dx = scatter[i * 3] - scatter[j * 3];
+          const dy = scatter[i * 3 + 1] - scatter[j * 3 + 1];
+          const dz = scatter[i * 3 + 2] - scatter[j * 3 + 2];
+          const d = dx * dx + dy * dy + dz * dz;
+          if (d < bestD) { bestD = d; best = j; }
+        }
+        if (best < 0) continue;
+        const key = Math.min(i, best) + '_' + Math.max(i, best);
+        if (!seenPair[key]) { seenPair[key] = true; pairs.push([i, best]); }
+      }
+      const conPos = new Float32Array(pairs.length * 6);
+      pairs.forEach((pr2, k) => {
+        const a = pr2[0], b = pr2[1];
+        conPos[k * 6] = scatter[a * 3]; conPos[k * 6 + 1] = scatter[a * 3 + 1]; conPos[k * 6 + 2] = scatter[a * 3 + 2];
+        conPos[k * 6 + 3] = scatter[b * 3]; conPos[k * 6 + 4] = scatter[b * 3 + 1]; conPos[k * 6 + 5] = scatter[b * 3 + 2];
+      });
+      const conGeo = new THREE.BufferGeometry();
+      conGeo.setAttribute('position', new THREE.BufferAttribute(conPos, 3));
+      const conMat = new THREE.LineBasicMaterial({ color: 0x3B6FB5, transparent: true, opacity: 0.35 });
+      worldGroup.add(new THREE.LineSegments(conGeo, conMat));
+
+      /* ================= 真实星座连线：Navy 400 更亮更高透明度，与随机连线区分 ================= */
+      const constPos = new Float32Array(constPairs.length * 6);
+      constPairs.forEach((pr3, k) => {
+        const a = pr3[0], b = pr3[1];
+        constPos[k * 6] = scatter[a * 3]; constPos[k * 6 + 1] = scatter[a * 3 + 1]; constPos[k * 6 + 2] = scatter[a * 3 + 2];
+        constPos[k * 6 + 3] = scatter[b * 3]; constPos[k * 6 + 4] = scatter[b * 3 + 1]; constPos[k * 6 + 5] = scatter[b * 3 + 2];
+      });
+      /* 星座线用细圆柱体实现可控线宽（LineBasicMaterial 在 WebGL 永远为 1px） */
+      const constGeo = new THREE.BufferGeometry();
+      constGeo.setAttribute('position', new THREE.BufferAttribute(constPos, 3));
+      const constMat = new THREE.LineBasicMaterial({ color: 0xD6E5F3, transparent: true, opacity: 0.9 });
+      const constLines = new THREE.LineSegments(constGeo, constMat);
+      worldGroup.add(constLines);
+      /* 叠加细圆柱体线条增强可见度（半径 0.055 更纤巧，opacity 0.40 避免线条抢过星点） */
+      const cylGeo = new THREE.CylinderGeometry(0.055, 0.055, 1, 6, 1, false);
+      const cylMat = new THREE.MeshBasicMaterial({ color: 0xD6E5F3, transparent: true, opacity: 0.40 });
+      const constGroup = new THREE.Group();
+      constPairs.forEach((pr3) => {
+        const a = pr3[0], b = pr3[1];
+        const ax = scatter[a * 3], ay = scatter[a * 3 + 1], az = scatter[a * 3 + 2];
+        const bx = scatter[b * 3], by = scatter[b * 3 + 1], bz = scatter[b * 3 + 2];
+        const dx = bx - ax, dy = by - ay, dz = bz - az;
+        const len = Math.hypot(dx, dy, dz);
+        const cyl = new THREE.Mesh(cylGeo, cylMat);
+        cyl.scale.set(1, len, 1);
+        /* 默认圆柱 y 轴，需旋转到 (dx,dy,dz) 方向 */
+        cyl.position.set((ax + bx) / 2, (ay + by) / 2, (az + bz) / 2);
+        const up = new THREE.Vector3(0, 1, 0);
+        const dir = new THREE.Vector3(dx, dy, dz).normalize();
+        const quat = new THREE.Quaternion().setFromUnitVectors(up, dir);
+        cyl.quaternion.copy(quat);
+        constGroup.add(cyl);
+      });
+      worldGroup.add(constGroup);
+
+      /* ================= 42 维晶格（功能层）：6 列 × 7 行 ================= */
+      const MODULES = ['具身', '认知', '意志', '情绪', '言语', '行为'];
+      const SUBDIM_SUFFIX = ['RES-D', 'RES-B', 'DSP-F', 'DSP-B', 'STR-R', 'STR-C', 'STR-S'];
+      const COLS = 6, ROWS = 7;
+      const latticeGroup = new THREE.Group();
+      worldGroup.add(latticeGroup);
+      const nodeGeo = new THREE.SphereGeometry(0.16, 16, 16);
+      const nodes = [], cylPos = [], gridPos = [], nodeDelay = [];
+      for (let c = 0; c < COLS; c++) {
+        for (let r = 0; r < ROWS; r++) {
+          const ang = (c / COLS) * Math.PI * 2;
+          const cyl = new THREE.Vector3(Math.cos(ang) * 5.5, (3 - r) * 1.5, Math.sin(ang) * 5.5);
+          const grid = new THREE.Vector3((c - 2.5) * 2.4, (3 - r) * 1.7, 0);
+          const mesh = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: 0xD6E5F3, transparent: true, opacity: 0.9 }));
+          mesh.position.copy(cyl);
+          mesh.userData.col = c;
+          mesh.userData.row = r;
+          latticeGroup.add(mesh);
+          nodes.push(mesh); cylPos.push(cyl); gridPos.push(grid);
+          /* 中心节点先到，边缘后到（缩短到 0.20，确保 Act 3 全部到位） */
+          const d = Math.min(1, Math.hypot((c - 2.5) / 2.5, (r - 3) / 3));
+          nodeDelay.push(d * 0.20);
+        }
+      }
+      /* 连线双拓扑：圆柱态 = 六边形蜂巢（纵线 + 左下/右下斜线，列环绕成管），展开态 = 棋谱矩形网格（横平竖直，不环绕） */
+      const nIdx = (c, r) => c * ROWS + r;
+      const hexPairs = [];
+      for (let c = 0; c < COLS; c++) {
+        for (let r = 0; r < ROWS - 1; r++) {
+          hexPairs.push([nIdx(c, r), nIdx(c, r + 1)]);                              /* 垂直邻居 */
+          hexPairs.push([nIdx(c, r), nIdx((c + 1) % COLS, r + 1)]);        /* 右下（列环绕） */
+          hexPairs.push([nIdx(c, r), nIdx((c - 1 + COLS) % COLS, r + 1)]); /* 左下（列环绕） */
+        }
+      }
+      const gridPairs = [];
+      for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS - 1; r++) gridPairs.push([nIdx(c, r), nIdx(c, r + 1)]);
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS - 1; c++) gridPairs.push([nIdx(c, r), nIdx(c + 1, r)]);
+      const buildLatticeLines = (pairList) => {
+        const pos = new Float32Array(pairList.length * 6);
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        const mat = new THREE.LineBasicMaterial({ color: 0x3B6FB5, transparent: true, opacity: 0 });   /* Navy 400：比 500 更亮，连线在深空背景上可读 */
+        const lines = new THREE.LineSegments(geo, mat);
+        latticeGroup.add(lines);
+        return { pairs: pairList, geo: geo, mat: mat };
+      };
+      const hexLines = buildLatticeLines(hexPairs);
+      const gridLines = buildLatticeLines(gridPairs);
+      const writeLatticePairs = (L) => {
+        const arr = L.geo.attributes.position.array;
+        for (let s = 0; s < L.pairs.length; s++) {
+          const a = nodes[L.pairs[s][0]].position, b = nodes[L.pairs[s][1]].position;
+          arr[s * 6] = a.x; arr[s * 6 + 1] = a.y; arr[s * 6 + 2] = a.z;
+          arr[s * 6 + 3] = b.x; arr[s * 6 + 4] = b.y; arr[s * 6 + 5] = b.z;
+        }
+        L.geo.attributes.position.needsUpdate = true;
+      };
+
+      /* ================= DTI 神经层：参考图纹理平面 + 灰度 shader + 三通道粒子 ================= */
+      const fibersGroup = new THREE.Group();
+      worldGroup.add(fibersGroup);
+
+      /* 用 Canvas 2D 放大纹理 2 倍 + 轻微锐化，提升纤维精细度 */
+      const dtiCanvas = document.createElement('canvas');
+      const dtiImg2x = new Image();
+      dtiImg2x.crossOrigin = 'anonymous';
+      let dtiTexture;
+      dtiImg2x.onload = () => {
+        const sw = dtiImg2x.naturalWidth, sh = dtiImg2x.naturalHeight;
+        const dw = sw * 2, dh = sh * 2;
+        dtiCanvas.width = dw; dtiCanvas.height = dh;
+        const ctx = dtiCanvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(dtiImg2x, 0, 0, sw, sh, 0, 0, dw, dh);
+        /* 二次绘制叠加锐化：用低 opacity 的 source-over 重复绘制模拟细节增强 */
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 0.15;
+        ctx.drawImage(dtiCanvas, 0, 0, dw, dh, 0, 0, dw, dh);
+        ctx.globalAlpha = 1.0;
+        dtiTexture = new THREE.CanvasTexture(dtiCanvas);
+        dtiTexture.colorSpace = THREE.SRGBColorSpace;
+        dtiTexture.minFilter = THREE.LinearMipmapLinearFilter;
+        dtiTexture.magFilter = THREE.LinearFilter;
+        dtiTexture.generateMipmaps = true;
+        dtiTexture.anisotropy = 4;   /* v2.7 性能：16→4（与占位纹理一致） */
+        dtiTexture.needsUpdate = true;
+        dtiMat.uniforms.uTexture.value = dtiTexture;
+        dtiMat.uniforms.uTexelSize.value.set(1/dw, 1/dh);
+        /* v2.5 D33: 同步 3D 脑模型纹理 */
+        if (brainMesh) brainMat3D.uniforms.uDTITexture.value = dtiTexture;
+      };
+      dtiImg2x.src = '../assets/dti-reference.png';
+      /* 初始占位纹理（加载完成前用原图，避免空白） */
+      dtiTexture = new THREE.TextureLoader().load('../assets/dti-reference.png');
+      dtiTexture.colorSpace = THREE.SRGBColorSpace;
+      dtiTexture.minFilter = THREE.LinearMipmapLinearFilter;
+      dtiTexture.magFilter = THREE.LinearFilter;
+      dtiTexture.generateMipmaps = true;
+      dtiTexture.anisotropy = 4;   /* v2.7 性能：16→4（幽灵壳上 DTI 仅为微弱辉光，16x 各向异性在软件渲染器上成本放大 10-30×） */
+
+      /* v2.7 RX-02: 移除脑皮层纹理（幽灵壳方案不再平铺 JPG，诊断：皮层贴图是"内脏球"元凶） */
+
+      const dtiMat = new THREE.ShaderMaterial({
+        uniforms: {
+          uTexture: { value: dtiTexture },
+          uOpacity: { value: 0 },
+          uTexelSize: { value: new THREE.Vector2(1/482, 1/636) },
+          /* 电流上流效果所需的 uniform */
+          uTime: { value: 0 },
+          uMouseUV: { value: new THREE.Vector2(0.5, 0.5) },
+          uMouseStrength: { value: 0 },
+          uPulsePos: { value: new THREE.Vector2(0.5, 0.5) },
+          uPulseRadius: { value: -1 },
+          uPulseStrength: { value: 0 },
+          uCurrentFlow: { value: 0 },
+        },
+        vertexShader: [
+          'varying vec2 vUv;',
+          'void main() {',
+          '  vUv = uv;',
+          '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+          '}'
+        ].join('\n'),
+        fragmentShader: [
+          'uniform sampler2D uTexture;',
+          'uniform float uOpacity;',
+          'uniform vec2 uTexelSize;',
+          /* 电流上流效果 uniform 声明 */
+          'uniform float uTime;',
+          'uniform vec2 uMouseUV;',
+          'uniform float uMouseStrength;',
+          'uniform vec2 uPulsePos;',
+          'uniform float uPulseRadius;',
+          'uniform float uPulseStrength;',
+          'uniform float uCurrentFlow;',
+          'varying vec2 vUv;',
+          'void main() {',
+          '  vec2 ts = uTexelSize;',
+          '  /* 3x3 锐化卷积：中心增强，邻域减弱，保留纤维细节 */',
+          '  float c  = dot(texture2D(uTexture, vUv).rgb, vec3(0.299, 0.587, 0.114));',
+          '  float l  = dot(texture2D(uTexture, vUv + vec2(-ts.x, 0.0)).rgb, vec3(0.299, 0.587, 0.114));',
+          '  float r  = dot(texture2D(uTexture, vUv + vec2( ts.x, 0.0)).rgb, vec3(0.299, 0.587, 0.114));',
+          '  float u  = dot(texture2D(uTexture, vUv + vec2(0.0,  ts.y)).rgb, vec3(0.299, 0.587, 0.114));',
+          '  float d  = dot(texture2D(uTexture, vUv + vec2(0.0, -ts.y)).rgb, vec3(0.299, 0.587, 0.114));',
+          '  float sharp = clamp(c * 1.8 - (l + r + u + d) * 0.2, 0.0, 1.0);',
+          '  /* gamma 提亮：暗部拉伸，纤维更明亮 */',
+          '  float bright = pow(sharp, 0.6) * 1.35;',
+          '  bright = clamp(bright, 0.0, 1.0);',
+          '  /* 透明阈值收紧：保留更多纤维边缘细节 */',
+          '  float alpha = smoothstep(0.015, 0.06, bright);',
+          '  /* ===== 电流上流效果（优雅克制） ===== */',
+          '  /* 从下往上流：3 个细脉冲带 */',
+          '  float flow = vUv.y * 3.0 - uTime * 0.12;',
+          '  float band = smoothstep(0.78, 1.0, fract(flow));',
+          '  /* hash 噪声：让电流有不规则闪烁 */',
+          '  float hash = fract(sin(dot(vUv * 80.0, vec2(12.9898, 78.233))) * 43758.5453);',
+          '  float flicker = 0.75 + 0.25 * hash;',
+          '  float current = band * flicker * bright * uCurrentFlow;',
+          '  /* 鼠标靠近：在鼠标 UV 附近增强电流亮度 */',
+          '  float mouseDist = length(vUv - uMouseUV);',
+          '  float mouseBoost = smoothstep(0.25, 0.0, mouseDist) * uMouseStrength * bright;',
+          '  /* 点击脉冲：从 uPulsePos 向外扩展的环形波 */',
+          '  float pulseDist = length(vUv - uPulsePos);',
+          '  float pulseRing = smoothstep(0.06, 0.0, abs(pulseDist - uPulseRadius)) * uPulseStrength * bright;',
+          '  /* 合成：冷蓝色电流叠加在纤维亮区 */',
+          '  vec3 currentColor = vec3(0.4, 0.6, 1.0);',
+          '  float currentTotal = clamp(current + mouseBoost + pulseRing, 0.0, 1.0);',
+          '  /* 电流通过：纤维色向冷蓝偏移（替换式混合，高亮区亦可见蓝色） */',
+          '  vec3 finalColor = mix(vec3(bright), vec3(bright) * currentColor * 1.5, currentTotal);',
+          '  float finalAlpha = alpha * uOpacity + currentTotal * uOpacity * 0.5;',
+          '  gl_FragColor = vec4(finalColor, finalAlpha);',
+          '}'
+        ].join('\n'),
+        transparent: true,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      });
+
+      /* DTI 平面：14×18 匹配图片宽高比 482:636 (0.758)，避免横向拉伸 */
+      const dtiPlaneGeo = new THREE.PlaneGeometry(14, 18);
+      const dtiPlane = new THREE.Mesh(dtiPlaneGeo, dtiMat);
+      dtiPlane.position.set(0, -14, -10);
+      fibersGroup.add(dtiPlane);
+
+      /* ================= v2.5 D33: 3D 脑模型（程序化生成 + DTI 投影） ================= */
+      /* 用 IcosahedronGeometry 变形生成带沟回的 3D 脑形状，
+         通过平面投影将 DTI 纹理映射到表面，加菲涅尔边缘光 */
+      let brainMesh = null;
+      /* v2.7: 幽灵壳脑材质（RX-02 翻转主角）
+         诊断结论：皮层贴图把脑变成"肉粉内脏球"，顶级 DTI 美学 = 黑场 + 幽灵壳 + 内部自发光纤维。
+         本版：① 移除皮层纹理主导（不再平铺 JPG）② 壳底为极低亮度的冷海军蓝
+         ③ DTI 纤维光从壳内透出（emissive 权重提升）④ 菲涅尔边缘光勾勒轮廓
+         ⑤ 程序化 fbm 脑回明暗起伏替代贴图 ⑥ 手动深度雾融入 Navy 950 */
+      const brainMat3D = new THREE.ShaderMaterial({
+        uniforms: {
+          uDTITexture: { value: dtiTexture },
+          uOpacity: { value: 0 },
+          uTime: { value: 0 },
+          uCurrentFlow: { value: 0 },
+          uMouseUV: { value: new THREE.Vector2(0.5, 0.5) },
+          uMouseStrength: { value: 0 },
+          uPulsePos: { value: new THREE.Vector2(0.5, 0.5) },
+          uPulseRadius: { value: -1 },
+          uPulseStrength: { value: 0 },
+        },
+        vertexShader: [
+          'varying vec3 vWorldPos;',
+          'varying vec3 vNormal;',
+          'varying vec3 vLocalPos;',
+          'varying vec2 vProjUV;',   /* v2.7 性能：球面 UV 在顶点着色器算好，片元只插值（atan/asin 是高价函数，原实现每片元计算导致软件渲染 2 FPS） */
+          'void main() {',
+          '  vLocalPos = position;',
+          '  vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;',
+          '  vNormal = normalize(normalMatrix * normal);',
+          '  vec3 sd = normalize(position);',
+          '  vProjUV = vec2(0.5 + atan(sd.z, sd.x) / 6.28318530718, 0.5 - asin(clamp(sd.y, -1.0, 1.0)) / 3.14159265359);',
+          '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+          '}'
+        ].join('\n'),
+        fragmentShader: [
+          'uniform sampler2D uDTITexture;',
+          'uniform float uOpacity;',
+          'uniform float uTime;',
+          'uniform float uCurrentFlow;',
+          'uniform vec2 uMouseUV;',
+          'uniform float uMouseStrength;',
+          'uniform vec2 uPulsePos;',
+          'uniform float uPulseRadius;',
+          'uniform float uPulseStrength;',
+          'varying vec3 vWorldPos;',
+          'varying vec3 vNormal;',
+          'varying vec3 vLocalPos;',
+          'varying vec2 vProjUV;',
+          /* --- 脑回细节：免 sin 哈希（v2.7 性能：SwiftShader 上 sin/pow/exp 每个 50-100 周期） --- */
+          'float _h1(vec3 p) { return fract(dot(floor(p), vec3(12.9898, 78.233, 37.719))); }',
+          'void main() {',
+          '  /* === DTI 纤维 emissive：幽灵壳内透出的冷蓝光（视觉主角之一，UV 由顶点插值） === */',
+          '  float dtiBright = dot(texture2D(uDTITexture, vProjUV).rgb, vec3(0.299, 0.587, 0.114));',
+          '  vec3 dtiGlow = vec3(0.38, 0.55, 0.82) * dtiBright;',
+          '  /* === 幽灵壳基色：冷海军蓝灰，极低亮度（永不触发 bloom 阈值） === */',
+          '  vec3 shellBase = vec3(0.10, 0.17, 0.27);',
+          '  /* === 脑回脑沟明暗：单次 hash 细节 + 几何法线柔和光照 === */',
+          '  float relief = 0.74 + 0.26 * _h1(vLocalPos * 1.15 + 5.0);',
+          '  /* === 菲涅尔边缘光：冷蓝轮廓（三次方用乘法，避免 pow） === */',
+          '  vec3 viewDir = normalize(cameraPosition - vWorldPos);',
+          '  float NdotV = max(dot(viewDir, vNormal), 0.0);',
+          '  float f1 = 1.0 - NdotV;',
+          '  float fres = f1 * f1 * f1;',
+          '  vec3 fresCol = vec3(0.23, 0.44, 0.71) * fres;',
+          '  /* === 微弱主光（右前上），消除塑料感 === */',
+          '  vec3 keyDir = normalize(vec3(0.4, 0.6, 0.7));',
+          '  float diff = max(dot(vNormal, keyDir), 0.0) * 0.35 + 0.65;',
+          '  /* === 电流上流：壳面细微蓝带（与纤维电流同步） === */',
+          '  float flow = vProjUV.y * 3.0 - uTime * 0.12;',
+          '  float band = smoothstep(0.78, 1.0, fract(flow));',
+          '  float hash = fract(vProjUV.x * 12.9898 + vProjUV.y * 78.233);',
+          '  vec3 currentCol = vec3(0.35, 0.55, 1.0) * band * (0.75 + 0.25 * hash) * dtiBright * uCurrentFlow * 0.6;',
+          '  /* === 鼠标靠近：壳面微亮（悬停反馈） === */',
+          '  float mouseDist = length(vProjUV - uMouseUV);',
+          '  vec3 mouseCol = vec3(0.45, 0.62, 0.9) * smoothstep(0.25, 0.0, mouseDist) * uMouseStrength * 0.35;',
+          '  /* === 点击脉冲环：壳面扩散（Amber 500） === */',
+          '  float pulseDist = length(vProjUV - uPulsePos);',
+          '  float pulseRing = smoothstep(0.05, 0.0, abs(pulseDist - uPulseRadius)) * uPulseStrength;',
+          '  vec3 pulseCol = vec3(0.961, 0.620, 0.043) * pulseRing * 0.9;',
+          '  /* === v2.8: 手动深度雾：纯黑场（匹配参考图） === */',
+          '  float distCam = length(cameraPosition - vWorldPos);',
+          '  float fogF = clamp(distCam * 0.012, 0.0, 0.65);',
+          '  vec3 fogCol = vec3(0.0, 0.0, 0.0);',
+          '  /* === v2.8: 合成 — DTI 印花降为极微弱辉光（0.5→0.12），壳面以菲涅尔轮廓为主 === */',
+          '  vec3 col = shellBase * relief * diff + dtiGlow * 0.12 + fresCol + currentCol + mouseCol + pulseCol;',
+          '  col = mix(col, fogCol, fogF);',
+          '  float alpha = (0.06 + 0.08 * dtiBright + 0.65 * fres + 0.4 * pulseRing) * uOpacity;',
+          '  gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));',
+          '}'
+        ].join('\n'),
+        transparent: true,
+        depthWrite: false,
+        side: THREE.FrontSide,
+      });
+
+      /* ============================================================================
+       * v2.9 大脑渲染系统：真实大脑轮廓多角度展开（取代 v2.7 程序化球壳）
+       * --------------------------------------------------------------------------
+       * 诊断结论（用户反馈"看不出来是大脑"）：v2.7 用 IcosahedronGeometry + 噪声变形
+       * 永远不可能像大脑。改为基于真实矢状面侧视轮廓（241 解剖标志点），
+       * 围绕 y 轴展开多角度切片，形成"线稿风格"的 3D 脑壳。
+       *
+       * 兼容性保留：brainMesh 仍指向 Group 节点（不再指向 Mesh），
+       *   下游所有引用 brainMesh.add(...)、brainMesh.position.set(...) 保持有效。
+       * ========================================================================== */
+      let brainGeo3D = null;   /* 保留以兼容历史代码 */
+      let brainAura = null;
+      if (brainShellSystem && typeof window !== 'undefined' && window.BRAIN_SAGITTAL_OUTLINE) {
+        try {
+          /* v2.9: 用真实大脑轮廓多角度系统取代旧球壳
+             createBrainShellShells 直接返回 group 并把方法挂在 group 上 */
+          brainMesh = brainShellSystem.createBrainShellShells({
+            outline: window.BRAIN_SAGITTAL_OUTLINE,
+            slices: liteMode ? 6 : 12,
+            lineWidth: liteMode ? 0.4 : 0.6,   /* v2.8d: 壳线稍粗一点让轮廓可读 */
+            opacity: liteMode ? 0.10 : 0.18,   /* v2.8d: 壳基透明度微提——轮廓若隐若现 */
+          });
+          if (!brainMesh || !brainMesh.isGroup) throw new Error('createBrainShellShells returned non-Group: ' + typeof brainMesh);
+          /* brainMesh 现在是 THREE.Group，定位参考旧坐标 (0,-14,-10) */
+          brainMesh.position.set(0, -14, -10);
+          brainMesh.frustumCulled = false;
+          brainMesh.userData.kind = 'brain-shell-shells';
+          fibersGroup.add(brainMesh);
+          /* v2.9: 注册 shellOpacity getter，让 applyScene 控制的可见度生效 */
+          brainMesh.userData.shellOpacity = 1.0;
+          brainMesh.setShellOpacityGetter(() => brainMesh.userData.shellOpacity || 1.0);
+          dtiPlane.visible = false;
+          brainAura = null;
+        } catch (e) {
+          console.warn('[INTRE 3D Hero] Brain shell creation failed:', e.message);
+        }
+      }
+
+      /* ================= v2.6: DTI 纤维束系统（Line2 宽线 + DEC 顶点色 + 电流扫描波） ================= */
+      /* 替代旧的 2D 纹理投影：在脑体积内生成 3D 解剖纤维束，匹配期刊级 DTI 参考图 */
+      let dtiFibers = null;
+      if (dtiFiberSystem && brainMesh) {
+        try {
+          dtiFibers = dtiFiberSystem.createDTIFibers({
+            density: liteMode ? liteDensity : 3.5,  /* v2.8c: 2.0→3.5，更多纤维=更细丝绒（参考图密度） */
+            samples: liteMode ? 32 : 48,
+            jitterScale: 0.42,
+            plain: new URLSearchParams(location.search).get('plain') === '1',  /* 诊断：原生 LineMaterial */
+            legacy: new URLSearchParams(location.search).get('legacy') === '1', /* 诊断：普通 THREE.Line */
+          });
+          /* 纤维束作为 brainMesh 子对象，跟随脑模型位置和缩放 */
+          brainMesh.add(dtiFibers.group);
+          console.log('[INTRE 3D Hero] DTI fibers created:', dtiFibers.meta.total, 'fibers');
+        } catch (err) {
+          console.warn('[INTRE 3D Hero] DTI fiber creation failed:', err);
+          dtiFibers = null;
+        }
+      }
+
+      /* ================= v2.5 D35-D38: D21 转场纤维束（42×1 Line，脑区靶点） ================= */
+      const rootGroup = new THREE.Group();
+      rootGroup.visible = true;  /* v2.5: 启用（由 applyScene 控制透明度） */
+      rootGroup.userData.lastPulseBatch = -1;  /* D21 脉冲批次追踪 */
+      fibersGroup.add(rootGroup);
+      const rootFibers = [];     /* 42 条纤维束 */
+      const ROOT_SEGMENTS = 18;
+      /* 模块→脑区靶点映射（brainMesh local space，基于 INTRE 04-A-14 神经科学证据） */
+      /* 坐标系与 createBrainGeometry 一致：X+ = 前(额叶), X- = 后(枕叶), Y+ = 脑顶, Y- = 脑底, Z+ = 右半球, Z- = 左半球 */
+      /* 脑尺寸：SX=8.5(前后), SY=5.0(上下), SZ=7.0(左右) */
+      /* 依据：04-A-14-发展神经科学与生命周期神经约束.md §3.2-3.7 各模块候选神经系统 */
+      const MODULE_BRAIN_TARGETS = [
+        /* M1 具身：脑干(底部中央深层)·岛叶(外侧深部)·躯体感觉皮层(后顶叶)（04-A-14 §3.2） */
+        { cx: 0.5, cy: -3.2, cz: 0.8, spread: 1.4, label: '脑干·岛叶·躯体感觉' },
+        /* M2 认知：前额叶(前上)·顶叶控制网络·海马-内侧颞叶·默认网络（04-A-14 §3.3） */
+        { cx: 5.5, cy: 2.8, cz: 0.5, spread: 1.3, label: '前额叶-顶叶·海马·默认网络' },
+        /* M3 意志：背侧前扣带(前上内侧)·额纹状体环路·丘脑连接（04-A-14 §3.4） */
+        { cx: 3.0, cy: 1.8, cz: 0.3, spread: 0.9, label: '背侧前扣带·额纹状体' },
+        /* M4 情绪：杏仁核(前下外侧)·眶额/腹内侧前额叶·腹侧纹状体·岛叶（04-A-14 §3.5） */
+        { cx: 4.2, cy: -1.0, cz: 2.2, spread: 1.2, label: '杏仁核·眶额·腹侧纹状体' },
+        /* M5 言语：左侧颞叶-额下回语言网络·弓状束·语义网络（04-A-14 §3.6, 左偏侧化 Z-） */
+        { cx: 3.5, cy: 0.5, cz: -3.0, spread: 1.1, label: '左侧语言网络·弓状束' },
+        /* M6 行为：运动皮层(顶部)·基底神经节·丘脑·小脑(后下)（04-A-14 §3.7） */
+        { cx: 0.5, cy: 3.0, cz: 0.5, spread: 1.3, label: '运动皮层·基底节·小脑' },
+      ];
+      /* 通道色按行（D36）：RES 行(r=0,1)=绿, DSP 行(r=2,3)=蓝, STR 行(r=4,5,6)=棕 */
+      const ROW_CHANNEL_COLORS = [
+        0x5A8270, 0x5A8270,  /* RES → UPLS 绿 */
+        0x5B7080, 0x5B7080,  /* DSP → UNIS 蓝 */
+        0x8B7360, 0x8B7360, 0x8B7360,  /* STR → UBMS 棕 */
+      ];
+      /* D21 颜色常量（模块级，避免每帧 GC） */
+      const D21_COL_AMBER = new THREE.Color(0xF59E0B);
+      const D21_COL_BASE = new THREE.Color(0xD6E5F3);
+      /* 确定性 PRNG：每条纤维基于 nIdx 生成稳定随机参数，避免逐帧抖动 */
+      const fiberPRNG = (seed) => {
+        let s = ((seed + 1) * 2654435761) >>> 0;
+        return () => {
+          s = (s * 1664525 + 1013904223) >>> 0;
+          return s / 4294967296;
+        };
+      };
+      for (let nIdx = 0; nIdx < 42; nIdx++) {
+        const c = Math.floor(nIdx / ROWS);  /* 列 = 模块 */
+        const r = nIdx % ROWS;              /* 行 = 子维度 */
+        /* v2.7 RX-08: 确定性 PRNG — 每次刷新纤维靶点布局一致，构图可复现 */
+        const _rng = fiberPRNG(nIdx);
+        /* 节点在 lattice 圆柱排列中的位置（与 buildLattice 一致） */
+        const ang = (c / COLS) * Math.PI * 2;
+        const nodeX = Math.cos(ang) * 5.5;
+        const nodeY = (3 - r) * 1.5;
+        const nodeZ = Math.sin(ang) * 5.5;
+        /* 脑区靶点（brainMesh local space）+ 行偏移（确定性散布） */
+        const bt = MODULE_BRAIN_TARGETS[c];
+        const rowOffset = (r - 3) * 0.3;  /* 行在靶点区域内垂直散布 */
+        const brainTargetX = bt.cx + (_rng() - 0.5) * bt.spread;
+        const brainTargetY = bt.cy + rowOffset + (_rng() - 0.5) * bt.spread * 0.5;
+        /* Z（左右半球）：使用模块指定 cz + 随机散布，确保纤维端点在脑表面可见侧 */
+        const brainTargetZ = bt.cz + (_rng() - 0.5) * bt.spread * 0.4;
+        /* 错峰延迟：中心早、边缘晚 */
+        const dist = Math.min(1, Math.hypot((c - 2.5) / 2.5, (r - 3) / 3));
+        const growDelay = dist * 0.35;
+        /* 创建 Line 几何（初始全零，每帧更新） */
+        const positions = new Float32Array((ROOT_SEGMENTS + 1) * 3);
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geo.setDrawRange(0, 0);  /* 初始不可见 */
+        const lineMat = new THREE.LineBasicMaterial({
+          color: ROW_CHANNEL_COLORS[r] || 0xD6E5F3,
+          transparent: true, opacity: 0,
+          depthWrite: false,  /* 防止与脑模型 z-fighting */
+          blending: THREE.AdditiveBlending,  /* 加法混合：深空背景上自发光，穿越脑模型仍可见 */
+        });
+        const line = new THREE.Line(geo, lineMat);
+        line.frustumCulled = false;
+        /* 纤维束曲线参数：确定性横向偏移 + 扭转，模拟真实神经束弧线 */
+        const _lateralPhase = _rng() * Math.PI * 2;   /* 横向偏移方向角 */
+        const _lateralAmp = 0.7 + _rng() * 0.6;       /* 弧度幅度 0.7-1.3 */
+        const _torsion = (_rng() - 0.5) * 1.4;         /* S 形扭转量 -0.7~+0.7 */
+        const _zBulge1 = 1.8 + _rng() * 0.8;           /* 第一控制点 Z 凸起 */
+        const _zBulge2 = 0.8 + _rng() * 0.6;           /* 第二控制点 Z 凸起 */
+        line.userData = {
+          nodeX, nodeY, nodeZ,
+          brainTargetX, brainTargetY, brainTargetZ,
+          growDelay,
+          channelColor: ROW_CHANNEL_COLORS[r] || 0xD6E5F3,
+          _channelColor: new THREE.Color(ROW_CHANNEL_COLORS[r] || 0xD6E5F3),
+          nIdx, col: c, row: r,
+          lateralPhase: _lateralPhase,
+          lateralAmp: _lateralAmp,
+          torsion: _torsion,
+          zBulge1: _zBulge1,
+          zBulge2: _zBulge2,
+        };
+        rootGroup.add(line);
+        rootFibers.push(line);
+      }
+      /* 注光下行粒子（D 幕：p 0.86-0.92，42 个光点从节点滑向脑端） */
+      const injectPtsGeo = new THREE.BufferGeometry();
+      const injectPos = new Float32Array(42 * 3);
+      injectPtsGeo.setAttribute('position', new THREE.BufferAttribute(injectPos, 3));
+      const injectMat = new THREE.PointsMaterial({
+        color: 0xF59E0B, size: 0.25, transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false,
+      });
+      const injectPts = new THREE.Points(injectPtsGeo, injectMat);
+      injectPts.frustumCulled = false;
+      rootGroup.add(injectPts);
+
+      const REGION_SPEED = [1.0, 0.7, 1.3];
+      const curves = [];
+      const curveRegion = [];
+
+      /* v2.7 RX-07: 三通道粒子沿真实纤维路径流动
+         优先使用 dtiFiberSystem 暴露的纤维折线（brainMesh 本地坐标）；
+         若纤维系统不可用，回退到 2D brainSDF 椭球内随机弧线 */
+      if (dtiFibers && dtiFibers.fiberPaths && dtiFibers.fiberPaths.length) {
+        const paths = dtiFibers.fiberPaths;
+        const step = Math.max(1, Math.floor(paths.length / 120));
+        for (let i = 0; i < paths.length && curves.length < 120; i += step) {
+          const path = paths[i];
+          if (path.length < 4) continue;
+          curves.push(new THREE.CatmullRomCurve3(path));
+          curveRegion.push(0);
+        }
+      }
+      const BRAIN_SX = 14 / 16;  /* plane 缩窄后 x 方向比例 */
+      const brainSDF = (x, y) => {
+        const cy = -14;
+        const sx = x / BRAIN_SX;  /* 还原到原始坐标系判断 */
+        const cerebrum = Math.sqrt(((sx+1)/9)*((sx+1)/9) + ((y-cy)/8)*((y-cy)/8)) - 1;
+        const temporal = Math.sqrt(((sx+5)/3.5)*((sx+5)/3.5) + ((y-cy-5)/3)*((y-cy-5)/3)) - 1;
+        const cerebellum = Math.sqrt(((sx-5.5)/2.8)*((sx-5.5)/2.8) + ((y-cy-6.5)/2.5)*((y-cy-6.5)/2.5)) - 1;
+        return Math.min(cerebrum, temporal, cerebellum);
+      };
+      const sampleInBrain = () => {
+        for (let tries = 0; tries < 40; tries++) {
+          const x = -10 * BRAIN_SX + Math.random() * 20 * BRAIN_SX, y = -24 + Math.random() * 20;
+          if (brainSDF(x, y) < 0) return { x, y };
+        }
+        return { x: 0, y: -14 };
+      };
+      while (curves.length < 60) {   /* 保底：纤维路径不足时用椭球内弧线补齐 */
+        const a = sampleInBrain(), b = sampleInBrain();
+        const zA = 0.5 + Math.random() * 1.5, zB = 0.5 + Math.random() * 1.5;
+        const dist = Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+        const arcH = dist * 0.2;
+        const n = 6, pts = [];
+        for (let k = 0; k < n; k++) {
+          const t = k / (n - 1);
+          pts.push(new THREE.Vector3(
+            lerp(a.x, b.x, t),
+            lerp(a.y, b.y, t) + Math.sin(Math.PI * t) * arcH,
+            lerp(zA, zB, t)
+          ));
+        }
+        curves.push(new THREE.CatmullRomCurve3(pts));
+        curveRegion.push(0);
+      }
+
+      const makeChannelPoints = (count, hexColor, sizeWorld) => {
+        const pos = new Float32Array(count * 3);
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        const mat = new THREE.ShaderMaterial({
+          uniforms: {
+            uColor: { value: new THREE.Color(hexColor) },
+            uSize: { value: sizeWorld },
+            uScale: { value: 560 * PR },
+            uOpacity: { value: 0.85 },
+          },
+          vertexShader: [
+            'uniform float uSize;',
+            'uniform float uScale;',
+            'void main() {',
+            '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
+            '  gl_PointSize = uSize * uScale / max(0.1, -mv.z);',
+            '  gl_Position = projectionMatrix * mv;',
+            '}'
+          ].join('\n'),
+          fragmentShader: [
+            'uniform vec3 uColor;',
+            'uniform float uOpacity;',
+            'void main() {',
+            '  float d = length(gl_PointCoord - 0.5);',
+            '  float a = smoothstep(0.5, 0.05, d);',
+            '  gl_FragColor = vec4(uColor, a * uOpacity);',
+            '}'
+          ].join('\n'),
+          transparent: true,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+        });
+        const pts = new THREE.Points(geo, mat);
+        pts.frustumCulled = false;
+        return pts;
+      };
+      const uplsPts = makeChannelPoints(160, 0x5A8270, 0.06);
+      const unisPts = makeChannelPoints(160, 0x5B7080, 0.06);
+      const ubmsPts = makeChannelPoints(160, 0x8B7360, 0.06);
+      /* v2.7 RX-07: 通道粒子挂到 brainMesh 下（跟随缩放/旋转，与纤维同空间）；
+         脑模型不可用时退回 fibersGroup 空间（2D 平面时代坐标） */
+      const channelHost = brainMesh || fibersGroup;
+      channelHost.add(uplsPts);
+      channelHost.add(unisPts);
+      channelHost.add(ubmsPts);
+
+      const channelState = (count) => {
+        const curve = Uint8Array.from({ length: count }, () => (Math.random() * curves.length) | 0);
+        return {
+          t: Float32Array.from({ length: count }, () => Math.random()),
+          speed: Float32Array.from({ length: count }, () => 0.6 + Math.random() * 0.8),
+          curve: curve,
+          speedMult: Float32Array.from({ length: count }, (_, i) => REGION_SPEED[curveRegion[curve[i]]] || 1.0),
+        };
+      };
+      const uplsState = channelState(160);
+      const unisState = channelState(160);
+      const ubmsState = channelState(160);
+      const tmpV = new THREE.Vector3();
+      const updateChannel = (pts, st, dir, baseStep) => {
+        const arr = pts.geometry.attributes.position.array;
+        for (let i = 0; i < st.t.length; i++) {
+          let t = st.t[i] + dir * baseStep * st.speed[i] * st.speedMult[i];
+          if (t > 1) t -= 1; else if (t < 0) t += 1;
+          st.t[i] = t;
+          curves[st.curve[i]].getPoint(t, tmpV);
+          arr[i * 3] = tmpV.x; arr[i * 3 + 1] = tmpV.y; arr[i * 3 + 2] = tmpV.z;
+        }
+        pts.geometry.attributes.position.needsUpdate = true;
+      };
+
+
+      /* ================= 相机路径：固定垂直轴关键帧 + 分段 smoothstep ================= */
+      const KEYS = [
+        { p: 0.00, cam: [0, 48, 34],  look: [0, 30, 0] },
+        { p: 0.25, cam: [0, 20, 30],  look: [0, 10, 0] },
+        { p: 0.50, cam: [0, 6, 26],   look: [0, 0, 0] },
+        { p: 0.60, cam: [0, 0, 19],   look: [0, 0, 0] },   /* 棋盘正读起点 */
+        { p: 0.70, cam: [0, 0, 19],   look: [0, 0, 0] },   /* D21 开始：最后稳定视角，纤维束开始从脑区生长 */
+        { p: 0.76, cam: [1.5, -4, 19.5], look: [0, -6, 0] },  /* 螺旋下潜开始：右移+下降 */
+        { p: 0.82, cam: [-1.2, -8, 21], look: [0, -10, 0] },  /* 左曲线+更深：纤维束垂直可见 */
+        { p: 0.88, cam: [0.8, -10, 22], look: [0, -12, 0] },  /* 右回旋+接近脑区：注光下行 */
+        { p: 0.94, cam: [0, -12, 22], look: [0, -13.5, 0] },  /* 居中+脑区点亮：uPulse 环扩散 */
+        { p: 1.00, cam: [0, -13, 23], look: [0, -14, 0] },  /* 神经层：脑满显+棋盘幽灵化，近距离定格 */
+      ];
+      const camPos = [0, 48, 34], lookPos = [0, 30, 0];
+      const samplePath = (p) => {
+        let i = 0;
+        while (i < KEYS.length - 2 && p > KEYS[i + 1].p) i++;
+        const a = KEYS[i], b = KEYS[i + 1];
+        const t = ss(p, a.p, b.p);
+        for (let k = 0; k < 3; k++) {
+          camPos[k] = lerp(a.cam[k], b.cam[k], t);
+          lookPos[k] = lerp(a.look[k], b.look[k], t);
+        }
+      };
+
+      /* ================= 受限视差（±12°，作用于 worldGroup） ================= */
+      let mx = 0.5, my = 0.5, mousePX = -1, mousePY = -1;
+      let dragging = false, dSX = 0, dSY = 0, dBX = 0, dBY = 0, dragX = 0, dragY = 0;
+      const ROT_Y_MAX = 0.21, ROT_X_MAX = 0.12;
+      addEventListener('pointermove', (e) => {
+        mousePX = e.clientX; mousePY = e.clientY;
+        if (coarsePointer || reducedMotion) return;
+        if (dragging) {
+          dragY = dBY + (e.clientX - dSX) * 0.003;
+          dragX = dBX + (e.clientY - dSY) * 0.0024;
+        }
+        mx = e.clientX / innerWidth;
+        my = e.clientY / innerHeight;
+      }, { passive: true });
+      addEventListener('pointerdown', (e) => {
+        if (coarsePointer || reducedMotion) return;
+        if (e.target.closest && e.target.closest('a')) return;
+        dragging = true;
+        dSX = e.clientX; dSY = e.clientY;
+        dBX = dragX; dBY = dragY;
+      });
+      const endDrag = () => { dragging = false; };
+      addEventListener('pointerup', endDrag);
+      addEventListener('pointercancel', endDrag);
+
+      /* ================= 节点悬停（Raycaster + HTML tooltip） ================= */
+      const raycaster = new THREE.Raycaster();
+      const ndc = new THREE.Vector2();
+      let hoverNode = null, hoverCol = -1;
+      const paintColumn = (c, hex) => {
+        for (let r = 0; r < ROWS; r++) nodes[nIdx(c, r)].material.color.setHex(hex);
+      };
+      const clearHover = () => {
+        if (hoverNode) { hoverNode = null; }   /* 缩放回弹由 applyScene 阻尼处理，不瞬跳 */
+        if (hoverCol >= 0) { paintColumn(hoverCol, 0xD6E5F3); hoverCol = -1; }
+        tooltipEl.style.opacity = '0';
+        cursorEl.classList.remove('is-hover');
+      };
+      const doRaycast = () => {
+        if (uLatticeCur < 0.2 || dragging || mousePX < 0) { clearHover(); return; }
+        ndc.set((mousePX / innerWidth) * 2 - 1, -(mousePY / innerHeight) * 2 + 1);
+        raycaster.setFromCamera(ndc, camera);
+        const hits = raycaster.intersectObjects(nodes, false);
+        const hit = hits.length ? hits[0].object : null;
+        if (hit !== hoverNode) {
+          hoverNode = hit;   /* 缩放过渡由 applyScene 阻尼趋近（1 ⇄ 1.65），无瞬跳 */
+          if (hoverNode) {
+            const c = hoverNode.userData.col, r = hoverNode.userData.row;
+            if (c !== hoverCol) {                       /* 整列亮起 Amber 500，移出恢复 Navy 50 */
+              if (hoverCol >= 0) paintColumn(hoverCol, 0xD6E5F3);
+              hoverCol = c;
+              paintColumn(c, 0xF59E0B);
+            }
+            tooltipEl.innerHTML =
+              '<span class="tip-mod">M' + (c + 1) + ' ' + MODULES[c] + '</span>' +
+              '<span class="tip-sub">' + SUBDIM_SUFFIX[r] + '</span>';
+            tooltipEl.style.opacity = '1';
+            cursorEl.classList.add('is-hover');
+          } else {
+            if (hoverCol >= 0) { paintColumn(hoverCol, 0xD6E5F3); hoverCol = -1; }
+            tooltipEl.style.opacity = '0';
+            cursorEl.classList.remove('is-hover');
+          }
+        }
+        if (hoverNode) {
+          tooltipEl.style.transform = 'translate(' + (mousePX + 16) + 'px,' + (mousePY + 18) + 'px)';
+        }
+      };
+      /* B3: 点击节点弹出详情面板 */
+      let downPX = 0, downPY = 0;
+      addEventListener('pointerdown', (e) => { downPX = e.clientX; downPY = e.clientY; });
+      addEventListener('pointerup', (e) => {
+        if (Math.abs(e.clientX - downPX) > 6 || Math.abs(e.clientY - downPY) > 6) return;  /* 拖拽不触发 */
+        if (uLatticeCur < 0.2 || mousePX < 0) return;
+        ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+        raycaster.setFromCamera(ndc, camera);
+        const hits = raycaster.intersectObjects(nodes, false);
+        if (hits.length) {
+          const c = hits[0].object.userData.col, r = hits[0].object.userData.row;
+          window.__intreOpenNodeDetail(c, r);
+        }
+      });
+
+      /* v2.7: ACT4 调试钩子（QA 脚本隔离渲染成本用，同 __intreOpenNodeDetail 先例） */
+      window.__intreAct4 = {
+        setFiberOpacity: (v) => { if (dtiFibers) dtiFibers.setOpacity(v); },
+        setShellOpacity: (v) => { if (brainMat3D) brainMat3D.uniforms.uOpacity.value = v; },
+        setRadialOpacity: (v) => { if (dtiFibers && dtiFibers.materials.radialMat) dtiFibers.materials.radialMat.uniforms.opacity.value = v; },
+        setStars: (v) => { stars.visible = v; },
+        setLattice: (v) => { latticeGroup.visible = v; },
+        setRoot: (v) => { rootGroup.visible = v; },
+        setParticles: (v) => { uplsPts.visible = v; unisPts.visible = v; ubmsPts.visible = v; },
+        setAura: (v) => { if (brainAura) brainAura.visible = v; },
+        setShellVisible: (v) => { if (brainMesh) brainMesh.visible = v; },
+        setShellPlain: (v) => {   /* 诊断：换纯色材质隔离着色器/填充率成本 */
+          if (!brainMesh) return;
+          if (v) {
+            if (!brainMesh.__savedMat) brainMesh.__savedMat = brainMesh.material;
+            brainMesh.material = new THREE.MeshBasicMaterial({ color: 0x3B6FB5, transparent: true, opacity: 0.25, depthWrite: false });
+          } else if (brainMesh.__savedMat) {
+            brainMesh.material = brainMesh.__savedMat;
+            brainMesh.__savedMat = null;
+          }
+        },
+        setShellGeoLod: (lod) => {   /* 诊断：替换壳几何体级别（1-6） */
+          if (!brainMesh) return;
+          const g = new THREE.IcosahedronGeometry(1, lod);
+          const pos = g.attributes.position;
+          for (let i = 0; i < pos.count; i++) {
+            const x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+            const len = Math.sqrt(x*x + y*y + z*z) || 1;
+            pos.setXYZ(i, x/len * 8.5, y/len * 5.0, z/len * 7.0);
+          }
+          g.computeVertexNormals();
+          brainMesh.geometry.dispose();
+          brainMesh.geometry = g;
+        },
+        setShellBoxGeo: () => {   /* 诊断：同对象换 BoxGeometry */
+          if (!brainMesh) return;
+          brainMesh.geometry.dispose();
+          brainMesh.geometry = new THREE.BoxGeometry(12, 8, 10);
+        },
+        setShellFC: (v) => { if (brainMesh) brainMesh.frustumCulled = v; },
+        stripChildren: () => {   /* 诊断：剥离脑的所有子对象 */
+          if (!brainMesh) return;
+          window.__intreKids = Array.from(brainMesh.children);
+          for (const k of brainMesh.children) brainMesh.remove(k);
+        },
+        restoreChildren: () => {
+          if (brainMesh && window.__intreKids) {
+            for (const k of window.__intreKids) brainMesh.add(k);
+            window.__intreKids = null;
+          }
+        },
+        restoreOne: (k) => { if (brainMesh && k && !k.parent) brainMesh.add(k); },
+        removeBrain: () => {   /* 诊断：整体移除脑（含子纤维） */
+          if (brainMesh && brainMesh.parent) {
+            window.__intreBrainRef = brainMesh;
+            brainMesh.parent.remove(brainMesh);
+          }
+        },
+        addCube: () => {   /* 诊断：同位置加普通立方体 */
+          const parent = window.__intreBrainRef ? window.__intreBrainRef.parent : null;
+          if (!parent) return;
+          const c = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 10, 10),
+            new THREE.MeshBasicMaterial({ color: 0x3B6FB5, transparent: true, opacity: 0.2 })
+          );
+          c.position.copy(window.__intreBrainRef.position);
+          c.scale.copy(window.__intreBrainRef.scale);
+          parent.add(c);
+          window.__intreCube = c;
+        },
+        readdBrain: () => {   /* 诊断：恢复原脑 */
+          if (window.__intreCube && window.__intreCube.parent) window.__intreCube.parent.remove(window.__intreCube);
+          if (window.__intreBrainRef && !window.__intreBrainRef.parent && fibersGroup) fibersGroup.add(window.__intreBrainRef);
+        },
+        getFiberCount: () => dtiFibers ? dtiFibers.meta.total : 0,
+        getShellOpacity: () => brainMat3D ? brainMat3D.uniforms.uOpacity.value : 0,
+        brainKind: () => brainMesh && brainMesh.userData ? brainMesh.userData.kind : 'none',
+        brainChildCount: () => brainMesh && brainMesh.children ? brainMesh.children.length : 0,
+      };
+
+      /* ================= DTI 神经纤维束：鼠标电流增强 + 点击脉冲 ================= */
+      /* dtiMouseTarget：pointermove 中设置（0=未命中，1=命中），tick() 中平滑趋近 */
+      let dtiMouseTarget = 0;
+      /* v2.5 D33: 射线投射目标（3D 脑或 2D 平面） */
+      const dtiRayTarget = () => {
+        if (brainMesh && brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells') {
+          /* v2.9: 脑壳为 Group，需要把所有 Line2 子对象作为点击目标 */
+          return brainMesh.children;
+        }
+        return brainMesh || dtiPlane;
+      };
+      /* 从命中点计算球面投影 UV（3D 脑用 localPos 球面映射，2D 平面用 uv） */
+      const hitToProjUV = (hit) => {
+        /* v2.9: Line2 命中点（任何子对象）都映射回 brainMesh 局部空间做球面 UV */
+        if (brainMesh && brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells') {
+          const lp = hit.point.clone();
+          brainMesh.worldToLocal(lp);
+          const len = Math.sqrt(lp.x * lp.x + lp.y * lp.y + lp.z * lp.z) || 1;
+          const nx = lp.x / len, ny = lp.y / len, nz = lp.z / len;
+          return new THREE.Vector2(
+            0.5 + Math.atan2(nz, nx) / (2 * Math.PI),
+            0.5 - Math.asin(Math.max(-1, Math.min(1, ny))) / Math.PI
+          );
+        }
+        if (brainMesh && hit.object === brainMesh) {
+          /* 3D 脑（v2.7 Mesh 形态）：从 local position 计算球面投影 UV（与 brainMat3D shader 一致） */
+          const lp = hit.point.clone();
+          brainMesh.worldToLocal(lp);
+          const len = Math.sqrt(lp.x * lp.x + lp.y * lp.y + lp.z * lp.z) || 1;
+          const nx = lp.x / len, ny = lp.y / len, nz = lp.z / len;
+          return new THREE.Vector2(
+            0.5 + Math.atan2(nz, nx) / (2 * Math.PI),
+            0.5 - Math.asin(Math.max(-1, Math.min(1, ny))) / Math.PI
+          );
+        }
+        return hit.uv;
+      };
+      /* 鼠标移动 → 射线投射到 DTI 目标，更新鼠标 UV 与目标强度 */
+      addEventListener('pointermove', (e) => {
+        /* 仅在神经层可见且非触摸设备时激活（阈值与统一幕边界 0.80 对齐） */
+        if (pCur < 0.80 || coarsePointer) { dtiMouseTarget = 0; return; }
+        ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+        raycaster.setFromCamera(ndc, camera);
+        const hits = raycaster.intersectObject(dtiRayTarget(), false);
+        if (hits.length) {
+          const uv = hitToProjUV(hits[0]);
+          dtiMat.uniforms.uMouseUV.value.copy(uv);
+          dtiMouseTarget = 1;
+        } else {
+          dtiMouseTarget = 0;
+        }
+      }, { passive: true });
+      /* v2.7 RX-06: 点击脉冲的 brain 本地 Y（驱动纤维脉冲扩散） */
+      let dtiPulseLocalY = 0;
+      /* 点击 → 在命中点激发环形脉冲波（阈值与统一幕边界 0.80 对齐） */
+      addEventListener('pointerup', (e) => {
+        if (pCur < 0.80) return;
+        /* 拖拽不触发（与节点点击共用 downPX/downPY 阈值） */
+        if (Math.abs(e.clientX - downPX) > 6 || Math.abs(e.clientY - downPY) > 6) return;
+        ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+        raycaster.setFromCamera(ndc, camera);
+        const hits = raycaster.intersectObject(dtiRayTarget(), false);
+        if (hits.length) {
+          const uv = hitToProjUV(hits[0]);
+          dtiMat.uniforms.uPulsePos.value.copy(uv);
+          dtiMat.uniforms.uPulseRadius.value = 0;
+          dtiMat.uniforms.uPulseStrength.value = 1;
+          /* 纤维脉冲：命中点 brain 本地 Y（v2.9 支持脑壳 Group 命中） */
+          if (brainMesh && (hits[0].object === brainMesh ||
+              (brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells' && brainMesh.children.indexOf(hits[0].object) >= 0))) {
+            const lp = hits[0].point.clone();
+            brainMesh.worldToLocal(lp);
+            dtiPulseLocalY = lp.y;
+          } else {
+            dtiPulseLocalY = 0;
+          }
+        }
+      });
+
+      /* D4: pointermove 时将 NDC 坐标映射为世界坐标近似值 */
+      addEventListener('pointermove', (e) => {
+        const nx = (e.clientX / innerWidth) * 2 - 1;
+        const ny = -(e.clientY / innerHeight) * 2 + 1;
+        if (typeof worldGroup !== 'undefined') {
+          window.__intreUpdateCoords(nx * 12, ny * 8, 0);
+        }
+      });
+
+      /* ================= 列标签投影（aGrid 列顶 → 屏幕坐标） ================= */
+      const projV = new THREE.Vector3();
+      const updateLabels = () => {
+        const o = clamp01((uLatticeCur - 0.7) / 0.3) * (1 - ss(pCur, 0.80, 0.88));   /* 标签随晶格一起淡出（配合平台期延后到 0.80） */
+        const w = innerWidth, h = innerHeight;
+        for (let c = 0; c < COLS; c++) {
+          const el = labelEls[c];
+          if (o <= 0.01) { el.style.opacity = '0'; continue; }
+          projV.set((c - 2.5) * 2.4, 6.2, 0);
+          latticeGroup.localToWorld(projV);
+          projV.project(camera);
+          if (projV.z > 1) { el.style.opacity = '0'; continue; }
+          const x = (projV.x * 0.5 + 0.5) * w;
+          const y = (-projV.y * 0.5 + 0.5) * h;
+          el.style.opacity = o.toFixed(3);
+          el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-100%)';
+        }
+        /* 行号 R-D-S：投影每行最左位置 (x=-7.5)，右对齐贴近网格左缘 */
+        for (let r = 0; r < ROWS; r++) {
+          const el = rowLabelEls[r];
+          if (o <= 0.01) { el.style.opacity = '0'; continue; }
+          projV.set(-8.8, (3 - r) * 1.7, 0);
+          latticeGroup.localToWorld(projV);
+          projV.project(camera);
+          if (projV.z > 1) { el.style.opacity = '0'; continue; }
+          const x = (projV.x * 0.5 + 0.5) * w;
+          const y = (-projV.y * 0.5 + 0.5) * h;
+          el.style.opacity = o.toFixed(3);
+          el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-100%,-50%)';
+        }
+      };
+
+      /* ================= 场景状态：由滚动进度 p 驱动 ================= */
+      let uLatticeCur = 0;
+      const applyScene = (p, poster) => {
+        samplePath(p);
+        camera.position.set(camPos[0], camPos[1], camPos[2]);
+        camera.lookAt(lookPos[0], lookPos[1], lookPos[2]);
+
+        /* v2.8: ACT4 场景雾 — 纯黑纵深，星场/晶格在远处自然消融 */
+        if (scene.fog) scene.fog.density = 0.008 * ss(p, 0.70, 0.85);
+
+        /* 节奏调整：开头快、中间慢、结尾快 */
+        /* RCT1 满天星辰 → RCT2 星座勾勒（串联）→ RCT2~3 星辰汇聚 → RCT3 晶格展开 */
+        const uConverge = ss(p, 0.38, 0.58);              /* 星星汇聚：先收敛移动（用户认可的原版时序） */
+        const uLattice = poster ? 1 : ss(p, 0.50, 0.72);  /* 晶格展开拉长 1.5x，中部慢 */
+        uLatticeCur = uLattice;
+        /* uStarFade 延后至脑图透出阶段：星辰贯穿渐入与正中晶格期，再随脑图慢慢淡出 */
+        starMat.uniforms.uConverge.value = uConverge;
+        starMat.uniforms.uStarFade.value = 1 - ss(p, 0.66, 0.88);
+        /* 暗星：Act 2 星座期淡至 0.3 勾勒底图，晶格期(0.45-0.62)回升至 1.0 保留满天星辰，随后由 uStarFade 统一淡出 */
+        starMat.uniforms.uDimFade.value = 1 - 0.7 * ss(p, 0.22, 0.32) * (1 - ss(p, 0.45, 0.62));
+        /* 棋盘散布：随晶格成型同步散开（uLattice 0→1），寓意现象层投射到各子维度 */
+        starMat.uniforms.uLatticeSpread.value = uLattice;
+        const constAppear = ss(p, 0.22, 0.32);   /* Act 2 星座淡入区间拉长 */
+        conMat.opacity = 0.35 * constAppear * (1 - uConverge) * (1 - ss(p, 0.55, 0.65));
+        /* 真实星座连线：勾勒感（0.9→0.75），随 uConverge 收敛同步淡出 */
+        constMat.opacity = 0.75 * constAppear * (1 - uConverge) * (1 - ss(p, 0.55, 0.65));
+        cylMat.opacity = 0.5 * constAppear * (1 - uConverge) * (1 - ss(p, 0.55, 0.65));
+        /* v2.5 D35: D21 转场——棋盘渐进退场+收尾幽灵化（守住反还原论） */
+        /* 晶格在脑图浮现时渐退至 40%（让脑成为视觉主体），收尾再幽灵化至 15% */
+        const recedeFade = ss(p, 0.82, 0.92);
+        const ghostFade = ss(p, 0.96, 1.0);
+        const latticeFadeBase = clamp01((uLattice - 0.04) / 0.16);
+        /* 连线：先退至 40%，再幽灵化至 ~6% */
+        const latticeFade = latticeFadeBase * (1 - 0.6 * recedeFade) * (1 - 0.85 * ghostFade);
+        /* 节点：先退至 50%，再幽灵化至 15% */
+        const nodeFade = latticeFadeBase * (1 - 0.5 * recedeFade) * (1 - 0.7 * ghostFade);
+        /* 蜂巢 ⇄ 棋谱连线 crossfade：uLattice 0.30→0.62 区间两套拓扑透明度互换（拉长） */
+        const cross = ss(uLattice, 0.30, 0.62);
+        const latBase = (0.55 + 0.25 * uLattice) * latticeFade;   /* 基底提亮：连线在深空背景上保持可读 */
+        hexLines.mat.opacity = latBase * (1 - cross);
+        gridLines.mat.opacity = latBase * cross;
+        /* 纤维束：脑图在相机下潜时同步透出（0.72→0.84） */
+        const fiberFade = ss(p, 0.72, 0.84);
+        /* 脑图 scale：两阶段——下潜阶段缓增（1.0→1.3），脑区点亮阶段快增（1.3→2.0） */
+        const brainReveal = ss(p, 0.88, 0.96);
+        const brainScale = 1.0 + 0.3 * fiberFade + 0.7 * brainReveal;  /* 满显 2.0，配合近距离相机 */
+        /* 脑模型 Z：从 -10 缓慢拉近至 -8.5，配合相机近距离定格 */
+        const brainZ = -10 + 1.5 * ss(p, 0.88, 1.0);
+        /* 脑图透明度：分三阶段渐进显现，避免突兀 */
+        const brainOpacity = 0.3 * ss(p, 0.72, 0.80) + 0.35 * ss(p, 0.80, 0.88) + 0.35 * ss(p, 0.88, 0.94);
+        /* v2.6: DTI 纤维束透明度 — 脑模型显现后逐步淡入，形成"脑壳→纤维填充"的层次感 */
+        const dtiFiberOpacity = ss(p, 0.76, 0.92);
+        /* v2.5 D33: 驱动 3D 脑模型（优先）或 2D 平面（fallback） */
+        /* 脑模型固定在 y=-14（晶格下方），纤维束从 y≈0 垂直下延至 y≈-14，相机沿垂直束下潜 */
+        if (brainMesh) {
+          brainMesh.position.y = -14;
+          brainMesh.position.z = brainZ;
+          /* v2.7 RX-08: 终幕呼吸 — 满显后极慢缩放呼吸 + 微自转（减少动效时关闭）
+             脑旋转与 D21 靶点偏差 <0.4 单位（spin ≤0.02rad × r≈17），在靶点散布范围内，视觉无穿帮 */
+          const steady = ss(p, 0.94, 1.0);
+          let breathScale = 1;
+          let breathRot = 0;
+          if (!reducedMotion && steady > 0.01) {
+            const bt = dtiMat.uniforms.uTime.value;
+            breathScale = 1.0 + 0.018 * Math.sin(bt * 0.5) * steady;
+            breathRot = 0.02 * Math.sin(bt * 0.35) * steady;
+          }
+          brainMesh.scale.setScalar(brainScale * breathScale);
+          brainMesh.rotation.y = breathRot;
+          /* v2.8b: 脑壳极淡——参考图中壳仅为若隐若现的深蓝轮廓线 */
+          if (brainMesh && brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells') {
+            brainMesh.userData.shellOpacity = brainOpacity * 0.18 * (1.0 - dtiFiberOpacity * 0.5);
+          }
+          /* v2.6: 驱动 DTI 纤维束系统 */
+          if (dtiFibers) {
+            dtiFibers.setOpacity(dtiFiberOpacity);
+          }
+        } else {
+          dtiPlane.position.y = -14;
+          dtiPlane.position.z = brainZ;
+          dtiPlane.scale.set(brainScale, brainScale, 1);
+          dtiMat.uniforms.uOpacity.value = brainOpacity;
+        }
+        /* 通道粒子：p 0.86-0.96 淡入（延后避免干扰 D21 纤维束生长），与晶格淡出形成"功能层节点变成粒子束"的接力 */
+        /* v2.7 RX-07: 透明度上限 0.4→0.85，深 Navy 背景上可读（诊断：原 0.4 几乎不可见） */
+        uplsPts.material.uniforms.uOpacity.value = 0.85 * ss(p, 0.86, 0.96);
+        unisPts.material.uniforms.uOpacity.value = 0.85 * ss(p, 0.86, 0.96);
+        ubmsPts.material.uniforms.uOpacity.value = 0.85 * ss(p, 0.86, 0.96);
+
+        /* ================= v2.5 D35: D21 转场动画序列 ================= */
+        const uGrow = ss(p, 0.70, 0.80);        /* A 幕：纤维束生长 */
+        const uDock = ss(p, 0.80, 0.88);        /* A 幕：接驳点亮（扩展 2% 便于观察） */
+        const uInject = ss(p, 0.88, 0.93);      /* D 幕：注光下行 */
+        const uPulse = ss(p, 0.93, 0.98);       /* D 幕：脑区点亮 */
+        const uGhost = ss(p, 0.96, 1.0);        /* 收尾：幽灵化（与 ghostFade 同步） */
+        /* 纤维束透明度：生长期间淡入（0.90），生长中加增亮，收尾时降为丝线 */
+        const growGlow = uGrow > 0 && uGrow < 1 ? 0.20 * Math.sin(uGrow * Math.PI) : 0;  /* 生长中弧线增亮 */
+        const fiberLineOpacity = uGrow > 0 ? ((0.18 + growGlow) * (1 - uGhost * 0.5)) : 0;  /* v2.8d: 0.30→0.18 */
+        /* 脑区靶点在 fibersGroup 空间中的实际位置（考虑 brainScale + position） */
+        const bPos = brainMesh ? brainMesh.position : new THREE.Vector3(0, -14, brainZ);
+        const bScl = brainScale;
+        for (let fi = 0; fi < rootFibers.length; fi++) {
+          const fb = rootFibers[fi];
+          const ud = fb.userData;
+          /* 脑端世界坐标 = brainMesh.position + localTarget * brainScale */
+          const btx = bPos.x + ud.brainTargetX * bScl;
+          const bty = bPos.y + ud.brainTargetY * bScl;
+          const btz = bPos.z + ud.brainTargetZ * bScl;
+          /* 节点端坐标：跟随实际节点位置（latticeGroup 旋转已归零，坐标系一致） */
+          const ntx = nodes[fi].position.x;
+          const nty = nodes[fi].position.y;
+          const ntz = nodes[fi].position.z;
+          /* === 三次贝塞尔曲线：模拟真实神经束弧线 === */
+          /* 纤维方向向量与垂直方向（XY 平面内） */
+          const fdx = ntx - btx, fdy = nty - bty;
+          const fLen = Math.hypot(fdx, fdy) || 1;
+          const perpX = -fdy / fLen, perpY = fdx / fLen;
+          /* 横向偏移量（确定性，基于 fiberPRNG 参数） */
+          const latOffset = ud.lateralAmp * fLen * 0.10;
+          const cosP = Math.cos(ud.lateralPhase);
+          /* 控制点 1（1/3 处）：横向偏移 + Z 凸起（向相机方向） */
+          const c1x = btx + fdx * 0.33 + perpX * latOffset * cosP;
+          const c1y = bty + fdy * 0.33 + perpY * latOffset * cosP;
+          const c1z = btz + (ntz - btz) * 0.33 + ud.zBulge1 * (1 - uGhost);
+          /* 控制点 2（2/3 处）：横向偏移含扭转（S 形变化）+ Z 凸起较小 */
+          const latOffset2 = latOffset * cosP * (1 - ud.torsion * 1.4);
+          const c2x = btx + fdx * 0.67 + perpX * latOffset2;
+          const c2y = bty + fdy * 0.67 + perpY * latOffset2;
+          const c2z = btz + (ntz - btz) * 0.67 + ud.zBulge2 * (1 - uGhost);
+          /* 逐节点错峰生长 */
+          const growT = clamp01((uGrow - ud.growDelay) / (1 - ud.growDelay));
+          const visibleSegs = Math.floor(growT * (ROOT_SEGMENTS + 1));
+          fb.geometry.setDrawRange(0, visibleSegs);
+          /* 更新几何顶点（三次贝塞尔：脑端 P0 → C1 → C2 → 节点端 P3） */
+          const posArr = fb.geometry.attributes.position.array;
+          for (let s = 0; s <= ROOT_SEGMENTS; s++) {
+            const t = s / ROOT_SEGMENTS;
+            const mt = 1 - t;
+            const mt2 = mt * mt, mt3 = mt2 * mt;
+            const t2 = t * t, t3 = t2 * t;
+            posArr[s * 3]     = mt3 * btx + 3 * mt2 * t * c1x + 3 * mt * t2 * c2x + t3 * ntx;
+            posArr[s * 3 + 1] = mt3 * bty + 3 * mt2 * t * c1y + 3 * mt * t2 * c2y + t3 * nty;
+            posArr[s * 3 + 2] = mt3 * btz + 3 * mt2 * t * c1z + 3 * mt * t2 * c2z + t3 * ntz;
+          }
+          fb.geometry.attributes.position.needsUpdate = true;
+          /* 逐节点错峰接驳：中心早、边缘晚（基于 growDelay） */
+          const dockStagger = clamp01((uDock - ud.growDelay * 0.5) / (1 - ud.growDelay * 0.5));
+          const dockFlash = (dockStagger > 0 && dockStagger < 1) ? Math.sin(dockStagger * Math.PI) : 0;
+          /* 透明度：基底 + 接驳增亮 */
+          fb.material.opacity = fiberLineOpacity + 0.15 * dockFlash;  /* v2.8b: 0.40→0.15 */
+          /* 接驳时纤维束闪琥珀色，结束后归位通道色 */
+          if (dockFlash > 0.01) {
+            fb.material.color.copy(ud._channelColor).lerp(D21_COL_AMBER, dockFlash * 0.8);
+          } else {
+            fb.material.color.copy(ud._channelColor);
+          }
+        }
+        /* 注光下行粒子：p 0.86-0.92，光点沿贝塞尔曲线从节点滑向脑端 */
+        injectMat.opacity = uInject > 0 && uInject < 1 ? 0.9 : 0;
+        if (uInject > 0) {
+          const injArr = injectPtsGeo.attributes.position.array;
+          for (let fi = 0; fi < 42; fi++) {
+            const ud = rootFibers[fi].userData;
+            const btx = bPos.x + ud.brainTargetX * bScl;
+            const bty = bPos.y + ud.brainTargetY * bScl;
+            const btz = bPos.z + ud.brainTargetZ * bScl;
+            const ntx = nodes[fi].position.x;
+            const nty = nodes[fi].position.y;
+            const ntz = nodes[fi].position.z;
+            /* 控制点（与纤维束三次贝塞尔一致） */
+            const fdx = ntx - btx, fdy = nty - bty;
+            const fLen = Math.hypot(fdx, fdy) || 1;
+            const perpX = -fdy / fLen, perpY = fdx / fLen;
+            const latOff = ud.lateralAmp * fLen * 0.10;
+            const cosP = Math.cos(ud.lateralPhase);
+            const c1x = btx + fdx * 0.33 + perpX * latOff * cosP;
+            const c1y = bty + fdy * 0.33 + perpY * latOff * cosP;
+            const c1z = btz + (ntz - btz) * 0.33 + ud.zBulge1;
+            const latOff2 = latOff * cosP * (1 - ud.torsion * 1.4);
+            const c2x = btx + fdx * 0.67 + perpX * latOff2;
+            const c2y = bty + fdy * 0.67 + perpY * latOff2;
+            const c2z = btz + (ntz - btz) * 0.67 + ud.zBulge2;
+            /* 光点沿三次贝塞尔曲线：从节点(t=1)滑向脑端(t=0)，加错峰 */
+            const injT = 1 - clamp01((uInject - ud.growDelay * 0.5) / (1 - ud.growDelay * 0.5));
+            const mt = 1 - injT;
+            const mt2 = mt * mt, mt3 = mt2 * mt;
+            const t2 = injT * injT, t3 = t2 * injT;
+            injArr[fi * 3]     = mt3 * btx + 3 * mt2 * injT * c1x + 3 * mt * t2 * c2x + t3 * ntx;
+            injArr[fi * 3 + 1] = mt3 * bty + 3 * mt2 * injT * c1y + 3 * mt * t2 * c2y + t3 * nty;
+            injArr[fi * 3 + 2] = mt3 * btz + 3 * mt2 * injT * c1z + 3 * mt * t2 * c2z + t3 * ntz;
+          }
+          injectPtsGeo.attributes.position.needsUpdate = true;
+        }
+        /* 脑区脉冲：分 6 批（每批一个模块），p 0.92-0.97 */
+        if (uPulse > 0 && brainMesh) {
+          const batchIdx = Math.min(5, Math.floor(uPulse * 6));
+          /* 每批触发一次脉冲（用 batchIdx 变化检测） */
+          if (batchIdx !== rootGroup.userData.lastPulseBatch) {
+            rootGroup.userData.lastPulseBatch = batchIdx;
+            /* 触发 DTI 脉冲：映射到球面 UV（与 shader 球面投影一致） */
+            const bt = MODULE_BRAIN_TARGETS[batchIdx];
+            const btLen = Math.sqrt(bt.cx * bt.cx + bt.cy * bt.cy + bt.cz * bt.cz) || 1;
+            const pulseUVx = 0.5 + Math.atan2(bt.cz, bt.cx) / (2 * Math.PI);
+            const pulseUVy = 0.5 - Math.asin(Math.max(-1, Math.min(1, bt.cy / btLen))) / Math.PI;
+            dtiMat.uniforms.uPulsePos.value.set(pulseUVx, pulseUVy);
+            dtiMat.uniforms.uPulseRadius.value = 0;
+            dtiMat.uniforms.uPulseStrength.value = 1;
+            if (brainMesh) {
+              brainMat3D.uniforms.uPulsePos.value.set(pulseUVx, pulseUVy);
+              brainMat3D.uniforms.uPulseRadius.value = 0;
+              brainMat3D.uniforms.uPulseStrength.value = 1;
+            }
+          }
+        }
+
+        /* 晶格节点：圆柱 → 正面网格，逐节点相位延迟 + 落子微过冲 */
+        const time = starMat.uniforms.uTime.value;
+        const hoverK = 1 - Math.exp(-dtCur / 0.12);   /* 悬停缩放阻尼系数（帧率无关） */
+        for (let i = 0; i < nodes.length; i++) {
+          const local = clamp01((uLattice - nodeDelay[i]) / (1 - nodeDelay[i]));
+          let e = local * local * (3 - 2 * local);
+          if (local > 0.8) e *= 1 + 0.03 * Math.sin((local - 0.8) * 5 * Math.PI);   /* 弹性 overshoot */
+          nodes[i].position.lerpVectors(cylPos[i], gridPos[i], e);
+          /* v2.5 D35: D21 接驳色闪 + 注光缩放 + 幽灵化 */
+          const ud = rootFibers[i] && rootFibers[i].userData;
+          const dockStaggerN = ud ? clamp01((uDock - ud.growDelay * 0.5) / (1 - ud.growDelay * 0.5)) : 0;
+          const dockFlashN = (dockStaggerN > 0 && dockStaggerN < 1) ? Math.sin(dockStaggerN * Math.PI) : 0;
+          const dockNodePulse = 1 + 0.5 * dockFlashN;  /* 接驳时 scale 脉冲 */
+          /* D21 注光阶段：节点 scale 1→0.5（逐节点错峰，光沉入脑） */
+          const injectProgress = ud ? clamp01((uInject - ud.growDelay * 0.5) / (1 - ud.growDelay * 0.5)) : 0;
+          const injectScale = 1 - 0.5 * injectProgress;  /* 注光后保持 0.5，幽灵化不再额外缩放 */
+          /* 接驳时节点闪琥珀→通道色 */
+          if (dockFlashN > 0.01 && ud) {
+            if (dockStaggerN < 0.5) {
+              nodes[i].material.color.copy(D21_COL_BASE).lerp(D21_COL_AMBER, dockStaggerN * 2);
+            } else {
+              nodes[i].material.color.copy(D21_COL_AMBER).lerp(ud._channelColor, (dockStaggerN - 0.5) * 2);
+            }
+          } else if (ud && dockStaggerN >= 1) {
+            nodes[i].material.color.copy(ud._channelColor);
+          } else {
+            nodes[i].material.color.copy(D21_COL_BASE);
+          }
+          /* 幽灵化暗淡 */
+          if (uGhost > 0.01) nodes[i].material.color.multiplyScalar(1 - 0.5 * uGhost);
+          nodes[i].material.opacity = 0.95 * nodeFade;
+          /* 缩放统一阻尼趋近目标：hover 节点 → 1.65，其余 → 微呼吸（展开完成后周期 4s 正弦） */
+          const breath = (uLattice > 0.9 && !reducedMotion) ? 1 + 0.03 * Math.sin(time * 1.57 + i * 0.15) : 1;
+          const baseTarget = (nodes[i] === hoverNode) ? 1.65 : breath;
+          const target = baseTarget * dockNodePulse * injectScale;
+          nodes[i].scale.setScalar(nodes[i].scale.x + (target - nodes[i].scale.x) * hoverK);
+        }
+        /* 连线端点跟随节点（两套拓扑各写各的 position attribute） */
+        writeLatticePairs(hexLines);
+        writeLatticePairs(gridLines);
+
+        /* 晶格自转：uLattice < 0.5 缓转，≥0.5 阻尼归零保证正面可读（均已帧率归一） */
+        if (uLattice < 0.5) {
+          if (!reducedMotion) latticeGroup.rotation.y += dtCur * 0.12;
+        } else {
+          let ry = latticeGroup.rotation.y % (Math.PI * 2);
+          if (ry > Math.PI) ry -= Math.PI * 2;
+          if (ry < -Math.PI) ry += Math.PI * 2;
+          ry += (0 - ry) * (1 - Math.exp(-dtCur / 0.27));
+          latticeGroup.rotation.y = Math.abs(ry) < 0.0005 ? 0 : ry;
+        }
+
+        /* 受限视差：总旋转 clamp 在 ±0.21 / ±0.12（帧率无关阻尼） */
+        const tRY = clamp((mx - 0.5) * ROT_Y_MAX + dragY, -ROT_Y_MAX, ROT_Y_MAX);
+        const tRX = clamp((my - 0.5) * ROT_X_MAX + dragX, -ROT_X_MAX, ROT_X_MAX);
+        const parK = 1 - Math.exp(-dtCur / 0.32);
+        worldGroup.rotation.y += (tRY - worldGroup.rotation.y) * parK;
+        worldGroup.rotation.x += (tRX - worldGroup.rotation.x) * parK;
+      };
+
+      /* ================= 渲染循环 / 降级策略 ================= */
+      const clock = new THREE.Clock();
+      let rafId = 0;
+      /* 当前帧 dt（供 applyScene 内部阻尼动画使用，帧率无关化） */
+      let dtCur = 0.016;
+
+      /* 星场悬停微亮：仅 p<0.3 阶段、非触摸设备，每 3 帧检测一次前 200 颗星 */
+      const originalSizes = starSize.slice();
+      const starHitV = new THREE.Vector3();
+      let starBoosted = false, frameSeq = 0;
+      const updateStarHover = () => {
+        frameSeq++;
+        if (isTouch || frameSeq % 3 !== 0) return;
+        const arr = starGeo.attributes.aSize.array;
+        let hitX = 0, hitY = 0, hitZ = 0, hasHit = false;
+        if (pCur < 0.3 && mousePX >= 0) {
+          /* 鼠标 NDC 反投影到星场 y=30 平面，得到 3D 鼠标位置 */
+          starHitV.set((mousePX / innerWidth) * 2 - 1, -(mousePY / innerHeight) * 2 + 1, 0.5).unproject(camera);
+          starHitV.sub(camera.position).normalize();
+          if (Math.abs(starHitV.y) > 1e-4) {
+            const tPlane = (30 - camera.position.y) / starHitV.y;
+            if (tPlane > 0) {
+              starHitV.multiplyScalar(tPlane).add(camera.position);
+              stars.worldToLocal(starHitV);
+              hitX = starHitV.x; hitY = starHitV.y; hitZ = starHitV.z;
+              hasHit = true;
+            }
+          }
+        }
+        if (!hasHit && !starBoosted) return;
+        /* 连续距离衰减（半径 5 内平滑落边）+ 时间插值趋近目标，消除"圈内瞬间变大"的二值跳变 */
+        const k = 0.35;
+        let anyLeft = false;
+        for (let i = 0; i < 200; i++) {
+          let target = 0;
+          if (hasHit) {
+            const dx = scatter[i * 3] - hitX;
+            const dy = scatter[i * 3 + 1] - hitY;
+            const dz = scatter[i * 3 + 2] - hitZ;
+            const d2 = dx * dx + dy * dy + dz * dz;
+            if (d2 < 25) {
+              const fall = 1 - Math.sqrt(d2) / 5;
+              target = 0.08 * fall * fall;
+            }
+          }
+          const cur = arr[i] - originalSizes[i];
+          const next = cur + (target - cur) * k;
+          arr[i] = originalSizes[i] + (Math.abs(next) < 0.001 ? 0 : next);
+          if (arr[i] !== originalSizes[i]) anyLeft = true;
+        }
+        starBoosted = hasHit || anyLeft;
+        starGeo.attributes.aSize.needsUpdate = true;
+      };
+
+      /* FPS 自动降级：最近 60 帧滚动平均，连续 2 秒 < 30 则一次性降级 */
+      const frameDts = [];
+      let degraded = false, lowFpsSince = 0;
+      const degradeScene = () => {
+        starGeo.setDrawRange(0, STAR_N >> 1);                 /* 星场 drawRange 减半 */
+        uplsPts.geometry.setDrawRange(0, 80);                 /* 通道粒子 drawRange 减半 */
+        unisPts.geometry.setDrawRange(0, 80);
+        ubmsPts.geometry.setDrawRange(0, 80);
+        /* v2.6: DTI 纤维束降级 — 隐藏放射丝层（最大开销来源），保留解剖束 */
+        if (dtiFibers && dtiFibers.materials.radialMat) {
+          dtiFibers.materials.radialMat.uniforms.opacity.value = 0;
+        }
+      };
+
+      const tick = () => {
+        rafId = requestAnimationFrame(tick);
+        const dt = Math.min(clock.getDelta(), 0.1);   /* 钳制极端 dt（切后台恢复时防跳变） */
+        dtCur = dt;
+        starMat.uniforms.uTime.value += dt;
+        stars.rotation.y += dt * 0.018;   /* 星场极慢自转（≈0.0003/帧@60fps，已帧率归一） */
+        pCur += (pTarget - pCur) * (1 - Math.exp(-dt / 0.18));   /* 帧率无关的指数平滑 */
+        applyScene(pCur);
+        const fN = dt * 60;   /* 帧率归一因子：60fps 时为 1 */
+        updateChannel(uplsPts, uplsState, 1, 0.0018 * fN);   /* UPLS 下行 */
+        updateChannel(unisPts, unisState, -1, 0.0014 * fN);  /* UNIS 上行 */
+        updateChannel(ubmsPts, ubmsState, 1, 0.0016 * fN);   /* UBMS 下行 */
+        updateHUD(pCur);
+        updateStarHover();
+        /* ===== DTI 电流上流：时间推进 / 电流强度 / 鼠标平滑 / 脉冲扩散 ===== */
+        dtiMat.uniforms.uTime.value += dt;
+        dtiMat.uniforms.uCurrentFlow.value = ss(pCur, 0.72, 0.85);
+        /* 鼠标强度平滑趋近目标值 */
+        dtiMat.uniforms.uMouseStrength.value += (dtiMouseTarget - dtiMat.uniforms.uMouseStrength.value) * 0.08;
+        /* 点击/脑区脉冲扩散 + 衰减（D21: 加速以适配 6 批序列节奏） */
+        if (dtiMat.uniforms.uPulseStrength.value > 0.01) {
+          dtiMat.uniforms.uPulseRadius.value += dt * 1.5;   /* 扩散加速：0.6→1.5 */
+          dtiMat.uniforms.uPulseStrength.value *= 0.91;     /* 衰减加速：0.96→0.91 */
+        } else {
+          dtiMat.uniforms.uPulseStrength.value = 0;
+          dtiMat.uniforms.uPulseRadius.value = -1;
+        }
+        /* v2.5 D33: 同步 3D 脑模型 uniforms */
+        if (brainMesh) {
+          brainMat3D.uniforms.uTime.value = dtiMat.uniforms.uTime.value;
+          brainMat3D.uniforms.uCurrentFlow.value = dtiMat.uniforms.uCurrentFlow.value;
+          brainMat3D.uniforms.uMouseUV.value.copy(dtiMat.uniforms.uMouseUV.value);
+          brainMat3D.uniforms.uMouseStrength.value = dtiMat.uniforms.uMouseStrength.value;
+          brainMat3D.uniforms.uPulsePos.value.copy(dtiMat.uniforms.uPulsePos.value);
+          brainMat3D.uniforms.uPulseRadius.value = dtiMat.uniforms.uPulseRadius.value;
+          brainMat3D.uniforms.uPulseStrength.value = dtiMat.uniforms.uPulseStrength.value;
+        }
+        /* v2.9: 更新大脑轮廓系统（让 setShellOpacityGetter 的 shellOpacity 应用到所有切片/解剖线） */
+        if (brainMesh && brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells' && typeof brainMesh.update === 'function') {
+          brainMesh.update(dtiMat.uniforms.uTime.value, dtiMat.uniforms.uCurrentFlow.value);
+        }
+        /* v2.6: 更新 DTI 纤维束系统（电流扫描波时间 + 电流强度）
+           v2.7 RX-06: 传递点击脉冲（brain 本地 Y + 强度），脉冲沿纤维扩散 */
+        if (dtiFibers) {
+          dtiFibers.update(
+            dtiMat.uniforms.uTime.value,
+            dtiMat.uniforms.uCurrentFlow.value,
+            dtiPulseLocalY,
+            dtiMat.uniforms.uPulseStrength.value
+          );
+        }
+        /* v2.7: 后处理管线就绪时走 composer，否则直接渲染 */
+        if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+        doRaycast();
+        updateLabels();
+        /* ===== 新增功能每帧调用 ===== */
+        dt_last = dt;
+        renderTrail(dt);
+        updateTelemetry(pCur);
+        updateFlowPath(pCur);
+        checkActChange(pCur);
+        /* C2 数字滚动（badge 属于功能层幕，inA 0.56 起触发）+ C3 打字机：各幕首次进入时触发 */
+        if (!badgeAnimated && pCur > 0.58 && pCur < 0.70) animateBadge();
+        const actIdx = pCur < 0.3 ? 0 : pCur < 0.52 ? 1 : pCur < 0.80 ? 2 : 3;
+        if (!typedActs[actIdx]) {
+          /* 第一幕文字在 .act-sub，第二至四幕在 .act-body，需合并选取 */
+          const actSub = document.querySelector('.act-sub');
+          const actBodies = document.querySelectorAll('.act-body');
+          const allTexts = [actSub, ...Array.from(actBodies)];
+          if (allTexts[actIdx]) typeWriter(allTexts[actIdx], actTexts[actIdx].body, 30);
+          typedActs[actIdx] = true;
+        }
+        /* FPS 采样与降级判定 */
+        frameDts.push(dt);
+        if (frameDts.length > 60) frameDts.shift();
+        if (!degraded && frameDts.length === 60) {
+          let sum = 0;
+          for (let i = 0; i < 60; i++) sum += frameDts[i];
+          if (60 / sum < 30) {
+            if (!lowFpsSince) lowFpsSince = performance.now();
+            else if (performance.now() - lowFpsSince >= 2000) { degradeScene(); degraded = true; }
+          } else {
+            lowFpsSince = 0;
+          }
+        }
+      };
+
+      addEventListener('scroll', readScroll, { passive: true });
+      readScroll();
+      pCur = pTarget;   /* 同步到当前滚动位置：中途刷新时直接从该帧继续，不从 0 回放收敛动画 */
+
+      let scheduleStatic = null;
+      addEventListener('resize', () => {
+        camera.aspect = innerWidth / innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth, innerHeight);
+        if (composer) composer.setSize(innerWidth, innerHeight);
+        if (dtiFibers) dtiFibers.setResolution(innerWidth, innerHeight);
+        if (scheduleStatic) scheduleStatic();
+      });
+
+      /* WebGL 上下文丢失：停止渲染循环；恢复：显示 2D 静帧降级 */
+      canvas.addEventListener('webglcontextlost', (e) => {
+        e.preventDefault();
+        cancelAnimationFrame(rafId);
+      });
+      canvas.addEventListener('webglcontextrestored', () => {
+        showFallback();
+      });
+
+      if (reducedMotion) {
+        /* v2.5 D37: 静帧海报定格 p=0.86（接驳完成态，纤维束+棋盘+脑图三层共存） */
+        pCur = pTarget = 0.86;
+        let posterQueued = false;
+        const renderPoster = () => {
+          applyScene(0.86, true);
+          updateHUD(0.86);
+          updateLabels();
+          if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+        };
+        scheduleStatic = () => {   /* resize 时重绘海报 */
+          if (posterQueued) return;
+          posterQueued = true;
+          requestAnimationFrame(() => { posterQueued = false; renderPoster(); });
+        };
+        renderPoster();
+      } else {
+        tick();
+      }
+      } catch (fatalErr) {
+        _fatal(fatalErr);
+        /* 确保用户至少看到 fallback 而非空白页 */
+        const c = document.getElementById('gl');
+        const fb = document.getElementById('fallback');
+        if (c) c.style.display = 'none';
+        if (fb) fb.classList.add('is-shown');
+      }
+    })();
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

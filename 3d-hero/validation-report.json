@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "builtin",
+    "version_source": "runtime-registry",
+    "runtime_skill_dir": null,
+    "recorded_at": null,
+    "read_status": "ok"
+  },
+  "operatingMode": "free-explore",
+  "renderBlockingErrorCount": 0,
+  "softWarningCount": 1,
+  "renderBlockingErrors": [],
+  "softWarnings": [
+    "[html-quality] colors_and_type.css: ordinary/static shadow tokens must keep every shadow alpha <= 0.05; deeper shadows are allowed only for floating-layer tokens such as modal/popover/dropdown/drawer/overlay (--intre-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06))."
+  ],
+  "repairPlanHints": [],
+  "errorCount": 0,
+  "warningCount": 1,
+  "errors": [],
+  "warnings": [
+    "[html-quality] colors_and_type.css: ordinary/static shadow tokens must keep every shadow alpha <= 0.05; deeper shadows are allowed only for floating-layer tokens such as modal/popover/dropdown/drawer/overlay (--intre-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06))."
+  ],
+  "designDir": "d:\\INTRE\\intre-3d-hero",
+  "expectedPages": 1,
+  "requireInteractions": null,
+  "checkedAt": "2026-07-22T16:38:47.897Z"
+}

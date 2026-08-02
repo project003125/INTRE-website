@@ -1,0 +1,114 @@
+{
+  "nodeId": "page-3d-hero",
+  "page": "pages/3d-hero.html",
+  "qualityGate": "passed",
+  "cssPreflightStatus": "passed",
+  "htmlWriteMode": "SectionPlanThenWrite",
+  "stateGroupId": null,
+  "stateRole": null,
+  "derivedBaseCopied": false,
+  "sharedShellPreserved": [],
+  "chartsRequired": false,
+  "chartsHeadReady": false,
+  "domIds": [],
+  "headInfrastructureStatus": {
+    "themeVars": "present",
+    "semanticTokenFallback": "present",
+    "themeInline": "present",
+    "tailwindCdn": "present",
+    "lucideCdn": "present",
+    "htmlClass": "light",
+    "needsMainAgentReplaceHead": false
+  },
+  "renderRisk": "none",
+  "viewportMode": "document-scroll",
+  "viewportShellReady": true,
+  "toolDisciplineEvidence": {
+    "todoWriteUsed": false,
+    "previewStarted": false,
+    "validationScriptsRunBySubAgent": false
+  },
+  "iconPolicyEvidence": {
+    "emojiUsedAsIcon": false,
+    "explicitUserRequestedEmojiIcons": false,
+    "iconSources": []
+  },
+  "visualStructureEvidence": {
+    "primitiveTokenEvidence": [
+      {
+        "region": "formula-chip",
+        "primitive": "border",
+        "tokenSource": "var(--intre-navy-700)",
+        "hardcodedHighContrastSeparatorUsed": false,
+        "currentColorUsedForSeparator": false,
+        "missingBorderColor": false
+      },
+      {
+        "region": "badge-42",
+        "primitive": "border",
+        "tokenSource": "color-mix(in srgb, var(--intre-amber-600) 40%, transparent)",
+        "hardcodedHighContrastSeparatorUsed": false,
+        "currentColorUsedForSeparator": false,
+        "missingBorderColor": false
+      },
+      {
+        "region": "hud-rail dots",
+        "primitive": "border",
+        "tokenSource": "var(--intre-navy-500)",
+        "hardcodedHighContrastSeparatorUsed": false,
+        "currentColorUsedForSeparator": false,
+        "missingBorderColor": false
+      },
+      {
+        "region": "scroll-hint track",
+        "primitive": "divider",
+        "tokenSource": "var(--intre-navy-500)",
+        "hardcodedHighContrastSeparatorUsed": false,
+        "currentColorUsedForSeparator": false,
+        "missingBorderColor": false
+      },
+      {
+        "region": "tooltip",
+        "primitive": "border",
+        "tokenSource": "var(--intre-navy-700)",
+        "hardcodedHighContrastSeparatorUsed": false,
+        "currentColorUsedForSeparator": false,
+        "missingBorderColor": false
+      }
+    ],
+    "layoutGeometryEvidence": [
+      {
+        "region": "hud-topbar",
+        "layoutMode": "flex",
+        "alignmentAxis": "left-edge",
+        "absolutePositioningUsedForMainLayout": false
+      },
+      {
+        "region": "hud-rail",
+        "layoutMode": "flex",
+        "alignmentAxis": "right-edge",
+        "absolutePositioningUsedForMainLayout": false
+      },
+      {
+        "region": "act-panels",
+        "layoutMode": "stack",
+        "alignmentAxis": "left-edge",
+        "absolutePositioningUsedForMainLayout": false
+      },
+      {
+        "region": "act4-channel-legend",
+        "layoutMode": "flex",
+        "alignmentAxis": "left-edge",
+        "absolutePositioningUsedForMainLayout": false
+      }
+    ]
+  },
+  "headCommandEvidence": {
+    "headCommandUsed": "node c:\\Users\\Administrator\\.trae-cn\\builtin\\design\\default\\skills\\solo-design\\script\\fill-html-head.mjs d:\\INTRE\\intre-3d-hero\\colors_and_type.css d:\\INTRE\\intre-3d-hero\\pages\\3d-hero.html --title=\"INTRE · 3D Hero 概念原型\" --lang=\"zh-CN\" --prefix=intre",
+    "matchesPacketCommand": true,
+    "usedReplaceHead": false
+  },
+  "styleRecipeApplied": true,
+  "sections": ["three-canvas", "scroll-spacer", "hud-topbar", "hud-rail", "act-panels", "scroll-hint", "fallback"],
+  "blockedReason": null
+}

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INTRE 3D Hero — 系统审查报告</title>
+<style>
+  :root {
+    --navy-950: #0A1E3D;
+    --navy-800: #122F5C;
+    --navy-600: #1F4880;
+    --navy-500: #2A5DA0;
+    --navy-400: #3B6FB5;
+    --navy-50: #D6E5F3;
+    --amber-600: #D97706;
+    --amber-500: #F59E0B;
+    --slate-900: #0f172a;
+    --slate-700: #334155;
+    --slate-500: #64748b;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Noto Sans SC', sans-serif;
+    background: var(--slate-100);
+    color: var(--slate-900);
+    line-height: 1.7;
+    padding: 0;
+  }
+  .header {
+    background: var(--navy-950);
+    color: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .header .meta {
+    color: var(--navy-50);
+    font-size: 0.875rem;
+    opacity: 0.75;
+  }
+  .header .status-banner {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 16px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid var(--amber-500);
+    border-radius: 999px;
+    color: var(--amber-500);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  section {
+    background: white;
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  }
+  section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy-600);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate-900);
+    margin: 20px 0 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.875rem;
+  }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--slate-100);
+    font-weight: 500;
+    color: var(--slate-700);
+    border-bottom: 2px solid var(--slate-200);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--slate-200);
+    vertical-align: top;
+  }
+  td:first-child { white-space: nowrap; }
+  .p0 { color: #dc2626; font-weight: 600; }
+  .p1 { color: var(--amber-600); font-weight: 600; }
+  .p2 { color: var(--slate-500); font-weight: 600; }
+  .fixed { color: #16a34a; font-weight: 600; }
+  .pending { color: var(--amber-600); font-weight: 600; }
+  .ok { color: #16a34a; font-weight: 600; }
+  code {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.8rem;
+    background: var(--slate-100);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--navy-600);
+  }
+  .callout {
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 0.875rem;
+  }
+  .callout-critical {
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+  }
+  .callout-info {
+    background: #f0f9ff;
+    border-left: 3px solid var(--navy-400);
+  }
+  .callout-success {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 4px; font-size: 0.875rem; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .summary-card {
+    text-align: center;
+    padding: 20px 12px;
+    border-radius: 4px;
+  }
+  .summary-card.p0 { background: #fef2f2; }
+  .summary-card.p1 { background: #fffbeb; }
+  .summary-card.p2 { background: var(--slate-100); }
+  .summary-card.ok { background: #f0fdf4; }
+  .summary-card .num {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .summary-card .label {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    color: var(--slate-500);
+  }
+  .pixel-box {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 4px;
+    border: 1px solid var(--slate-200);
+  }
+  @media (max-width: 768px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>INTRE 3D Hero — 系统审查报告</h1>
+  <div class="meta">审查日期：2026-07-24　|　审查依据：品牌视觉规范 v2.3.0 · PDR v1.4 · IA v1.3</div>
+  <div class="status-banner">P0 白色蒙皮根因已定位并修复</div>
+</div>
+
+<div class="container">
+
+  <!-- 概览 -->
+  <section>
+    <h2>审查概览</h2>
+    <div class="summary-grid">
+      <div class="summary-card p0">
+        <div class="num" style="color:#dc2626">3</div>
+        <div class="label">P0 已修复</div>
+      </div>
+      <div class="summary-card p1">
+        <div class="num" style="color:#D97706">2</div>
+        <div class="label">P1 待处理</div>
+      </div>
+      <div class="summary-card p2">
+        <div class="num" style="color:#64748b">4</div>
+        <div class="label">P2 建议</div>
+      </div>
+      <div class="summary-card ok">
+        <div class="num" style="color:#16a34a">9</div>
+        <div class="label">合规项</div>
+      </div>
+    </div>
+    <div class="callout callout-success">
+      <strong>核心结论</strong>：白色蒙皮问题的根因是 <code>UnrealBloomPass</code> 后处理管线将星核辉光均匀扩散至全帧，
+      导致 Navy 950 底色 <code>#0A1E3D</code>（RGB 10,30,61）被抬升至 RGB 56,96,134。
+      禁用 bloom 后，像素采样验证底色完全恢复为品牌规范值。同时修复了 3 项品牌视觉违规（渐变禁止）。
+    </div>
+  </section>
+
+  <!-- P0 已修复 -->
+  <section>
+    <h2>P0 — 已修复项（3 项）</h2>
+
+    <h3>P0-1　UnrealBloomPass 导致全帧白色蒙皮</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p0">P0 · 已修复</span></td></tr>
+      <tr><td>违反规范</td><td>品牌规范 §3.5「渐变禁止」+ D09「UI 区域禁止渐变效果」</td></tr>
+      <tr><td>根因</td><td>UnrealBloomPass 的高斯模糊链（5 级 mipmap）即使 <code>strength=0.04 / threshold=0.98</code>，仍将星核辉光通过 AdditiveBlending 均匀扩散至全帧，将 Navy 950 底色从 <span class="pixel-box" style="background:#0A1E3D"></span>RGB(10,30,61) 抬升至 <span class="pixel-box" style="background:#386086"></span>RGB(56,96,134)</td></tr>
+      <tr><td>验证方法</td><td>WebGL <code>readPixels</code> 8 点采样：bloom 开启时全部为 (56,96,134)；禁用后全部为 (10,30,61)</td></tr>
+      <tr><td>修复方案</td><td>禁用 EffectComposer + UnrealBloomPass 后处理管线，恢复 <code>renderer.render()</code> 直渲。星场已有 <code>AdditiveBlending</code> 提供自然辉光，无需额外 bloom</td></tr>
+      <tr><td>文件</td><td><code>pages/3d-hero.html</code> 第 1175-1188 行（composer 创建块注释保留）</td></tr>
+      <tr><td>状态</td><td><span class="fixed">已修复 · 像素验证通过</span></td></tr>
+    </table>
+
+    <h3>P0-2　SVG linearGradient 违反渐变禁令</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p0">P0 · 已修复</span></td></tr>
+      <tr><td>违反规范</td><td>品牌规范 §3.5「渐变禁止」+ D09</td></tr>
+      <tr><td>原代码</td><td><code>&lt;linearGradient id="flow-grad"&gt;</code> 3 个 stop 节点 0%→50%→100% 透明度渐变</td></tr>
+      <tr><td>修复方案</td><td>移除 <code>&lt;defs&gt;</code> + <code>&lt;linearGradient&gtgt;</code>，<code>&lt;path&gt;</code> 改用纯色 <code>stroke="#3B6FB5" stroke-opacity="0.5"</code></td></tr>
+      <tr><td>文件</td><td><code>pages/3d-hero.html</code> 第 302-310 行</td></tr>
+      <tr><td>状态</td><td><span class="fixed">已修复</span></td></tr>
+    </table>
+
+    <h3>P0-3　CSS radial-gradient 违反渐变禁令</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p0">P0 · 已修复</span></td></tr>
+      <tr><td>违反规范</td><td>品牌规范 §3.5「渐变禁止」+ D09</td></tr>
+      <tr><td>原代码</td><td><code>#fallback</code> 背景 10 层 <code>radial-gradient</code> 模拟星空</td></tr>
+      <tr><td>修复方案</td><td>替换为纯色 <code>background: var(--intre-navy-950)</code></td></tr>
+      <tr><td>文件</td><td><code>pages/3d-hero.html</code> 第 322-334 行</td></tr>
+      <tr><td>状态</td><td><span class="fixed">已修复</span></td></tr>
+    </table>
+  </section>
+
+  <!-- P1 待处理 -->
+  <section>
+    <h2>P1 — 待处理项（2 项）</h2>
+
+    <h3>P1-1　PDR D32 决策与实现状态不一致</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p1">P1 · 待文档更新</span></td></tr>
+      <tr><td>不一致点</td><td>PDR D32 将 WebGL Bloom 列为 v2.5 升级决策；§6.1 验收标准将其列为 Must-have（未勾选）；§8.3 待办 M11 列为高优先级。实际实现中 bloom 已被禁用</td></tr>
+      <tr><td>建议操作</td><td>在 PDR 中新增 D39 决策记录：bloom 因品牌规范冲突被禁用，星场 AdditiveBlending 已提供足够辉光效果。更新 §6.1 验收标准、§8.3 待办 M11 状态、§13.1 生产模式 #07 描述</td></tr>
+      <tr><td>关联决策</td><td>D38「纤维束用 Line + bloom 辉光叠加做体积感」需修订——bloom 已禁用，纤维束体积感需依赖 Line 宽度 + 颜色明度</td></tr>
+    </table>
+
+    <h3>P1-2　preserveDrawingBuffer 调试代码残留（已修复但需确认）</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="fixed">P1 · 已修复</span></td></tr>
+      <tr><td>原代码</td><td><code>new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true })</code></td></tr>
+      <tr><td>问题</tr><td><code>preserveDrawingBuffer: true</code> 是调试用途参数，有性能开销，不应出现在生产代码中</td></tr>
+      <tr><td>修复</td><td>已移除该参数，恢复为 <code>{ canvas, antialias: true }</code></td></tr>
+      <tr><td>状态</td><td><span class="fixed">已修复</span></td></tr>
+    </table>
+  </section>
+
+  <!-- P2 建议 -->
+  <section>
+    <h2>P2 — 改进建议（4 项）</h2>
+
+    <h3>P2-1　Tailwind CSS 仍从 CDN 加载</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p2">P2 · 建议</span></td></tr>
+      <tr><td>当前状态</td><td><code>cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1</code> — 浏览器端编译，有网络依赖</td></tr>
+      <tr><td>风险</td><td>CDN 不可用时 Tailwind 样式全部失效（项目 memory 已记录 CDN 依赖导致白屏的教训）</td></tr>
+      <tr><td>建议</td><td>考虑本地化 Tailwind 或改用纯 CSS（当前页面专属样式已较完整，Tailwind 主要用于 utility class）</td></tr>
+    </table>
+
+    <h3>P2-2　Lucide 图标库从 CDN 加载</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p2">P2 · 建议</span></td></tr>
+      <tr><td>当前状态</td><td><code>unpkg.com/lucide@1.8.0</code></td></tr>
+      <tr><td>建议</td><td>评估实际使用的图标数量，若少于 5 个可内联 SVG 替代</td></tr>
+    </table>
+
+    <h3>P2-3　D38 纤维束体积感方案需修订</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p2">P2 · 建议</span></td></tr>
+      <tr><td>背景</td><td>D38 决策「纤维束只用 Line，靠 lineWidth + UnrealBloomPass 辉光叠加做体积感」</td></tr>
+      <tr><td>影响</td><td>bloom 禁用后，纤维束体积感需替代方案</td></tr>
+      <tr><td>建议</td><td>方案 A：提高 Line 颜色明度 + 增加线宽；方案 B：恢复 AdditiveBlending 给纤维束自发光效果；方案 C：使用半透明 CylinderGeometry（但 D38 已否决）</td></tr>
+    </table>
+
+    <h3>P2-4　噪点叠加 blend-mode 合规性评估</h3>
+    <table>
+      <tr><th>维度</th><th>详情</th></tr>
+      <tr><td>问题等级</td><td><span class="p2">P2 · 建议保留</span></td></tr>
+      <tr><td>当前状态</td><td><code>#noise-overlay</code> opacity 0.02, <code>mix-blend-mode: soft-light</code></td></tr>
+      <tr><td>合规分析</td><td>噪点叠加是电影质感纹理效果，不属于「渐变」范畴。品牌规范未明确禁止 blend-mode。opacity 0.02 极低，对 Navy 950 底色几乎无影响</td></tr>
+      <tr><td>建议</td><td>保留当前实现。生产模式下 <code>?prod=1</code> 已自动隐藏</td></tr>
+    </table>
+  </section>
+
+  <!-- 合规项 -->
+  <section>
+    <h2>合规验证项（9 项通过）</h2>
+    <table>
+      <tr><th>检查项</th><th>规范来源</th><th>状态</th></tr>
+      <tr><td>Navy 950 底色 <code>#0A1E3D</code></td><td>§3.1</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>Navy 800 导航栏背景 <code>#122F5C</code></td><td>§3.1 / §8.1</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>Amber 600/500 强调色</td><td>§3.2</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>大地通道色（UPLS/UNIS/UBMS）</td><td>§3.4</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>字体栈 Josefin Sans + Inter + Noto Sans SC + JetBrains Mono</td><td>§4.1</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>圆角体系 R1-R4（4px / 8px / 999px）</td><td>§5.3</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>Three.js 本地加载（<code>../lib/three.module.js</code>）</td><td>项目 memory</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>addons 本地加载（postprocessing / shaders）</td><td>项目 memory</td><td><span class="ok">通过</span></td></tr>
+      <tr><td>导航断点 768px</td><td>项目 memory</td><td><span class="ok">通过</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 像素验证 -->
+  <section>
+    <h2>像素级验证数据</h2>
+    <div class="callout callout-info">
+      以下数据通过 WebGL <code>readPixels</code> 在 <code>requestAnimationFrame</code> 回调中采样获得。
+    </div>
+    <table>
+      <tr><th>采样点</th><th>bloom 开启（修复前）</th><th>bloom 禁用（修复后）</th><th>品牌规范值</th></tr>
+      <tr><td>左上角 (10,10)</td><td>56, 96, 134</td><td><span class="ok">10, 30, 61</span></td><td>10, 30, 61</td></tr>
+      <tr><td>右下角 (W-10, H-10)</td><td>56, 96, 134</td><td><span class="ok">10, 30, 61</span></td><td>10, 30, 61</td></tr>
+      <tr><td>中心 (W/2, H/2)</td><td>56, 96, 134</td><td><span class="ok">10, 30, 61</span></td><td>10, 30, 61</td></tr>
+      <tr><td>25% 点</td><td>56, 96, 134</td><td><span class="ok">10, 30, 61</span></td><td>10, 30, 61</td></tr>
+      <tr><td>75% 点</td><td>56, 96, 134</td><td><span class="ok">10, 30, 61</span></td><td>10, 30, 61</td></tr>
+    </table>
+    <p style="font-size:0.8rem; color:var(--slate-500); margin-top:8px;">
+      注：修复后数据通过 <code>preserveDrawingBuffer</code> 临时开启 + RAF 内采样获得，验证后已移除该参数。
+    </p>
+  </section>
+
+  <!-- 修复清单 -->
+  <section>
+    <h2>本次修复清单</h2>
+    <table>
+      <tr><th>#</th><th>文件</th><th>修改内容</th><th>优先级</th><th>状态</th></tr>
+      <tr><td>1</td><td><code>pages/3d-hero.html</code></td><td>禁用 EffectComposer + UnrealBloomPass 后处理管线</td><td>P0</td><td><span class="fixed">已完成</span></td></tr>
+      <tr><td>2</td><td><code>pages/3d-hero.html</code></td><td>移除 SVG <code>linearGradient</code>，改用纯色 stroke</td><td>P0</td><td><span class="fixed">已完成</span></td></tr>
+      <tr><td>3</td><td><code>pages/3d-hero.html</code></td><td>移除 CSS <code>radial-gradient</code>，改用纯色背景</td><td>P0</td><td><span class="fixed">已完成</span></td></tr>
+      <tr><td>4</td><td><code>pages/3d-hero.html</code></td><td>移除 <code>preserveDrawingBuffer: true</code> 调试参数</td><td>P1</td><td><span class="fixed">已完成</span></td></tr>
+      <tr><td>5</td><td><code>docs/01-prd.md</code></td><td>新增 D39 决策记录（bloom 禁用）；更新 §6.1/§8.3/§13.1</td><td>P1</td><td><span class="pending">待执行</span></td></tr>
+      <tr><td>6</td><td><code>docs/01-prd.md</code></td><td>修订 D38 纤维束方案（移除 bloom 依赖）</td><td>P2</td><td><span class="pending">待执行</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 审查依据 -->
+  <section>
+    <h2>审查依据</h2>
+    <table>
+      <tr><th>文档</th><th>版本</th><th>关键条款</th></tr>
+      <tr><td>品牌视觉规范</td><td>v2.3.0</td><td>§3.1 Navy 色系 / §3.5 渐变禁止 / §5.3 圆角 / D09 渐变禁令</td></tr>
+      <tr><td>PDR</td><td>v1.4</td><td>§6.1 验收标准 / §9 决策记录 D32-D38 / §13.1 生产模式</td></tr>
+      <tr><td>IA</td><td>v1.3</td><td>§4 叙事流程 / §5 链接系统</td></tr>
+      <tr><td>项目 memory</td><td>2026-07-23</td><td>Three.js 本地加载 / 导航断点 768px / 渐变禁止</td></tr>
+    </table>
+  </section>
+
+</div>
+
+</body>
+</html>

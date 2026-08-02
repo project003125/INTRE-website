@@ -236,11 +236,11 @@
 
     <main id="main-content" class="container">
         <h1>UBMS</h1>
-        <div class="subhead">统一行为测量系统 · 结构化行为观测→功能层似然的标准化管道 <span class="channel-badge ubms">行为通道</span></div>
+        <div class="subhead">统一行为测量系统 · PSE 感知层 <strong>L1-B 行为模态输入端口</strong> <span class="channel-badge ubms">行为通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UBMS 将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，为 PSE 提供标准化行为似然接口。
+            UBMS 是 INTRE 新管线体系的 <strong>L1-B 行为模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，向 PSE 状态层输出标准化行为似然接口。
         </div>
 
         <!-- 一、三层架构总览 -->
@@ -258,18 +258,18 @@
             </table>
         </div>
 
-        <!-- 二、FLP 四大基础设施中的定位 -->
-        <h2 class="section-label"><i class="fas fa-sitemap" aria-hidden="true"></i> 二、FLP 四大基础设施中的定位</h2>
-        <p class="section-intro">UBMS 隶属于 PFIM（功能层输入测量学）的行为输入通道，与 UPLS、UNIS 并列构成 PSE 的三通道输入源。</p>
+        <!-- 二、PSE 感知层端口定位 -->
+        <h2 class="section-label"><i class="fas fa-sitemap" aria-hidden="true"></i> 二、PSE 感知层（L1）端口定位</h2>
+        <p class="section-intro">在新管线体系（2026-07 更新）中，UBMS 作为 PSE 感知层 L1 的 <strong>行为模态输入端口（L1-B）</strong>，与 UPLS（语义端口 L1-S）、UNIS（神经端口 L1-N）并列。三端口共同向 PSE 状态层（L2+）输出标准化似然，由 PSE 执行融合与动力学推理。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧版"FLP 四大基础设施并列"表述已于本次管线重构时同步更新。）</small></p>
 
         <div class="table-responsive">
             <table class="table">
-                <thead><tr><th>基础设施</th><th>通道</th><th>输入数据类型</th><th>输出</th><th>工程隐喻</th></tr></thead>
+                <thead><tr><th>端口（IODS）</th><th>感知层定位</th><th>输入数据类型</th><th>输出</th><th>工程隐喻</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>UPLS</strong></td><td>语义</td><td>自然语言（临床叙述、量表文本）</td><td>语义似然 p(y<sub>s</sub>|Ψ)</td><td>静态本体地图</td></tr>
-                    <tr><td><strong>UBMS</strong></td><td>行为</td><td>结构化数值（量表分、EMA、数字表型）</td><td>行为似然 p(y<sub>b</sub>|Ψ)</td><td>行为标尺</td></tr>
-                    <tr><td><strong>UNIS</strong></td><td>神经</td><td>神经生理信号（EEG、fNIRS、PPG）</td><td>神经似然 p(y<sub>n</sub>|Ψ)</td><td>神经天线</td></tr>
-                    <tr><td><strong>PSE</strong></td><td>融合</td><td>三通道似然 + 先验</td><td>状态后验 p(Ψ|y<sub>all</sub>)</td><td>动力学引擎</td></tr>
+                    <tr><td><strong>UPLS</strong></td><td>L1-S 语义端口</td><td>自然语言（临床叙述、量表文本）</td><td>语义似然 p(y<sub>s</sub>|Ψ)</td><td>静态本体地图</td></tr>
+                    <tr><td><strong>UBMS</strong></td><td>L1-B 行为端口</td><td>结构化数值（量表分、EMA、数字表型）</td><td>行为似然 p(y<sub>b</sub>|Ψ)</td><td>行为标尺</td></tr>
+                    <tr><td><strong>UNIS</strong></td><td>L1-N 神经端口</td><td>神经生理信号（EEG、fNIRS、PPG）</td><td>神经似然 p(y<sub>n</sub>|Ψ)</td><td>神经天线</td></tr>
+                    <tr><td><strong>PSE</strong></td><td>状态层 L2+ 融合</td><td>三端口似然 + 先验</td><td>状态后验 p(Ψ|y<sub>all</sub>)</td><td>动力学引擎</td></tr>
                 </tbody>
             </table>
         </div>
@@ -353,8 +353,8 @@
             <p><strong>过渡条件：</strong> 当 BHI 注册库条目超过临界量（建议 50+），且跨工具桥接需求迫使独立版本管理时，UBMS 从 PSE-M 中分离。01-P-04 论文直接以 Phase II 独立系统形式发布，加速了这一过渡。</p>
         </div>
 
-        <!-- 六、与其他基础设施的接口 -->
-        <h2 class="section-label"><i class="fas fa-code-branch" aria-hidden="true"></i> 六、基础设施间接口</h2>
+        <!-- 六、与其他端口的接口 -->
+        <h2 class="section-label"><i class="fas fa-code-branch" aria-hidden="true"></i> 六、端口间接口</h2>
 
         <div class="grid-3">
             <div class="card">

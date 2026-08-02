@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S1 · Dense Lines + Bloom — RCT4 Lab</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "../intre-3d-hero/lib/three.module.js",
+    "three/addons/": "../intre-3d-hero/lib/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { buildFibers, SAMPLES, TRACTS } from './shared/fibers.js';
+import { decFromTangent } from './shared/dec.js';
+import { buildShellGroup } from './shared/brain-shell.js';
+import { createLab, attachTractToggles } from './shared/rig.js';
+
+/* ============ 纤维线 shader：DEC + 彗星脉冲 + 扫描波 ============ */
+const VERT = /* glsl */`
+attribute vec3 aColor;
+attribute float aU;
+attribute float aRand;
+attribute float aTractIdx;
+attribute float aRadial;
+varying vec3 vColor;
+varying float vU;
+varying float vRand;
+varying float vY;
+varying float vTractIdx;
+varying float vRadial;
+void main(){
+  vColor = aColor;
+  vU = aU;
+  vRand = aRand;
+  vTractIdx = aTractIdx;
+  vRadial = aRadial;
+  vec4 wp = modelMatrix * vec4(position, 1.0);
+  vY = wp.y;
+  gl_Position = projectionMatrix * viewMatrix * wp;
+}
+`;
+
+const FRAG = /* glsl */`
+uniform float uTime;
+uniform float uPulseAmp;
+uniform float uPulseSpeed;
+uniform float uSweepAmp;
+uniform float uBase;
+uniform float uAlpha;
+varying vec3 vColor;
+varying float vU;
+varying float vRand;
+varying float vY;
+varying float vTractIdx;
+varying float vRadial;
+void main(){
+  // 沿纤维行进的彗星脉冲（更锐利）
+    float ph = fract(uTime * 0.10 * uPulseSpeed + vRand * 0.9 - vU);
+    float comet = exp(-ph * 28.0);
+    // 自下而上的扫描波
+    float waveY = mix(-0.95, 1.05, fract(uTime * 0.06));
+    float sweep = exp(-pow((vY - waveY) * 4.0, 2.0));
+    // 呼吸
+    float breath = 0.93 + 0.07 * sin(uTime * 0.4 + vRand * 6.2831);
+   
+    // === 哑光丝 + 电流火花 分离策略 ===
+    // 基础：哑光 DEC 丝，亮度刻意压低到 bloom 阈值以下 → 不发光，呈丝绒质感
+    vec3 baseCol = vColor * uBase * breath;
+    float baseAlpha = uAlpha * breath;
+
+    // 放射丝调制：种子团+中段(vU<0.7)大幅淡出，避免全向混色成白雾；仅外端显色
+    float radialFade = mix(1.0, smoothstep(0.14, 0.82, vU), vRadial);
+    float radialAmp  = mix(1.0, 0.40, vRadial);
+    baseAlpha *= radialFade * radialAmp;
+
+    // 扫描波：极弱的整体提亮（不超阈值）
+    vec3 sweepCol = baseCol * sweep * uSweepAmp * 0.25;
+
+    // 电流脉冲：加性白芯 + DEC 边，冲到 HDR>1 → 只有火花被 bloom 点亮
+    vec3 sparkCol = (vColor * 1.8 + vec3(0.55)) * comet * uPulseAmp;
+    float sparkAlpha = comet * 0.18 * uPulseAmp;
+
+    vec3 finalCol = baseCol + sweepCol + sparkCol;
+    float finalAlpha = baseAlpha + sparkAlpha;
+
+    gl_FragColor = vec4(finalCol, clamp(finalAlpha, 0.0, 0.95));
+}
+`;
+
+/* ============ 构建场景 ============ */
+const lab = createLab({
+  tag: 'S1 / 5',
+  title: 'Dense Streamlines + Selective Bloom',
+  desc: '5000+ 根纤维以 GL_LINES 单次 draw call 渲染，DEC 方向编码色，极低 alpha 叠加出体积丝线感，阈值 Bloom 包裹脉冲尖端。',
+  bloom: { strength: 0.55, radius: 0.3, threshold: 0.9 },
+  camera: { x: 2.0, y: 0.6, z: 2.8 },
+});
+
+// 额外 uniform — 哑光丝：单根 alpha 适中，密集叠加成饱和丝绒束
+lab.uniforms.uAlpha = { value: 0.10 };
+
+const fiberMat = new THREE.ShaderMaterial({
+  vertexShader: VERT,
+  fragmentShader: FRAG,
+  uniforms: lab.uniforms,
+  transparent: true,
+  depthWrite: false,
+  depthTest: true,
+  blending: THREE.NormalBlending,
+});
+
+let shell = null;
+const tractMeshes = {};
+
+function build(density, jitterScale) {
+  // 清理
+  for (const k of Object.keys(tractMeshes)) {
+    lab.brainGroup.remove(tractMeshes[k]);
+    tractMeshes[k].geometry.dispose();
+    delete tractMeshes[k];
+  }
+  if (shell) { lab.brainGroup.remove(shell); shell = null; }
+
+  // 幽灵壳
+  shell = buildShellGroup({ opacity: 0.45 });
+  shell.renderOrder = 1;
+  lab.brainGroup.add(shell);
+
+  // 纤维
+  const { fibers, meta } = buildFibers(density, 20260725, jitterScale);
+
+  // 按 tract 分组
+  const byTract = {};
+  for (let fi = 0; fi < fibers.length; fi++) {
+    const f = fibers[fi];
+    (byTract[f.tract.id] = byTract[f.tract.id] || []).push({ f, fi });
+  }
+
+  let tractIdx = 0;
+  for (const tract of TRACTS) {
+    const list = byTract[tract.id] || [];
+    if (list.length === 0) { tractIdx++; continue; }
+
+    // 每根纤维 = (SAMPLES-1) 条线段 = (SAMPLES-1)*2 个顶点
+    const segsPerFiber = SAMPLES - 1;
+    const vertsPerFiber = segsPerFiber * 2;
+    const totalVerts = list.length * vertsPerFiber;
+
+    const positions = new Float32Array(totalVerts * 3);
+    const colors = new Float32Array(totalVerts * 3);
+    const us = new Float32Array(totalVerts);
+    const rands = new Float32Array(totalVerts);
+    const tractIdxs = new Float32Array(totalVerts);
+    const radials = new Float32Array(totalVerts);
+    const isRadial = tract.kind === 'radial' ? 1.0 : 0.0;
+
+    let vi = 0;
+    for (const { f } of list) {
+      for (let s = 0; s < segsPerFiber; s++) {
+        // 线段起点
+        const i0 = s, i1 = s + 1;
+        for (const idx of [i0, i1]) {
+          positions[vi * 3]     = f.pts[idx * 3];
+          positions[vi * 3 + 1] = f.pts[idx * 3 + 1];
+          positions[vi * 3 + 2] = f.pts[idx * 3 + 2];
+          const [cr, cg, cb] = decFromTangent(f.tan[idx*3], f.tan[idx*3+1], f.tan[idx*3+2]);
+          colors[vi * 3] = cr; colors[vi * 3 + 1] = cg; colors[vi * 3 + 2] = cb;
+          us[vi] = idx / (SAMPLES - 1);
+          rands[vi] = f.rand;
+          tractIdxs[vi] = tractIdx;
+          radials[vi] = isRadial;
+          vi++;
+        }
+      }
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
+    geo.setAttribute('aU', new THREE.BufferAttribute(us, 1));
+    geo.setAttribute('aRand', new THREE.BufferAttribute(rands, 1));
+    geo.setAttribute('aTractIdx', new THREE.BufferAttribute(tractIdxs, 1));
+    geo.setAttribute('aRadial', new THREE.BufferAttribute(radials, 1));
+
+    const lines = new THREE.LineSegments(geo, fiberMat);
+    lines.renderOrder = 2;
+    lines.frustumCulled = false;
+    lines.userData.name = tract.name;
+    lab.brainGroup.add(lines);
+    tractMeshes[tract.id] = lines;
+    tractIdx++;
+  }
+  return { fibers, meta };
+}
+
+let meta = build(5.0, 0.35).meta;
+
+/* ============ GUI ============ */
+lab.gui.section('BLOOM');
+lab.gui.slider('强度 strength', 0, 2.5, 0.05, 0.55, v => lab.setBloom(v, null, null));
+lab.gui.slider('半径 radius', 0, 1, 0.05, 0.30, v => lab.setBloom(null, v, null));
+lab.gui.slider('阈值 threshold', 0, 1.5, 0.02, 0.90, v => lab.setBloom(null, null, v));
+
+lab.gui.section('电流动画');
+lab.gui.slider('脉冲幅度', 0, 3, 0.05, lab.uniforms.uPulseAmp.value, v => lab.uniforms.uPulseAmp.value = v);
+lab.gui.slider('脉冲速度', 0, 3, 0.05, lab.uniforms.uPulseSpeed.value, v => lab.uniforms.uPulseSpeed.value = v);
+lab.gui.slider('扫描波幅度', 0, 2.5, 0.05, lab.uniforms.uSweepAmp.value, v => lab.uniforms.uSweepAmp.value = v);
+lab.gui.slider('基础亮度', 0.1, 1.5, 0.01, lab.uniforms.uBase.value, v => lab.uniforms.uBase.value = v);
+lab.gui.slider('线 alpha', 0.005, 0.12, 0.002, lab.uniforms.uAlpha.value, v => lab.uniforms.uAlpha.value = v);
+
+lab.gui.section('场景');
+lab.gui.slider('纤维密度', 1, 8, 0.5, 5.0, v => { meta = build(v, 0.35).meta; attachTractToggles(lab, tractMeshes, meta); });
+lab.gui.toggle('自动旋转', true, v => lab.controls.autoRotate = v);
+lab.gui.toggle('幽灵壳脑', true, v => { if (shell) shell.visible = v; });
+lab.gui.toggle('参考图对比', true, v => lab.refEl.style.opacity = v ? 1 : 0);
+
+attachTractToggles(lab, tractMeshes, meta);
+</script>
+</body>
+</html>

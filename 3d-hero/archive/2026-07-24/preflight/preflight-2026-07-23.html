@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRE 3D Hero 概念原型</title>
+    <style id="theme-vars">
+/* ============================================================
+   INTRE 3D Hero 概念原型 — 项目品牌 CSS
+   来源：06-格式治理/06-S-05-INTRE-品牌视觉规范.md v2.3.0
+   brandPrefix: intre
+   ============================================================ */
+
+:root {
+  /* ---------- INTRE Navy 品牌主色阶 ---------- */
+  --intre-navy-950: #0A1E3D;
+  --intre-navy-900: #102A4C;
+  --intre-navy-800: #122F5C;
+  --intre-navy-700: #1A3866;
+  --intre-navy-600: #1F4880;
+  --intre-navy-500: #2A5DA0;
+  --intre-navy-400: #4A7BC0;
+  --intre-navy-300: #7FA3D0;
+  --intre-navy-200: #B8CFE8;
+  --intre-navy-100: #D6E5F3;
+  --intre-navy-50:  #F0F6FB;
+
+  /* ---------- 语义别名（深色 Hero 场景） ---------- */
+  --intre-background: var(--intre-navy-950);
+  --intre-foreground: var(--intre-navy-100);
+  --intre-card: var(--intre-navy-800);
+  --intre-card-foreground: var(--intre-navy-100);
+  --intre-primary: var(--intre-navy-500);
+  --intre-primary-foreground: var(--intre-navy-50);
+  --intre-muted: var(--intre-navy-700);
+  --intre-muted-foreground: #93B4D8;
+  --intre-border: #24466F;
+  --intre-input: var(--intre-navy-800);
+  --intre-ring: var(--intre-navy-400);
+
+  /* ---------- 圆角（品牌硬约束：静态元素 ≤ 8px，按钮可用胶囊） ---------- */
+  --intre-radius-sm: 4px;
+  --intre-radius-md: 8px;
+  --intre-radius-lg: 8px;
+  --intre-radius-pill: 9999px;
+
+  /* ---------- 强调色（品牌规范 3.2：Amber 占比小于5%，仅点睛） ---------- */
+  --intre-amber-600: #D97706;
+  --intre-amber-500: #F59E0B;
+  --intre-amber-400: #FBBF24;
+
+  /* ---------- 大地色系（数据编码色，非品牌强调色；
+       品牌规范 3.3：同一视口不超过2种通道色） ---------- */
+  --intre-upls: #5A8270;   /* UPLS 语义通道 · 鼠尾草绿 */
+  --intre-unis: #5B7080;   /* UNIS 神经通道 · 冷蓝灰 */
+  --intre-ubms: #9A7B5F;   /* UBMS 行为通道 · 赭石 */
+  --intre-pse:  #6B7280;   /* PSE 计算引擎 · 中性灰 */
+  --intre-rever:#7C6F64;   /* REVER 伦理审查 · 暖灰 */
+
+  /* ---------- 字体（品牌规范第4节：不可替换） ---------- */
+  --intre-font-display: 'Josefin Sans', 'Noto Sans SC', sans-serif;
+  --intre-font-body: 'Inter', 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --intre-font-cjk: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --intre-font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* ---------- 阴影（品牌规范 3.4：仅 A 类环境光 / B 类硬投影） ---------- */
+  --intre-shadow-a: 0 2px 8px rgba(10, 30, 61, 0.06), 0 8px 24px rgba(10, 30, 61, 0.05);
+  --intre-shadow-b: 6px 6px 0 rgba(10, 30, 61, 0.08);
+}
+
+/* 品牌排版工具类 */
+.intre-wordmark {
+  font-family: var(--intre-font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.intre-h1 {
+  font-family: var(--intre-font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.intre-mono {
+  font-family: var(--intre-font-mono);
+}
+.intre-body {
+  font-family: var(--intre-font-body);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--intre-background);
+    --color-foreground: var(--intre-foreground);
+    --color-card: var(--intre-card);
+    --color-card-foreground: var(--intre-card-foreground);
+    --color-primary: var(--intre-primary);
+    --color-primary-foreground: var(--intre-primary-foreground);
+    --color-muted: var(--intre-muted);
+    --color-muted-foreground: var(--intre-muted-foreground);
+    --color-border: var(--intre-border);
+    --color-input: var(--intre-input);
+    --color-ring: var(--intre-ring);
+    --radius-sm: var(--intre-radius-sm);
+    --radius-md: var(--intre-radius-md);
+    --radius-lg: var(--intre-radius-lg);
+  }
+  @layer base {
+    body { background: var(--intre-background); color: var(--intre-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--intre-background); }
+      .text-background { color: var(--intre-background); }
+      .border-background { border-color: var(--intre-background); }
+      .ring-background { --tw-ring-color: var(--intre-background); }
+      .bg-foreground { background-color: var(--intre-foreground); }
+      .text-foreground { color: var(--intre-foreground); }
+      .border-foreground { border-color: var(--intre-foreground); }
+      .ring-foreground { --tw-ring-color: var(--intre-foreground); }
+      .bg-card { background-color: var(--intre-card); }
+      .text-card { color: var(--intre-card); }
+      .border-card { border-color: var(--intre-card); }
+      .ring-card { --tw-ring-color: var(--intre-card); }
+      .bg-card-foreground { background-color: var(--intre-card-foreground); }
+      .text-card-foreground { color: var(--intre-card-foreground); }
+      .border-card-foreground { border-color: var(--intre-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--intre-card-foreground); }
+      .bg-primary { background-color: var(--intre-primary); }
+      .text-primary { color: var(--intre-primary); }
+      .border-primary { border-color: var(--intre-primary); }
+      .ring-primary { --tw-ring-color: var(--intre-primary); }
+      .bg-primary-foreground { background-color: var(--intre-primary-foreground); }
+      .text-primary-foreground { color: var(--intre-primary-foreground); }
+      .border-primary-foreground { border-color: var(--intre-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--intre-primary-foreground); }
+      .bg-muted { background-color: var(--intre-muted); }
+      .text-muted { color: var(--intre-muted); }
+      .border-muted { border-color: var(--intre-muted); }
+      .ring-muted { --tw-ring-color: var(--intre-muted); }
+      .bg-muted-foreground { background-color: var(--intre-muted-foreground); }
+      .text-muted-foreground { color: var(--intre-muted-foreground); }
+      .border-muted-foreground { border-color: var(--intre-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--intre-muted-foreground); }
+      .bg-border { background-color: var(--intre-border); }
+      .text-border { color: var(--intre-border); }
+      .border-border { border-color: var(--intre-border); }
+      .ring-border { --tw-ring-color: var(--intre-border); }
+      .bg-input { background-color: var(--intre-input); }
+      .text-input { color: var(--intre-input); }
+      .border-input { border-color: var(--intre-input); }
+      .ring-input { --tw-ring-color: var(--intre-input); }
+      .bg-ring { background-color: var(--intre-ring); }
+      .text-ring { color: var(--intre-ring); }
+      .border-ring { border-color: var(--intre-ring); }
+      .ring-ring { --tw-ring-color: var(--intre-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

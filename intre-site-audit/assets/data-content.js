@@ -1,0 +1,47 @@
+/* INTRE 官网盘点 · 内容线审计数据（33 条） */
+window.FINDINGS = { content: [
+{id:'C-01',cat:'信息架构',sev:'P1',theme:'信息架构与互链',title:'三大板块（首页 · 模块 · 教材）互不链接，形成内容孤岛',evidence:'index.html · modules/*.html · textbook/index.html 互查',impact:'读者动线在板块边界断裂，新访客无法从"概念介绍"自然走向"系统学习"，跳出风险集中在首屏。',fix:'首页入口卡片区补充模块深读与教材链接；模块页增设"相关章节 · 术语条目"；教材章首标注对应模块。'},
+{id:'C-02',cat:'SEO 与元信息',sev:'P1',theme:'SEO 与元信息',title:'术语表宣称"可搜索与交叉引用"，功能并未实现',evidence:'index.html:239（JSON-LD SearchAction 声明）',impact:'搜索引擎按 SearchAction 预期对应搜索端点；用户进入术语表也无法真正搜索，承诺与实现不符。',fix:'要么实现术语表纯前端筛选搜索（成本极低），要么移除 SearchAction 声明并同步修改页面文案。'},
+{id:'C-03',cat:'交叉互链',sev:'P1',theme:'信息架构与互链',title:'教材章节交叉引用稀少，正文概念很少链向术语表 / 模块',evidence:'textbook/ch01–ch10 正文内链密度统计',impact:'深度阅读时术语表与模块页利用率低，学习路径依赖读者记忆，知识网络呈线性而非网状。',fix:'对正文中首次出现的核心术语批量补超链接，指向术语表对应锚点与模块页。'},
+{id:'C-04',cat:'术语一致性',sev:'P0',theme:'术语与文案',title:'"42 维状态向量"存在三套互相矛盾的分解口径',evidence:'index.html:311 英雄区公式（R=关系21 / D=动力9 / S=状态6）↔ upls:243-292 与 glossary:290（模块-资源-调度-结构）↔ app-a.html:7,72（6×7=42）',impact:'框架最核心概念出现三种互斥分解，直接动摇学术可信度；本站点最高优先级修复项。',fix:'确立 6×7=42（6 个功能模块 × 7 个状态通道）为唯一权威口径，重写首页英雄区公式与身份带，全站对齐单一真源。'},
+{id:'C-05',cat:'术语一致性',sev:'P0',theme:'术语与文案',title:'术语表 42 维条目存在低级算式错误',evidence:'glossary:292 "6×3+6=42"（实为 24）',impact:'权威术语表出现算术错误，与 C-04 的口径分裂叠加，双重放大读者质疑。',fix:'与 C-04 同步修正，将该条目重写为 6×7=42 并附 7 通道清单与模块对应表。'},
+{id:'C-06',cat:'术语一致性',sev:'P2',theme:'术语与文案',title:'"五模块"与"六模块"表述未区分语境',evidence:'modules 页与首页文案互查',impact:'读者困惑 REVER 是否计入模块数，计数表述含混。',fix:'统一为"五大功能模块 + 元模块 REVER"表述，首次出现处加注说明计数口径。'},
+{id:'C-07',cat:'术语一致性',sev:'P1',theme:'术语与文案',title:'UPLS 中文全称"系统"与"语义"两个版本并存',evidence:'modules/upls.html 与 glossary UPLS 条目互查',impact:'同一模块两个中文全称，外部引用与翻译无法对齐。',fix:'以与白皮书一致的版本为准，全站替换，术语表补缩写-全称对照。'},
+{id:'C-08',cat:'术语一致性',sev:'P1',theme:'术语与文案',title:'PSE 模块名三种写法并存',evidence:'pse.html · glossary · index.html 互查',impact:'读者无法确认官方缩写，检索与引用各自为政。',fix:'确定唯一规范写法及其权威中文译名，全站对齐。'},
+{id:'C-09',cat:'术语一致性',sev:'P1',theme:'术语与文案',title:'REVER 命名存在多个版本',evidence:'rever.html · 全站相关提及互查',impact:'元模块命名漂移，品牌术语体系出现裂缝。',fix:'统一为单一规范名称，旧提及批量替换。'},
+{id:'C-10',cat:'术语一致性',sev:'P1',theme:'术语与文案',title:'UBMS 与 PSE-M 混用',evidence:'unis:186',impact:'读者误以为 UBMS 与 PSE-M 是两个独立系统，实为同物异名。',fix:'首次出现处明确主名并标注"又名"，后文一律使用主名。'},
+{id:'C-11',cat:'术语一致性',sev:'P1',theme:'术语与文案',title:'CTT / CCT 术语笔误',evidence:'ubms:300',impact:'术语缩写字母顺序颠倒，易引发对相关概念的误读。',fix:'立即修正，并在文档工作流中加入术语表拼写检查。'},
+{id:'C-12',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'UNIS 相关设备表述不一致（ECoG 是否包含）',evidence:'unis.html 相关段落互查',impact:'数据采集设备清单缺乏权威表述，读者引用时版本不一。',fix:'以最新架构文档为准，统一设备清单表述。'},
+{id:'C-13',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'旧版"三大/四大核心基础设施"并列表述与新管线体系（IODS + PSE 两系统边界）不一致',evidence:'首页与模块页互查；2026-07 管线体系更新后，UPLS/UBMS/UNIS 统一归属为 PSE 感知层 L1 的 IODS 三端口，PSE 自身为状态层（L2+）',impact:'旧并列计数（三大/四大）与新端口化表述并行，框架完整性表述自相矛盾。',fix:'按 2026-07 管线体系全站对齐：UPLS（L1-S）/UBMS（L1-B）/UNIS（L1-N）为 IODS 三端口，PSE 为状态层（L2+）——两系统边界而非四系统并列。'},
+{id:'C-14',cat:'术语一致性',sev:'P2',theme:'术语与文案',title:'"三模态/三通道"与新管线"三端口（IODS）"表述混用',evidence:'相关融合描述段落互查；2026-07 管线体系下应统一为 IODS 三端口 + PSE 状态层（L2+）',impact:'融合机制描述术语漂移，概念粒度不清。',fix:'统一为"PSE 感知层 L1 的 IODS 三端口（L1-S 语义 / L1-B 行为 / L1-N 神经） → PSE 状态层（L2+）贝叶斯融合"，术语表增加辨析条目。'},
+{id:'C-15',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'术语表类别计数与实际收录条目矛盾',evidence:'glossary 类别统计 vs 实际条目数',impact:'类别概览表述与实际内容不符，严谨性受质疑。',fix:'更新统计表述或补齐缺漏条目，二者取其一。'},
+{id:'C-16',cat:'教学叙事',sev:'P2',theme:'教学叙事',title:'REVER 页面两处语句语病',evidence:'rever:330,554',impact:'长句存在语法问题，中断阅读节奏。',fix:'重写该两处段落，全文通读校对一遍。'},
+{id:'C-17',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'教材索引页漏字',evidence:'textbook/index:79（"仿真校"应为"仿真校验"）',impact:'标题级文本漏字，第一印象受损。',fix:'补齐漏字，并批量排查同类漏字。'},
+{id:'C-18',cat:'标记与结构',sev:'P1',theme:'标记与结构',title:'Markdown ** 粗体残留未渲染，全站 277 处 / 27 个文件',evidence:'全站检索 ** 命中 277 处 / 27 文件',impact:'正文出现裸露 ** 符号，转换管线明显遗漏，阅读体验粗糙。',fix:'批量清理，并在导出脚本中加入残留符号检查步骤。'},
+{id:'C-19',cat:'教学叙事',sev:'P2',theme:'教学叙事',title:'教材十章零图表，纯文字墙',evidence:'textbook/ch01–ch10 图像与 figure 元素统计',impact:'数学公式与文字密度高且无视觉锚点，学习疲劳明显，关键概念难以建立心智模型。',fix:'优先为 ch01–ch03 补结构图与状态空间示意图（SVG 内联，与品牌风格一致）。'},
+{id:'C-20',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'app-g 缺少正文索引列，数据与释义脱节',evidence:'app-g.html 表格结构',impact:'读者无法定位数据对应的正文释义，工具页可用性打折。',fix:'补充索引列或悬停注释，建立数据-释义映射。'},
+{id:'C-21',cat:'证据与版本',sev:'P1',theme:'版本与证据标签',title:'IET v3.0 证据标签仅覆盖 7/43 个文件',evidence:'全站 IET 八级标签覆盖统计（7/43）',impact:'证据分级是 INTRE 的方法论亮点，覆盖率不足两成使标签体系形同虚设，读者无法辨别论断强度。',fix:'优先覆盖 ch01–ch10 与五大模块页，再逐步推广至全站。'},
+{id:'C-22',cat:'内容完整性',sev:'P2',theme:'内容完整性',title:'app-a 中 M1-STR-R 长期标注"待开发"',evidence:'app-a.html M1-STR-R 条目',impact:'占位状态长期暴露，完整性观感受损。',fix:'补齐内容，或改为"规划中"并附预期版本。'},
+{id:'C-23',cat:'交叉互链',sev:'P1',theme:'信息架构与互链',title:'模块页正文无互链，五模块读起来像五份孤立文档',evidence:'modules/*.html 正文链接统计',impact:'模块间关系（输入输出、协作）无法通过链接导航，框架系统性只能靠 prose 描述。',fix:'每个模块页尾部增加"相关模块 / 对应章节 / 术语条目"三组链接。'},
+{id:'C-24',cat:'证据与版本',sev:'P1',theme:'版本与证据标签',title:'版本号 v2.4 / v2.3 / v2.1 / 1.0.0 四套并存',evidence:'全站页脚与 meta 版本标记互查',impact:'读者无法判断当前权威版本，旧版内容被误认为最新。',fix:'统一为单一版本源（建议 v2.4），页面统一引用，清理旧标记。'},
+{id:'C-25',cat:'标记与结构',sev:'P2',theme:'标记与结构',title:'ch01 底部链接重复出现',evidence:'textbook/ch01 底部链接块',impact:'同一链接出现两次，疑似转换脚本重复插入。',fix:'去重，并检查其余章节是否存在同类问题。'},
+{id:'C-26',cat:'标记与结构',sev:'P2',theme:'标记与结构',title:'ch01 出现双分隔线',evidence:'textbook/ch01:203-204',impact:'相邻两条 hr，视觉冗余。',fix:'删除其一，检查转换规则。'},
+{id:'C-27',cat:'SEO 与元信息',sev:'P1',theme:'SEO 与元信息',title:'首页 JSON-LD 描述与页面文案漂移',evidence:'index.html:231',impact:'搜索引擎摘要与实际页面表述不一致，点击与信任受损。',fix:'JSON-LD description 与英雄区文案同源修订。'},
+{id:'C-28',cat:'SEO 与元信息',sev:'P1',theme:'SEO 与元信息',title:'og:image 全站为 SVG，社交平台无法解析',evidence:'全站 og:image 声明',impact:'微信 / X / Telegram 分享卡片无图预览，传播效果大打折扣。',fix:'生成 1200×630 PNG 品牌分享图，全站统一替换。'},
+{id:'C-29',cat:'SEO 与元信息',sev:'P1',theme:'SEO 与元信息',title:'章节页 meta description 直接抽首段，未经撰写',evidence:'textbook/ch* meta description 互查',impact:'搜索结果摘要是开篇叙述，无章节价值概括，点击率偏低。',fix:'为每章撰写一句概括（含核心概念与章节目标）。'},
+{id:'C-30',cat:'标记与结构',sev:'P1',theme:'标记与结构',title:'h3 开标签配 h4 闭标签',evidence:'pse:303,309,315',impact:'标题层级断裂，屏幕阅读器目录跳级，SEO 标题权重混乱。',fix:'修正闭合标签，并在构建流程中加入 HTML lint。'},
+{id:'C-31',cat:'标记与结构',sev:'P2',theme:'标记与结构',title:'重复的 class 声明',evidence:'unis:134,142',impact:'class 列表冗余，疑似复制粘贴残留。',fix:'去重。'},
+{id:'C-32',cat:'标记与结构',sev:'P2',theme:'标记与结构',title:'术语表 section-heading 使用 div 而非标题标签',evidence:'glossary section-heading 元素',impact:'标题层级缺失，屏幕阅读器无法按标题导航，也无法构建页面目录。',fix:'改为对应层级的 h2 / h3。'},
+{id:'C-33',cat:'教学叙事',sev:'P2',theme:'教学叙事',title:'教材 h1 含 emoji，与品牌语调不符',evidence:'textbook 章节 h1 互查',impact:'06-S-05 品牌纪律强调克制与专业，emoji 与整体语调冲突。',fix:'移除 emoji，标题语调与品牌规范统一。'}
+], design: [] };
+
+window.CONTENT_GROUPS = {
+'信息架构':   {chip:'g-cat', chipText:'IA',   title:'信息架构 · 三大板块联动'},
+'SEO 与元信息': {chip:'g-cat', chipText:'SEO',  title:'SEO 与元信息'},
+'交叉互链':   {chip:'g-cat', chipText:'LINK', title:'交叉互链 · 模块 ↔ 教材 ↔ 术语表'},
+'术语一致性': {chip:'g-cat', chipText:'TERM', title:'术语一致性 · 单一真源'},
+'内容完整性': {chip:'g-cat', chipText:'DATA', title:'内容完整性 · 口径与事实核查'},
+'教学叙事':   {chip:'g-cat', chipText:'NARR', title:'教学叙事 · 可读性'},
+'标记与结构': {chip:'g-cat', chipText:'HTML', title:'标记与结构 · 源码卫生'},
+'证据与版本': {chip:'g-cat', chipText:'IET',  title:'证据标签与版本'}
+};

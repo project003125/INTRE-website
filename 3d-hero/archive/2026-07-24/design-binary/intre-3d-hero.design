@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "page-3d-hero",
+      "title": "3D Hero 概念原型",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784730400000,
+      "canvasData": {
+        "x": 144,
+        "y": 156,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/3d-hero.html",
+        "interactions": []
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "desktop",
+    "projectName": "INTRE 3D Hero 概念原型",
+    "showEdge": true,
+    "visualEditorEnabled": false
+  }
+}

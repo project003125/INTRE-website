@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRE 3D · 漏斗收敛 v5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; width: 100%; }
+        body { background: #0A1E3D; color: #fff; font-family: 'Inter', 'Noto Sans SC', sans-serif; overflow: hidden; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        #canvas-container canvas { display: block; }
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(180deg, rgba(10,30,61,0.75) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .brand-badge {
+            font-family: 'Josefin Sans', 'Segoe UI', sans-serif; font-size: 1.3rem; font-weight: 600;
+            letter-spacing: -0.02em; color: rgba(255,255,255,0.85);
+        }
+        .variant-tag {
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.68rem;
+            color: rgba(245,158,11,0.5); letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .bottom-panel {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+            padding: 1.5rem 2rem 2rem;
+            background: linear-gradient(0deg, rgba(10,30,61,0.92) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .bottom-panel .inner { max-width: 780px; }
+        .scheme-title {
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif; font-size: 1.15rem; font-weight: 600;
+            color: #D6E5F3; margin-bottom: 0.5rem;
+        }
+        .scheme-text {
+            font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.55);
+            margin-bottom: 0.4rem;
+        }
+        .scheme-metaphor {
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.72rem;
+            color: rgba(245,158,11,0.55); letter-spacing: 0.03em;
+        }
+        .drag-hint {
+            position: fixed; bottom: 1.8rem; right: 2rem; z-index: 10;
+            font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 0.65rem;
+            color: rgba(255,255,255,0.25); letter-spacing: 0.08em; pointer-events: none;
+        }
+        #loading-msg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 5; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem;
+            font-family: 'Consolas', monospace; letter-spacing: 0.05em;
+        }
+        #error-msg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 5; text-align: center; color: rgba(245,158,11,0.7); font-size: 0.85rem;
+            font-family: 'Consolas', monospace; max-width: 400px; line-height: 1.6;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="brand-badge">INTRE</div>
+        <div class="variant-tag">FUNNEL · v5 · 漫天繁星 · 42 维晶格 · 大脑 DTI</div>
+    </div>
+    <div id="canvas-container"></div>
+    <div id="loading-msg">Loading 3D scene...</div>
+    <div id="error-msg">Three.js 加载失败</div>
+    <div class="bottom-panel">
+        <div class="inner">
+            <div class="scheme-title">漏斗收敛 · 漫天繁星与大脑 DTI 纤维束</div>
+            <div class="scheme-text">3300+ 颗繁星构成穹顶星野，如现象世界般浩瀚无际。中间 42 节点晶格（27 核心维 + 15 扩展维）将混沌压缩为 42 维形式化描述，下方 350+ 条 DTI 纤维以方向色彩编码填充大脑体积，胼胝体、皮质脊髓束、上纵束等主干白质通路清晰可辨。漏斗状收敛的连接线将三层串联——上宽下窄的漏斗颈正是功能层。</div>
+            <div class="scheme-metaphor">浩瀚（3300+ 星点）→ 收敛（漏斗）→ 压缩（42 节点 · 42 维）→ 发散（350+ DTI 纤维 · 大脑白质）</div>
+        </div>
+    </div>
+    <div class="drag-hint">拖动旋转</div>
+
+    <script>
+        window.__threeLoaded = false;
+        window.__threeTimeout = setTimeout(function() {
+            if (!window.__threeLoaded) {
+                document.getElementById('loading-msg').style.display = 'none';
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }, 8000);
+    </script>
+
+    <script type="module">
+        try {
+            const THREE = await import('./three.module.js');
+            window.__threeLoaded = true;
+            clearTimeout(window.__threeTimeout);
+            document.getElementById('loading-msg').style.display = 'none';
+            initScene(THREE);
+        } catch(e) {
+            console.error('Three.js load failed:', e);
+            clearTimeout(window.__threeTimeout);
+            document.getElementById('loading-msg').style.display = 'none';
+            document.getElementById('error-msg').textContent = 'Three.js 加载失败: ' + e.message;
+            document.getElementById('error-msg').style.display = 'block';
+        }
+
+        function initScene(THREE) {
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function vw() { return window.innerWidth || document.documentElement.clientWidth || 1024; }
+            function vh() { return window.innerHeight || document.documentElement.clientHeight || 768; }
+
+            const NAVY = { 300: 0x6B9DD6, 400: 0x3B6FB5, 500: 0x2A5DA0, 600: 0x1F4880, 700: 0x163A6B, 800: 0x122F5C };
+            const CH = { upls: 0x5A8270, unis: 0x5B7080 };
+            const AMBER = 0xF59E0B;
+            const STAR = 0xE8F1FA, STAR_DIM = 0x8FAEC8;
+            const YP = 5.5, YN = -6.0;
+
+            // DTI 方向色彩（品牌色系内）
+            const DTI_LR = NAVY[300]; // 左右 → 亮蓝
+            const DTI_AP = CH.unis;   // 前后 → 青灰
+            const DTI_SI = NAVY[500]; // 上下 → 深蓝
+
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0A1E3D);
+            scene.fog = new THREE.Fog(0x0A1E3D, 24, 62);
+
+            const camera = new THREE.PerspectiveCamera(38, vw() / vh(), 0.1, 100);
+            camera.position.set(10, 2.5, 14);
+            camera.lookAt(0, -0.5, 0);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer.setSize(vw(), vh());
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setClearColor(0x0A1E3D, 1);
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+            const keyLight = new THREE.DirectionalLight(0xffffff, 0.65);
+            keyLight.position.set(6, 10, 6); scene.add(keyLight);
+            const fillLight = new THREE.DirectionalLight(0xD6E5F3, 0.22);
+            fillLight.position.set(-5, 2, -3); scene.add(fillLight);
+            const rimLight = new THREE.DirectionalLight(0x3B6FB5, 0.2);
+            rimLight.position.set(0, -3, -8); scene.add(rimLight);
+
+            const mainGroup = new THREE.Group();
+            scene.add(mainGroup);
+
+            /* ===== 工具 ===== */
+            function label(text, color, scale) {
+                scale = scale || 1;
+                const c = document.createElement('canvas');
+                const x = c.getContext('2d');
+                const fs = 56;
+                x.font = '500 ' + fs + 'px "Noto Sans SC","Segoe UI",sans-serif';
+                const w = Math.ceil(x.measureText(text).width) + 24;
+                c.width = w; c.height = fs + 20;
+                x.font = '500 ' + fs + 'px "Noto Sans SC","Segoe UI",sans-serif';
+                x.fillStyle = color || '#D6E5F3';
+                x.textAlign = 'center'; x.textBaseline = 'middle';
+                x.fillText(text, c.width/2, c.height/2);
+                const t = new THREE.CanvasTexture(c); t.minFilter = THREE.LinearFilter;
+                const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false }));
+                s.scale.set(c.width/80*scale, c.height/80*scale, 1);
+                return s;
+            }
+            function codeLabel(text, color, scale) {
+                scale = scale || 0.6;
+                const c = document.createElement('canvas');
+                const x = c.getContext('2d');
+                const fs = 42;
+                x.font = '400 ' + fs + 'px "Consolas",monospace';
+                const w = Math.ceil(x.measureText(text).width) + 20;
+                c.width = w; c.height = fs + 16;
+                x.font = '400 ' + fs + 'px "Consolas",monospace';
+                x.fillStyle = color || 'rgba(255,255,255,0.5)';
+                x.textAlign = 'center'; x.textBaseline = 'middle';
+                x.fillText(text, c.width/2, c.height/2);
+                const t = new THREE.CanvasTexture(c); t.minFilter = THREE.LinearFilter;
+                const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false }));
+                s.scale.set(c.width/80*scale, c.height/80*scale, 1);
+                return s;
+            }
+            function makeStarTexture() {
+                const c = document.createElement('canvas');
+                c.width = c.height = 32;
+                const ctx = c.getContext('2d');
+                const g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+                g.addColorStop(0, 'rgba(255,255,255,1)');
+                g.addColorStop(0.25, 'rgba(255,255,255,0.7)');
+                g.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = g; ctx.fillRect(0, 0, 32, 32);
+                return new THREE.CanvasTexture(c);
+            }
+            const starTex = makeStarTexture();
+
+            /* ================================================================
+               现象层 — 漫天繁星（3300+ 星点）
+               三层：100 星云雾 → 3000 散星 → 50 星座(~200 亮星)
+               ================================================================ */
+            const phenStars = [];
+
+            // 星云雾
+            var nebN = 100, nebPos = new Float32Array(nebN * 3), nebCol = new Float32Array(nebN * 3);
+            var nebC = new THREE.Color(STAR_DIM);
+            for (var i = 0; i < nebN; i++) {
+                var th = Math.random() * Math.PI * 2, ph = Math.acos(1 - Math.random() * 0.85), nr = 7.5 * (0.2 + Math.random() * 0.8);
+                nebPos[i*3] = nr * Math.sin(ph) * Math.cos(th);
+                nebPos[i*3+1] = YP + 0.2 + nr * Math.cos(ph) * 0.3 + Math.random() * 1.2;
+                nebPos[i*3+2] = nr * Math.sin(ph) * Math.sin(th);
+                var intn = 0.04 + Math.random() * 0.06;
+                nebCol[i*3] = nebC.r * intn; nebCol[i*3+1] = nebC.g * intn; nebCol[i*3+2] = nebC.b * intn;
+            }
+            var nebGeo = new THREE.BufferGeometry();
+            nebGeo.setAttribute('position', new THREE.BufferAttribute(nebPos, 3));
+            nebGeo.setAttribute('color', new THREE.BufferAttribute(nebCol, 3));
+            var nebMat = new THREE.PointsMaterial({ size: 0.22, vertexColors: true, transparent: true, opacity: 0.35, map: starTex, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true });
+            mainGroup.add(new THREE.Points(nebGeo, nebMat));
+
+            // 3000 散星（双层：远景 + 近景）
+            function makeScatterLayer(count, spread, yBase, yRange, sizeBase, opacityBase) {
+                var pos = new Float32Array(count * 3), col = new Float32Array(count * 3);
+                var sC = new THREE.Color(STAR), dC = new THREE.Color(STAR_DIM);
+                for (var i = 0; i < count; i++) {
+                    var ph = Math.acos(1 - (i + 0.5) / count * 0.88);
+                    var th = Math.PI * (1 + Math.sqrt(5)) * i + (Math.random() - 0.5) * 0.04;
+                    var r = spread * (0.25 + Math.random() * 0.75);
+                    pos[i*3] = r * Math.sin(ph) * Math.cos(th);
+                    pos[i*3+1] = yBase + r * Math.cos(ph) * 0.35 + Math.random() * yRange;
+                    pos[i*3+2] = r * Math.sin(ph) * Math.sin(th);
+                    var br = Math.random() < 0.06;
+                    var c = br ? sC : dC;
+                    var it = br ? 0.45 + Math.random() * 0.55 : 0.04 + Math.random() * 0.16;
+                    col[i*3] = c.r * it; col[i*3+1] = c.g * it; col[i*3+2] = c.b * it;
+                }
+                var g = new THREE.BufferGeometry();
+                g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+                g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+                var m = new THREE.PointsMaterial({ size: sizeBase, vertexColors: true, transparent: true, opacity: opacityBase, map: starTex, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true });
+                var p = new THREE.Points(g, m);
+                mainGroup.add(p);
+                return m;
+            }
+            var sMatFar = makeScatterLayer(2000, 7.0, YP + 0.1, 0.7, 0.035, 0.5);
+            var sMatNear = makeScatterLayer(1000, 6.0, YP + 0.3, 1.2, 0.055, 0.6);
+
+            // 50 星座
+            var conLinePos = [], haloPos = [];
+            for (var ci = 0; ci < 50; ci++) {
+                var cphi = Math.acos(1 - (ci + 0.5) / 50 * 0.72);
+                var ctheta = Math.PI * (1 + Math.sqrt(5)) * ci;
+                var cr = 5.8 * (0.35 + Math.random() * 0.65);
+                var ccx = cr * Math.sin(cphi) * Math.cos(ctheta);
+                var ccy = YP + 0.4 + cr * Math.cos(cphi) * 0.3;
+                var ccz = cr * Math.sin(cphi) * Math.sin(ctheta);
+                var sc = 3 + Math.floor(Math.random() * 5);
+                var spr = 0.4 + Math.random() * 0.9;
+                var ba = Math.random() * Math.PI * 2;
+                var csp = [];
+                for (var si = 0; si < sc; si++) {
+                    var a = ba + (si / sc) * Math.PI * 2 * (0.8 + Math.random() * 0.4);
+                    var rr = spr * (0.3 + Math.random() * 0.7);
+                    var sx = ccx + Math.cos(a) * rr, sy = ccy + (Math.random()-0.5) * spr * 0.4, sz = ccz + Math.sin(a) * rr;
+                    var br = si === 0 || Math.random() < 0.35;
+                    var sz2 = br ? 0.035 + Math.random() * 0.05 : 0.02 + Math.random() * 0.015;
+                    var col = br ? STAR : STAR_DIM;
+                    var op = br ? 0.65 + Math.random() * 0.3 : 0.3 + Math.random() * 0.2;
+                    var star = new THREE.Mesh(new THREE.OctahedronGeometry(sz2, 0), new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op }));
+                    star.position.set(sx, sy, sz);
+                    mainGroup.add(star);
+                    phenStars.push({ mesh: star, pos: new THREE.Vector3(sx, sy, sz), bright: br, phase: Math.random() * Math.PI * 2 });
+                    csp.push(new THREE.Vector3(sx, sy, sz));
+                    if (br) { var hs = sz2 * 3; haloPos.push(sx-hs, sy, sz, sx+hs, sy, sz, sx, sy-hs, sz, sx, sy+hs, sz); }
+                }
+                var lp = 0.4 + Math.random() * 0.2;
+                for (var i = 0; i < csp.length; i++) for (var j = i+1; j < csp.length; j++)
+                    if (Math.random() < lp && csp[i].distanceTo(csp[j]) < spr * 1.4) {
+                        conLinePos.push(csp[i].x, csp[i].y, csp[i].z, csp[j].x, csp[j].y, csp[j].z);
+                    }
+            }
+            if (conLinePos.length) {
+                var clG = new THREE.BufferGeometry();
+                clG.setAttribute('position', new THREE.Float32BufferAttribute(conLinePos, 3));
+                mainGroup.add(new THREE.LineSegments(clG, new THREE.LineBasicMaterial({ color: STAR_DIM, transparent: true, opacity: 0.1 })));
+            }
+            if (haloPos.length) {
+                var hG = new THREE.BufferGeometry();
+                hG.setAttribute('position', new THREE.Float32BufferAttribute(haloPos, 3));
+                mainGroup.add(new THREE.LineSegments(hG, new THREE.LineBasicMaterial({ color: STAR, transparent: true, opacity: 0.15 })));
+            }
+            var lP = label('现象层 · 星座', 'rgba(214,229,243,0.65)', 0.75);
+            lP.position.set(-5.5, YP + 2.5, 3); mainGroup.add(lP);
+
+            /* ================================================================
+               功能层 — 42 节点晶格（27 核心 + 15 外壳 = 42 维）
+               ================================================================ */
+            const latticeGroup = new THREE.Group();
+            const latticeNodes = [];
+            const step = 0.85, half = 1;
+
+            // 内核 3×3×3 = 27 节点
+            for (var xi = -half; xi <= half; xi++)
+                for (var yi = -half; yi <= half; yi++)
+                    for (var zi = -half; zi <= half; zi++) {
+                        var pos = new THREE.Vector3(xi * step, yi * step, zi * step);
+                        var isC = (xi === 0 && yi === 0 && zi === 0);
+                        var ns = isC ? 0.13 : 0.065;
+                        var nc = isC ? AMBER : NAVY[400];
+                        var nd = new THREE.Mesh(new THREE.OctahedronGeometry(ns, 0), new THREE.MeshLambertMaterial({ color: nc, flatShading: true, transparent: true, opacity: 0.9 }));
+                        nd.position.copy(pos); latticeGroup.add(nd);
+                        latticeNodes.push({ mesh: nd, pos: pos.clone(), isCenter: isC, isOuter: false, phase: (xi+yi+zi)*0.5 });
+                        if (isC) {
+                            for (var r = 0; r < 2; r++) {
+                                var rp = []; var rr = 0.22 + r * 0.1;
+                                for (var k = 0; k <= 48; k++) { var a = (k/48)*Math.PI*2; rp.push(new THREE.Vector3(Math.cos(a)*rr, 0, Math.sin(a)*rr)); }
+                                latticeGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(rp), new THREE.LineBasicMaterial({ color: AMBER, transparent: true, opacity: 0.45 - r*0.15 })));
+                            }
+                            latticeGroup.add(new THREE.Mesh(new THREE.OctahedronGeometry(0.3, 0), new THREE.MeshBasicMaterial({ color: AMBER, transparent: true, opacity: 0.06, blending: THREE.AdditiveBlending, depthWrite: false })));
+                        }
+                    }
+
+            // 外壳 15 节点（Fibonacci 球面分布，半径 2.0）
+            for (var i = 0; i < 15; i++) {
+                var fphi = Math.acos(1 - 2 * (i + 0.5) / 15);
+                var ftheta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+                var fr = 2.0;
+                var fpos = new THREE.Vector3(fr * Math.sin(fphi) * Math.cos(ftheta), fr * Math.cos(fphi), fr * Math.sin(fphi) * Math.sin(ftheta));
+                var fnd = new THREE.Mesh(new THREE.OctahedronGeometry(0.055, 0), new THREE.MeshLambertMaterial({ color: NAVY[300], flatShading: true, transparent: true, opacity: 0.7 }));
+                fnd.position.copy(fpos); latticeGroup.add(fnd);
+                latticeNodes.push({ mesh: fnd, pos: fpos.clone(), isCenter: false, isOuter: true, phase: i * 0.4 });
+            }
+
+            // 内核边
+            var eM1 = new THREE.LineBasicMaterial({ color: NAVY[400], transparent: true, opacity: 0.28 });
+            var eM2 = new THREE.LineBasicMaterial({ color: NAVY[300], transparent: true, opacity: 0.45 });
+            var eM3 = new THREE.LineBasicMaterial({ color: NAVY[500], transparent: true, opacity: 0.15 });
+            for (var i = 0; i < latticeNodes.length; i++) {
+                for (var j = i+1; j < latticeNodes.length; j++) {
+                    var a = latticeNodes[i], b = latticeNodes[j];
+                    var d = a.pos.distanceTo(b.pos);
+                    // 内核邻接
+                    if (!a.isOuter && !b.isOuter && Math.abs(d - step) < 0.01) {
+                        var isSurf = (Math.abs(a.pos.x) === half || Math.abs(b.pos.x) === half) && (Math.abs(a.pos.y) === half || Math.abs(b.pos.y) === half);
+                        latticeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a.pos, b.pos]), isSurf ? eM2 : eM1));
+                    }
+                    // 内核-外壳连接
+                    if (!a.isOuter && b.isOuter && d < 1.8) {
+                        latticeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a.pos, b.pos]), eM3));
+                    }
+                    // 外壳间连接（近邻）
+                    if (a.isOuter && b.isOuter && d < 2.5) {
+                        latticeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a.pos, b.pos]), new THREE.LineBasicMaterial({ color: NAVY[600], transparent: true, opacity: 0.08 })));
+                    }
+                }
+            }
+            mainGroup.add(latticeGroup);
+
+            var lF = label('功能层', '#F59E0B', 1.1);
+            lF.position.set(3.8, 1.5, 2); mainGroup.add(lF);
+            var lG = codeLabel('42 维 · 27 核心 + 15 扩展', 'rgba(245,158,11,0.4)', 0.5);
+            lG.position.set(3.8, 0.5, 2); mainGroup.add(lG);
+
+            /* ================================================================
+               神经层 — 大脑 DTI 纤维束追踪
+               脑形线框 + 6 条 Tube 主干束 + 350+ 纤维填充脑体积
+               ================================================================ */
+            var brainCenterY = YN + 1.5; // 大脑中心 y
+
+            // --- 脑形线框（半透明，辅助识别大脑轮廓）---
+            var brainGeo = new THREE.IcosahedronGeometry(1, 4);
+            var bpos = brainGeo.attributes.position;
+            for (var i = 0; i < bpos.count; i++) {
+                var bx = bpos.getX(i), by = bpos.getY(i), bz = bpos.getZ(i);
+                // 脑比例：宽 > 深 > 高
+                bx *= 3.2; by *= 1.5; bz *= 2.7;
+                // 底部收窄
+                if (by < 0) { by *= 0.75; bx *= 0.85; }
+                // 脑回噪声
+                var n = (Math.sin(bx*3) * Math.cos(by*4) * Math.sin(bz*3)) * 0.06;
+                var len = Math.sqrt(bx*bx + by*by + bz*bz);
+                if (len > 0) { bx += (bx/len)*n; by += (by/len)*n; bz += (bz/len)*n; }
+                by += brainCenterY;
+                bpos.setXYZ(i, bx, by, bz);
+            }
+            brainGeo.computeVertexNormals();
+            mainGroup.add(new THREE.Mesh(brainGeo, new THREE.MeshBasicMaterial({ color: NAVY[600], wireframe: true, transparent: true, opacity: 0.05, depthWrite: false })));
+
+            // 脑体积判断
+            function inBrain(x, y, z) {
+                var by = y - brainCenterY;
+                var r = (x/3.0)*(x/3.0) + (by/1.4)*(by/1.4) + (z/2.5)*(z/2.5);
+                if (by < 0) r *= 1.2; // 底部收窄
+                return r < 1;
+            }
+            function randBrainPoint(rMin, rMax) {
+                for (var att = 0; att < 30; att++) {
+                    var th = Math.random() * Math.PI * 2;
+                    var ph = Math.acos(2 * Math.random() - 1);
+                    var r = rMin + Math.random() * (rMax - rMin);
+                    var x = r * 3.0 * Math.sin(ph) * Math.cos(th);
+                    var y = brainCenterY + r * 1.4 * Math.cos(ph);
+                    var z = r * 2.5 * Math.sin(ph) * Math.sin(th);
+                    if (y < brainCenterY - 0.3) { x *= 0.8; z *= 0.8; }
+                    // 半球间隙
+                    if (Math.abs(x) < 0.12 && y > brainCenterY + 0.5) continue;
+                    return new THREE.Vector3(x, y, z);
+                }
+                return new THREE.Vector3(0, brainCenterY, 0);
+            }
+
+            // 方向色彩
+            function getDTI(p0, pEnd) {
+                var dx = Math.abs(pEnd.x - p0.x), dy = Math.abs(pEnd.y - p0.y), dz = Math.abs(pEnd.z - p0.z);
+                if (dx >= dy && dx >= dz) return DTI_LR;
+                if (dz >= dy) return DTI_AP;
+                return DTI_SI;
+            }
+
+            // 纤维批量缓冲
+            var fiberBatches = { lr: [], ap: [], si: [] };
+            var fiberEndpoints = [];
+            var tubeSpines = [];
+
+            function addFiber(cps, spread) {
+                var p0 = cps[0], pE = cps[cps.length - 1];
+                var col = getDTI(p0, pE);
+                var key = col === DTI_LR ? 'lr' : (col === DTI_AP ? 'ap' : 'si');
+                var jit = cps.map(function(p) {
+                    return new THREE.Vector3(p.x + (Math.random()-0.5)*spread, p.y + (Math.random()-0.5)*spread*0.5, p.z + (Math.random()-0.5)*spread);
+                });
+                var curve = new THREE.CatmullRomCurve3(jit);
+                var pts = curve.getPoints(28);
+                for (var i = 0; i < pts.length - 1; i++) {
+                    fiberBatches[key].push(pts[i].x, pts[i].y, pts[i].z, pts[i+1].x, pts[i+1].y, pts[i+1].z);
+                }
+                fiberEndpoints.push(jit[0].clone(), jit[jit.length-1].clone());
+                return curve;
+            }
+
+            // 1. 胼胝体 — 标志性 C 形水平交叉束
+            var cc = addFiber([
+                new THREE.Vector3(-3.0, brainCenterY+0.3, 0),
+                new THREE.Vector3(-2.2, brainCenterY+0.8, 0.1),
+                new THREE.Vector3(-1.0, brainCenterY+1.15, 0),
+                new THREE.Vector3(0, brainCenterY+1.25, 0),
+                new THREE.Vector3(1.0, brainCenterY+1.15, -0.1),
+                new THREE.Vector3(2.2, brainCenterY+0.8, 0),
+                new THREE.Vector3(3.0, brainCenterY+0.3, 0)
+            ], 0.4);
+            tubeSpines.push({ curve: cc, color: DTI_LR, r: 0.03 });
+            for (var i = 0; i < 28; i++) addFiber([
+                new THREE.Vector3(-3.0+(Math.random()-0.5)*0.3, brainCenterY+0.2+Math.random()*0.2, (Math.random()-0.5)*0.3),
+                new THREE.Vector3(-2.2+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, (Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.0+(Math.random()-0.5)*0.2, brainCenterY+1.05+Math.random()*0.2, (Math.random()-0.5)*0.1),
+                new THREE.Vector3(0+(Math.random()-0.5)*0.2, brainCenterY+1.15+Math.random()*0.2, 0),
+                new THREE.Vector3(1.0+(Math.random()-0.5)*0.2, brainCenterY+1.05+Math.random()*0.2, (Math.random()-0.5)*0.1),
+                new THREE.Vector3(2.2+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, (Math.random()-0.5)*0.2),
+                new THREE.Vector3(3.0+(Math.random()-0.5)*0.3, brainCenterY+0.2+Math.random()*0.2, (Math.random()-0.5)*0.3)
+            ], 0.28);
+
+            // 2. 皮质脊髓束（左+右）— 垂直
+            var cstL = addFiber([
+                new THREE.Vector3(-1.3, brainCenterY+1.0, -0.2),
+                new THREE.Vector3(-1.4, brainCenterY+0.4, 0),
+                new THREE.Vector3(-1.3, brainCenterY-0.2, 0.2),
+                new THREE.Vector3(-1.2, brainCenterY-0.8, 0.4),
+                new THREE.Vector3(-1.0, brainCenterY-1.2, 0.5)
+            ], 0.3);
+            tubeSpines.push({ curve: cstL, color: DTI_SI, r: 0.022 });
+            for (var i = 0; i < 14; i++) addFiber([
+                new THREE.Vector3(-1.3+(Math.random()-0.5)*0.3, brainCenterY+0.9+Math.random()*0.2, -0.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.4+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.1, 0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.3+(Math.random()-0.5)*0.3, brainCenterY-0.2+Math.random()*0.1, 0.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.2+(Math.random()-0.5)*0.3, brainCenterY-0.8+Math.random()*0.1, 0.4+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.0+(Math.random()-0.5)*0.3, brainCenterY-1.2+Math.random()*0.2, 0.5+(Math.random()-0.5)*0.2)
+            ], 0.22);
+            var cstR = addFiber([
+                new THREE.Vector3(1.3, brainCenterY+1.0, 0.2),
+                new THREE.Vector3(1.4, brainCenterY+0.4, 0),
+                new THREE.Vector3(1.3, brainCenterY-0.2, -0.2),
+                new THREE.Vector3(1.2, brainCenterY-0.8, -0.4),
+                new THREE.Vector3(1.0, brainCenterY-1.2, -0.5)
+            ], 0.3);
+            tubeSpines.push({ curve: cstR, color: DTI_SI, r: 0.022 });
+            for (var i = 0; i < 14; i++) addFiber([
+                new THREE.Vector3(1.3+(Math.random()-0.5)*0.3, brainCenterY+0.9+Math.random()*0.2, 0.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.4+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.1, 0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.3+(Math.random()-0.5)*0.3, brainCenterY-0.2+Math.random()*0.1, -0.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.2+(Math.random()-0.5)*0.3, brainCenterY-0.8+Math.random()*0.1, -0.4+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.0+(Math.random()-0.5)*0.3, brainCenterY-1.2+Math.random()*0.2, -0.5+(Math.random()-0.5)*0.2)
+            ], 0.22);
+
+            // 3. 上纵束（左+右）— 前后弧形
+            var slfL = addFiber([
+                new THREE.Vector3(-1.8, brainCenterY+0.5, -2.2),
+                new THREE.Vector3(-2.0, brainCenterY+0.8, -1.0),
+                new THREE.Vector3(-1.9, brainCenterY+1.0, 0),
+                new THREE.Vector3(-1.8, brainCenterY+0.8, 1.0),
+                new THREE.Vector3(-1.8, brainCenterY+0.5, 2.0)
+            ], 0.3);
+            tubeSpines.push({ curve: slfL, color: DTI_AP, r: 0.018 });
+            for (var i = 0; i < 10; i++) addFiber([
+                new THREE.Vector3(-1.8+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.2, -2.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-2.0+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, -1.0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.9+(Math.random()-0.5)*0.3, brainCenterY+0.9+Math.random()*0.2, 0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.8+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, 1.0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(-1.8+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.2, 2.0+(Math.random()-0.5)*0.2)
+            ], 0.22);
+            var slfR = addFiber([
+                new THREE.Vector3(1.8, brainCenterY+0.5, 2.2),
+                new THREE.Vector3(2.0, brainCenterY+0.8, 1.0),
+                new THREE.Vector3(1.9, brainCenterY+1.0, 0),
+                new THREE.Vector3(1.8, brainCenterY+0.8, -1.0),
+                new THREE.Vector3(1.8, brainCenterY+0.5, -2.0)
+            ], 0.3);
+            tubeSpines.push({ curve: slfR, color: DTI_AP, r: 0.018 });
+            for (var i = 0; i < 10; i++) addFiber([
+                new THREE.Vector3(1.8+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.2, 2.2+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(2.0+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, 1.0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.9+(Math.random()-0.5)*0.3, brainCenterY+0.9+Math.random()*0.2, 0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.8+(Math.random()-0.5)*0.3, brainCenterY+0.7+Math.random()*0.2, -1.0+(Math.random()-0.5)*0.2),
+                new THREE.Vector3(1.8+(Math.random()-0.5)*0.3, brainCenterY+0.4+Math.random()*0.2, -2.0+(Math.random()-0.5)*0.2)
+            ], 0.22);
+
+            // 4. 穹窿 — C 形前后
+            var fornix = addFiber([
+                new THREE.Vector3(-0.5, brainCenterY+0.8, -1.5),
+                new THREE.Vector3(-0.3, brainCenterY+1.1, -0.5),
+                new THREE.Vector3(0, brainCenterY+1.2, 0.3),
+                new THREE.Vector3(0.3, brainCenterY+1.1, 1.0),
+                new THREE.Vector3(0.5, brainCenterY+0.8, 1.8)
+            ], 0.2);
+            tubeSpines.push({ curve: fornix, color: DTI_SI, r: 0.015 });
+
+            // 5. 扣带 — C 形环绕
+            for (var side = -1; side <= 1; side += 2) {
+                for (var i = 0; i < 8; i++) addFiber([
+                    new THREE.Vector3(side*1.0, brainCenterY+0.7, -1.8+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.1, brainCenterY+1.0, -0.9+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.0, brainCenterY+1.15, 0+(Math.random()-0.5)*0.1),
+                    new THREE.Vector3(side*1.1, brainCenterY+1.0, 0.9+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.0, brainCenterY+0.7, 1.8+(Math.random()-0.5)*0.2)
+                ], 0.18);
+            }
+
+            // 6. 下纵束 + 钩束
+            for (var side = -1; side <= 1; side += 2) {
+                for (var i = 0; i < 7; i++) addFiber([
+                    new THREE.Vector3(side*1.6, brainCenterY+0.1, -2.0+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.7, brainCenterY+0.2, -0.8+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.6, brainCenterY+0.1, 0.5+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.5, brainCenterY+0.0, 1.8+(Math.random()-0.5)*0.2)
+                ], 0.18);
+                for (var i = 0; i < 5; i++) addFiber([
+                    new THREE.Vector3(side*2.2, brainCenterY+0.3, -1.5+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.9, brainCenterY+0.5, -0.5+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.7, brainCenterY+0.2, 0.3+(Math.random()-0.5)*0.2),
+                    new THREE.Vector3(side*1.3, brainCenterY-0.1, 1.0+(Math.random()-0.5)*0.2)
+                ], 0.16);
+            }
+
+            // 7. U 型纤维 — 短程弧形（皮层表面）
+            for (var i = 0; i < 30; i++) {
+                var bp1 = randBrainPoint(0.8, 0.95);
+                var bp2 = bp1.clone();
+                bp2.x += (Math.random()-0.5) * 1.5;
+                bp2.z += (Math.random()-0.5) * 1.5;
+                bp2.y = bp1.y + (Math.random()-0.5) * 0.3;
+                if (!inBrain(bp2.x, bp2.y, bp2.z)) continue;
+                addFiber([bp1, new THREE.Vector3((bp1.x+bp2.x)/2, (bp1.y+bp2.y)/2 + 0.15, (bp1.z+bp2.z)/2), bp2], 0.1);
+            }
+
+            // 8. 随机填充纤维（填充脑体积，增强脑形识别）
+            for (var i = 0; i < 200; i++) {
+                var rp1 = randBrainPoint(0.2, 0.9);
+                var rp2 = randBrainPoint(0.2, 0.9);
+                if (rp1.distanceTo(rp2) < 1.0 || rp1.distanceTo(rp2) > 5.5) continue;
+                var mid = new THREE.Vector3(
+                    (rp1.x + rp2.x) / 2 + (Math.random()-0.5) * 0.4,
+                    (rp1.y + rp2.y) / 2 + (Math.random()-0.5) * 0.3,
+                    (rp1.z + rp2.z) / 2 + (Math.random()-0.5) * 0.4
+                );
+                addFiber([rp1, mid, rp2], 0.12);
+            }
+
+            // 批量渲染 DTI 纤维（3 个 draw call）
+            var fiberBatchObjs = [];
+            var batchCols = { lr: DTI_LR, ap: DTI_AP, si: DTI_SI };
+            var batchOps = { lr: 0.35, ap: 0.3, si: 0.38 };
+            ['lr', 'ap', 'si'].forEach(function(key) {
+                if (fiberBatches[key].length === 0) return;
+                var g = new THREE.BufferGeometry();
+                g.setAttribute('position', new THREE.Float32BufferAttribute(fiberBatches[key], 3));
+                var m = new THREE.LineBasicMaterial({ color: batchCols[key], transparent: true, opacity: batchOps[key], blending: THREE.AdditiveBlending, depthWrite: false });
+                var ls = new THREE.LineSegments(g, m);
+                mainGroup.add(ls);
+                fiberBatchObjs.push({ mat: m, baseOp: batchOps[key] });
+            });
+
+            // Tube 管道主干束
+            tubeSpines.forEach(function(ts) {
+                var tg = new THREE.TubeGeometry(ts.curve, 60, ts.r, 6, false);
+                mainGroup.add(new THREE.Mesh(tg, new THREE.MeshLambertMaterial({ color: ts.color, transparent: true, opacity: 0.42, flatShading: true })));
+            });
+
+            // 纤维端点
+            var epN = Math.min(fiberEndpoints.length, 100);
+            var epPos = [];
+            for (var i = 0; i < epN; i++) epPos.push(fiberEndpoints[i].x, fiberEndpoints[i].y, fiberEndpoints[i].z);
+            if (epPos.length) {
+                var epG = new THREE.BufferGeometry();
+                epG.setAttribute('position', new THREE.Float32BufferAttribute(epPos, 3));
+                mainGroup.add(new THREE.Points(epG, new THREE.PointsMaterial({ color: NAVY[300], size: 0.045, transparent: true, opacity: 0.45, map: starTex, blending: THREE.AdditiveBlending, depthWrite: false })));
+            }
+
+            // 神经层底面
+            var npGeo = new THREE.BoxGeometry(10, 0.03, 9);
+            var np = new THREE.Mesh(npGeo, new THREE.MeshLambertMaterial({ color: NAVY[800], transparent: true, opacity: 0.15, flatShading: true }));
+            np.position.y = YN; mainGroup.add(np);
+            var npE = new THREE.LineSegments(new THREE.EdgesGeometry(npGeo), new THREE.LineBasicMaterial({ color: NAVY[500], transparent: true, opacity: 0.1 }));
+            npE.position.y = YN; mainGroup.add(npE);
+
+            var lN = label('神经层 · DTI 大脑白质纤维束', 'rgba(214,229,243,0.65)', 0.75);
+            lN.position.set(-5.5, YN - 0.5, 3); mainGroup.add(lN);
+
+            // DTI 方向图例
+            var lD1 = codeLabel('■ 左右 (L-R)', 'rgba(107,157,214,0.55)', 0.4);
+            lD1.position.set(5, brainCenterY + 1.8, 2); mainGroup.add(lD1);
+            var lD2 = codeLabel('■ 前后 (A-P)', 'rgba(91,112,128,0.55)', 0.4);
+            lD2.position.set(5, brainCenterY + 1.1, 2); mainGroup.add(lD2);
+            var lD3 = codeLabel('■ 上下 (S-I)', 'rgba(42,93,160,0.55)', 0.4);
+            lD3.position.set(5, brainCenterY + 0.4, 2); mainGroup.add(lD3);
+
+            /* ================================================================
+               层间连接 — 漏斗收敛（CatmullRom 优雅曲线）
+               ================================================================ */
+            var uplsCurves = [];
+            var innerTopNodes = latticeNodes.filter(function(n) { return !n.isOuter && n.pos.y === half * step; });
+            innerTopNodes.forEach(function(n) {
+                var nearby = phenStars.map(function(s) { return { pos: s.pos, d: n.pos.distanceTo(s.pos) }; })
+                    .sort(function(a, b) { return a.d - b.d; }).slice(0, 4);
+                nearby.forEach(function(s, idx) {
+                    if (s.d < 12) {
+                        // 漏斗收窄：中间控制点向 Y 轴靠拢
+                        var c1 = new THREE.Vector3(s.pos.x * 0.6, (s.pos.y + n.pos.y) * 0.6, s.pos.z * 0.6);
+                        var c2 = new THREE.Vector3(n.pos.x * 0.5, (s.pos.y + n.pos.y) * 0.4, n.pos.z * 0.5);
+                        var curve = new THREE.CatmullRomCurve3([s.pos.clone(), c1, c2, n.pos.clone()]);
+                        mainGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)),
+                            new THREE.LineBasicMaterial({ color: CH.upls, transparent: true, opacity: 0.15 + idx * 0.03 })));
+                        uplsCurves.push(curve);
+                    }
+                });
+            });
+
+            var unisCurves = [];
+            var innerBotNodes = latticeNodes.filter(function(n) { return !n.isOuter && n.pos.y === -half * step; });
+            innerBotNodes.forEach(function(n) {
+                var nearby = fiberEndpoints.map(function(ep) { return { pos: ep, d: n.pos.distanceTo(ep) }; })
+                    .sort(function(a, b) { return a.d - b.d; }).slice(0, 4);
+                nearby.forEach(function(s, idx) {
+                    if (s.d < 12) {
+                        // 扇形展开：中间控制点远离 Y 轴
+                        var c1 = new THREE.Vector3(n.pos.x * 0.5, (n.pos.y + s.pos.y) * 0.4, n.pos.z * 0.5);
+                        var c2 = new THREE.Vector3(s.pos.x * 0.7, (n.pos.y + s.pos.y) * 0.6, s.pos.z * 0.7);
+                        var curve = new THREE.CatmullRomCurve3([n.pos.clone(), c1, c2, s.pos.clone()]);
+                        mainGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)),
+                            new THREE.LineBasicMaterial({ color: CH.unis, transparent: true, opacity: 0.15 + idx * 0.03 })));
+                        unisCurves.push(curve);
+                    }
+                });
+            });
+
+            var lC1 = codeLabel('UPLS · 语义通道', 'rgba(90,130,112,0.6)', 0.45);
+            lC1.position.set(-4.5, YP * 0.4, 1.5); mainGroup.add(lC1);
+            var lC2 = codeLabel('UNIS · 神经通道', 'rgba(91,112,128,0.6)', 0.45);
+            lC2.position.set(4.5, YN * 0.35, -1.5); mainGroup.add(lC2);
+
+            // 流动粒子
+            var flowParticles = [];
+            uplsCurves.forEach(function(curve) {
+                var p = new THREE.Mesh(new THREE.SphereGeometry(0.02, 6, 6), new THREE.MeshBasicMaterial({ color: CH.upls, transparent: true, blending: THREE.AdditiveBlending }));
+                flowParticles.push({ mesh: p, curve: curve, progress: Math.random(), speed: 0.04 + Math.random() * 0.03 });
+                mainGroup.add(p);
+            });
+            unisCurves.forEach(function(curve) {
+                var p = new THREE.Mesh(new THREE.SphereGeometry(0.02, 6, 6), new THREE.MeshBasicMaterial({ color: CH.unis, transparent: true, blending: THREE.AdditiveBlending }));
+                flowParticles.push({ mesh: p, curve: curve, progress: Math.random(), speed: 0.04 + Math.random() * 0.03 });
+                mainGroup.add(p);
+            });
+
+            /* ===== 背景星点 ===== */
+            var bgN = 600, bgG = new THREE.BufferGeometry(), bgP = new Float32Array(bgN * 3);
+            for (var i = 0; i < bgN; i++) {
+                bgP[i*3] = (Math.random()-0.5)*60; bgP[i*3+1] = (Math.random()-0.5)*44; bgP[i*3+2] = (Math.random()-0.5)*44 - 8;
+            }
+            bgG.setAttribute('position', new THREE.BufferAttribute(bgP, 3));
+            var bgPoints = new THREE.Points(bgG, new THREE.PointsMaterial({ color: NAVY[300], size: 0.022, transparent: true, opacity: 0.18, map: starTex, blending: THREE.AdditiveBlending, depthWrite: false }));
+            scene.add(bgPoints);
+
+            /* ===== 交互 ===== */
+            var tRotY = 0, tRotX = 0, dRotY = 0, dRotX = 0, isDrag = false, dSX = 0, dSY = 0, mX = 0, mY = 0, autoRotY = 0;
+            container.style.cursor = 'grab';
+            function onDn(x, y) { isDrag = true; dSX = x; dSY = y; container.style.cursor = 'grabbing'; }
+            function onMv(x, y) {
+                if (isDrag) { tRotY = dRotY + (x - dSX) * 0.006; tRotX = Math.max(-0.5, Math.min(0.5, dRotX + (y - dSY) * 0.004)); }
+                else { mX = (x / vw() - 0.5) * 2; mY = (y / vh() - 0.5) * 2; }
+            }
+            function onUp() { isDrag = false; dRotY = tRotY; dRotX = tRotX; container.style.cursor = 'grab'; }
+            container.addEventListener('mousedown', function(e) { onDn(e.clientX, e.clientY); });
+            window.addEventListener('mousemove', function(e) { onMv(e.clientX, e.clientY); });
+            window.addEventListener('mouseup', onUp);
+            container.addEventListener('touchstart', function(e) { if (e.touches.length === 1) onDn(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+            container.addEventListener('touchmove', function(e) { if (e.touches.length === 1) { e.preventDefault(); onMv(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: false });
+            container.addEventListener('touchend', onUp);
+            renderer.domElement.addEventListener('webglcontextlost', function(e) { e.preventDefault(); }, false);
+            renderer.domElement.addEventListener('webglcontextrestored', function() { renderer.setClearColor(0x0A1E3D, 1); renderer.setSize(vw(), vh()); }, false);
+
+            /* ===== 动画 ===== */
+            var clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                var dt = Math.min(clock.getDelta(), 0.05);
+                var t = clock.getElapsedTime();
+                if (!reducedMotion) {
+                    if (!isDrag) autoRotY += dt * 0.07;
+                    mainGroup.rotation.y = tRotY + autoRotY;
+                    mainGroup.rotation.x = tRotX;
+                    camera.position.x = 10 + mX * 0.4;
+                    camera.position.y = 2.5 - mY * 0.3;
+                    camera.lookAt(0, -0.5, 0);
+                    bgPoints.rotation.y += dt * 0.005;
+
+                    phenStars.forEach(function(s) {
+                        s.mesh.material.opacity = s.bright ? 0.6 + Math.sin(t * 2.5 + s.phase) * 0.3 : 0.25 + Math.sin(t * 1.5 + s.phase) * 0.2;
+                    });
+                    sMatFar.opacity = 0.5 * (0.85 + Math.sin(t * 0.3) * 0.15);
+                    sMatNear.opacity = 0.6 * (0.85 + Math.sin(t * 0.4 + 1) * 0.15);
+                    nebMat.opacity = 0.35 * (0.8 + Math.sin(t * 0.25) * 0.2);
+
+                    latticeNodes.forEach(function(n) {
+                        var p = n.isCenter ? 1 + Math.sin(t * 2.5) * 0.1 : (n.isOuter ? 1 + Math.sin(t * 1.5 + n.phase) * 0.06 : 1 + Math.sin(t * 1.8 + n.phase) * 0.04);
+                        n.mesh.scale.set(p, p, p);
+                        if (n.isCenter) n.mesh.material.opacity = 0.8 + Math.sin(t * 2.5) * 0.15;
+                        if (n.isOuter) n.mesh.material.opacity = 0.6 + Math.sin(t * 1.5 + n.phase) * 0.15;
+                    });
+                    var br = 1 + Math.sin(t * 0.5) * 0.01;
+                    latticeGroup.scale.set(br, br, br);
+
+                    fiberBatchObjs.forEach(function(fb, i) { fb.mat.opacity = fb.baseOp + Math.sin(t * 0.5 + i * 0.5) * 0.05; });
+
+                    flowParticles.forEach(function(fp) {
+                        fp.progress += dt * fp.speed;
+                        if (fp.progress > 1) fp.progress = 0;
+                        fp.mesh.position.copy(fp.curve.getPoint(fp.progress));
+                        fp.mesh.material.opacity = Math.sin(fp.progress * Math.PI) * 0.6;
+                    });
+                }
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', function() {
+                var w = vw(), h = vh();
+                if (w > 0 && h > 0) { camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h); }
+            });
+
+            animate();
+        }
+    </script>
+</body>
+</html>

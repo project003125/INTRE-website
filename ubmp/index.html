@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>INTRE · UBMS 统一行为测量系统</title>
-    <meta name="description" content="UBMS（统一行为测量系统）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
-    <meta property="og:title" content="UBMS · 统一行为测量系统 · INTRE">
-    <meta property="og:description" content="UBMS（统一行为测量系统）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
+    <title>INTRE · UBMP 统一行为测量端口</title>
+    <meta name="description" content="UBMP（统一行为测量端口）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
+    <meta property="og:title" content="UBMP · 统一行为测量端口 · INTRE">
+    <meta property="og:description" content="UBMP（统一行为测量端口）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://project003125.github.io/INTRE-website/ubms/">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/ubmp/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="UBMS · 统一行为测量系统 · INTRE">
-    <meta name="twitter:description" content="UBMS（统一行为测量系统）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
-    <link rel="canonical" href="https://project003125.github.io/INTRE-website/ubms/">
+    <meta name="twitter:title" content="UBMP · 统一行为测量端口 · INTRE">
+    <meta name="twitter:description" content="UBMP（统一行为测量端口）：INTRE 的行为通道，结构化行为观测到行为似然的三层管道，覆盖量表、EMA 与数字表型。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/ubmp/">
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,9 +223,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/" class="active">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/" class="active">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/">教材</a>
@@ -235,12 +235,12 @@
     </nav>
 
     <main id="main-content" class="container">
-        <h1>UBMS</h1>
-        <div class="subhead">统一行为测量系统 · PSE 感知层 <strong>L1-B 行为模态输入端口</strong> <span class="channel-badge ubms">行为通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
+        <h1>UBMP</h1>
+        <div class="subhead">统一行为测量端口 · PSE 感知层 <strong>L1-B 行为模态输入端口</strong> <span class="channel-badge ubmp">行为通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UBMS 是 INTRE 新管线体系的 <strong>L1-B 行为模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，向 PSE 状态层输出标准化行为似然接口。
+            UBMP 是 INTRE 新管线体系的 <strong>L1-B 行为模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将行为测量工具（PHQ-9、GAD-7、Stroop、N-back、数字表型等）整合为统一的<strong>行为似然管道</strong> — 定义观测函数 p(y<sub>b</sub>|Ψ)，管理跨工具桥接，向 PSE 状态层输出标准化行为似然接口。
         </div>
 
         <!-- 一、三层架构总览 -->
@@ -260,15 +260,15 @@
 
         <!-- 二、PSE 感知层端口定位 -->
         <h2 class="section-label"><i class="fas fa-sitemap" aria-hidden="true"></i> 二、PSE 感知层（L1）端口定位</h2>
-        <p class="section-intro">在新管线体系（2026-07 更新）中，UBMS 作为 PSE 感知层 L1 的 <strong>行为模态输入端口（L1-B）</strong>，与 UPLS（语义端口 L1-S）、UNIS（神经端口 L1-N）并列。三端口共同向 PSE 状态层（L2+）输出标准化似然，由 PSE 执行融合与动力学推理。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧版"FLP 四大基础设施并列"表述已于本次管线重构时同步更新。）</small></p>
+        <p class="section-intro">在新管线体系（2026-07 更新）中，UBMP 作为 PSE 感知层 L1 的 <strong>行为模态输入端口（L1-B）</strong>，与 UPLP（语义端口 L1-S）、UNIP（神经端口 L1-N）并列。三端口共同向 PSE 状态层（L2+）输出标准化似然，由 PSE 执行融合与动力学推理。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧版"FLP 四大基础设施并列"表述已于本次管线重构时同步更新。）</small></p>
 
         <div class="table-responsive">
             <table class="table">
                 <thead><tr><th>端口（IODS）</th><th>感知层定位</th><th>输入数据类型</th><th>输出</th><th>工程隐喻</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>UPLS</strong></td><td>L1-S 语义端口</td><td>自然语言（临床叙述、量表文本）</td><td>语义似然 p(y<sub>s</sub>|Ψ)</td><td>静态本体地图</td></tr>
-                    <tr><td><strong>UBMS</strong></td><td>L1-B 行为端口</td><td>结构化数值（量表分、EMA、数字表型）</td><td>行为似然 p(y<sub>b</sub>|Ψ)</td><td>行为标尺</td></tr>
-                    <tr><td><strong>UNIS</strong></td><td>L1-N 神经端口</td><td>神经生理信号（EEG、fNIRS、PPG）</td><td>神经似然 p(y<sub>n</sub>|Ψ)</td><td>神经天线</td></tr>
+                    <tr><td><strong>UPLP</strong></td><td>L1-S 语义端口</td><td>自然语言（临床叙述、量表文本）</td><td>语义似然 p(y<sub>s</sub>|Ψ)</td><td>静态本体地图</td></tr>
+                    <tr><td><strong>UBMP</strong></td><td>L1-B 行为端口</td><td>结构化数值（量表分、EMA、数字表型）</td><td>行为似然 p(y<sub>b</sub>|Ψ)</td><td>行为标尺</td></tr>
+                    <tr><td><strong>UNIP</strong></td><td>L1-N 神经端口</td><td>神经生理信号（EEG、fNIRS、PPG）</td><td>神经似然 p(y<sub>n</sub>|Ψ)</td><td>神经天线</td></tr>
                     <tr><td><strong>PSE</strong></td><td>状态层 L2+ 融合</td><td>三端口似然 + 先验</td><td>状态后验 p(Ψ|y<sub>all</sub>)</td><td>动力学引擎</td></tr>
                 </tbody>
             </table>
@@ -277,9 +277,9 @@
         <!-- 三、关键设计决策 -->
         <h2 class="section-label"><i class="fas fa-lightbulb" aria-hidden="true"></i> 三、关键设计决策</h2>
 
-        <h3>3.1 UPLS 语义对齐前置</h3>
+        <h3>3.1 UPLP 语义对齐前置</h3>
         <div class="card card-accent">
-            <p>两个量表只有在 <strong>UPLS 确认它们测量同一 M-R-D-S 组件</strong>后，才能进入 L2 进行 IRT 跨工具等价转换。这防止了将测量不同功能构念的量表强行数值桥接——例如，将 PHQ-9（抑郁）与 GAD-7（焦虑）的分数强行等价转换，在功能层上毫无意义。</p>
+            <p>两个量表只有在 <strong>UPLP 确认它们测量同一 M-R-D-S 组件</strong>后，才能进入 L2 进行 IRT 跨工具等价转换。这防止了将测量不同功能构念的量表强行数值桥接——例如，将 PHQ-9（抑郁）与 GAD-7（焦虑）的分数强行等价转换，在功能层上毫无意义。</p>
         </div>
 
         <h3>3.2 复用现有心理测量标准</h3>
@@ -303,7 +303,7 @@
 
         <h3>3.3 个体化校准的层级收缩</h3>
         <div class="card card-accent">
-            <p>L2 的贝叶斯个体化校准采用<strong>层级先验</strong>：个体的响应风格参数被建模为来自群体分布的随机效应，在观测数据不足时自动收缩至群体先验，防止过拟合。这使 UBMS 能在 N-of-1 和小样本场景中工作。</p>
+            <p>L2 的贝叶斯个体化校准采用<strong>层级先验</strong>：个体的响应风格参数被建模为来自群体分布的随机效应，在观测数据不足时自动收缩至群体先验，防止过拟合。这使 UBMP 能在 N-of-1 和小样本场景中工作。</p>
         </div>
 
         <!-- 四、观测函数与 BHI 标识符 -->
@@ -344,13 +344,13 @@
                 <thead><tr><th>阶段</th><th>时间</th><th>形态</th><th>核心任务</th></tr></thead>
                 <tbody>
                     <tr><td><strong>Phase I</strong></td><td>2026–2027</td><td>PSE-M 内嵌子层</td><td>核心理论验证，小规模研究中的行为测量处理</td></tr>
-                    <tr><td><strong>Phase II</strong></td><td>2027+</td><td>独立 UBMS 系统</td><td>BHI 注册库社区填充，跨工具桥接参数积累，L3 API 部署</td></tr>
+                    <tr><td><strong>Phase II</strong></td><td>2027+</td><td>独立 UBMP 系统</td><td>BHI 注册库社区填充，跨工具桥接参数积累，L3 API 部署</td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="info-box">
-            <p><strong>过渡条件：</strong> 当 BHI 注册库条目超过临界量（建议 50+），且跨工具桥接需求迫使独立版本管理时，UBMS 从 PSE-M 中分离。01-P-04 论文直接以 Phase II 独立系统形式发布，加速了这一过渡。</p>
+            <p><strong>过渡条件：</strong> 当 BHI 注册库条目超过临界量（建议 50+），且跨工具桥接需求迫使独立版本管理时，UBMP 从 PSE-M 中分离。01-P-04 论文直接以 Phase II 独立系统形式发布，加速了这一过渡。</p>
         </div>
 
         <!-- 六、与其他端口的接口 -->
@@ -358,17 +358,17 @@
 
         <div class="grid-3">
             <div class="card">
-                <h3>UBMS → UPLS</h3>
-                <p><strong>依赖关系：</strong> 数值桥接前必须经 UPLS 语义对齐</p>
-                <p>两个量表只有在 UPLS 确认测量同一 M-R-D-S 组件后才能 IRT 桥接</p>
+                <h3>UBMP → UPLP</h3>
+                <p><strong>依赖关系：</strong> 数值桥接前必须经 UPLP 语义对齐</p>
+                <p>两个量表只有在 UPLP 确认测量同一 M-R-D-S 组件后才能 IRT 桥接</p>
             </div>
             <div class="card">
-                <h3>UBMS → UNIS</h3>
+                <h3>UBMP → UNIP</h3>
                 <p><strong>对等关系：</strong> 两条独立的输入通道</p>
                 <p>行为通道与神经通道各自提供独立似然，差异在 PSE 融合层解析</p>
             </div>
             <div class="card">
-                <h3>UBMS → PSE</h3>
+                <h3>UBMP → PSE</h3>
                 <p><strong>输出关系：</strong> 通过 L3 行为似然 API</p>
                 <p>p(y<sub>b</sub>|Ψ) 直接注入 PSE 贝叶斯融合器，与语义、神经似然联合估计状态后验</p>
             </div>
@@ -381,7 +381,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

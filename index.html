@@ -117,9 +117,9 @@
             transition: opacity var(--duration-normal) var(--ease-smooth);
         }
         .card:hover::before { opacity: 1; }
-        .card[data-module="upls"]::before  { background: var(--color-upls); }
-        .card[data-module="unis"]::before  { background: var(--color-unis); }
-        .card[data-module="ubms"]::before  { background: var(--color-ubms); }
+        .card[data-module="uplp"]::before  { background: var(--color-uplp); }
+        .card[data-module="unip"]::before  { background: var(--color-unip); }
+        .card[data-module="ubmp"]::before  { background: var(--color-ubmp); }
         .card[data-module="pse"]::before   { background: var(--color-pse); }
         .card[data-module="rever"]::before { background: var(--color-rever); }
 
@@ -289,9 +289,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/" class="active">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/">教材</a>
@@ -412,31 +412,31 @@
             </div>
 
             <div class="card-grid">
-                <a href="/INTRE-website/upls/" class="card-wrap reveal">
-                    <div class="card" data-module="upls">
+                <a href="/INTRE-website/uplp/" class="card-wrap reveal">
+                    <div class="card" data-module="uplp">
                         <div class="card-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·01 / SEMANTIC</span>
-                        <h2>UPLS</h2>
+                        <h2>UPLP</h2>
                         <div class="badge">语义通道 · 内感架构</div>
                         <p>形式化元语言基础设施 — M-R-D-S 状态语法 · G-M-A-R 操作语法 · PCUI/PSA/PSL 知识库。</p>
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/unis/" class="card-wrap reveal" data-delay="1">
-                    <div class="card" data-module="unis">
+                <a href="/INTRE-website/unip/" class="card-wrap reveal" data-delay="1">
+                    <div class="card" data-module="unip">
                         <div class="card-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·02 / NEURAL</span>
-                        <h2>UNIS</h2>
+                        <h2>UNIP</h2>
                         <div class="badge">神经通道 · 实时推理</div>
                         <p>原始神经信号 → 功能层似然的六层递进架构 — EEG / fNIRS / PPG 实时推理。</p>
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/ubms/" class="card-wrap reveal" data-delay="2">
-                    <div class="card" data-module="ubms">
+                <a href="/INTRE-website/ubmp/" class="card-wrap reveal" data-delay="2">
+                    <div class="card" data-module="ubmp">
                         <div class="card-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·03 / BEHAVIOR</span>
-                        <h2>UBMS</h2>
+                        <h2>UBMP</h2>
                         <div class="badge">行为通道 · 三层管道</div>
                         <p>结构化行为观测 → 行为似然的三层管道 — 量表 · EMA · 数字表型。</p>
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
@@ -513,7 +513,7 @@
                     <span class="layer-index">L3 / NEURAL</span>
                     <div class="layer-body">
                         <span class="layer-name">神经层</span><span class="layer-var">yₙ</span>
-                        <p class="layer-desc">神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，经 UNIS 与神经科学校准。</p>
+                        <p class="layer-desc">神经回路、脑区激活模式、生理信号。INTRE 保持硬件无关性，经 UNIP 与神经科学校准。</p>
                     </div>
                 </div>
             </div>
@@ -525,19 +525,19 @@
                 <span class="tech-label tech-label--amber">Three-Channel Fusion · 三通道贝叶斯融合</span>
                 <div class="fusion-channels">
                     <div class="fusion-channel">
-                        <span class="fc-code">UBMS → p(y_b|Ψ)</span>
+                        <span class="fc-code">UBMP → p(y_b|Ψ)</span>
                         <span class="fc-name">行为通道</span>
-                        <span class="fc-desc">现象层的结构化行为观测，经 UBMS 三层管道转化为行为似然。</span>
+                        <span class="fc-desc">现象层的结构化行为观测，经 UBMP 三层管道转化为行为似然。</span>
                     </div>
                     <div class="fusion-channel">
-                        <span class="fc-code">UPLS → p(y_s|Ψ)</span>
+                        <span class="fc-code">UPLP → p(y_s|Ψ)</span>
                         <span class="fc-name">语义通道</span>
-                        <span class="fc-desc">现象层的自然语言，经 UPLS PSL 编译转化为语义似然。</span>
+                        <span class="fc-desc">现象层的自然语言，经 UPLP PSL 编译转化为语义似然。</span>
                     </div>
                     <div class="fusion-channel">
-                        <span class="fc-code">UNIS → p(y_n|Ψ)</span>
+                        <span class="fc-code">UNIP → p(y_n|Ψ)</span>
                         <span class="fc-name">神经通道</span>
-                        <span class="fc-desc">神经层的神经信号，经 UNIS 六层架构转化为神经似然。</span>
+                        <span class="fc-desc">神经层的神经信号，经 UNIP 六层架构转化为神经似然。</span>
                     </div>
                 </div>
                 <code>p(Ψₜ | y<sub>b,t</sub>, y<sub>s,t</sub>, y<sub>n,t</sub>) ∝ p(y<sub>b</sub>|Ψ) · p(y<sub>s</sub>|Ψ) · p(y<sub>n</sub>|Ψ) · p(Ψₜ|Ψₜ₋₁)</code>
@@ -567,9 +567,9 @@
         <div class="footer-sitemap">
             <div class="fs-col">
                 <h4>Modules · 模块</h4>
-                <a href="/INTRE-website/upls/">UPLS · 语义通道</a>
-                <a href="/INTRE-website/unis/">UNIS · 神经通道</a>
-                <a href="/INTRE-website/ubms/">UBMS · 行为通道</a>
+                <a href="/INTRE-website/uplp/">UPLP · 语义通道</a>
+                <a href="/INTRE-website/unip/">UNIP · 神经通道</a>
+                <a href="/INTRE-website/ubmp/">UBMP · 行为通道</a>
                 <a href="/INTRE-website/pse/">PSE · 计算引擎</a>
                 <a href="/INTRE-website/rever/">REVER · 伦理门控</a>
             </div>
@@ -582,7 +582,7 @@
                 <h4>Resources · 资源</h4>
                 <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE · Zenodo</a>
-                <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS · Zenodo</a>
+                <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP · Zenodo</a>
                 <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER · Zenodo</a>
             </div>
             <div class="fs-col">

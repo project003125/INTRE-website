@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,7 +70,7 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第22章 神经对接：翻译与约束的根本差异</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解为什么“翻译”策略适用于现象层对接而不适用于神经层对接——多重实现度的层级梯度；(2)掌握以“约束”为主轴的神经层对接方法论逻辑；(3)区分兼容性证据与证伪性判据的区分及其方法论意义；(4)了解UNIS如何将约束原则工程化为可运行的神经输入系统。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解为什么“翻译”策略适用于现象层对接而不适用于神经层对接——多重实现度的层级梯度；(2)掌握以“约束”为主轴的神经层对接方法论逻辑；(3)区分兼容性证据与证伪性判据的区分及其方法论意义；(4)了解UNIP如何将约束原则工程化为可运行的神经输入系统。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -213,19 +213,19 @@
 
 <hr class="section-divider">
 
-<h2>22.5 从原则到工程：UNIS的约束分类实现</h2>
+<h2>22.5 从原则到工程：UNIP的约束分类实现</h2>
 
-<p>前四节确立了"神经层对接是约束而非翻译"的哲学原则。本节展示这一原则如何在 UNIS（统一神经接口系统）中被工程化为可运行的架构组件。UNIS 是 INTRE 新管线体系中 PSE 感知层 L1 的<strong>神经模态输入端口（L1-N，IODS 端口之一）</strong>，与 UPLS（L1-S）、UBMS（L1-B）并列——它不再是"四大核心基础设施"之一，而是 IODS 三端口中专门处理神经生理信号的端口。其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \) 并输出至 PSE 状态层（L2+）。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5 神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。<small style="color:var(--color-slate-500);font-size:0.85em;">（2026-07 管线体系更新：原"FLP 四大基础设施之一"表述已替换为 PSE 感知层 L1 神经端口定位。）</small></p>
+<p>前四节确立了"神经层对接是约束而非翻译"的哲学原则。本节展示这一原则如何在 UNIP（统一神经接口端口）中被工程化为可运行的架构组件。UNIP 是 INTRE 新管线体系中 PSE 感知层 L1 的<strong>神经模态输入端口（L1-N，IODS 端口之一）</strong>，与 UPLP（L1-S）、UBMP（L1-B）并列——它不再是"四大核心基础设施"之一，而是 IODS 三端口中专门处理神经生理信号的端口。其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \) 并输出至 PSE 状态层（L2+）。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5 神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。<small style="color:var(--color-slate-500);font-size:0.85em;">（2026-07 管线体系更新：原"FLP 四大基础设施之一"表述已替换为 PSE 感知层 L1 神经端口定位。）</small></p>
 
 <h3>22.5.1 约束的三级分类及其工程对应</h3>
 
-<p>回顾§22.4中提出的三类反向信号——硬约束、软约束和兼容性信号——在UNIS L5中被精确映射为可执行的数据结构和规则：</p>
+<p>回顾§22.4中提出的三类反向信号——硬约束、软约束和兼容性信号——在UNIP L5中被精确映射为可执行的数据结构和规则：</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
 <th>约束类型（哲学层）</th>
-<th>UNIS L5 工程实现</th>
+<th>UNIP L5 工程实现</th>
 <th>处理方式</th>
 <th>示例</th>
 </tr></thead>
@@ -252,11 +252,11 @@
 </table>
 </div>
 
-<p><strong>关键区分</strong>：UNIS L5将“生理硬约束”（分子/突触级，普遍适用）与“统计规律约束”（环路/系统级，高度稳健但极端条件下可能偏离）分开处理。前者触发自动硬裁剪，后者触发软先验注入——这避免了将经验规律当作物理定律而过度限制模型的灵活性。</p>
+<p><strong>关键区分</strong>：UNIP L5将“生理硬约束”（分子/突触级，普遍适用）与“统计规律约束”（环路/系统级，高度稳健但极端条件下可能偏离）分开处理。前者触发自动硬裁剪，后者触发软先验注入——这避免了将经验规律当作物理定律而过度限制模型的灵活性。</p>
 
 <h3>22.5.2 仲裁合约：当数据驱动与理论约束冲突时</h3>
 
-<p>如§22.4所述，神经层发现不能直接证伪功能层主张。但UNIS的L4（数据驱动的映射模型）与L5（理论驱动的约束）之间必然存在冲突。UNIS定义了一个<strong>跨层仲裁合约</strong>，自动处理冲突而不陷入“神经还原主义”或“功能层免疫”两个极端：</p>
+<p>如§22.4所述，神经层发现不能直接证伪功能层主张。但UNIP的L4（数据驱动的映射模型）与L5（理论驱动的约束）之间必然存在冲突。UNIP定义了一个<strong>跨层仲裁合约</strong>，自动处理冲突而不陷入“神经还原主义”或“功能层免疫”两个极端：</p>
 
 <div class="table-wrap">
 <table>
@@ -299,16 +299,16 @@
 
 <h3>22.5.3 从静态约束到动态校准：RTE-Cal的闭环反馈</h3>
 
-<p>§22.3的“约束功能主义”主张功能描述独立但不孤立。UNIS的L6（RTE实时引擎）将这一主张推进到个体化层面：</p>
+<p>§22.3的“约束功能主义”主张功能描述独立但不孤立。UNIP的L6（RTE实时引擎）将这一主张推进到个体化层面：</p>
 
 <ul>
 <li><strong>RTE-Infer</strong>：实时输出当前最优模型下的神经似然，延迟<50ms（中等特征），不等待校准收敛。</li>
 <li><strong>RTE-Cal</strong>：异步接收PSE反馈的 <code>/state_estimate</code> 和 <code>/calibration_feedback</code>，递归贝叶斯更新L4模型的个体化参数。</li>
 </ul>
 
-<p><strong>闭环路径</strong>：UNIS输出神经似然 → PSE融合多模态数据，更新状态估计 → PSE将状态估计和残差反馈给UNIS → UNIS调整L4模型参数（迁移学习） → 下一轮似然更准确。</p>
+<p><strong>闭环路径</strong>：UNIP输出神经似然 → PSE融合多模态数据，更新状态估计 → PSE将状态估计和残差反馈给UNIP → UNIP调整L4模型参数（迁移学习） → 下一轮似然更准确。</p>
 
-<p>这一闭环使§22.3中“功能层与神经层双向约束”的抽象论述，变为可持续学习、可审计验证的工程系统。UNIS不是“神经翻译器”，而是“约束执行器”——它不声称神经信号定义了功能状态，而是将神经信号作为有边界、有置信度的证据输入给PSE，同时接受PSE的反馈来持续修正自身。</p>
+<p>这一闭环使§22.3中“功能层与神经层双向约束”的抽象论述，变为可持续学习、可审计验证的工程系统。UNIP不是“神经翻译器”，而是“约束执行器”——它不声称神经信号定义了功能状态，而是将神经信号作为有边界、有置信度的证据输入给PSE，同时接受PSE的反馈来持续修正自身。</p>
 
 <h3>22.5.4 小结：原则到工程的映射</h3>
 
@@ -316,7 +316,7 @@
 <table>
 <thead><tr>
 <th>哲学原则（§22.2-22.4）</th>
-<th>UNIS工程实现</th>
+<th>UNIP工程实现</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -343,7 +343,7 @@
 </table>
 </div>
 
-<p>UNIS的存在使本章从“哲学宣言”变为“工程蓝图”。读者在学习后续章节（第23-24章）的级联预测和边界修订时，应理解：这些抽象机制在UNIS中已经或正在被实现为可运行、可检验的代码和协议。</p>
+<p>UNIP的存在使本章从“哲学宣言”变为“工程蓝图”。读者在学习后续章节（第23-24章）的级联预测和边界修订时，应理解：这些抽象机制在UNIP中已经或正在被实现为可运行、可检验的代码和协议。</p>
 
 <hr class="section-divider">
 
@@ -361,13 +361,13 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：神经层对接与现象层对接服务于完全不同的目的。现象层对接是同一本体论空间内的翻译；神经层对接是跨本体论层级的约束。这一差异的根源在于多重实现度的层级梯度——心理学相对于神经科学的功能自主空间远大于化学相对于物理学的自主空间。功能层不可被神经层还原（多重实现原则），但必须被神经层约束（不受约束即伪科学）。证伪条件的层级划界规定：功能主张的证伪判据必须在自身层级内完成，神经发现以“校准者”而非“法官”的身份参与，通过三层过滤规则进入功能层的修正程序。UNIS作为FLP的神经输入基础设施，将上述哲学原则工程化为L5约束库、仲裁合约和RTE双向闭环，使“约束功能主义”从抽象论述变为可运行、可审计的工程系统。RELINK与记忆再巩固的独立汇聚是兼容性信号的典范案例。</p>
+<p><strong>本章小结</strong>：神经层对接与现象层对接服务于完全不同的目的。现象层对接是同一本体论空间内的翻译；神经层对接是跨本体论层级的约束。这一差异的根源在于多重实现度的层级梯度——心理学相对于神经科学的功能自主空间远大于化学相对于物理学的自主空间。功能层不可被神经层还原（多重实现原则），但必须被神经层约束（不受约束即伪科学）。证伪条件的层级划界规定：功能主张的证伪判据必须在自身层级内完成，神经发现以“校准者”而非“法官”的身份参与，通过三层过滤规则进入功能层的修正程序。UNIP作为FLP的神经输入基础设施，将上述哲学原则工程化为L5约束库、仲裁合约和RTE双向闭环，使“约束功能主义”从抽象论述变为可运行、可审计的工程系统。RELINK与记忆再巩固的独立汇聚是兼容性信号的典范案例。</p>
 
-<blockquote><p><strong>关键术语</strong>：现象层对接，神经层对接，翻译，约束，多重实现度梯度，实现绑定谬误，约束功能主义，兼容性证据，证伪性判据，三层过滤规则，UNIS，L5神经先验库，仲裁合约，RTE-Cal</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：现象层对接，神经层对接，翻译，约束，多重实现度梯度，实现绑定谬误，约束功能主义，兼容性证据，证伪性判据，三层过滤规则，UNIP，L5神经先验库，仲裁合约，RTE-Cal</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “功能层与神经层一一对应，可以建立翻译表” → ✅ 多重实现原则禁止这种对应；神经层对接建立的是约束关系。<br>- ❌ “如果神经发现与功能预测不符，功能层主张就被证伪” → ✅ 功能层主张的证伪判据在自身层级内，神经发现只能作为约束信号。<br>- ❌ “不接受神经证伪意味着功能层免疫于检验” → ✅ 功能层在自身的可观测输出上接受更严格的检验。<br>- ❌ “UNIS是脑机接口，试图读取思想” → ✅ UNIS不“读取”功能状态，它输出带置信度的似然，且受L5硬约束限制，不能输出物理上不可能的估计。</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “功能层与神经层一一对应，可以建立翻译表” → ✅ 多重实现原则禁止这种对应；神经层对接建立的是约束关系。<br>- ❌ “如果神经发现与功能预测不符，功能层主张就被证伪” → ✅ 功能层主张的证伪判据在自身层级内，神经发现只能作为约束信号。<br>- ❌ “不接受神经证伪意味着功能层免疫于检验” → ✅ 功能层在自身的可观测输出上接受更严格的检验。<br>- ❌ “UNIP是脑机接口，试图读取思想” → ✅ UNIP不“读取”功能状态，它输出带置信度的似然，且受L5硬约束限制，不能输出物理上不可能的估计。</p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 用自己的话解释现象层对接和神经层对接的本质区别。<br>2. 为什么“RELINK操作依赖再巩固窗口”这个说法是错误的？正确的说法应该是什么？<br>3. 如果神经科学发现某个功能层组件（如M3-RES-D）没有单一的神经标记物，这是否意味着该组件不存在？为什么？<br>4. UNIS的L5将“生理硬约束”和“统计规律约束”分开处理。这种区分的临床意义是什么？</p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 用自己的话解释现象层对接和神经层对接的本质区别。<br>2. 为什么“RELINK操作依赖再巩固窗口”这个说法是错误的？正确的说法应该是什么？<br>3. 如果神经科学发现某个功能层组件（如M3-RES-D）没有单一的神经标记物，这是否意味着该组件不存在？为什么？<br>4. UNIP的L5将“生理硬约束”和“统计规律约束”分开处理。这种区分的临床意义是什么？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <div class="version-record-title">版本记录</div>
@@ -399,7 +399,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

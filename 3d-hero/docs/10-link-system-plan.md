@@ -17,9 +17,9 @@
 | 页面 | URL 路径 | 内容定位 |
 |---|---|---|
 | 首页 | `/INTRE-website/` | 品牌入口、三层架构概览、五大模块卡片 |
-| UPLS | `/INTRE-website/upls/` | 语义通道：M-R-D-S 状态语法、G-M-A-R 操作语法、PCUI/PSA/PSL |
-| UNIS | `/INTRE-website/unis/` | 神经通道：EEG/fNIRS/PPG 六层递进架构 |
-| UBMS | `/INTRE-website/ubms/` | 行为通道：量表、EMA、数字表型三层管道 |
+| UPLP | `/INTRE-website/uplp/` | 语义通道：M-R-D-S 状态语法、G-M-A-R 操作语法、PCUI/PSA/PSL |
+| UNIP | `/INTRE-website/unip/` | 神经通道：EEG/fNIRS/PPG 六层递进架构 |
+| UBMP | `/INTRE-website/ubmp/` | 行为通道：量表、EMA、数字表型三层管道 |
 | PSE | `/INTRE-website/pse/` | 计算引擎：蒙特卡罗仿真、贝叶斯校准 |
 | REVER | `/INTRE-website/rever/` | 伦理门控：四层伦理架构、依赖雷达、四点式门控 |
 | 教材 | `/INTRE-website/textbook/` | 29 章正文 + 14 篇附录 |
@@ -33,7 +33,7 @@
 |---|---|---|
 | GitHub 仓库 | `https://github.com/project003125/INTRE-website` | 源码 |
 | PSE · Zenodo | `https://doi.org/10.5281/zenodo.18818607` | PSE 论文 DOI |
-| UPLS · Zenodo | `https://doi.org/10.5281/zenodo.18818307` | UPLS 论文 DOI |
+| UPLP · Zenodo | `https://doi.org/10.5281/zenodo.18818307` | UPLP 论文 DOI |
 | REVER · Zenodo | `https://doi.org/10.5281/zenodo.18820091` | REVER 论文 DOI |
 
 ### 1.3 2D 网站导航结构
@@ -41,16 +41,16 @@
 ```
 顶部导航栏（所有页面统一）
 ├── 首页 → /
-├── UPLS → /upls/
-├── UNIS → /unis/
-├── UBMS → /ubms/
+├── UPLP → /uplp/
+├── UNIP → /unip/
+├── UBMP → /ubmp/
 ├── PSE → /pse/
 ├── REVER → /rever/
 ├── 教材 → /textbook/
 └── 术语表 → /glossary/
 
 页脚 Sitemap（四列）
-├── Modules: UPLS / UNIS / UBMS / PSE / REVER
+├── Modules: UPLP / UNIP / UBMP / PSE / REVER
 ├── Learn: 教材 / 术语表
 ├── Resources: GitHub / Zenodo × 3
 └── Framework: 状态语法 / 操作语法 / 证据标签（均指向术语表）
@@ -66,9 +66,9 @@ L2 功能层 (Functional)    ← Ψ(t) ∈ ℝ⁴²，INTRE 运算中心
 L3 神经层 (Neural)        ← 神经回路、脑区激活
 
 三通道汇聚于功能层：
-├── UBMS → p(y_b|Ψ)  行为通道（现象层 → 功能层）
-├── UPLS → p(y_s|Ψ)  语义通道（现象层 → 功能层）
-└── UNIS → p(y_n|Ψ)  神经通道（神经层 → 功能层）
+├── UBMP → p(y_b|Ψ)  行为通道（现象层 → 功能层）
+├── UPLP → p(y_s|Ψ)  语义通道（现象层 → 功能层）
+└── UNIP → p(y_n|Ψ)  神经通道（神经层 → 功能层）
 
 融合公式：
 p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · p(Ψₜ|Ψₜ₋₁)
@@ -92,9 +92,9 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 | 右侧指示器"神经层" | 仅滚动 | 需确定是否加链接 |
 | 公式芯片 Ψ(t) | 无链接 | 需确定目标 |
 | 42 徽章 | 无链接 | 需确定目标 |
-| 三通道图例 UPLS | 无链接 | UPLS 模块页 |
-| 三通道图例 UNIS | 无链接 | UNIS 模块页 |
-| 三通道图例 UBMS | 无链接 | UBMS 模块页 |
+| 三通道图例 UPLP | 无链接 | UPLP 模块页 |
+| 三通道图例 UNIP | 无链接 | UNIP 模块页 |
+| 三通道图例 UBMP | 无链接 | UBMP 模块页 |
 | 节点详情面板 #14 | 仅显示文字 | 可加教材链接 |
 
 ---
@@ -105,16 +105,16 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 
 1. **3D Hero 是入口，不是替代**——它是品牌展示和概念可视化，所有深度内容指向 2D 网站
 2. **导航对齐**——3D Hero 的导航项与 2D 网站导航项语义对齐，用户认知一致
-3. **上下文链接**——3D 场景中出现的概念（UPLS、UNIS、UBMS、42 维等）点击后直达对应详情页
+3. **上下文链接**——3D 场景中出现的概念（UPLP、UNIP、UBMP、42 维等）点击后直达对应详情页
 4. **新标签打开**——所有外链用 `target="_blank"`，保留 3D Hero 不被关闭
 
 ### 3.2 路径策略
 
 由于 3D Hero 与 2D 网站的部署关系尚未确定，提供两种方案：
 
-**方案 A（同域部署，推荐）**：3D Hero 部署为 2D 网站的子页面，如 `/INTRE-website/hero/`，所有链接用相对路径 `../upls/` 等。
+**方案 A（同域部署，推荐）**：3D Hero 部署为 2D 网站的子页面，如 `/INTRE-website/hero/`，所有链接用相对路径 `../uplp/` 等。
 
-**方案 B（独立部署）**：3D Hero 独立域名/路径，所有链接用完整 URL `https://project003125.github.io/INTRE-website/upls/`。
+**方案 B（独立部署）**：3D Hero 独立域名/路径，所有链接用完整 URL `https://project003125.github.io/INTRE-website/uplp/`。
 
 ### 3.3 完整链接映射表
 
@@ -124,19 +124,19 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 |---|---|---|---|
 | INTRE 品牌标志 | 无链接 | → 首页 | `/INTRE-website/` |
 | 理论 | `#` | → 改为"首页" | `/INTRE-website/` |
-| 模块 | `#` | → 展开下拉子菜单 | UPLS/UNIS/UBMS/PSE/REVER |
+| 模块 | `#` | → 展开下拉子菜单 | UPLP/UNIP/UBMP/PSE/REVER |
 | 教材 | `#` | → 教材首页 | `/INTRE-website/textbook/` |
 | 关于 | `#` | → 术语表 | `/INTRE-website/glossary/` |
 
-> **导航项语义说明**：2D 网站导航是"首页 / UPLS / UNIS / UBMS / PSE / REVER / 教材 / 术语表"，3D Hero 当前是"理论 / 模块 / 教材 / 关于"。建议对齐为 2D 的命名，或保留 3D 简化命名但链接指向正确目标。
+> **导航项语义说明**：2D 网站导航是"首页 / UPLP / UNIP / UBMP / PSE / REVER / 教材 / 术语表"，3D Hero 当前是"理论 / 模块 / 教材 / 关于"。建议对齐为 2D 的命名，或保留 3D 简化命名但链接指向正确目标。
 
 #### 3.3.2 三通道图例（第四幕）
 
 | 图例项 | 当前 | 改为 | 说明 |
 |---|---|---|---|
-| UPLS 语义通道 | 无链接 | → `/INTRE-website/upls/` | 新标签打开 |
-| UNIS 神经通道 | 无链接 | → `/INTRE-website/unis/` | 新标签打开 |
-| UBMS 行为通道 | 无链接 | → `/INTRE-website/ubms/` | 新标签打开 |
+| UPLP 语义通道 | 无链接 | → `/INTRE-website/uplp/` | 新标签打开 |
+| UNIP 神经通道 | 无链接 | → `/INTRE-website/unip/` | 新标签打开 |
+| UBMP 行为通道 | 无链接 | → `/INTRE-website/ubmp/` | 新标签打开 |
 
 #### 3.3.3 公式芯片与徽章
 
@@ -176,7 +176,7 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 建议在 3D Hero 底部增加一个极简信息条，提供完整导航出口：
 
 ```
-INTRE · 功能层心理学    UPLS · UNIS · UBMS · PSE · REVER    教材    术语表    GitHub
+INTRE · 功能层心理学    UPLP · UNIP · UBMP · PSE · REVER    教材    术语表    GitHub
 ```
 
 ---
@@ -190,12 +190,12 @@ INTRE · 功能层心理学    UPLS · UNIS · UBMS · PSE · REVER    教材   
 | 术语 | 英文 | 大白话解释 |
 |---|---|---|
 | 导航模式 | Navigation Pattern | 页面上引导用户去其他页面的方式，比如顶部菜单、侧边栏、面包屑 |
-| 跨页导航 | Cross-page Navigation | 从当前页面跳到另一个页面，比如从 3D Hero 跳到 UPLS 模块页 |
+| 跨页导航 | Cross-page Navigation | 从当前页面跳到另一个页面，比如从 3D Hero 跳到 UPLP 模块页 |
 | 深度链接 | Deep Linking | 直接指向网站内部某个具体内容的链接，比如直接打开教材第 8 章而非首页 |
 | 路由 | Routing | 决定 URL 对应显示哪个页面的机制。2D 网站是多页应用（每个 URL 一个 HTML 文件），3D Hero 是单页应用（一个 HTML 内滚动切换） |
-| 上下文导航 | Contextual Navigation | 根据当前内容智能提供的链接。比如看到"UPLS"这个词时，旁边出现一个可点击的入口 |
+| 上下文导航 | Contextual Navigation | 根据当前内容智能提供的链接。比如看到"UPLP"这个词时，旁边出现一个可点击的入口 |
 | 行动召唤 | Call-to-Action (CTA) | 引导用户做特定动作的按钮或链接，比如"进入模块 →" |
-| 面包屑 | Breadcrumb | 显示"你在哪一层级"的路径，比如"首页 > 模块 > UPLS" |
+| 面包屑 | Breadcrumb | 显示"你在哪一层级"的路径，比如"首页 > 模块 > UPLP" |
 | 锚点定位 | Anchor Link | 页面内跳转，比如点击"神经层"滚动到对应幕，URL 不变 |
 | 新标签打开 | `target="_blank"` | 链接在新浏览器标签打开，当前页面保留不关闭 |
 
@@ -261,7 +261,7 @@ INTRE · 功能层心理学    UPLS · UNIS · UBMS · PSE · REVER    教材   
 
 ### Phase 2：导航对齐（需要确认设计方向）
 
-1. 确认 3D Hero 导航命名是否对齐 2D（"理论/模块/教材/关于" vs "首页/UPLS/UNIS/.../术语表"）
+1. 确认 3D Hero 导航命名是否对齐 2D（"理论/模块/教材/关于" vs "首页/UPLP/UNIP/.../术语表"）
 2. 确认"模块"是否做成下拉菜单（hover 展开 5 个子模块）
 3. 确认底部信息条的样式和内容
 
@@ -283,7 +283,7 @@ INTRE · 功能层心理学    UPLS · UNIS · UBMS · PSE · REVER    教材   
 
 以下决策会影响执行，建议在开始前确认：
 
-1. **导航命名**：3D Hero 导航是保持"理论/模块/教材/关于"还是对齐 2D 的"首页/UPLS/UNIS/UBMS/PSE/REVER/教材/术语表"？
+1. **导航命名**：3D Hero 导航是保持"理论/模块/教材/关于"还是对齐 2D 的"首页/UPLP/UNIP/UBMP/PSE/REVER/教材/术语表"？
 2. **"模块"下拉**：是否把"模块"做成 hover 下拉菜单，展开 5 个子模块链接？
 3. **部署方案**：3D Hero 部署到 GitHub Pages 的哪个路径？这决定链接用相对路径还是绝对路径。
 4. **指示器外链**：右侧三层指示器是否需要额外的外链按钮，还是仅保留滚动功能？

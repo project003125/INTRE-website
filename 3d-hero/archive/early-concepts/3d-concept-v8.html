@@ -937,7 +937,7 @@
             function rebuildConnections() {
                 connPos = []; connCol = [];
                 uplsCurves = []; unisCurves = [];
-                // UPLS — 所有 42 节点到星点
+                // UPLP — 所有 42 节点到星点
                 latticeNodes.forEach(function(n) {
                     var moduleStars = phenStars.filter(function(s, si) { return si % 6 === n.ringIdx; });
                     if (moduleStars.length === 0) moduleStars = phenStars;
@@ -969,7 +969,7 @@
                         }
                     });
                 });
-                // UNIS — 所有 42 节点到 DTI 端点
+                // UNIP — 所有 42 节点到 DTI 端点
                 latticeNodes.forEach(function(n) {
                     var moduleEndpoints = fiberEndpoints.filter(function(ep, ei) { return ei % 6 === n.ringIdx; });
                     if (moduleEndpoints.length === 0) moduleEndpoints = fiberEndpoints;
@@ -1026,9 +1026,9 @@
             }
             rebuildConnections();
 
-            var lC1 = codeLabel('UPLS · 语义通道', 'rgba(90,130,112,0.55)', 0.42);
+            var lC1 = codeLabel('UPLP · 语义通道', 'rgba(90,130,112,0.55)', 0.42);
             lC1.position.set(-5, YP * 0.4, 2); mainGroup.add(lC1);
-            var lC2 = codeLabel('UNIS · 神经通道', 'rgba(91,112,128,0.55)', 0.42);
+            var lC2 = codeLabel('UNIP · 神经通道', 'rgba(91,112,128,0.55)', 0.42);
             lC2.position.set(5, YN * 0.35, -2); mainGroup.add(lC2);
 
             // 流动粒子（限制数量避免过多）

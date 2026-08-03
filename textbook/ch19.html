@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -96,7 +96,7 @@ $$
 
 <blockquote><p><strong>⚠️ 工程判断声明</strong>：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
 
-<p>（v1.1 补充；在 2026-07 管线体系下更新）在当前 PSE 感知层 L1 的三端口输入架构中，上述动力学方程的观测输入来自三个 IODS 输入端口的贝叶斯融合：UBMS 作为 L1-B 行为端口提供行为似然 p(y_b|Ψ)，UPLS 作为 L1-S 语义端口提供语义似然 p(y_s|Ψ)，UNIS 作为 L1-N 神经端口提供神经似然 p(y_n|Ψ)。三端口似然通过 PSE 状态层（L2+）的贝叶斯乘积更新状态后验（详见第 18 章 §18.1 及 01-A-01）。当某端口不可用时，该端口似然置为 1，系统退化为剩余端口融合。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧表述"FLP 四基础设施架构"已于 2026-07 替换为 IODS 三端口 + PSE 状态层的两系统边界。）</small></p>
+<p>（v1.1 补充；在 2026-07 管线体系下更新）在当前 PSE 感知层 L1 的三端口输入架构中，上述动力学方程的观测输入来自三个 IODS 输入端口的贝叶斯融合：UBMP 作为 L1-B 行为端口提供行为似然 p(y_b|Ψ)，UPLP 作为 L1-S 语义端口提供语义似然 p(y_s|Ψ)，UNIP 作为 L1-N 神经端口提供神经似然 p(y_n|Ψ)。三端口似然通过 PSE 状态层（L2+）的贝叶斯乘积更新状态后验（详见第 18 章 §18.1 及 01-A-01）。当某端口不可用时，该端口似然置为 1，系统退化为剩余端口融合。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧表述"FLP 四基础设施架构"已于 2026-07 替换为 IODS 三端口 + PSE 状态层的两系统边界。）</small></p>
 
 <p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
 
@@ -344,7 +344,7 @@ $$
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

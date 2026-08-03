@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>INTRE · UNIS 统一神经接口系统</title>
-    <meta name="description" content="UNIS（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
-    <meta property="og:title" content="UNIS · 统一神经信号接口 · INTRE">
-    <meta property="og:description" content="UNIS（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <title>INTRE · UNIP 统一神经接口端口</title>
+    <meta name="description" content="UNIP（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <meta property="og:title" content="UNIP · 统一神经信号接口 · INTRE">
+    <meta property="og:description" content="UNIP（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://project003125.github.io/INTRE-website/unis/">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/unip/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="UNIS · 统一神经信号接口 · INTRE">
-    <meta name="twitter:description" content="UNIS（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
-    <link rel="canonical" href="https://project003125.github.io/INTRE-website/unis/">
+    <meta name="twitter:title" content="UNIP · 统一神经信号接口 · INTRE">
+    <meta name="twitter:description" content="UNIP（统一神经信号接口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/unip/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -58,9 +58,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/" class="active">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/" class="active">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/">教材</a>
@@ -69,17 +69,17 @@
         </div>
     </nav>
     <main id="main-content" class="container">
-        <h1>UNIS</h1>
-        <div class="subhead">统一神经接口系统 · PSE 感知层 <strong>L1-N 神经模态输入端口</strong> <span class="channel-badge unis">神经通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
+        <h1>UNIP</h1>
+        <div class="subhead">统一神经接口端口 · PSE 感知层 <strong>L1-N 神经模态输入端口</strong> <span class="channel-badge unip">神经通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UNIS 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。
+            UNIP 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。它将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。
         </div>
 
         <!-- 一、六层架构 -->
         <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、六层架构</h2>
-        <p class="section-intro">UNIS 的六个层次从原始信号到功能似然逐级递进，每个层次对应一个不可还原的独立问题。</p>
+        <p class="section-intro">UNIP 的六个层次从原始信号到功能似然逐级递进，每个层次对应一个不可还原的独立问题。</p>
 
         <div class="grid-6">
             <div class="layer-card">
@@ -148,10 +148,10 @@
         </div>
 
         <div class="code-block">
-            // UNIS ↔ PSE 双向通信协议<br>
-            UNIS → PSE: /func_likelihood  →  p(y_n|Ψ) + 置信度 + 时间戳<br>
-            PSE → UNIS: /state_estimate  →  当前最佳状态估计 Ŷ(t)<br>
-            PSE → UNIS: /calibration_feedback → 残差 + 参数调整建议
+            // UNIP ↔ PSE 双向通信协议<br>
+            UNIP → PSE: /func_likelihood  →  p(y_n|Ψ) + 置信度 + 时间戳<br>
+            PSE → UNIP: /state_estimate  →  当前最佳状态估计 Ŷ(t)<br>
+            PSE → UNIP: /calibration_feedback → 残差 + 参数调整建议
         </div>
 
         <!-- 三、NFI 神经特征标识 -->
@@ -183,7 +183,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>UNIS 的定位（2026-07 管线体系更新）</strong>：UNIS 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>神经模态输入端口（L1-N）</strong>，与 UPLS（语义端口 L1-S）、UBMS（行为端口 L1-B）并列，构成 IODS 三输入端口。三个端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIS 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
+            <p><strong>UNIP 的定位（2026-07 管线体系更新）</strong>：UNIP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>神经模态输入端口（L1-N）</strong>，与 UPLP（语义端口 L1-S）、UBMP（行为端口 L1-B）并列，构成 IODS 三输入端口。三个端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIP 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
         </div>
     </main>
 
@@ -193,7 +193,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

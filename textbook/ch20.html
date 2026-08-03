@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,7 +70,7 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第20章 仿真校准：蒙特卡罗与贝叶斯</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIS神经似然注入；(4)描述RTE-Cal异步校准与UNIS↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIP神经似然注入；(4)描述RTE-Cal异步校准与UNIP↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
 
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 
@@ -206,25 +206,25 @@ $$
 <p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
 
 $$
-p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLS)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIS)}}
+p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLP)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIP)}}
 $$
 
-<p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIS L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
+<p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIP L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
 
 <h3>20.3.1 RTE-Cal：神经映射的异步个体化校准</h3>
 
-<p>RTE-Cal是UNIS L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
+<p>RTE-Cal是UNIP L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
 
 <p><strong>校准环路</strong>。RTE-Cal运行一个异步闭环：</p>
 
 <ol>
-<li><strong>前向通路</strong>（UNIS → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
+<li><strong>前向通路</strong>（UNIP → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
 <li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \(p(\Psi_t \mid y_{1:t})\)</li>
-<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMS校准）和神经通道（经UNIS转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
-<li><strong>反向通路</strong>（PSE → UNIS）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
+<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMP校准）和神经通道（经UNIP转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
+<li><strong>反向通路</strong>（PSE → UNIP）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
 </ol>
 
-<p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIS的分层更新纪律：</p>
+<p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIP的分层更新纪律：</p>
 
 <div class="table-wrap">
 <table>
@@ -253,7 +253,7 @@ $$
 </table>
 </div>
 
-<p><strong>工程意义</strong>。RTE-Cal使UNIS从一个"群体平均"的神经-功能映射系统升级为"个体自适应"的校准系统——这类似于脑电的个体化源定位：使用群体模板作为初始估计，再通过个体解剖数据进行微调。在PSE-C的概念设计阶段，RTE-Cal的完整实现依赖于NFM模型的群体级验证——当前所有NFI的映射模型均为探索性P级（详见Ch22）。</p>
+<p><strong>工程意义</strong>。RTE-Cal使UNIP从一个"群体平均"的神经-功能映射系统升级为"个体自适应"的校准系统——这类似于脑电的个体化源定位：使用群体模板作为初始估计，再通过个体解剖数据进行微调。在PSE-C的概念设计阶段，RTE-Cal的完整实现依赖于NFM模型的群体级验证——当前所有NFI的映射模型均为探索性P级（详见Ch22）。</p>
 
 <hr class="section-divider">
 
@@ -286,7 +286,7 @@ $$
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLS）和神经（UNIS）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIS与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
+<p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLP）和神经（UNIP）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIP与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
 
 <blockquote><p><strong>关键术语</strong>：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
 
@@ -324,7 +324,7 @@ $$
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

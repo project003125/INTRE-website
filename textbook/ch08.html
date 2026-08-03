@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -556,19 +556,19 @@ $$
 <tr>
 <td>**行为通道**</td>
 <td>心理量表、行为任务、EMA</td>
-<td>UBMS（三层架构）</td>
+<td>UBMP（三层架构）</td>
 <td>行为似然 \( p(y_b \mid \Psi) \)</td>
 </tr>
 <tr>
 <td>**语义通道**</td>
 <td>自然语言、临床访谈、叙事</td>
-<td>UPLS（PCUI/PSL）</td>
+<td>UPLP（PCUI/PSL）</td>
 <td>语义似然 \( p(y_s \mid \Psi) \)</td>
 </tr>
 <tr>
 <td>**神经通道**</td>
 <td>EEG、fNIRS、PPG、可穿戴</td>
-<td>UNIS（六层架构）</td>
+<td>UNIP（六层架构）</td>
 <td>神经似然 \( p(y_n \mid \Psi) \)</td>
 </tr>
 </tbody>
@@ -581,15 +581,15 @@ $$
 p(\Psi_t \mid y_{b,t}, y_{s,t}, y_{n,t}) \propto p(y_{b,t} \mid \Psi_t) \cdot p(y_{s,t} \mid \Psi_t) \cdot p(y_{n,t} \mid \Psi_t) \cdot p(\Psi_t \mid \Psi_{t-1})
 $$
 
-<p>其中 \( p(y_n \mid \Psi_t) \) 由UNIS的L6（RTE引擎）实时输出。UNIS将原始神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
+<p>其中 \( p(y_n \mid \Psi_t) \) 由UNIP的L6（RTE引擎）实时输出。UNIP将原始神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
 
-<p><strong>多模态融合的临床意义</strong>：当三个通道的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。PSE不强制融合所有通道，而是在UNIS仲裁合约（§24.2）和PSE内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
+<p><strong>多模态融合的临床意义</strong>：当三个通道的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。PSE不强制融合所有通道，而是在UNIP仲裁合约（§24.2）和PSE内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S可类比的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLS）和神经（UNIS）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
+<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称定律（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外感架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S可类比的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE通过融合行为、语义（UPLP）和神经（UNIP）三个通道的似然进行多模态状态估计，当通道间出现分歧时，分歧本身可成为独立的诊断信号。</p>
 
-<blockquote><p><strong>关键术语</strong>：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIS</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：状态向量\(\Psi(t)\)，S-P外感架构，S-层六系统，P-层模式，生态位，恢复不对称定律，多模态融合，神经似然，UNIP</p></blockquote>
 
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。<br>- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S可类比的编码格式，使环境输入可直接进入动力学方程。<br>- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
 
@@ -625,7 +625,7 @@ $$
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第16章 共识工程：三阶段知识生产流水线 · INTRE 导论教材</title>
-    <meta name="description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
+    <meta name="description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
     <meta property="og:title" content="第16章 共识工程：三阶段知识生产流水线">
-    <meta property="og:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
+    <meta property="og:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch16.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch16.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第16章 共识工程：三阶段知识生产流水线">
-    <meta name="twitter:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
+    <meta name="twitter:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,15 +70,15 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第16章 共识工程：三阶段知识生产流水线</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLS三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLP三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
 
-<blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLS的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
+<blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构。本章和第17章（逻辑指纹）共同构成UPLP的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
 
 <hr class="section-divider">
 
 <h2>16.1 全景流程：PCC-P→PCF-P→PCV-P</h2>
 
-<p>PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLS建立了一套<strong>三阶段知识生产流水线</strong>——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。</p>
+<p>PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套<strong>三阶段知识生产流水线</strong>——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。</p>
 
 <div class="table-wrap">
 <table>
@@ -524,7 +524,7 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：UPLS的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
+<p><strong>本章小结</strong>：UPLP的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
 
 <blockquote><p><strong>关键术语</strong>：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
 
@@ -562,7 +562,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

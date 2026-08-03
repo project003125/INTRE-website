@@ -26,7 +26,7 @@
 ┌──────────────────────────────────────────────────────────────────────────┐
 │ #hud-top ── 顶栏 ── height: 3.2rem (≈ 51px) ── fixed top:0 ──           │
 │ ┌────────────────────────────────────────────────────────────────────┐   │
-│ │ INTRE                       FLP · 01-04  首页 UPLS UNIS UBMS PSE REVER │ │
+│ │ INTRE                       FLP · 01-04  首页 UPLP UNIP UBMP PSE REVER │ │
 │ │ [wordmark]                   [brand-sub]  [nav-links 8项]            │ │
 │ └────────────────────────────────────────────────────────────────────┘   │
 │                                                                          │
@@ -118,7 +118,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLS UNIS UBMS PSE REVER 教材 术语表     │
+│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                                              ┌─○─ 现象层 (激活)            │
@@ -179,7 +179,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLS UNIS UBMS PSE REVER 教材 术语表     │
+│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─●─ 现象层 (激活) ●         │
 │                                              ├─○─ 功能层                   │
@@ -232,7 +232,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLS UNIS UBMS PSE REVER 教材 术语表     │
+│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─○─ 现象层                   │
 │                                              ├─●─ 功能层 (激活)             │
@@ -302,7 +302,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLS UNIS UBMS PSE REVER 教材 术语表     │
+│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─○─ 现象层                   │
 │                                              ├─○─ 功能层                   │
@@ -323,10 +323,10 @@
 │                                                                          │
 │  03 · 神经层                                                              │
 │  向下扎根                                                                  │
-│  功能层不是终点。UPLS 统一语义，UBMS 校准行为，UNIS 对接神经——              │
+│  功能层不是终点。UPLP 统一语义，UBMP 校准行为，UNIP 对接神经——              │
 │  三通道似然经 PSE 贝叶斯融合，更新状态后后验。                              │
 │                                                                          │
-│  🟢 UPLS 语义通道   🔵 UNIS 神经通道   🟤 UBMS 行为通道   ← legend 三链接   │
+│  🟢 UPLP 语义通道   🔵 UNIP 神经通道   🟤 UBMP 行为通道   ← legend 三链接   │
 │                                                                          │
 │ #status-bar  ────────────────────────────────────────────────────────     │
 └──────────────────────────────────────────────────────────────────────────┘
@@ -355,9 +355,9 @@
 | 收尾幽灵化 | 0.97-1.00 | 节点 0.5 倍/0.3 透明，束成垂直丝线，脑满显 | latticeFade 起点从 0.74 改为 0.97 |
 
 通道色分配（D36）：
-- RES 行（RES-D, RES-B）→ UPLS 绿 #5A8270
-- DSP 行（DSP-F, DSP-B）→ UNIS 蓝 #5B7080
-- STR 行（STR-R, STR-C, STR-S）→ UBMS 棕 #8B7360
+- RES 行（RES-D, RES-B）→ UPLP 绿 #5A8270
+- DSP 行（DSP-F, DSP-B）→ UNIP 蓝 #5B7080
+- STR 行（STR-R, STR-C, STR-S）→ UBMP 棕 #8B7360
 
 reduced-motion 降级（D37）：定格 p=0.86（接驳完成态），纤维束全可见 + 节点亮 + 脑半透。
 
@@ -366,7 +366,7 @@ reduced-motion 降级（D37）：定格 p=0.86（接驳完成态），纤维束�
 - kicker `03 · 神经层`（11.5px 等宽）
 - act-h2 `向下扎根`（40px / Inter）
 - act-body 16px / Noto Sans SC
-- legend 三通道图例（v2.4 大地色系，品牌规范 v2.3 最高权威）：UPLS 语义通道 #5A8270、UNIS 神经通道 #5B7080、UBMS 行为通道 #8B7360；点击跳转 2D 网站对应模块页（旧值 #4A9D7A / #3E7CA6 / #C4956A 及 emerald-500 / cyan-500 / amber-500 配色作废）
+- legend 三通道图例（v2.4 大地色系，品牌规范 v2.3 最高权威）：UPLP 语义通道 #5A8270、UNIP 神经通道 #5B7080、UBMP 行为通道 #8B7360；点击跳转 2D 网站对应模块页（旧值 #4A9D7A / #3E7CA6 / #C4956A 及 emerald-500 / cyan-500 / amber-500 配色作废）
 - 每通道图例旁有脉冲呼吸圈（2 秒周期，三通道错相 0 / 0.66s / 1.33s；reduced-motion 下静止，v2.4）
 
 ### 5.4 Act 4 末尾收尾区域（Q9 决策 · v2.1 新增）
@@ -379,10 +379,10 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 ┌──────────────────────────────────────────────────────────────────────────┐
 │  03 · 神经层                                                              │
 │  向下扎根                                                                  │
-│  功能层不是终点。UPLS 统一语义，UBMS 校准行为，UNIS 对接神经——              │
+│  功能层不是终点。UPLP 统一语义，UBMP 校准行为，UNIP 对接神经——              │
 │  三通道似然经 PSE 贝叶斯融合，更新状态后后验。                              │
 │                                                                          │
-│  🟢 UPLS 语义通道   🔵 UNIS 神经通道   🟤 UBMS 行为通道                    │
+│  🟢 UPLP 语义通道   🔵 UNIP 神经通道   🟤 UBMP 行为通道                    │
 │                                                                          │
 │  ┌─────────────────────┐  ┌─────────────────────────────┐                │
 │  │  ↻ 重看 4 幕         │  │  ✉ 反馈邮箱                  │  ← .act-end-actions
@@ -406,9 +406,9 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 │  向下扎根            │
 │  功能层不是终点…      │
 │                     │
-│  🟢 UPLS            │
-│  🔵 UNIS            │
-│  🟤 UBMS            │
+│  🟢 UPLP            │
+│  🔵 UNIP            │
+│  🟤 UBMP            │
 │                     │
 │  ┌─────────────────┐│
 │  │ ↻ 重看 4 幕      ││  ← 44px 触控目标
@@ -431,7 +431,7 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 ### 6.1 顶栏内部间距
 
 ```
-[INTRE 24px] [· 8px] [FLP 14px]               gap-flex              [首页 16px] [· 6px] [UPLS 16px] [· 6px] ...
+[INTRE 24px] [· 8px] [FLP 14px]               gap-flex              [首页 16px] [· 6px] [UPLP 16px] [· 6px] ...
 ├──────────┤    ├────┤                          ├──────────────────┤  ├────┤    ├────┤    ├────┤    ├────┤
   wordmark      brand-sub                        flex-grow:1            nav-link  gap  nav-link  gap  nav-link
   24px          14px CJK                         1fr                    16px CJK  6px  16px CJK  6px  16px CJK
@@ -480,7 +480,7 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 | nav-link | rgba(214,229,243,0.75) | 16px | 无 |
 | rail-dot | transparent | 10×10 | 1px solid navy-500 |
 | rail-label | scene-text-muted | 13px | — |
-| legend-dot | 通道色（UPLS #5A8270 / UNIS #5B7080 / UBMS #8B7360） | 8×8 | 无 |
+| legend-dot | 通道色（UPLP #5A8270 / UNIP #5B7080 / UBMP #8B7360） | 8×8 | 无 |
 | badge-42 | amber-500 | 11.5px | 1px solid amber-600@40% |
 | 节点球 | scene-text@60% | r=0.28 | — |
 
@@ -567,9 +567,9 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 │ INTRE          [×] │
 ├─────────────────────┤
 │ 首页                 │  ← 44px 触控目标
-│ UPLS                 │
-│ UNIS                 │
-│ UBMS                 │
+│ UPLP                 │
+│ UNIP                 │
+│ UBMP                 │
 │ PSE                  │
 │ REVER                │
 │ 教材                  │
@@ -640,7 +640,7 @@ center: 50% / max-width: 480px / padding: 0
 │ 运动意象等可报告的心理内容。      │
 │                                  │
 │ ④ nd-markers                    │  ← 神经层标记物 14px CJK
-│ 神经层标记物：感觉皮层激活、       │    (对应 UNIS 通道的可观测指标)
+│ 神经层标记物：感觉皮层激活、       │    (对应 UNIP 通道的可观测指标)
 │ 体感诱发电位 SEP、fMRI S1 区      │
 ├──────────────────────────────────┤
 │ ⑤ nd-link                       │  ← 教材详解链接 amber-500
@@ -773,7 +773,7 @@ renderPoster() → pTarget = 0.62（平台期满显帧，v2.4）/ pTarget = 0.86
   - §2.1 星场：暗星尺寸下限 0.03 / uScale 600 / 逐颗色温抖动；act-h1 色 Navy 50 ↔ act-sub 色 scene-text 对调；scroll-hint 距底 8vh + hint-text 字距 0.14em；遥测数值字重 500
   - §3.1 星座连线圆柱半径 0.055 / opacity 0.40
   - §4.2 节点 hover 1.65（阻尼）+ 晶格连线色 Navy 400 #3B6FB5 / latBase 0.55 + 0.25 × uLattice
-  - §5.3 legend 大地色系 UPLS #5A8270 / UNIS #5B7080 / UBMS #8B7360（品牌规范 v2.3 最高权威，旧 emerald/cyan/amber 配色作废）+ 脉冲错相 0 / 0.66s / 1.33s（reduced-motion 静止）
+  - §5.3 legend 大地色系 UPLP #5A8270 / UNIP #5B7080 / UBMP #8B7360（品牌规范 v2.3 最高权威，旧 emerald/cyan/amber 配色作废）+ 脉冲错相 0 / 0.66s / 1.33s（reduced-motion 静止）
   - §6.2 kicker 下边距 18px→12px
   - §7 交互态：焦点指示 2px Navy 50 + 2px 偏移；光标 ring 24px / hover scale(1.5) / 品牌缓动 cubic-bezier(0.16,1,0.3,1)
   - §8.5 · §9 关闭按钮（.mb-close / .nd-close）字号 1.25rem

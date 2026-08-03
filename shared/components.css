@@ -333,9 +333,9 @@ tbody tr:hover {
 }
 
 /* P1-4: 徽章背景加深，确保白字对比度 ≥4.5:1（品牌 token 不变，仅徽章覆写） */
-.badge-upls  { background-color: #3D5C4D; color: var(--color-white); }
-.badge-unis  { background-color: #3F5263; color: var(--color-white); }
-.badge-ubms  { background-color: #6B5947; color: var(--color-white); }
+.badge-uplp  { background-color: #3D5C4D; color: var(--color-white); }
+.badge-unip  { background-color: #3F5263; color: var(--color-white); }
+.badge-ubmp  { background-color: #6B5947; color: var(--color-white); }
 .badge-pse   { background-color: #5C4563; color: var(--color-white); }
 .badge-rever { background-color: #6B4838; color: var(--color-white); }
 
@@ -362,9 +362,9 @@ tbody tr:hover {
   border-radius: var(--radius-xs);
 }
 
-.module-label.upls::before  { background-color: var(--color-upls);  }
-.module-label.unis::before  { background-color: var(--color-unis);  }
-.module-label.ubms::before  { background-color: var(--color-ubms);  }
+.module-label.uplp::before  { background-color: var(--color-uplp);  }
+.module-label.unip::before  { background-color: var(--color-unip);  }
+.module-label.ubmp::before  { background-color: var(--color-ubmp);  }
 .module-label.pse::before   { background-color: var(--color-pse);   }
 .module-label.rever::before { background-color: var(--color-rever); }
 
@@ -460,7 +460,7 @@ hr {
 
 /* ============================================================
    子页面公共样式 v2.2.0
-   用于 UPLS/UNIS/UBMS/PSE/REVER/Glossary 等子页面
+   用于 UPLP/UNIP/UBMP/PSE/REVER/Glossary 等子页面
    ============================================================ */
 
 /* ===== 页面容器 ===== */
@@ -647,9 +647,9 @@ hr {
   margin-left: 0.5rem;
 }
 
-.channel-badge.upls  { background-color: var(--color-upls);  color: var(--color-white); }
-.channel-badge.unis  { background-color: var(--color-unis);  color: var(--color-white); }
-.channel-badge.ubms  { background-color: var(--color-ubms);  color: var(--color-white); }
+.channel-badge.uplp  { background-color: var(--color-uplp);  color: var(--color-white); }
+.channel-badge.unip  { background-color: var(--color-unip);  color: var(--color-white); }
+.channel-badge.ubmp  { background-color: var(--color-ubmp);  color: var(--color-white); }
 .channel-badge.pse   { background-color: var(--color-pse);   color: var(--color-white); }
 .channel-badge.rever { background-color: var(--color-rever); color: var(--color-white); }
 
@@ -1731,7 +1731,7 @@ body.sidebar-open { overflow: hidden; }
   margin-bottom: 1rem;
 }
 
-/* UNIS layer-card descriptions */
+/* UNIP layer-card descriptions */
 .layer-desc {
   font-size: 0.85rem;
   color: var(--color-navy-400);
@@ -1757,8 +1757,8 @@ body.sidebar-open { overflow: hidden; }
 .icon-blue  { color: var(--color-navy-600); }
 
 /* Index.html fusion-item channel colors */
-.fusion-item.upls   { border-left-color: var(--color-navy-400); }
-.fusion-item.ubms   { border-left-color: var(--color-navy-400); }
+.fusion-item.uplp   { border-left-color: var(--color-navy-400); }
+.fusion-item.ubmp   { border-left-color: var(--color-navy-400); }
 .fusion-item.pse    { border-left-color: var(--color-navy-600); }
 
 /* Index.html channel dots */
@@ -1770,9 +1770,9 @@ body.sidebar-open { overflow: hidden; }
   flex-shrink: 0;
 }
 
-.ch-dot.upls  { background: var(--color-upls); }
-.ch-dot.unis  { background: var(--color-unis); }
-.ch-dot.ubms  { background: var(--color-ubms); }
+.ch-dot.uplp  { background: var(--color-uplp); }
+.ch-dot.unip  { background: var(--color-unip); }
+.ch-dot.ubmp  { background: var(--color-ubmp); }
 .ch-dot.pse   { background: var(--color-pse); }
 .ch-dot.rever { background: var(--color-rever); }
 
@@ -1807,7 +1807,7 @@ body.sidebar-open { overflow: hidden; }
 /* Code block small variant */
 .code-block-xs { font-size: 0.82rem; }
 
-/* UBMS feature list */
+/* UBMP feature list */
 .feature-list {
   margin: 0.5rem 0 0 1.2rem;
   color: var(--color-slate-700);

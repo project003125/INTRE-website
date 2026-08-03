@@ -471,7 +471,7 @@
 **本轮概述**：系统审查修复 + 品牌规范对齐，共 5 大类变更（A-E）。品牌视觉规范为最高权威。
 
 **A. 品牌规范对齐**：
-- 通道色改大地色系：--intre-upls #5A8270（灰绿）/ --intre-unis #5B7080（灰蓝）/ --intre-ubms #8B7360（土棕）；删除 --intre-pse/--intre-rever 僵尸变量
+- 通道色改大地色系：--intre-uplp #5A8270（灰绿）/ --intre-unip #5B7080（灰蓝）/ --intre-ubmp #8B7360（土棕）；删除 --intre-pse/--intre-rever 僵尸变量
 - burst 粒子琥珀色 #E8A93C → 品牌 Amber 500 #F59E0B
 - 新增全局 :focus-visible（2px 实线 Navy 50 + 2px 偏移，深色场景用 Navy 50 保证可见）
 - 动效缓动统一品牌曲线 cubic-bezier(0.16,1,0.3,1)（cursor-ring / burst）

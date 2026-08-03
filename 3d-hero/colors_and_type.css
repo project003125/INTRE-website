@@ -47,9 +47,9 @@
   --intre-amber-100: #FDE68A;
 
   /* ---------- 大地通道色（规范 §3.4 精确色值） ---------- */
-  --intre-upls: #5A8270;   /* UPLS 语义通道 · 大地绿 */
-  --intre-unis: #5B7080;   /* UNIS 神经通道 · 大地蓝 */
-  --intre-ubms: #8B7360;   /* UBMS 行为通道 · 大地棕 */
+  --intre-uplp: #5A8270;   /* UPLP 语义通道 · 大地绿 */
+  --intre-unip: #5B7080;   /* UNIP 神经通道 · 大地蓝 */
+  --intre-ubmp: #8B7360;   /* UBMP 行为通道 · 大地棕 */
   --intre-pse:  #7B6080;   /* PSE 计算引擎 · 大地紫 */
   --intre-rever:#8B6050;   /* REVER 伦理审查 · 大地赭 */
 

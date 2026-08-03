@@ -28,7 +28,7 @@ INTRE 顶层
 Website/ 子项目
 ├── -website/（2D 静态官网 · 已上线）
 │   ├── index.html              ← 首页（含"3D 体验"入口链接）
-│   ├── upls/unis/ubms/pse/rever/  ← 五大模块子站
+│   ├── uplp/unip/ubmp/pse/rever/  ← 五大模块子站
 │   ├── textbook/               ← 29 章 + 14 附录教材
 │   ├── glossary/               ← 术语表
 │   ├── shared/                 ← 共享品牌 token 与组件
@@ -45,7 +45,7 @@ Website/ 子项目
 **3D Hero 与 2D 网站的协作关系**：
 - 2D 网站是**内容枢纽**（深度阅读、模块详解、教材、术语表）
 - 3D Hero 是**叙事入口**（2-3 分钟建立心智模型）
-- 出口链接系统：3D Hero 全部指向 2D 网站（`../upls/` 等相对路径）
+- 出口链接系统：3D Hero 全部指向 2D 网站（`../uplp/` 等相对路径）
 - 入口引导：2D 网站首页加"3D 体验"按钮（v2.1 决策 Q4）
 
 ---
@@ -188,8 +188,8 @@ lib/
 
 **RCT4 · 神经层（永驻）**
 - 标"向下扎根"
-- 正文"功能层不是终点。UPLS 统一语义，UBMS 校准行为，UNIS 对接神经——三通道似然经 PSE 贝叶斯融合，更新状态后验。"
-- 三通道 legend（点击跳 UPLS/UNIS/UBMS 模块子站）
+- 正文"功能层不是终点。UPLP 统一语义，UBMP 校准行为，UNIP 对接神经——三通道似然经 PSE 贝叶斯融合，更新状态后验。"
+- 三通道 legend（点击跳 UPLP/UNIP/UBMP 模块子站）
 - 3D 场景：DTI 脑图（v2.4 2D 贴图 / v2.5 D33 升级为 3D 脑模型 + DTI 纹理投影）
 - 末尾收尾：#replay-btn（重看 4 幕） + mailto 反馈邮箱（v2.1 Q9 决策）
 
@@ -244,18 +244,18 @@ lib/
 |--------------|---------|
 | 顶部导航 INTRE 标志 | `/INTRE-website/` 首页 |
 | 顶部导航"首页" | `/INTRE-website/` |
-| 顶部导航"UPLS" | `/INTRE-website/upls/` |
-| 顶部导航"UNIS" | `/INTRE-website/unis/` |
-| 顶部导航"UBMS" | `/INTRE-website/ubms/` |
+| 顶部导航"UPLP" | `/INTRE-website/uplp/` |
+| 顶部导航"UNIP" | `/INTRE-website/unip/` |
+| 顶部导航"UBMP" | `/INTRE-website/ubmp/` |
 | 顶部导航"PSE" | `/INTRE-website/pse/` |
 | 顶部导航"REVER" | `/INTRE-website/rever/` |
 | 顶部导航"教材" | `/INTRE-website/textbook/` |
 | 顶部导航"术语表" | `/INTRE-website/glossary/` |
 | 公式芯片 Ψ(t) | `/INTRE-website/glossary/?q=状态向量` |
 | 42 徽章 | `/INTRE-website/textbook/ch08.html`（第 8 章） |
-| 三通道 legend UPLS | `/INTRE-website/upls/` |
-| 三通道 legend UNIS | `/INTRE-website/unis/` |
-| 三通道 legend UBMS | `/INTRE-website/ubms/` |
+| 三通道 legend UPLP | `/INTRE-website/uplp/` |
+| 三通道 legend UNIP | `/INTRE-website/unip/` |
+| 三通道 legend UBMP | `/INTRE-website/ubmp/` |
 | 节点详情面板"查看教材" | 教材对应章节（v1.1 精细化，v2.1 暂用 `#` 占位） |
 
 ### 5.2 部署方案
@@ -290,9 +290,9 @@ lib/
 | `--intre-navy-50` | `#D6E5F3` | 淡色背景块、文字 |
 | `--intre-amber-600` | `#D97706` | 强调（CTA） |
 | `--intre-amber-500` | `#F59E0B` | 次要强调（节点 hover、徽章） |
-| `--intre-upls` | `#5A8270` | UPLS 大地绿（语义通道） |
-| `--intre-unis` | `#5B7080` | UNIS 大地蓝（神经通道） |
-| `--intre-ubms` | `#8B7360` | UBMS 大地棕（行为通道） |
+| `--intre-uplp` | `#5A8270` | UPLP 大地绿（语义通道） |
+| `--intre-unip` | `#5B7080` | UNIP 大地蓝（神经通道） |
+| `--intre-ubmp` | `#8B7360` | UBMP 大地棕（行为通道） |
 
 ### 6.2 字体体系（向 2D 网站对齐）
 
@@ -487,7 +487,7 @@ lib/
 
 - 共享 `06-S-05` 品牌规范
 - 共享 `06-S-07` Agent 长期记忆（区分 `INTRE-vault` 与 `INTRE-website`）
-- 共享 4 大模块理论内容（UPLS/UNIS/UBMS/PSE/REVER）
+- 共享 4 大模块理论内容（UPLP/UNIP/UBMP/PSE/REVER）
 
 ---
 

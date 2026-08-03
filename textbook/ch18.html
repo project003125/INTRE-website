@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,7 +70,7 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第18章 PSE架构：五层引擎与心智六论</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLS语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIS的神经似然输入。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLP语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIP的神经似然输入。</p></blockquote>
 
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 
@@ -152,12 +152,12 @@
 
 <p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道：</p>
 <ul>
-<li><strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMS（统一行为测量系统）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t)</li>
-<li><strong>语义通道</strong>：通过UPLS的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布</li>
-<li><strong>神经通道</strong>：通过UNIS（统一神经接口系统）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</li>
+<li><strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMP（统一行为测量端口）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t)</li>
+<li><strong>语义通道</strong>：通过UPLP的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布</li>
+<li><strong>神经通道</strong>：通过UNIP（统一神经接口端口）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</li>
 </ul>
 
-<p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIS，实现神经模型的在线个体化微调。</p>
+<p>PSE将这三个通道的似然进行贝叶斯融合，输出状态后验分布。同时，PSE通过<code>/state_estimate</code>和<code>/calibration_feedback</code>协议将状态估计和校准残差反馈给UNIP，实现神经模型的在线个体化微调。</p>
 
 <p><strong>层间依赖关系</strong>：架构层 → 算法层 → 参数层 → 方法论层 → 协议层（单向）。下层变化影响上层，但上层变化不应波及下层。这实现了<strong>关注点分离</strong>：测量工具改进只影响参数层，不会迫使架构层修改。</p>
 
@@ -478,19 +478,19 @@
 
 <p><strong>输出</strong>：可执行的PSE仿真环境（Docker容器或Python库），以及标准API供PSE-M/PSE-P/PSE-C调用。</p>
 
-<p><strong>文化变体的注入</strong>：UPLS的PSL-L中的文化变体参数在PSE-I阶段被注入，使仿真可针对不同文化背景调整。文化变体参数初始值基于跨文化文献（F级），跨文化等值性有待PSE-C验证（P级）。</p>
+<p><strong>文化变体的注入</strong>：UPLP的PSL-L中的文化变体参数在PSE-I阶段被注入，使仿真可针对不同文化背景调整。文化变体参数初始值基于跨文化文献（F级），跨文化等值性有待PSE-C验证（P级）。</p>
 
 <p><strong>验证与测试</strong>：PSE-I输出需通过单元测试、集成测试、回归测试。PSE开源引擎快速入门见附录C。</p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSE是INTRE框架的计算核心，采用五层架构将功能层静态描述转化为可运行的动力学仿真系统。架构层定义坐标系统，算法层提供演化规则（心智六论），参数层提供先验分布，方法论层规定四阶段仿真流程（I/M/P/C），协议层提供临床接口。PSE的输入来自三个通道：行为、语义（UPLS）和神经（UNIS），通过贝叶斯融合实现多模态状态估计。心智六论分工明确：MCT编译输入，MTT描述拓扑，MKT提供速率方程，MDT规划干预，MPT约束结构改变，MET耦合环境。PSE-I是将理论规范编译为可执行代码的注入阶段，文化变体在此纳入。PSE的设计类比于数值天气预报——它不是在已有数据上拟合统计规律，而是从理论方程出发，通过同化观测数据来逼近个体真实状态。</p>
+<p><strong>本章小结</strong>：PSE是INTRE框架的计算核心，采用五层架构将功能层静态描述转化为可运行的动力学仿真系统。架构层定义坐标系统，算法层提供演化规则（心智六论），参数层提供先验分布，方法论层规定四阶段仿真流程（I/M/P/C），协议层提供临床接口。PSE的输入来自三个通道：行为、语义（UPLP）和神经（UNIP），通过贝叶斯融合实现多模态状态估计。心智六论分工明确：MCT编译输入，MTT描述拓扑，MKT提供速率方程，MDT规划干预，MPT约束结构改变，MET耦合环境。PSE-I是将理论规范编译为可执行代码的注入阶段，文化变体在此纳入。PSE的设计类比于数值天气预报——它不是在已有数据上拟合统计规律，而是从理论方程出发，通过同化观测数据来逼近个体真实状态。</p>
 
-<blockquote><p><strong>关键术语</strong>：PSE，五层架构，心智六论，MCT/MTT/MKT/MDT/MPT/MET，PSE-I/M/P/C，三通道输入，UNIS</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：PSE，五层架构，心智六论，MCT/MTT/MKT/MDT/MPT/MET，PSE-I/M/P/C，三通道输入，UNIP</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLS）和神经（UNIS）三个通道的输入。</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLP）和神经（UNIP）三个通道的输入。</p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些基础设施提供？UNIS在其中扮演什么角色？</p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些基础设施提供？UNIP在其中扮演什么角色？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <div class="version-record-title">版本记录</div>
@@ -522,7 +522,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

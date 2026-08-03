@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,24 +70,24 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第26章 心理AI：功能层驱动的智能交互</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIS作为神经输入前端在心理AI中的角色。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述心理AI的三层架构（PSE内核+REVER伦理层+LLM界面）；(2)理解心理AI与传统聊天机器人的本质区别；(3)列举心理AI在教育、老年照护、企业EAP、心理健康聊天机器人四个场景中的应用方式；(4)识别心理AI的伦理承诺和局限性；(5)了解UNIP作为神经输入前端在心理AI中的角色。</p></blockquote>
 
 <blockquote><p><strong>⚠️ 重要声明</strong>：心理AI当前阶段应被定位为<strong>辅助工具</strong>，而非替代人类治疗师。对于自杀危机、严重精神障碍，必须有人类专业人员的监督和介入。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>26.1 架构定义：PSE内核+REVER伦理层+UNIS前端+LLM界面</h2>
+<h2>26.1 架构定义：PSE内核+REVER伦理层+UNIP前端+LLM界面</h2>
 
 <p>心理AI是指以INTRE功能层语法为内核、以大语言模型(LLM)为人机交互界面的智能系统。它区别于传统“共情聊天机器人”的关键在于：<strong>心理AI不是在学习如何“像人一样对话”，而是在学习如何将自然语言编译为M-R-D-S状态向量，基于动力学模型预测轨迹，再通过G-M-A-R操作生成干预</strong>。</p>
 
 <p><strong>心理AI的四层架构</strong>：</p>
 
 <ol>
-<li><strong>UNIS神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIS作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \( p(y_n \mid \Psi_t) \)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
+<li><strong>UNIP神经前端（可选）</strong>：当心理AI部署在可穿戴设备或实验室环境中时，UNIP作为神经输入前端实时接收EEG、fNIRS、PPG等信号，输出神经似然 \( p(y_n \mid \Psi_t) \)。这一通道提供了高时间分辨率、抗主观偏倚的状态信息，特别适用于疲劳监测、情绪唤醒度估计和认知负荷评估。在无神经设备的场景下，心理AI可仅使用行为和语义通道。</li>
 </ol>
 
 <ol>
-<li><strong>PSE内核</strong>：负责状态估计、轨迹预测、干预规划。输入是MCT编译后的M-R-D-S状态向量、S-P环境向量，以及来自UNIS的神经似然（若有）。输出是状态后验分布、预测区间和推荐的G-M-A-R操作序列。PSE内核是“冷”的计算引擎——只做数值计算和优化。</li>
+<li><strong>PSE内核</strong>：负责状态估计、轨迹预测、干预规划。输入是MCT编译后的M-R-D-S状态向量、S-P环境向量，以及来自UNIP的神经似然（若有）。输出是状态后验分布、预测区间和推荐的G-M-A-R操作序列。PSE内核是“冷”的计算引擎——只做数值计算和优化。</li>
 </ol>
 
 <ol>
@@ -98,7 +98,7 @@
 <li><strong>LLM界面</strong>：负责将PSE输出（状态报告、预测、操作序列）转译为自然语言响应，并将用户的自然语言输入反向编译为MCT可读的格式化数据。LLM充当“翻译器”，而非“决策者”。所有临床决策由PSE内核做出。</li>
 </ol>
 
-<p><strong>完整数据流（含UNIS）</strong>：</p>
+<p><strong>完整数据流（含UNIP）</strong>：</p>
 
 <pre><code class="language-text">┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
 │  可穿戴设备  │    │   用户输入   │    │   环境传感器 │    │   历史记录   │
@@ -107,7 +107,7 @@
        │                  │                  │                  │
        ▼                  ▼                  ▼                  ▼
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│    UNIS     │    │    UPLS     │    │    UBMS     │    │    PSE      │
+│    UNIP     │    │    UPLP     │    │    UBMP     │    │    PSE      │
 │  神经似然   │    │  语义似然   │    │  行为似然   │    │  状态融合   │
 └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
        │                  │                  │                  │
@@ -147,7 +147,7 @@
 <tr>
 <td>状态追踪</td>
 <td>无状态或有限上下文窗口</td>
-<td>持续追踪42维状态向量演化（含UNIS神经通道）</td>
+<td>持续追踪42维状态向量演化（含UNIP神经通道）</td>
 </tr>
 <tr>
 <td>机制解释</td>
@@ -167,19 +167,19 @@
 <tr>
 <td>多模态融合</td>
 <td>通常仅文本</td>
-<td>行为+语义（UPLS）+神经（UNIS）</td>
+<td>行为+语义（UPLP）+神经（UNIP）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>一次典型交互的信息流（含UNIS）</strong>：</p>
+<p><strong>一次典型交互的信息流（含UNIP）</strong>：</p>
 
 <ol>
 <li>用户输入：“我今天感觉特别糟糕，什么事都做不了。”</li>
-<li>（可选）UNIS从可穿戴设备读取HRV和theta/beta比，输出神经似然：<code>M3-RES-D=35±6</code>，<code>M4-DSP-B=78±5</code></li>
+<li>（可选）UNIP从可穿戴设备读取HRV和theta/beta比，输出神经似然：<code>M3-RES-D=35±6</code>，<code>M4-DSP-B=78±5</code></li>
 <li>LLM预处理：提取关键特征（情感词“糟糕”、行为报告“什么事都做不了”）</li>
-<li>MCT编译：结合UNIS神经似然，映射到M-R-D-S分量——<code>M4-DSP-B</code>置信度0.85，<code>M3-RES-D</code>置信度0.80</li>
+<li>MCT编译：结合UNIP神经似然，映射到M-R-D-S分量——<code>M4-DSP-B</code>置信度0.85，<code>M3-RES-D</code>置信度0.80</li>
 <li>PSE状态更新：贝叶斯滤波融合行为、语义、神经三通道，更新状态估计</li>
 <li>PSE预测：未来24小时轨迹预测（如M3-RES-D可能在下午3点跌破阈值）</li>
 <li>MDT干预规划：推荐操作序列——<code>[MODULATE+ M1-RES-D， GATE– M2-DSP-B]</code></li>
@@ -204,7 +204,7 @@
 <th>心理状态</th>
 <th>M-R-D-S映射</th>
 <th>行为指标</th>
-<th>神经指标（UNIS）</th>
+<th>神经指标（UNIP）</th>
 <th>干预</th>
 </tr></thead>
 <tbody>
@@ -252,12 +252,12 @@
 
 <p>老年人群面临的核心心理挑战是孤独感(M4-RES-B下降)和认知衰退(M2-RES-D下降)。</p>
 
-<p><strong>孤独感的早期检测</strong>（通过智能音箱、可穿戴设备、家居传感器，可选UNIS增强）：</p>
+<p><strong>孤独感的早期检测</strong>（通过智能音箱、可穿戴设备、家居传感器，可选UNIP增强）：</p>
 
 <ul>
 <li>语言标记：“一个人”“没有人”“孤单”频率上升；主动发起对话减少</li>
 <li>行为标记：用餐时间不规律、外出频率下降、与家人通话减少</li>
-<li>生理标记（UNIS）：HRV下降、睡眠碎片化、theta/beta比异常</li>
+<li>生理标记（UNIP）：HRV下降、睡眠碎片化、theta/beta比异常</li>
 </ul>
 
 <p><strong>社交陪伴的“放大而非替代”原则</strong>：</p>
@@ -280,7 +280,7 @@
 <ul>
 <li>工作模式：工作时间异常延长、任务切换频率增加、加班后次日恢复缓慢</li>
 <li>沟通模式：邮件/消息语气从积极转向消极、回复延迟增加、协作频率下降</li>
-<li>生理信号（可选佩戴，UNIS）：HRV下降、前额叶theta/beta比升高（认知负荷累积）</li>
+<li>生理信号（可选佩戴，UNIP）：HRV下降、前额叶theta/beta比升高（认知负荷累积）</li>
 </ul>
 
 <p><strong>倦怠的分级干预</strong>：</p>
@@ -333,7 +333,7 @@
 <tr>
 <td>响应逻辑</td>
 <td>关键词触发 → 预写回应</td>
-<td>自然语言 → MCT编译 → 状态更新（+UNIS神经似然）→ 预测 → MDT规划 → 门控 → LLM生成</td>
+<td>自然语言 → MCT编译 → 状态更新（+UNIP神经似然）→ 预测 → MDT规划 → 门控 → LLM生成</td>
 </tr>
 <tr>
 <td>干预选择</td>
@@ -358,7 +358,7 @@
 </ul>
 
 <ul>
-<li><strong>心理AI（含UNIS）</strong>：从可穿戴设备读取HRV（高频功率降低至28，基线的60%）和theta/beta比（升高至2.8，基线1.5）。MCT编译为M4-DSP-B=85，M2-DSP-B=78，M1-DSP-B高，M3-RES-D=42。MDT推荐<code>[GATE– M4-DSP-B（5-4-3-2-1）， MODULATE+ M1-RES-D（深呼吸）， ALIGN M2-STR-R（演讲只是展示，不是审判）]</code>。LLM生成：“我注意到你的身体进入了应激模式，生理信号也显示高度警觉。我们来做两个简单的练习：第一，说出你现在看到的5样东西、听到的3个声音、触摸到的2样东西；第二，跟随我的节奏吸气4秒、呼气6秒，做5次。完成后再想想：演讲的本质是分享信息，还是接受审判？”</li>
+<li><strong>心理AI（含UNIP）</strong>：从可穿戴设备读取HRV（高频功率降低至28，基线的60%）和theta/beta比（升高至2.8，基线1.5）。MCT编译为M4-DSP-B=85，M2-DSP-B=78，M1-DSP-B高，M3-RES-D=42。MDT推荐<code>[GATE– M4-DSP-B（5-4-3-2-1）， MODULATE+ M1-RES-D（深呼吸）， ALIGN M2-STR-R（演讲只是展示，不是审判）]</code>。LLM生成：“我注意到你的身体进入了应激模式，生理信号也显示高度警觉。我们来做两个简单的练习：第一，说出你现在看到的5样东西、听到的3个声音、触摸到的2样东西；第二，跟随我的节奏吸气4秒、呼气6秒，做5次。完成后再想想：演讲的本质是分享信息，还是接受审判？”</li>
 </ul>
 
 <p><strong>临床验证路线</strong>：心理AI在应用于临床前需要经过：与金标准诊断的一致性检验；状态估计的重测信度和收敛效度；干预推荐与人类专家的一致性；随机对照试验证明优于常规聊天机器人。</p>
@@ -367,13 +367,13 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIS神经前端（可选）+ UBMS行为通道 + PSE内核（状态估计与干预规划）+ REVER伦理层（门控审查）+ LLM界面（自然语言编译与生成）。它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIS提供高时间分辨率、抗主观偏倚的神经通道输入。在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。在老年照护中，遵循“社交放大而非替代”原则，检测孤独感并提供认知刺激。在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。在心理健康聊天机器人中，实现了从“话术匹配”到“功能层干预”的跃迁。心理AI与REVER的协同确保了技术落地的伦理安全性。</p>
+<p><strong>本章小结</strong>：心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIP神经前端（可选）+ UBMP行为通道 + PSE内核（状态估计与干预规划）+ REVER伦理层（门控审查）+ LLM界面（自然语言编译与生成）。它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIP提供高时间分辨率、抗主观偏倚的神经通道输入。在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。在老年照护中，遵循“社交放大而非替代”原则，检测孤独感并提供认知刺激。在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。在心理健康聊天机器人中，实现了从“话术匹配”到“功能层干预”的跃迁。心理AI与REVER的协同确保了技术落地的伦理安全性。</p>
 
-<blockquote><p><strong>关键术语</strong>：心理AI，PSE内核+LLM界面，UNIS神经前端，UBMS行为测量，社交放大而非替代，冷启动，三通道融合</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：心理AI，PSE内核+LLM界面，UNIP神经前端，UBMP行为测量，社交放大而非替代，冷启动，三通道融合</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “心理AI可以替代人类治疗师” → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。<br>- ❌ “心理AI的核心能力是更像人” → ✅ 心理AI的核心能力是“更懂功能”——将自然语言编译为状态向量并基于动力学模型决策。<br>- ❌ "UNIS是心理AI的必需品" → ✅ UNIS是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。<br>- ❌ "行为通道就是量表分数" → ✅ UBMS将量表分数转化为功能似然时经过三层处理：注册库存储工具信息、校准与桥接引擎执行个体化修正与跨工具桥接、似然API提供标准化接口。这远超出了简单的分数对照。</p></blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “心理AI可以替代人类治疗师” → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。<br>- ❌ “心理AI的核心能力是更像人” → ✅ 心理AI的核心能力是“更懂功能”——将自然语言编译为状态向量并基于动力学模型决策。<br>- ❌ "UNIP是心理AI的必需品" → ✅ UNIP是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。<br>- ❌ "行为通道就是量表分数" → ✅ UBMP将量表分数转化为功能似然时经过三层处理：注册库存储工具信息、校准与桥接引擎执行个体化修正与跨工具桥接、似然API提供标准化接口。这远超出了简单的分数对照。</p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 画出心理AI的四层架构图，标注每层的数据流向。<br>2. 传统聊天机器人与心理AI在响应“我感到焦虑”时，内部处理流程的根本差异是什么？<br>3. 如果自主性优先原则被严格执行，心理AI的商业模型将如何受到影响？讨论商业利益与伦理设计之间的张力。<br>4. UNIS在心理AI中扮演什么角色？在什么场景下UNIS通道最为关键？</p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 画出心理AI的四层架构图，标注每层的数据流向。<br>2. 传统聊天机器人与心理AI在响应“我感到焦虑”时，内部处理流程的根本差异是什么？<br>3. 如果自主性优先原则被严格执行，心理AI的商业模型将如何受到影响？讨论商业利益与伦理设计之间的张力。<br>4. UNIP在心理AI中扮演什么角色？在什么场景下UNIP通道最为关键？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <div class="version-record-title">版本记录</div>
@@ -405,7 +405,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

@@ -36,7 +36,7 @@
 - [ ] 无 `backdrop-filter` glass morphism 效果
 - [ ] 无 SaaS 紫蓝渐变 / 拟物 / 高光 / 玻璃拟态
 - [ ] Navy 90% / Amber 5% / 通道色 5% 比例符合
-- [ ] 通道色使用大地色系（UPLS `#5A8270` / UNIS `#5B7080` / UBMS `#8B7360`）
+- [ ] 通道色使用大地色系（UPLP `#5A8270` / UNIP `#5B7080` / UBMP `#8B7360`）
 - [ ] 单视口通道色同时出现 ≤ 2 种
 
 ### 1.2 字体
@@ -70,7 +70,7 @@
 ### 2.1 全局外围
 
 - [ ] 顶栏 `#hud-top` 永驻显示（51px 高 / Navy 800 背景）
-- [ ] 顶栏 8 项导航对齐 2D 网站（首页 / UPLS / UNIS / UBMS / PSE / REVER / 教材 / 术语表）
+- [ ] 顶栏 8 项导航对齐 2D 网站（首页 / UPLP / UNIP / UBMP / PSE / REVER / 教材 / 术语表）
 - [ ] 三层指示器 `#hud-rail` 永驻（3 圆点 + 标签）
 - [ ] 公式芯片 `#formula-chip` RCT1 可见 / 其他幕隐藏
 - [ ] 滚动提示 `#scroll-hint` p>0.05 淡出
@@ -195,9 +195,9 @@
 
 - [ ] INTRE 品牌标志 → 2D 首页
 - [ ] "首页" → 2D 首页
-- [ ] "UPLS" → `/INTRE-website/upls/`
-- [ ] "UNIS" → `/INTRE-website/unis/`
-- [ ] "UBMS" → `/INTRE-website/ubms/`
+- [ ] "UPLP" → `/INTRE-website/uplp/`
+- [ ] "UNIP" → `/INTRE-website/unip/`
+- [ ] "UBMP" → `/INTRE-website/ubmp/`
 - [ ] "PSE" → `/INTRE-website/pse/`
 - [ ] "REVER" → `/INTRE-website/rever/`
 - [ ] "教材" → `/INTRE-website/textbook/`
@@ -207,9 +207,9 @@
 
 - [ ] 公式芯片 `Ψ(t) ∈ ℝ⁴²` → `/glossary/?q=状态向量`
 - [ ] 42 徽章 → `/textbook/ch08.html`（第 8 章）
-- [ ] RCT4 三通道 legend UPLS → `/upls/`
-- [ ] RCT4 三通道 legend UNIS → `/unis/`
-- [ ] RCT4 三通道 legend UBMS → `/ubms/`
+- [ ] RCT4 三通道 legend UPLP → `/uplp/`
+- [ ] RCT4 三通道 legend UNIP → `/unip/`
+- [ ] RCT4 三通道 legend UBMP → `/ubmp/`
 - [ ] 节点详情面板"查看教材" → 教材对应章节（v1.1 精细化，v2.1 暂用 `#` 占位）
 
 ### 5.3 链接技术

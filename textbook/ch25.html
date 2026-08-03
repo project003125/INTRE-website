@@ -49,9 +49,9 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/upls/">UPLS</a>
-                <a href="/INTRE-website/unis/">UNIS</a>
-                <a href="/INTRE-website/ubms/">UBMS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
@@ -70,7 +70,7 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第25章 REVER：结构伦理、依赖雷达与门控</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解REVER的非人格性公理和功能主义爱定义；(2)描述依赖雷达的五维计算（含UNIS可选生理通道）与分级干预；(3)掌握四道伦理门控的职责与UNIS辅助指标的触发条件；(4)明确REVER在AI伦理版图中的精确定位。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解REVER的非人格性公理和功能主义爱定义；(2)描述依赖雷达的五维计算（含UNIP可选生理通道）与分级干预；(3)掌握四道伦理门控的职责与UNIP辅助指标的触发条件；(4)明确REVER在AI伦理版图中的精确定位。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -123,7 +123,7 @@
 
 <p><strong>第二层：监控层</strong>——持续跟踪交互模式，计算<strong>依赖分数</strong>。</p>
 <ul>
-<li>数据来源：交互元数据（频率、时长、主动发起比例）；内容分析（情感投射语句频率）；行为指标（中断交互时的情绪反应）；<strong>UNIS生理信号（可选）</strong>：HRV、theta/beta比、皮肤电导等可穿戴数据，用于检测交互相关的生理唤醒模式</li>
+<li>数据来源：交互元数据（频率、时长、主动发起比例）；内容分析（情感投射语句频率）；行为指标（中断交互时的情绪反应）；<strong>UNIP生理信号（可选）</strong>：HRV、theta/beta比、皮肤电导等可穿戴数据，用于检测交互相关的生理唤醒模式</li>
 <li>输出：依赖分数的时序轨迹\(D(t)\)及五维子分数。</li>
 </ul>
 
@@ -236,7 +236,7 @@
 <td>强制输出社交资源推荐</td>
 </tr>
 <tr>
-<td>UNIS神经依赖性指标</td>
+<td>UNIP神经依赖性指标</td>
 <td>HRV在AI交互时异常升高（>基线2σ）或交互终止后HRV骤降（>30%）</td>
 <td>标记生理依赖，触发身份提醒并评估升级</td>
 </tr>
@@ -244,7 +244,7 @@
 </table>
 </div>
 
-<p><strong>UNIS实时依赖指标的辅助作用</strong>。当心理AI部署在可穿戴设备环境中时，UNIS通道可以提供传统文本分析无法捕捉的<strong>生理依赖性信号</strong>：</p>
+<p><strong>UNIP实时依赖指标的辅助作用</strong>。当心理AI部署在可穿戴设备环境中时，UNIP通道可以提供传统文本分析无法捕捉的<strong>生理依赖性信号</strong>：</p>
 
 <ul>
 <li><strong>交互期HRV异常升高</strong>：用户在与AI交互时心率变异性显著升高（相对于独处基线），提示AI交互已激活强烈的情绪性生理反应，可能类似于人际依赖中的"分离焦虑"生理模式</li>
@@ -252,7 +252,7 @@
 <li><strong>日间theta/beta比持续偏高</strong>：认知负荷长期处于高位，可能与过度依赖AI决策导致自主认知能力下降有关</li>
 </ul>
 
-<p>UNIS指标<strong>不独立触发门控</strong>——它们作为辅助信号增强或削弱文本分析结论的置信度。例如，当文本分析显示依赖分数=45（中度）但UNIS生理指标全部正常时，系统应下调风险评估的权重。这一设计遵循"UNIS只是三个视角之一"的基本原则（详见Ch9 §9.6）。</p>
+<p>UNIP指标<strong>不独立触发门控</strong>——它们作为辅助信号增强或削弱文本分析结论的置信度。例如，当文本分析显示依赖分数=45（中度）但UNIP生理指标全部正常时，系统应下调风险评估的权重。这一设计遵循"UNIP只是三个视角之一"的基本原则（详见Ch9 §9.6）。</p>
 
 <p><strong>第三道：干预门控(Intervention Gate)</strong>。在MDT规划操作序列后、执行前审查：</p>
 <ul>
@@ -360,9 +360,9 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：REVER是INTRE框架在AI伦理治理领域的应用扩展，提供了一种从架构上防止拟人化AI诱导情感依赖和欺骗性交互的结构伦理方案。其哲学基础是非人格性公理和功能主义爱定义。四层架构——哲学层（宪法）、监控层（依赖雷达，含UNIS可选生理通道）、执行层（分级干预）、透明层（可审计）——使伦理保障从"事后检测"转变为"架构内嵌"。依赖雷达从五维度量化用户依赖程度，触发从身份提醒到服务暂停的分级干预。四道伦理门控（输入、诊断、干预、输出）在交互流程各环节进行伦理审查——诊断门控新增UNIS神经依赖性指标（HRV异常、终止后骤降、日间高频段），作为文本分析的辅助信号。REVER在AI伦理版图中精确定位于L3交互层的情感依赖与欺骗预防，不涉及L2算法偏见及L4宏观社会问题。</p>
+<p><strong>本章小结</strong>：REVER是INTRE框架在AI伦理治理领域的应用扩展，提供了一种从架构上防止拟人化AI诱导情感依赖和欺骗性交互的结构伦理方案。其哲学基础是非人格性公理和功能主义爱定义。四层架构——哲学层（宪法）、监控层（依赖雷达，含UNIP可选生理通道）、执行层（分级干预）、透明层（可审计）——使伦理保障从"事后检测"转变为"架构内嵌"。依赖雷达从五维度量化用户依赖程度，触发从身份提醒到服务暂停的分级干预。四道伦理门控（输入、诊断、干预、输出）在交互流程各环节进行伦理审查——诊断门控新增UNIP神经依赖性指标（HRV异常、终止后骤降、日间高频段），作为文本分析的辅助信号。REVER在AI伦理版图中精确定位于L3交互层的情感依赖与欺骗预防，不涉及L2算法偏见及L4宏观社会问题。</p>
 
-<blockquote><p><strong>关键术语</strong>：非人格性公理，Love_Index，依赖雷达，四道伦理门控，AI 伦理问题四层分层框架（<strong>声明为非穷尽</strong>），UNIS神经依赖性指标</p></blockquote>
+<blockquote><p><strong>关键术语</strong>：非人格性公理，Love_Index，依赖雷达，四道伦理门控，AI 伦理问题四层分层框架（<strong>声明为非穷尽</strong>），UNIP神经依赖性指标</p></blockquote>
 
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “心理AI是AI治疗师” → ✅ 心理AI是辅助工具，对自杀危机和严重精神障碍必须有人类专业监督。<br>- ❌ “REVER试图解决所有AI伦理问题” → ✅ REVER定位于L3交互层的情感依赖与欺骗预防，不涉及算法偏见、隐私、就业等。</p></blockquote>
 
@@ -398,7 +398,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

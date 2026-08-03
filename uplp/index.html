@@ -262,6 +262,7 @@
             <p><strong>UPLP 的定位（2026-08 端口体系更新）：</strong> UPLP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>，与 UNIP（神经端口 L1-N）、UBMP（行为端口 L1-B）并列，构成 IODS 三输入端口。三端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：</p>
             <p style="text-align:center;font-family:var(--font-mono);font-size:1rem;margin:.6rem 0;">p(y | Ψ) = p(y<sub>b</sub> | Ψ) · p(y<sub>s</sub> | Ψ) · p(y<sub>n</sub> | Ψ)</p>
             <p><strong>当前进展：</strong> UPLP 处于规范设计阶段。定义侧内容（M-R-D-S 状态语法 / G-M-A-R 操作语法 / PCUI-L / PSL-L 等）已整体迁移至 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）；UPLP 本体页聚焦于"编译行为 + 接口契约 + 离线知识生产流水线"。五层编译流水线与降级模式以本文档为准，待 PSE-C 实证校准（仪器参数 P2i-m）后可用于临床决策。</p>
+            <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）：</strong> 原 UPLP 文档族（v1.0）由 A 面（定义面，UPLP-A：M-R-D-S/G-M-A-R/PCUI-L/PSL-L）与 B 面（编译面，UPLP-B：五层流水线 S1-S5 + 接口契约）构成；v1.0 拆分决策（P1 + R1）将 <strong>A 面整体移交给 IODS</strong>（<strong>IODS 继承原 UPLP 定义功能</strong>），B 面保留为现行 UPLP。本页仅承载 B 面（编译行为 + 接口契约 + 离线知识生产流水线）；定义侧的所有语法、坐标、操作均不再在 UPLP 重复定义——请前往 <a href="/INTRE-website/iods/">IODS</a> 查阅。</p>
         </div>
     </main>
 

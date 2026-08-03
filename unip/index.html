@@ -185,6 +185,8 @@
 
         <div class="info-box">
             <p><strong>UNIP 的定位（2026-07 管线体系更新）</strong>：UNIP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>神经模态输入端口（L1-N）</strong>，与 UPLP（语义端口 L1-S）、UBMP（行为端口 L1-B）并列，构成 IODS 三输入端口。三个端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前 UNIP 处于规范设计阶段，L4 和 L6 的工程实现为后续优先任务。</p>
+            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong> UNIP 不重新定义 42 维坐标系——坐标系的定义侧（M-R-D-S / G-M-A-R / PCUI-L / PSL-L）归 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）。UNIP 是"观测侧"——把原始神经信号（EEG / fNIRS / PPG / HRV）通过六层递进架构（L1 NAP / L2 SCL / L3 NFD / L4 NFM / L5 NPL / L6 RTE）转化为 42 维分布上的神经似然 p(y<sub>n</sub>|Ψ)。L4（Neuro-Functional Mapping）层是 UNIP 与 IODS 的核心交叉点——其映射的目标空间就是 IODS 定义的 42 维坐标系。</p>
+            <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）：</strong> UNIP 是 INTRE 端口体系三端口之一（与 UPLP/UBMP 并列）。原 UNIS（Unified Neural Interface Schema）v1.0 文档族的定义面（神经特征标识体系 / 神经-功能映射字典）按 R1 已决归 <a href="/INTRE-website/iods/">IODS</a> 所属 L0 文档族；UNIP 仅承载六层架构 + 接口契约与降级协议。</p>
         </div>
     </main>
 

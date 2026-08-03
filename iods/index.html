@@ -80,7 +80,7 @@
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            IODS 是 INTRE 管线体系 <strong>L0 本体</strong>——为整条管线（L0→L5）提供命名空间与合法性：<strong>42 维 M-R-D-S 状态坐标系</strong>、<strong>G-M-A-R 操作语法</strong>、<strong>PCUI/PSL 知识基础设施</strong>。L0 文档族由三份组成：<strong>IODS</strong>（本文档） + <strong>01-M-08 G-M-A-R 操作语法</strong> + <strong>01-M-09 S-P 环境参照系</strong>。IODS 是原 UPLS 定义身份（UPLP-A）的整体继承者，不含运行时、无 API、不含动力学方程——它是所有观测、估计、规划与执行的<strong>静态参照系</strong>。
+            IODS 是 INTRE 管线体系 <strong>L0 本体</strong>——为整条管线（L0→L5）提供命名空间与合法性：<strong>42 维 M-R-D-S 状态坐标系</strong>、<strong>G-M-A-R 操作语法</strong>、<strong>PCUI/PSL 知识基础设施</strong>。L0 文档族由三份组成：<strong>IODS</strong>（本文档） + <strong>01-M-08 G-M-A-R 操作语法</strong> + <strong>01-M-09 S-P 环境参照系</strong>。IODS 是原 UPLS 定义身份（UPLP-A）的整体继承者，<strong>继承原 UPLP 定义功能</strong>——不含运行时、无 API、不含动力学方程——它是所有观测、估计、规划与执行的<strong>静态参照系</strong>。
         </div>
 
         <!-- 一、M-R-D-S 内感架构 -->
@@ -403,6 +403,22 @@
 
         <div class="info-box">
             <p><strong>与 UPLP 的边界</strong>：IODS 定义"是什么"（状态坐标系、操作语法、知识基础设施）；UPLP 编译"怎么观测"（自然语言 → 语义似然的五层编译流水线 S1-S5）。<strong>IODS 不可用则编译无降级</strong>——UPLP 作为 PSE 感知层 L1-S 语义输入端口，<strong>强依赖</strong> IODS；IODS 不可用时 UPLP 无可编译的坐标系，编译无降级路径。IODS 与 UPLP 并列，共同构成 L0 + L1-S 的静态-观测分层。</p>
+            <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）</strong>：IODS <strong>继承原 UPLP 定义功能</strong>——原 UPLP 文档族中的 A 面（定义面，UPLP-A）整体迁移至 IODS；B 面（编译面，UPLP-B）保留为现行 UPLP 页（L1-S 端口）。这是 v1.0 拆分决策（P1 + R1）的落地结果：定义侧与编译侧解耦，使 UPLP 聚焦于"自然语言 → 语义似然"的工程行为，IODS 聚焦于"42 维坐标系 + 操作语法 + 知识基础设施"的本体参照。</p>
+            <p style="margin-top:.6rem;"><strong>与 PSE / UPLP / UBMP / UNIP 的关系图（简版）</strong>：</p>
+            <div class="code-block" style="font-size:0.82rem;">
+PSE 系统层（综合：贝叶斯融合、规划、伦理门控）
+   ↑
+   ├─ L1-N 神经通道 ← UNIP（神经信号 → 神经似然）
+   ├─ L1-S 语义通道 ← UPLP（自然语言 → 语义似然，<strong>强依赖 IODS</strong>）
+   └─ L1-B 行为通道 ← UBMP（行为观测 → 行为似然，<strong>语义对齐依赖 UPLP</strong>）
+                              ↓
+                            IODS（L0 本体）
+   ├─ 42 维 M-R-D-S 状态坐标系
+   ├─ G-M-A-R 操作语法（专项见 01-M-08）
+   ├─ S-P 环境参照系（专项见 01-M-09）
+   └─ PCUI-L / PSL-L 知识基础设施
+            </div>
+            <p style="margin-top:.6rem;">IODS 提供"是什么"的<strong>命名空间与合法性来源</strong>；三个端口（UPLP/UNIP/UBMP）提供"怎么观测"的<strong>观测通道</strong>；PSE 状态层提供"如何估计"的<strong>融合与仿真引擎</strong>；REVER 横跨 L1-L5 提供"是否合伦理"的<strong>门控护栏</strong>。</p>
         </div>
     </main>
 

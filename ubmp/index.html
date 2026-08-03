@@ -380,6 +380,13 @@
                 <p>p(y<sub>b</sub>|Ψ) 经 B5 BLI 输出观测块 {y<sub>b</sub>, σ<sub>b</sub>}（42 维），由 L1 汇总层转交 PSE 状态层（L2+）贝叶斯融合器，与语义、神经似然联合估计状态后验</p>
             </div>
         </div>
+
+        <!-- 结尾 info-box · 与 IODS 的边界 -->
+        <div class="info-box">
+            <p><strong>UBMP 的定位（2026-08 端口体系更新）：</strong> UBMP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>行为模态输入端口（L1-B）</strong>，与 UPLP（语义端口 L1-S）、UNIP（神经端口 L1-N）并列。UBMP 的 B2 BAL（行为语义对齐层）<strong>依赖 UPLP</strong>——两个量表跨工具桥接前必须经 UPLP 语义对齐确认同一 M-R-D-S 构念，这是 UBMP 与 IODS 的核心交叉点。</p>
+            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong> UBMP 不重新定义 42 维坐标系——坐标系的定义侧（M-R-D-S / G-M-A-R / PCUI-L / PSL-L）归 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）。UBMP 是"观测侧"——把结构化行为观测（BHI 条目、量表、EMA、数字表型）转化为 42 维分布上的行为似然 p(y<sub>b</sub>|Ψ)。</p>
+            <p style="margin-top:.6rem;"><strong>当前进展：</strong> UBMP 处于规范设计阶段；五层管道（B1 BMR / B2 BAL / B3 BLK / B4 BCI / B5 BLI）已落定。待 PSE-C 实证校准（B4 校准与个体化层）后可用于临床决策。</p>
+        </div>
     </main>
 
     <footer class="site-footer">

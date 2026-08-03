@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>INTRE · UPLP 统一心理语言端口</title>
-    <meta name="description" content="UPLP（统一心理语言端口）：INTRE 的语义通道与内感架构，提供 M-R-D-S 状态语法和 G-M-A-R 操作语法的形式化元语言基础设施。">
+    <meta name="description" content="UPLP（统一心理语言端口）：INTRE 的 L1-S 语义输入端口；将自然语言经五层编译流水线（S1-S5）转化为语义似然 p(y_s|Ψ)，强依赖 IODS（L0 本体）的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典。">
     <meta property="og:title" content="UPLP · 统一心理语言端口 · INTRE">
-    <meta property="og:description" content="UPLP（统一心理语言端口）：INTRE 的语义通道与内感架构，提供 M-R-D-S 状态语法和 G-M-A-R 操作语法的形式化元语言基础设施。">
+    <meta property="og:description" content="UPLP（统一心理语言端口）：INTRE 的 L1-S 语义输入端口；将自然语言经五层编译流水线（S1-S5）转化为语义似然 p(y_s|Ψ)，强依赖 IODS（L0 本体）的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/uplp/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="UPLP · 统一心理语言端口 · INTRE">
-    <meta name="twitter:description" content="UPLP（统一心理语言端口）：INTRE 的语义通道与内感架构，提供 M-R-D-S 状态语法和 G-M-A-R 操作语法的形式化元语言基础设施。">
+    <meta name="twitter:description" content="UPLP（统一心理语言端口）：INTRE 的 L1-S 语义输入端口；将自然语言经五层编译流水线（S1-S5）转化为语义似然 p(y_s|Ψ)，强依赖 IODS（L0 本体）的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/uplp/">
-    <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -26,188 +24,33 @@
     <link rel="stylesheet" href="../shared/components.css">
     <style>
         html { scroll-behavior: smooth; }
-
-        .container {
-            margin: 0 auto;
-            padding: 2rem 2rem;
-        }
-
-        /* 页面标题 */
-        h1 {
-            font-family: var(--font-body);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-slate-900);
-            margin: 1.5rem 0 0.4rem;
-            letter-spacing: -0.02em;
-        }
-
-        .subhead {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: var(--color-slate-500);
-            margin-bottom: 2rem;
-            max-width: 900px;
-        }
-
-        .section-label {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-slate-700);
-            margin: 2.5rem 0 1rem;
-            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-            padding-bottom: 0.4rem;
-            padding-left: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-label i {
-            color: var(--color-navy-400);
-            font-size: 1rem;
-            background: var(--color-navy-600-bg);
-            border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        h4 {
-            font-family: var(--font-body);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--color-navy-400);
-            margin: 1.5rem 0 0.8rem;
-        }
-
-        .card {
-            background-color: var(--color-white);
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        /* 表格样式 */
-        .table-responsive {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: var(--radius-sm);
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            min-width: 600px;
-        }
-
-        .table th {
-            background-color: var(--color-navy-600);
-            color: var(--color-white);
-            font-weight: 600;
-            padding: 0.9rem 1rem;
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .table td {
-            padding: 0.9rem 1rem;
-            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-            vertical-align: top;
-            background-color: var(--color-white);
-        }
-
-        .table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .table tbody tr:hover td {
-            background-color: var(--color-navy-50);
-        }
-
-        /* 网格布局 */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 1024px) {
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            h1 {
-                font-size: 1.9rem;
-            }
-            .subhead {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .container { padding: 1.5rem; }
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.6rem; }
-            .subhead { font-size: 0.95rem; }
-            .container { padding: 1.2rem; }
-            .section-label { font-size: 0.9rem; }
-            .card { padding: 1rem; }
-        }
-
-        .info-box {
-            background-color: var(--color-slate-100);
-            border-radius: var(--radius-sharp);
-            padding: 1.5rem;
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            margin: 1.5rem 0;
-        }
-
-        .code-block {
-            background-color: var(--color-slate-900);
-            color: var(--color-slate-200);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            line-height: 1.65;
-            overflow-x: auto;
-            margin: 1rem 0;
-            border: var(--stroke-hairline) solid rgba(255,255,255,0.05);
-        }
-
-        .badge {
-            background-color: var(--color-navy-400);
-            color: var(--color-white);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.2rem 0.6rem;
-            border-radius: var(--radius-pill);
-            margin-left: 0.5rem;
-            display: inline-block;
-        }
+        .container { margin:0 auto; padding:2rem; }
+        h1 { font-family:var(--font-body); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 0.4rem; letter-spacing:-0.02em; }
+        .subhead { font-family:var(--font-body); font-size:1.3rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; max-width:900px; }
+        .section-label { font-family:var(--font-body); font-size:1rem; font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); padding-bottom:0.4rem; padding-left:0; display:flex; align-items:center; gap:.5rem; }
+        .section-label i { color:var(--color-navy-400); font-size:1rem; background:var(--color-navy-600-bg); border-radius:50%; width:2.2rem; height:2.2rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+        h4 { font-family:var(--font-body); font-size:1.2rem; font-weight:600; color:var(--color-navy-400); margin:1.2rem 0 .6rem; }
+        .card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; margin-bottom:2rem; }
+        .table-responsive { overflow-x:auto; margin:1.5rem 0; border-radius:var(--radius-sm); border:var(--stroke-hairline) solid var(--color-slate-200); }
+        .table { width:100%; border-collapse:collapse; font-size:.95rem; min-width:600px; }
+        .table th { background:var(--color-navy-600); color:var(--color-white); font-weight:600; padding:.9rem 1rem; text-align:left; white-space:nowrap; }
+        .table td { padding:.9rem 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); vertical-align:top; background:var(--color-white); }
+        .table tr:last-child td { border-bottom:none; }
+        .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin:2rem 0; }
+        .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; margin:2rem 0; }
+        .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:2rem 0; }
+        @media (max-width:1200px) { .grid-5{grid-template-columns:repeat(3,1fr)} }
+        @media (max-width:1024px) { .grid-3{grid-template-columns:repeat(2,1fr)} .grid-5{grid-template-columns:repeat(2,1fr)} h1{font-size:1.9rem} .subhead{font-size:1.2rem} }
+        @media (max-width:768px) { .grid-2,.grid-3,.grid-5{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} }
+        @media (max-width:480px) { .container{padding:1.2rem} h1{font-size:1.6rem} .subhead{font-size:0.95rem} .section-label{font-size:0.9rem} .card{padding:1rem} }
+        .info-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); margin:1.5rem 0; }
+        .code-block { background:var(--color-slate-900); color:var(--color-slate-200); padding:1rem 1.5rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.85rem; line-height:1.65; overflow-x:auto; margin:1rem 0; border:var(--stroke-hairline) solid rgba(255,255,255,0.05); }
+        .badge { background:var(--color-navy-400); color:var(--color-white); font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:var(--radius-pill); margin-left:.5rem; display:inline-block; }
+        .layer-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.4rem; }
+        .layer-card h4 { color:var(--color-navy-600); font-size:1.05rem; margin:0.4rem 0 0.5rem; }
+        .layer-card .layer-num { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.75rem; font-weight:600; margin-bottom:.5rem; letter-spacing:.05em; }
+        .layer-card .layer-tag { display:inline-block; background:var(--color-navy-50); color:var(--color-navy-600); padding:.15rem .55rem; border-radius:var(--radius-pill); font-size:.7rem; font-weight:600; margin-left:.4rem; }
+        .layer-card p { font-size:.88rem; line-height:1.55; margin:.3rem 0; color:var(--color-slate-700); }
     </style>
 </head>
 <body lang="zh">
@@ -218,6 +61,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
                 <a href="/INTRE-website/uplp/" class="active">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -228,191 +72,196 @@
             </div>
         </div>
     </nav>
-
     <main id="main-content" class="container">
         <h1>UPLP</h1>
-        <div class="subhead">统一心理语言端口 · PSE 感知层 <strong>L1-S 语义模态输入端口</strong>（兼元语言基础设施） <span class="channel-badge uplp">语义通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-07 管线体系更新）</small></div>
+        <div class="subhead">统一心理语言端口 · PSE 感知层 <strong>L1-S 语义模态输入端口</strong> <span class="channel-badge uplp">语义通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-08 五层编译流水线 / 端口体系更新）</small></div>
 
         <div class="info-box">
             <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UPLP 是 INTRE 新管线体系的 <strong>L1-S 语义模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1），同时也是 INTRE 框架的元语言基础。它提供一套严格的形式化语法（<strong>内感架构 M‑R‑D‑S</strong>、<strong>操作架构 G‑M‑A‑R</strong>、<strong>知识基础设施 PCUI/PSA/PSL</strong>），使心理状态可描述、可计算、可干预，并向 PSE 状态层输出语义似然 p(y<sub>s</sub>|Ψ)。
+            UPLP（Unified Psychological Language Port）是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>（归属 PSE 感知层 L1，非对外独立系统，P7 已决）。它将自然语言输入（临床叙述、量表文本、自由陈述）经 <strong>五层编译流水线 S1-S5</strong> 转化为标准化的语义似然 p(y<sub>s</sub>|Ψ) ，输出观测块 {y<sub>s</sub>, σ<sub>s</sub>}（42 维）。UPLP 强依赖 IODS（L0 本体）提供的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典——坐标系与词典的定义侧内容归 IODS，本页只覆盖 UPLP 本体的编译行为与接口契约。
         </div>
 
-        <!-- 一、M-R-D-S 内感架构 -->
-        <h2 class="section-label"><i class="fas fa-cube" aria-hidden="true"></i> 一、M‑R‑D‑S 内感架构</h2>
-        <p class="section-intro">描述心理状态内部组成的语法：<strong>M</strong>（六大功能模块）、<strong>R</strong>（资源层）、<strong>D</strong>（调度层）、<strong>S</strong>（结构层）。</p>
+        <!-- 一、五层编译流水线 -->
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、五层编译流水线</h2>
+        <p class="section-intro">UPLP 将自然语言编译为语义似然的核心流程，按 L1-I §3.1 契约固定阶段划分：分词 → 词汇匹配 → 坐标映射 → 置信度加权；本节在此基础上增加"似然输出"封装层，构成 S1-S5 五层。</p>
 
-        <h3>1.1 六大功能模块（M层）</h3>
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>模块</th><th>英文</th><th>中文</th><th>功能定位</th><th>系统角色</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>M1</strong></td><td>Embodied</td><td>具身</td><td>物理基座与能量引擎</td><td>提供生理能量基底，约束其他模块</td></tr>
-                    <tr><td><strong>M2</strong></td><td>Cognitive</td><td>认知</td><td>建模引擎与知识库</td><td>存储信念、知识，进行推理</td></tr>
-                    <tr><td><strong>M3</strong></td><td>Volition</td><td>意志</td><td>中央调度器</td><td>目标设定、优先级分配</td></tr>
-                    <tr><td><strong>M4</strong></td><td>Emotional</td><td>情绪</td><td>价值评估中心</td><td>对内外事件赋予效价</td></tr>
-                    <tr><td><strong>M5</strong></td><td>Linguistic</td><td>言语</td><td>符号接口与社会连接</td><td>语言生成与理解，社会沟通</td></tr>
-                    <tr><td><strong>M6</strong></td><td>Behavioral</td><td>行为</td><td>执行系统</td><td>动作输出与习惯执行</td></tr>
-                </tbody>
-            </table>
+        <div class="grid-5">
+            <div class="layer-card">
+                <span class="layer-num">S1</span> <span class="layer-tag">STP</span>
+                <h4>Semantic Text Preprocessing</h4>
+                <p><strong>语义文本预处理</strong>：分词、实体识别、语境消歧、形态归一化，将原始文本拆分为可匹配的结构化单元。</p>
+                <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PSL-L（形态变体层、上下文规则层）</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">S2</span> <span class="layer-tag">SMT</span>
+                <h4>Semantic Mapping &amp; Tokenization</h4>
+                <p><strong>语义词汇匹配</strong>：将结构化文本单元匹配到 PSL-L 词条，生成 PCUI 候选集（含消歧与共现修正），每个候选携带初始置信度。</p>
+                <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PSL-L 语义映射层</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">S3</span> <span class="layer-tag">SCM</span>
+                <h4>Semantic Coordinate Mapping</h4>
+                <p><strong>语义坐标映射</strong>：将 PCUI 候选映射到 M-R-D-S 坐标，生成 42 维分布（含坐标范围与分布形态）。稀疏观测维度在本步保留为空。</p>
+                <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PCUI-L（坐标映射、文化变体）</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">S4</span> <span class="layer-tag">SCW</span>
+                <h4>Semantic Confidence Weighting</h4>
+                <p><strong>语义置信加权</strong>：按编译确定性（W<sub>编译</sub>、副词强度 λ、隐喻映射、文化权重）调制似然形状：歧义越大，σ<sub>s</sub> 越大，似然越平坦。</p>
+                <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：仪器参数层（本页 §三）</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">S5</span> <span class="layer-tag">SLO</span>
+                <h4>Semantic Likelihood Output</h4>
+                <p><strong>语义似然输出</strong>：按 L1-I §2.4 观测块格式 {y<sub>s</sub>, σ<sub>s</sub>} 封装，不可编译维度写入无信息编码。</p>
+                <p style="color:var(--color-slate-500);font-size:.82rem;">涉及契约：L1-I §2.4 / §3.1</p>
+            </div>
         </div>
 
-        <h3>1.2 资源层（R层）</h3>
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>组件</th><th>英文</th><th>中文</th><th>时间特征</th><th>功能定义</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>RES-D</strong></td><td>Dispatchable Resource</td><td>调度资源</td><td>小时-天（快速波动）</td><td>即时可用的心理燃料（注意力、意志力）</td></tr>
-                    <tr><td><strong>RES-B</strong></td><td>Basal Resource</td><td>基底资源</td><td>周-月（缓慢变化）</td><td>长期心理资本（自尊、希望、韧性）</td></tr>
-                </tbody>
-            </table>
+        <div class="info-box">
+            <p><strong>分层原则（契约固化）：</strong> UPLP 五层流水线的阶段划分属 <strong>L1-I §3.1 契约语义</strong>（01-M-10）——本文档只细化实现，<strong>不得改变</strong>输入类型、转换流程的阶段划分或输出形式。换言之，"分词 → 词汇匹配 → 坐标映射 → 置信度加权 → 似然输出"的拓扑形态已被契约固化，任何合并或省略都会破坏跨模态对齐与下游融合的一致性。</p>
         </div>
 
-        <h3>1.3 调度层（D层）</h3>
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>组件</th><th>英文</th><th>中文</th><th>运行特征</th><th>功能定义</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>DSP-F</strong></td><td>Foreground Dispatch</td><td>前台调度</td><td>需意识参与</td><td>目标导向的主动控制进程</td></tr>
-                    <tr><td><strong>DSP-B</strong></td><td>Background Dispatch</td><td>后台调度</td><td>自动运行</td><td>本能反应与习惯化进程</td></tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- 二、语义似然输出 -->
+        <h2 class="section-label"><i class="fas fa-wave-square" aria-hidden="true"></i> 二、语义似然输出</h2>
+        <p>UPLP 的最终输出为按 L1-I §2.4 观测块封装的语义似然 p(y<sub>s</sub>|Ψ)，由 PSE 状态层（L2+）消费并与行为、神经通道联合融合。</p>
 
-        <h3>1.4 结构层（S层）</h3>
         <div class="table-responsive">
             <table class="table">
-                <thead><tr><th>组件</th><th>英文</th><th>中文</th><th>系统角色</th><th>功能定义</th></tr></thead>
+                <thead><tr><th>约定项</th><th>规定</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>STR-R</strong></td><td>Rules Structure</td><td>规则结构</td><td>系统规则内容</td><td>指导决策与评估的逻辑算法（如“我必须完美”）</td></tr>
-                    <tr><td><strong>STR-C</strong></td><td>Connections Structure</td><td>连接结构</td><td>系统关联网络</td><td>存储元素间的关系权重（如“失败”与“无价值”的强连接）</td></tr>
-                    <tr><td><strong>STR-S</strong></td><td>Sequence Structure</td><td>序列结构</td><td>系统执行流程</td><td>定义行为或反应的序列步骤（如习惯链）</td></tr>
+                    <tr><td>似然形式</td><td>截断高斯 p(y<sub>s</sub>[i] | Ψ[i]) = g(y<sub>s</sub>[i]; Ψ[i], σ<sub>s</sub>[i])，g 为定义在 [0,1] 上的高斯核（截断归一化）</td></tr>
+                    <tr><td>观测值域</td><td>y<sub>s</sub>[i] ∈ [0, 1]（IEEE 754 float64）</td></tr>
+                    <tr><td>不确定度值域</td><td>σ<sub>s</sub>[i] ∈ [0, 1/√12]（IEEE 754 float64）</td></tr>
+                    <tr><td>维度索引</td><td>idx(m, s) = (m-1) × 7 + s，模块-维度标识符不允许重排（L1-I §2.2）</td></tr>
+                    <tr><td>端点</td><td><code>POST /semantic_likelihood</code></td></tr>
+                    <tr><td>消费方</td><td>PSE 状态层 L2（01-M-11）——三通道贝叶斯融合的语义似然项</td></tr>
+                    <tr><td>失败语义</td><td>端点不可用按模态不可用处理，由 L1 汇总层执行降级协议（L1-I §3.5）</td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="code-block">
-            // 示例：抑郁状态的 M-R-D-S 向量表示<br>
-            {<br>
-            &nbsp;&nbsp;M1: { RES-D: 20, RES-B: 35 },<br>
-            &nbsp;&nbsp;M2: { STR-R: "自我否定信念", STR-C: "失败→无价值" },<br>
-            &nbsp;&nbsp;M3: { DSP-F: 0.3, DSP-B: 0.8 },<br>
-            &nbsp;&nbsp;M4: { 效价: -0.7, 唤醒度: 0.2 },<br>
-            &nbsp;&nbsp;M6: { 行为抑制: 0.9 }<br>
-            }
-        </div>
-
-        <!-- 二、G-M-A-R 操作架构 -->
-        <h2 class="section-label"><i class="fas fa-sliders" aria-hidden="true"></i> 二、G‑M‑A‑R 操作架构</h2>
-        <p>原子级心理操作语法，对应系统动力学的四种基本干预类型。</p>
-
-        <div class="grid-2">
-            <div class="card">
-                <h3><i class="fas fa-door-open" aria-hidden="true"></i> GATE · 门控</h3>
-                <p><strong>作用对象：</strong> DSP、STR-S</p>
-                <p><strong>操作本质：</strong> 通道开关控制（启动/抑制进程）</p>
-                <p><strong>示例：</strong> GATE(DSP-B, -) —— 抑制后台自动思维</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> MODULATE · 调制</h3>
-                <p><strong>作用对象：</strong> RES</p>
-                <p><strong>操作本质：</strong> 资源数量调节（增加/减少）</p>
-                <p><strong>示例：</strong> MODULATE(RES-D, +0.3) —— 提升调度资源</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-arrows-spin" aria-hidden="true"></i> ALIGN · 对齐</h3>
-                <p><strong>作用对象：</strong> STR-R</p>
-                <p><strong>操作本质：</strong> 规则修正（更新信念）</p>
-                <p><strong>示例：</strong> ALIGN(STR-R, "我不必完美")</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-link" aria-hidden="true"></i> RELINK · 重联</h3>
-                <p><strong>作用对象：</strong> STR-C</p>
-                <p><strong>操作本质：</strong> 连接重构（改变关系权重）</p>
-                <p><strong>示例：</strong> RELINK(STR-C, "失败"→"学习", +0.6)</p>
-            </div>
+// /semantic_likelihood 输出观测块（示意值，完整传输为 42 维；索引规则见 L1-I §2.2）<br>
+{<br>
+&nbsp;&nbsp;"y":     [0.42, 0.61, 0.30, 0.55, 0.47, 0.38, 0.52, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],<br>
+&nbsp;&nbsp;"sigma": [0.11, 0.08, 0.15, 0.12, 0.09, 0.14, 0.10, 0.2887, 0.2887, 0.2887, 0.2887, 0.2887, 0.2887, 0.2887]<br>
+}
         </div>
 
         <div class="info-box">
-            <p><strong>正交性证明：</strong> G-M-A-R 四操作分别作用于 <strong>进程（DSP/STR-S）、存量（RES）、规则（STR-R）、连接（STR-C）</strong>，四个维度互不重叠，覆盖所有心理干预的基本形式。</p>
+            <p><strong>σ<sub>s</sub> 的语义：</strong> σ<sub>s</sub>[i] 是第 i 维观测的标准差，<strong>σ 越大，对应似然越平坦，在 L2 融合中的权重越低</strong>。σ<sub>s</sub> 的来源是编译置信度——PSL 对文本编译存在歧义时（同一文本匹配多个 PCUI 或坐标分散），σ<sub>s</sub> 增大，似然更平坦，信息量更低。W<sub>编译</sub> 是这一连续谱的调节旋钮。</p>
         </div>
 
-        <!-- 三、知识基础设施 -->
-        <h2 class="section-label"><i class="fas fa-database" aria-hidden="true"></i> 三、知识基础设施</h2>
-
-        <h3>3.1 PCUI · 心理概念唯一标识符</h3>
-        <p>为每个心理学概念分配唯一编码，消除歧义，支持跨流派映射。</p>
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>PCUI</th><th>概念名称</th><th>所属流派</th><th>对应 M-R-D-S 位置</th></tr></thead>
-                <tbody>
-                    <tr><td>PCUI-0012</td><td>自动化思维</td><td>CBT</td><td>M2-STR-R（规则结构）</td></tr>
-                    <tr><td>PCUI-0037</td><td>情绪效价</td><td>情绪心理学</td><td>M4（情绪模块）</td></tr>
-                    <tr><td>PCUI-0089</td><td>自我效能感</td><td>社会认知理论</td><td>M3-RES-B（基底资源）</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h3>3.2 PSA · 心理语义网络</h3>
-        <p>定义概念间的关系（因果、关联、层级），形成可计算的知识图谱。</p>
-        <div class="code-block">
-            // PSA 关系示例<br>
-            PCUI-0012 (自动化思维) --[causes]→ PCUI-0037 (负性情绪)<br>
-            PCUI-0089 (自我效能感) --[modulates]→ M3-DSP-F (前台调度)
-        </div>
-
-        <h3>3.3 PSL · 心理专项词汇库</h3>
-        <p>自然语言与形式化 PCUI 的映射词典，支持临床文本的自动编译。</p>
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>自然语言表达</th><th>映射 PCUI</th><th>上下文约束</th></tr></thead>
-                <tbody>
-                    <tr><td>"我感到筋疲力尽"</td><td>PCUI-0056 (能量耗竭) → M1-RES-D↓</td><td>资源层下降</td></tr>
-                    <tr><td>"我什么都做不好"</td><td>PCUI-0012 (自动化思维) → M2-STR-R固化</td><td>规则层负性信念</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- 四、跨流派整合 -->
-        <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 四、跨流派整合</h2>
+        <!-- 三、仪器参数 -->
+        <h2 class="section-label"><i class="fas fa-sliders-h" aria-hidden="true"></i> 三、仪器参数</h2>
+        <p>UPLP 的仪器参数由 L1-I §3.1 登记其存在与归属，<strong>定义与校准属 UPLP 本体</strong>（01-M-07 §四）。全部参数当前为<strong>理论设定值，需 PSE-C 实证校准</strong>（P2i-m），参数修订属 L1 仪器层，不触发 IODS 架构级修订。</p>
 
         <div class="table-responsive">
             <table class="table">
-                <thead><tr><th>心理学流派</th><th>核心概念</th><th>UPLP 映射</th></tr></thead>
+                <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>作用位置</th><th>当前状态</th></tr></thead>
                 <tbody>
-                    <tr><td>CBT（认知行为疗法）</td><td>自动化思维、核心信念</td><td>M2-STR-R（规则结构）</td></tr>
-                    <tr><td>DBT（辩证行为疗法）</td><td>情绪调节、痛苦耐受</td><td>M4（情绪）+ M3-DSP-F（前台调度）</td></tr>
-                    <tr><td>ACT（接纳承诺疗法）</td><td>认知解离、接纳</td><td>GATE(DSP-B) + ALIGN(STR-R)</td></tr>
-                    <tr><td>EFT（情绪聚焦疗法）</td><td>情绪转化</td><td>M4 + RELINK(STR-C)</td></tr>
-                    <tr><td>精神分析</td><td>防御机制、潜意识</td><td>DSP-B（后台调度）+ GATE 门控</td></tr>
-                    <tr><td>人本主义</td><td>自我实现、价值条件</td><td>M3-RES-B + STR-R</td></tr>
+                    <tr><td><strong>编译置信度</strong></td><td>W<sub>编译</sub>（含副词强度 λ）</td><td>编译确定性对似然形状的调制权重；λ 为"极其""非常"等副词的强度系数</td><td>S4 置信度加权</td><td>理论设定值 P2i-m</td></tr>
+                    <tr><td><strong>语义衰减率</strong></td><td>τ</td><td>语义强度随时间的衰减率（观测时效校准，τ 校准的是"陈述何时生效、以何种权重计入当前观测"，<strong>不</strong>构成对心理状态 Ψ 自身演化的预测——后者属 L3）</td><td>S4 置信度加权（时序观测）</td><td>理论设定值 P2i-m</td></tr>
+                    <tr><td><strong>隐喻映射强度</strong></td><td>隐喻</td><td>"脑子转不动""心累"等隐喻表述向 M-R-D-S 坐标（如 M2-RES-D↓、M4-DSP-B↑）的映射强度</td><td>S2/S3 匹配与映射</td><td>理论设定值 P2i-m</td></tr>
+                    <tr><td><strong>文化权重</strong></td><td>W<sub>文化</sub></td><td>各文化下 M-R-D-S 坐标权重的调整系数（如东亚文化下表达强度系数）；结构由 IODS PCUI-L 定义，数值由 UPLP 校准</td><td>S3/S4 映射与加权</td><td>理论设定值 P2i-m</td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="info-box">
-            <p><strong>UPLP 的整合价值：</strong> 不同流派的概念不再是不可通约的“语言游戏”，而是可以映射到同一套形式化语法（M-R-D-S、G-M-A-R）的不同参数配置。这为心理学知识的累积和跨流派对话提供了工程基础。</p>
+            <p><strong>校准轴：</strong> 群体先验（注册库标准参数 + 知识生产流水线积累的编译统计）→ 个体后验（PSE-C 临床数据贝叶斯校准 + 个体编译历史反馈，层级收缩个体化）。参数校准属"参数填充"层级（数据 → 参数值，WP-04 §3.5），不触发架构级修订。</p>
         </div>
 
-        <!-- 五、UPLP 协议体系 -->
-        <h2 class="section-label"><i class="fas fa-file-signature" aria-hidden="true"></i> 五、UPLP 协议体系</h2>
+        <!-- 四、降级模式 -->
+        <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 四、降级模式</h2>
+        <p>UPLP 的降级模式与 L1-I §四（降级协议）保持一致：<strong>缺一模态 → 精度下降不瘫痪</strong>（WP-07 §6.1 降级运行）。语义模态的降级分两个粒度。</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>降级类型</th><th>触发场景</th><th>处理</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>维度级降级</strong></td><td>模态可用，但文本仅覆盖部分维度（不可编译维度）</td><td>未覆盖维度写入无信息编码，覆盖维度正常输出</td></tr>
+                    <tr><td><strong>模态级降级</strong></td><td>整个语义模态不可用（L1-I §4.1 判定：数据流中断 / 数据质量不达标 / 主动禁用）</td><td>观测块整体写入无信息编码，其余模态正常输出</td></tr>
+                    <tr><td><strong>编译歧义（非降级）</strong></td><td>同一文本匹配多个 PCUI、坐标映射分散</td><td>σ<sub>s</sub> 增大，似然更平坦，在 L2 融合中权重降低（与"无信息编码"是同一原理的连续谱，无信息编码是"完全歧义"的极限形式）</td></tr>
+                    <tr><td><strong>强依赖边界 · IODS 不可用</strong></td><td>坐标系或词典缺失</td><td>语义编译无法运行（强依赖，<strong>无降级</strong>）</td></tr>
+                    <tr><td><strong>强依赖边界 · L1-S 不可用</strong></td><td>UPLP 端点不可用</td><td>PSE 将 p(y<sub>s</sub>|Ψ) 视为无信息（p = 常数），退化为行为 + 神经双通道融合</td></tr>
+                    <tr><td><strong>词典版本过期</strong></td><td>语义锚定版本过期（L1-I §5.3）</td><td>接收方要求当前版本锚定，否则按未对齐处理</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>无信息编码（与 L1-I 一致）：</strong> 观测值 y[i] = 0.5（U(0,1) 均匀分布均值 E[y] = 0.5）；不确定度 σ[i] = 1/√12 ≈ 0.2887（U(0,1) 标准差 SD[y] = 1/√12）；模态级降级时 modalities.semantic.available = false（工程层显式声明）。其数学语义：降级维度的观测块对应似然为常数（不随 Ψ 变化），在 L2 贝叶斯融合中不贡献信息。</p>
+            <p style="margin-top:.5rem;"><strong>契约四义务：</strong> 不伪造（禁止以非均匀分布值填充不可用维度）、不静默（降级必须在 modalities 声明中显式可见）、记录（降级事件写入审计日志）、恢复（模态恢复后从下一观测周期恢复正常输出）。</p>
+        </div>
+
+        <!-- 五、强反例协议 -->
+        <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 五、强反例协议</h2>
+        <p>UPLP 的核心主张是可证伪的。若出现满足条件的强反例，相应主张应被修正或放弃。</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>ID</th><th>主张</th><th>证伪条件</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>SC1</strong></td><td><strong>语义通道必要性</strong>（继承 WP-06 §4.7）</td><td>证明自然语言中不包含任何可被稳定映射到 M-R-D-S 坐标的功能层信息（语义似然始终接近均匀分布，编译后 σ<sub>s</sub> 恒接近 1/√12）；充分反例需在至少三个独立的高质量语料上复现</td></tr>
+                    <tr><td><strong>SC2</strong></td><td><strong>IODS 强依赖</strong>（继承 WP-06 §4.7）</td><td>证明存在无需 IODS 坐标系即可有效计算语义似然的路径，且其精度显著优于 UPLP 输出；充分反例需提供可复现的独立实现与公平比较</td></tr>
+                    <tr><td><strong>SC3</strong></td><td><strong>五层流水线契约充分性</strong>（L1-I §3.1）</td><td>发现一类合法语言观测无法经五层流水线（文本预处理 → 词汇匹配 → 坐标映射 → 置信度加权 → 似然输出）编译，且该信息对 L2 融合不可省略（需要改变 L1-I §3.1 规定的阶段划分）；充分反例需提供具体观测类型与 L2 融合中的信息损失论证</td></tr>
+                    <tr><td><strong>SC4</strong></td><td><strong>仪器参数理论设定</strong>（P2i-m）</td><td>PSE-C 校准后，某仪器参数（W<sub>编译</sub>、τ、隐喻映射强度、W<sub>文化</sub>）在独立数据上持续无法收敛或出现系统性偏差（如 W<sub>文化</sub> 在不同生态位下方向相反）；参数修订属 L1 仪器层，不触发 L0 架构修订</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 六、知识生产流水线（新增 / 移入 L1-S） -->
+        <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 六、知识生产流水线</h2>
+        <p class="section-intro">知识生产流水线（PCC-P → PCF-P → PCV-P）按 P1 决策从 L0 内容中移出，重新定位为 <strong>L1-S 的离线校准流程</strong>（01-M-07 §三，01-M-02 §1.3 行 76、§七 行 316 明确移入）。它是离线、非运行时的，持续为编译流水线供给、修正 PSL-L/PCUI-L 的术语实例层（R1 已决：术语实例层数据驱动修订，不触发架构级审查）。</p>
 
         <div class="grid-3">
             <div class="card">
-                <h3>PCC-P</h3>
-                <p><strong>概念采集协议</strong></p>
-                <p>从文献/临床文本中提取心理学概念原材料。</p>
+                <h3><i class="fas fa-magnifying-glass" aria-hidden="true"></i> PCC-P · 心理概念采集协议</h3>
+                <p><strong>原则：</strong>广度优先（先广泛覆盖各流派、各文化、各来源类型，容忍适度噪声）</p>
+                <p><strong>四类来源：</strong></p>
+                <ul class="list-indent desc-spacing" style="font-size:.9rem;">
+                    <li><strong>理论文献源</strong>：INTRE / CBT / 精神分析 / 人本 / 神经科学 / 跨文化</li>
+                    <li><strong>临床实践源</strong>：去标识化案例、诊断手册、治疗师反馈</li>
+                    <li><strong>社区与新兴源</strong>：患者社区、社交媒体、新兴概念</li>
+                    <li><strong>多语言源</strong>：中文约 30% / 日韩约 15% / 其他约 10%</li>
+                </ul>
+                <p><strong>通过率目标：</strong> 约 95%（月度 500-1000 个概念原材料）</p>
             </div>
             <div class="card">
-                <h3>PCF-P</h3>
-                <p><strong>概念形式化协议</strong></p>
-                <p>将自然语言概念编译为标准化 PCUI 和 PSA 关系。</p>
+                <h3><i class="fas fa-code" aria-hidden="true"></i> PCF-P · 心理概念形式化协议</h3>
+                <p><strong>原则：</strong>精度优先</p>
+                <p><strong>团队：</strong> 15-20 人跨流派专家（INTRE/CBT/精神分析/人本/神经科学/文化心理学各 2-3 人）</p>
+                <p><strong>五个形式化编译阶段：</strong></p>
+                <ol style="font-size:.9rem;padding-left:1.4rem;">
+                    <li>理论中立化</li>
+                    <li>参数化定义</li>
+                    <li>M-R-D-S 架构映射</li>
+                    <li>多流派解释添加</li>
+                    <li>逻辑一致性检查（五维自动化）</li>
+                </ol>
+                <p><strong>通过率目标：</strong> 约 60%</p>
             </div>
             <div class="card">
-                <h3>PCV-P</h3>
-                <p><strong>概念验证协议</strong></p>
-                <p>跨流派共识验证，确定 PCUI 的效度和信度。</p>
+                <h3><i class="fas fa-check-double" aria-hidden="true"></i> PCV-P · 心理概念验证协议</h3>
+                <p><strong>原则：</strong>权威性优先</p>
+                <p><strong>评议团：</strong> 25-35 人（覆盖五大流派 + 独立研究者 + 临床工作者 + 方法学专家；性别 ≥ 40% / 文化多样性 ≥ 30% / 机构 ≤ 20% / ≥ 8 国）</p>
+                <p><strong>两阶段评议：</strong> 结构化评议（14 天）→ 公开评议（14 天）</p>
+                <p><strong>五重共识标准：</strong> 流派 ≥ 4 / 总体 ≥ 80% / 各流派 ≥ 60% / 临床 ≥ 70% / 无原则性冲突</p>
+                <p><strong>通过率目标：</strong> 约 75%</p>
             </div>
+        </div>
+
+        <div class="info-box">
+            <p><strong>与编译流水线的闭环：</strong> 运行时编译（S1-S5 流水线）中发现新术语 / 新用法 / 编译歧义 → 反馈至 <strong>PCC-P（采集新概念原材料）→ PCF-P（编译为 PCUI 草案）→ PCV-P（跨流派验证）</strong> → 验证通过后写入 IODS 术语实例层（PSL-L / PCUI-L 增补）→ 经词典加载接口（01-M-07 §6.2）更新 L1-S 本地词典缓存，后续编译生效。<strong>运行时的编译反馈（新术语、新用法进入术语主表）不触发 IODS 架构级审查</strong>（R1 已决：术语实例层数据驱动修订；核心定义层仍属 IODS）。</p>
+        </div>
+
+        <!-- 结尾 info-box -->
+        <div class="info-box">
+            <p><strong>UPLP 的定位（2026-08 端口体系更新）：</strong> UPLP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>，与 UNIP（神经端口 L1-N）、UBMP（行为端口 L1-B）并列，构成 IODS 三输入端口。三端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：</p>
+            <p style="text-align:center;font-family:var(--font-mono);font-size:1rem;margin:.6rem 0;">p(y | Ψ) = p(y<sub>b</sub> | Ψ) · p(y<sub>s</sub> | Ψ) · p(y<sub>n</sub> | Ψ)</p>
+            <p><strong>当前进展：</strong> UPLP 处于规范设计阶段。定义侧内容（M-R-D-S 状态语法 / G-M-A-R 操作语法 / PCUI-L / PSL-L 等）已整体迁移至 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）；UPLP 本体页聚焦于"编译行为 + 接口契约 + 离线知识生产流水线"。五层编译流水线与降级模式以本文档为准，待 PSE-C 实证校准（仪器参数 P2i-m）后可用于临床决策。</p>
         </div>
     </main>
 
@@ -426,7 +275,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>版本 v2.5 (2026-08-03) · CC0 1.0</p>
         </div>
     </footer>
     <script src="../shared/nav-toggle.js"></script>

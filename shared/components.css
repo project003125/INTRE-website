@@ -333,6 +333,7 @@ tbody tr:hover {
 }
 
 /* P1-4: 徽章背景加深，确保白字对比度 ≥4.5:1（品牌 token 不变，仅徽章覆写） */
+.badge-iods  { background-color: #6E5F4B; color: var(--color-white); }
 .badge-uplp  { background-color: #3D5C4D; color: var(--color-white); }
 .badge-unip  { background-color: #3F5263; color: var(--color-white); }
 .badge-ubmp  { background-color: #6B5947; color: var(--color-white); }
@@ -367,6 +368,7 @@ tbody tr:hover {
 .module-label.ubmp::before  { background-color: var(--color-ubmp);  }
 .module-label.pse::before   { background-color: var(--color-pse);   }
 .module-label.rever::before { background-color: var(--color-rever); }
+.module-label.iods::before  { background-color: var(--color-iods);  }
 
 /* ===== Hero 区域 ===== */
 .hero {
@@ -652,6 +654,7 @@ hr {
 .channel-badge.ubmp  { background-color: var(--color-ubmp);  color: var(--color-white); }
 .channel-badge.pse   { background-color: var(--color-pse);   color: var(--color-white); }
 .channel-badge.rever { background-color: var(--color-rever); color: var(--color-white); }
+.channel-badge.iods  { background-color: var(--color-iods);  color: var(--color-white); }
 
 /* ===== 小节标题 h3/h4 ===== */
 .subpage-h3 {
@@ -1775,6 +1778,7 @@ body.sidebar-open { overflow: hidden; }
 .ch-dot.ubmp  { background: var(--color-ubmp); }
 .ch-dot.pse   { background: var(--color-pse); }
 .ch-dot.rever { background: var(--color-rever); }
+.ch-dot.iods  { background: var(--color-iods); }
 
 /* Table full width */
 .table-full {

@@ -67,6 +67,7 @@
   --color-overlay: rgba(0, 0, 0, 0.3);           /* 遮罩层 */
 
   /* 大地通道色 — 模块标识，同视口 ≤2 种 */
+  --color-iods:  #6E5F4B;
   --color-uplp:  #5A8270;
   --color-unip:  #5B7080;
   --color-ubmp:  #8B7360;
@@ -292,12 +293,14 @@ code, pre, .mono {
 }
 
 /* ---- 通道色工具类 ---- */
+.color-iods  { color: var(--color-iods);  }
 .color-uplp  { color: var(--color-uplp);  }
 .color-unip  { color: var(--color-unip);  }
 .color-ubmp  { color: var(--color-ubmp);  }
 .color-pse   { color: var(--color-pse);   }
 .color-rever { color: var(--color-rever); }
 
+.bg-iods     { background-color: var(--color-iods);  }
 .bg-uplp     { background-color: var(--color-uplp);  }
 .bg-unip     { background-color: var(--color-unip);  }
 .bg-ubmp     { background-color: var(--color-ubmp);  }

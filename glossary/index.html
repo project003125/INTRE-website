@@ -254,6 +254,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -335,17 +336,18 @@
             <div class="term-item"><strong>PSE-I/M/P/C</strong> <span class="sep">—</span> <span class="def">PSE 四阶段：I 理论注入 → M 蒙特卡罗仿真 → P 先验提取 → C 真实世界校准</span></div>
         </div>
 
-        <h2 class="section-heading"><i class="fas fa-language" aria-hidden="true"></i> 知识基础设施 (UPLP)</h2>
+        <h2 class="section-heading"><i class="fas fa-language" aria-hidden="true"></i> 知识基础设施 (IODS)</h2>
         <div class="term-grid">
-            <div class="term-item"><strong>UPLP</strong> <span class="sep">|</span> Unified Psychological Language Port <span class="sep">—</span> <span class="def">统一心理语言端口：形式化元语言基础设施</span></div>
-            <div class="term-item"><strong>PCUI</strong> <span class="sep">|</span> Psychological Concept Unique Identifier <span class="sep">—</span> <span class="def">心理概念唯一标识符</span></div>
-            <div class="term-item"><strong>PSA</strong> <span class="sep">|</span> Psychological Semantic Architecture <span class="sep">—</span> <span class="def">心理语义架构：概念间关系定义</span></div>
-            <div class="term-item"><strong>PSL</strong> <span class="sep">|</span> Psychological Specialist Lexicon <span class="sep">—</span> <span class="def">心理专家词典：自然语言 → PCUI 映射</span></div>
+            <div class="term-item"><strong>IODS</strong> <span class="sep">|</span> INTRE Ontology Definition System <span class="sep">—</span> <span class="def">INTRE 本体定义系统：L0 本体，P7 两对外系统之一；静态、无运行时、无 API；定义 42 维 M-R-D-S 状态语法、G-M-A-R 操作语法、PCUI/PSL 知识基础设施（PSA 为历史名）；S-P 环境参照系全部静态定义；与 UPLP 边界——IODS 定义"是什么"，UPLP 编译"怎么观测"</span></div>
+            <div class="term-item"><strong>UPLP</strong> <span class="sep">|</span> Unified Psychological Language Port <span class="sep">—</span> <span class="def">PSE 感知层 L1-S 语义输入端口；五层编译流水线 S1-S5；定义侧内容归 IODS</span></div>
+            <div class="term-item"><strong>PCUI</strong> <span class="sep">|</span> Psychological Concept Unique Identifier <span class="sep">—</span> <span class="def">心理概念唯一标识符（IODS 知识基础设施）</span></div>
+            <div class="term-item"><strong>PSA</strong> <span class="sep">|</span> Psychological Semantic Architecture <span class="sep">—</span> <span class="def">心理语义架构（历史名）：概念间关系定义；其内容已按 01-M-02 归属表重组入 IODS</span></div>
+            <div class="term-item"><strong>PSL</strong> <span class="sep">|</span> Psychological Specialist Lexicon <span class="sep">—</span> <span class="def">心理专家词典（IODS 知识基础设施）：自然语言 → PCUI 映射</span></div>
         </div>
 
         <h2 class="section-heading"><i class="fas fa-brain" aria-hidden="true"></i> 神经接口系统 (UNIP)</h2>
         <div class="term-grid">
-            <div class="term-item"><strong>UNIP</strong> <span class="sep">|</span> Unified Neural Interface Port <span class="sep">—</span> <span class="def">神经通道（EEG/fNIRS/ECoG）→ 功能层似然，六层递进架构</span></div>
+            <div class="term-item"><strong>UNIP</strong> <span class="sep">|</span> Unified Neural Interface Port <span class="sep">—</span> <span class="def">PSE 感知层 L1-N 神经输入端口：神经通道（EEG/fNIRS/ECoG）→ 功能层似然，六层递进架构</span></div>
             <div class="term-item"><strong>NAP</strong> <span class="sep">|</span> L1 Neural Acquisition Protocol <span class="sep">—</span> <span class="def">神经采集规范：规定 BIDS 格式、同步等级、元数据标准</span></div>
             <div class="term-item"><strong>SCL</strong> <span class="sep">|</span> L2 Signal Calibration Layer <span class="sep">—</span> <span class="def">信号校准层：去伪影、滤波、时间同步</span></div>
             <div class="term-item"><strong>NFD</strong> <span class="sep">|</span> L3 Neural Feature Definition <span class="sep">—</span> <span class="def">神经特征定义：分配 NFI 并提供参考实现</span></div>
@@ -362,20 +364,22 @@
         </div>
         <h2 class="section-heading"><i class="fas fa-ruler" aria-hidden="true"></i> 行为测量系统 (UBMP)</h2>
         <div class="term-grid">
-            <div class="term-item"><strong>UBMP</strong> <span class="sep">|</span> Unified Behavioral Measurement Port <span class="sep">—</span> <span class="def">统一行为测量端口：FLP 行为通道基础设施，将结构化行为观测转化为行为似然</span></div>
+            <div class="term-item"><strong>UBMP</strong> <span class="sep">|</span> Unified Behavioral Measurement Port <span class="sep">—</span> <span class="def">统一行为测量端口：FLP 行为通道基础设施，将结构化行为观测转化为行为似然；PSE 感知层 L1-B 行为输入端口；五层架构 B1-B5（v1.1.0 由 3 层扩展）</span></div>
             <div class="term-item"><strong>BHI 标识符</strong> <span class="sep">|</span> Behavioral Health Indicator <span class="sep">—</span> <span class="def">行为健康指标标识符，格式 BHI.[DOMAIN].v[VER].[SEQ]，如 BHI.DEPRESSION.v2.003</span></div>
-            <div class="term-item"><strong>BHI 条目</strong> <span class="sep">—</span> <span class="def">UBMP L1 注册库中 BHI 标识符对应的完整记录（含观测函数、信效度、桥接参数等）</span></div>
-            <div class="term-item"><strong>BHI 注册库</strong> <span class="sep">—</span> <span class="def">UBMP L1 中所有 BHI 条目的集合</span></div>
-            <div class="term-item"><strong>UBMP L1</strong> <span class="sep">|</span> Behavioral Measurement Registry <span class="sep">—</span> <span class="def">行为测量注册库：存储观测函数、信效度矩阵、桥接参数、数字表型协议</span></div>
-            <div class="term-item"><strong>UBMP L2</strong> <span class="sep">|</span> Calibration & Linking Engine <span class="sep">—</span> <span class="def">校准与桥接引擎：IRT 跨工具等价转换 + 贝叶斯个体化校准 + 漂移检测</span></div>
-            <div class="term-item"><strong>BLA</strong> <span class="sep">|</span> Behavioral Likelihood API <span class="sep">—</span> <span class="def">行为似然 API（UBMP L3）：JSON-RPC 端点 /behavioral_likelihood 和 /calibration_feedback</span></div>
-            <div class="term-item"><strong>UBMP 观测函数</strong> <span class="sep">|</span> h_b(x) <span class="sep">—</span> <span class="def">行为通道观测函数：将测量分数 x 映射到功能状态子维度似然（方向：x→y_b）</span></div>
-            <div class="term-item"><strong>行为似然</strong> <span class="sep">—</span> <span class="def">BLA 标准化输出 p(y_b|Ψ_t)，必须经 UBMP L3 端点获取，参与 PSE 三通道融合</span></div>
-            <div class="term-item"><strong>UPLP 语义对齐前置</strong> <span class="sep">—</span> <span class="def">UBMP 核心约束：两个 BHI 条目须经 UPLP 确认同一 M-R-D-S 组件后方可进行 IRT 桥接</span></div>
-            <div class="term-item"><strong>工具桥接</strong> <span class="sep">|</span> Instrument Linking <span class="sep">—</span> <span class="def">不同 BHI 条目对同一 M-R-D-S 组件的分数等价转换，由 UBMP L2 执行</span></div>
-            <div class="term-item"><strong>数字表型协议</strong> <span class="sep">|</span> Digital Phenotype Protocol <span class="sep">—</span> <span class="def">UBMP L1 可选字段：从原始传感器数据到数字表型特征的完整处理链定义</span></div>
-            <div class="term-item"><strong>IRT</strong> <span class="sep">|</span> Item Response Theory <span class="sep">—</span> <span class="def">项目反应理论：UBMP L2 跨工具等价转换的方法论基础</span></div>
-            <div class="term-item"><strong>CTT</strong> <span class="sep">|</span> Classical Test Theory <span class="sep">—</span> <span class="def">经典测量理论：UBMP L1 信度指标的方法论基础</span></div>
+            <div class="term-item"><strong>BHI 条目</strong> <span class="sep">—</span> <span class="def">B1 注册库中 BHI 标识符对应的完整记录（含观测函数、信效度、桥接参数等）</span></div>
+            <div class="term-item"><strong>BHI 注册库</strong> <span class="sep">—</span> <span class="def">B1 中所有 BHI 条目的集合</span></div>
+            <div class="term-item"><strong>B1 BMR</strong> <span class="sep">|</span> Behavioral Measurement Registry <span class="sep">—</span> <span class="def">行为测量注册库：登记 BHI 条目（观测函数、信效度矩阵、桥接参数、数字表型协议、版本元数据）</span></div>
+            <div class="term-item"><strong>B2 BAL</strong> <span class="sep">|</span> Behavioral Alignment <span class="sep">—</span> <span class="def">行为语义对齐：消费 L1-S 对齐服务，裁决两个 BHI 是否锚定同一 M-R-D-S 构念；对齐失败则禁止下游桥接</span></div>
+            <div class="term-item"><strong>B3 BLK</strong> <span class="sep">|</span> Behavioral Linking <span class="sep">—</span> <span class="def">行为跨工具桥接：在语义对齐前提下执行 IRT 跨工具等价转换（二参数 IRT、共同条目锚定、等百分位方法）</span></div>
+            <div class="term-item"><strong>B4 BCI</strong> <span class="sep">|</span> Behavioral Calibration & Individualization <span class="sep">—</span> <span class="def">行为校准与个体化：应用观测函数 p(y_b\|Ψ) 将校准分数映射为 42 维坐标观测 + 层级收缩个体化 + 漂移检测</span></div>
+            <div class="term-item"><strong>B5 BLI</strong> <span class="sep">|</span> Behavioral Likelihood Interface <span class="sep">—</span> <span class="def">行为似然接口：`/behavioral_likelihood` 端点，按 L1-I §2.4 契约输出观测块 {y_b, σ_b}</span></div>
+            <div class="term-item"><strong>UBMP 观测函数</strong> <span class="sep">|</span> h_b(x) <span class="sep">—</span> <span class="def">行为通道观测函数：将测量分数 x 映射到功能状态子维度似然（方向：x→y_b），由 B4 应用</span></div>
+            <div class="term-item"><strong>行为似然</strong> <span class="sep">—</span> <span class="def">B5 标准化输出 p(y_b|Ψ_t)，必须经 /behavioral_likelihood 端点获取，参与 PSE 三通道融合</span></div>
+            <div class="term-item"><strong>UPLP 语义对齐前置</strong> <span class="sep">—</span> <span class="def">UBMP 核心约束：两个 BHI 条目须经 L1-S（UPLP）确认同一 M-R-D-S 组件后方可进入 B3 IRT 桥接；B2 门控执行</span></div>
+            <div class="term-item"><strong>工具桥接</strong> <span class="sep">|</span> Instrument Linking <span class="sep">—</span> <span class="def">不同 BHI 条目对同一 M-R-D-S 组件的分数等价转换，由 B3 BLK 执行</span></div>
+            <div class="term-item"><strong>数字表型协议</strong> <span class="sep">|</span> Digital Phenotype Protocol <span class="sep">—</span> <span class="def">B1 可选字段：从原始传感器数据到数字表型特征的完整处理链定义</span></div>
+            <div class="term-item"><strong>IRT</strong> <span class="sep">|</span> Item Response Theory <span class="sep">—</span> <span class="def">项目反应理论：B3 跨工具等价转换的方法论基础</span></div>
+            <div class="term-item"><strong>CTT</strong> <span class="sep">|</span> Classical Test Theory <span class="sep">—</span> <span class="def">经典测量理论：B1 信度指标的方法论基础</span></div>
             <div class="term-item"><strong>PSE-M 内嵌子层</strong> <span class="sep">—</span> <span class="def">UBMP 前身：行为测量作为 PSE-M 蒙特卡罗仿真阶段内部子模块的历史形态</span></div>
         </div>
 

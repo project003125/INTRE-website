@@ -49,6 +49,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -141,7 +142,7 @@
 
 <p><strong>UBMP：L1-B 行为输入端口</strong>。UBMP（Unified Behavioral Measurement Port，统一行为测量端口）是 PSE 感知层 L1 的行为输入端口（IODS 端口之一），与 UPLP（L1-S）、UNIP（L1-N）并列，三者不再以"四大核心基础设施"形式与 PSE 并列。UBMP 的任务是将结构化行为观测——心理量表分数、EMA 条目、认知任务表现、数字表型特征——转化为实时行为似然 \( p(y_b \mid \Psi_t) \)。UBMP 采用三层架构：L1 行为测量注册库（观测函数、信效度矩阵、工具桥接参数），L2 校准与桥接引擎（IRT 跨工具等价转换、贝叶斯个体化校准、漂移检测），L3 行为似然 API（JSON-RPC 端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMP 的核心设计原则是：数值桥接前必须先经 UPLP 语义对齐——两个量表只有在 UPLP 确认它们测量同一 M-R-D-S 组件后，才能进行 IRT 跨工具等价转换。UBMP 不回答"语义含义是什么"（那是 UPLP 的任务），也不回答"状态如何演化"（那是 PSE 状态层的任务）。当前 UBMP 处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMP 专项论文。）</p>
 
-<p><strong>REVER：伦理约束子系统</strong>。REVER 的任务是在 AI 拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答"在保证功能效用的前提下，如何设计伦理上安全的 AI 系统"。REVER 的核心设计包括：非人格性公理（AI 不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER 不是独立于 UPLP 和 PSE 的另一套语言，而是同一套语法在伦理维度的扩展应用——它将"结构伦理"从哲学原则转化为可执行的门控协议。（详见第 25-26 章。）</p>
+<p><strong>REVER：伦理护栏</strong>。REVER 的任务是在 AI 拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答"在保证功能效用的前提下，如何设计伦理上安全的 AI 系统"。REVER 的核心设计包括：非人格性公理（AI 不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER 不是独立于 IODS 和 PSE 的另一套语言，而是同一套语法在伦理维度的扩展应用——它将"结构伦理"从哲学原则转化为可执行的门控协议。（详见第 25-26 章。）</p>
 
 <p><strong>四者（端口 + 状态层 + REVER）的关系</strong>：UPLP（语义端口）、UNIP（神经端口）、UBMP（行为端口）共同构成 PSE 的感知层 L1；三端口均向 PSE 状态层（L2+）输出标准化似然，由 PSE 状态层执行融合与动力学推理；REVER 作为独立的安全护栏横跨感知层与状态层。四者共享同一套 M-R-D-S/G-M-A-R 语法，使得描述、输入、预测和干预可以在同一个形式化框架内无缝衔接。</p>
 

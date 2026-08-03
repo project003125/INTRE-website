@@ -117,6 +117,7 @@
             transition: opacity var(--duration-normal) var(--ease-smooth);
         }
         .card:hover::before { opacity: 1; }
+        .card[data-module="iods"]::before  { background: var(--color-iods); }
         .card[data-module="uplp"]::before  { background: var(--color-uplp); }
         .card[data-module="unip"]::before  { background: var(--color-unip); }
         .card[data-module="ubmp"]::before  { background: var(--color-ubmp); }
@@ -277,7 +278,15 @@
         "@type": "SearchAction",
         "target": "https://project003125.github.io/INTRE-website/glossary/?q={search_term_string}",
         "query-input": "required name=search_term_string"
-      }
+      },
+      "hasPart": [
+        { "@type": "WebPage", "name": "IODS · INTRE 本体定义系统", "url": "https://project003125.github.io/INTRE-website/iods/", "description": "L0 本体，P7 两对外系统之一；定义 42 维 M-R-D-S 状态语法与 G-M-A-R 操作语法。" },
+        { "@type": "WebPage", "name": "UPLP · 统一心理语言端口", "url": "https://project003125.github.io/INTRE-website/uplp/", "description": "PSE 感知层 L1-S 语义输入端口；五层编译流水线 S1-S5。" },
+        { "@type": "WebPage", "name": "UNIP · 统一神经接口端口", "url": "https://project003125.github.io/INTRE-website/unip/" },
+        { "@type": "WebPage", "name": "UBMP · 统一行为测量端口", "url": "https://project003125.github.io/INTRE-website/ubmp/", "description": "PSE 感知层 L1-B 行为输入端口；五层管道 B1-B5。" },
+        { "@type": "WebPage", "name": "PSE · 心理系统工程引擎", "url": "https://project003125.github.io/INTRE-website/pse/" },
+        { "@type": "WebPage", "name": "REVER · 关系型 AI 伦理引擎", "url": "https://project003125.github.io/INTRE-website/rever/" }
+      ]
     }
     </script>
 </head>
@@ -289,6 +298,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/" class="active">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -412,17 +422,27 @@
             </div>
 
             <div class="card-grid">
-                <a href="/INTRE-website/uplp/" class="card-wrap reveal">
+                <a href="/INTRE-website/iods/" class="card-wrap reveal">
+                    <div class="card" data-module="iods">
+                        <div class="card-icon"><i class="fas fa-cubes" aria-hidden="true"></i></div>
+                        <span class="card-code">MOD·00 / ONTOLOGY</span>
+                        <h2>IODS</h2>
+                        <div class="badge">定义系统 · L0</div>
+                        <p>42 维 M-R-D-S 状态语法 · G-M-A-R 操作语法 · PCUI/PSL 知识基础设施 —— 静态本体，全管线参照系。</p>
+                        <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a href="/INTRE-website/uplp/" class="card-wrap reveal" data-delay="1">
                     <div class="card" data-module="uplp">
                         <div class="card-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·01 / SEMANTIC</span>
                         <h2>UPLP</h2>
                         <div class="badge">语义通道 · 内感架构</div>
-                        <p>形式化元语言基础设施 — M-R-D-S 状态语法 · G-M-A-R 操作语法 · PCUI/PSA/PSL 知识库。</p>
+                        <p>自然语言 → 语义似然的五层编译流水线（S1-S5）—— PSE 感知层 L1-S 语义输入端口。</p>
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/unip/" class="card-wrap reveal" data-delay="1">
+                <a href="/INTRE-website/unip/" class="card-wrap reveal" data-delay="2">
                     <div class="card" data-module="unip">
                         <div class="card-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·02 / NEURAL</span>
@@ -432,17 +452,17 @@
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/ubmp/" class="card-wrap reveal" data-delay="2">
+                <a href="/INTRE-website/ubmp/" class="card-wrap reveal" data-delay="3">
                     <div class="card" data-module="ubmp">
                         <div class="card-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·03 / BEHAVIOR</span>
                         <h2>UBMP</h2>
-                        <div class="badge">行为通道 · 三层管道</div>
-                        <p>结构化行为观测 → 行为似然的三层管道 — 量表 · EMA · 数字表型。</p>
+                        <div class="badge">行为通道 · 五层管道（B1-B5）</div>
+                        <p>结构化行为观测 → 行为似然的五层管道（B1 BMR / B2 BAL / B3 BLK / B4 BCI / B5 BLI） — 量表 · EMA · 数字表型。</p>
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/pse/" class="card-wrap reveal" data-delay="3">
+                <a href="/INTRE-website/pse/" class="card-wrap reveal" data-delay="4">
                     <div class="card" data-module="pse">
                         <div class="card-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·04 / ENGINE</span>
@@ -452,7 +472,7 @@
                         <span class="card-link">进入模块 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="/INTRE-website/rever/" class="card-wrap reveal" data-delay="4">
+                <a href="/INTRE-website/rever/" class="card-wrap reveal" data-delay="5">
                     <div class="card" data-module="rever">
                         <div class="card-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
                         <span class="card-code">MOD·05 / ETHICS</span>
@@ -527,7 +547,7 @@
                     <div class="fusion-channel">
                         <span class="fc-code">UBMP → p(y_b|Ψ)</span>
                         <span class="fc-name">行为通道</span>
-                        <span class="fc-desc">现象层的结构化行为观测，经 UBMP 三层管道转化为行为似然。</span>
+                        <span class="fc-desc">现象层的结构化行为观测，经 UBMP 五层管道（B1-B5）转化为行为似然。</span>
                     </div>
                     <div class="fusion-channel">
                         <span class="fc-code">UPLP → p(y_s|Ψ)</span>
@@ -567,6 +587,7 @@
         <div class="footer-sitemap">
             <div class="fs-col">
                 <h4>Modules · 模块</h4>
+                <a href="/INTRE-website/iods/">IODS · 本体定义系统</a>
                 <a href="/INTRE-website/uplp/">UPLP · 语义通道</a>
                 <a href="/INTRE-website/unip/">UNIP · 神经通道</a>
                 <a href="/INTRE-website/ubmp/">UBMP · 行为通道</a>
@@ -587,8 +608,8 @@
             </div>
             <div class="fs-col">
                 <h4>Framework · 框架</h4>
-                <a href="/INTRE-website/glossary/">状态语法 M-R-D-S</a>
-                <a href="/INTRE-website/glossary/">操作语法 G-M-A-R</a>
+                <a href="/INTRE-website/iods/">状态语法 M-R-D-S</a>
+                <a href="/INTRE-website/iods/">操作语法 G-M-A-R</a>
                 <a href="/INTRE-website/glossary/">证据标签 IET v3.0</a>
             </div>
         </div>

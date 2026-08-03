@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INTRE · IODS 本体定义系统</title>
+    <meta name="description" content="IODS（INTRE 本体定义系统）：L0 本体层，定义 42 维 M-R-D-S 状态坐标系与 G-M-A-R 操作语法，构成 INTRE 全管线（L0-L5）的命名空间与合法性来源。">
+    <meta property="og:title" content="IODS · 本体定义系统 · INTRE">
+    <meta property="og:description" content="IODS（INTRE 本体定义系统）：L0 本体层，定义 42 维 M-R-D-S 状态坐标系与 G-M-A-R 操作语法，构成 INTRE 全管线（L0-L5）的命名空间与合法性来源。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/iods/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IODS · 本体定义系统 · INTRE">
+    <meta name="twitter:description" content="IODS（INTRE 本体定义系统）：L0 本体层，定义 42 维 M-R-D-S 状态坐标系与 G-M-A-R 操作语法，构成 INTRE 全管线（L0-L5）的命名空间与合法性来源。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/iods/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="../shared/brand.css">
+    <link rel="stylesheet" href="../shared/components.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .container { margin:0 auto; padding:2rem; }
+        h1 { font-family:var(--font-body); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 0.4rem; letter-spacing:-0.02em; }
+        .subhead { font-family:var(--font-body); font-size:1.3rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; max-width:900px; }
+        .section-label { font-family:var(--font-body); font-size:1rem; font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); padding-bottom:0.4rem; padding-left:0; display:flex; align-items:center; gap:.5rem; }
+        .section-label i { color:var(--color-navy-400); font-size:1rem; background:var(--color-navy-600-bg); border-radius:50%; width:2.2rem; height:2.2rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+        h4 { font-family:var(--font-body); font-size:1.2rem; font-weight:600; color:var(--color-navy-400); margin:1.2rem 0 .6rem; }
+        .card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; margin-bottom:2rem; }
+        .table-responsive { overflow-x:auto; margin:1.5rem 0; border-radius:var(--radius-sm); border:var(--stroke-hairline) solid var(--color-slate-200); }
+        .table { width:100%; border-collapse:collapse; font-size:.95rem; min-width:600px; }
+        .table th { background:var(--color-navy-600); color:var(--color-white); font-weight:600; padding:.9rem 1rem; text-align:left; white-space:nowrap; }
+        .table td { padding:.9rem 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); vertical-align:top; background:var(--color-white); }
+        .table tr:last-child td { border-bottom:none; }
+        .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin:2rem 0; }
+        .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:2rem 0; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin:2rem 0; }
+        .grid-6 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin:2rem 0; }
+        @media (max-width:1024px) { .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)} h1{font-size:1.9rem} .subhead{font-size:1.2rem} }
+        @media (max-width:768px) { .grid-2,.grid-3,.grid-4,.grid-6{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} }
+        @media (max-width:480px) { .container{padding:1.2rem} h1{font-size:1.6rem} .subhead{font-size:0.95rem} .section-label{font-size:0.9rem} .card{padding:1rem} }
+        .info-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); margin:1.5rem 0; }
+        .code-block { background:var(--color-slate-900); color:var(--color-slate-200); padding:1rem 1.5rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.85rem; line-height:1.65; overflow-x:auto; margin:1rem 0; border:var(--stroke-hairline) solid rgba(255,255,255,0.05); }
+        .badge { background:var(--color-navy-400); color:var(--color-white); font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:var(--radius-pill); margin-left:.5rem; display:inline-block; }
+        .module-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
+        .module-card .module-code { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.8rem; font-weight:600; margin-bottom:.5rem; align-self:flex-start; }
+        .module-card h4 { color:var(--color-navy-600); font-size:1.2rem; }
+        .module-card .module-detail { font-size:.9rem; color:var(--color-slate-700); }
+        .op-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
+        .op-card .op-target { font-family:var(--font-mono); font-size:.78rem; color:var(--color-iods); margin-top:.5rem; }
+        .op-card .op-detail { font-size:.9rem; color:var(--color-slate-700); }
+    </style>
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/" class="active">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content" class="container">
+        <h1>IODS</h1>
+        <div class="subhead">INTRE 本体定义系统 · <strong>L0 本体</strong>（P7 两对外系统之一）<span class="channel-badge iods">定义系统</span></div>
+
+        <div class="info-box">
+            <i class="fas fa-quote-left" aria-hidden="true" ></i>
+            IODS 是 INTRE 管线体系 <strong>L0 本体</strong>——为整条管线（L0→L5）提供命名空间与合法性：<strong>42 维 M-R-D-S 状态坐标系</strong>、<strong>G-M-A-R 操作语法</strong>、<strong>PCUI/PSL 知识基础设施</strong>。L0 文档族由三份组成：<strong>IODS</strong>（本文档） + <strong>01-M-08 G-M-A-R 操作语法</strong> + <strong>01-M-09 S-P 环境参照系</strong>。IODS 是原 UPLS 定义身份（UPLP-A）的整体继承者，不含运行时、无 API、不含动力学方程——它是所有观测、估计、规划与执行的<strong>静态参照系</strong>。
+        </div>
+
+        <!-- 一、M-R-D-S 内感架构 -->
+        <h2 class="section-label"><i class="fas fa-cube" aria-hidden="true"></i> 一、M-R-D-S 内感架构（状态坐标系）</h2>
+        <p class="section-intro">M-R-D-S 是 INTRE 描述心理系统<strong>内部状态</strong>的诊断语法。完整 42 维坐标系：<strong>6 模块（M） × 7 维度（R-D-S）</strong>，状态向量 Ψ ∈ ℝ⁴²。</p>
+
+        <h3>1.1 六功能模块（M1-M6）</h3>
+        <div class="grid-3">
+            <div class="module-card">
+                <span class="module-code">M1 · EMB</span>
+                <h4>具身</h4>
+                <p class="module-detail">物理基座与能量引擎。为所有心理活动提供生物能量与稳态；约束其他模块的运行上限。</p>
+            </div>
+            <div class="module-card">
+                <span class="module-code">M2 · COG</span>
+                <h4>认知</h4>
+                <p class="module-detail">建模引擎与知识库。构建关于世界、自我和未来的内部模型；进行推理与预测。</p>
+            </div>
+            <div class="module-card">
+                <span class="module-code">M3 · VOL</span>
+                <h4>意志</h4>
+                <p class="module-detail">中央调度器。在冲突目标间做出决策并调度系统资源；设定优先级与启动前台进程。</p>
+            </div>
+            <div class="module-card">
+                <span class="module-code">M4 · EMO</span>
+                <h4>情绪</h4>
+                <p class="module-detail">价值评估中心。对内外刺激赋予效价，生成动机优先级；在 D 矩阵中居枢纽地位。</p>
+            </div>
+            <div class="module-card">
+                <span class="module-code">M5 · LIN</span>
+                <h4>言语</h4>
+                <p class="module-detail">符号接口与社会连接。负责内部叙事、逻辑符号操作和外部沟通；UPLP 编译与解码的载体。</p>
+            </div>
+            <div class="module-card">
+                <span class="module-code">M6 · BEH</span>
+                <h4>行为</h4>
+                <p class="module-detail">外部执行器。将内部意图转化为物理行动并收集反馈；UBMP 测量通道的输出端。</p>
+            </div>
+        </div>
+
+        <h3>1.2 R-D-S 三层结构（7 维度）</h3>
+        <p>每个模块内部状态遵循统一的"存量—流量—结构"模型：</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>层级</th><th>子维度</th><th>英文</th><th>定义</th><th>时间尺度</th></tr></thead>
+                <tbody>
+                    <tr><td rowspan="2"><strong>R 层</strong><br>资源（存量）</td><td>RES-D</td><td>Dispatchable Resource</td><td>快速波动的"心理燃料"：精力、注意力、意志力</td><td>小时–天</td></tr>
+                    <tr><td>RES-B</td><td>Basal Resource</td><td>缓慢变化的"心理资本"：健康储备、知识体系、安全感、人生意义</td><td>周–年</td></tr>
+                    <tr><td rowspan="2"><strong>D 层</strong><br>调度（流量）</td><td>DSP-F</td><td>Foreground Dispatch</td><td>需意识主动参与的目标导向进程，高能耗</td><td>秒–时</td></tr>
+                    <tr><td>DSP-B</td><td>Background Dispatch</td><td>无需意识参与的自动化进程，低能耗（习惯、直觉、情绪反应）</td><td>秒–时</td></tr>
+                    <tr><td rowspan="3"><strong>S 层</strong><br>结构（控制方程）</td><td>STR-R</td><td>Rules Structure</td><td>"如果 X 则 Y"的规则内容：核心信念、决策算法</td><td>月</td></tr>
+                    <tr><td>STR-C</td><td>Connections Structure</td><td>"X 与 Y 的连接强度"：情感绑定、概念关联网络</td><td>月</td></tr>
+                    <tr><td>STR-S</td><td>Sequence Structure</td><td>"先做 X 再做 Y"的固定程序：习惯脚本、作息节律</td><td>月</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>1.3 42 维坐标系</h3>
+        <p>状态空间由 6 模块 × 7 维度张量积构成，每一模块包含 RES-D / RES-B / DSP-F / DSP-B / STR-R / STR-C / STR-S 七个维度，共 42 个基本诊断维度。</p>
+        <div class="code-block">
+            // 状态向量定义<br>
+            Ψ ∈ ℝ⁴²<br>
+            Ψ = { Mᵢ-X : i ∈ [1,6]，X ∈ {RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S} }<br>
+            分量命名：模块前缀 + 维度名（如 M4-DSP-B、M2-STR-R）
+        </div>
+
+        <h3>1.4 示例：抑郁向量的 M-R-D-S 表示</h3>
+        <div class="code-block">
+            // 抑郁状态的 M-R-D-S 向量表示<br>
+            {<br>
+            &nbsp;&nbsp;M1: { RES-D: 20, RES-B: 35 },                  // 能量极低<br>
+            &nbsp;&nbsp;M2: { STR-R: "自我否定信念", STR-C: "失败→无价值" },  // 规则偏差 + 病态连接<br>
+            &nbsp;&nbsp;M3: { DSP-F: 0.3, DSP-B: 0.8 },               // 前台调度薄弱，后台反刍<br>
+            &nbsp;&nbsp;M4: { 效价: -0.7, 唤醒度: 0.2 },                // 负性低唤醒<br>
+            &nbsp;&nbsp;M6: { 行为抑制: 0.9 }                           // 行为输出受阻<br>
+            }
+        </div>
+
+        <!-- 二、G-M-A-R 操作架构 -->
+        <h2 class="section-label"><i class="fas fa-sliders-h" aria-hidden="true"></i> 二、G-M-A-R 操作架构</h2>
+        <p class="section-intro">G-M-A-R 是 INTRE 的<strong>操作语法</strong>——四种原子操作（GATE / MODULATE / ALIGN / RELINK）回答"针对这个状态，能做什么"。各操作有严格的<strong>靶点合法性矩阵</strong>，非任意对应。完整定义、靶点矩阵、D→R→S 干预序列、组合规则见专项文档 <strong>01-M-08 L0-G-M-A-R 操作语法</strong>。</p>
+
+        <div class="grid-4">
+            <div class="op-card">
+                <h4><i class="fas fa-door-open" aria-hidden="true"></i> GATE · 门控</h4>
+                <p class="op-detail">通道开关：启动、抑制或重定向目标进程。调节激活阈值，不改变进程内容。</p>
+                <p class="op-target">直接合法靶点：DSP-F / DSP-B / 运行中的 STR-S 序列</p>
+            </div>
+            <div class="op-card">
+                <h4><i class="fas fa-sliders-h" aria-hidden="true"></i> MODULATE · 调节</h4>
+                <p class="op-detail">数量调节：注入或节约能量，改变资源存量水平与可用性。</p>
+                <p class="op-target">直接合法靶点：RES-D（唯一直接合法）</p>
+            </div>
+            <div class="op-card">
+                <h4><i class="fas fa-arrows-spin" aria-hidden="true"></i> ALIGN · 校准</h4>
+                <p class="op-detail">规则修正：改写错误的、不合理的信念或决策算法。</p>
+                <p class="op-target">直接合法靶点：STR-R（规则内容）</p>
+            </div>
+            <div class="op-card">
+                <h4><i class="fas fa-link" aria-hidden="true"></i> RELINK · 重联</h4>
+                <p class="op-detail">联系重构：解除病态的情感绑定或建立新的价值连接。</p>
+                <p class="op-target">直接合法靶点：STR-C（连接结构）</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <p><strong>靶点合法性</strong>：四种操作与 R-D-S 各层级之间存在严格的对应关系。L4 规划生成的任何操作序列，其每一操作必须落在对应操作的直接合法靶点集内（01-M-08 §3.1 矩阵）。</p>
+            <p style="margin-top:.5rem;"><strong>D→R→S 干预序列</strong>：系统性干预默认遵循"调度稳定 → 资源恢复 → 结构重建"三阶段（工程指南，非自然定律；01-M-08 §四）。</p>
+        </div>
+
+        <!-- 三、结构约束 -->
+        <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 三、结构约束</h2>
+        <p class="section-intro">结构约束定义状态空间必须满足的形式化规则，回答"什么存在、什么和什么有关"，属<strong>结构规律</strong>（不可被数据修订）。</p>
+
+        <h3>3.1 D 矩阵存在性</h3>
+        <p>存在一个 6×6 模块间依赖矩阵 D，定义 M1-M6 之间的功能影响关系：</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>性质</th><th>定义</th></tr></thead>
+                <tbody>
+                    <tr><td>维度</td><td>D 为 6×6 方阵，行/列对应 M1-M6</td></tr>
+                    <tr><td>有向加权</td><td>D[i][j] 表示模块 i 对模块 j 的功能影响强度</td></tr>
+                    <tr><td>枢纽结构</td><td>M4（情绪）在结构上占据枢纽位置（最高出度+入度），M3 次之</td></tr>
+                    <tr><td>有向无环</td><td>依赖关系构成有向图，循环依赖不属于定义范围</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>D 矩阵的边强度数值与概率分布不在 L0 定义，属 L3 参数子层（SPSM-L 结构机制库）。</p>
+
+        <h3>3.2 STR 三分</h3>
+        <p>S 层（结构）分为三类稳定配置，STR-R / STR-C / STR-S 在功能上互斥且联合覆盖结构层：</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>类别</th><th>对象</th><th>功能角色</th></tr></thead>
+                <tbody>
+                    <tr><td>STR-R</td><td>规则内容</td><td>决定"如何评估"（解释模型、信念、决策算法）</td></tr>
+                    <tr><td>STR-C</td><td>连接关系</td><td>决定"什么与什么绑定"（情感连接、概念关联、意义绑定）</td></tr>
+                    <tr><td>STR-S</td><td>序列程序</td><td>决定"按什么顺序执行"（习惯脚本、行为序列、作息节律）</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.3 跨层依赖公理</h3>
+        <p>R-D-S 三层之间存在三条跨层依赖公理：</p>
+        <ul>
+            <li><strong>调度依赖资源</strong>：DSP 持续运行消耗 RES-D；调度能力受资源水平约束。</li>
+            <li><strong>结构塑造调度</strong>：STR 决定 DSP 的触发条件与执行路径。</li>
+            <li><strong>资源约束结构</strong>：STR 的改变需要充足 RES，属高能耗操作。</li>
+        </ul>
+
+        <h3>3.4 级联规则</h3>
+        <p>跨模块级联指一个模块或层级的异常经 D 矩阵与跨层依赖传导至其他模块/层级的过程：</p>
+        <ol>
+            <li><strong>级联存在性</strong>：M1-M6 通过共享资源池、互为输入输出的信号通路与层级化控制依赖实现功能耦合。</li>
+            <li><strong>典型传导机制</strong>（功能层推导示意，非经验校准值）：资源供给受限（M1 → M3/M2）、调度控制降级（M3 → M6/M4/M2）、结构性错误归因（M4/M6 → M2 → M5）。</li>
+            <li><strong>级联路径开放性</strong>：典型机制未穷尽所有级联可能性，是否存在其他重要传导机制是开放的理论与实证问题。</li>
+        </ol>
+
+        <h3>3.5 六条动力学约束</h3>
+        <p>以下六条"动力学约束"是<strong>结构规律的操作化表述</strong>（非动力学方程本身）：</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>序号</th><th>约束</th><th>结构语义</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>资源流守恒</td><td>模块间资源消耗、转移与补充构成总量约束下的闭合回路；可动用资源总量存在结构上限</td></tr>
+                    <tr><td>2</td><td>恢复不对称</td><td>消耗速率与恢复速率在结构上不对称——恢复慢于消耗</td></tr>
+                    <tr><td>3</td><td>级联阈值</td><td>模块间影响存在触发阈值；未越过时为局部扰动，越过时放大为跨模块级联</td></tr>
+                    <tr><td>4</td><td>改变耗时</td><td>结构性改变（STR 层）时间尺度慢于资源层与调度层——层间变化速率存在数量级分离</td></tr>
+                    <tr><td>5</td><td>弹性回滞</td><td>偏离基线后的恢复路径存在回滞：去程与回程不完全重合，需额外能量越过恢复阈值</td></tr>
+                    <tr><td>6</td><td>系统-环境耦合</td><td>系统与环境双向耦合：环境经 S-P 参照系驱动系统，系统经行为输出反作用于环境</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>结构规律的操作化表述，非动力学方程</strong>：L0 只定义上述六条约束的<strong>存在性与结构语义</strong>，方程形式与参数数值在 L3 动力学层（方程子层 + 参数子层）展开。修订条件为<strong>架构级（A-16 四条件）</strong>，参数数据不能直接修订结构约束。</p>
+        </div>
+
+        <!-- 四、知识基础设施 -->
+        <h2 class="section-label"><i class="fas fa-database" aria-hidden="true"></i> 四、知识基础设施</h2>
+        <p class="section-intro">IODS 的概念编码体系由两个核心库构成：<strong>PSL-L 词汇库</strong>（自然语言接口）与 <strong>PCUI-L 概念映射库</strong>（核心概念层）。两者协作完成异质化语言输入到 42 维坐标系的标准化。</p>
+
+        <h3>4.1 PCUI-L · 心理概念统一映射库（核心概念层）</h3>
+        <p>为每个心理学概念分配唯一的结构化 PCUI 编码（Psychological Concept Unique Identifier），将不同流派的术语统一定位到 M-R-D-S 坐标上。</p>
+
+        <h4>PCUI 编码格式</h4>
+        <div class="code-block">
+            // PCUI 编码格式（核心定义层）<br>
+            {FunctionalCode}.UPLP.v{Version}.{Sequence}#{ModuleSignature}<br>
+            // ModuleSignature 角色标签：C=Core（核心，M4）、I=Impact（受冲击，M2/M3）、<br>
+            //                          S=Support（支撑，M1）、O=Output（输出通道，M6）
+        </div>
+
+        <h4>PCUI 条目六要素</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>组成</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>核心定义</td><td>理论中立的功能性定义（提取自多流派共识）</td></tr>
+                    <tr><td>坐标映射</td><td>完整的 M-R-D-S 坐标映射（模块 × 层级 × 参数范围和分布）</td></tr>
+                    <tr><td>多流派解释</td><td>CBT、精神分析、人本主义、神经科学等视角，标注证据等级</td></tr>
+                    <tr><td>干预指引</td><td>推荐的 G-M-A-R 操作序列（合法性受 01-M-08 靶点矩阵约束）</td></tr>
+                    <tr><td>文化变体</td><td>各文化的表达差异与坐标权重调整语义</td></tr>
+                    <tr><td>验证记录</td><td>专家共识度、临床验证数据、异议记录</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>4.2 PSL-L · 心理专项词汇库（自然语言接口）</h3>
+        <p>PSL-L 定义异质化语言输入（临床口语、流派术语、文化隐喻、躯体化表达）与标准化 PCUI 标识符、M-R-D-S 坐标之间的词汇映射关系。</p>
+
+        <h4>PSL-L 五层词汇体系</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>层级</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>术语主表</td><td>核心术语条目（条目规模属术语实例层，数据驱动增补）</td></tr>
+                    <tr><td>语义映射层</td><td>术语 → PCUI + 置信度权重 + 上下文约束</td></tr>
+                    <tr><td>形态变体层</td><td>同义词、词形、缩写归一化</td></tr>
+                    <tr><td>上下文规则层</td><td>消歧规则、共现模式、语境修正因子</td></tr>
+                    <tr><td>多语言对齐层</td><td>中文 ↔ 英文 ↔ 日文 ↔ 韩文跨语言映射</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>PSL 映射示例</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>自然语言表达</th><th>映射 PCUI</th><th>上下文约束</th></tr></thead>
+                <tbody>
+                    <tr><td>"心里堵得慌"（东亚文化）</td><td>情绪模块 + DSP-B 过度激活</td><td>躯体化表达 → M4-DSP-B</td></tr>
+                    <tr><td>"我感到筋疲力尽"</td><td>能量耗竭 → M1-RES-D↓</td><td>资源层下降</td></tr>
+                    <tr><td>"我什么都做不好"（CBT 过度警觉）</td><td>自动化思维 → M2-STR-R 固化</td><td>规则层负性信念</td></tr>
+                    <tr><td>"信号焦虑"（精神分析）</td><td>情绪模块 + DSP-B 自动化预警</td><td>防御机制 → M4-DSP-B</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>PSA-L 为历史名</strong>：PSA-L（心理语义网络 / Psychological Semantic Architecture-Layer）作为历史命名保留，其内容按 R1 决策已重组入 <strong>§二（状态空间）</strong>、<strong>§三（结构约束）</strong>、<strong>§四（PSL-L，本节）</strong>、<strong>§五（PCUI-L，本节）</strong>、<strong>§六（概念编码）</strong>——PSA-L 不再作为独立组件名。</p>
+            <p style="margin-top:.5rem;"><strong>核心定义层 vs 术语实例层</strong>：PCUI/PSL 编码体系与五层词汇结构属<strong>核心定义层</strong>（架构级 A-16 四条件，极慢）；具体术语词条增补、归属调整属<strong>术语实例层</strong>（数据驱动，由 L1-S 通过知识生产流水线管理，详见 01-M-07）。</p>
+        </div>
+
+        <!-- 五、跨流派整合 -->
+        <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 五、跨流派整合</h2>
+        <p class="section-intro">不同流派的心理学概念不再是不可通约的"语言游戏"，而是同一套形式化语法（M-R-D-S、G-M-A-R）的不同参数配置。下表给出主要流派到 IODS 坐标系的典型映射：</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>心理学流派</th><th>核心概念</th><th>IODS 映射</th></tr></thead>
+                <tbody>
+                    <tr><td>CBT（认知行为疗法）</td><td>自动化思维、核心信念</td><td>M2-STR-R（规则结构）+ ALIGN</td></tr>
+                    <tr><td>DBT（辩证行为疗法）</td><td>情绪调节、痛苦耐受</td><td>M4（情绪模块）+ M3-DSP-F（前台调度）+ MODULATE</td></tr>
+                    <tr><td>ACT（接纳承诺疗法）</td><td>认知解离、接纳</td><td>GATE(DSP-B) + ALIGN(STR-R)</td></tr>
+                    <tr><td>EFT（情绪聚焦疗法）</td><td>情绪转化</td><td>M4 + RELINK(STR-C)</td></tr>
+                    <tr><td>精神分析</td><td>防御机制、潜意识</td><td>DSP-B（后台调度）+ GATE 门控</td></tr>
+                    <tr><td>人本主义</td><td>自我实现、价值条件</td><td>M3-RES-B（基底资源）+ STR-R</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>IODS 的整合价值</strong>：流派概念可映射到同一套形式化语法的不同参数配置，使心理学知识的累积、跨流派对话与系统化干预成为可能。不同流派不再是竞争性范式，而是同一坐标系下不同参数化路径。</p>
+        </div>
+
+        <!-- 六、S-P 环境参照系 -->
+        <h2 class="section-label"><i class="fas fa-globe" aria-hidden="true"></i> 六、S-P 环境参照系（外感架构）</h2>
+        <p class="section-intro">S-P（Source-Pattern）是 INTRE 的<strong>外感架构</strong>，与 M-R-D-S 内感架构构成完整参照系。完整定义（含 S 层六系统、P 层命名规则、ELI 概念语义）见专项文档 <strong>01-M-09 L0-S-P 环境参照系</strong>。</p>
+
+        <h3>6.1 内感 / 外感分类</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>侧</th><th>架构</th><th>回答的问题</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>内感</td><td>M-R-D-S（§一）</td><td>"系统内部正在发生什么"</td><td>42 维状态空间、R-D-S 三层结构</td></tr>
+                    <tr><td>外感</td><td>S-P（01-M-09）</td><td>"系统处于什么环境中，环境如何影响系统"</td><td>S 层环境来源、P 层影响模式</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>6.2 S 层六系统环境来源</h3>
+        <p>S 层采用并拓展布朗芬布伦纳生态系统理论：</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>S 层</th><th>核心定义</th></tr></thead>
+                <tbody>
+                    <tr><td>微系统</td><td>个体直接、面对面互动的环境（家庭、职场、同伴群体）</td></tr>
+                    <tr><td>中系统</td><td>微系统间的相互作用与连接（家校联系）</td></tr>
+                    <tr><td>外系统</td><td>个体未直接参与但间接受影响的环境（父母工作环境、政策）</td></tr>
+                    <tr><td>宏系统</td><td>广阔的文化、价值观、意识形态背景</td></tr>
+                    <tr><td>时序系统</td><td>环境事件与随时间的变化（生命转折事件、时代变迁）</td></tr>
+                    <tr><td>数字系统</td><td>数字信息环境（社交媒体、算法推荐、即时通讯）</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>6.3 ELI 环境负荷指数</h3>
+        <p>ELI（Environmental Load Index）是环境负荷的统合量度：对给定时间窗内，由 S 层环境来源经 P 层模式作用于 M-R-D-S 各单元的<strong>净负荷</strong>标度。ELI 区分方向（资源消耗 vs 资源补充）、分层（短期 RES-D 与长期 RES-B/STR）、作用面定位（任何 ELI 值都对应明确的 P 层单元集合）。其数值与阈值属 L3 参数子层（SPER-L 环境识别库）。</p>
+
+        <div class="info-box">
+            <p><strong>S-P 报告格式</strong>（静态层面）：<code>S-[层次]:[来源] → P-[M-R-D-S 单元][作用方向]</code>。示例：<code>S-微系统:职场-高压项目组 → P-M3-RES-D-</code>（职场高压消耗意志资源）。S-P 报告直接定位至特定 M-R-D-S 诊断单元，使环境因素从"背景噪声"变为"可定位的参照系条目"。</p>
+        </div>
+
+        <!-- 七、强反例协议 -->
+        <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 七、强反例协议</h2>
+        <p class="section-intro">IODS 的核心主张是可证伪的。若出现满足 <strong>A-16 四条件</strong>（稳定性、不可归约性、增量预测力、非操作性不足导致）的强反例，相应主张应被修正或放弃：</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>ID</th><th>主张</th><th>证伪条件</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>SC1</strong></td><td>M1-M6 完备性</td><td>若发现一种对人类生存和适应至关重要、且在功能上无法被现有 M1-M6 任何模块及其交互所解释的心理能力，则模块完备性被证伪</td></tr>
+                    <tr><td><strong>SC2</strong></td><td>R-D-S 充分性</td><td>若发现一个心理状态的关键属性，无法被归类为资源（R）、运行进程（D）或结构规则与连接拓扑（S）之一，则三层结构的充分性被质疑</td></tr>
+                    <tr><td><strong>SC3</strong></td><td>42 维坐标完备性</td><td>若发现某功能性心理状态无法被（M, R-D-S）张量积空间合理映射，且该缺口经标准化流程后仍不可归约，则坐标系的完备性被证伪</td></tr>
+                    <tr><td><strong>SC4</strong></td><td>结构约束</td><td>若出现稳定可重复的经验证据表明六条动力学约束或级联规则中的某一结构语义与观测系统性冲突（排除操作化不足后），则对应约束应被修订或放弃</td></tr>
+                    <tr><td><strong>SC5</strong></td><td>概念编码核心定义层</td><td>若发现一类心理学知识在 PSA-L 架构约束下无法被合理表示为 PCUI 条目，且该表示缺失是架构本身的结构性限制而非编纂不完整，则核心定义层被质疑</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>与 UPLP 的边界</strong>：IODS 定义"是什么"（状态坐标系、操作语法、知识基础设施）；UPLP 编译"怎么观测"（自然语言 → 语义似然的五层编译流水线 S1-S5）。<strong>IODS 不可用则编译无降级</strong>——UPLP 作为 PSE 感知层 L1-S 语义输入端口，<strong>强依赖</strong> IODS；IODS 不可用时 UPLP 无可编译的坐标系，编译无降级路径。IODS 与 UPLP 并列，共同构成 L0 + L1-S 的静态-观测分层。</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能层心理学 (FLP) · 开放知识入口</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v2.4 (2026-08-03) · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle.js"></script>
+</body>
+</html>

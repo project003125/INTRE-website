@@ -73,7 +73,7 @@
 
 <p style="background:#f4f6fa;border-left:3px solid var(--color-navy-400);padding:0.6rem 0.9rem;font-size:0.88rem;color:var(--color-slate-700);margin:0 0 1.2rem;"><strong>管线重构注记（2026-07）</strong>：本章成文于旧版"四系统并列"表述阶段。自 2026-07 管线体系更新后，UPLP / UBMP / UNIP 不再以"四大核心基础设施"形式独立并列，而是统一归属为 <strong>PSE 感知层 L1 的三个 IODS 输入端口</strong>（L1-S 语义端口 / L1-B 行为端口 / L1-N 神经端口），PSE 自身作为状态层（L2+）执行融合与动力学推理。本章 §3.2、§3.6 小结、FAQ 等处已按新边界做最小修订，保留学术内容与论证结构；具体新表述见 01-M-05/06/07 主页与 app-g 附录 G。</p>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE六大核心资产并按方法论/工程化/研究纲领三档分级；(2)描述 UPLP/UBMP/UNIP 三个 PSE 感知层输入端口的分工与协作关系，以及 PSE 状态层、REVER 伦理层的独立定位；(3)解释四阶范式转变框架及INTRE在其中的定位；(4)阐述框架的三层主张结构和版本演化协议；(5)识别IET v3.0的八级证据分类体系及其标注原则。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE六大核心资产并按方法论/工程化/研究纲领三档分级；(2)描述 UPLP/UBMP/UNIP 三个 PSE 感知层输入端口的分工与协作关系，以及 PSE 状态层、REVER 作为独立伦理护栏横跨功能层（L1-L5）的定位；(3)解释四阶范式转变框架及INTRE在其中的定位；(4)阐述框架的三层主张结构和版本演化协议；(5)识别IET v3.0的八级证据分类体系及其标注原则。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -126,21 +126,21 @@
 </table>
 </div>
 
-<p>UPLP封装了M-R-D-S和G-M-A-R（前者是状态语法，后者是操作语法，UPLP将二者纳入统一的知识基础设施），因此后两者也作为独立资产列出，以示其可独立评估的工程价值。</p>
+<p>IODS 定义了 M-R-D-S 和 G-M-A-R（前者是状态语法，后者是操作语法，二者构成统一的知识基础设施），因此后两者也作为独立资产列出，以示其可独立评估的工程价值。UPLP 仅是 PSE 感知层 L1 的语义输入端口，负责把自然语言编译进这套语法。</p>
 
 <hr class="section-divider">
 
-<h2>3.2 PSE 感知层端口 + 状态层 + REVER 伦理层</h2>
+<h2>3.2 PSE 感知层端口 + 状态层 + REVER 伦理护栏</h2>
 
-<p>INTRE 框架的工程功能可分解为 PSE 感知层 L1 的三个 IODS 输入端口、PSE 状态层（L2+）与一个独立的伦理约束层。感知端口与状态层、伦理约束层的关系可概括为：<strong>UPLP 是语义端口（L1-S），UNIP 是神经端口（L1-N），UBMP 是行为端口（L1-B）</strong>，三端口共同向 <strong>PSE 状态层</strong>（执行融合与动力学推理）输出标准化似然，而 <strong>REVER 是安全护栏</strong>。<small style="color:var(--color-slate-500);font-size:0.85em;">（2026-07 管线体系更新：原"四大核心基础设施并列"表述已替换为 IODS 三端口 + PSE 状态层的两系统边界。）</small></p>
+<p>INTRE 框架的工程功能可分解为 PSE 感知层 L1 的三个 IODS 输入端口、PSE 状态层（L2+）与一个独立的伦理护栏。REVER 作为独立的伦理护栏横跨整个功能层（L1-L5）。感知端口与状态层、伦理护栏的关系可概括为：<strong>UPLP 是语义端口（L1-S），UNIP 是神经端口（L1-N），UBMP 是行为端口（L1-B）</strong>，三端口共同向 <strong>PSE 状态层</strong>（执行融合与动力学推理）输出标准化似然，而 <strong>REVER 是安全护栏</strong>。<small style="color:var(--color-slate-500);font-size:0.85em;">（2026-07 管线体系更新：原"四大核心基础设施并列"表述已替换为 IODS 三端口 + PSE 状态层的两系统边界。）</small></p>
 
-<p><strong>UPLP：L1-S 语义输入端口</strong>。UPLP 的任务是为 PSE 感知层提供功能层的语义通道输入。它回答"自然语言或文本输入可被映射到哪些形式化功能组件"。UPLP 的核心产出是 M-R-D-S 状态向量和 PCUI 概念映射库——通过 PSL 把自然语言/临床叙述编译为 PCUI 条目，再经 PSA 推理生成语义似然 \( p(y_s \mid \Psi_t) \)。UPLP 本身不回答"状态如何随时间变化"（那是 PSE 状态层的任务），也不回答"干预应如何设计"（那是 G-M-A-R 的任务）。它是 PSE 状态层和 G-M-A-R 的<strong>本体论基础</strong>——没有 UPLP 定义的状态空间，PSE 的动力学方程没有操作对象，G-M-A-R 的操作没有靶点。</p>
+<p><strong>UPLP：L1-S 语义输入端口</strong>。UPLP 的任务是为 PSE 感知层提供功能层的语义通道输入。它回答"自然语言或文本输入可被映射到哪些形式化功能组件"。UPLP 通过 PSL 把自然语言/临床叙述编译为 PCUI 条目，再经 PSA 推理生成语义似然 \( p(y_s \mid \Psi_t) \)。它是 PSE 状态层和 G-M-A-R 的<strong>入口端口</strong>——没有 UPLP 编译的语义输入，PSE 的动力学方程得不到观测，G-M-A-R 的操作没有靶点。（IODS 定义并产出 M-R-D-S 状态向量与 PCUI 概念映射库，见第 15 章。）</p>
 
-<p><strong>PSE：状态层（L2+）融合与动力学子系统</strong>。PSE 的任务是将感知层三个 IODS 端口输出的似然与状态先验进行融合，并执行动态演化模型。它回答"给定当前状态和环境输入，系统未来会怎样演化"。PSE 的核心能力包括：通过 MKT 微分方程计算状态轨迹，通过 MTT 分析级联传播路径，通过 MDT 优化干预序列，通过 PSE-C 贝叶斯校准将群体先验更新为个体后验。PSE 是 INTRE 从"描述"走向"预测"的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第 18-21 章。）</p>
+<p><strong>PSE：状态层（L2+）融合与动力学引擎</strong>。PSE 的任务是将感知层三个 IODS 端口输出的似然与状态先验进行融合，并执行动态演化模型。它回答"给定当前状态和环境输入，系统未来会怎样演化"。PSE 的核心能力包括：通过 MKT 微分方程计算状态轨迹，通过 MTT 分析级联传播路径，通过 MDT 优化干预序列，通过 PSE-C 贝叶斯校准将群体先验更新为个体后验。PSE 是 INTRE 从"描述"走向"预测"的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第 18-21 章。）</p>
 
 <p><strong>UNIP：L1-N 神经输入端口</strong>。UNIP 的任务是将神经层观测信号转换为功能层状态向量的神经似然，输出至 PSE 感知层 L1-N 通道。它回答"在当前神经信号下，功能状态向量各个分量的概率分布是什么"。UNIP 的核心产出是实时神经似然 \( p(y_n \mid \Psi_t) \)、置信度区间以及赋能信号（信号质量、同步等级、人群覆盖等）。UNIP 是 IODS 三端口中专门处理神经生理信号的端口——与 UPLP（语义）、UBMP（行为）以并列的输入端口形式共同供 PSE 状态层融合。它与 PSE 之间通过双向通信协议形成增强闭环：PSE 将状态估计和校准残差反馈给 UNIP，UNIP 据此进行在线个体化模型微调。UNIP 不回答"功能状态如何演化"（那是 PSE 状态层的任务），也不回答"如何改变状态"（那是 G-M-A-R 的任务）。（详见第 22.6 节及 UNIP 专项文档。）</p>
 
-<p><strong>UBMP：L1-B 行为输入端口</strong>。UBMP（Unified Behavioral Measurement Port，统一行为测量端口）是 PSE 感知层 L1 的行为输入端口（IODS 端口之一），与 UPLP（L1-S）、UNIP（L1-N）并列，三者不再以"四大核心基础设施"形式与 PSE 并列。UBMP 的任务是将结构化行为观测——心理量表分数、EMA 条目、认知任务表现、数字表型特征——转化为实时行为似然 \( p(y_b \mid \Psi_t) \)。UBMP 采用三层架构：L1 行为测量注册库（观测函数、信效度矩阵、工具桥接参数），L2 校准与桥接引擎（IRT 跨工具等价转换、贝叶斯个体化校准、漂移检测），L3 行为似然 API（JSON-RPC 端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMP 的核心设计原则是：数值桥接前必须先经 UPLP 语义对齐——两个量表只有在 UPLP 确认它们测量同一 M-R-D-S 组件后，才能进行 IRT 跨工具等价转换。UBMP 不回答"语义含义是什么"（那是 UPLP 的任务），也不回答"状态如何演化"（那是 PSE 状态层的任务）。当前 UBMP 处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMP 专项论文。）</p>
+<p><strong>UBMP：L1-B 行为输入端口</strong>。UBMP（Unified Behavioral Measurement Port，统一行为测量端口）是 PSE 感知层 L1 的行为输入端口（IODS 端口之一），与 UPLP（L1-S）、UNIP（L1-N）并列，三者不再以"四大核心基础设施"形式与 PSE 并列。UBMP 的任务是将结构化行为观测——心理量表分数、EMA 条目、认知任务表现、数字表型特征——转化为实时行为似然 \( p(y_b \mid \Psi_t) \)。UBMP 采用五层架构 B1-B5：B1 行为测量注册库（BMR，观测函数、信效度矩阵、工具桥接参数），B2 测量语义对齐（BAL，请求 UPLP 确认构念等价），B3 跨工具桥接（BLK，IRT 等价转换），B4 校准与个体化（BCI，观测函数 p(y_b|Ψ) + 层级收缩），B5 行为似然输出（BLI，JSON-RPC 端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMP 的核心设计原则是：数值桥接前必须先经 UPLP 语义对齐——两个量表只有在 UPLP 确认它们测量同一 M-R-D-S 组件后，才能进行 IRT 跨工具等价转换。UBMP 不回答"语义含义是什么"（那是 UPLP 的任务），也不回答"状态如何演化"（那是 PSE 状态层的任务）。当前 UBMP 处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMP 专项论文。）</p>
 
 <p><strong>REVER：伦理护栏</strong>。REVER 的任务是在 AI 拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答"在保证功能效用的前提下，如何设计伦理上安全的 AI 系统"。REVER 的核心设计包括：非人格性公理（AI 不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER 不是独立于 IODS 和 PSE 的另一套语言，而是同一套语法在伦理维度的扩展应用——它将"结构伦理"从哲学原则转化为可执行的门控协议。（详见第 25-26 章。）</p>
 
@@ -307,7 +307,7 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：INTRE框架包含六大核心资产，按方法论/工程化/研究纲领分为三档：功能层定位属于第一档方法论资产，M-R-D-S和G-M-A-R属于第二档工程化资产，UPLP、PSE、UBMP、UNIP属于第三档研究纲领资产。PSE 感知层 L1 由三个 IODS 输入端口（UPLP-L1-S 语义、UBMP-L1-B 行为、UNIP-L1-N 神经）构成，三端口共同向 PSE 状态层（L2+）输出标准化似然，由 PSE 状态层执行融合与动力学推理；加上 REVER 伦理层，形成从静态地图到三端口输入、状态层推理、安全护栏的完整链路（2026-07 管线体系更新）。知识基础设施PCUI、PSA、PSL为跨流派翻译和临床编译提供了可操作的平台。框架的层级性和开放性通过三层主张结构、版本演化协议和强反例触发条件得到保障。IET v3.0证据分类学将理论主张的治理从哲学倡导转化为可执行的标注协议。五条核心主张均设有明确的证伪路径，框架最脆弱的节点是M3-RES-D的独立存在性。</p>
+<p><strong>本章小结</strong>：INTRE框架包含六大核心资产，按方法论/工程化/研究纲领分为三档：功能层定位属于第一档方法论资产，M-R-D-S和G-M-A-R属于第二档工程化资产，UPLP、PSE、UBMP、UNIP属于第三档研究纲领资产。PSE 感知层 L1 由三个 IODS 输入端口（UPLP-L1-S 语义、UBMP-L1-B 行为、UNIP-L1-N 神经）构成，三端口共同向 PSE 状态层（L2+）输出标准化似然，由 PSE 状态层执行融合与动力学推理；加上 REVER 伦理护栏（横跨 L1-L5），形成从静态地图到三端口输入、状态层推理、安全护栏的完整链路（2026-07 管线体系更新）。知识基础设施PCUI、PSA、PSL为跨流派翻译和临床编译提供了可操作的平台。框架的层级性和开放性通过三层主张结构、版本演化协议和强反例触发条件得到保障。IET v3.0证据分类学将理论主张的治理从哲学倡导转化为可执行的标注协议。五条核心主张均设有明确的证伪路径，框架最脆弱的节点是M3-RES-D的独立存在性。</p>
 
 <blockquote><p><strong>关键术语</strong>：UPLP，UNIP，UBMP，PSE，REVER，PCUI，PSA，PSL，IET v3.0，铰链主张，构念降级，IODS，PSE 感知层 L1，状态层 L2+</p></blockquote>
 

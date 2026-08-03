@@ -100,7 +100,7 @@
 | G-M-A-R | Generate-Modify-Anchor-Release | 4 类原子操作语法 | `01-prd.md` D02 |
 | RES-D / RES-B | Resource Descriptive / Basic | 资源维度 - 描述性/基础 | `02-ia.md §4.4` |
 | DSP-F / DSP-B | Dispatch Forward / Backward | 调度维度 - 前向/后向 | `02-ia.md §4.4` |
-| STR-R / STR-C / STR-S | Structure Resource/Core/System | 结构维度 - 资源/核心/系统策略 | `02-ia.md §4.4` |
+| STR-R / STR-C / STR-S | Rule Structure / Connection Structure / Sequence Structure | 结构维度 - 规则/连接/序列（对齐 06-S-02 §1.6 权威定义） | `02-ia.md §4.4` |
 | 42 节点 | 42 Lattice Nodes | 6×7 矩阵的 42 个交点 | `02-ia.md §4.4` |
 | 节点详情面板 | Node Detail Panel | #14，点击节点弹出五区域面板 | `11-ui-elements-index.md` |
 | INTRE_NODES | Nodes Data | 42 节点详情数据（`window.INTRE_NODES`） | `lib/node-details.js` |
@@ -119,7 +119,7 @@
 |------|------|------|----------|
 | UPLP | Unified Psychological Language Port | 统一心理语言端口（语义通道） | `06-S-05 §3.4` |
 | UNIP | Unified Neural Interface Port | 统一神经接口端口（神经通道） | `06-S-05 §3.4` |
-| UBMP | Unified Behavior Measurement System | 统一行为测量端口（行为通道） | `06-S-05 §3.4` |
+| UBMP | Unified Behavioral Measurement Port | 统一行为测量端口（行为通道） | `06-S-05 §3.4` |
 | PSE | Psychological System Engine | 心理系统计算引擎 | `06-S-05 §3.4` |
 | REVER | REVER Ethical Engine | 伦理门控引擎 | `06-S-05 §3.4` |
 | 大地色 | Earth Tone | v2.3 起的 5 种通道色（饱和度低、向灰色偏移 15%） | `06-S-05 §3.4` |

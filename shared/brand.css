@@ -176,9 +176,12 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  margin: 0;
   font-family: var(--font-body);
   background-color: var(--color-white);
   color: var(--color-slate-900);

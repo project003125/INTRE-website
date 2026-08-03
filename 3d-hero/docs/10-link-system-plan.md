@@ -17,7 +17,7 @@
 | 页面 | URL 路径 | 内容定位 |
 |---|---|---|
 | 首页 | `/INTRE-website/` | 品牌入口、三层架构概览、五大模块卡片 |
-| UPLP | `/INTRE-website/uplp/` | 语义通道：M-R-D-S 状态语法、G-M-A-R 操作语法、PCUI/PSA/PSL |
+| UPLP | `/INTRE-website/uplp/` | 语义端口（L1-S）：语义编译流水线、PCUI 映射、PSA 标注体系、PSL 词汇库 |
 | UNIP | `/INTRE-website/unip/` | 神经通道：EEG/fNIRS/PPG 六层递进架构 |
 | UBMP | `/INTRE-website/ubmp/` | 行为通道：量表、EMA、数字表型三层管道 |
 | PSE | `/INTRE-website/pse/` | 计算引擎：蒙特卡罗仿真、贝叶斯校准 |

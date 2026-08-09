@@ -1,10 +1,11 @@
 ---
 title: INTRE 官方网站
-version: 1.0.0
-date: 2026-06-12
+version: 1.1.0
+date: 2026-08-09
 status: active
 document_type: standard
 description: INTRE 项目官方网站源码，基于品牌视觉规范 (06-S-05) 构建的静态站点
+revision_notes: v1.1.0 同步 2026-08 WP-13 落地状态（新增 /iods/ 页、UBMP 三→五、nav 10 链接版）；明确 3 项主理人决策进展；指向 15 号工程 E5-C 治理底稿（2026-08-09）
 ---
 
 # INTRE Website
@@ -63,10 +64,36 @@ git status --short
 
 ## 五、当前质量基线
 
-截至 2026-06-12，本仓库已完成以下治理：
+截至 2026-08-09，本仓库已完成以下治理：
 
 - 共享品牌 token 集中在 `shared/brand.css`
 - 大部分跨页面组件集中在 `shared/components.css`
 - 移动端导航交互集中在 `shared/nav-toggle.js`
 - 首页与主要子页面具备基础 SEO / Open Graph 元信息
 - 导航与主体内容使用语义化结构，并保留跳转到主体内容的可访问性路径
+
+### 5.1 2026-08 WP-13 落地状态（v1.1.0 同步）
+
+| 模块 | 状态 | 备注 |
+|------|------|------|
+| `/iods/` 新建 | ✅ 已落地 | WP-13 新建页面 |
+| `/uplp/` 重写 | ✅ 已落地 | 端口命名变更（UPLS → UPLP） |
+| UBMP 三层→五层（B1-B5） | ✅ 已落地 | 详见 `01-M-10 v1.1.0` |
+| 首页 IODS 卡 | ✅ 已落地 | 突出 IODS 在两系统中的地位 |
+| glossary 补 IODS 词条 | ✅ 已落地 | |
+| nav 10 链接版 | ✅ 已落地 | 主导航扩展到 10 链接 |
+
+### 5.2 待主理人决策（WP-13 D1/D2/D3）
+
+| 编号 | 内容 | 状态 |
+|------|------|------|
+| D1 | 教材命名统一口径（UPLP/UBMP/UNIP vs 旧名 UPLS/UBMS/UNIS） | ⏸ 待签发 |
+| D2 | 教材 grep 审定（grep 残留旧命名） | ⏸ 待签发 |
+| D3 | GitHub Pages 部署流水线确认 | ⏸ 待签发 |
+
+### 5.3 治理对接
+
+本站的对外呈现治理由 15 号工程（`/15-对外传播与发表工程/`）承载，详见：
+
+- E5-C WEBSITE 治理底稿：`/15-对外传播与发表工程/E5-C-WEBSITE治理/WRK-E5C-WEBSITE对外呈现治理-底稿.md`
+- 与仓库结构关系：`/06-格式治理/06-S-11-INTRE-仓库结构地图.md` §3.1b（15 号工程与 -website 边界）

@@ -33,8 +33,8 @@ https://project003125.github.io/INTRE-website/
 | 规范 | 对网站的要求 |
 |------|--------------|
 | `06-S-05-INTRE-品牌视觉规范.md` | 优先使用 Navy、Amber、Slate、大地通道色与既有 Logo / favicon 规则 |
-| `06-S-06-INTRE-Agent协作标准.md` | 修改前确认 Git 状态；提交时使用已登记 Agent 身份；不要覆盖其他 Agent 的未确认变更 |
-| `06-S-07-INTRE-Agent长期记忆.md` | 区分顶层 `INTRE-vault` 与本仓库 `INTRE-website`，网站任务需在 `-website` 内单独查看状态 |
+| `06-S-06-INTRE-Agent协作标准.md` | 修改前确认 Git 状态（顶层 `INTRE-vault` 与 `-website` 分属不同仓库）；项目采用混用无界模式，无注册表/专属 Agent 身份，提交遵循手册 §8 Git 工作流与 §9 冲突处理 |
+| `06-S-06-INTRE-Agent协作标准.md` | 区分顶层 `INTRE-vault` 与本仓库 `INTRE-website`，网站任务需在 `-website` 内单独查看状态（详见手册 §3.6 本地仓库边界） |
 
 ## 三、维护原则
 
@@ -96,4 +96,4 @@ git status --short
 本站的对外呈现治理由 15 号工程（`/15-对外传播与发表工程/`）承载，详见：
 
 - E5-C WEBSITE 治理底稿：`/15-对外传播与发表工程/E5-C-WEBSITE治理/WRK-E5C-WEBSITE对外呈现治理-底稿.md`
-- 与仓库结构关系：`/06-格式治理/06-S-11-INTRE-仓库结构地图.md` §3.1b（15 号工程与 -website 边界）
+- 与仓库结构关系：`/06-格式治理/06-S-04-知识库维护协议.md` 附录A §A.3.2（15 号工程与 -website 边界）

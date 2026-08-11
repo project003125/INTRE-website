@@ -11,3 +11,9 @@ textbook/_legacy/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Python 缓存（与父仓库 INTRE-vault 保持一致，2026-08-11 补）
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/

@@ -1,8 +1,8 @@
----
+﻿---
 title: INTRE 官方网站
 version: 1.1.0
 date: 2026-08-09
-status: active
+status: final
 document_type: standard
 description: INTRE 项目官方网站源码，基于品牌视觉规范 (06-S-05) 构建的静态站点
 revision_notes: v1.1.0 同步 2026-08 WP-13 落地状态（新增 /iods/ 页、UBMP 三→五、nav 10 链接版）；明确 3 项主理人决策进展；指向 15 号工程 E5-C 治理底稿（2026-08-09）

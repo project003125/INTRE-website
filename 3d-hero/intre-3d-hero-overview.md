@@ -1,3 +1,13 @@
+---
+title: INTRE 3D Hero 子项目 — 系统介绍
+version: v1.0.0
+date: 2026-07-24
+status: draft
+taxonomy: IET v3.0
+document_type: report
+revision_notes: v1.0.0 补 frontmatter（2026-08-10 by Mavis · WRK-E12 季度巡检补字段）。子项目自描述文档：部分功能已实现，部分待执行，故 status=draft。
+---
+
 # INTRE 3D Hero 子项目 — 系统介绍
 
 > **项目位置**：`d:\INTRE\intre-3d-hero\`

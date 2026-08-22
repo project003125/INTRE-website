@@ -77,7 +77,7 @@ git status --short
 | 模块 | 状态 | 备注 |
 |------|------|------|
 | `/iods/` 新建 | ✅ 已落地 | WP-13 新建页面 |
-| `/uplp/` 重写 | ✅ 已落地 | 端口命名变更（UPLS → UPLP） |
+| `/uplp/` 重写 | ✅ 已落地 | 端口命名变更（UPLP → UPLP） |
 | UBMP 三层→五层（B1-B5） | ✅ 已落地 | 详见 `01-M-10 v1.1.0` |
 | 首页 IODS 卡 | ✅ 已落地 | 突出 IODS 在两系统中的地位 |
 | glossary 补 IODS 词条 | ✅ 已落地 | |
@@ -87,7 +87,7 @@ git status --short
 
 | 编号 | 内容 | 状态 |
 |------|------|------|
-| D1 | 教材命名统一口径（UPLP/UBMP/UNIP vs 旧名 UPLS/UBMS/UNIS） | ⏸ 待签发 |
+| D1 | 教材命名统一口径（UPLP/UBMP/UNIP vs 旧名 UPLP/UBMP/UNIP） | ⏸ 待签发 |
 | D2 | 教材 grep 审定（grep 残留旧命名） | ⏸ 待签发 |
 | D3 | GitHub Pages 部署流水线确认 | ⏸ 待签发 |
 

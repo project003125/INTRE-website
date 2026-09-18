@@ -5,7 +5,7 @@ date: 2026-08-09
 status: final
 document_type: standard
 description: INTRE 项目官方网站源码，基于品牌视觉规范 (06-S-05) 构建的静态站点
-revision_notes: v1.1.0 同步 2026-08 WP-13 落地状态（新增 /iods/ 页、UBMP 三→五、nav 10 链接版）；明确 3 项主理人决策进展；指向 15 号工程 E5-C 治理底稿（2026-08-09）
+revision_notes: v1.1.0 同步 2026-08 WP-13 落地状态（新增 /iods/ 页、UBMP 三→五、nav 10 链接版）；明确 3 项主理 Agent 决策进展；指向 15 号工程 E5-C 治理底稿（2026-08-09）
 ---
 
 # INTRE Website
@@ -83,7 +83,7 @@ git status --short
 | glossary 补 IODS 词条 | ✅ 已落地 | |
 | nav 10 链接版 | ✅ 已落地 | 主导航扩展到 10 链接 |
 
-### 5.2 待主理人决策（WP-13 D1/D2/D3）
+### 5.2 待主理 Agent 决策（WP-13 D1/D2/D3）
 
 | 编号 | 内容 | 状态 |
 |------|------|------|

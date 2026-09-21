@@ -57,7 +57,7 @@
   background:var(--rule-faint); }
 .console-id { min-width:0; }                       /* 长中文标题先在本栏内折行，不撑破报头 */
 .console-eyebrow { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
-  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); margin-bottom:.5rem; }
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); margin-bottom:var(--space-2); }
 .console-title { font-size:var(--text-2xl); font-weight:700; color:var(--color-white); line-height:1.25; }
 .console-meta { display:flex; flex-direction:column; align-items:flex-end; gap:.8rem; min-width:0; }
 .console-mode { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
@@ -111,6 +111,8 @@
   color:var(--color-white); line-height:1; }
 .gauge-axis { font-size:var(--text-sm); font-weight:600; color:var(--color-white); letter-spacing:0; }
 .gauge-desc { margin:.35rem 0 0; font-size:var(--text-sm); color:var(--color-white-65); line-height:1.8; text-wrap:pretty; }
+/* 说明列里的「此位为何锁着」引导语：只把字重提上来、颜色升到在册白档，不加底色不加分隔 */
+.gauge-desc b, .ctl-desc b { color:var(--color-white); font-weight:600; }
 .gauge-status { margin:0; justify-self:end; text-align:right; display:flex; align-items:center; gap:.45rem;
   font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
   text-transform:uppercase; color:var(--color-white-65); white-space:nowrap; }
@@ -137,6 +139,57 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
 .ctl--gate .ctl-id { color:var(--color-amber-500); }
 .ctl--gate .lever::after { left:auto; right:3px; background:var(--color-slate-600); }
 
+/* —— C · 探针怎么读：控制台里的叙述带（与双面板同族：一级实线压顶、mono 微标签起眉）——
+   行宽收到 --measure-read（46rem＝在册 --reading-width 740px 的 rem 写法），
+   深底叙述段一律 --color-white-65（.6/.5 于本域 Crimson 底不达标），标题走 --color-white。 */
+.console-read { margin-top:var(--space-6); border-top:1px solid var(--rule); padding-top:var(--space-5); }
+.console-read h2 { color:var(--color-white); font-size:var(--text-lg); letter-spacing:0; margin-bottom:var(--space-2); }
+.console-read p { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-white-65);
+  line-height:1.9; margin-bottom:var(--space-3); text-wrap:pretty; }
+.console-read p:last-child { margin-bottom:0; }
+.console-read b { color:var(--color-white); font-weight:600; }
+
+/* —— D · 六阶梯定性轨道：无刻度、无数字、无读数——只有次序、阶段名与一句状态词。
+   左列导轨＋空槽节点沿用表盘的虚线语言：实线空心＝待核准、虚线空心＝未启动、实心＝在行。
+   阶梯感靠 --i 逐级右移（间距档 var(--space-2)），窄屏收平，与 isce 的五级阶梯同一手法。 */
+.ladder { margin-top:var(--space-6); border-top:1px solid var(--rule); padding-top:var(--space-5); }
+.ladder h2 { color:var(--color-white); font-size:var(--text-lg); letter-spacing:0; margin-bottom:var(--space-2); }
+.ladder-note { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-white-65);
+  line-height:1.85; margin-bottom:var(--space-3); text-wrap:pretty; }
+.rungs { list-style:none; margin:0; padding:0; }
+.rung { --i:0; --riser:.9rem;
+  display:grid; grid-template-columns:var(--riser) minmax(0,1fr) auto; gap:0 var(--space-4);
+  align-items:start; margin-left:calc(var(--i) * var(--space-2));
+  padding:var(--space-3) var(--space-2); border-bottom:1px dashed var(--rule); border-radius:var(--radius-xs);
+  transition:background-color var(--duration-fast) var(--ease-smooth),
+             border-bottom-color var(--duration-fast) var(--ease-smooth); }
+.rung:nth-child(1) { --i:0; } .rung:nth-child(2) { --i:1; } .rung:nth-child(3) { --i:2; }
+.rung:nth-child(4) { --i:3; } .rung:nth-child(5) { --i:4; } .rung:nth-child(6) { --i:5; }
+.rung:last-child { border-bottom:0; }
+.rung:hover { background:var(--hover-wash); border-bottom-color:var(--color-navy-600); }
+.riser { position:relative; align-self:stretch; }
+.riser::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; margin-left:-.5px;
+  background:var(--rule); }
+.riser::after { content:''; position:absolute; left:50%; top:var(--space-3); width:9px; height:9px; margin-left:-4.5px;
+  border:1px dashed var(--rule); border-radius:var(--radius-xs); }
+.rung:last-child .riser::before { bottom:auto; height:var(--space-5); }
+.rung--wait .riser::after { border-style:solid; }
+.rung--now .riser::after { border-style:solid; border-color:var(--color-white); background:var(--color-white); }
+.rung-body { min-width:0; }
+.rung-name { color:var(--color-white); font-size:var(--text-base); font-weight:600; letter-spacing:0; line-height:1.45; }
+.rung-en { display:block; font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); margin-top:var(--space-1); }
+.rung-desc { margin:var(--space-1) 0 0; font-size:var(--text-sm); color:var(--color-white-65); line-height:1.8; text-wrap:pretty; }
+.rung-state { margin:0; justify-self:end; text-align:right; white-space:nowrap;
+  display:flex; align-items:center; gap:.45rem; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); }
+
+/* —— 实证通道一句（边界面板之前）：单刀直说本页属性与读数区现状 —— */
+.console-scope { margin-top:var(--space-5); padding-top:var(--space-4); border-top:1px solid var(--rule);
+  font-size:var(--text-sm); color:var(--color-white-65); line-height:1.85;
+  max-width:var(--measure-read); text-wrap:pretty; }
+.console-scope b { color:var(--color-white); font-weight:600; }
+
 /* —— 边界压板：浅底文件压在深底机座上；骨架（kicker／h2／state-note／lock-panel／denial）与全站同口径 —— */
 .console-boundary { margin-top:var(--space-6); background:var(--color-slate-50);
   border:1px solid var(--color-slate-200); border-radius:var(--radius-sm);
@@ -146,6 +199,30 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   letter-spacing:0; margin-bottom:var(--space-2); }
 .console-boundary .lock-panel { margin-top:var(--space-2); padding:var(--space-5) var(--space-5) var(--space-4); }
 
+/* —— E · 页间导流带：压在深底机座之外的白地上，自成一块同款机座（细线、空槽、mono 微标签）。
+   链路文字走 --color-white（深底上域色 Crimson 600 只有 3.6，不作文字色），
+   方向牌与注记走 --color-white-65。 */
+.cross { position:relative; margin-top:var(--space-7); background:var(--color-navy-950);
+  border:1px solid var(--color-navy-700); border-radius:var(--radius-sm);
+  padding:var(--space-5) var(--space-5) var(--space-4); }
+.cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); margin-bottom:.5rem; }
+.cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-white-65);
+  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
+.cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
+.cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
+  padding:var(--space-3) var(--space-2); border-top:1px dashed rgba(255,255,255,0.18); border-radius:var(--radius-xs);
+  transition:background-color var(--duration-fast) var(--ease-smooth),
+             border-top-color var(--duration-fast) var(--ease-smooth); }
+.cross-item:hover { background:rgba(255,255,255,0.05); border-top-color:var(--color-navy-600); }
+.cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); }
+.cross-item a { color:var(--color-white); font-size:var(--text-base); font-weight:600; line-height:1.5;
+  transition:color var(--duration-fast) var(--ease-smooth); }
+.cross-item a:hover { color:var(--color-amber-100); }
+.cross-note { font-size:var(--text-sm); color:var(--color-white-65); line-height:1.75; text-wrap:pretty; }
+
 @media (max-width:768px) {
   .console { padding:var(--space-5) var(--space-4); --slot:2.9rem; --pcols:var(--slot) minmax(0,1fr); }
   .pane { padding:1.2rem var(--space-4) var(--space-3); }
@@ -153,6 +230,11 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   /* 栏宽从三档收为两档：状态与靶点回到标题下方，标签行随之收起（标签只在三栏时成立） */
   .pane-cols { display:none; }
   .gauge-status, .ctl-target { grid-column:2; justify-self:start; text-align:left; margin-top:.45rem; }
+  /* 轨道同样收平：阶梯感让给次序本身，状态词回到阶段名下方（与上两条同一处置） */
+  .rung { margin-left:0; grid-template-columns:var(--riser) minmax(0,1fr); }
+  .rung-state { grid-column:2; justify-self:start; text-align:left; margin-top:var(--space-1); }
+  .cross { padding:var(--space-5) var(--space-4) var(--space-4); }
+  .cross-list { grid-template-columns:1fr; gap:var(--space-2); }
 }
 @media (max-width:480px) {
   .console { padding:var(--space-5) var(--space-3); --slot:2.5rem; }
@@ -160,6 +242,9 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   .console-boundary { padding:var(--space-4) var(--space-3); }
   .console-title { font-size:var(--text-xl); }
   .gauge-key { font-size:var(--text-lg); }
+  .console-read, .ladder { padding-top:var(--space-4); }
+  .rung { --riser:.75rem; gap:0 var(--space-2); padding:var(--space-2) var(--space-1); }
+  .cross { padding:var(--space-4) var(--space-3); }
 }
 </style>
 
@@ -217,7 +302,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
           <div class="gauge-body">
             <h3 class="gauge-head"><span class="gauge-key">R</span><span class="gauge-axis">资源轴 · Resources</span></h3>
-            <p class="gauge-desc">监测可调度存量 RES-D 与基底存量 RES-B：Token 预算剩余、上下文窗口占用、API 调用配额与时间预算。读数位空置，资源调节归 MODULATE 唯一直接靶点。</p>
+            <p class="gauge-desc">监测可调度存量 RES-D 与基底存量 RES-B：Token 预算剩余、上下文窗口占用、API 调用配额与时间预算。读数位空置，资源调节归 MODULATE 唯一直接靶点。<b>此位为何锁着</b>——资源侧的量只在样品跑同一条起跑线时才可比，环境快照未先钉住之前，填进来的任何数都不构成证据；空槽不是没测，是测了也不认。</p>
           </div>
           <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
         </li>
@@ -226,7 +311,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
           <div class="gauge-body">
             <h3 class="gauge-head"><span class="gauge-key">D</span><span class="gauge-axis">调度轴 · Dispatch</span></h3>
-            <p class="gauge-desc">监测前台控制流 DSP-F 与后台自动化流 DSP-B：当前子任务状态、Agent Loop 当前步骤、优先级与重试/回滚记录。中止、暂停与执行通道切换归 GATE 激活面。</p>
+            <p class="gauge-desc">监测前台控制流 DSP-F 与后台自动化流 DSP-B：当前子任务状态、Agent Loop 当前步骤、优先级与重试/回滚记录。中止、暂停与执行通道切换归 GATE 激活面。<b>此位为何锁着</b>——调度读数依赖先冻结的分段口径与判据锚点：格点没画好之前，指针停在哪儿都是巧合，故本行只留空槽与定性状态。</p>
           </div>
           <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
         </li>
@@ -235,7 +320,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
           <div class="gauge-body">
             <h3 class="gauge-head"><span class="gauge-key">S</span><span class="gauge-axis">结构轴 · Structure</span></h3>
-            <p class="gauge-desc">监测规则结构 STR-R、连接结构 STR-C 与序列结构 STR-S：系统提示词内容、工具依赖图、记忆索引与权限/沙箱规则。注入规则与切换连接分别对应 ALIGN 与 RELINK 靶点。</p>
+            <p class="gauge-desc">监测规则结构 STR-R、连接结构 STR-C 与序列结构 STR-S：系统提示词内容、工具依赖图、记忆索引与权限/沙箱规则。注入规则与切换连接分别对应 ALIGN 与 RELINK 靶点。<b>此位为何锁着</b>——结构轴既是读表对象又是改表对象：读与写若不同时冻结，就分不清变的是系统还是探针，所以这一行宁可空着。</p>
           </div>
           <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
         </li>
@@ -256,7 +341,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <span class="lever" aria-hidden="true"></span>
           <div class="ctl-info">
             <h3 class="ctl-id">GATE</h3>
-            <span class="ctl-desc">中止、暂停、恢复与执行通道切换；激活面为限定靶点。</span>
+            <span class="ctl-desc">中止、暂停、恢复与执行通道切换；激活面为限定靶点。<b>此路为何不通电</b>——门控改的是哪条通道在跑，一按下去后三路的观测条件就一起换了；边界外的场景本就置灰，拨杆于此只画形、不接线。</span>
           </div>
           <span class="ctl-target">DSP ／ STR-S</span>
         </li>
@@ -265,7 +350,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <span class="lever" aria-hidden="true"></span>
           <div class="ctl-info">
             <h3 class="ctl-id">MODULATE</h3>
-            <span class="ctl-desc">限 Token、调配额、调温度一类资源调节；唯一直接靶点。</span>
+            <span class="ctl-desc">限 Token、调配额、调温度一类资源调节；唯一直接靶点。<b>此路为何不通电</b>——被调的量正是被读的量：调与读若出自同一批物料，增量便无从归因，只能记下操作而无法记下它带来了什么。</span>
           </div>
           <span class="ctl-target">RES-D</span>
         </li>
@@ -274,7 +359,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <span class="lever" aria-hidden="true"></span>
           <div class="ctl-info">
             <h3 class="ctl-id">ALIGN</h3>
-            <span class="ctl-desc">注入规则、改系统提示、改偏好；含 STR-S 内容面归约。</span>
+            <span class="ctl-desc">注入规则、改系统提示、改偏好；含 STR-S 内容面归约。<b>此路为何不通电</b>——注入的规则同时也是判读所依据的参照：改完再照原参照去读，等于用旧尺量新布；参照须各自成套，不能两头借用。</span>
           </div>
           <span class="ctl-target">STR-R</span>
         </li>
@@ -283,7 +368,7 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
           <span class="lever" aria-hidden="true"></span>
           <div class="ctl-info">
             <h3 class="ctl-id">RELINK</h3>
-            <span class="ctl-desc">切换模型、重载插件、载入记忆；唯一直接靶点。</span>
+            <span class="ctl-desc">切换模型、重载插件、载入记忆；唯一直接靶点。<b>此路为何不通电</b>——换底座等于换仪器：读数赖以成立的坐标随实例而变，每一路都得另立基线，才谈得上回填。</span>
           </div>
           <span class="ctl-target">STR-C</span>
         </li>
@@ -301,6 +386,80 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
 
   </div><!-- /.panel-grid -->
 
+  <!-- ========== C · 探针怎么读 ========== -->
+  <section class="console-read" id="how-to-read" aria-labelledby="read-title">
+    <span class="console-eyebrow">How to read · 探针怎么读</span>
+    <h2 id="read-title">这一页在检验什么</h2>
+    <p>探针检验的不是某个模型有多强，而是<b>这套坐标系能不能在硅基实例上被认出来</b>。被检的一侧是 M-R-D-S 状态语法与 G-M-A-R 操作语法的实证可操作性：状态读数彼此分不分得开、每次干预是否只落在自己的合法靶点上、换一台底座还读不读得出同样的关系。语法本身不在本页重写——它是 INTRE 自带的基底，本工程只作消费与检验的一方，上游供基底、下游做实证，边界分明。</p>
+    <p>读表的人要过一道资格认证，分界线画在「教读法」与「教答案」之间：格点定义、判据锚点、读数规则、呈现格式与考场纪律可以教、必须教；注入真值、逐卷标签与候选构成倾向禁教。培训物料与认证考卷异源生成、物理分目录，成绩按判次记账而不按卷记账；判者本身也当仪器来登记，配置一变动就视同新仪器重考。零先验的裸读数本就不可解读——像心电图，要训练过才看得懂；这条边界已经定案登记，不是失败，而是把「谁能读这张表」写成了制度。</p>
+    <p>所以本页此刻不放任何读数、系数或结论句：出口另有闸门，实证结论须经裁定与对外发表治理另行放行，未放行前一切表盘按空槽画。判读侧的线既已画死，剩下的问题只是仪器收到什么程度、增量在哪一域成立、结构聚不聚得出来——下面这条轨道就按这个次序排。</p>
+  </section>
+
+  <!-- ========== D · 六阶梯定性轨道（无刻度·无数字·无读数） ========== -->
+  <section class="ladder" id="roadmap" aria-labelledby="ladder-title">
+    <span class="console-eyebrow">Roadmap · 六阶梯定性轨道</span>
+    <h2 id="ladder-title">从仪器收口到跨基质合流</h2>
+    <p class="ladder-note">轨道照规划底稿排次，只留阶段名与一句状态词：无刻度、无进度、无读数。任何一级都不因前一级通过而自动续期，启动一律是事前核准事项。</p>
+    <ul class="rungs">
+      <li class="rung rung--now">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">仪器收口</h3>
+          <span class="rung-en">Instrument completion</span>
+          <p class="rung-desc">让每一次操作都能在对应格点上留下可判读的变化、判读本身可信——后续一切命题的测量前提都收在这一级。</p>
+        </div>
+        <p class="rung-state">在行 · Live</p>
+      </li>
+      <li class="rung rung--wait">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">单点增量验证</h3>
+          <span class="rung-en">First incremental validity</span>
+          <p class="rung-desc">拿第一项「用了更好」的可复现证据：坐标系驱动的调度与固定策略、通用编排两条基线并排跑，正负结果同等入册。</p>
+        </div>
+        <p class="rung-state">待核准 · Pending</p>
+      </li>
+      <li class="rung">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">适用域划定</h3>
+          <span class="rung-en">Boundary mapping</span>
+          <p class="rung-desc">刻画增量赖以成立的条件：哪些任务域受益、哪些并不有效，两侧同等诚实地标注，无效域不得隐去。</p>
+        </div>
+        <p class="rung-state">未启动 · Idle</p>
+      </li>
+      <li class="rung">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">跨模型泛化</h3>
+          <span class="rung-en">Cross-model generalization</span>
+          <p class="rung-desc">排除「增量只是某台底座的特异性现象」这一解释：看它跟随坐标系，还是只跟随某个模型。</p>
+        </div>
+        <p class="rung-state">未启动 · Idle</p>
+      </li>
+      <li class="rung">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">结构涌现检验</h3>
+          <span class="rung-en">Emergent differentiation</span>
+          <p class="rung-desc">检验硅基实例能否自然分化出功能分工，不预设模块划分；「聚不出」是合格的否定结论，照样登记并反哺上游假说。</p>
+        </div>
+        <p class="rung-state">未启动 · Idle</p>
+      </li>
+      <li class="rung">
+        <span class="riser" aria-hidden="true"></span>
+        <div class="rung-body">
+          <h3 class="rung-name">外部交付与跨基质合流</h3>
+          <span class="rung-en">External delivery &amp; cross-substrate</span>
+          <p class="rung-desc">仪器、任务库与判读协议出仓受外部独立复验，并与碳基通道在同一语法下作对照——合流指证据层对照，不合并工作包。</p>
+        </div>
+        <p class="rung-state">未启动 · Idle</p>
+      </li>
+    </ul>
+  </section>
+
+  <p class="console-scope"><b>本页是实证通道，当前读数区空置。</b>它不讲理论的推导（在核心理论页），也不讲两域用词的映射（在智能科学建构页）；只回答一个问题——这套坐标系在硅基实例上究竟读不读得出来。眼下能给的答案是：仪器在收口，表盘按空槽画。</p>
+
   <section class="console-boundary" id="limits" aria-label="边界与状态">
     <span class="tech-label">Limits &amp; Status</span>
     <h2>边界与状态</h2>
@@ -313,6 +472,34 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   </section>
 
 </div><!-- /.console -->
+
+<!-- ========== E · 页间导流 ========== -->
+<nav class="cross" aria-label="页间导流">
+  <span class="cross-kicker">Cross-links · 读完控制台往哪儿走</span>
+  <p class="cross-lead">控制台只解决「读不读得出来」这一问；语法的定义、用词的映射、边界外的账，分别记在别处的页上。四站之间不换坐标系。</p>
+  <ul class="cross-list">
+    <li class="cross-item">
+      <span class="cross-dir">回 · Home</span>
+      <a href="../index.html">智能科学域首页</a>
+      <span class="cross-note">在行工程一览与两域共用的坐标</span>
+    </li>
+    <li class="cross-item">
+      <span class="cross-dir">地基 · Axioms</span>
+      <a href="../core/index.html">核心理论</a>
+      <span class="cross-note">状态语法与操作语法的规范定义在这里</span>
+    </li>
+    <li class="cross-item">
+      <span class="cross-dir">上一站 · Back</span>
+      <a href="../isce/index.html">智能科学建构</a>
+      <span class="cross-note">两域用词对照与推导链：中性词从哪来</span>
+    </li>
+    <li class="cross-item">
+      <span class="cross-dir">下一站 · Next</span>
+      <a href="../engram/index.html">边界巡检</a>
+      <span class="cross-note">可观测性与控制的边界巡检记录，为探针供上游证据</span>
+    </li>
+  </ul>
+</nav>
 
 </div><!-- /.container -->
 </main>

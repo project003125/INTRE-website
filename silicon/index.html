@@ -173,6 +173,78 @@
     color: var(--color-white);
 }
 
+/* ---------- ④ 立场陈述块（对位碳基首页的 .manifesto-quote） ----------
+   公共件 components.css 的 .manifesto-quote 只给几何（820 居中＋左规线＋琥珀副线），
+   碳基那页的字档写在它自己页内、不进公共件 ⇒ 本域另立同档，不碰公共件。
+   大字主张的行宽取 --measure-deck（40rem＝640px）：24px 字下一行约 26 字，
+   主张句 50 字落两行，不再拖到 820 的满宽（长行会把它读成说明而非立场）。 */
+.manifesto-quote .tech-label { display: block; margin-bottom: 1.2rem; }
+.manifesto-quote p {
+    font-size: var(--text-md);
+    line-height: 1.9;
+    color: var(--color-slate-700);
+    text-wrap: pretty;
+}
+.manifesto-quote strong { color: var(--color-navy-600); font-weight: 600; }
+/* 写成 .manifesto-quote p.manifesto-claim：单类名 (0,1,0) 会被上面的
+   .manifesto-quote p (0,1,1) 压回 --text-md，主张句必须赢过正文档。 */
+.manifesto-quote p.manifesto-claim {
+    font-size: clamp(var(--text-lg), 2.6vw, var(--text-xl));
+    line-height: 1.62;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--color-slate-900);
+    max-width: var(--measure-deck);
+}
+
+/* ---------- ⑤ 读法指引块（对应碳基分节的多小标题写法） ----------
+   六条＝六张子页的入口序列；序号栏 2.6rem＝mono 微标签两位数字加余量，
+   窄端收到 2rem（32–35px 容得下「01」，实测两位 mono 11.5px 约 14px）。
+   条目底色不加，只走 --stroke-hairline 分隔线：整块与 .manifesto-quote
+   同处白底正文区，加底会与本域卡片带的 --shadow-xs 档打架。 */
+.read-path {
+    list-style: none;
+    max-width: var(--measure-read);
+    margin: 0 auto;
+}
+.read-step {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    column-gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-top: var(--stroke-hairline) solid var(--color-slate-200);
+}
+.read-step:last-child { border-bottom: var(--stroke-hairline) solid var(--color-slate-200); }
+.read-step__no {
+    padding-top: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-tech);
+    color: var(--color-slate-600);
+}
+.read-step__title {
+    display: block;
+    font-size: var(--text-md);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--color-navy-600);
+}
+.read-step__title:hover { text-decoration: underline; }
+.read-step__q {
+    margin: 0.3rem 0 0;
+    font-size: var(--text-sm);
+    line-height: 1.85;
+    color: var(--color-slate-700);
+    text-wrap: pretty;
+}
+.read-step__q b {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tech);
+    color: var(--color-slate-600);
+}
+
 /* ---------- 响应式（窄端整段收紧，与碳基同档） ---------- */
 @media (max-width: 768px) {
     .cta-section { padding: 3.2rem 1.6rem; }
@@ -182,6 +254,17 @@
     .layer-band .layer-node { padding: 1.1rem 1.15rem; gap: 0.9rem; }
     .layer-flag { right: var(--space-3); }
     .cta-actions { gap: 0.7rem; }
+}
+
+/* ---------- 新增两块的窄端补档（只作用本页新类，不改上面既有规则） ---------- */
+@media (max-width: 768px) {
+    .manifesto-quote p { font-size: var(--text-base); }
+    .manifesto-quote p.manifesto-claim { font-size: var(--text-lg); line-height: 1.6; }
+}
+@media (max-width: 480px) {
+    .read-step { grid-template-columns: 2rem 1fr; column-gap: var(--space-3); padding: var(--space-3) 0; }
+    .read-step__title { font-size: var(--text-base); }
+    .read-step__no { padding-top: 0.3rem; }
 }
 </style>
 
@@ -319,6 +402,19 @@
   </div>
 </section>
 
+<!-- ==================== 立场陈述 ==================== -->
+<!-- 对位碳基首页的 manifesto：一句大字主张 + 三段短论述（主张什么／方法是什么／同一骨架的两种读法）。
+     不引入读数、系数、日期与承诺；术语沿用本页在册口径。 -->
+<section class="home-section" id="statement" aria-label="立场陈述">
+  <blockquote class="manifesto-quote reveal">
+    <span class="tech-label">Position · 本域立场</span>
+    <p class="manifesto-claim">对智能的研究并不缺材料，缺的是一把共用的尺。这一域做的是先装上底层语法，再回看各科的观察能否通约。</p>
+    <p>所谓底层语法是两套：<strong>M-R-D-S</strong> 说状态——一个智能体此刻的资源、调度、结构三面处于何处；<strong>G-M-A-R</strong> 说操作——门控、调制、校准、重联四类独立动作。规范定义在核心理论页，本域只引用，不另立。</p>
+    <p>方法上只有一条纪律：<strong>域与域分开写，靠映射表互译</strong>。心理科学域保留原词，智能科学域走中性词，两边不得互相污染，定名权在 22 号工程。这条纪律不为文体而立——若两域共用一套带人类色彩的词，同一命题换到硅基实例上是否仍成立，就永远问不清。</p>
+    <p>所以这一页与心理科学域那一页不是两份论述，是<strong>同一套骨架的两种读法</strong>：三层坐标与两套语法只有一份，碳基从神经层与现象层之间读它，硅基从基质实现与现象呈现之间读它。切域换的是用词与品牌色，坐标系不换。这套语法在硅基实例上究竟是否可操作，是 26 号要回答的事——在它给出答案之前，本页只陈述结构，不陈述结果。</p>
+  </blockquote>
+</section>
+
 <!-- ==================== 两域读法 ==================== -->
 <section class="home-section reveal" id="layers" aria-label="两域读法">
   <div class="section-head">
@@ -399,6 +495,66 @@
   </table>
 
   <p class="state-note">两域互译的定名权威在 22 号工程；常用词条收在<a href="../glossary/index.html">术语表</a>，切域不换词条。</p>
+</section>
+
+<!-- ==================== 读法指引 · 六页的入口序列 ==================== -->
+<!-- 对应碳基首页分节的多小标题写法：一条路径、六个问题，每条链到子页真实路径。 -->
+<section class="home-section" id="path" aria-label="读法指引">
+  <div class="section-head reveal">
+    <span class="tech-label">Reading Path · 读法指引</span>
+    <h2>从哪一页进，每页答什么</h2>
+    <p class="section-sub">六页不是并列入口，是一条路径：先定地基与名分，再落工程、讲通达，最后才轮到实证与边界。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ol class="read-path">
+    <li class="read-step reveal">
+      <span class="read-step__no">01</span>
+      <div>
+        <a class="read-step__title" href="core/index.html">核心理论 · 定地基</a>
+        <p class="read-step__q"><b>答</b>两套语法各是什么、彼此怎么分工。放第一：其余五页的用词都回这里取定义。</p>
+      </div>
+    </li>
+    <li class="read-step reveal" data-delay="1">
+      <span class="read-step__no">22</span>
+      <div>
+        <a class="read-step__title" href="isce/index.html">智能科学建构 · 定名</a>
+        <p class="read-step__q"><b>答</b>凭什么把它当一门学科来建，两域用词按什么规则互译。放第二：后面几个工程名都在这页定。</p>
+      </div>
+    </li>
+    <li class="read-step reveal" data-delay="2">
+      <span class="read-step__no">19</span>
+      <div>
+        <a class="read-step__title" href="aose/index.html">智能体操作系统 · 落工程</a>
+        <p class="read-step__q"><b>答</b>语法装到数字实例上长什么样：双层分工、四类操作的门控位置。放第三：唯一把语法写成可执行结构的一页。</p>
+      </div>
+    </li>
+    <li class="read-step reveal" data-delay="3">
+      <span class="read-step__no">20</span>
+      <div>
+        <a class="read-step__title" href="icre/index.html">意识共振 · 讲通达</a>
+        <p class="read-step__q"><b>答</b>「通达」说到哪一步为止——参与集合开放而非完备。放第四：只借前三页的定义说话，自己不产证据。</p>
+      </div>
+    </li>
+    <li class="read-step reveal" data-delay="4">
+      <span class="read-step__no">26</span>
+      <div>
+        <a class="read-step__title" href="sipe/index.html">硅基探针 · 实证通道</a>
+        <p class="read-step__q"><b>答</b>有没有读数。放第五：这一页是整套语法等着被检验的口子，面板只给结构位，实证区锁空。</p>
+      </div>
+    </li>
+    <li class="read-step reveal" data-delay="5">
+      <span class="read-step__no">14</span>
+      <div>
+        <a class="read-step__title" href="engram/index.html">边界巡检 · 供边界证据</a>
+        <p class="read-step__q"><b>答</b>坐标系的边界从哪里得到经验支撑。放最后：它替 26 号准备边界一侧的证据，本身不作结论。</p>
+      </div>
+    </li>
+  </ol>
+
+  <p class="state-note">顺序不是等级：前四页只陈述结构与工程，唯一通向实证的那页当前锁空。读到末尾仍没有读数，是本域的正常状态，不是缺页。</p>
 </section>
 
 <!-- ==================== 边界与状态 ==================== -->

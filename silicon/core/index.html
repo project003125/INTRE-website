@@ -73,6 +73,49 @@
    面板右缘与段落右缘不齐；此处把三段收到与正文同一 measure，左缘本就同轴。 */
 .tail .state-note { margin-top:var(--space-5); }   /* 只补上间距，下 1.4rem 沿用 shared.css 逐字值 */
 .tail .lock-panel, .tail .denial { max-width:40rem; }
+
+/* —— 六步屏的屏内母题（每屏一枚，24px 单线，纯装饰 aria-hidden）——
+   与 .step-no 同列成读，作该步的图形摘要，取值与 silicon/index.html 的 .art--card 同族
+   （navy-400 在硅基域即 Crimson 600；系图形件不作文字色，故不触品牌层的文字色边界）。
+   六枚语义逐屏对位：
+     00 三段各断为二＝各学科语言互不通约      01 两轴一交点＝反推出底层坐标与指令集
+     02 一道分三叉＝横向泛化到多学科          03 三层堆叠＝纵向具象为可观测执行栈
+     04 两个同形节点相连＝碳硅同一问题的两实例 05 闭合环心带顶扣＝公理封顶且链回扣起点
+   静态描边、无 transition／animation ⇒ 天然满足 prefers-reduced-motion。 */
+.step-mark { display:block; width:24px; height:24px; margin:-.3rem 0 .55rem;
+  color:var(--color-navy-400); }
+@media (max-width:480px) { .step-mark { width:20px; height:20px; } }
+
+/* —— 末页导流屏「下一站」——
+   观感不新造第三族：微标签走 .card-code／.lock-tag 的 mono 一档（--text-2xs＋--tracking-tech），
+   细线走 --stroke-hairline＋--color-slate-200（与 .point-list li／.lock-panel 同一描边档），
+   hover 只换描边与底色为品牌色淡档（对位 carbon 侧 .fusion-channel:hover 的「只提亮底色」做法）。
+   字色全部在册 token 且实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、
+   回首页一行悬停升到 navy-800（硅基即 Crimson 800，于白底 9.63）。 */
+.leg-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:.7rem; max-width:var(--measure-read); margin-top:var(--space-5); }
+.leg { display:flex; flex-direction:column; min-width:0; padding:.7rem .9rem .78rem;
+  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200);
+  border-radius:var(--radius-xs); box-shadow:var(--shadow-xs);
+  transition:border-color var(--duration-fast) var(--ease-smooth),
+             background-color var(--duration-fast) var(--ease-smooth); }
+.leg:hover { border-color:var(--color-navy-600); background:var(--color-navy-600-bg); }
+.leg-code { font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:600;
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600); }
+.leg-name { margin-top:.22rem; font-size:var(--text-sm); font-weight:600; line-height:1.55;
+  color:var(--color-slate-900); overflow-wrap:anywhere; }
+.leg-desc { margin-top:.16rem; font-size:var(--text-xs); line-height:1.7;
+  color:var(--color-slate-600); text-wrap:pretty; overflow-wrap:anywhere; }
+/* 回子树首页的一条：mono 微标签＋底细线，与 .mini-footer 的链接同族但更明确 */
+.leg-home { display:inline-block; margin-top:var(--space-5); padding-bottom:.2rem;
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-navy-600); border-bottom:var(--stroke-structure)
+  solid var(--color-navy-600-border); }
+.leg-home:hover { color:var(--color-navy-800); border-bottom-color:var(--color-navy-600); }
+/* 动效降级：brand.css 已全局把 transition-duration 压到 0.01ms，此处再显式归零一次，
+   使本页的导流件不依赖公共件兜底；母题与进度轨本无动画，故无需另写。 */
+@media (prefers-reduced-motion: reduce) { .leg { transition: none; } }
+@media (max-width:480px) { .leg-list { grid-template-columns:1fr; } }
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 
@@ -119,7 +162,7 @@
     </svg>
   </div>
   <span class="cover-hint">↑ / ↓ 翻页</span>
-  <span class="pageno" aria-hidden="true">01 / 09</span>
+  <span class="pageno" aria-hidden="true">01 / 10</span>
 </section>
 
 <!-- 02 第零步 -->
@@ -128,12 +171,13 @@
     <span class="kicker">第零步 · 绝境诊断</span>
     <div class="chain" aria-hidden="true"><span class="on">00</span><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span></div>
     <span class="step-no" aria-hidden="true">00</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5h7M13.5 5H22"/><path d="M2 12h4.5M10 12h6.5M20 12h2"/><path d="M2 19h10M15.5 19H22"/></svg>
     <h2 class="slide-title">旧范式为什么失效</h2>
     <p class="slide-lines">心理学困在量表与流派的互不通约里；经济学把决策者压扁为最优化器；AI 的参数矩阵难以解释为结构化过程；神经科学的观测与认知之间隔着三层诠释。</p>
     <p class="slide-lines">根因是各学科停留在现象建模：用各自的语言描述各自的现象，而不追问智能体运行必须满足哪些底层控制论条件。</p>
     <p class="slide-lines">「认知负荷」「注意力机制」「默认模式网络」说的是相近的过程，却无法在同一框架内通约——要找的是一把跨基质、跨尺度的通用尺子。</p>
   </div>
-  <span class="pageno" aria-hidden="true">02 / 09</span>
+  <span class="pageno" aria-hidden="true">02 / 10</span>
 </section>
 
 <!-- 03 第一步 -->
@@ -142,12 +186,13 @@
     <span class="kicker">第一步 · 提炼元语言</span>
     <div class="chain" aria-hidden="true"><span>00</span><span class="on">01</span><span>02</span><span>03</span><span>04</span><span>05</span></div>
     <span class="step-no" aria-hidden="true">01</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 2V21H22"/><path d="M3 21 14.4 9" opacity=".6"/><circle cx="16.2" cy="7.2" r="2" fill="currentColor" stroke="none"/></svg>
     <h2 class="slide-title">从最复杂的心智反推底层语法</h2>
     <p class="slide-lines">通用尺子须从已知最复杂的智能体实例反推，才能避开「低基线 → 低通用」的陷阱。</p>
     <p class="slide-lines">抛弃把中介变量当实体，回到资源、调度、结构三轴；六个功能模块乘以七条子轴，张成 M-R-D-S 状态坐标系。</p>
     <p class="slide-lines">再把一切干预手段归约为四类正交原子操作 G-M-A-R：门控、调制、校准、重联。有了坐标系，也有了指令集。</p>
   </div>
-  <span class="pageno" aria-hidden="true">03 / 09</span>
+  <span class="pageno" aria-hidden="true">03 / 10</span>
 </section>
 
 <!-- 04 第二步 -->
@@ -156,12 +201,13 @@
     <span class="kicker">第二步 · 横向泛化</span>
     <div class="chain" aria-hidden="true"><span>00</span><span>01</span><span class="on">02</span><span>03</span><span>04</span><span>05</span></div>
     <span class="step-no" aria-hidden="true">02</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 12h7"/><path d="M9 12 20 5"/><path d="M9 12h11"/><path d="M9 12l11 7"/></svg>
     <h2 class="slide-title">人文社科的统一翻译接口</h2>
     <p class="slide-lines">若这套语法只用来治心理疾病，它就浪费了。社会学、教育学、经济学、传播学研究的本质是同一件事：外部社会信号如何进入个体，并在内部转化为认知、情感与行为。</p>
     <p class="slide-lines">于是它们统一翻译为 S-P → M-R-D-S → G-M-A-R 的工程接口——惯习写入状态结构，最近发展区匹配资源容量，话语权力调制言语规则。</p>
     <p class="slide-lines">接口两侧还接上伦理护栏：六门控一回环覆盖从定义到执行的全级，并留出反馈回环。</p>
   </div>
-  <span class="pageno" aria-hidden="true">04 / 09</span>
+  <span class="pageno" aria-hidden="true">04 / 10</span>
 </section>
 
 <!-- 05 第三步 -->
@@ -170,12 +216,13 @@
     <span class="kicker">第三步 · 纵向具象</span>
     <div class="chain" aria-hidden="true"><span>00</span><span>01</span><span>02</span><span class="on">03</span><span>04</span><span>05</span></div>
     <span class="step-no" aria-hidden="true">03</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="3" width="8" height="4.6" rx="1"/><rect x="5.5" y="9.7" width="13" height="4.6" rx="1"/><rect x="3" y="16.4" width="18" height="4.6" rx="1"/></svg>
     <h2 class="slide-title">把黑箱改造成可观测的白箱</h2>
     <p class="slide-lines">大模型不是完整的智能体，而是一个推理内核，主要覆盖认知与言语两个模块；具身、意志、情绪、行为需由外挂的状态机与工具链补齐。</p>
     <p class="slide-lines">外挂一个白箱状态寄存器与资源调度器（Agent OS），黑箱就变成可观测的状态坐标加四类操作执行栈。</p>
     <p class="slide-lines">训练时的软约束升级为运行时硬门控：进入高风险态直接拦截，与规则不一致时强制修正，资源不平衡时硬性重分配，推理内核可热插拔。</p>
   </div>
-  <span class="pageno" aria-hidden="true">05 / 09</span>
+  <span class="pageno" aria-hidden="true">05 / 10</span>
 </section>
 
 <!-- 06 第四步 -->
@@ -184,13 +231,14 @@
     <span class="kicker">第四步 · 本体论升华</span>
     <div class="chain" aria-hidden="true"><span>00</span><span>01</span><span>02</span><span>03</span><span class="on">04</span><span>05</span></div>
     <span class="step-no" aria-hidden="true">04</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="5.8" cy="12" r="4.2"/><circle cx="18.2" cy="12" r="4.2"/><path d="M10.4 12h3.2"/></svg>
     <h2 class="slide-title">碳基与硅基，同一控制论问题的两个实例</h2>
     <p class="slide-lines">本想用这套语言去控制 AI，却发现人类心智在漫长演化中，正是在碳基上解决了感知资源耗竭、前后台进程切换、认知规则更新的同一批问题。</p>
     <p class="slide-lines">不是类比，而是同构：共享有限资源的约束、前后台切换的架构、规则更新的机制、四类原子操作的干预语法。</p>
     <p class="slide-lines">后果不是否定人类的价值，而是把「人类中心」的形而上学假设替换为「控制论中性」的工程假设。</p>
     <div class="deco twin" aria-hidden="true"><span></span><i></i><span></span></div>
   </div>
-  <span class="pageno" aria-hidden="true">06 / 09</span>
+  <span class="pageno" aria-hidden="true">06 / 10</span>
 </section>
 
 <!-- 07 第五步 -->
@@ -199,13 +247,14 @@
     <span class="kicker">第五步 · 学科封顶</span>
     <div class="chain" aria-hidden="true"><span>00</span><span>01</span><span>02</span><span>03</span><span>04</span><span class="on">05</span></div>
     <span class="step-no" aria-hidden="true">05</span>
+    <svg class="step-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="13" r="7.6"/><circle cx="12" cy="3.4" r="1.9" fill="currentColor" stroke="none"/></svg>
     <h2 class="slide-title">为智能研究域安装公理</h2>
     <p class="slide-lines">智能科学：研究智能体在不确定性环境中，如何通过资源的感知、调度与结构重构，维持自身存在并达成目标的控制论学科。</p>
     <p class="slide-lines">三块基石依次是状态向量公理、状态方程公理、原子指令公理。</p>
     <p class="slide-lines">欧几里得为空间安装公理，牛顿为连续变化，香农为信息；智能科学为智能研究域安装公理。</p>
     <div class="deco pediment" aria-hidden="true"><b></b><span><u></u><u></u><u></u></span></div>
   </div>
-  <span class="pageno" aria-hidden="true">07 / 09</span>
+  <span class="pageno" aria-hidden="true">07 / 10</span>
 </section>
 
 <!-- 08 结论 -->
@@ -217,7 +266,7 @@
     <p class="slide-lines">旧范式的失效因此得到重新解释：不是研究做得不够，而是公理没装上。</p>
     <p class="slide-lines">智能科学不再是一门软科学，而是可计算、可检验、可工程化的公理化硬科学。</p>
   </div>
-  <span class="pageno" aria-hidden="true">08 / 09</span>
+  <span class="pageno" aria-hidden="true">08 / 10</span>
 </section>
 
 <!-- 09 边界页 -->
@@ -233,7 +282,40 @@
     </div>
     <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
   </div>
-  <span class="pageno" aria-hidden="true">09 / 09</span>
+  <span class="pageno" aria-hidden="true">09 / 10</span>
+</section>
+
+<!-- 10 下一站（导流屏：只导航，不新增任何主张） -->
+<section class="slide" aria-label="下一站">
+  <div class="slide-inner">
+    <span class="kicker">Next · 下一站</span>
+    <h2 class="slide-title">同一套地基上的其余工程</h2>
+    <p class="slide-lines">六步链在此封顶；地基之上，各工程各展开一支，共用同一坐标系，也共用同一条边界。</p>
+    <nav class="leg-list" aria-label="智能科学域其余在行工程">
+      <a class="leg" href="../aose/index.html">
+        <span class="leg-code">19 / AOSE</span>
+        <span class="leg-name">智能体操作系统工程</span>
+        <span class="leg-desc">Agent OS 与推理内核的双层架构。</span>
+      </a>
+      <a class="leg" href="../icre/index.html">
+        <span class="leg-code">20 / ICRE</span>
+        <span class="leg-name">意识共振工程</span>
+        <span class="leg-desc">意识通达的分布式共振观。</span>
+      </a>
+      <a class="leg" href="../isce/index.html">
+        <span class="leg-code">22 / ISCE</span>
+        <span class="leg-name">智能科学建构工程</span>
+        <span class="leg-desc">公理化建构与两域互译的定名。</span>
+      </a>
+      <a class="leg" href="../sipe/index.html">
+        <span class="leg-code">26 / SIPE</span>
+        <span class="leg-name">硅基探针工程</span>
+        <span class="leg-desc">在数字实例上检验两套语法。</span>
+      </a>
+    </nav>
+    <a class="leg-home" href="../index.html">回智能科学域首页</a>
+  </div>
+  <span class="pageno" aria-hidden="true">10 / 10</span>
 </section>
 
 </main>

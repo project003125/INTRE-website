@@ -19,6 +19,172 @@
 <!-- 无 JS 兜底：滚动渐显元素默认可见，避免内容永久隐藏 -->
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
+<style>
+/* ============================================================
+   硅基首页专有样式（本轮新增三块：结构计数带／层级图示／收尾导流）
+   版式与取值一律照 -website/index.html（碳基首页）同名件搬：
+     ① identity-strip ② layer-stack／layer-node ③ cta-section
+   公共件已给的尺寸（.identity-num 2.6rem、.identity-label 0.64rem/.14em、
+   .layer-node 内边距与 hover 档、.layer-stack 560px）在此不重复定义，
+   本块只补：域适配的颜色、两枚新的小标签件、以及 cta 面板本体
+   （碳基那份写在它自己的内联 style 里，公共件只给了 position/overflow）。
+
+   域适配实测（WCAG，阈值 4.5，前景按 alpha 复合后再算）：
+   硅基底经 domain-switch.css 换成 Crimson 800 #7A2A21（明显亮于碳基
+   Navy 800 #122F5C），公共件的 rgba(255,255,255,.5) 与 --color-amber-500
+   在其上实测 4.02 与 4.49，均不达线 ⇒ 本页深底上的次要文字统一升到
+   --color-white-65（实测 5.00，与 domain-switch.css 补正页脚两处用的
+   同一档），Amber 高亮沿同族升到 --color-amber-100（实测 7.10）。
+   强调节点另不填 Crimson 600（--color-navy-600 在硅基即 #A63A2E，
+   白字 .65 只剩 3.63）而填 --color-navy-800；投影不引 --shadow-hard-navy*
+   （其色 --color-navy-975 未入域表，红底上会带出蓝影）。
+   ============================================================ */
+
+/* ---------- ① 结构计数带（碳基 .identity-strip 同名件） ---------- */
+.identity-strip .identity-label { color: var(--color-white-65); }
+/* 第三枚的高亮位：公共件写的是 Amber 500，硅基底上 4.49 ⇒ 升同族一档 */
+.identity-strip .identity-item:nth-child(3) .identity-num { color: var(--color-amber-100); }
+/* mono 小注：与 .identity-label 同字号同字距（0.64rem／--tracking-tech），
+   只把上距收到 .3rem，读作上一行的附注而非第三行。 */
+.identity-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: var(--tracking-tech);
+    text-transform: uppercase;
+    color: var(--color-white-65);
+    line-height: 1.6;
+}
+/* 锁空小标：描边档取在册 .glance span 的 rgba(255,255,255,.18)（图形件，非文字档） */
+.identity-flag {
+    display: inline-block;
+    margin-top: 0.45rem;
+    padding: 0.16rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: var(--tracking-tech);
+    text-transform: uppercase;
+    line-height: 1.6;
+    color: var(--color-white-65);
+    border: var(--stroke-hairline) solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-xs);
+}
+
+/* ---------- ② 层级图示（碳基 .layer-node 同名件） ---------- */
+/* 图形带插在权威对照表上方：表不动，带只把 R1→R2→R3 的次序与两域用词画出来。
+   下距 2.8rem：公共件 .section-head 3.2rem 之后本由 shared.css 的
+   「.section-head + .layer-table{margin-top:.4rem}」给表格上距，插入本带后
+   该相邻兄弟规则不再命中，间距改由本条承担（3.6rem→2.8rem，同一档观感）。 */
+.layer-band { margin: 0 auto 2.8rem; }
+.layer-band .layer-arrow .arrow-label { color: var(--color-slate-600); }  /* 公共件继承 slate-400=2.56，不达线 */
+/* 两域用词对：字档照 .card-code／.lock-tag 的 mono 微标签一档 */
+.layer-terms { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.layer-term {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.18rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-tech);
+    color: var(--color-slate-600);
+    border: var(--stroke-hairline) solid var(--color-slate-200);
+    border-radius: var(--radius-xs);
+}
+.layer-term--si {
+    color: var(--color-navy-600);
+    background: var(--color-navy-600-bg);
+    border-color: var(--color-navy-600-border);
+    font-weight: 600;
+}
+/* 强调态＝本站论述所在层（对位碳基 .layer-node.is-core，换名以免继承其
+   「核心 · CORE」角标与 navy-600 填充）；hover 反馈由公共件
+   .layer-node:hover（translateY(-2px)＋--shadow-md）原样提供，不再自造。 */
+.layer-node--here {
+    background: var(--color-navy-800);
+    border: var(--stroke-core) solid var(--color-navy-600);
+}
+.layer-node--here .layer-name { color: var(--color-white); }
+.layer-node--here .layer-index { color: var(--color-white-65); }
+.layer-node--here .layer-desc { color: var(--color-white-65); }
+.layer-node--here .layer-term { color: var(--color-white-65); border-color: rgba(255, 255, 255, 0.18); background: transparent; }
+.layer-node--here .layer-term--si { color: var(--color-white); border-color: rgba(255, 255, 255, 0.28); }
+/* 角标：位置与字档照碳基 .layer-node.is-core::after，改为真实节点以便本页写中文 */
+.layer-flag {
+    position: absolute;
+    top: -0.65rem;
+    right: var(--space-4);
+    padding: 0.2rem 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-tech);
+    background: var(--color-amber-500);
+    color: var(--color-navy-900);
+    border-radius: var(--radius-pill);
+}
+
+/* ---------- ③ 收尾导流带（碳基 .cta-section 同名件） ---------- */
+.cta-section {
+    background: var(--color-navy-800);
+    border-radius: var(--radius-sharp);
+    padding: 4.4rem 3rem;
+    text-align: center;
+}
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+}
+.cta-section > * { position: relative; z-index: 1; }
+.cta-section .tech-label { color: var(--color-white-65); }   /* 深底眉标：碳基走 amber，本域升白档 */
+.cta-section h3 {
+    /* 字档照碳基 2.1rem；CJK 标题无断词点，故加 clamp 下限（公共件
+       .section-head h2 同一手法），480 窄屏不腰斩；字距回 CJK 一档 0。 */
+    font-size: clamp(1.6rem, 4.6vw, 2.1rem);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0;
+    margin: 1.1rem 0 0.7rem;
+}
+.cta-section p {
+    color: var(--color-white-65);
+    max-width: 560px;
+    margin: 0 auto 2.2rem;
+    line-height: 1.85;
+}
+.cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem; }
+/* 次级按钮：公共件 .btn-outline 是浅底件（navy-600 字／描边），落在深红底上
+   只剩 1.50 ⇒ 本页另立反色件，字走 --color-white，环用在册 .28 白档；
+   环以 inset 投影描出，避免加 border 使两枚按钮高度不等。 */
+.cta-actions .btn-invert {
+    background-color: transparent;
+    color: var(--color-white);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+.cta-actions .btn-invert:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+}
+
+/* ---------- 响应式（窄端整段收紧，与碳基同档） ---------- */
+@media (max-width: 768px) {
+    .cta-section { padding: 3.2rem 1.6rem; }
+    .layer-band { margin-bottom: 2.2rem; }
+}
+@media (max-width: 480px) {
+    .layer-band .layer-node { padding: 1.1rem 1.15rem; gap: 0.9rem; }
+    .layer-flag { right: var(--space-3); }
+    .cta-actions { gap: 0.7rem; }
+}
+</style>
+
 </head>
 
 <body data-domain="silicon">
@@ -65,6 +231,32 @@
     <div class="glance" role="list" aria-label="工程速览">
       <span role="listitem">01 / 核心理论</span><span role="listitem">19 / AOSE</span><span role="listitem">20 / ICRE</span>
       <span role="listitem">22 / ISCE</span><span role="listitem">26 / SIPE</span><span role="listitem">14 / ENGRAM 分支</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 结构计数带 · 本页骨架的可数项 ==================== -->
+<!-- 四枚牌全是结构性计数（工程数／语法套数／层坐标数／对外读数），非实证读数 -->
+<section class="identity-strip" aria-label="结构计数">
+  <div class="identity-grid">
+    <div class="identity-item reveal">
+      <span class="identity-num">06</span>
+      <span class="identity-label">在行工程 · ACTIVE PROJECTS</span>
+    </div>
+    <div class="identity-item reveal" data-delay="1">
+      <span class="identity-num">02</span>
+      <span class="identity-label">套语法 · GRAMMARS</span>
+      <span class="identity-note">M-R-D-S / G-M-A-R</span>
+    </div>
+    <div class="identity-item reveal" data-delay="2">
+      <span class="identity-num">03</span>
+      <span class="identity-label">层坐标 · LAYERS</span>
+      <span class="identity-note">R1–R3</span>
+    </div>
+    <div class="identity-item reveal" data-delay="3">
+      <span class="identity-num">00</span>
+      <span class="identity-label">对外读数 · EXTERNAL READINGS</span>
+      <span class="identity-flag">Locked · 锁空</span>
     </div>
   </div>
 </section>
@@ -138,6 +330,62 @@
     </div>
   </div>
 
+  <!-- 图形化三层带：下方表格仍是权威对照，本带只画次序与两域用词 -->
+  <div class="layer-band reveal" aria-label="三层坐标图示">
+    <div class="layer-stack">
+
+      <div class="layer-node">
+        <span class="layer-index">R1 / SUBSTRATE</span>
+        <div class="layer-body">
+          <span class="layer-name">基质实现层</span>
+          <p class="layer-desc">语句得以落实的基质一侧。</p>
+          <div class="layer-terms">
+            <span class="layer-term">碳基 · 神经层</span>
+            <span class="layer-term layer-term--si">硅基 · 基质实现层</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-arrow" aria-hidden="true">
+        <span class="arrow-line"></span>
+        <span class="arrow-label">实现 · Implements</span>
+        <i class="fas fa-arrow-down"></i>
+      </div>
+
+      <div class="layer-node layer-node--here">
+        <span class="layer-flag">本站论述所在层</span>
+        <span class="layer-index">R2 / SYSTEM</span>
+        <div class="layer-body">
+          <span class="layer-name">功能系统层</span>
+          <p class="layer-desc">语法在此层成立，两域在此层互译。</p>
+          <div class="layer-terms">
+            <span class="layer-term">碳基 · 功能层</span>
+            <span class="layer-term layer-term--si">硅基 · 功能系统层</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-arrow" aria-hidden="true">
+        <span class="arrow-line"></span>
+        <span class="arrow-label">呈现 · Presents</span>
+        <i class="fas fa-arrow-down"></i>
+      </div>
+
+      <div class="layer-node">
+        <span class="layer-index">R3 / PHENOMENON</span>
+        <div class="layer-body">
+          <span class="layer-name">现象呈现层</span>
+          <p class="layer-desc">可被报告、可被读出的一侧。</p>
+          <div class="layer-terms">
+            <span class="layer-term">碳基 · 现象层</span>
+            <span class="layer-term layer-term--si">硅基 · 现象呈现层</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <table class="layer-table">
     <caption class="visually-hidden">三层坐标的两域用词对照</caption>
     <thead>
@@ -169,6 +417,18 @@
   </div>
 
   <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+</section>
+
+<!-- ==================== 收尾导流 · 两处续读 ==================== -->
+<section class="home-section cta-section reveal" id="cross" aria-label="两处续读">
+  <div class="geo geo-circle" aria-hidden="true"></div>
+  <span class="tech-label">Cross-domain · 两处续读</span>
+  <h3>顺着这套语法继续读</h3>
+  <p>骨架的规范定义在核心理论页；碳基一侧的表述在心理科学域首页。两域读同一份文本，不换坐标系。</p>
+  <div class="cta-actions">
+    <a class="btn btn-amber" href="core/index.html">读两域共用地基 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    <a class="btn btn-invert" href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> 回心理科学域</a>
+  </div>
 </section>
 
 </div><!-- /.container -->

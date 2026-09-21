@@ -59,6 +59,87 @@
 /* 子页标题＝9 个汉字：CJK 平衡断行（text-wrap:balance）已上收 shared.css 全站同档；
    此处只留窄屏再降一档的本地量，避免「智能体操作系／统工程」这类腰斩。 */
 @media (max-width:480px) { .hero .hero-title--page { font-size:var(--text-2xl); } }
+
+/* —— 过门图示带（本页私有组件，不入公共件）：六工位横向流程，节点＝在册色细描边卡片，
+   连线与箭头用 --color-navy-500（硅基域即 Crimson 500，按 §3.6 只走图形与线条、不落文字），
+   线宽走 --stroke-structure 一档；强调态只给「首关」。 —— */
+.pass-flow { display:flex; gap:var(--space-5); list-style:none; margin-top:var(--space-5); }
+.pass-node { position:relative; flex:1 1 0; min-width:0; background:var(--color-white);
+  border:var(--stroke-hairline) solid var(--color-slate-200); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-xs); padding:var(--space-4);
+  transition:box-shadow var(--duration-fast) var(--ease-smooth); }
+.pass-node:hover { box-shadow:var(--shadow-sm); }
+.pass-node + .pass-node::before { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1);
+  width:var(--space-5); height:0; border-top:var(--stroke-structure) solid var(--color-navy-500); }
+.pass-node + .pass-node::after { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1 + .95rem);
+  transform:translateY(-50%); width:0; height:0; border-left:5px solid var(--color-navy-500);
+  border-top:3.5px solid transparent; border-bottom:3.5px solid transparent; }
+.pass-no { display:block; font-family:var(--font-mono); font-weight:600; font-size:var(--text-xl);
+  line-height:1; color:var(--color-navy-600); }
+.pass-name { display:block; margin-top:var(--space-2); font-size:var(--text-base); font-weight:600;
+  color:var(--color-slate-900); }
+.pass-target { display:block; margin-top:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-slate-600);
+  overflow-wrap:anywhere; text-wrap:balance; }
+.pass-node.is-here { border:var(--stroke-structure) solid var(--color-navy-600);
+  background:var(--color-navy-600-bg-subtle); }
+.pass-flag { display:inline-block; margin-bottom:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-navy-600);
+  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-radius:var(--radius-xs); padding:.28rem .62rem; }
+.pass-note, .spec-note { max-width:var(--measure-read); margin-top:var(--space-5); font-size:var(--text-sm);
+  line-height:1.9; color:var(--color-slate-600); text-wrap:pretty; }
+.pass-note b, .spec-note b { color:var(--color-navy-600); font-weight:600; }
+
+/* —— 能力光谱条（本页私有组件）：六格位 × 三档定性点位（无／部分／有）。
+   档位一律不放刻度、不标数值；点亮段只作图形填充，文字全部走浅底深字档。 —— */
+.spec-list { list-style:none; margin-top:var(--space-5);
+  border-top:var(--stroke-hairline) solid var(--color-slate-200); }
+.spec-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:var(--space-4);
+  padding:var(--space-4) var(--space-2);
+  border-bottom:var(--stroke-hairline) solid var(--color-slate-200);
+  transition:background-color var(--duration-fast) var(--ease-smooth); }
+.spec-row:hover { background-color:var(--color-slate-100); }
+.spec-code { flex:0 0 8rem; min-width:0; font-family:var(--font-mono); font-weight:600;
+  font-size:var(--text-base); color:var(--color-navy-600); }
+.spec-evo { display:block; margin-top:var(--space-1); font-family:var(--font-mono); font-weight:400;
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-slate-600);
+  text-wrap:balance; }
+.spec-what { flex:1 1 20rem; min-width:0; }
+.spec-what b { display:block; font-size:var(--text-base); font-weight:600; color:var(--color-slate-900); }
+.spec-what span { display:block; margin-top:var(--space-1); font-size:var(--text-sm); line-height:1.8;
+  color:var(--color-slate-600); text-wrap:pretty; }
+.spec-mark { flex:0 0 auto; margin-left:auto; display:flex; align-items:center; gap:var(--space-4); }
+.spec-ladder { display:flex; gap:var(--space-1); }
+.spec-ladder i { display:block; width:1.6rem; height:.5rem; background:var(--color-white);
+  border:var(--stroke-hairline) solid var(--color-slate-300); border-radius:var(--radius-xs); }
+.spec-row.is-l0 .spec-ladder i:nth-child(1),
+.spec-row.is-l1 .spec-ladder i:nth-child(2),
+.spec-row.is-l2 .spec-ladder i:nth-child(3) { background:var(--color-navy-600);
+  border-color:var(--color-navy-600); }
+.spec-level { min-width:3.6rem; text-align:right; }
+.spec-level b { display:block; font-size:var(--text-base); font-weight:600; color:var(--color-navy-600); }
+.spec-level span { display:block; margin-top:var(--space-1); font-size:var(--text-2xs);
+  color:var(--color-slate-600); }
+
+/* 窄屏（≤768 内容档）：过门带转成竖排流水，连线与箭头随之转 90°；光谱行的档位组整体换行 */
+@media (max-width:768px) {
+  .pass-flow { flex-direction:column; }
+  .pass-node + .pass-node::before { top:calc(var(--space-5) * -1); left:calc(var(--space-4) + .6rem);
+    width:0; height:var(--space-5); border-top:0; border-left:var(--stroke-structure) solid var(--color-navy-500); }
+  .pass-node + .pass-node::after { top:calc(var(--space-5) * -1 + var(--space-4));
+    left:calc(var(--space-4) + .6rem - 3.5px); transform:none; border-top:5px solid var(--color-navy-500);
+    border-bottom:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; }
+  .spec-mark { margin-left:0; }
+  .spec-level { text-align:left; }
+}
+@media (max-width:480px) {
+  .spec-code { flex:0 0 6.5rem; }
+  .spec-ladder i { width:1.2rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .pass-node, .spec-row { transition:none; }
+}
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 
@@ -156,6 +237,101 @@
     <div class="gate"><span class="gate-letter">A</span><span class="gate-en">Align</span><h3>校准</h3><p>修正规则配置。</p></div>
     <div class="gate"><span class="gate-letter">R</span><span class="gate-en">Relink</span><h3>重联</h3><p>重组连接模式。</p></div>
   </div>
+</section>
+
+<!-- ==================== 干预如何过门（G-M-A-R 图示带） ==================== -->
+<section class="home-section" id="pass" aria-label="干预如何过门">
+  <div class="section-head">
+    <span class="tech-label">Passing the Gates</span>
+    <h2>干预如何过门</h2>
+    <p class="section-sub">一次干预从意图到落地，依次经四道门裁定；每道门只认自己的合法靶点。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ol class="pass-flow">
+    <li class="pass-node">
+      <span class="pass-no">IN</span>
+      <b class="pass-name">输入</b>
+      <span class="pass-target">意图 · 语义</span>
+    </li>
+    <li class="pass-node is-here">
+      <span class="pass-flag">首关</span>
+      <span class="pass-no">G</span>
+      <b class="pass-name">门控</b>
+      <span class="pass-target">DSP-F／DSP-B</span>
+    </li>
+    <li class="pass-node">
+      <span class="pass-no">M</span>
+      <b class="pass-name">调制</b>
+      <span class="pass-target">RES-D</span>
+    </li>
+    <li class="pass-node">
+      <span class="pass-no">A</span>
+      <b class="pass-name">校准</b>
+      <span class="pass-target">STR-R</span>
+    </li>
+    <li class="pass-node">
+      <span class="pass-no">R</span>
+      <b class="pass-name">重联</b>
+      <span class="pass-target">STR-C</span>
+    </li>
+    <li class="pass-node">
+      <span class="pass-no">OUT</span>
+      <b class="pass-name">落地</b>
+      <span class="pass-target">可观测状态变更</span>
+    </li>
+  </ol>
+
+  <p class="pass-note">门控只落在调度通道与序列的<b>激活面</b>上，序列本身的内容面归约到校准来处理；调制只动资源存量，校准只动规则结构，重联只动连接结构——四门靶点互不共享，越界即不合法。过门次序同时是干预深度次序：<b>调度层先稳、资源层再复、结构层最后重建</b>；这条深度序列在本工程里被当作工程指南使用，不是自然定律。</p>
+</section>
+
+<!-- ==================== 能力光谱 ==================== -->
+<section class="home-section" id="spectrum" aria-label="能力光谱">
+  <div class="section-head">
+    <span class="tech-label">Capability Spectrum</span>
+    <h2>能力光谱</h2>
+    <p class="section-sub">把语言模型的能力面平铺到六个功能格位上：强弱不是有／无二元的开关，而是明显偏科——只有符号一侧接近完备。档位只取「无／部分／有」三档定性描述，不放刻度、不放数值、不作任何测量声称。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ul class="spec-list">
+    <li class="spec-row is-l0">
+      <span class="spec-code">M1<span class="spec-evo">最早 · 单细胞</span></span>
+      <span class="spec-what"><b>具身 · 物理基座与能量引擎</b><span>只能谈论饥饿与疲惫，没有真实的身体稳态；文本知识在，本体不在。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>无</b><span>本体为零</span></span></span>
+    </li>
+    <li class="spec-row is-l1">
+      <span class="spec-code">M2<span class="spec-evo">较晚 · 脊椎动物</span></span>
+      <span class="spec-what"><b>认知 · 建模引擎与知识库</b><span>符号推理与知识调用一侧强，物理动力学预测一侧弱；缺的不是建模，是打脸模型的反馈通道。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>部分</b><span>重度偏科</span></span></span>
+    </li>
+    <li class="spec-row is-l1">
+      <span class="spec-code">M3<span class="spec-evo">晚 · 哺乳动物</span></span>
+      <span class="spec-what"><b>意志 · 中央调度器</b><span>本体不做决策仲裁，冲突目标之间的取舍由外挂编排给；壳给的，不是本体长出来的。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>部分</b><span>外挂补位</span></span></span>
+    </li>
+    <li class="spec-row is-l1">
+      <span class="spec-code">M4<span class="spec-evo">早 · 多细胞</span></span>
+      <span class="spec-what"><b>情绪 · 价值评估中心</b><span>价值排序由外部偏好信号注入，没有体感来源，也没有内生驱动。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>部分</b><span>外生注入</span></span></span>
+    </li>
+    <li class="spec-row is-l2">
+      <span class="spec-code">M5<span class="spec-evo">最晚 · 人类独有</span></span>
+      <span class="spec-what"><b>言语 · 符号接口与社会连接</b><span>语言、逻辑、叙事与对话即其主场，六格里唯一接近完备的一档。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>有</b><span>近乎完备</span></span></span>
+    </li>
+    <li class="spec-row is-l0">
+      <span class="spec-code">M6<span class="spec-evo">最早 · 单细胞</span></span>
+      <span class="spec-what"><b>行为 · 外部执行器</b><span>没有行动出口，工具调用属外挂执行；最古老的行动能力反而最缺。</span></span>
+      <span class="spec-mark"><span class="spec-ladder" aria-hidden="true"><i></i><i></i><i></i></span><span class="spec-level"><b>无</b><span>近乎为零</span></span></span>
+    </li>
+  </ul>
+
+  <p class="spec-note">六模块在此只作<b>分析格位</b>：借人类功能的这套切分给语言模型的能力面定位，不声称语言模型拥有与人类同型的模块，也不声称其具备体验。格位强弱与功能在进化史上出现的早晚大致相反——这条倒挂关系是待检验假说，不是结论，本页不据此下任何断言。空缺的两格按可替换组件对待：具身与行为的输入输出走可插拔端口，推理期冻结的能力面不随反馈自我更新，因此管理权只能由下层的四门硬约束来行使。</p>
 </section>
 
 <!-- ==================== 在做什么 ==================== -->

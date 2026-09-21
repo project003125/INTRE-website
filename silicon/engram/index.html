@@ -74,6 +74,99 @@
   .supply-wire { justify-self:center; }
   .supply-arrow { transform:rotate(90deg); }
 }
+
+/* —— 巡检回路图示（本页私有组件）：四工位闭环，节点用 mono 编号，回程走细虚线。
+   连线与箭头只走 --color-navy-500（硅基域即 Crimson 500，按在册边界只作图形与线条、不作文字色），
+   线宽取 --stroke-structure 一档；强调态给「当前位」。 —— */
+.loop-flow { display:flex; gap:var(--space-5); list-style:none; margin-top:var(--space-5); }
+.loop-node { position:relative; flex:1 1 0; min-width:0; background:var(--color-white);
+  border:var(--stroke-hairline) solid var(--color-slate-200); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-xs); padding:var(--space-4);
+  transition:box-shadow var(--duration-fast) var(--ease-smooth); }
+.loop-node:hover { box-shadow:var(--shadow-sm); }
+.loop-node + .loop-node::before { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1);
+  width:var(--space-5); height:0; border-top:var(--stroke-structure) solid var(--color-navy-500); }
+.loop-node + .loop-node::after { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1 + .95rem);
+  transform:translateY(-50%); width:0; height:0; border-left:5px solid var(--color-navy-500);
+  border-top:3.5px solid transparent; border-bottom:3.5px solid transparent; }
+.loop-no { display:block; font-family:var(--font-mono); font-weight:600; font-size:var(--text-xl);
+  line-height:1; color:var(--color-navy-600); letter-spacing:var(--tracking-tech); }
+.loop-name { display:block; margin-top:var(--space-2); font-size:var(--text-base); font-weight:600;
+  color:var(--color-slate-900); }
+.loop-target { display:block; margin-top:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-slate-600);
+  overflow-wrap:anywhere; text-wrap:balance; }
+.loop-node.is-here { border:var(--stroke-structure) solid var(--color-navy-600);
+  background:var(--color-navy-600-bg-subtle); }
+.loop-flag { display:inline-block; margin-bottom:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-navy-600);
+  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-radius:var(--radius-xs); padding:.28rem .62rem; }
+/* 回程：开口朝上的三道细虚线（左·下·右），左端一个向上的箭头收回 01 号工位 */
+.loop-return { position:relative; height:3.4rem; }
+.loop-return::before { content:''; position:absolute; top:0; bottom:0; left:1.75rem; right:1.75rem;
+  border:var(--stroke-structure) dashed var(--color-navy-500); border-top:0;
+  border-radius:0 0 var(--radius-sm) var(--radius-sm); }
+.loop-return::after { content:''; position:absolute; top:-5px; left:calc(1.75rem - 3.5px);
+  width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent;
+  border-bottom:5px solid var(--color-navy-500); }
+.loop-return-tag { position:absolute; left:50%; top:calc(50% + .2rem); transform:translate(-50%,-50%);
+  max-width:min(100%,26rem); background:var(--color-white); padding:0 var(--space-3);
+  font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  color:var(--color-slate-600); text-align:center; }
+.loop-note { max-width:var(--measure-read); margin-top:var(--space-4); font-size:var(--text-sm);
+  line-height:1.9; color:var(--color-slate-600); text-wrap:pretty; }
+.loop-note b { color:var(--color-navy-600); font-weight:600; }
+
+/* —— 双分支结构条（本页私有组件）：左栏碳基分支只给定位、不写内容，画成虚线空槽；
+   右栏硅基分支＝本页覆盖范围，用在册 3px 左刻线＋描边提为强调态。 —— */
+.branch-band { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-4);
+  margin-top:var(--space-5); }
+.branch-cell { background:var(--color-white); border-radius:var(--radius-sm); padding:var(--space-5); }
+.branch-no { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); color:var(--color-slate-600); }
+.branch-name { display:block; margin-top:var(--space-2); font-size:var(--text-md); font-weight:600;
+  color:var(--color-slate-900); text-wrap:balance; }
+.branch-desc { display:block; margin-top:var(--space-2); font-size:var(--text-sm); line-height:1.85;
+  color:var(--color-slate-600); text-wrap:pretty; }
+.branch-mark { display:inline-block; margin-top:var(--space-4); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); border-radius:var(--radius-xs);
+  padding:.28rem .62rem; border:var(--stroke-hairline) solid; }
+.branch-cell--out { border:var(--stroke-hairline) dashed var(--color-slate-300);
+  background:var(--color-slate-50); }
+.branch-cell--out .branch-mark { color:var(--color-slate-600); border-color:var(--color-slate-300);
+  border-style:dashed; background:var(--color-white); }
+.branch-cell--in { border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-left:3px solid var(--color-navy-600); box-shadow:var(--shadow-xs);
+  transition:box-shadow var(--duration-fast) var(--ease-smooth); }
+.branch-cell--in:hover { box-shadow:var(--shadow-sm); }
+.branch-cell--in .branch-name { color:var(--color-navy-600); }
+.branch-cell--in .branch-mark { color:var(--color-navy-600); border-color:var(--color-navy-600-border);
+  background:var(--color-navy-600-bg); }
+.branch-note { max-width:var(--measure-read); margin-top:var(--space-4); font-size:var(--text-sm);
+  line-height:1.9; color:var(--color-slate-600); text-wrap:pretty; }
+.branch-note b { color:var(--color-navy-600); font-weight:600; }
+
+@media (max-width:1024px) {
+  .branch-name { font-size:var(--text-base); }
+}
+@media (max-width:768px) {
+  .loop-flow { flex-direction:column; }
+  .loop-node + .loop-node::before { top:calc(var(--space-5) * -1); left:calc(var(--space-4) + .75rem);
+    width:0; height:var(--space-5); border-top:0; border-left:var(--stroke-structure) solid var(--color-navy-500); }
+  .loop-node + .loop-node::after { top:calc(var(--space-5) * -1 + var(--space-4));
+    left:calc(var(--space-4) + .75rem - 3.5px); transform:none; border-top:5px solid var(--color-navy-500);
+    border-bottom:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; }
+  /* 竖排后回程不再是环，收作一条虚线分隔＋同句说明（同一条 DOM，文案不变） */
+  .loop-return { height:auto; padding-top:var(--space-4); border-top:var(--stroke-structure) dashed var(--color-navy-500); }
+  .loop-return::before, .loop-return::after { display:none; }
+  .loop-return-tag { position:static; transform:none; display:block; max-width:var(--measure-read);
+    padding:0; text-align:left; background:transparent; }
+  .branch-band { grid-template-columns:minmax(0,1fr); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .loop-node, .branch-cell--in { transition:none; }
+}
 </style>
 
 </head>
@@ -141,6 +234,35 @@
   <p class="patrol-object"><span class="tag">巡检对象</span>AI Agent 可观测性与控制平面</p>
 </section>
 
+<!-- ==================== B0 · 双分支结构 ==================== -->
+<section class="home-section" id="branch" aria-label="双分支结构">
+  <div class="section-head">
+    <span class="tech-label">Two Branches</span>
+    <h2>双分支结构</h2>
+    <p class="section-sub">14 号工程分碳基与硅基两条对外对接分支，两支同构；本页只在右栏。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <div class="branch-band">
+    <div class="branch-cell branch-cell--out">
+      <span class="branch-no">01 / 碳基</span>
+      <b class="branch-name">碳基分支 · 学科对接</b>
+      <span class="branch-desc">面向外部学科知识域的那一侧：把框架与学科之间的约束口对上，正向、反向、横向三类约束由此进出。它的科目、课程与结论都不在本页。</span>
+      <span class="branch-mark">不在本页展开</span>
+    </div>
+    <div class="branch-cell branch-cell--in">
+      <span class="branch-no">02 / 硅基</span>
+      <b class="branch-name">硅基分支 · 本页</b>
+      <span class="branch-desc">面向「AI Agent 可观测性与控制平面」的那一侧：口径集中在流程定义处，观察落进每日监测流水，边界结论沉淀于基线与总账。本页全部图示与说明只覆盖这一支。</span>
+      <span class="branch-mark">本页覆盖</span>
+    </div>
+  </div>
+
+  <p class="branch-note">两条分支<b>同构</b>：硅基分支内部同样分深、广两层——边界基线是深的一层，监测流水是广的一层；工程级治理不分叉，两分支共用同一套入口与归档规则。</p>
+</section>
+
 <!-- ==================== B · 巡检什么 ==================== -->
 <section class="home-section" id="what" aria-label="巡检什么">
   <div class="section-head">
@@ -157,6 +279,45 @@
     <li><span class="log-stamp">BASE · 基线</span><span>边界基线沉淀基线互链与演进记录，供跨窗口对表。</span></li>
     <li><span class="log-stamp">LEDGER · 总账</span><span>样本总账累积巡检样本台账，作为上游证据的底册。</span></li>
   </ul>
+</section>
+
+<!-- ==================== B2 · 巡检回路 ==================== -->
+<section class="home-section" id="loop" aria-label="巡检回路">
+  <div class="section-head">
+    <span class="tech-label">The Loop</span>
+    <h2>巡检回路</h2>
+    <p class="section-sub">四个工位首尾相衔：基线的回程使下一个窗口在上一轮的口径上继续，而不是从零开始。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ol class="loop-flow">
+    <li class="loop-node">
+      <span class="loop-no">01</span>
+      <b class="loop-name">观测</b>
+      <span class="loop-target">可观测性 · 控制平面 · 学术收敛</span>
+    </li>
+    <li class="loop-node">
+      <span class="loop-no">02</span>
+      <b class="loop-name">记录</b>
+      <span class="loop-target">窗口流水 · 样本台账</span>
+    </li>
+    <li class="loop-node is-here">
+      <span class="loop-flag">当前位</span>
+      <span class="loop-no">03</span>
+      <b class="loop-name">边界判定</b>
+      <span class="loop-target">三分类 · 边界外维度</span>
+    </li>
+    <li class="loop-node">
+      <span class="loop-no">04</span>
+      <b class="loop-name">供证</b>
+      <span class="loop-target">26 号基线</span>
+    </li>
+  </ol>
+  <div class="loop-return" aria-hidden="true"><span class="loop-return-tag">回程 · 基线回指判定口径</span></div>
+
+  <p class="loop-note">回路每日先核对基线的现行口径再开工：新碎片按三分类归档——能干净映射到 R-D-S 或 G-M-A-R 的记为正常覆盖，落入已登记边界外维度的另册归位，两边都进不去的真异常触发<b>边界重审信号</b>；重审后的基线回到下一个窗口的口径上。触碰裁量边界的样本须显式标注，不得当作正常覆盖收档。回路的出口是证据不是结论：<b>覆盖是待验证的假设</b>，是否成立由 26 号一侧判定。</p>
 </section>
 
 <!-- ==================== C · 上游供证 ==================== -->

@@ -236,3 +236,9 @@ html { scroll-snap-type: y proximity; }
   .slide { padding-left:var(--space-4); padding-right:var(--space-4); }
   .cover-hint { display:none; }
 }
+
+/* 超窄屏：三层对照表自身 330px 宽，在 340px 视口下越界 15px
+   ⇒ 改为横向滚动容器，既不压字号也不砍列（表内容仍是权威对照，不可缩）。 */
+@media (max-width: 480px) {
+  .layer-table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+}

@@ -12,6 +12,11 @@
   align-items: center;
   gap: 0;
   margin-left: clamp(1rem, 4vw, 3rem);
+  /* 漂移根因：.nav-container 是 justify-content: space-between，胶囊作为中间项会被
+     「剩余空间」推着走，而两域导航项数不同（碳基 9 项／硅基 6 项）⇒ 一切域就横移。
+     补 margin-right:auto 让剩余空间被胶囊自己吃掉，左簇（logo＋胶囊）贴左、
+     导航项整体靠右，胶囊 x 只由 logo 宽＋上面的 clamp 间距决定，两域恒等。 */
+  margin-right: auto;
   padding: 3px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-pill);
@@ -89,4 +94,14 @@ body[data-domain="silicon"] a:hover { color: var(--color-navy-600); }
 body[data-domain="silicon"] .hero::after { background: rgba(67, 20, 16, 0.15); }
 body[data-domain="silicon"]::selection,
 body[data-domain="silicon"] *::selection { background: rgba(166, 58, 46, 0.15); }
+
+/* ---------- 页脚与胶囊的半透明白档随域补正 --------------------------------
+   公共件把页脚次要文字写成「白 ＋ opacity .6」：碳基底是 Navy 800 #122F5C（暗），
+   复合后 5.75:1 过线；硅基底换成 Crimson 800 #7A2A21（亮得多），同一档只剩 4.49:1。
+   实测（WCAG，前景按 alpha 复合后再算）：白 .60/于 #7A2A21 = 4.49；.65 = 5.00。
+   ⇒ 域内把这两处升到 .65 档；不改公共件，碳基观感零变化。 */
+body[data-domain="silicon"] .footer-sitemap .fs-col h4 { color: rgba(255, 255, 255, 0.65); }
+body[data-domain="silicon"] .footer-desc { color: rgba(255, 255, 255, 0.65); opacity: 1; }
+/* 胶囊未选中项：白 .65 落在导航深红底上实测 4.50（贴线），域内升到 .72 留出余量 */
+body[data-domain="silicon"] .domain-switch a:not([aria-current="page"]) { color: rgba(255, 255, 255, 0.72); }
 body[data-domain="silicon"] .domain-switch a:focus-visible { outline-color: #A63A2E; }

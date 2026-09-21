@@ -21,6 +21,7 @@
 /* —— ENGRAM 页自有版式：巡检日志（定宽戳记·细线流水·供证关系图）。
    颜色只用在册 token；微标签一律 --text-2xs ＋ --tracking-tech；行反馈与 isce 同构。—— */
 .patrol-object { display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--space-5);
+  max-width:var(--measure-read);   /* 与同区 .prose 同一 measure：原随容器拉到 1132px，右缘比正文长 396px */
   font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-slate-900); }
 .patrol-object .tag { font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); text-transform:uppercase;
   color:var(--color-navy-600); background:var(--color-navy-600-bg);
@@ -28,12 +29,12 @@
   border-radius:var(--radius-xs); padding:.28rem .62rem; }   /* 与 .lock-tag 同形 */
 
 /* 流水：戳记列定宽，条目只以细线分行；悬停＝淡底＋左端一道域色刻线 */
-.log-list { list-style:none; margin:.4rem 0 0; padding:0; max-width:46rem;
+.log-list { list-style:none; margin:.4rem 0 0; padding:0; max-width:var(--measure-read);
   border-top:var(--stroke-hairline) solid var(--color-slate-200); }
 .log-list li { display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:0 var(--space-4);
   align-items:start; padding:.9rem var(--space-2);
   border-bottom:var(--stroke-hairline) solid var(--color-slate-200);
-  font-size:var(--text-sm); color:var(--color-slate-700); line-height:1.85;
+  font-size:var(--text-sm); color:var(--color-slate-700); line-height:1.85; text-wrap:pretty;
   transition:background-color var(--duration-fast) var(--ease-smooth), box-shadow var(--duration-fast) var(--ease-smooth); }
 .log-list li:hover { background-color:var(--color-slate-100); box-shadow:inset 2px 0 0 var(--color-navy-600); }
 .log-stamp { justify-self:start; white-space:nowrap; font-family:var(--font-mono); font-size:var(--text-2xs);
@@ -44,14 +45,16 @@
 /* 供证关系图：14 号一处出证，两路下游（中列取 max-content，否则 nowrap 的「供证／输入」
    微标签会被 auto 轨压回 min-content，两端各溢出 2px） */
 .supply-map { display:grid; grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr);
-  gap:var(--space-4); align-items:center; max-width:46rem; margin-top:var(--space-5); }
+  gap:var(--space-4); align-items:center; max-width:var(--measure-read); margin-top:var(--space-5); }
 .supply-node { border:var(--stroke-hairline) solid var(--color-slate-200);
   border-left:3px solid var(--color-navy-600); background:var(--color-white);
   box-shadow:var(--shadow-xs); border-radius:var(--radius-sm); padding:var(--space-4) var(--space-5); }
 .supply-node--src { grid-row:span 2; }
+/* 节点名＝mono 微标签档（原 .06em 系全站唯一残值，实测 0.84px/14px；同列 .log-stamp
+   与 .supply-wire-tag 均为 --tracking-tech 1.6128px/11.52px）。 */
 .supply-node b { display:block; font-family:var(--font-mono); font-weight:600;
-  font-size:var(--text-sm); letter-spacing:.06em; color:var(--color-navy-600); }
-.supply-node span { display:block; font-size:var(--text-sm); color:var(--color-slate-600); margin-top:var(--space-1); }
+  font-size:var(--text-sm); letter-spacing:var(--tracking-tech); color:var(--color-navy-600); }
+.supply-node span { display:block; font-size:var(--text-sm); color:var(--color-slate-600); margin-top:var(--space-1); text-wrap:pretty; }
 /* 连线列左右各留 --space-1：nowrap 微标签的末位字距（--tracking-tech）不计入收缩盒宽，
    不留净空时「供证／输入」会比盒宽出 2px */
 .supply-wire { display:flex; flex-direction:column; align-items:center; gap:var(--space-1);
@@ -60,7 +63,7 @@
 .supply-wire-tag { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
   text-transform:uppercase; color:var(--color-slate-500); white-space:nowrap; }
 .supply-note { grid-column:1 / -1; margin-top:var(--space-4); font-size:var(--text-sm);
-  color:var(--color-slate-600); line-height:1.85; }
+  color:var(--color-slate-600); line-height:1.85; text-wrap:pretty; }
 
 /* 段末状态句 .state-note 已上收 ../shared.css（值与本页原副本同档），本地副本删除 */
 

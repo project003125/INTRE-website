@@ -22,7 +22,7 @@
 
 /* —— aose「系统/终端」版式：mono 强、工程感。尺寸一律走 brand.css 档位（--space-*／--stroke-*／
       --tracking-tech／--text-*），不再散写魔法数；颜色只用已册 token。 —— */
-.stack { max-width:46rem; }   /* 行宽与 shared.css .prose／.state-note 同档（原 44rem 系 stray） */
+.stack { max-width:var(--measure-read); }   /* 行宽走 shared.css 一档（原 44rem 系 stray，上一轮已并 46rem） */
 .stack-layer { display:flex; gap:var(--space-4); align-items:flex-start; border-radius:var(--radius-sm);
   padding:var(--space-5); }
 .stack-tag { flex:0 0 auto; font-family:var(--font-mono); font-size:var(--text-2xs);
@@ -31,12 +31,12 @@
 .stack-llm { background:var(--color-navy-600-bg-subtle); border:var(--stroke-hairline) solid var(--color-navy-600-border); }
 .stack-llm .stack-tag { color:var(--color-navy-700); border-color:var(--color-navy-600-border); }
 .stack-llm b { color:var(--color-slate-900); }
-.stack-llm p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-slate-600); }
+.stack-llm p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-slate-600); text-wrap:pretty; }
 .stack-os { background:var(--color-navy-800); }
 .stack-os .stack-tag { color:var(--color-white); border-color:var(--color-white-65); }
 .stack-os b { color:var(--color-white); }
 /* 深色层内：标名走全白、说明段走 white-65（同原站深底次文字档），与浅层的深浅分工一致 */
-.stack-os p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-white-65); }
+.stack-os p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-white-65); text-wrap:pretty; }
 .stack-seam { display:flex; align-items:center; gap:var(--space-4); padding:var(--space-3) var(--space-1); }
 .stack-seam::before, .stack-seam::after { content:''; flex:1; border-top:var(--stroke-structure) dashed var(--color-navy-500); }
 .stack-seam span { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
@@ -56,8 +56,8 @@
 .gate h3 { margin:var(--space-3) 0 var(--space-1); font-size:var(--text-base); color:var(--color-slate-900); }
 .gate p { margin:0; font-size:var(--text-sm); line-height:1.7; color:var(--color-slate-600); }
 
-/* 子页标题＝9 个汉字：窄屏再降一档并对 CJK 平衡断行，避免「智能体操作系／统工程」这类腰斩 */
-.hero .hero-title--page { text-wrap:balance; }
+/* 子页标题＝9 个汉字：CJK 平衡断行（text-wrap:balance）已上收 shared.css 全站同档；
+   此处只留窄屏再降一档的本地量，避免「智能体操作系／统工程」这类腰斩。 */
 @media (max-width:480px) { .hero .hero-title--page { font-size:var(--text-2xl); } }
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">

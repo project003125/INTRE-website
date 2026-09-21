@@ -6,6 +6,12 @@
    两页不再各自内联；翻页脚本同理只在 deck.js 一处。
    ============================================================================ */
 
+/* 行宽两档（本子树唯一出处；brand.css 只登记了 --reading-width:740px 一个长度，
+   故此处按其同值落 rem 档，不在各页另写散值）：
+     --measure-read 46rem＝736px ≈ --reading-width 740px —— 叙述正文／状态句／锁空面板
+     --measure-deck 40rem＝640px —— deck 正文行（与公共件 .section-head .section-sub 同宽） */
+:root { --measure-read: 46rem; --measure-deck: 40rem; }
+
 .home-section { margin: 5.5rem 0; }
 /* 窄端整段收紧：与碳基首页 @media(max-width:768px) 同一档同源修正 */
 @media (max-width: 768px) { .home-section { margin: 4rem 0; } }
@@ -19,45 +25,66 @@
                 transition:opacity var(--duration-normal) var(--ease-smooth); }
 .card:hover::before { opacity:1; }
 .card h2 { font-size:1.35rem; font-weight:700; color:var(--color-navy-600);
-           letter-spacing:-0.02em; margin:0.15rem 0 0; }
+           letter-spacing:0; margin:0.15rem 0 0; }
+/* 卡片标题＝纯 CJK 词组 ⇒ 字距回 brand.css 的 h2:lang(zh){letter-spacing:0} 档
+   （原 -0.02em 系拉丁标题习惯残留，实测 21.6px 下每字被压 0.432px）。 */
 /* 四条字值与碳基首页 .card p 同源（原站 0.92rem／1.78／slate-700／flex-grow:1）；
    卡片图标位已改走 .art--card 手写 SVG，故此处不再有 .card-icon */
 .card p { margin-top:0.7rem; font-size:.92rem; line-height:1.78;
-          color:var(--color-slate-700); flex-grow:1; }
-.card-code { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:.08em;
+          color:var(--color-slate-700); flex-grow:1; text-wrap:pretty; }
+/* 写成 .card .card-code：components.css 的 .card .card-code(0,2,0) 原先于此前的单类名
+   (0,1,0)，实测落在 0.68rem／.14em 上，本条的 .08em 是空转副本。现按同特异度后置取回，
+   并把字号提到 --text-2xs —— 与 .tech-label 同档（实测同为 11.52px／字距 1.6128px＝.14em）。 */
+.card .card-code { font-family:var(--font-mono); font-size:var(--text-2xs);
+             letter-spacing:var(--tracking-tech);
              color:var(--color-slate-500); text-transform:uppercase; }
 
 /* 速览条在深底英雄区内 ⇒ 字与边必须走浅色（同原站 .tech-label--faint 的处理），
-   不可用 slate-500／品牌 800 那套浅底配色（实测深底上对比度仅 1.62） */
-.glance { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:2.2rem; }
+   不可用 slate-500／品牌 800 那套浅底配色（实测深底上对比度仅 1.62）。
+   mono 微标签全站同距档：字距补 --tracking-tech（原 normal；同为 --text-xs 13px 的
+   .claim-en／.hero-en 实测 1.82px＝.14em）。 */
+/* 速览条按同一顶线排列：尾项一旦换行，flex 的 baseline 对齐会另起一条基线，
+   六枚不再上缘齐平 ⇒ 显式 flex-start（单行时与 baseline 同结果，字档一致）。 */
+.glance { display:flex; flex-wrap:wrap; align-items:flex-start; gap:.6rem; margin-top:2.2rem; }
 .glance span { font-family:var(--font-mono); font-size:var(--text-xs);
+               letter-spacing:var(--tracking-tech);
                border:var(--stroke-hairline) solid rgba(255, 255, 255, 0.18);
                background:rgba(255, 255, 255, 0.07); color:var(--color-white);
                padding:.34rem .7rem; border-radius:var(--radius-xs); }
 
 /* 内容宽度由 .container 收（与原站首页同一做法：hero 之后整段包一层 container） */
 .home-section .section-head + .layer-table { margin-top: 0.4rem; }
+/* 表头四枚短标签（行位／心理科学域／智能科学域／落点）在 480 下被压成一字一行
+   （实测首列文宽 14.41px）⇒ 表头不折行，数据格照常折；480 整表最小宽 ≈315px＜可用 432px。 */
+.layer-table thead th { white-space: nowrap; }
 .layer-table td.term { font-weight:600; color:var(--color-navy-600); }
 .layer-table td.gloss { color:var(--color-slate-700); }
 
-/* 锁空面板：细边＋品牌色左线＋淡底，宽度随容器收敛 */
-.lock-panel { margin-top:0.4rem; background:var(--color-white);
+/* 锁空面板：细边＋品牌色左线＋淡底，宽度随容器收敛。
+   上间距归 1.4rem 一档＝段末状态行 .state-note 的下距与 .denial 的上距，
+   「状态句→锁空→不声称」三段在六页实测均为 22.4px（原 .4rem 只在 deck 尾屏生效，
+   实测那里贴着上一段仅 6.4px，与页面版同区 22.4px 不成一档）。 */
+.lock-panel { margin-top:1.4rem; background:var(--color-white);
               border:var(--stroke-hairline) solid var(--color-slate-200);
               border-left:3px solid var(--color-navy-600);
               box-shadow:var(--shadow-xs); padding:1.8rem 2rem 1.6rem; }
+/* mono 微标签字距归档：全站微标签一律 --tracking-tech(.14em)，本件原为 .1em（实测 1.152px/11.52px），
+   与同区 .tech-label／.kicker／.log-stamp（1.6128px/11.52px）不成一档。 */
 .lock-panel .lock-tag { display:inline-block; font-family:var(--font-mono); font-size:var(--text-2xs);
-              letter-spacing:.1em; text-transform:uppercase; color:var(--color-navy-600);
+              letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600);
               border:var(--stroke-hairline) solid var(--color-navy-600-border);
               background:var(--color-navy-600-bg); padding:.28rem .62rem; border-radius:var(--radius-xs); }
-.lock-panel p { margin-top:1.1rem; color:var(--color-slate-900); }
+.lock-panel p { margin-top:1.1rem; color:var(--color-slate-900); line-height:1.9; text-wrap:pretty; }
 .denial { margin-top:1.4rem; padding-left:1rem; border-left:var(--stroke-hairline) solid var(--color-slate-300);
-          color:var(--color-slate-700); font-size:var(--text-sm); line-height:1.9; }
-.denial b { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:.1em;
+          color:var(--color-slate-700); font-size:var(--text-sm); line-height:1.9; text-wrap:pretty; }
+.denial b { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
           text-transform:uppercase; color:var(--color-slate-500); display:block; margin-bottom:.35rem; font-weight:500; }
 
-/* 长文正文容器：子页叙述段落的舒适行宽 */
-.prose { max-width:46rem; }
-.prose p { line-height:1.9; }
+/* 长文正文容器：行宽全站一档 --measure-read＝46rem（＝在册 --reading-width:740px 的 rem 写法）。
+   原 44rem 散值只在封面主张一处，已并进来；deck 正文另设 40rem 一档（＝公共件 .section-sub 640px）。
+   行高 1.9 与 .denial／.lock-panel p 同档（同一区块内三段不再三种 leading）。 */
+.prose { max-width:var(--measure-read); }
+.prose p { line-height:1.9; text-wrap:pretty; }
 .prose .lead { font-size:1.05rem; color:var(--color-slate-900); }
 
 /* 要点列表（子页「工程要点」区） */
@@ -65,7 +92,8 @@
               grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.1rem; }
 .point-list li { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200);
                  border-radius:var(--radius-sm); box-shadow:var(--shadow-xs);
-                 padding:1.2rem 1.3rem; font-size:var(--text-sm); line-height:1.8; color:var(--color-slate-700); }
+                 padding:1.2rem 1.3rem; font-size:var(--text-sm); line-height:1.8; color:var(--color-slate-700);
+                 text-wrap:pretty; }
 .point-list li b { display:block; color:var(--color-navy-600); font-weight:600; margin-bottom:.3rem; }
 
 .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden;
@@ -80,7 +108,8 @@
 .art { display:block; }
 .art--card { width:28px; height:28px; color:var(--color-navy-400); margin-bottom:1rem; }
 .art--corner { position:absolute; right:2.4rem; bottom:2.6rem; width:64px; height:64px;
-               color:rgba(255,255,255,.5); pointer-events:none; z-index:2; }
+               color:rgba(255,255,255,.5); /* 深底装饰件半透明白一档（与 sipe 刻线 .18／空槽 .07 同属描边档，非文字档，故不入 --color-white-* ） */
+               pointer-events:none; z-index:2; }
 /* 封面底部已有同心波做装饰，角标改置右上以免叠压 */
 .art--corner--tr { bottom:auto; top:2.4rem; }
 /* 浅色页头的报头标（isce）：40px → 反向加粗到 sw 3.6 */
@@ -94,7 +123,10 @@
    按 brand.css 字号规范落 --text-4xl（56px 超大标题）档；字距对 CJK 转微正；
    层级链保持：标题 3.5rem ＞ 副题 1.7rem ＞ 引言 1.18rem ＞ 正文 1rem。 */
 .hero .hero-title--page { font-size: var(--text-4xl); letter-spacing: 0.04em;
-                          line-height: 1.2; }
+                          line-height: 1.2; text-wrap: balance; }
+/* 英雄区中文副题＝一行短句，窄容器里被切断时末行只剩两字（aose 实测末行「入口」66px），
+   balance 让它两行配平；英文副题走全站 mono 微标签同一字距档（components.css 已是 --tracking-tech）。 */
+.hero-sub .hero-zh { text-wrap: balance; }
 @media (max-width: 768px) {
   .hero .hero-title--page { font-size: var(--text-3xl); }
 }
@@ -133,11 +165,16 @@ html { scroll-snap-type: y proximity; }
 .step-no { display:block; font-family:var(--font-mono); font-weight:600; font-size:var(--text-3xl); line-height:1; color:var(--color-navy-600); margin-bottom:.55rem; }
 /* core 原为 letter-spacing:-0.01em 且无 text-wrap，以 icre 为准（CJK 长标题不再腰斩） */
 .slide-title { margin:0 0 .85rem; font-size:var(--text-2xl); font-weight:600; color:var(--color-slate-900); letter-spacing:0; text-wrap:balance; }
-.slide-lines { margin:0; max-width:40rem; font-size:var(--text-md); line-height:1.72; color:var(--color-slate-700); }
+.slide-lines { margin:0; max-width:var(--measure-deck); font-size:var(--text-md); line-height:1.72; color:var(--color-slate-700); text-wrap:pretty; }
 .slide-lines + .slide-lines { margin-top:.45rem; }
 /* 段末状态行：口径取自 isce 现行值；engram 本地副本的 margin 用的是 var(--space-5)，
-   两页本地副本删除后一律以本条为准（1.4rem）。此值系逐字沿用，不得改写。 */
-.state-note { max-width:46rem; color:var(--color-slate-500); font-size:var(--text-base); line-height:1.75; margin:0 0 1.4rem; }
+   两页本地副本删除后一律以本条为准（1.4rem）。此 margin 值系逐字沿用，不得改写；
+   行高本轮由 1.75 并到 1.9，与同区的 .lock-panel p／.denial 同一 leading 档。 */
+.state-note { max-width:var(--measure-read); color:var(--color-slate-500); font-size:var(--text-base); line-height:1.9; margin:0 0 1.4rem; text-wrap:pretty; }
+/* deck 尾屏（边界与状态）：状态句／锁空面板／不声称三块收在与正文同一 measure 上，
+   右缘与 .slide-lines 成一条线（实测原为 896px 面板对 640px 段落，右缘差 256px）；
+   左缘本就同轴。core 本地 .tail 同值副本由此接管。 */
+.slide-inner .state-note, .slide-inner .lock-panel, .slide-inner .denial { max-width:var(--measure-deck); }
 .deco { margin-top:1.1rem; }
 
 /* 封面 */
@@ -147,7 +184,10 @@ html { scroll-snap-type: y proximity; }
 @supports (min-height: 100svh) { .cover { min-height:calc(100svh - 3.2rem); } }  /* 移动端动态工具条不再吃掉页码与波纹下缘 */
 .cover .kicker, .cover .pageno { color:var(--color-white); }
 .cover .slide-title { color:var(--color-white); font-size:var(--text-3xl); }
-.cover .slide-lines { color:var(--color-white); max-width:44rem; }
+/* 封面主张段：① 行宽并到 --measure-read（原 44rem 系全站唯一散值，aose .stack 的 44rem 上一轮已并入 46rem）；
+   ② 补左右 auto 边距——此前只有 max-width 而 margin:0，块贴在 .slide-inner 左缘，
+   居中文字随之左偏（实测 1440 下左留白 0／右留白 192px，中轴偏 96px）。 */
+.cover .slide-lines { color:var(--color-white); max-width:var(--measure-read); margin-left:auto; margin-right:auto; }
 /* core 原为字面 .18em，以 icre 为准 */
 .cover .claim-en { display:block; margin-top:1rem; font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white); }
 /* 键盘翻页提示：与页码同处一角、同一档 mono 微标签，深底次文字走 white-65 */

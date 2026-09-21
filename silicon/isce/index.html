@@ -27,11 +27,13 @@
   background-color: var(--color-navy-600); }
 .page-header-inner { max-width: var(--grid-container); margin:0 auto;
   padding: 2.5rem var(--space-5) var(--space-6); text-align:center; }
+/* 页头标题＝8 个汉字 ⇒ 字距走 brand.css 的 h1:lang(zh){letter-spacing:0} 档
+   （原 -0.03em 系拉丁标题习惯，实测 32px 下每字被压 .96px，CJK 首笔与末笔相接）。 */
 .page-header h1 { font-size:var(--text-2xl); font-weight:700; color:var(--color-slate-900);
-  letter-spacing:-0.03em; margin-bottom:var(--space-1); position:relative; padding-bottom:.6rem; }
+  letter-spacing:0; margin-bottom:var(--space-1); position:relative; padding-bottom:.6rem; }
 .page-header h1::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
   width:50px; height:var(--stroke-core); background-color:var(--color-navy-600); border-radius:var(--radius-xs); }
-.page-header .sub { font-size:var(--text-base); color:var(--color-slate-600); font-weight:400; }
+.page-header .sub { font-size:var(--text-base); color:var(--color-slate-600); font-weight:400; text-wrap:balance; }
 /* 页头微标签与全站 mono 微标签同档 */
 .page-header .stats { display:flex; justify-content:center; flex-wrap:wrap; gap:.6rem var(--space-5);
   margin-top:1.2rem; font-family:var(--font-mono); font-size:var(--text-2xs);
@@ -91,7 +93,7 @@
 /* —— 五层递进链：逐级右移的阶梯，行内导轨串起层位标。
    尺寸一律取在册间距档：导轨 var(--space-6)＝32px、徽章 var(--space-5)＝24px，
    徽章水平居中在导轨里、四周各留 4px 净空 ⇒ 任何断点下都不撑破导轨。—— */
-.chain-list { margin:0; padding:0; list-style:none; max-width:46rem; display:grid; gap:.4rem; }
+.chain-list { margin:0; padding:0; list-style:none; max-width:var(--measure-read); display:grid; gap:.4rem; }
 .chain-row { --i:0; --rail:var(--space-6); --no:var(--space-5);
   display:grid; grid-template-columns:auto minmax(0,1fr); gap:0 var(--space-3);
   align-items:start; margin-left:calc(var(--i) * var(--space-5));

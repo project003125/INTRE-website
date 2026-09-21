@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>INTRE · 智能科学建构工程（硅基侧）</title>
+<meta name="description" content="22 / ISCE 智能科学建构工程（硅基侧）：两域互译的术语权威源与五层递进推导链，心理科学域与智能科学域用词对照。">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/brand.css">
+<link rel="stylesheet" href="../../shared/components.css">
+<link rel="stylesheet" href="../../shared/domain-switch.css">
+<link rel="stylesheet" href="../shared.css">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+<style>
+/* —— ISCE 页版式：glossary 式页头 ＋ 两列对照表（真表格，含 caption／列标题）＋ 五层递进链阶梯。
+   颜色只用在册 token；字号走 --text-* 档、间距走 --space-* 档、微标签走 --text-2xs ＋ --tracking-tech。—— */
+
+.page-header { background: var(--color-slate-100); position:relative;
+  border-bottom: var(--stroke-hairline) solid var(--color-slate-200); }
+.page-header::before { content:''; position:absolute; top:0; left:0; right:0; height:var(--stroke-core);
+  background-color: var(--color-navy-600); }
+.page-header-inner { max-width: var(--grid-container); margin:0 auto;
+  padding: 2.5rem var(--space-5) var(--space-6); text-align:center; }
+.page-header h1 { font-size:var(--text-2xl); font-weight:700; color:var(--color-slate-900);
+  letter-spacing:-0.03em; margin-bottom:var(--space-1); position:relative; padding-bottom:.6rem; }
+.page-header h1::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:50px; height:var(--stroke-core); background-color:var(--color-navy-600); border-radius:var(--radius-xs); }
+.page-header .sub { font-size:var(--text-base); color:var(--color-slate-600); font-weight:400; }
+/* 页头微标签与全站 mono 微标签同档 */
+.page-header .stats { display:flex; justify-content:center; flex-wrap:wrap; gap:.6rem var(--space-5);
+  margin-top:1.2rem; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-slate-600); }
+.page-header .stats i { margin-right:.3rem; color:var(--color-navy-400); }
+
+.glossary-content { max-width: var(--grid-container); margin:0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-7); }
+
+.section-heading { font-size:var(--text-md); font-weight:600; color:var(--color-navy-600);
+  margin:var(--space-7) 0 var(--space-3); padding-bottom:.5rem;
+  border-bottom:var(--stroke-hairline) solid var(--color-navy-400);
+  display:flex; align-items:center; gap:.5rem; position:relative; padding-left:2.5rem; }
+.section-heading i { position:absolute; left:0; top:50%; transform:translateY(-50%);
+  background:var(--color-navy-600-bg-subtle); border-radius:50%; width:1.8rem; height:1.8rem;
+  display:inline-flex; align-items:center; justify-content:center; font-size:var(--text-xs); color:var(--color-navy-400); }
+.section-heading:first-of-type { margin-top:0; }
+
+/* —— 两列对照：左心理科学域 · 中缝 ⇄ · 右智能科学域 ——
+   components.css 的表格底（实色表头／斑马纹／默认内边距）在此按 glossary 版式覆写。 */
+.cmp-table { width:100%; table-layout:fixed; font-size:var(--text-sm); margin-bottom:var(--space-5); }
+.cmp-table col.cmp-col-a { width:33%; }
+.cmp-table col.cmp-col-seam { width:6%; }
+.cmp-table col.cmp-col-b { width:61%; }
+.cmp-table thead th { background:var(--color-navy-600-bg-subtle); color:var(--color-slate-600);
+  font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:500; letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; text-align:center; white-space:nowrap;
+  padding:.45rem var(--space-3); border-bottom:var(--stroke-hairline) solid var(--color-slate-300);
+  border-radius:0; }
+.cmp-table tbody tr:nth-child(even) { background-color:transparent; }   /* 关掉全站斑马纹，此表按分隔线分行 */
+.cmp-table tbody tr:hover { background-color:transparent; }             /* 悬停改画在单元格上，见下 */
+.cmp-group th { background:transparent; border:0; border-radius:0; text-align:left;
+  font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:600; letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-navy-600); padding:var(--space-5) 0 .4rem; }
+.cmp-item > th, .cmp-item > td { background:transparent; border:0; border-bottom:var(--stroke-hairline) solid var(--color-slate-200);
+  padding:.75rem var(--space-3); vertical-align:top; text-align:left; font-weight:400; color:var(--color-slate-900);
+  transition:background-color var(--duration-fast) var(--ease-smooth), box-shadow var(--duration-fast) var(--ease-smooth); }
+.cmp-item > th { padding-left:0; }
+.cmp-item > td:last-child { padding-right:0; }
+/* 悬停反馈：整行淡底 ＋ 左端一道域色刻线（不换行、不位移，避免行高跳动） */
+.cmp-item:hover > th, .cmp-item:hover > td { background-color:var(--color-slate-100); border-bottom-color:var(--color-navy-600-border); }
+.cmp-item:hover > th { box-shadow:inset 2px 0 0 var(--color-navy-600); }
+.cmp-tag { display:none; font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-slate-500); margin-bottom:.2rem; }
+.cmp-term { display:block; font-size:var(--text-base); font-weight:600; color:var(--color-slate-900); }
+/* 两列各自成一条规则、口径对称：左＝碳基原词（中性深字），右＝硅基中性词（域色） */
+.cmp-a .cmp-term { color:var(--color-slate-900); }
+.cmp-b .cmp-term { color:var(--color-navy-600); }
+.cmp-note { display:block; margin-top:.15rem; font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.7; }
+.cmp-seam { text-align:center; vertical-align:middle; }
+.cmp-seam::before { content:'⇄'; font-family:var(--font-mono); color:var(--color-slate-500); }
+
+/* 边界区的 kicker：沿用公共 .tech-label，只在此收进它自己的槽位（标题的上边距让给它） */
+.glossary-content > .tech-label { display:block; margin:var(--space-7) 0 var(--space-2); }
+.glossary-content > .tech-label + .section-heading { margin-top:0; }
+
+/* —— 五层递进链：逐级右移的阶梯，行内导轨串起层位标。
+   尺寸一律取在册间距档：导轨 var(--space-6)＝32px、徽章 var(--space-5)＝24px，
+   徽章水平居中在导轨里、四周各留 4px 净空 ⇒ 任何断点下都不撑破导轨。—— */
+.chain-list { margin:0; padding:0; list-style:none; max-width:46rem; display:grid; gap:.4rem; }
+.chain-row { --i:0; --rail:var(--space-6); --no:var(--space-5);
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:0 var(--space-3);
+  align-items:start; margin-left:calc(var(--i) * var(--space-5));
+  padding:.8rem var(--space-4) .8rem .9rem; border-radius:var(--radius-sm);
+  border:var(--stroke-hairline) solid var(--color-slate-100);
+  transition:background-color var(--duration-fast) var(--ease-smooth), border-color var(--duration-fast) var(--ease-smooth); }
+.chain-row:nth-child(1) { --i:0; } .chain-row:nth-child(2) { --i:1; } .chain-row:nth-child(3) { --i:2; }
+.chain-row:nth-child(4) { --i:3; } .chain-row:nth-child(5) { --i:4; }
+.chain-row:hover { background-color:var(--color-slate-100); border-color:var(--color-navy-600-border); }
+.chain-rail { position:relative; align-self:stretch; width:var(--rail); }
+.chain-rail::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; margin-left:-.5px;
+  background:var(--color-navy-600-border); }
+/* 导轨线在首行从徽章中心起、在末行收到徽章中心止（中心＝top 0 ＋ --no/2） */
+.chain-row:first-child .chain-rail::before { top:calc(var(--no) / 2); }
+.chain-row:last-child .chain-rail::before { bottom:auto; height:calc(var(--no) / 2); }
+.chain-no { position:absolute; left:50%; transform:translateX(-50%); top:0;
+  width:var(--no); height:var(--no); border-radius:50%;
+  background:var(--color-navy-600-bg-subtle); color:var(--color-navy-600);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:600; }
+.chain-row b { display:block; font-weight:600; color:var(--color-slate-900); font-size:var(--text-base); }
+.chain-desc { display:block; font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.8; margin-top:.2rem; }
+
+/* 段末状态句 .state-note 与选区色 ::selection 均已在公共件在册（silicon/shared.css ＋
+   shared/domain-switch.css 域内选区色），此处不留本地副本，免成双源。 */
+
+/* RESPONSIVE —— 断点只用 brand.css 在册三档 */
+@media (max-width:1024px) {
+  .page-header h1 { font-size:1.9rem; }
+}
+@media (max-width:768px) {
+  .page-header h1 { font-size:1.8rem; }
+  .page-header-inner { padding:2rem var(--space-4) var(--space-5); }
+  .glossary-content { padding:var(--space-5) var(--space-4) var(--space-6); }
+  .section-heading { padding-left:2.2rem; }
+  /* 对照表叠为单列：藏列标题行，域标签回到每一侧自己头上 */
+  .cmp-table, .cmp-table thead, .cmp-table tbody, .cmp-table tr,
+  .cmp-table th, .cmp-table td { display:block; width:auto; }
+  .cmp-table { table-layout:auto; }
+  .cmp-table thead { display:none; }
+  .cmp-group th { padding-top:var(--space-6); }
+  .cmp-item { padding:.6rem 0 .5rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); }
+  .cmp-item > th, .cmp-item > td, .cmp-item:hover > th, .cmp-item:hover > td {
+    padding:.25rem 0; border-bottom:0; background-color:transparent; box-shadow:none; }
+  .cmp-item > .cmp-seam { text-align:left; padding:.35rem 0; }
+  .cmp-tag { display:block; }
+  /* 阶梯在此收平（不再逐级右移），导轨与徽章沿用同一对间距档 */
+  .chain-row { margin-left:0; padding-right:.2rem; }
+}
+@media (max-width:480px) {
+  .page-header h1 { font-size:1.6rem; }
+  .page-header-inner { padding:1.5rem var(--space-3) var(--space-4); }
+  .glossary-content { padding:var(--space-4) var(--space-3) var(--space-5); }
+  .chain-list { gap:.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }   /* brand.css 全局是 smooth，此处按偏好关掉 */
+}
+</style>
+
+</head>
+
+<body data-domain="silicon">
+<a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">INTRE</a>
+    <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+    <div class="nav-links" id="nav-menu">
+      <a href="../core/index.html">核心理论</a>
+      <a href="../aose/index.html">AOSE</a>
+      <a href="../icre/index.html">ICRE</a>
+      <a href="index.html" class="active">ISCE</a>
+      <a href="../sipe/index.html">SIPE</a>
+      <a href="../engram/index.html">ENGRAM</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+<div class="page-header">
+  <div class="page-header-inner">
+    <svg class="art art--mast" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 80 H28 V60 H46 V40 H64 V20 H86"/><circle cx="19" cy="70" r="3.6" fill="currentColor" stroke="none"/><circle cx="55" cy="30" r="3.6" fill="currentColor" stroke="none"/></svg>
+    <h1>智能科学建构工程</h1>
+    <p class="sub">两域互译的术语权威源 · 五层递进推导链</p>
+    <div class="stats">
+      <span><i class="fas fa-language" aria-hidden="true"></i> 22 / ISCE · 硅基侧</span>
+      <span><i class="fas fa-exchange-alt" aria-hidden="true"></i> 中性词 ↔ 心理科学域原词</span>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-content">
+
+<!-- ========== ① 两域用词对照 ========== -->
+<h2 class="section-heading"><i class="fas fa-exchange-alt" aria-hidden="true"></i> 两域用词对照</h2>
+
+<table class="cmp-table">
+  <caption class="visually-hidden">两域用词对照表：左列为心理科学域（碳基）原词，右列为智能科学域（硅基）中性词，中缝为互译关系。</caption>
+  <colgroup>
+    <col class="cmp-col-a"><col class="cmp-col-seam"><col class="cmp-col-b">
+  </colgroup>
+  <thead>
+    <tr>
+      <th scope="col">心理科学域 · 碳基</th>
+      <th class="cmp-seam" aria-hidden="true"></th>
+      <th scope="col">智能科学域 · 硅基</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">三层架构</th></tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">神经层</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">基质实现层</span><span class="cmp-note">Substrate Implementation Layer · 多重可实现性公理</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">功能层</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">功能系统层</span><span class="cmp-note">Functional System Layer · 两域共用同一坐标系</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">现象层</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">现象呈现层</span><span class="cmp-note">Phenomenal Presentation Layer · 可被报告与呈现的一侧</span></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">元公理 G-S-R</th></tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">N · 需要（Need）</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">G · 目标（Goal）</span><span class="cmp-note">差距检测；缩写升格，逻辑不变</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">S · 结构（Structure）</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">结构</span><span class="cmp-note">方案构造；同词保留</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">R · 实现（Realization）</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">实现</span><span class="cmp-note">闭环收敛；同词保留</span></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">模块轴 ↔ 一般功能类</th></tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M1 · 具身</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">物理实现</span><span class="cmp-note">普遍必要；「身体」的人类形态不普遍</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M2 · 认知</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">信息建模</span><span class="cmp-note">普遍必要；纯反应式仍处理信息</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M3 · 意志</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">决策调度</span><span class="cmp-note">普遍必要；有目标须有仲裁</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M4 · 情绪</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">评价驱动</span><span class="cmp-note">情绪是评价功能的人类实现模态</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M5 · 言语</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">符号通信</span><span class="cmp-note">条件性必要；无符号系统仍可持续存在</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">M6 · 行为</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">动作执行</span><span class="cmp-note">普遍必要；行动是智能体定义成分</span></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">状态与操作语法</th></tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">R-D-S 三轴</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">存量-流量-控制方程</span><span class="cmp-note">本就中性；符号不变</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">人类实例状态空间</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">状态向量（维度随实例）</span><span class="cmp-note">一般智能体维度随模块集而定</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row" class="cmp-a"><span class="cmp-tag">心理科学域 · 碳基</span><span class="cmp-term">G-M-A-R 操作集</span></th>
+      <td class="cmp-seam" aria-hidden="true"></td>
+      <td class="cmp-b"><span class="cmp-tag">智能科学域 · 硅基</span><span class="cmp-term">原子干预集</span><span class="cmp-note">Gate / Modulate / Align / Relink；本就中性</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ========== ② 五层递进推导链 ========== -->
+<h2 class="section-heading"><i class="fas fa-layer-group" aria-hidden="true"></i> 五层递进推导链</h2>
+
+<ol class="chain-list">
+  <li class="chain-row">
+    <span class="chain-rail" aria-hidden="true"><span class="chain-no">01</span></span>
+    <div><b>存在公理</b><span class="chain-desc">系统欲持续存在，必须应对环境扰动——无人类、心理或意识预设。</span></div>
+  </li>
+  <li class="chain-row">
+    <span class="chain-rail" aria-hidden="true"><span class="chain-no">02</span></span>
+    <div><b>G-S-R 环</b><span class="chain-desc">目标-结构-实现三环节构成负反馈循环：差距检测、方案构造、闭环收敛。</span></div>
+  </li>
+  <li class="chain-row">
+    <span class="chain-rail" aria-hidden="true"><span class="chain-no">03</span></span>
+    <div><b>M-R-P 通用架构</b><span class="chain-desc">模块集、控制环与策略——回答「要实现 G-S-R 环，内部结构至少需含哪些通用组件」。</span></div>
+  </li>
+  <li class="chain-row">
+    <span class="chain-rail" aria-hidden="true"><span class="chain-no">04</span></span>
+    <div><b>R-D-S 三轴</b><span class="chain-desc">存量-流量-控制方程的通用坐标；一般功能类经此映射回 M1-M6 人类实例。</span></div>
+  </li>
+  <li class="chain-row">
+    <span class="chain-rail" aria-hidden="true"><span class="chain-no">05</span></span>
+    <div><b>G-M-A-R 操作集</b><span class="chain-desc">门控、调制、校准、重联的原子干预集，落于靶点合法性。</span></div>
+  </li>
+</ol>
+
+<!-- ========== ③ 边界与状态 ========== -->
+<span class="tech-label">Limits &amp; Status</span>
+<h2 class="section-heading"><i class="fas fa-lock" aria-hidden="true"></i> 边界与状态</h2>
+
+<p class="state-note">工程状态：在行 · 工作稿级。</p>
+
+<div class="lock-panel">
+  <span class="lock-tag">Locked · 锁空</span>
+  <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。本页只作术语与治理陈述：产出供内部立学讨论与对外发表引用，不构成已实现学科的现状描述。</p>
+</div>
+
+<p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+
+</div><!-- /.glossary-content -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">INTRE</div>
+  <p class="footer-desc">智能科学建构工程（硅基侧）</p>
+  <div class="footer-sitemap">
+    <div class="fs-col">
+      <h4>Domains · 两域</h4>
+      <a href="../../index.html">心理科学域（碳基）</a>
+      <a href="../index.html">智能科学域（硅基）</a>
+    </div>
+    <div class="fs-col">
+      <h4>Projects · 在行工程</h4>
+      <a href="../core/index.html">01 核心理论</a>
+      <a href="../aose/index.html">19 智能体操作系统</a>
+      <a href="../icre/index.html">20 意识共振</a>
+      <a href="index.html">22 智能科学建构</a>
+      <a href="../sipe/index.html">26 硅基探针</a>
+      <a href="../engram/index.html">14 边界巡检</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/nav-toggle.js"></script>
+<script src="../../shared/domain-switch.js"></script>
+</body>
+</html>

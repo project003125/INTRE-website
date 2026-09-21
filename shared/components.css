@@ -159,6 +159,13 @@ footer {
   letter-spacing: -0.02em;
   margin-bottom: var(--space-2);
 }
+/* 页脚描述行：原站把它写在 index.html 的内联 style 里，硅基各页引了 DOM 却无规则
+   ⇒ 上收为公共件，两域同源（值照原站内联，不改观感）。 */
+.footer-desc {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin: 0.3rem 0 2.6rem;
+}
 
 .footer-links {
   display: flex;
@@ -819,6 +826,7 @@ hr {
   height: 100%;
   z-index: 0;
   opacity: 0.85;
+  pointer-events: none;   /* 装饰画布不得拦截 hero 内交互（原站与硅基同需） */
 }
 /* 几何装饰：三角（三层架构）与圆（状态向量） */
 .geo {

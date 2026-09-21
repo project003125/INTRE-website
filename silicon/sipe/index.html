@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>INTRE · 硅基探针工程（硅基侧）</title>
+<meta name="description" content="26 / SIPE 硅基探针工程（硅基侧）：坐标系状态面板与操作面板的示意控制台，实证读数区全站锁空。">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/brand.css">
+<link rel="stylesheet" href="../../shared/components.css">
+<link rel="stylesheet" href="../../shared/domain-switch.css">
+<link rel="stylesheet" href="../shared.css">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+<style>
+/* —— SIPE 控制台版式：状态面板 STATUS ＋ 操作面板 CONTROL。
+   颜色只用在册 token（深底文字一律 --color-white-65／--color-white，域色只作描边与底；
+   rgba(255,255,255,α) 一档是深底刻线／空槽底，与 shared.css .glance 同值，不作文字色）；
+   表盘＝虚线空槽＋刻度环，一律不填读数；悬停只换底色与刻线（reduced-motion 由 brand.css 全局收口）。
+
+   分区线三级（同一份线、按层级分工，不再逐处写 opacity）：
+     一级 1px solid var(--rule)       —— 区段框：报头底线、面板框、面板标题线、中缝
+     二级 1px dashed var(--rule)      —— 行格线：列冠底线、各表位／拨杆的分隔
+     三级 1px solid var(--rule-faint) —— 双线压边的第二道、底纹
+   —— */
+.console { --rule: rgba(255,255,255,0.18);        /* 一级／二级线 */
+  --rule-faint: rgba(255,255,255,0.07);          /* 三级线（双线压边的第二道） */
+  --grid-line: rgba(255,255,255,0.025);          /* 面板底纹线 */
+  --grid-unit: 28px;                             /* 面板底纹格距 */
+  --slot-wash: rgba(255,255,255,0.07);           /* 空槽底：拨杆轨 */
+  --pane-wash: rgba(255,255,255,0.04);           /* 面板底：机座上的两块面板 */
+  --hover-wash: rgba(255,255,255,0.05);          /* 悬停淡底、螺钉、指示灯外圈 */
+  --slot: 3.4rem;                                /* 仪表列宽：表盘与拨杆同宽，两面板同一份栏 */
+  --pcols: var(--slot) minmax(0,1fr) auto;       /* 三栏格：仪表列／说明列／状态列 */
+  position:relative; margin:var(--space-7) 0; background:var(--color-navy-950);
+  border:1px solid var(--color-navy-700); border-radius:var(--radius-sm);
+  padding:var(--space-6) var(--space-6) var(--space-6);
+  background-image:repeating-linear-gradient(0deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent var(--grid-unit)),
+                   repeating-linear-gradient(90deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent var(--grid-unit)); }
+.screw { position:absolute; width:9px; height:9px; border-radius:50%;
+  border:1px solid var(--color-slate-600); background:var(--hover-wash); }
+.screw::after { content:''; position:absolute; left:50%; top:1px; bottom:1px; width:1px;
+  background:var(--color-slate-600); transform:translateX(-50%) rotate(45deg); }
+.screw.s1 { top:var(--space-2); left:var(--space-2); } .screw.s2 { top:var(--space-2); right:var(--space-2); }
+.screw.s3 { bottom:var(--space-2); left:var(--space-2); } .screw.s4 { bottom:var(--space-2); right:var(--space-2); }
+
+/* —— 报头：眉标＋标题 ／ 右栏标与模式牌，一级实线压三级虚线 —— */
+.console-head { position:relative; display:flex; align-items:flex-end; justify-content:space-between;
+  gap:var(--space-4) var(--space-5); flex-wrap:wrap;
+  border-bottom:1px solid var(--rule); padding-bottom:var(--space-4); }
+.console-head::after { content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px;
+  background:var(--rule-faint); }
+.console-id { min-width:0; }                       /* 长中文标题先在本栏内折行，不撑破报头 */
+.console-eyebrow { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); margin-bottom:.5rem; }
+.console-title { font-size:var(--text-2xl); font-weight:700; color:var(--color-white); line-height:1.25; }
+.console-meta { display:flex; flex-direction:column; align-items:flex-end; gap:.8rem; min-width:0; }
+.console-mode { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); text-align:right;
+  border:1px solid var(--rule); border-radius:var(--radius-xs); padding:.3rem .7rem; }
+/* 页头右栏：标在上一枚、模式牌在下——44px 故线宽反向补到 3.3（见 shared.css 注释） */
+.art--console { width:44px; height:44px; color:var(--color-white-55); }
+
+/* —— 双面板：中缝一道一级分区线，窄屏堆叠时收掉；两面板共用同一份三栏格 —— */
+.panel-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-5); margin-top:var(--space-6); position:relative; }
+.panel-grid::after { content:''; position:absolute; left:50%; top:.4rem; bottom:.4rem; width:1px;
+  background:var(--rule); }
+@media (max-width:1024px) { .panel-grid { grid-template-columns:1fr; } .panel-grid::after { display:none; } }
+
+.pane { position:relative; border:1px solid var(--rule); border-radius:var(--radius-sm);
+  background:var(--pane-wash); padding:1.4rem var(--space-5) var(--space-4); }
+.pane::before { content:''; position:absolute; top:-1px; left:-1px; right:-1px; height:3px;
+  background:var(--color-navy-600); border-radius:var(--radius-sm) var(--radius-sm) 0 0; }
+.pane-title { display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap;
+  border-bottom:1px solid var(--rule); padding-bottom:.8rem; margin-bottom:.9rem; }
+.pane-title h2 { color:var(--color-white); font-size:var(--text-lg); letter-spacing:0.02em; }
+.pane-title .en { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); margin-left:auto; }
+.pane-sub { font-size:var(--text-sm); color:var(--color-white-65); margin:0 0 var(--space-4); line-height:1.75; }
+/* 列冠微标签：与行格同一份栏宽同一份内边距，构成表列秩序（纯装饰，语义在各行自身） */
+.pane-cols { display:grid; grid-template-columns:var(--pcols); gap:0 var(--space-4);
+  padding:0 var(--space-2) .4rem; margin-bottom:.2rem; border-bottom:1px dashed var(--rule);
+  font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); }
+.pane-cols span:last-child { justify-self:end; text-align:right; }
+
+/* —— A · 状态面板：表盘（虚线空槽＋刻度环，两者同一线宽）＋轴位＋定性状态 —— */
+.gauges, .ctls { list-style:none; margin:0; padding:0; }
+.gauge, .ctl { display:grid; grid-template-columns:var(--pcols); gap:var(--space-1) var(--space-4);
+  align-items:start; padding:.9rem var(--space-2); border-bottom:1px dashed var(--rule);
+  border-radius:var(--radius-xs);
+  transition:background-color var(--duration-fast) var(--ease-smooth),
+             border-bottom-color var(--duration-fast) var(--ease-smooth),
+             box-shadow var(--duration-fast) var(--ease-smooth); }
+/* 悬停反馈与 isce 同构：整行淡底＋左端一道域色刻线＋分隔线转域色（不位移、不换行） */
+.gauge:hover, .ctl:hover { background:var(--hover-wash); border-bottom-color:var(--color-navy-600);
+  box-shadow:inset 2px 0 0 var(--color-navy-600); }
+.gauge:last-child, .ctl:last-child { border-bottom:0; }
+/* 栏宽即仪表列宽：width:100% ＋ brand.css 的 svg{height:auto} 保住正方比例，收栏不变椭圆 */
+.dial { width:100%; max-width:var(--slot); color:var(--color-white-55); margin-top:.15rem; }
+.gauge-body { min-width:0; }
+.gauge-head { display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; font-size:var(--text-base); }
+.gauge-key { flex:0 0 auto; font-family:var(--font-mono); font-size:var(--text-xl); font-weight:600;
+  color:var(--color-white); line-height:1; }
+.gauge-axis { font-size:var(--text-sm); font-weight:600; color:var(--color-white); letter-spacing:.02em; }
+.gauge-desc { margin:.35rem 0 0; font-size:var(--text-sm); color:var(--color-white-65); line-height:1.8; }
+.gauge-status { margin:0; justify-self:end; text-align:right; display:flex; align-items:center; gap:.45rem;
+  font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); white-space:nowrap; }
+.lamp { width:8px; height:8px; border-radius:50%; flex:0 0 auto; box-shadow:0 0 0 3px var(--hover-wash); }
+.lamp--locked { background:var(--color-slate-400); }
+
+/* —— B · 操作面板：拨杆（不通电）＋工序＋靶点；仪表列与状态列同一份字距 ——
+   写成 h3.ctl-id：brand.css 的 h3:lang(zh){letter-spacing:0} 特异性为 (0,1,1)，
+   单挂 .ctl-id（0,1,0）会被它盖掉，字距落不了地。 */
+h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:600;
+  letter-spacing:var(--tracking-tech); color:var(--color-white); line-height:1.5; }
+.lever { position:relative; width:100%; max-width:var(--slot); height:1.4rem; margin-top:.2rem;
+  border:1px solid var(--rule); background:var(--slot-wash); border-radius:var(--radius-pill); }
+.lever::before { content:''; position:absolute; left:var(--space-2); right:var(--space-2); top:50%; height:0;
+  border-top:1px dashed var(--rule); }   /* 虚线空槽：与表盘的虚线圈同一语言 */
+.lever::after { content:''; position:absolute; left:3px; top:3px; width:16px; height:16px; border-radius:50%;
+  background:var(--color-slate-500); box-shadow:inset 0 1px 0 rgba(255,255,255,0.22); }
+.ctl-info { min-width:0; }
+.ctl-desc { display:block; margin-top:.35rem; font-size:var(--text-sm); color:var(--color-white-65); line-height:1.8; }
+.ctl-target { justify-self:end; display:inline-block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); color:var(--color-white-65); text-align:right;
+  border:1px solid var(--rule); border-radius:var(--radius-xs); padding:.1rem .45rem; }
+.ctl--gate { margin-top:.9rem; border:1px solid var(--color-navy-600); background:var(--color-navy-600-bg); }
+.ctl--gate .ctl-id { color:var(--color-amber-500); }
+.ctl--gate .lever::after { left:auto; right:3px; background:var(--color-slate-600); }
+
+/* —— 边界压板：浅底文件压在深底机座上；骨架（kicker／h2／state-note／lock-panel／denial）与全站同口径 —— */
+.console-boundary { margin-top:var(--space-6); background:var(--color-slate-50);
+  border:1px solid var(--color-slate-200); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm); padding:var(--space-5); }
+.console-boundary .tech-label { display:block; margin-bottom:var(--space-1); }
+.console-boundary h2 { font-size:var(--text-md); font-weight:600; color:var(--color-slate-900);
+  letter-spacing:0; margin-bottom:var(--space-2); }
+.console-boundary .lock-panel { margin-top:var(--space-2); padding:var(--space-5) var(--space-5) var(--space-4); }
+
+@media (max-width:768px) {
+  .console { padding:var(--space-5) var(--space-4); --slot:2.9rem; --pcols:var(--slot) minmax(0,1fr); }
+  .pane { padding:1.2rem var(--space-4) var(--space-3); }
+  .console-meta { align-items:flex-start; flex-direction:row-reverse; align-self:stretch; justify-content:flex-end; }
+  /* 栏宽从三档收为两档：状态与靶点回到标题下方，标签行随之收起（标签只在三栏时成立） */
+  .pane-cols { display:none; }
+  .gauge-status, .ctl-target { grid-column:2; justify-self:start; text-align:left; margin-top:.45rem; }
+}
+@media (max-width:480px) {
+  .console { padding:var(--space-5) var(--space-3); --slot:2.5rem; }
+  .pane { padding:1.1rem var(--space-3); }
+  .console-boundary { padding:var(--space-4) var(--space-3); }
+  .console-title { font-size:var(--text-xl); }
+  .gauge-key { font-size:var(--text-lg); }
+}
+</style>
+
+</head>
+
+<body data-domain="silicon">
+<a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">INTRE</a>
+    <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+    <div class="nav-links" id="nav-menu">
+      <a href="../core/index.html">核心理论</a>
+      <a href="../aose/index.html">AOSE</a>
+      <a href="../icre/index.html">ICRE</a>
+      <a href="../isce/index.html">ISCE</a>
+      <a href="index.html" class="active">SIPE</a>
+      <a href="../engram/index.html">ENGRAM</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+<div class="container">
+
+<div class="console">
+  <i class="screw s1" aria-hidden="true"></i><i class="screw s2" aria-hidden="true"></i>
+  <i class="screw s3" aria-hidden="true"></i><i class="screw s4" aria-hidden="true"></i>
+
+  <header class="console-head">
+    <div class="console-id">
+      <span class="console-eyebrow">26 / SIPE · Coordinate Console</span>
+      <h1 class="console-title">硅基探针工程 · 坐标系控制台<span class="accent-dot" aria-hidden="true"></span></h1>
+    </div>
+    <div class="console-meta">
+      <svg class="art art--console" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M48 6 V18"/><path d="M42 14 L48 22 L54 14"/><circle cx="48" cy="58" r="24"/><path d="M38 58 H58" stroke-dasharray="6 6"/></svg>
+      <span class="console-mode">Schematic · 示意版面 · 不可交互</span>
+    </div>
+  </header>
+
+  <div class="panel-grid">
+
+    <!-- ========== A · 状态面板 ========== -->
+    <section class="pane" id="status-pane" aria-labelledby="status-pane-title">
+      <div class="pane-title">
+        <h2 id="status-pane-title">状态面板</h2>
+        <span class="en">Status · 读表</span>
+      </div>
+      <p class="pane-sub">R-D-S 三维状态语法的读表位：资源、调度、结构三轴表盘全部空置，只有定性状态与实质说明。</p>
+      <div class="pane-cols" aria-hidden="true"><span>表盘</span><span>轴位与监测面</span><span>状态</span></div>
+
+      <ul class="gauges">
+        <li class="gauge">
+          <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          <div class="gauge-body">
+            <h3 class="gauge-head"><span class="gauge-key">R</span><span class="gauge-axis">资源轴 · Resources</span></h3>
+            <p class="gauge-desc">监测可调度存量 RES-D 与基底存量 RES-B：Token 预算剩余、上下文窗口占用、API 调用配额与时间预算。读数位空置，资源调节归 MODULATE 唯一直接靶点。</p>
+          </div>
+          <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
+        </li>
+
+        <li class="gauge">
+          <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          <div class="gauge-body">
+            <h3 class="gauge-head"><span class="gauge-key">D</span><span class="gauge-axis">调度轴 · Dispatch</span></h3>
+            <p class="gauge-desc">监测前台控制流 DSP-F 与后台自动化流 DSP-B：当前子任务状态、Agent Loop 当前步骤、优先级与重试/回滚记录。中止、暂停与执行通道切换归 GATE 激活面。</p>
+          </div>
+          <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
+        </li>
+
+        <li class="gauge">
+          <svg class="dial" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="43" opacity=".4"/><path d="M48 4 V11 M48 85 V92 M4 48 H11 M85 48 H92" opacity=".55"/><circle cx="48" cy="48" r="35" stroke-dasharray="2.5 15.8" opacity=".75"/><circle cx="48" cy="48" r="20" stroke-dasharray="4 6.5"/><circle cx="48" cy="48" r="1.8" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          <div class="gauge-body">
+            <h3 class="gauge-head"><span class="gauge-key">S</span><span class="gauge-axis">结构轴 · Structure</span></h3>
+            <p class="gauge-desc">监测规则结构 STR-R、连接结构 STR-C 与序列结构 STR-S：系统提示词内容、工具依赖图、记忆索引与权限/沙箱规则。注入规则与切换连接分别对应 ALIGN 与 RELINK 靶点。</p>
+          </div>
+          <p class="gauge-status"><span class="lamp lamp--locked" aria-hidden="true"></span>Locked · 锁空</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ========== B · 操作面板 ========== -->
+    <section class="pane" id="control-pane" aria-labelledby="control-pane-title">
+      <div class="pane-title">
+        <h2 id="control-pane-title">操作面板</h2>
+        <span class="en">Control · 干预</span>
+      </div>
+      <p class="pane-sub">G-M-A-R 四原语的拨杆示意位：只画工序，不通电；每路标注 INTRE 靶点。</p>
+      <div class="pane-cols" aria-hidden="true"><span>拨杆</span><span>工序与说明</span><span>靶点</span></div>
+
+      <ul class="ctls">
+        <li class="ctl">
+          <span class="lever" aria-hidden="true"></span>
+          <div class="ctl-info">
+            <h3 class="ctl-id">GATE</h3>
+            <span class="ctl-desc">中止、暂停、恢复与执行通道切换；激活面为限定靶点。</span>
+          </div>
+          <span class="ctl-target">DSP ／ STR-S</span>
+        </li>
+
+        <li class="ctl">
+          <span class="lever" aria-hidden="true"></span>
+          <div class="ctl-info">
+            <h3 class="ctl-id">MODULATE</h3>
+            <span class="ctl-desc">限 Token、调配额、调温度一类资源调节；唯一直接靶点。</span>
+          </div>
+          <span class="ctl-target">RES-D</span>
+        </li>
+
+        <li class="ctl">
+          <span class="lever" aria-hidden="true"></span>
+          <div class="ctl-info">
+            <h3 class="ctl-id">ALIGN</h3>
+            <span class="ctl-desc">注入规则、改系统提示、改偏好；含 STR-S 内容面归约。</span>
+          </div>
+          <span class="ctl-target">STR-R</span>
+        </li>
+
+        <li class="ctl">
+          <span class="lever" aria-hidden="true"></span>
+          <div class="ctl-info">
+            <h3 class="ctl-id">RELINK</h3>
+            <span class="ctl-desc">切换模型、重载插件、载入记忆；唯一直接靶点。</span>
+          </div>
+          <span class="ctl-target">STR-C</span>
+        </li>
+
+        <li class="ctl ctl--gate">
+          <span class="lever" aria-hidden="true"></span>
+          <div class="ctl-info">
+            <h3 class="ctl-id">GATE · 启动判据</h3>
+            <span class="ctl-desc">过门判据前置；未裁定不出卷、不派发。</span>
+          </div>
+          <span class="ctl-target">Empty Anchor · 空锚锁空</span>
+        </li>
+      </ul>
+    </section>
+
+  </div><!-- /.panel-grid -->
+
+  <section class="console-boundary" id="limits" aria-label="边界与状态">
+    <span class="tech-label">Limits &amp; Status</span>
+    <h2>边界与状态</h2>
+    <p class="state-note">工程状态：在行 · 工作稿级。</p>
+    <div class="lock-panel">
+      <span class="lock-tag">Locked · 锁空</span>
+      <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。本页是全站实证读数的锁空区：面板上的表盘、拨杆与指示灯皆为示意。</p>
+    </div>
+    <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+  </section>
+
+</div><!-- /.console -->
+
+</div><!-- /.container -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">INTRE</div>
+  <p class="footer-desc">硅基探针工程（硅基侧）</p>
+  <div class="footer-sitemap">
+    <div class="fs-col">
+      <h4>Domains · 两域</h4>
+      <a href="../../index.html">心理科学域（碳基）</a>
+      <a href="../index.html">智能科学域（硅基）</a>
+    </div>
+    <div class="fs-col">
+      <h4>Projects · 在行工程</h4>
+      <a href="../core/index.html">01 核心理论</a>
+      <a href="../aose/index.html">19 智能体操作系统</a>
+      <a href="../icre/index.html">20 意识共振</a>
+      <a href="../isce/index.html">22 智能科学建构</a>
+      <a href="index.html">26 硅基探针</a>
+      <a href="../engram/index.html">14 边界巡检</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/nav-toggle.js"></script>
+<script src="../../shared/domain-switch.js"></script>
+</body>
+</html>

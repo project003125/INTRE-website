@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>INTRE · 学科对接工程 ENGRAM（硅基侧）</title>
+<meta name="description" content="14 / ENGRAM 学科对接工程（硅基侧）：硅基分支承接 AI Agent 可观测性与控制的每日边界巡检，为硅基探针供坐标系边界的上游经验证据。">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/brand.css">
+<link rel="stylesheet" href="../../shared/components.css">
+<link rel="stylesheet" href="../../shared/domain-switch.css">
+<link rel="stylesheet" href="../shared.css">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+<style>
+/* —— ENGRAM 页自有版式：巡检日志（定宽戳记·细线流水·供证关系图）。
+   颜色只用在册 token；微标签一律 --text-2xs ＋ --tracking-tech；行反馈与 isce 同构。—— */
+.patrol-object { display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--space-5);
+  font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-slate-900); }
+.patrol-object .tag { font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); text-transform:uppercase;
+  color:var(--color-navy-600); background:var(--color-navy-600-bg);
+  border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-radius:var(--radius-xs); padding:.28rem .62rem; }   /* 与 .lock-tag 同形 */
+
+/* 流水：戳记列定宽，条目只以细线分行；悬停＝淡底＋左端一道域色刻线 */
+.log-list { list-style:none; margin:.4rem 0 0; padding:0; max-width:46rem;
+  border-top:var(--stroke-hairline) solid var(--color-slate-200); }
+.log-list li { display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:0 var(--space-4);
+  align-items:start; padding:.9rem var(--space-2);
+  border-bottom:var(--stroke-hairline) solid var(--color-slate-200);
+  font-size:var(--text-sm); color:var(--color-slate-700); line-height:1.85;
+  transition:background-color var(--duration-fast) var(--ease-smooth), box-shadow var(--duration-fast) var(--ease-smooth); }
+.log-list li:hover { background-color:var(--color-slate-100); box-shadow:inset 2px 0 0 var(--color-navy-600); }
+.log-stamp { justify-self:start; white-space:nowrap; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); color:var(--color-slate-600); background:var(--color-white);
+  border:var(--stroke-hairline) solid var(--color-slate-200); border-radius:var(--radius-xs);
+  padding:.3rem .6rem; }
+
+/* 供证关系图：14 号一处出证，两路下游（中列取 max-content，否则 nowrap 的「供证／输入」
+   微标签会被 auto 轨压回 min-content，两端各溢出 2px） */
+.supply-map { display:grid; grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr);
+  gap:var(--space-4); align-items:center; max-width:46rem; margin-top:var(--space-5); }
+.supply-node { border:var(--stroke-hairline) solid var(--color-slate-200);
+  border-left:3px solid var(--color-navy-600); background:var(--color-white);
+  box-shadow:var(--shadow-xs); border-radius:var(--radius-sm); padding:var(--space-4) var(--space-5); }
+.supply-node--src { grid-row:span 2; }
+.supply-node b { display:block; font-family:var(--font-mono); font-weight:600;
+  font-size:var(--text-sm); letter-spacing:.06em; color:var(--color-navy-600); }
+.supply-node span { display:block; font-size:var(--text-sm); color:var(--color-slate-600); margin-top:var(--space-1); }
+/* 连线列左右各留 --space-1：nowrap 微标签的末位字距（--tracking-tech）不计入收缩盒宽，
+   不留净空时「供证／输入」会比盒宽出 2px */
+.supply-wire { display:flex; flex-direction:column; align-items:center; gap:var(--space-1);
+  padding:0 var(--space-1); color:var(--color-navy-600); }
+.supply-arrow { font-size:var(--text-xl); line-height:1; }
+.supply-wire-tag { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-slate-500); white-space:nowrap; }
+.supply-note { grid-column:1 / -1; margin-top:var(--space-4); font-size:var(--text-sm);
+  color:var(--color-slate-600); line-height:1.85; }
+
+/* 段末状态句 .state-note 已上收 ../shared.css（值与本页原副本同档），本地副本删除 */
+
+@media (max-width:768px) {
+  .log-list li { grid-template-columns:minmax(0,1fr); gap:.45rem; padding:.9rem var(--space-2); }
+  .supply-map { grid-template-columns:minmax(0,1fr); }
+  .supply-node--src { grid-row:auto; }
+  .supply-wire { justify-self:center; }
+  .supply-arrow { transform:rotate(90deg); }
+}
+</style>
+
+</head>
+
+<body data-domain="silicon">
+<a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">INTRE</a>
+    <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+    <div class="nav-links" id="nav-menu">
+      <a href="../core/index.html">核心理论</a>
+      <a href="../aose/index.html">AOSE</a>
+      <a href="../icre/index.html">ICRE</a>
+      <a href="../isce/index.html">ISCE</a>
+      <a href="../sipe/index.html">SIPE</a>
+      <a href="index.html" class="active">ENGRAM</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <!-- 几何语汇：三角 = 三层架构（内联 SVG，与碳基首页同源；公共件对 .geo-triangle 只给定位与透明度，几何须自带） -->
+  <svg class="geo geo-triangle" viewBox="0 0 200 180" aria-hidden="true" focusable="false">
+    <polygon points="100,12 188,168 12,168" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+    <polygon points="100,58 156,152 44,152" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+    <circle cx="100" cy="120" r="3" fill="rgba(245,158,11,0.7)"/>
+  </svg>
+  <!-- 几何语汇：圆 = 状态向量 -->
+  <div class="geo geo-circle" aria-hidden="true"></div>
+  <svg class="art art--corner" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 44 H84"/><path d="M24 36 V44 M56 36 V44 M72 36 V44" opacity=".85"/><circle cx="40" cy="44" r="3.4"/><path d="M40 36 V30" opacity=".85"/><path d="M48 56 V70" stroke-dasharray="3 4"/><path d="M44 66 L48 72 L52 66"/><rect x="30" y="76" width="36" height="12" rx="2" stroke-dasharray="4 4" opacity=".8"/></svg>
+  <div class="hero-content">
+    <span class="hero-eyebrow">14 / ENGRAM · 硅基侧</span>
+    <h1 class="hero-title hero-title--page">边界巡检<span class="accent-dot" aria-hidden="true"></span></h1>
+    <div class="hero-sub">
+      <span class="hero-zh">边界巡检在先，探针设计在后</span>
+      <span class="hero-divider" aria-hidden="true"></span>
+      <span class="hero-en">Observe First · Claim Nothing</span>
+    </div>
+    <p class="hero-tagline">把硅基实例的日常观察落成流水，为硅基实证供上游经验证据。</p>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ==================== A · 巡检是什么 ==================== -->
+<section class="home-section" id="patrol" aria-label="巡检是什么">
+  <div class="section-head">
+    <span class="tech-label">The Patrol</span>
+    <h2>巡检是什么</h2>
+    <p class="section-sub">一页只讲硅基分支；学科对接的碳基部分不在本页。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p class="lead">14 号工程的硅基分支承接「AI Agent 可观测性与控制」的每日边界巡检：把对硅基实例的观察做成受治理的日常记录——流程定义给口径，监测流水记窗口，边界基线与样本总账沉淀底册。</p>
+  </div>
+
+  <p class="patrol-object"><span class="tag">巡检对象</span>AI Agent 可观测性与控制平面</p>
+</section>
+
+<!-- ==================== B · 巡检什么 ==================== -->
+<section class="home-section" id="what" aria-label="巡检什么">
+  <div class="section-head">
+    <span class="tech-label">What Is Patrolled</span>
+    <h2>巡检什么</h2>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ul class="log-list">
+    <li><span class="log-stamp">DAY · 每日</span><span>按固定口径对可观测性与控制面做边界巡检；提示词与判定口径集中在流程定义处，避免随窗漂移。</span></li>
+    <li><span class="log-stamp">FLOW · 流水</span><span>监测流水逐日记录窗口观察，形成可回看的巡检日志。</span></li>
+    <li><span class="log-stamp">BASE · 基线</span><span>边界基线沉淀基线互链与演进记录，供跨窗口对表。</span></li>
+    <li><span class="log-stamp">LEDGER · 总账</span><span>样本总账累积巡检样本台账，作为上游证据的底册。</span></li>
+  </ul>
+</section>
+
+<!-- ==================== C · 上游供证 ==================== -->
+<section class="home-section" id="supply" aria-label="上游供证">
+  <div class="section-head">
+    <span class="tech-label">Upstream Evidence</span>
+    <h2>上游供证</h2>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <figure class="supply-map">
+    <div class="supply-node supply-node--src"><b>14 · 硅基分支</b><span>每日边界巡检</span></div>
+    <span class="supply-wire" aria-hidden="true"><span class="supply-arrow">→</span><span class="supply-wire-tag">供证</span></span>
+    <div class="supply-node"><b>26 · 硅基探针</b><span>探针设计</span></div>
+    <span class="supply-wire" aria-hidden="true"><span class="supply-arrow">→</span><span class="supply-wire-tag">输入</span></span>
+    <div class="supply-node"><b>19 · Agent OS</b><span>遥测设计</span></div>
+    <figcaption class="supply-note">分支的边界证据向 26 号硅基探针工程输出，为 R-D-S／G-M-A-R 边界供上游经验证据；控制面与可观测性模式同时是 19 号 Agent OS 遥测设计的输入。</figcaption>
+  </figure>
+</section>
+
+<!-- ==================== D · 边界与状态 ==================== -->
+<section class="home-section" id="limits" aria-label="边界与状态">
+  <div class="section-head">
+    <span class="tech-label">Limits &amp; Status</span>
+    <h2>边界与状态</h2>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <p class="state-note">工程状态：在行 · 工作稿级。</p>
+
+  <div class="lock-panel">
+    <span class="lock-tag">Locked · 锁空</span>
+    <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。巡检流水与台账不在本页展示。</p>
+  </div>
+
+  <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+</section>
+
+</div><!-- /.container -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">INTRE</div>
+  <p class="footer-desc">学科对接工程 ENGRAM（硅基侧）</p>
+  <div class="footer-sitemap">
+    <div class="fs-col">
+      <h4>Domains · 两域</h4>
+      <a href="../../index.html">心理科学域（碳基）</a>
+      <a href="../index.html">智能科学域（硅基）</a>
+    </div>
+    <div class="fs-col">
+      <h4>Projects · 在行工程</h4>
+      <a href="../core/index.html">01 核心理论</a>
+      <a href="../aose/index.html">19 智能体操作系统</a>
+      <a href="../icre/index.html">20 意识共振</a>
+      <a href="../isce/index.html">22 智能科学建构</a>
+      <a href="../sipe/index.html">26 硅基探针</a>
+      <a href="index.html">14 边界巡检</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/nav-toggle.js"></script>
+<script src="../../shared/domain-switch.js"></script>
+</body>
+</html>

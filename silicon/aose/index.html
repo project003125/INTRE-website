@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>INTRE · 智能体操作系统工程（硅基侧）</title>
+<meta name="description" content="19 智能体操作系统工程（AOSE，硅基侧）：Agent OS 与 LLM 的双层架构入口，G-M-A-R 四门在智能体侧的指令级门控。">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/brand.css">
+<link rel="stylesheet" href="../../shared/components.css">
+<link rel="stylesheet" href="../../shared/domain-switch.css">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* 页级覆写：切域胶囊非当前项提至白档（与页脚链接同档）；页脚栏目标题一律回公共件口径，
+   本地白色覆写已删（实测深底 rgba(255,255,255,.6) 在硅基 Crimson 800 上 4.49，公共件待修，勿在此打补丁）。 */
+.domain-switch a:not([aria-current="page"]) { color: var(--color-white); }
+
+/* —— aose「系统/终端」版式：mono 强、工程感。尺寸一律走 brand.css 档位（--space-*／--stroke-*／
+      --tracking-tech／--text-*），不再散写魔法数；颜色只用已册 token。 —— */
+.stack { max-width:46rem; }   /* 行宽与 shared.css .prose／.state-note 同档（原 44rem 系 stray） */
+.stack-layer { display:flex; gap:var(--space-4); align-items:flex-start; border-radius:var(--radius-sm);
+  padding:var(--space-5); }
+.stack-tag { flex:0 0 auto; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); padding:var(--space-1) var(--space-3);
+  border-radius:var(--radius-xs); border:var(--stroke-hairline) solid; margin-top:var(--space-1); }
+.stack-llm { background:var(--color-navy-600-bg-subtle); border:var(--stroke-hairline) solid var(--color-navy-600-border); }
+.stack-llm .stack-tag { color:var(--color-navy-700); border-color:var(--color-navy-600-border); }
+.stack-llm b { color:var(--color-slate-900); }
+.stack-llm p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-slate-600); }
+.stack-os { background:var(--color-navy-800); }
+.stack-os .stack-tag { color:var(--color-white); border-color:var(--color-white-65); }
+.stack-os b { color:var(--color-white); }
+/* 深色层内：标名走全白、说明段走 white-65（同原站深底次文字档），与浅层的深浅分工一致 */
+.stack-os p { margin:var(--space-1) 0 0; font-size:var(--text-sm); line-height:1.8; color:var(--color-white-65); }
+.stack-seam { display:flex; align-items:center; gap:var(--space-4); padding:var(--space-3) var(--space-1); }
+.stack-seam::before, .stack-seam::after { content:''; flex:1; border-top:var(--stroke-structure) dashed var(--color-navy-500); }
+.stack-seam span { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  color:var(--color-slate-600); white-space:nowrap; }
+
+/* 四门卡：4→2 列只走站内既有的 768 内容档；卡片顶边 3px 与 .card::before／.lock-panel 同制 */
+.gate-row { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-4); }
+@media (max-width:768px) { .gate-row { grid-template-columns:repeat(2,1fr); } }
+.gate { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200);
+  border-top:3px solid transparent; border-radius:var(--radius-sm); padding:var(--space-4) var(--space-4) var(--space-5);
+  transition:border-color var(--duration-fast) var(--ease-smooth); }
+.gate:hover { border-top-color:var(--color-navy-600); }
+.gate-letter { display:block; font-family:var(--font-mono); font-weight:600; font-size:var(--text-2xl);
+  line-height:1; color:var(--color-navy-600); }
+.gate-en { display:block; margin-top:var(--space-2); font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-slate-500); }
+.gate h3 { margin:var(--space-3) 0 var(--space-1); font-size:var(--text-base); color:var(--color-slate-900); }
+.gate p { margin:0; font-size:var(--text-sm); line-height:1.7; color:var(--color-slate-600); }
+
+/* 子页标题＝9 个汉字：窄屏再降一档并对 CJK 平衡断行，避免「智能体操作系／统工程」这类腰斩 */
+.hero .hero-title--page { text-wrap:balance; }
+@media (max-width:480px) { .hero .hero-title--page { font-size:var(--text-2xl); } }
+</style>
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+</head>
+
+<body data-domain="silicon">
+<a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">INTRE</a>
+    <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+    <div class="nav-links" id="nav-menu">
+      <a href="../core/index.html">核心理论</a>
+      <a href="index.html" class="active">AOSE</a>
+      <a href="../icre/index.html">ICRE</a>
+      <a href="../isce/index.html">ISCE</a>
+      <a href="../sipe/index.html">SIPE</a>
+      <a href="../engram/index.html">ENGRAM</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <!-- 几何语汇：三角 = 三层架构（内联 SVG，与碳基首页同源；公共件对 .geo-triangle 只给定位与透明度，几何须自带） -->
+  <svg class="geo geo-triangle" viewBox="0 0 200 180" aria-hidden="true" focusable="false">
+    <polygon points="100,12 188,168 12,168" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+    <polygon points="100,58 156,152 44,152" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+    <circle cx="100" cy="120" r="3" fill="rgba(245,158,11,0.7)"/>
+  </svg>
+  <!-- 几何语汇：圆 = 状态向量 -->
+  <div class="geo geo-circle" aria-hidden="true"></div>
+  <svg class="art art--corner" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="18" y="22" width="60" height="22" rx="3"/><rect x="18" y="52" width="60" height="22" rx="3"/><path d="M18 47 H78" stroke-dasharray="3 4" opacity=".65"/><path d="M34 42 V52 M48 42 V52 M62 42 V52"/><circle cx="48" cy="33" r="1.8" fill="currentColor" stroke="none"/><circle cx="48" cy="63" r="1.8" fill="currentColor" stroke="none"/></svg>
+  <div class="hero-content">
+    <span class="hero-eyebrow">19 / AOSE · 硅基侧</span>
+    <h1 class="hero-title hero-title--page">智能体操作系统工程<span class="accent-dot" aria-hidden="true"></span></h1>
+    <div class="hero-sub">
+      <span class="hero-zh">框架的元公理与双语法，落到智能体侧的工程入口</span>
+      <span class="hero-divider" aria-hidden="true"></span>
+      <span class="hero-en">Agent OS · Grammar at Work</span>
+    </div>
+    <p class="hero-tagline">以一张极简表作为认知起点：元公理、状态语法与操作语法，一次读全。</p>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ==================== 双层架构 ==================== -->
+<section class="home-section" id="stack" aria-label="双层架构">
+  <div class="section-head">
+    <span class="tech-label">Two-Layer Stack</span>
+    <h2>双层架构</h2>
+    <p class="section-sub">语言模型在上层供能力，Agent OS 在下层管调度与门控。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="stack-layer stack-llm">
+      <span class="stack-tag">LLM</span>
+      <div>
+        <b>语言模型层</b>
+        <p>作为推理内核供符号域的理解与生成：语言、逻辑、叙事与知识调用在此完成，智能体的意图与语义均经此出入。其边界同样清楚——无具身、无行动后果，推理期冻结、不随反馈自我更新，价值与规则多靠外部注入。工程上按可替换组件对待：不写语言模型本体，只做外挂层。</p>
+      </div>
+    </div>
+    <div class="stack-seam"><span>G-M-A-R · 门控每一次干预</span></div>
+    <div class="stack-layer stack-os">
+      <span class="stack-tag">AGENT OS</span>
+      <div>
+        <b>Agent OS 层</b>
+        <p>以状态语法把智能体内部状态写成模块、资源、调度、结构四个可观测维度；以操作语法实施干预——门控、调制、校准、重联四类原子操作，各有合法靶点，越界即不合法。下层凭指令集级硬约束行使管理权：语言模型的输出不直接落地，每一次干预都经四门裁定，与训练式软约束划清边界。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== G-M-A-R 四门 ==================== -->
+<section class="home-section" id="gates" aria-label="G-M-A-R 四门">
+  <div class="section-head">
+    <span class="tech-label">Four Gates</span>
+    <h2>G-M-A-R 四门</h2>
+    <p class="section-sub">四种原子操作，各管一类干预。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <div class="gate-row">
+    <div class="gate"><span class="gate-letter">G</span><span class="gate-en">Gate</span><h3>门控</h3><p>启动、抑制与切换。</p></div>
+    <div class="gate"><span class="gate-letter">M</span><span class="gate-en">Modulate</span><h3>调制</h3><p>调节资源水平。</p></div>
+    <div class="gate"><span class="gate-letter">A</span><span class="gate-en">Align</span><h3>校准</h3><p>修正规则配置。</p></div>
+    <div class="gate"><span class="gate-letter">R</span><span class="gate-en">Relink</span><h3>重联</h3><p>重组连接模式。</p></div>
+  </div>
+</section>
+
+<!-- ==================== 在做什么 ==================== -->
+<section class="home-section" id="points" aria-label="在做什么">
+  <div class="section-head">
+    <span class="tech-label">In Progress</span>
+    <h2>在做什么</h2>
+    <p class="section-sub">三条入口纪律。</p>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <ul class="point-list">
+    <li><b>GSR 元公理</b>任何自适应智能体的存活循环：目标、结构、实现三者闭合，不依赖六模块。</li>
+    <li><b>状态语法</b>以模块、资源、调度、结构描述智能体内部状态；六模块仅是人类实例的脚注强化，工程本身去人类中心。</li>
+    <li><b>极简入口</b>详细工作包与历史雪藏于归档快照，Agent 的认知起点保持一张表。</li>
+  </ul>
+</section>
+
+<!-- ==================== 边界与状态 ==================== -->
+<section class="home-section" id="limits" aria-label="边界与状态">
+  <div class="section-head">
+    <span class="tech-label">Limits &amp; Status</span>
+    <h2>边界与状态</h2>
+    <div class="head-rule" aria-hidden="true">
+      <span class="rule-line"></span><span class="rule-tri"></span><span class="rule-dot"></span><span class="rule-tri"></span><span class="rule-line"></span>
+    </div>
+  </div>
+
+  <p class="state-note">工程状态：在行 · 工作稿级。</p>
+
+  <div class="lock-panel">
+    <span class="lock-tag">Locked · 锁空</span>
+    <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。</p>
+  </div>
+
+  <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+</section>
+
+</div><!-- /.container -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">INTRE</div>
+  <p class="footer-desc">智能体操作系统工程（硅基侧）</p>
+  <div class="footer-sitemap">
+    <div class="fs-col">
+      <h4>Domains · 两域</h4>
+      <a href="../../index.html">心理科学域（碳基）</a>
+      <a href="../index.html">智能科学域（硅基）</a>
+    </div>
+    <div class="fs-col">
+      <h4>Projects · 在行工程</h4>
+      <a href="../core/index.html">01 核心理论</a>
+      <a href="index.html">19 智能体操作系统</a>
+      <a href="../icre/index.html">20 意识共振</a>
+      <a href="../isce/index.html">22 智能科学建构</a>
+      <a href="../sipe/index.html">26 硅基探针</a>
+      <a href="../engram/index.html">14 边界巡检</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/nav-toggle.js"></script>
+<script src="../../shared/domain-switch.js"></script>
+</body>
+</html>

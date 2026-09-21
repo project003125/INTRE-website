@@ -1,0 +1,92 @@
+/* ============================================================================
+   shared/domain-switch.css — 双域切换控件（碳基·心理科学域 ／ 硅基·智能科学域）
+   归属：27 号工程 INSP（智能科学呈现工程）；承载在 -website 内，随原站一起发布。
+   依据：DR-2026-09-21-27-INSP-004（原站前端承载双域·切换控件入导航）
+         ＋ 06-S-05 v2.5.2 §3.6（Crimson 六档在册；除本域品牌色外两域视觉参数一律沿用原条目）
+   铁律：本文件**只允许出现颜色类声明**（域覆盖块内），控件本身的尺寸与排版两域同值。
+   ============================================================================ */
+
+/* ---------- 切换胶囊：放在 .nav-logo 之后（主理 Agent 2026-09-21 圈定位） ---------- */
+.domain-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin-left: clamp(1rem, 4vw, 3rem);
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  flex: 0 0 auto;
+}
+.domain-switch a {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-white-65);
+  text-decoration: none;
+  padding: 0.42rem 1.05rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration-normal) var(--ease-smooth),
+              color var(--duration-normal) var(--ease-smooth);
+}
+.domain-switch a:hover { color: var(--color-white); }
+.domain-switch a[aria-current="page"] {
+  background: var(--color-white);
+  color: var(--color-navy-800);
+}
+.domain-switch a:focus-visible {
+  outline: 2px solid var(--color-navy-400);
+  outline-offset: 2px;
+}
+/* 窄屏：原站导航折叠时胶囊仍可见（挂在折叠区外） */
+@media (max-width: 860px) {
+  .domain-switch { margin-left: 0; margin-top: 0.6rem; }
+}
+
+/* ---------- 硅基域＝只换颜色（06-S-05 §3.6 六档在册值） ----------
+   原站 navy-900／700／200 无对应红档，就近映射到已登记档，不自造新值：
+     950/900 → Crimson 950 #431410
+     800/700 → Crimson 800 #7A2A21
+     600     → Crimson 600 #A63A2E（本域主色）
+     500     → Crimson 500 #B34D3D（仅图形与底色）
+     400     → Crimson 600 #A63A2E（原站把 400 用在图标与少量文字上；
+               §3.6 边界① 禁 Crimson 400 作文字色，故该槽位上收一档）
+     200/50  → Crimson 50  #FBECE8
+   阴影两条含 navy 字面色值，随域换红。 */
+body[data-domain="silicon"] {
+  --color-navy-950: #431410;
+  --color-navy-900: #431410;
+  --color-navy-800: #7A2A21;
+  --color-navy-700: #7A2A21;
+  --color-navy-600: #A63A2E;
+  --color-navy-500: #B34D3D;
+  --color-navy-400: #A63A2E;
+  --color-navy-200: #FBECE8;
+  --color-navy-50:  #FBECE8;
+  --color-navy-600-bg:         rgba(166, 58, 46, 0.08);
+  --color-navy-600-bg-subtle:  rgba(166, 58, 46, 0.06);
+  --color-navy-600-border:     rgba(166, 58, 46, 0.12);
+  --shadow-navy-sm: 0 2px 8px rgba(166, 58, 46, 0.25);
+  --shadow-navy-md: 0 4px 12px rgba(166, 58, 46, 0.35);
+}
+/* 胶囊当前项底色随域：碳基白底蓝字，硅基白底红字（只改颜色） */
+body[data-domain="silicon"] .domain-switch a[aria-current="page"] { color: #7A2A21; }
+
+/* ---------- 域内色彩补正：品牌层绕过 token 表的三处硬编码 ------------------
+   复核依据：06-S-05 §3.6 边界①（Crimson 400/500 禁作文字色）；本块只含颜色声明。 */
+/* brand.css 的 a:hover 走 --color-navy-500，硅基域下即 Crimson 500（#B34D3D），
+   悬停即违规 ⇒ 域内把链接悬停色上收一档到 600。 */
+body[data-domain="silicon"] a:hover { color: var(--color-navy-600); }
+/* components.css 的 .hero::after 与 ::selection 写死了碳基蓝面（rgba(10,30,61)/(31,72,128)），
+   不走域表 ⇒ 域内换成等 alpha 的红面，否则硅基 hero 底缘与选区仍是蓝。 */
+body[data-domain="silicon"] .hero::after { background: rgba(67, 20, 16, 0.15); }
+body[data-domain="silicon"]::selection,
+body[data-domain="silicon"] *::selection { background: rgba(166, 58, 46, 0.15); }
+body[data-domain="silicon"] .domain-switch a:focus-visible { outline-color: #A63A2E; }

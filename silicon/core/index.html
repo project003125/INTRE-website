@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>INTRE · 核心理论（硅基侧）</title>
+<meta name="description" content="01 核心理论（硅基侧）网页版六步推演：从绝境诊断到学科封顶，INTRE 为整个智能研究域安装底层公理。">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/brand.css">
+<link rel="stylesheet" href="../../shared/components.css">
+<link rel="stylesheet" href="../../shared/domain-switch.css">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* 页级覆写：切域胶囊非当前项提至白档（公共件同病灶，首页同位置亦不过线，全站修复待裁） */
+.domain-switch a:not([aria-current="page"]) { color: var(--color-white); }
+
+/* 网页版 PPT 外壳（分屏／页码／封面／装饰／极简页脚）已上收至 ../shared.css，
+   翻页脚本走 ../deck.js —— 本页原先那份带旧 bug 的本地副本随之删除，
+   与 icre 同源：吸附上边让开 3.2rem 粘性导航、封面按 100svh 减导航取高、
+   mono 字距统一走 --tracking-tech。 */
+</style>
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+</head>
+
+<body data-domain="silicon">
+<a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">INTRE</a>
+    <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+    <div class="nav-links" id="nav-menu">
+      <a href="index.html" class="active">核心理论</a>
+      <a href="../aose/index.html">AOSE</a>
+      <a href="../icre/index.html">ICRE</a>
+      <a href="../isce/index.html">ISCE</a>
+      <a href="../sipe/index.html">SIPE</a>
+      <a href="../engram/index.html">ENGRAM</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- 01 封面 -->
+<section class="slide cover" aria-label="封面">
+  <svg class="art art--corner art--corner--tr" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 20 H82"/><path d="M28 20 V30 M68 20 V30"/><rect x="18" y="30" width="20" height="12" rx="1.5"/><rect x="18" y="46" width="20" height="12" rx="1.5"/><rect x="18" y="62" width="20" height="12" rx="1.5"/><rect x="18" y="78" width="20" height="12" rx="1.5"/><rect x="58" y="30" width="20" height="12" rx="1.5"/><rect x="58" y="46" width="20" height="12" rx="1.5"/><rect x="58" y="62" width="20" height="12" rx="1.5"/><rect x="58" y="78" width="20" height="12" rx="1.5"/><path d="M48 26 V90" stroke-dasharray="2 5" opacity=".5"/></svg>
+  <div class="slide-inner" style="text-align:center">
+    <span class="kicker">01 / 核心理论 · 硅基侧 · 六步推演</span>
+    <h1 class="slide-title">核心理论</h1>
+    <p class="slide-lines">对「智能」的研究长期分裂在互不通约的学科语言里。一条从诊断到封顶的六步演绎链，为整个智能研究域装上公理。</p>
+    <span class="claim-en">Axioms for the Science of Intelligence</span>
+  </div>
+  <span class="cover-hint">↑ / ↓ 翻页</span>
+  <span class="pageno" aria-hidden="true">01 / 09</span>
+</section>
+
+<!-- 02 第零步 -->
+<section class="slide" aria-label="第零步 绝境诊断">
+  <div class="slide-inner">
+    <span class="kicker">第零步 · 绝境诊断</span>
+    <span class="step-no" aria-hidden="true">00</span>
+    <h2 class="slide-title">旧范式为什么失效</h2>
+    <p class="slide-lines">心理学困在量表与流派的互不通约里；经济学把决策者压扁为最优化器；AI 的参数矩阵难以解释为结构化过程；神经科学的观测与认知之间隔着三层诠释。</p>
+    <p class="slide-lines">根因是各学科停留在现象建模：用各自的语言描述各自的现象，而不追问智能体运行必须满足哪些底层控制论条件。</p>
+    <p class="slide-lines">「认知负荷」「注意力机制」「默认模式网络」说的是相近的过程，却无法在同一框架内通约——要找的是一把跨基质、跨尺度的通用尺子。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">02 / 09</span>
+</section>
+
+<!-- 03 第一步 -->
+<section class="slide" aria-label="第一步 提炼元语言">
+  <div class="slide-inner">
+    <span class="kicker">第一步 · 提炼元语言</span>
+    <span class="step-no" aria-hidden="true">01</span>
+    <h2 class="slide-title">从最复杂的心智反推底层语法</h2>
+    <p class="slide-lines">通用尺子须从已知最复杂的智能体实例反推，才能避开「低基线 → 低通用」的陷阱。</p>
+    <p class="slide-lines">抛弃把中介变量当实体，回到资源、调度、结构三轴；六个功能模块乘以七条子轴，张成 M-R-D-S 状态坐标系。</p>
+    <p class="slide-lines">再把一切干预手段归约为四类正交原子操作 G-M-A-R：门控、调制、校准、重联。有了坐标系，也有了指令集。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">03 / 09</span>
+</section>
+
+<!-- 04 第二步 -->
+<section class="slide" aria-label="第二步 横向泛化">
+  <div class="slide-inner">
+    <span class="kicker">第二步 · 横向泛化</span>
+    <span class="step-no" aria-hidden="true">02</span>
+    <h2 class="slide-title">人文社科的统一翻译接口</h2>
+    <p class="slide-lines">若这套语法只用来治心理疾病，它就浪费了。社会学、教育学、经济学、传播学研究的本质是同一件事：外部社会信号如何进入个体，并在内部转化为认知、情感与行为。</p>
+    <p class="slide-lines">于是它们统一翻译为 S-P → M-R-D-S → G-M-A-R 的工程接口——惯习写入状态结构，最近发展区匹配资源容量，话语权力调制言语规则。</p>
+    <p class="slide-lines">接口两侧还接上伦理护栏：六门控一回环覆盖从定义到执行的全级，并留出反馈回环。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">04 / 09</span>
+</section>
+
+<!-- 05 第三步 -->
+<section class="slide" aria-label="第三步 纵向具象">
+  <div class="slide-inner">
+    <span class="kicker">第三步 · 纵向具象</span>
+    <span class="step-no" aria-hidden="true">03</span>
+    <h2 class="slide-title">把黑箱改造成可观测的白箱</h2>
+    <p class="slide-lines">大模型不是完整的智能体，而是一个推理内核，主要覆盖认知与言语两个模块；具身、意志、情绪、行为需由外挂的状态机与工具链补齐。</p>
+    <p class="slide-lines">外挂一个白箱状态寄存器与资源调度器（Agent OS），黑箱就变成可观测的状态坐标加四类操作执行栈。</p>
+    <p class="slide-lines">训练时的软约束升级为运行时硬门控：进入高风险态直接拦截，与规则不一致时强制修正，资源不平衡时硬性重分配，推理内核可热插拔。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">05 / 09</span>
+</section>
+
+<!-- 06 第四步 -->
+<section class="slide" aria-label="第四步 本体论升华">
+  <div class="slide-inner">
+    <span class="kicker">第四步 · 本体论升华</span>
+    <span class="step-no" aria-hidden="true">04</span>
+    <h2 class="slide-title">碳基与硅基，同一控制论问题的两个实例</h2>
+    <p class="slide-lines">本想用这套语言去控制 AI，却发现人类心智在漫长演化中，正是在碳基上解决了感知资源耗竭、前后台进程切换、认知规则更新的同一批问题。</p>
+    <p class="slide-lines">不是类比，而是同构：共享有限资源的约束、前后台切换的架构、规则更新的机制、四类原子操作的干预语法。</p>
+    <p class="slide-lines">后果不是否定人类的价值，而是把「人类中心」的形而上学假设替换为「控制论中性」的工程假设。</p>
+    <div class="deco twin" aria-hidden="true"><span></span><i></i><span></span></div>
+  </div>
+  <span class="pageno" aria-hidden="true">06 / 09</span>
+</section>
+
+<!-- 07 第五步 -->
+<section class="slide" aria-label="第五步 学科封顶">
+  <div class="slide-inner">
+    <span class="kicker">第五步 · 学科封顶</span>
+    <span class="step-no" aria-hidden="true">05</span>
+    <h2 class="slide-title">为智能研究域安装公理</h2>
+    <p class="slide-lines">智能科学：研究智能体在不确定性环境中，如何通过资源的感知、调度与结构重构，维持自身存在并达成目标的控制论学科。</p>
+    <p class="slide-lines">三块基石依次是状态向量公理、状态方程公理、原子指令公理。</p>
+    <p class="slide-lines">欧几里得为空间安装公理，牛顿为连续变化，香农为信息；智能科学为智能研究域安装公理。</p>
+    <div class="deco pediment" aria-hidden="true"><b></b><span><u></u><u></u><u></u></span></div>
+  </div>
+  <span class="pageno" aria-hidden="true">07 / 09</span>
+</section>
+
+<!-- 08 结论 -->
+<section class="slide" aria-label="结论 推演链闭环">
+  <div class="slide-inner">
+    <span class="kicker">结论 · 推演链闭环</span>
+    <h2 class="slide-title">缺的不是知识条目，是底层公理</h2>
+    <p class="slide-lines">从绝境诊断到学科封顶，每一步都由前一步的逻辑压力逼出，无一步多余。</p>
+    <p class="slide-lines">旧范式的失效因此得到重新解释：不是研究做得不够，而是公理没装上。</p>
+    <p class="slide-lines">智能科学不再是一门软科学，而是可计算、可检验、可工程化的公理化硬科学。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">08 / 09</span>
+</section>
+
+<!-- 09 边界页 -->
+<section class="slide" aria-label="边界">
+  <div class="slide-inner">
+    <span class="kicker">Limits &amp; Status</span>
+    <h2 class="slide-title">边界</h2>
+    <p class="slide-lines">六步链为条件式论证：全部主张以「INTRE 框架经实证验证成立」为前提，不构成已实现状态的描述。</p>
+    <p class="state-note">工程状态：在行 · 工作稿级。</p>
+    <div class="lock-panel">
+      <span class="lock-tag">Locked · 锁空</span>
+      <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。</p>
+    </div>
+    <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
+  </div>
+  <span class="pageno" aria-hidden="true">09 / 09</span>
+</section>
+
+</main>
+
+<footer class="mini-footer">
+  <p>INTRE · 核心理论（硅基侧）</p>
+  <a href="../../index.html">心理科学域（碳基）</a>
+  <a href="../index.html">智能科学域（硅基）</a>
+</footer>
+
+<script src="../../shared/nav-toggle.js"></script>
+<script src="../../shared/domain-switch.js"></script>
+<script src="../deck.js"></script>
+</body>
+</html>

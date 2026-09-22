@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../colors_and_type.css">
+    <link rel="stylesheet" href="../../shared/components.css">
     <style id="theme-vars">
 :root {
   /* 幕序排版合成：取档一律走 shared/brand.css 的 --text-* 标尺，本块不另立阶梯 */
@@ -348,43 +349,18 @@
       .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
       /* ---------- 顶栏 HUD ---------- */
-      /* ===== 顶栏导航（参考 2D 网站 site-nav 样式） ===== */
-      .site-nav {
+      /* ===== 顶栏导航：壳取自 shared/components.css（同站点其余页），此处只留"叠在 3D 场景上"的差异 ===== */
+      /* 选择器须与公共件同权重（nav.site-nav），否则压不过它 */
+      nav.site-nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-        background: transparent;
-        border-bottom: none;
-        padding: 0 1.5rem;
+        background-color: transparent; border-bottom: none;
         pointer-events: auto;
       }
-      .nav-container {
-        max-width: 1280px; margin: 0 auto;
-        display: flex; justify-content: space-between; align-items: center;
-        height: 3.2rem;
-      }
-      .nav-logo {
-        display: flex; align-items: baseline; gap: 0.5rem;
-        text-decoration: none; color: var(--intre-scene-text);
-      }
-      .wordmark { font-family: var(--intre-font-display); font-weight: 600; font-size: var(--type-brand); letter-spacing: -0.02em; color: var(--intre-scene-text); }
-      .nav-links {
-        display: flex; gap: 0.15rem; align-items: center; flex-wrap: wrap;
-      }
+      .nav-logo, .nav-links a:hover { color: var(--intre-scene-text); }
       .nav-links a {
-        color: rgba(214, 229, 243, 0.75); text-decoration: none;
-        font-family: var(--intre-font-cjk); font-weight: 500; font-size: var(--type-body);
-        padding: 0.3rem 0.7rem; border-radius: var(--intre-radius-sm);
-        transition: color 0.2s, background-color 0.2s; white-space: nowrap;
-      }
-      .nav-links a:hover {
-        color: var(--intre-scene-text);
-        background-color: rgba(255, 255, 255, 0.08);
-      }
-      .nav-toggle {
-        display: none; background: none; border: none;
-        color: var(--intre-scene-text); font-size: 1.3rem;
-        cursor: pointer; padding: 0.6rem 0.8rem;
-        min-width: 44px; min-height: 44px;
-        align-items: center; justify-content: center;
+        color: color-mix(in srgb, var(--intre-navy-50) 75%, transparent);
+        font-family: var(--intre-font-cjk); font-size: var(--type-body);
+        transition: color 0.2s, background-color 0.2s;
       }
 
       /* ---------- 公式芯片 ---------- */
@@ -652,21 +628,7 @@
         :root {
           --type-display: clamp(2.5rem, 12vw, 4rem);  /* 移动端 INTRE h1 缩小到 2.5-4rem 区间，与 2D --text-3xl/4xl 对齐 */
         }
-        .nav-toggle { display: flex; }
-        .nav-links {
-          display: none;
-          position: absolute; top: 3.2rem; left: 0; right: 0;
-          flex-direction: column;
-          background-color: rgba(10, 30, 61, 0.96);
-          padding: 0.5rem; gap: 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .nav-links.open { display: flex; }
-        .nav-links a {
-          padding: 0.75rem 1rem; font-size: var(--type-body);
-          border-radius: var(--intre-radius-sm);
-          min-height: 44px; display: flex; align-items: center;
-        }
+        /* 汉堡菜单与折叠抽屉整段取自公共件（components.css ≤768 导航块），页内不再另写一套 */
         .act { left: 5vw; right: 5vw; bottom: 8vh; max-width: none; }
         .act-body { max-width: none; }
         .act-h2 { font-size: var(--text-2xl); }
@@ -726,17 +688,7 @@
       addEventListener('keydown', (e) => {
         if (e.key === 'h' || e.key === 'H') { document.body.classList.toggle('show-tags'); }
       });
-      /* #5: 移动端汉堡菜单（2D 风格 .nav-links.open） */
-      const navToggle = document.getElementById('nav-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      navToggle.addEventListener('click', () => {
-        const open = navMenu.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }));
+      /* #5: 移动端汉堡菜单交公共脚本 shared/nav-toggle.js（页内不再自写一份开关） */
       /* P1-4: 底部状态条 3秒无操作自动淡出 */
       const statusBar = document.getElementById('status-bar');
       let idleTimer = null;
@@ -761,6 +713,8 @@
     }
     </script>
 
+    <!-- 汉堡菜单开合／焦点收拢走站点公共脚本 -->
+    <script src="../../shared/nav-toggle.js"></script>
     <!-- 42 节点详情数据（6模块×7维度，window.INTRE_NODES） -->
     <script src="../lib/node-details.js"></script>
     <!-- v2.9: 真实大脑矢状面轮廓数据（241 点 Catmull-Rom 插值，解剖标志点） -->

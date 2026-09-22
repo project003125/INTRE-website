@@ -530,7 +530,9 @@
       #custom-cursor {
         position: fixed; left: 0; top: 0; z-index: 300; pointer-events: none;
         transition: transform 0.08s ease-out;
+        opacity: 0;   /* 首次 pointermove 前不出：盒子还停在左上角，会有一半挂在视口外 */
       }
+      #custom-cursor.is-live { opacity: 1; }
       .cursor-ring {
         position: absolute; left: -12px; top: -12px;
         width: 24px; height: 24px; border-radius: 50%;
@@ -854,7 +856,7 @@
       const cursorEl = document.getElementById('custom-cursor');
       let cursorX = 0, cursorY = 0;
       if (!coarsePointer) {
-        addEventListener('pointermove', (e) => { cursorX = e.clientX; cursorY = e.clientY; cursorEl.style.transform = 'translate(' + cursorX + 'px,' + cursorY + 'px)'; });
+        addEventListener('pointermove', (e) => { cursorX = e.clientX; cursorY = e.clientY; cursorEl.classList.add('is-live'); cursorEl.style.transform = 'translate(' + cursorX + 'px,' + cursorY + 'px)'; });
         addEventListener('pointerdown', () => { cursorEl.classList.add('is-hover'); });
         addEventListener('pointerup', () => { cursorEl.classList.remove('is-hover'); });
         /* P0-1: 所有可交互元素 hover 时触发自定义光标放大 */

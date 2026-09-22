@@ -507,7 +507,11 @@
       .act.is-inert { visibility: hidden; pointer-events: none; }
       .act-h1, .act-h2 { text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
       .kicker, .act-h1, .act-h2, .act-sub, .act-body, .badge-42, .legend,
-      #formula-chip, #scroll-hint, .row-label, .col-label { opacity: var(--o, 0); }
+      .row-label, .col-label { opacity: var(--o, 0); }
+      /* 依赖到位前即可读：首幕文字、公式芯片、滚动提示默认可见，其余幕仍由 JS 逐帧接管 */
+      #act-1 { opacity: 1; }
+      #act-1 .kicker, #act-1 .act-h1, #act-1 .act-sub { opacity: var(--o, 1); }
+      #formula-chip, #scroll-hint { opacity: var(--o, 1); }
       .row-label { transform: translate(var(--px, 0px), var(--py, 0px)) translate(-100%, -50%); }
       .col-label { transform: translate(var(--px, 0px), var(--py, 0px)) translate(-50%, -100%); }
       #tooltip { transform: translate(var(--tip-x, 0px), var(--tip-y, 0px)); }

@@ -863,9 +863,13 @@
         body: el.querySelector('.act-sub') || el.querySelector('.act-body'),
         extras: Array.prototype.slice.call(el.querySelectorAll('.badge-42, .legend')),
       }));
+      /* 当前最实的一幕文字框——投影标签不得压上去（由 updateHUD 独家维护，updateLabels 只读） */
+      let narrativeBox = null;
       const updateHUD = (p) => {
+        let topO = 0, topEl = null;
         for (let i = 0; i < actEls.length; i++) {
           const o = actOpacity(p, ACT_RANGES[i]);
+          if (o > topO) { topO = o; topEl = actEls[i]; }
           actEls[i].classList.add('is-live');   /* 容器不再承担淡入，opacity 下放给子元素 */
           actEls[i].classList.toggle('is-inert', !(o > 0.001));  /* 不可见时隐藏容器（含 background 渐变），避免叠盖其他幕 */
                     actEls[i].style.setProperty('--shift', ((1 - o) * 12).toFixed(2) + 'px');
@@ -884,6 +888,7 @@
         railEls.forEach((el, i) => { const on = i === active;
           el.classList.toggle('is-active', on);
           if (on) { el.setAttribute('aria-current', 'true'); } else { el.removeAttribute('aria-current'); } });
+        narrativeBox = topO > 0.05 && topEl ? topEl.getBoundingClientRect() : null;
       };
 
       const showFallback = () => {
@@ -2302,15 +2307,18 @@
 
       /* ================= 列标签投影（aGrid 列顶 → 屏幕坐标） ================= */
       const projV = new THREE.Vector3();
-      /* 投影出的轴标签盒放不进视口就整条不显示，不留半截字（行标签盒在锚点左侧、列标签盒在锚点上方居中） */
+      /* 投影出的轴标签盒：放不下视口或不落在当前幕文字框上就不显示（行标签盒在锚点左侧、列标签盒在锚点上方居中） */
       const LABEL_INSET = 8;
-      const labelFits = (el, x, y, vw, vh) => {
+      const labelBox = (el, x, y) => {
         const bw = el.offsetWidth, bh = el.offsetHeight;
         const rowSide = el.classList.contains('row-label');
         const left = rowSide ? x - bw : x - bw / 2;
         const top = rowSide ? y - bh / 2 : y - bh;
-        return left >= LABEL_INSET && top >= LABEL_INSET && left + bw <= vw - LABEL_INSET && top + bh <= vh - LABEL_INSET;
+        return { left, top, right: left + bw, bottom: top + bh };
       };
+      const labelPlaceable = (b, vw, vh, keep) =>
+        b.left >= LABEL_INSET && b.top >= LABEL_INSET && b.right <= vw - LABEL_INSET && b.bottom <= vh - LABEL_INSET
+        && (!keep || b.right <= keep.left || b.left >= keep.right || b.bottom <= keep.top || b.top >= keep.bottom);
       const updateLabels = () => {
         const o = clamp01((uLatticeCur - 0.7) / 0.3) * (1 - ss(pCur, 0.80, 0.88));   /* 标签随晶格一起淡出（配合平台期延后到 0.80） */
         const w = innerWidth, h = innerHeight;
@@ -2323,7 +2331,7 @@
           if (projV.z > 1) { el.style.setProperty('--o', '0'); continue; }
           const x = (projV.x * 0.5 + 0.5) * w;
           const y = (-projV.y * 0.5 + 0.5) * h;
-          if (!labelFits(el, x, y, w, h)) { el.style.setProperty('--o', '0'); continue; }
+          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox)) { el.style.setProperty('--o', '0'); continue; }
           el.style.setProperty('--o', o.toFixed(3));
           el.style.setProperty('--px', x.toFixed(1) + 'px'); el.style.setProperty('--py', y.toFixed(1) + 'px');
         }
@@ -2337,7 +2345,7 @@
           if (projV.z > 1) { el.style.setProperty('--o', '0'); continue; }
           const x = (projV.x * 0.5 + 0.5) * w;
           const y = (-projV.y * 0.5 + 0.5) * h;
-          if (!labelFits(el, x, y, w, h)) { el.style.setProperty('--o', '0'); continue; }
+          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox)) { el.style.setProperty('--o', '0'); continue; }
           el.style.setProperty('--o', o.toFixed(3));
           el.style.setProperty('--px', x.toFixed(1) + 'px'); el.style.setProperty('--py', y.toFixed(1) + 'px');
         }

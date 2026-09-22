@@ -151,7 +151,7 @@
    降级覆盖不可省：brand.css 全局写了 html{scroll-behavior:smooth}，
    减弱动效偏好下须回到 auto，否则首屏定位与 Home/End 仍会被强制平滑动画拖过。 */
 html { scroll-snap-type: y proximity; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* （动效偏好通则见本文件末，此处不再单列一条） */
 
 /* —— 分屏：吸附上边让开 3.2rem 粘性导航（否则吸附后每屏首行被导航压住半线）—— */
 .slide { min-height:58vh; scroll-snap-align:start; scroll-margin-top:3.2rem; display:flex; align-items:center; padding:3rem 1.5rem 2.4rem; position:relative; }
@@ -310,8 +310,6 @@ html { scroll-snap-type: y proximity; }
   border-radius:var(--radius-xs); padding:.28rem .62rem; }
 /* 窄端转竖排：只有「改向」这一步两页同值，连线落点两页各按自己节点内距调，留页内 */
 @media (max-width:768px) { .pass-flow, .loop-flow { flex-direction:column; } }
-@media (prefers-reduced-motion:reduce) { .pass-node, .loop-node { transition:none; } }
-
 /* —— 末页导流屏「下一站」卡列（core 九屏／icre 十三屏同一件）：两页逐字同值，整件上收。
        观感不新造第三族：微标签走 .card-code／.lock-tag 的 mono 一档，细线走 --stroke-hairline
        ＋--color-slate-200，hover 只换描边与底色为品牌色淡档、不位移。
@@ -338,9 +336,7 @@ html { scroll-snap-type: y proximity; }
   solid var(--color-navy-600-border); }
 .leg-home:hover { color:var(--color-navy-800); border-bottom-color:var(--color-navy-600); }
 /* 动效降级：brand.css 已全局把 transition-duration 压到 0.01ms，此处再显式归零一次，
-   使导流件不依赖公共件兜底；母题与进度轨本无动画，故无需另写。 */
-@media (prefers-reduced-motion: reduce) { .leg { transition: none; } }
-@media (max-width:480px) { .leg-list { grid-template-columns:1fr; } }
+   使导流件不依赖公共件兜底；母题与进度轨本无动画，故无需另写。 */@media (max-width:480px) { .leg-list { grid-template-columns:1fr; } }
 
 /* —— 屏内推演链进度轨（core 六格 00~05／icre 七格 01~07，同族同值）：极细一道 224×20，
        当前格实心，与屏内 .step-no 同字不同级。只挂步序屏——结论／边界屏无步序号，
@@ -399,10 +395,19 @@ html { scroll-snap-type: y proximity; }
    那条深底面板的上间距从 48px 改成 32px，属改观感 ⇒ 并列选择器不含 .cross。 */
 @media (max-width:480px) { .ao-cross, .en-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
 /* 降级同理只跟着声明过它的那两页走：isce／sipe 本就没写这一条，不替它们补。 */
-@media (prefers-reduced-motion:reduce) { .ao-cross-item, .en-cross-item { transition:none; } }
-
 /* —— 代码块（在册件 .code-block 在硅基两页的用法）——
    公共件那档字号 0.85rem＝13.6px 不在在册字档里，且 320 宽下最长行会在块内被切掉
    一小截（实测 cut 9px，既无提示也无从发现）⇒ 窄端降到在册的 --text-xs＝13px 一档。
    只降字号，颜色／底色／行高／内距一律沿用公共件原值，两域同值。 */
 @media (max-width:480px) { .code-block { font-size: var(--text-xs); } }
+
+/* ===== 动效偏好通则（本子树唯一一处，各页不再逐件补） ==========================
+   原先是四处零写：本文件里 .pass-node／.loop-node、.leg、.ao-cross／en-cross-item
+   各一条，加页内 aose 的 .spec-row 与 isce 的 scroll-behavior——同一件事写六份，
+   且 sipe 那 4 条 hover 迁移一直没有兜（它没参与那几轮上收）。通则一遍兜齐。
+   只压时长与滚动平滑，不改任何终态：子树无 @keyframes（实测 grep 0 命中），
+   首屏 canvas 与 deck 翻页两处 JS 本就直接读 matchMedia，不靠这条。 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

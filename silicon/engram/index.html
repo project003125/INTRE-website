@@ -155,9 +155,7 @@
     padding:0; text-align:left; background:transparent; }
   .branch-band { grid-template-columns:minmax(0,1fr); }
 }
-@media (prefers-reduced-motion:reduce) {
-  .branch-cell--in { transition:none; }   /* .loop-node 那条已随工位带上收到 ../shared.css */
-}
+/* 动效偏好由 ../shared.css 末尾的通则统一兜，本页不再单列 */
 
 /* —— 章节母题：每个内容板块一枚与该板块语义同指的极简单线件（26px、aria-hidden、currentColor）。
    尺寸／色档与 aose 的 ao-motif 逐字同值，两条已上收 ../shared.css；此处只留逐板块对位：

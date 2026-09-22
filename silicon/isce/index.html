@@ -242,9 +242,7 @@
   .def-plate { padding:var(--space-4) var(--space-3); }
   .def-main { font-size:var(--text-md); line-height:1.9; }
 }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior:auto; }   /* brand.css 全局是 smooth，此处按偏好关掉 */
-}
+/* 动效偏好（含 scroll-behavior）由 ../shared.css 末尾的通则统一兜，本页不再单列 */
 
 /* —— 焦点环：本页正文区的可聚焦元素显式落一遍，不靠公共件兜底。
    环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px）；

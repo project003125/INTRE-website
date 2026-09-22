@@ -141,6 +141,17 @@
     border-radius: var(--radius-pill);
 }
 
+/* ---------- ②b 窄端表格滑动提示（在册件 .table-responsive 的本页用法） ----------
+   三处刻意不照抄公共件，理由都是防误导而非改观感：
+   ① 亮提示的档位收到 480——公共件在 ≤768 亮「← 滑动查看 →」，而本页这张表实际
+      只在 ≤480 才横向滚（shared.css 的 .layer-table 那条），481~768 亮提示即谎报；
+   ② 滚动件留给表格自己（公共件只给 position:relative），提示才钉在可见框右缘，
+      不会随内容滚到看不见的那一头（公共件那档在碳基页上即此病）；
+   ③ 提示字色：公共件那档 Slate 400 落在白胶囊上实测 2.58，不达 4.5 ⇒
+      本页取 Slate 600（实测 7.58），与告知函 §六 给碳基的建议同一口径。 */
+.table-responsive::after { opacity:0; color:var(--color-slate-600); }
+@media (max-width:480px) { .table-responsive::after { opacity:1; } }
+
 /* ---------- ③ 收尾导流带（碳基 .cta-section 同名件） ----------
    深底面板的 44px 网格底纹与「内容抬到纹上」两条与 isce 定义带同值，已上收 shared.css；
    此处只留本域那圈壳：radius-sharp 与 4.4rem／3rem 内距是本页一档，不并它页。 */
@@ -549,6 +560,7 @@
     </div>
   </div>
 
+  <div class="table-responsive">
   <table class="layer-table">
     <caption class="visually-hidden">三层坐标的两域用词对照</caption>
     <thead>
@@ -560,6 +572,7 @@
       <tr><td>R3</td><td class="gloss">现象层</td><td class="term">现象呈现层</td><td>可被报告与呈现的一侧</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p class="state-note">两域互译的定名权威在 22 号工程；常用词条收在<a href="../glossary/index.html">术语表</a>，切域不换词条。</p>
 </section>

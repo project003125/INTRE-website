@@ -124,9 +124,9 @@
 
       <!-- 右侧三层指示器 -->
       <nav id="hud-rail" aria-label="三层结构指示器">
-        <div class="rail-item is-active" data-act="0"><span class="rail-dot"></span><span class="rail-label">现象层</span></div>
-        <div class="rail-item" data-act="1"><span class="rail-dot"></span><span class="rail-label">功能层</span></div>
-        <div class="rail-item" data-act="2"><span class="rail-dot"></span><span class="rail-label">神经层</span></div>
+        <button type="button" class="rail-item is-active" data-act="0" aria-current="true"><span class="rail-dot"></span><span class="rail-label">现象层</span></button>
+        <button type="button" class="rail-item" data-act="1"><span class="rail-dot"></span><span class="rail-label">功能层</span></button>
+        <button type="button" class="rail-item" data-act="2"><span class="rail-dot"></span><span class="rail-label">神经层</span></button>
         <span class="feat-tag feat-tag--abs">#01</span>
       </nav>
 
@@ -406,7 +406,12 @@
         background: rgba(10, 30, 61, 0.35); backdrop-filter: blur(6px);
         border: 1px solid rgba(214, 229, 243, 0.08);
       }
-      .rail-item { display: flex; flex-direction: row-reverse; align-items: center; gap: 10px; }
+      /* 层指示器＝可键盘操作的按钮：抹平 UA 默认盒型，使呈现与原 div 逐像素一致 */
+      .rail-item {
+        display: flex; flex-direction: row-reverse; align-items: center; gap: 10px;
+        appearance: none; -webkit-appearance: none; margin: 0; padding: 0; border: 0;
+        background: none; font: inherit; color: inherit; text-align: inherit;
+      }
       .rail-dot {
         width: 12px; height: 12px; border-radius: 50%;
         border: 2px solid var(--intre-navy-400); background: transparent;
@@ -876,7 +881,9 @@
         chipEl.style.setProperty('--o', actOpacity(p, ACT_RANGES[0]).toFixed(3));
         hintEl.style.setProperty('--o', p > 0.05 ? '0' : '1');
         const active = p < 0.52 ? 0 : p < 0.80 ? 1 : 2;
-        railEls.forEach((el, i) => el.classList.toggle('is-active', i === active));
+        railEls.forEach((el, i) => { const on = i === active;
+          el.classList.toggle('is-active', on);
+          if (on) { el.setAttribute('aria-current', 'true'); } else { el.removeAttribute('aria-current'); } });
       };
 
       const showFallback = () => {

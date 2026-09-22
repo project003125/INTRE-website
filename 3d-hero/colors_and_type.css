@@ -3,7 +3,7 @@
    层序显式声明：intre-brand 最低（只兜空缺），场景基线 intre-scene 夹在 base 与 components 之间，
    这样 brand 的浅色元素规则不会压过本页的 Tailwind 工具类，也不会在本页缺规则处漏出深色不可读的文字。 */
 @layer theme, intre-brand, base, intre-scene, components, utilities;
-@import url("../../shared/brand.css") layer(intre-brand);
+@import url("../shared/brand.css") layer(intre-brand);  /* 本文件在 3d-hero/ 下（深度 2），../../ 会被 Pages 子路径顶到站点根 → /shared/brand.css 404，整站 token 全空 */
 
 :root {
   /* ---------- Navy 主色阶 ---------- */

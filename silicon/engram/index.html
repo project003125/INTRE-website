@@ -167,6 +167,50 @@
 @media (prefers-reduced-motion:reduce) {
   .loop-node, .branch-cell--in { transition:none; }
 }
+
+/* —— 章节母题：每个内容板块一枚与该板块语义同指的极简单线件（26px、aria-hidden、currentColor）。
+   取值与 core 六步屏的 .step-mark 同族（navy-400 在硅基域即 Crimson 600，只作图形描边、不作文字色）；
+   纯静态描边、无 transition／animation ⇒ 天然满足减弱动效偏好。
+   逐板块对位：
+     巡检是什么＝放大镜压住一道被扫的平面    ／ 双分支结构＝一干分两枝，碳基一枝画虚线（不在本页）
+     巡检什么＝四行流水，左端一枚戳记         ／ 巡检回路＝首尾相衔的闭环带回程箭头
+     上游供证＝三节点两枚去向箭头（14 → 26 → 19）
+   边界与状态屏不放母题：那里没有板块语义，挂上去只成装饰（与 core 尾屏同一处置）。 —— */
+.en-motif { display:block; width:26px; height:26px; margin:0 auto var(--space-3);
+  color:var(--color-navy-400); }
+@media (max-width:480px) { .en-motif { width:24px; height:24px; } }
+
+/* —— 页间导流带「下一站」：本页原先读完就断，此处补一条与 core／icre 末页导流屏同族、
+   与 isce 浅底导流带同构的带子（mono 微标签＋细线＋hover 只提亮顶线与底色，不位移不换行）。
+   类名一律带 en- 前缀，不与新收拢中的公共件同名；字色全走在册 token 并已实测过线：
+   navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、悬停 navy-700
+   （硅基域即 Crimson 800）于 slate-50 淡底 9.2。 —— */
+.en-cross { margin-top:var(--space-7); padding-top:var(--space-5);
+  border-top:var(--stroke-structure) solid var(--color-navy-600-border); }
+.en-cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600);
+  margin-bottom:var(--space-2); }
+.en-cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-slate-600);
+  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
+.en-cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
+.en-cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
+  padding:var(--space-3) var(--space-3) var(--space-3) 0;
+  border-top:var(--stroke-hairline) solid var(--color-slate-200);
+  transition:border-top-color var(--duration-fast) var(--ease-smooth),
+             background-color var(--duration-fast) var(--ease-smooth); }
+.en-cross-item:hover { border-top-color:var(--color-navy-600); background-color:var(--color-slate-50); }
+.en-cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-slate-600); }
+.en-cross-item a { font-size:var(--text-base); font-weight:600; line-height:1.5; color:var(--color-navy-600); }
+.en-cross-item a:hover { color:var(--color-navy-700); }
+.en-cross-note { font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.75; text-wrap:pretty; }
+@media (max-width:768px) {
+  .en-cross-list { grid-template-columns:1fr; gap:var(--space-2); }
+  .en-cross-item { padding-right:0; }
+}
+@media (max-width:480px) { .en-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
+@media (prefers-reduced-motion:reduce) { .en-cross-item { transition:none; } }
 </style>
 
 </head>
@@ -219,6 +263,7 @@
 <!-- ==================== A · 巡检是什么 ==================== -->
 <section class="home-section" id="patrol" aria-label="巡检是什么">
   <div class="section-head">
+    <svg class="en-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6.6"/><path d="M15.2 15.2 21 21"/><path d="M7.4 10.4h6" opacity=".7"/></svg>
     <span class="tech-label">The Patrol</span>
     <h2>巡检是什么</h2>
     <p class="section-sub">一页只讲硅基分支；学科对接的碳基部分不在本页。</p>
@@ -237,6 +282,7 @@
 <!-- ==================== B0 · 双分支结构 ==================== -->
 <section class="home-section" id="branch" aria-label="双分支结构">
   <div class="section-head">
+    <svg class="en-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.6v-6.8"/><path d="M12 13.8 5 6.4" stroke-dasharray="2.4 2.4" opacity=".7"/><path d="M12 13.8l7-7.4"/><circle cx="12" cy="13.8" r="1.3" fill="currentColor" stroke="none"/></svg>
     <span class="tech-label">Two Branches</span>
     <h2>双分支结构</h2>
     <p class="section-sub">14 号工程分碳基与硅基两条对外对接分支，两支同构；本页只在右栏。</p>
@@ -266,6 +312,7 @@
 <!-- ==================== B · 巡检什么 ==================== -->
 <section class="home-section" id="what" aria-label="巡检什么">
   <div class="section-head">
+    <svg class="en-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.2 4.6h3.4M9 4.6h13"/><path d="M2.2 9.7h3.4M9 9.7h11"/><path d="M2.2 14.8h3.4M9 14.8h13"/><path d="M2.2 19.9h3.4M9 19.9h7.6"/></svg>
     <span class="tech-label">What Is Patrolled</span>
     <h2>巡检什么</h2>
     <div class="head-rule" aria-hidden="true">
@@ -284,6 +331,7 @@
 <!-- ==================== B2 · 巡检回路 ==================== -->
 <section class="home-section" id="loop" aria-label="巡检回路">
   <div class="section-head">
+    <svg class="en-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 12a8.6 8.6 0 1 1-2.53-6.08"/><path d="M20.8 3.6v5.2h-5.2"/><circle cx="12" cy="3.4" r="1.2" fill="currentColor" stroke="none"/></svg>
     <span class="tech-label">The Loop</span>
     <h2>巡检回路</h2>
     <p class="section-sub">四个工位首尾相衔：基线的回程使下一个窗口在上一轮的口径上继续，而不是从零开始。</p>
@@ -323,6 +371,7 @@
 <!-- ==================== C · 上游供证 ==================== -->
 <section class="home-section" id="supply" aria-label="上游供证">
   <div class="section-head">
+    <svg class="en-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.2" y="9.6" width="4" height="4.8" rx="1"/><path d="M6.7 10.4l1.5 1.6-1.5 1.6"/><rect x="9.9" y="9.6" width="4" height="4.8" rx="1"/><path d="M15.1 10.4l1.5 1.6-1.5 1.6"/><rect x="18.8" y="9.6" width="4" height="4.8" rx="1"/></svg>
     <span class="tech-label">Upstream Evidence</span>
     <h2>上游供证</h2>
     <div class="head-rule" aria-hidden="true">
@@ -359,6 +408,44 @@
 
   <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
 </section>
+
+<!-- ========== 页间导流（只导航，不新增任何主张） ========== -->
+<nav class="en-cross" aria-label="页间导流">
+  <span class="en-cross-kicker">Next · 下一站</span>
+  <p class="en-cross-lead">本页只记硅基分支这一侧的日常巡检与供证关系。公理本身在核心理论页，四门怎么裁定干预在智能体操作系统页，意识观那一支在意识共振页，两域用词怎么对上在智能科学建构页，读表台在硅基探针页——五站共用同一坐标系，也共用同一条边界。</p>
+  <ul class="en-cross-list">
+    <li class="en-cross-item">
+      <span class="en-cross-dir">地基 · Axioms</span>
+      <a href="../core/index.html">核心理论</a>
+      <span class="en-cross-note">六步链装上的底层公理与两套语法。</span>
+    </li>
+    <li class="en-cross-item">
+      <span class="en-cross-dir">执行侧 · Agent OS</span>
+      <a href="../aose/index.html">智能体操作系统</a>
+      <span class="en-cross-note">四门把每一次干预裁定下来的那一层。</span>
+    </li>
+    <li class="en-cross-item">
+      <span class="en-cross-dir">意识观 · Resonance</span>
+      <a href="../icre/index.html">意识共振</a>
+      <span class="en-cross-note">从本体论起点到终极底色的意识观推演。</span>
+    </li>
+    <li class="en-cross-item">
+      <span class="en-cross-dir">定名 · Naming</span>
+      <a href="../isce/index.html">智能科学建构</a>
+      <span class="en-cross-note">两域用词对照与命名的规矩。</span>
+    </li>
+    <li class="en-cross-item">
+      <span class="en-cross-dir">下游 · Probe</span>
+      <a href="../sipe/index.html">硅基探针</a>
+      <span class="en-cross-note">巡检所得在此作坐标系边界的上游经验。</span>
+    </li>
+    <li class="en-cross-item">
+      <span class="en-cross-dir">回 · Home</span>
+      <a href="../index.html">智能科学域首页</a>
+      <span class="en-cross-note">在行工程一览与两域共用的坐标。</span>
+    </li>
+  </ul>
+</nav>
 
 </div><!-- /.container -->
 

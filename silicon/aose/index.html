@@ -140,6 +140,50 @@
 @media (prefers-reduced-motion:reduce) {
   .pass-node, .spec-row { transition:none; }
 }
+
+/* —— 章节母题：每个内容板块一枚与该板块语义同指的极简单线件（26px、aria-hidden、currentColor）。
+   取值与 core 六步屏的 .step-mark 同族（navy-400 在硅基域即 Crimson 600，只作图形描边、不作文字色，
+   故不触品牌层的文字色边界）；纯静态描边、无 transition／animation ⇒ 天然满足减弱动效偏好。
+   逐板块对位：
+     双层架构＝上下两块夹层压一道虚线接缝   ／ G-M-A-R 四门＝四座并排门框
+     干预如何过门＝一支箭头穿过两道门落向出口 ／ 能力光谱＝空·半·满三档格（无／部分／有，无刻度）
+     在做什么＝三行要点各带一枚刻点
+   边界与状态屏不放母题：那里没有板块语义，挂上去只成装饰（与 core 尾屏同一处置）。 —— */
+.ao-motif { display:block; width:26px; height:26px; margin:0 auto var(--space-3);
+  color:var(--color-navy-400); }
+@media (max-width:480px) { .ao-motif { width:24px; height:24px; } }
+
+/* —— 页间导流带「下一站」：本页原先读完就断，此处补一条与 core／icre 末页导流屏同族、
+   与 isce 浅底导流带同构的带子（mono 微标签＋细线＋hover 只提亮顶线与底色，不位移不换行）。
+   类名一律带 ao- 前缀，不与新收拢中的公共件同名；字色全走在册 token 并已实测过线：
+   navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、悬停 navy-700
+   （硅基域即 Crimson 800）于 slate-50 淡底 9.2。 —— */
+.ao-cross { margin-top:var(--space-7); padding-top:var(--space-5);
+  border-top:var(--stroke-structure) solid var(--color-navy-600-border); }
+.ao-cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600);
+  margin-bottom:var(--space-2); }
+.ao-cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-slate-600);
+  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
+.ao-cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
+.ao-cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
+  padding:var(--space-3) var(--space-3) var(--space-3) 0;
+  border-top:var(--stroke-hairline) solid var(--color-slate-200);
+  transition:border-top-color var(--duration-fast) var(--ease-smooth),
+             background-color var(--duration-fast) var(--ease-smooth); }
+.ao-cross-item:hover { border-top-color:var(--color-navy-600); background-color:var(--color-slate-50); }
+.ao-cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-slate-600); }
+.ao-cross-item a { font-size:var(--text-base); font-weight:600; line-height:1.5; color:var(--color-navy-600); }
+.ao-cross-item a:hover { color:var(--color-navy-700); }
+.ao-cross-note { font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.75; text-wrap:pretty; }
+@media (max-width:768px) {
+  .ao-cross-list { grid-template-columns:1fr; gap:var(--space-2); }
+  .ao-cross-item { padding-right:0; }
+}
+@media (max-width:480px) { .ao-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
+@media (prefers-reduced-motion:reduce) { .ao-cross-item { transition:none; } }
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 
@@ -193,6 +237,7 @@
 <!-- ==================== 双层架构 ==================== -->
 <section class="home-section" id="stack" aria-label="双层架构">
   <div class="section-head">
+    <svg class="ao-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.2" width="17" height="6" rx="1.2"/><rect x="3.5" y="14.8" width="17" height="6" rx="1.2"/><path d="M3.5 12h17" stroke-dasharray="2 2.6" opacity=".7"/></svg>
     <span class="tech-label">Two-Layer Stack</span>
     <h2>双层架构</h2>
     <p class="section-sub">语言模型在上层供能力，Agent OS 在下层管调度与门控。</p>
@@ -223,6 +268,7 @@
 <!-- ==================== G-M-A-R 四门 ==================== -->
 <section class="home-section" id="gates" aria-label="G-M-A-R 四门">
   <div class="section-head">
+    <svg class="ao-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.75 20.5v-8a1.75 1.75 0 0 1 3.5 0v8"/><path d="M7.75 20.5v-8a1.75 1.75 0 0 1 3.5 0v8"/><path d="M12.75 20.5v-8a1.75 1.75 0 0 1 3.5 0v8"/><path d="M17.75 20.5v-8a1.75 1.75 0 0 1 3.5 0v8"/></svg>
     <span class="tech-label">Four Gates</span>
     <h2>G-M-A-R 四门</h2>
     <p class="section-sub">四种原子操作，各管一类干预。</p>
@@ -242,6 +288,7 @@
 <!-- ==================== 干预如何过门（G-M-A-R 图示带） ==================== -->
 <section class="home-section" id="pass" aria-label="干预如何过门">
   <div class="section-head">
+    <svg class="ao-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 4v16" stroke-dasharray="2 2.6" opacity=".7"/><path d="M11 4v16" opacity=".85"/><path d="M2 12h15"/><path d="M14.2 8.6 17.6 12l-3.4 3.4"/></svg>
     <span class="tech-label">Passing the Gates</span>
     <h2>干预如何过门</h2>
     <p class="section-sub">一次干预从意图到落地，依次经四道门裁定；每道门只认自己的合法靶点。</p>
@@ -290,6 +337,7 @@
 <!-- ==================== 能力光谱 ==================== -->
 <section class="home-section" id="spectrum" aria-label="能力光谱">
   <div class="section-head">
+    <svg class="ao-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="1.6" y="9" width="5.4" height="6" rx="1.2" opacity=".45"/><rect x="9.3" y="9" width="5.4" height="6" rx="1.2" opacity=".75"/><rect x="17" y="9" width="5.4" height="6" rx="1.2" fill="currentColor" stroke="none"/></svg>
     <span class="tech-label">Capability Spectrum</span>
     <h2>能力光谱</h2>
     <p class="section-sub">把语言模型的能力面平铺到六个功能格位上：强弱不是有／无二元的开关，而是明显偏科——只有符号一侧接近完备。档位只取「无／部分／有」三档定性描述，不放刻度、不放数值、不作任何测量声称。</p>
@@ -337,6 +385,7 @@
 <!-- ==================== 在做什么 ==================== -->
 <section class="home-section" id="points" aria-label="在做什么">
   <div class="section-head">
+    <svg class="ao-motif" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="3" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.3" fill="currentColor" stroke="none"/><path d="M7.6 6h13.8"/><path d="M7.6 12h13.8"/><path d="M7.6 18h9"/></svg>
     <span class="tech-label">In Progress</span>
     <h2>在做什么</h2>
     <p class="section-sub">三条入口纪律。</p>
@@ -371,6 +420,44 @@
 
   <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
 </section>
+
+<!-- ========== 页间导流（只导航，不新增任何主张） ========== -->
+<nav class="ao-cross" aria-label="页间导流">
+  <span class="ao-cross-kicker">Next · 下一站</span>
+  <p class="ao-cross-lead">本页只讲智能体一侧的四门怎么裁定干预。公理本身在核心理论页，意识观那一支在意识共振页，两域用词怎么对上在智能科学建构页，语法落到硅基实例上读不读得出来在硅基探针页，边界外的日常账在边界巡检页——五站共用同一坐标系，也共用同一条边界。</p>
+  <ul class="ao-cross-list">
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">地基 · Axioms</span>
+      <a href="../core/index.html">核心理论</a>
+      <span class="ao-cross-note">状态语法与操作语法的规范定义在这里。</span>
+    </li>
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">意识观 · Resonance</span>
+      <a href="../icre/index.html">意识共振</a>
+      <span class="ao-cross-note">从本体论起点到终极底色的意识观推演。</span>
+    </li>
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">定名 · Naming</span>
+      <a href="../isce/index.html">智能科学建构</a>
+      <span class="ao-cross-note">两域用词对照与命名的规矩。</span>
+    </li>
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">读表 · Console</span>
+      <a href="../sipe/index.html">硅基探针</a>
+      <span class="ao-cross-note">同一套语法在硅基实例上的读表台。</span>
+    </li>
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">上游 · Patrol</span>
+      <a href="../engram/index.html">边界巡检</a>
+      <span class="ao-cross-note">可观测性与控制平面的日常记录。</span>
+    </li>
+    <li class="ao-cross-item">
+      <span class="ao-cross-dir">回 · Home</span>
+      <a href="../index.html">智能科学域首页</a>
+      <span class="ao-cross-note">在行工程一览与两域共用的坐标。</span>
+    </li>
+  </ul>
+</nav>
 
 </div><!-- /.container -->
 

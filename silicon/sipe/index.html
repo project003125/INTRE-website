@@ -246,7 +246,34 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   .rung { --riser:.75rem; gap:0 var(--space-2); padding:var(--space-2) var(--space-1); }
   .cross { padding:var(--space-4) var(--space-3); }
 }
+
+/* —— 焦点环：本页可聚焦元素显式落一遍，不靠公共件兜底。
+   环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px），只把色按底另选：
+   本页正文整块压在深底（--color-navy-950 机座与深底导流带）上，域色 Crimson 600 在此只有 3.6、不作环色
+   ⇒ 走 --color-white-65 一档（与深底次文字同档：白 .6／.5 于本域 Crimson 底实测 4.49／4.02 不达标、
+   .65 为 5.00；按 alpha 复合后白 .65 于 #431410 得 7.22、于 Crimson 800 得 5.00，均过非文字 3:1 线）。
+   导航条与切域胶囊的焦点环归公共件（components.css／domain-switch.css 各在册），此处不重复覆写。 —— */
+#main-content a:focus-visible, #main-content button:focus-visible {
+  outline: 3px solid var(--color-white-65);
+  outline-offset: 2px; }
+/* 页脚站点地图的栏目标题在标题链里由 h2 直落 h4（跳级）：标签由公共件统一定制、
+   本轮不改公共件，故以 aria-level 就地修正朗读层级为 3，文字与观感零变动。 */
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "硅基探针工程 · 坐标系控制台（硅基侧）",
+  "name": "SIPE · 硅基探针工程",
+  "description": "26 / SIPE 硅基探针工程（硅基侧）：R-D-S 状态面板与 G-M-A-R 操作面板的示意控制台，边界与实证通道锁空，不放读数、系数或结论句。",
+  "inLanguage": "zh-CN",
+  "url": "https://project003125.github.io/INTRE-website/silicon/sipe/",
+  "isPartOf": {"@type": "WebSite", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"},
+  "publisher": {"@type": "Organization", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"},
+  "about": [{"@type": "Thing", "name": "R-D-S 状态坐标系的读表位"}, {"@type": "Thing", "name": "G-M-A-R 原子干预集的拨杆位"}]
+}
+</script>
 
 </head>
 
@@ -509,12 +536,12 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   <p class="footer-desc">硅基探针工程（硅基侧）</p>
   <div class="footer-sitemap">
     <div class="fs-col">
-      <h4>Domains · 两域</h4>
+      <h4 role="heading" aria-level="3">Domains · 两域</h4>
       <a href="../../index.html">心理科学域（碳基）</a>
       <a href="../index.html">智能科学域（硅基）</a>
     </div>
     <div class="fs-col">
-      <h4>Projects · 在行工程</h4>
+      <h4 role="heading" aria-level="3">Projects · 在行工程</h4>
       <a href="../core/index.html">01 核心理论</a>
       <a href="../aose/index.html">19 智能体操作系统</a>
       <a href="../icre/index.html">20 意识共振</a>

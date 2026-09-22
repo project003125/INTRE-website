@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>INTRE · 智能科学建构工程（硅基侧）</title>
-<meta name="description" content="22 / ISCE 智能科学建构工程（硅基侧）：两域互译的术语权威源与五层递进推导链，心理科学域与智能科学域用词对照。">
+<meta name="description" content="22 / ISCE 智能科学建构工程（硅基侧）：智能的公理化定义逐段拆解、四种干预能力的分工边界，以及两域用词对照与五层递进推导链。">
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,6 +147,76 @@
 .cross-item a:hover { color:var(--color-navy-700); }
 .cross-note { font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.75; text-wrap:pretty; }
 
+/* —— ① 定义带（本页核心件）：深底反白面板，把「智能是什么」这句立在最前。
+   三档文字色全部沿用硅基深底的实测值，不自另立：主文字 --color-white（Crimson 800 上 9.63）、
+   次文字 --color-white-65（5.00）、Amber 高亮走同族 --color-amber-100（7.10；公共件那档
+   amber-500 在红底上只剩 4.49，不达线）。网格底纹与首页 .cta-section 同值。 —— */
+.def-plate { position:relative; overflow:hidden; margin:0 0 var(--space-6);
+  background:var(--color-navy-800); border-radius:var(--radius-md);
+  padding:var(--space-6) var(--space-6) var(--space-5); }
+.def-plate::before { content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:44px 44px; }
+.def-plate > * { position:relative; z-index:1; }
+.def-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65);
+  margin-bottom:var(--space-4); line-height:1.7; }
+/* components.css 给所有 blockquote 上了浅底（slate-100）＋斜体＋上下细边——
+   落在深底面板里就成了一块浅色矩形，把面板的反白意图整块吃掉。
+   定义主干按面板需要复位：透明底、无框、正体（CJK 斜体本为合成倾斜）。 */
+.def-main { margin:0; padding:0; background-color:transparent;
+  border-top:0; border-bottom:0; font-style:normal;
+  max-width:var(--measure-read); font-size:var(--text-xl); font-weight:600;
+  line-height:1.85; letter-spacing:0; color:var(--color-white-65); text-wrap:pretty; }
+/* 被点出来的说法＝下面各张解释表逐段拆的对象：提纯白＋一道下划刻线
+   （刻线是图形档、与本页其余 .18/.28 白档同族，不按文字色计） */
+.def-main .dk { color:var(--color-white); font-weight:700; text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.35); text-decoration-thickness:var(--stroke-hairline);
+  text-underline-offset:.28em; }
+.def-ext { margin:var(--space-4) 0 0; max-width:var(--measure-read); font-size:var(--text-base);
+  line-height:1.95; color:var(--color-white-65); text-wrap:pretty; }
+.def-ext b { font-weight:600; color:var(--color-amber-100); }
+.def-meta { display:flex; flex-wrap:wrap; gap:var(--space-1) var(--space-5);
+  margin-top:var(--space-5); padding-top:var(--space-4);
+  border-top:var(--stroke-hairline) solid rgba(255,255,255,.18);
+  font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-white-65); line-height:1.8; }
+.def-meta i { font-style:normal; font-weight:600; color:var(--color-white); }
+
+/* —— 定义的两张解释表：线制与 .cmp-table 同源（实色表头＋分隔线分行＋悬停刻线），
+   只换列宽与单元格字号档；行组标题沿用 .cmp-group，故不再立第二套表头件 —— */
+.cmp-table--df col.df-col-a { width:22%; }
+.cmp-table--df col.df-col-b { width:43%; }
+.cmp-table--df col.df-col-c { width:35%; }
+.cmp-table--gm col.df-col-a { width:16%; }
+.cmp-table--gm col.df-col-b { width:47%; }
+.cmp-table--gm col.df-col-c { width:37%; }
+.df-cell { display:block; font-size:var(--text-sm); line-height:1.85; color:var(--color-slate-600);
+  text-wrap:pretty; }
+.df-cell--what { color:var(--color-slate-700); }
+/* 坐标芯片：定义里的说法落到哪一层（模糊对应，不作精确索引）。
+   走 block＋fit-content，保证它落在说法自己那一行下面，不随字高漂 */
+.axis { display:block; width:fit-content; margin-top:.45rem; font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); text-transform:uppercase;
+  color:var(--color-navy-600); background:var(--color-navy-600-bg);
+  border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-radius:var(--radius-xs); padding:.16rem .5rem; line-height:1.6; }
+
+/* ① 内部的二级小标题：比 .section-heading 低一档（无圆圈底衬、域色改深字），
+   左侧一道短刻线与页头 h1::after、.sub-heading 同宽同厚 */
+.sub-heading { font-size:var(--text-md); font-weight:600; color:var(--color-slate-900);
+  letter-spacing:0; margin:var(--space-6) 0 var(--space-2); padding-left:1.1rem;
+  position:relative; scroll-margin-top:calc(3.2rem + var(--space-4)); }
+.sub-heading::before { content:''; position:absolute; left:0; top:.55em; width:.75rem;
+  height:var(--stroke-core); background:var(--color-navy-600); border-radius:var(--radius-xs); }
+.sub-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-slate-600);
+  line-height:1.85; margin:0 0 var(--space-4); text-wrap:pretty; }
+
+/* 锚点让开吸顶导航条（3.2rem 一档），与 silicon/shared.css 的 .slide 同法 */
+.section-heading[id] { scroll-margin-top:calc(3.2rem + var(--space-4)); }
+
 /* 段末状态句 .state-note 与选区色 ::selection 均已在公共件在册（silicon/shared.css ＋
    shared/domain-switch.css 域内选区色），此处不留本地副本，免成双源。 */
 
@@ -172,6 +242,11 @@
   .cmp-tag { display:block; }
   /* 阶梯在此收平（不再逐级右移），导轨与徽章沿用同一对间距档 */
   .chain-row { margin-left:0; padding-right:.2rem; }
+  /* 定义带：面板内边距降一档，主干句从 --text-xl 降到 --text-lg（页头 h1 此档 1.8rem，
+     层级链保持 定义句 ＞ 正文 1rem） */
+  .def-plate { padding:var(--space-5) var(--space-4) var(--space-4); }
+  .def-main { font-size:var(--text-lg); }
+  .def-meta { gap:var(--space-1) var(--space-4); }
   /* 站牌列改单列堆叠：注行长句需要整幅行宽 */
   .cross-list { grid-template-columns:1fr; gap:var(--space-2); }
   .cross-item { padding-right:0; }
@@ -181,11 +256,46 @@
   .page-header-inner { padding:1.5rem var(--space-3) var(--space-4); }
   .glossary-content { padding:var(--space-4) var(--space-3) var(--space-5); }
   .chain-list { gap:.2rem; }
+  .def-plate { padding:var(--space-4) var(--space-3); }
+  .def-main { font-size:var(--text-md); line-height:1.9; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto; }   /* brand.css 全局是 smooth，此处按偏好关掉 */
 }
+
+/* —— 焦点环：本页正文区的可聚焦元素显式落一遍，不靠公共件兜底。
+   环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px）；
+   components.css 导航条的 --stroke-structure＋3px 是另一档，浅底正文上 1.5px 太细、
+   键盘用户不易辨，故此处取粗档、只把颜色按底另选：
+   正文与页头是浅底 ⇒ 域色 Crimson 600（实测白底 6.43、slate-100 页头底 5.87，均过 3:1 非文字线）。
+   导航条与切域胶囊的焦点环归公共件（components.css／domain-switch.css 各在册），此处不重复覆写。 —— */
+#main-content a:focus-visible, #main-content button:focus-visible {
+  outline: 3px solid var(--color-navy-600);
+  outline-offset: 2px; border-radius: var(--radius-xs); }
+/* 页脚站点地图的栏目标题在标题链里由 h2 直落 h4（跳级）：
+   标签由公共件统一定制、本轮不改公共件，故以 aria-level 就地修正朗读层级为 3，
+   文字与观感零变动（描边、字号、颜色仍走公共件原值）。 */
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "智能科学建构工程 · 智能的公理化定义与两域互译（硅基侧）",
+  "name": "ISCE · 智能科学建构工程",
+  "description": "22 / ISCE 智能科学建构工程（硅基侧）：智能的公理化定义逐段拆解、四种干预能力的分工边界，以及两域用词对照与五层递进推导链。",
+  "inLanguage": "zh-CN",
+  "url": "https://project003125.github.io/INTRE-website/silicon/isce/",
+  "isPartOf": {"@type": "WebSite", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"},
+  "publisher": {"@type": "Organization", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"},
+  "about": [
+    {"@type": "DefinedTerm", "name": "智能",
+     "description": "智能，是智能体在持续变化的外部环境之中，能够感知资源状态、进行资源调度、必要时对结构进行重塑，从而维持自身有序存在并完成所承担目标的能力。其中，门控、调制、校准、重联四种干预能力，是维持有序存在和完成目标这件事在可操作意义上的必然延伸——既作用于自身，也作用于环境。"},
+    {"@type": "DefinedTermSet", "name": "两域用词对照"},
+    {"@type": "Thing", "name": "五层递进推导链"}
+  ]
+}
+</script>
 
 </head>
 
@@ -212,9 +322,9 @@
   <div class="page-header-inner">
     <svg class="art art--mast" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 80 H28 V60 H46 V40 H64 V20 H86"/><circle cx="19" cy="70" r="3.6" fill="currentColor" stroke="none"/><circle cx="55" cy="30" r="3.6" fill="currentColor" stroke="none"/></svg>
     <h1>智能科学建构工程</h1>
-    <p class="sub">两域互译的术语权威源 · 五层递进推导链</p>
+    <p class="sub">智能的公理化定义 · 两域互译的术语权威源 · 五层递进推导链</p>
     <div class="stats">
-      <span><i class="fas fa-language" aria-hidden="true"></i> 22 / ISCE · 硅基侧</span>
+      <span><i class="fas fa-quote-left" aria-hidden="true"></i> 22 / ISCE · 硅基侧</span>
       <span><i class="fas fa-exchange-alt" aria-hidden="true"></i> 中性词 ↔ 心理科学域原词</span>
     </div>
   </div>
@@ -222,8 +332,131 @@
 
 <div class="glossary-content">
 
-<!-- ========== ① 两域用词对照 ========== -->
-<h2 class="section-heading"><i class="fas fa-exchange-alt" aria-hidden="true"></i> 两域用词对照</h2>
+<!-- ========== ① 智能的定义 ========== -->
+<h2 class="section-heading" id="definition"><i class="fas fa-quote-left" aria-hidden="true"></i> 智能的定义</h2>
+
+<figure class="def-plate">
+  <figcaption class="def-kicker">Definition · 一句主干给能力，一句延伸给操作</figcaption>
+  <blockquote class="def-main">智能，是<span class="dk">智能体</span>在<span class="dk">持续变化的外部环境</span>之中，能够<span class="dk">感知资源状态</span>、<span class="dk">进行资源调度</span>、必要时<span class="dk">对结构进行重塑</span>，从而<span class="dk">维持自身有序存在</span>并完成<span class="dk">所承担目标</span>的能力。</blockquote>
+  <p class="def-ext">其中，<b>门控、调制、校准、重联</b>四种干预能力，是维持有序存在和完成目标这件事在可操作意义上的必然延伸——既作用于自身，也作用于环境。</p>
+  <div class="def-meta">
+    <span><i>4</i> 要素 · 谁／在哪／会什么／为了什么</span>
+    <span><i>3</i> 能力 · 感知—调度—重塑</span>
+    <span><i>2</i> 目标 · 有序存在＋所承担目标</span>
+    <span><i>4</i> 干预 · 门控调制校准重联</span>
+  </div>
+</figure>
+
+<h3 class="sub-heading" id="def-parts">逐段拆开</h3>
+<p class="sub-lead">整句里只有四类东西：谁在智能、在什么条件下、会哪三种能力、为了哪两种目标。第三列记下每一段故意不写死的地方——这些位置留着，是因为定义不该替还没做完的研究下结论。</p>
+
+<table class="cmp-table cmp-table--df">
+  <caption class="visually-hidden">智能定义逐段拆解表：定义里的说法、它指什么、以及这一段为什么不写死。</caption>
+  <colgroup><col class="df-col-a"><col class="df-col-b"><col class="df-col-c"></colgroup>
+  <thead>
+    <tr>
+      <th scope="col">定义里的说法</th>
+      <th scope="col">指的是什么</th>
+      <th scope="col">为什么不写死</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">要素 ① · 谁在智能</th></tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">智能体</span><span class="axis">碳基 · 硅基 · 混合</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">具有「维持有序存在」与「完成所承担目标」这一倾向的实体。人类是它的一个实例，不是它的定义。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">不预设物质基质——「身体」的人类形态不进定义，否则一套语法只说得清一种载体。</span></td>
+    </tr>
+
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">要素 ② · 在什么条件下</th></tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">持续变化的外部环境</span><span class="axis">S-P 环境参照系</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">环境此刻给的条件，下一刻就可能不一样；定义不假设它可预测，也不假设它能被完全摸清。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">环境在这里是模糊映射——它的工程化表述叫 S-P 参照系，但六系统与命名规则整套不搬进定义，否则定义长成了实现。</span></td>
+    </tr>
+
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">要素 ③ · 会哪三种能力</th></tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">感知资源状态</span><span class="axis">R · 资源轴</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">手上有多少可用的东西，以及这些东西此刻调得动多少——先知道账，才谈得上调度。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">不限定「自己的」：内部资源与外部资源（他人的、可调用的接口）同样在范围内。测法与算法也不进定义。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">进行资源调度</span><span class="axis">D · 调度轴</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">把有限的东西分给相互竞争的进程：先跑哪一个、压住哪一个、什么时候换。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">调度对象的归属同样不绑定；至于按什么次序调度，是本域下游的事，一句定义不替它定死。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">必要时对结构进行重塑</span><span class="axis">S · 结构轴 ＋ RELINK</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">调度与感知不够用时，改的是结构本身：规则、连接、流程，而不只是这一次的分配。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">不绑定结构范围——可重塑内部结构（自己的），也可重塑外部结构（共享状态、环境约束、他人行为）。</span></td>
+    </tr>
+
+    <tr class="cmp-group"><th colspan="3" scope="rowgroup">要素 ④ · 为了哪两种目标</th></tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">维持自身有序存在</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">继续作为一个有结构的系统运行下去，而不只是继续在场。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">「有序」二字把结构层拉进存在性主张——光写「维持」，一支蜡烛也算做到。但它不是必要条件：智能可以失败，失败不把它从定义里删掉。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">定义里的说法</span><span class="cmp-term">完成所承担目标</span></th>
+      <td><span class="cmp-tag">指的是什么</span><span class="df-cell df-cell--what">把交给它的目标做完。用「所承担」而不说谁承担——这句话对目标的来路保持沉默。</span></td>
+      <td><span class="cmp-tag">为什么不写死</span><span class="df-cell">不预设目标来源：外部给定还是内部生成仍是开放问题，定义不替研究提前站队。两者冲突时的权衡同样留给实证。</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="sub-heading" id="def-gmar">延伸句：四种干预各管一格</h3>
+<p class="sub-lead">主干给出能力，延伸句给出操作。四种干预不是四种说法，而是四种互不越界的靶点：每一种只做一件事，并明确不碰其余三件——这也是它们能被列进定义的原因（少一种，就有状态没人管；多一种，就有一格与别的格重叠）。</p>
+
+<table class="cmp-table cmp-table--gm">
+  <caption class="visually-hidden">四种干预能力对照表：每种只做的那一件事，以及它明确不碰的其余三件。</caption>
+  <colgroup><col class="df-col-a"><col class="df-col-b"><col class="df-col-c"></colgroup>
+  <thead>
+    <tr>
+      <th scope="col">干预</th>
+      <th scope="col">只做哪一件事</th>
+      <th scope="col">明确不碰</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">干预</span><span class="cmp-term">门控 <span class="axis">GATE · DSP／STR-S</span></span></th>
+      <td><span class="cmp-tag">只做哪一件事</span><span class="df-cell df-cell--what">通道开关：启动、抑制或切换一个进程，只改它此刻是否被触发。</span></td>
+      <td><span class="cmp-tag">明确不碰</span><span class="df-cell">不改进程内容（→校准）、不改资源水平（→调制）、不改连接权重（→重联）。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">干预</span><span class="cmp-term">调制 <span class="axis">MODULATE · RES-D</span></span></th>
+      <td><span class="cmp-tag">只做哪一件事</span><span class="df-cell df-cell--what">数量调节：注入或节约，改变资源的存量水平与可用性。</span></td>
+      <td><span class="cmp-tag">明确不碰</span><span class="df-cell">不改开关状态（→门控）、不改规则内容（→校准）、不改连接关系（→重联）。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">干预</span><span class="cmp-term">校准 <span class="axis">ALIGN · STR-R</span></span></th>
+      <td><span class="cmp-tag">只做哪一件事</span><span class="df-cell df-cell--what">规则修正：改写不成立的规则、评估标准与解释模型。</span></td>
+      <td><span class="cmp-tag">明确不碰</span><span class="df-cell">不改开关状态（→门控）、不改资源水平（→调制）、不改连接关系（→重联）。</span></td>
+    </tr>
+    <tr class="cmp-item">
+      <th scope="row"><span class="cmp-tag">干预</span><span class="cmp-term">重联 <span class="axis">RELINK · STR-C</span></span></th>
+      <td><span class="cmp-tag">只做哪一件事</span><span class="df-cell df-cell--what">联系重构：解除失效的绑定，或建立新的价值连接。</span></td>
+      <td><span class="cmp-tag">明确不碰</span><span class="df-cell">不改开关状态（→门控）、不改资源水平（→调制）、不改规则内容（→校准）。</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="essay">
+  <p><b>四种干预的先后也不是任意的。</b>先稳住调度层——它一旦失控就会持续吃掉资源，后面的动作失去能量基础；再回补资源，因为改造结构是耗能最高的一步；最后才动规则与连接。顺序本身是语法的一部分，不是流程建议。</p>
+</div>
+
+<h3 class="sub-heading" id="def-limits">这句定义不做的四件事</h3>
+<ul class="point-list">
+  <li><b>不替换人类心理学那套定义</b>智能科学域的定义与心理科学域的心理学定义并行存在，各有权威源；两边谁也不覆盖谁，也不互相判错。</li>
+  <li><b>不把功能等价说成物理等价</b>同一套坐标在碳基与硅基上只承诺关系结构同构（感知—调度—重塑），不承诺物理量纲统一；同一指标在不同基质上的物理含义允许各自漂移。</li>
+  <li><b>不把定义的适用当作效度的迁移</b>定义同时适用于两种基质，但任一基质上的结果要在该基质上单独检验；跨基质的结论须经独立的对照研究，不能由单侧外推。</li>
+  <li><b>不对现象意识作本体论断言</b>这是一套第三人称的描述框架，第一人称体验不在管辖之内——既不否认它的存在，也不主张它可以被还原。</li>
+</ul>
+
+<!-- ========== ② 两域用词对照 ========== -->
+<h2 class="section-heading" id="glossary"><i class="fas fa-exchange-alt" aria-hidden="true"></i> 两域用词对照</h2>
 
 <table class="cmp-table">
   <caption class="visually-hidden">两域用词对照表：左列为心理科学域（碳基）原词，右列为智能科学域（硅基）中性词，中缝为互译关系。</caption>
@@ -326,8 +559,8 @@
   </tbody>
 </table>
 
-<!-- ========== ② 命名的规矩 ========== -->
-<h2 class="section-heading"><i class="fas fa-pen-nib" aria-hidden="true"></i> 命名的规矩</h2>
+<!-- ========== ③ 命名的规矩 ========== -->
+<h2 class="section-heading" id="naming"><i class="fas fa-pen-nib" aria-hidden="true"></i> 命名的规矩</h2>
 
 <div class="essay">
   <p><b>为什么要把话换成中性词。</b>心理科学域的原词带着人的色彩：需要预设一个有欲求的主体，身体默认人的形态，情绪连着体验。把这套词直接搬到一般智能体身上，读者很容易把人类的实例当成普遍的情形——仿佛没有呼吸与心跳的系统就缺了哪一栏，或者反过来，把「有目标」读成「有欲望」。中性词不是把话说得更漂亮，也不宣称自己比原词更正确；它是智能科学域做一般层陈述时使用的那套语言。原词在心理学语境里照旧保持原义，两边各有一本权威源，谁也不覆盖谁。</p>
@@ -335,9 +568,10 @@
   <p><b>互译有互译的边界。</b>翻译只发生在引用者的行文里：用到对方域的概念时括注对应词，此后各说各话，两套词典都不写进对方的权威源。同一篇文档里，两套词不得当作同义词自由替换，除非显式标注了映射。字母位是共用的——同一个字母在操作语法里与在状态语法里各有各的全称，首次出现须带域码括注，否则一句话会被读成两样。反过来也成立：中性词不贬抑原词，原词也不被中性词改写。两域读的是同一份坐标系，换的是称呼，不换参照；下面的推导链因此只有一条，不分叉。</p>
 </div>
 
-<!-- ========== ③ 五层递进推导链 ========== -->
-<h2 class="section-heading"><i class="fas fa-layer-group" aria-hidden="true"></i> 五层递进推导链</h2>
+<!-- ========== ④ 五层递进推导链 ========== -->
+<h2 class="section-heading" id="chain"><i class="fas fa-layer-group" aria-hidden="true"></i> 五层递进推导链</h2>
 
+<p class="sub-lead">这条链是上面那句定义的来路：每一层各自回答一个「凭什么」，五层走完，才凝成那一句最短的话。</p>
 <ol class="chain-list">
   <li class="chain-row">
     <span class="chain-rail" aria-hidden="true"><span class="chain-no">01</span></span>
@@ -361,23 +595,23 @@
   </li>
 </ol>
 
-<!-- ========== ④ 边界与状态 ========== -->
+<!-- ========== ⑤ 边界与状态 ========== -->
 <span class="tech-label">Limits &amp; Status</span>
-<h2 class="section-heading"><i class="fas fa-lock" aria-hidden="true"></i> 边界与状态</h2>
+<h2 class="section-heading" id="limits"><i class="fas fa-lock" aria-hidden="true"></i> 边界与状态</h2>
 
 <p class="state-note">工程状态：在行 · 工作稿级。</p>
 
 <div class="lock-panel">
   <span class="lock-tag">Locked · 锁空</span>
-  <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。本页只作术语与治理陈述：产出供内部立学讨论与对外发表引用，不构成已实现学科的现状描述。</p>
+  <p><strong>实证结论区锁空。</strong>本域不放任何读数、系数或对外结论句；解锁须经裁定并另行声明。本页只作定义与术语陈述：定义给出的是能力的描述，不是已测得的成绩；产出供内部立学讨论与对外发表引用，不构成已实现学科的现状描述。</p>
 </div>
 
 <p class="denial"><b>Not claimed · 本域不声称</b>不声称已通过实证检验；不声称任何智能体具备意识或现象性体验；不声称工程原型可运行或已上线。</p>
 
-<!-- ========== ⑤ 页间导流 ========== -->
+<!-- ========== ⑥ 页间导流 ========== -->
 <nav class="cross" aria-label="页间导流">
-  <span class="cross-kicker">Cross-links · 词查完了往哪儿走</span>
-  <p class="cross-lead">本页只管两域的说法怎么对得上；公理的推导在核心理论页，词落到硅基实例上怎么读在硅基探针页，域色与人类一侧的推演各有各的页。四站之间不换坐标系。</p>
+  <span class="cross-kicker">Cross-links · 定义读完往哪儿走</span>
+  <p class="cross-lead">本页给定义、并把两域的说法对齐；公理一层层推下来在核心理论页，这套语法落到硅基实例上怎么读表在硅基探针页，从本体论起点走到意识那一侧在意识共振页。四站之间不换坐标系。</p>
   <ul class="cross-list">
     <li class="cross-item">
       <span class="cross-dir">回 · Home</span>
@@ -410,12 +644,12 @@
   <p class="footer-desc">智能科学建构工程（硅基侧）</p>
   <div class="footer-sitemap">
     <div class="fs-col">
-      <h4>Domains · 两域</h4>
+      <h4 role="heading" aria-level="3">Domains · 两域</h4>
       <a href="../../index.html">心理科学域（碳基）</a>
       <a href="../index.html">智能科学域（硅基）</a>
     </div>
     <div class="fs-col">
-      <h4>Projects · 在行工程</h4>
+      <h4 role="heading" aria-level="3">Projects · 在行工程</h4>
       <a href="../core/index.html">01 核心理论</a>
       <a href="../aose/index.html">19 智能体操作系统</a>
       <a href="../icre/index.html">20 意识共振</a>

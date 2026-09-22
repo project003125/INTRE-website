@@ -471,6 +471,23 @@
       /* 品牌规范：焦点指示 2px 实线 + 2px 偏移；深色场景用 Navy 50 保证可见性 */
       :focus-visible { outline: 2px solid var(--intre-navy-50); outline-offset: 2px; }
 
+      /* 场景底衬：直接压在实时 3D 几何上的小字统一垫一层深色 plate（background 只填字下取样区，
+         box-shadow 外扩盖住描边与光晕；两者都不参与布局，故盒尺寸与位置零变化） */
+      .legend-item, .tel-line, .hint-text, .end-link, .nd-close,
+      .row-label, .col-label, .feat-tag, #formula-chip {
+        background-color: var(--intre-scene-plate);
+        box-shadow: 0 0 0 3px var(--intre-scene-plate);
+      }
+      /* 幕文字块：整块共用一面渐变底衬（::before 不入流，位置零变化，且避免逐行色带） */
+      .act::before, #act-1::before, #act-2::before, #act-3::before, #act-4::before {
+        content: ""; position: absolute; inset: -20px -26px; z-index: -1;
+        border-radius: var(--intre-radius-md); pointer-events: none;
+        background: linear-gradient(100deg,
+          color-mix(in srgb, var(--color-navy-950) 92%, transparent),
+          color-mix(in srgb, var(--color-navy-950) 62%, transparent) 62%,
+          transparent);
+      }
+
       @media (prefers-reduced-motion: reduce) {
         .hint-drop { animation: none; }
         .legend-dot::after { animation: none; }
@@ -480,7 +497,7 @@
       .feat-tag {
         position: absolute; top: 2px; right: 4px; z-index: 1;
         font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.08em;
-        color: rgba(214, 229, 243, 0.35); pointer-events: none; user-select: none;
+        color: var(--intre-scene-text-muted); pointer-events: none; user-select: none;
         display: none;  /* 默认隐藏，按 H 键切换 */
       }
       body.show-tags .feat-tag { display: inline; }

@@ -20,6 +20,8 @@
   --intre-scene-text-muted: color-mix(in srgb, var(--intre-navy-50) 65%, transparent);
   --intre-scene-border: var(--intre-navy-600);
   --intre-scene-surface: var(--intre-navy-800);
+  /* 压在实时场景上的小字底衬：不占位不改盒，只把字下取样区压暗到可读 */
+  --intre-scene-plate: color-mix(in srgb, var(--color-navy-950) 88%, transparent);
 
   /* ---------- 语义别名 ---------- */
   --intre-background: var(--intre-navy-950);

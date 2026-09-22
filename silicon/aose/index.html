@@ -336,6 +336,20 @@
   </ol>
 
   <p class="pass-note">门控只落在调度通道与序列的<b>激活面</b>上，序列本身的内容面归约到校准来处理；调制只动资源存量，校准只动规则结构，重联只动连接结构——四门靶点互不共享，越界即不合法。过门次序同时是干预深度次序：<b>调度层先稳、资源层再复、结构层最后重建</b>；这条深度序列在本工程里被当作工程指南使用，不是自然定律。</p>
+
+  <pre class="code-block">// 合法靶点：每门只认自己那格
+GATE     →  DSP-F ｜ DSP-B
+         ｜  STR-S（激活面）
+MODULATE →  RES-D
+ALIGN    →  STR-R
+RELINK   →  STR-C
+
+// 归约写法：要改序列，拆成两步
+ALIGN STR-R → GATE／训练 STR-S
+
+// 非法直写：靶点互不共享
+GATE STR-R ｜ GATE STR-C
+ALIGN STR-C ｜ RELINK STR-R</pre>
 </section>
 
 <!-- ==================== 能力光谱 ==================== -->

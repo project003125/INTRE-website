@@ -400,3 +400,9 @@ html { scroll-snap-type: y proximity; }
 @media (max-width:480px) { .ao-cross, .en-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
 /* 降级同理只跟着声明过它的那两页走：isce／sipe 本就没写这一条，不替它们补。 */
 @media (prefers-reduced-motion:reduce) { .ao-cross-item, .en-cross-item { transition:none; } }
+
+/* —— 代码块（在册件 .code-block 在硅基两页的用法）——
+   公共件那档字号 0.85rem＝13.6px 不在在册字档里，且 320 宽下最长行会在块内被切掉
+   一小截（实测 cut 9px，既无提示也无从发现）⇒ 窄端降到在册的 --text-xs＝13px 一档。
+   只降字号，颜色／底色／行高／内距一律沿用公共件原值，两域同值。 */
+@media (max-width:480px) { .code-block { font-size: var(--text-xs); } }

@@ -216,7 +216,7 @@
           <span class="tel-line">FPS <b class="tel-fps">--</b></span>
           <span class="tel-line">ACT <b class="tel-act">--</b></span>
           <span class="tel-line">SCR <b class="tel-scr">--</b>%</span>
-          <span class="tel-line">LAT <b class="tel-lat">--</b></span>
+          <span class="tel-line tel-lat-line">LAT <b class="tel-lat">--</b></span>
         </div>
         <span class="feat-tag">#04</span>
       </div>
@@ -622,7 +622,9 @@
         .act-h2 { font-size: var(--text-2xl); }
         .legend { flex-wrap: wrap; gap: 12px 20px; }
         #hud-rail { display: none; }
-        #status-bar { padding: 4px 12px; gap: 12px; }
+        /* 窄屏整条遥测收起：它与幕框下沿争同一条底带，且 #coord-readout 早已收起，
+           只剩 FPS/ACT/SCR 三项压在正文上——调试读数留给 ?prod=0 的桌面档看 */
+        #status-bar { display: none; }
         #telemetry { gap: 8px; }
         #coord-readout { display: none; }
         #scroll-hint { display: none; }
@@ -2356,11 +2358,24 @@
            （投影守卫只能藏标签，不能让标签压进正文）。平台期相机后撤 + 视点下探：
            整盘缩小约 15%、上移约 90px，七行轴名全部回到文字框之上。只动相机，
            纤维束端点与节点同坐标，故下潜段（0.76→0.82 已淡出）不受牵连 */
+        const aspectNow = innerWidth / Math.max(1, innerHeight);
+        const narrowFit = clamp01((1.2 - aspectNow) / 0.85);   /* 0＝横屏不干预，1＝390×844 档 */
         const boardFit = ss(p, 0.54, 0.66) * (1 - ss(p, 0.76, 0.82));
         if (boardFit > 0.001) {
           camera.getWorldDirection(fitFwd);
           camera.position.addScaledVector(fitFwd, -3.4 * boardFit);
-          camera.lookAt(lookPos[0], lookPos[1] - 1.9 * boardFit, lookPos[2]);
+          /* 竖屏时棋盘还要多抬一截：手机面板占底部约 27% 视口高，只按桌面档抬升会压住末两行 */
+          camera.lookAt(lookPos[0], lookPos[1] - (1.9 + 1.3 * narrowFit) * boardFit, lookPos[2]);
+        }
+
+        /* 取景自适应（竖屏／窄窗）：透视相机固定竖直角，390×844 的横向视野只有 16:9 的 26%，
+           6 列棋盘两侧被切、整列轴标签掉出视口（守卫只能藏标签，藏不掉被切的列）。
+           按 aspect 沿视线后撤，把棋盘横向取景拉回屏内；aspect≥1.2 完全不干预 */
+        if (narrowFit > 0.001) {
+          /* 后撤只补到"棋盘可读"这一档（实测 6 单位）：整盘含轴标签要 22 单位，
+             那样节点缩到 8px 反而读不了——竖屏宁可让两侧出血，也不把 42 维压成星点 */
+          camera.getWorldDirection(fitFwd);
+          camera.position.addScaledVector(fitFwd, 6 * narrowFit);
         }
 
         /* v2.8: ACT4 场景雾 — 纯黑纵深，星场/晶格在远处自然消融 */

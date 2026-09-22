@@ -181,6 +181,9 @@ html { scroll-snap-type: y proximity; }
 .deco { margin-top:1.1rem; }
 
 /* 封面 */
+/* 封面整块居中：core／icre 两页同一件（原 core 页内一条 ＋ icre 一处 inline style，
+   同值同法 ⇒ 上收一处，两页只留 class 属性上的类名，DOM 结构与文字零变动）。 */
+.cover .cover-inner { text-align:center; }
 /* 封面占满首屏：导航条在流内占 3.2rem，故封面按「视口减导航」取高，页码与提示不再落到折外。
    core 原为裸 min-height:100vh（页码被推到折外），以 icre 为准。 */
 .cover { background:var(--color-navy-800); min-height:calc(100vh - 3.2rem); }
@@ -345,9 +348,11 @@ html { scroll-snap-type: y proximity; }
        icre 另有一条「窄端退到 12rem 且保 7 格」的本地量，core 六格不需要，留 icre 页内。 —— */
 .chain { display:flex; gap:1px; max-width:14rem; margin:0 0 var(--space-4);
   border:var(--stroke-hairline) solid var(--color-slate-300); }
+/* 序标字距归档：原为字面 .06em（实测 0.6912px/11.52px），是全站 mono 微标签里唯一不合档的一处
+   ⇒ 并到 --tracking-tech（.14em＝1.6128px/11.52px），与同文件 .pageno／.kicker／.leg-code 同一档。 */
 .chain span { flex:1 1 0; min-width:0; padding:.18rem 0; text-align:center;
   font-family:var(--font-mono); font-size:var(--text-2xs); line-height:1.5;
-  letter-spacing:.06em; color:var(--color-slate-600); }
+  letter-spacing:var(--tracking-tech); color:var(--color-slate-600); }
 .chain .on { background:var(--color-navy-600); color:var(--color-white); font-weight:600; }
 
 /* —— 步内母题（core／icre 每屏一枚 24px 单线，纯装饰 aria-hidden）：与 .step-no 同列成读 —— */

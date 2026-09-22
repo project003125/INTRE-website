@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>INTRE · 核心理论（硅基侧）</title>
 <meta name="description" content="01 核心理论（硅基侧）网页版六步推演：从绝境诊断到学科封顶，INTRE 为整个智能研究域安装底层公理。">
+<meta property="og:title" content="INTRE · 核心理论（硅基侧）">
+<meta property="og:description" content="01 核心理论（硅基侧）网页版六步推演：从绝境诊断到学科封顶，INTRE 为整个智能研究域安装底层公理。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/silicon/core/">
+<meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INTRE · 核心理论（硅基侧）">
+<meta name="twitter:description" content="01 核心理论（硅基侧）网页版六步推演：从绝境诊断到学科封顶，INTRE 为整个智能研究域安装底层公理。">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/silicon/core/">
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,8 +39,8 @@
    构成：kicker 胶囊 → 大号标题（含 amber accent-dot）→ 两行主张 → mono 英文小标
         → 母题图形（共用横梁＋左右两列四格＋中缝虚线）。
    原右上角那枚 64px 角标（.art--corner--tr）缩成一坨、与主张无结构关系，已撤；
-   同一支母题按 172px 放大画成封面的视觉主体，压在英文小标下方收住下半屏重心。 */
-.cover .cover-inner { text-align:center; }
+   同一支母题按 172px 放大画成封面的视觉主体，压在英文小标下方收住下半屏重心。
+   整块居中那一条（.cover .cover-inner）与 icre 同值，已上收 ../shared.css。 */
 /* 通栏细标改胶囊：与 .glance span 同法（深底 0.5px 白边＋rgba(255,255,255,.06) 底）；
    字色不在此处声明，沿用 shared.css 的 .cover .kicker{color:white}——
    实测白字压在胶囊淡底上 8.47，而改走 white-65 会掉到 4.49（不过线）。 */
@@ -67,16 +76,63 @@
      02 一道分三叉＝横向泛化到多学科          03 三层堆叠＝纵向具象为可观测执行栈
      04 两个同形节点相连＝碳硅同一问题的两实例 05 闭合环心带顶扣＝公理封顶且链回扣起点 —— */
 
-/* —— 收尾两屏（结论／边界）：只调排版对齐，不动文案口径 ——
-   lock-panel／denial 原宽随 .slide-inner 拉到 56rem，比正文 40rem 宽出一截，
-   面板右缘与段落右缘不齐；此处把三段收到与正文同一 measure，左缘本就同轴。 */
+/* —— 收尾两屏（结论／边界）：只补一处上间距，不动文案口径 ——
+   lock-panel／denial 的 measure 归 ../shared.css 的
+   「.slide-inner .state-note, .slide-inner .lock-panel, .slide-inner .denial」一条：
+   本页 .tail 是 section.slide 上的类名，.slide-inner 在其内，两屏的三个块都是它的后代 ⇒ 该条必然命中，
+   且 var(--measure-deck) 与本屏正文 .slide-lines 同宽；本页原写的 40rem 是同值副本，故删。 */
 .tail .state-note { margin-top:var(--space-5); }   /* 只补上间距，下 1.4rem 沿用 shared.css 逐字值 */
-.tail .lock-panel, .tail .denial { max-width:40rem; }
 
 /* —— 末页导流屏「下一站」：.leg-list／.leg／.leg-code／.leg-name／.leg-desc／.leg-home
    连同 480 单列档与降级档，与 icre 那份逐字同值，已整件上收 ../shared.css。 —— */
+
+/* —— 焦点环：本页正文区的可聚焦元素显式落一遍，不靠公共件兜底。
+   环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px），只把色按底另选：
+   本页十屏里唯一落在 #main-content 内的可聚焦件是尾屏的「下一站」卡列与回首页一行，
+   全部压在白底上 ⇒ 环色取域色 Crimson 600（实测白底 6.43，过非文字 3:1 线）。
+   封面屏虽是深底，屏内无链接与按钮（实测 #main-content 聚焦件 5 枚皆在尾屏），故不按容器另立一档。
+   导航条与切域胶囊的焦点环归公共件（components.css／domain-switch.css 各在册），此处不重复覆写。 —— */
+#main-content a:focus-visible, #main-content button:focus-visible {
+  outline: 3px solid var(--color-navy-600);
+  outline-offset: 2px; }
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "INTRE · 核心理论（硅基侧）",
+  "name": "INTRE · 核心理论（硅基侧）",
+  "description": "01 核心理论（硅基侧）网页版六步推演：从绝境诊断到学科封顶，INTRE 为整个智能研究域安装底层公理。",
+  "inLanguage": "zh-CN",
+  "url": "https://project003125.github.io/INTRE-website/silicon/core/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "六步推演"
+    },
+    {
+      "@type": "Thing",
+      "name": "M-R-D-S 状态坐标系"
+    },
+    {
+      "@type": "Thing",
+      "name": "G-M-A-R"
+    }
+  ]
+}
+</script>
 
 </head>
 

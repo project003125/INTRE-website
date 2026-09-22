@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>INTRE · 硅基探针工程（硅基侧）</title>
 <meta name="description" content="26 / SIPE 硅基探针工程（硅基侧）：坐标系状态面板与操作面板的示意控制台，实证读数区全站锁空。">
+<meta property="og:title" content="INTRE · 硅基探针工程（硅基侧）">
+<meta property="og:description" content="26 / SIPE 硅基探针工程（硅基侧）：坐标系状态面板与操作面板的示意控制台，实证读数区全站锁空。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/silicon/sipe/">
+<meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INTRE · 硅基探针工程（硅基侧）">
+<meta name="twitter:description" content="26 / SIPE 硅基探针工程（硅基侧）：坐标系状态面板与操作面板的示意控制台，实证读数区全站锁空。">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/silicon/sipe/">
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,13 +37,18 @@
      二级 1px dashed var(--rule)      —— 行格线：列冠底线、各表位／拨杆的分隔
      三级 1px solid var(--rule-faint) —— 双线压边的第二道、底纹
    —— */
-.console { --rule: rgba(255,255,255,0.18);        /* 一级／二级线 */
+/* 分区线一级／二级与悬停淡底两枚 token 由 .console 与 .cross 两块深底共用
+   （页间导流带在 .console 之外，声明挂在 .console 上落不到它身上）⇒ 并置一处，
+   与 ../shared.css .cta-section::before, .def-plate::before 同一并写法；
+   值与本件原声明逐字相等，只换声明位置，不改任何计算值。 */
+.console, .cross { --rule: rgba(255,255,255,0.18);        /* 一级／二级线 */
+  --hover-wash: rgba(255,255,255,0.05);                   /* 悬停淡底、螺钉、指示灯外圈、导流条目淡底 */ }
+.console {
   --rule-faint: rgba(255,255,255,0.07);          /* 三级线（双线压边的第二道） */
   --grid-line: rgba(255,255,255,0.025);          /* 面板底纹线 */
   --grid-unit: 28px;                             /* 面板底纹格距 */
   --slot-wash: rgba(255,255,255,0.07);           /* 空槽底：拨杆轨 */
   --pane-wash: rgba(255,255,255,0.04);           /* 面板底：机座上的两块面板 */
-  --hover-wash: rgba(255,255,255,0.05);          /* 悬停淡底、螺钉、指示灯外圈 */
   --slot: 3.4rem;                                /* 仪表列宽：表盘与拨杆同宽，两面板同一份栏 */
   --pcols: var(--slot) minmax(0,1fr) auto;       /* 三栏格：仪表列／说明列／状态列 */
   position:relative; margin:var(--space-7) 0; background:var(--color-navy-950);
@@ -209,11 +223,11 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   border:1px solid var(--color-navy-700); border-radius:var(--radius-sm);
   padding:var(--space-5) var(--space-5) var(--space-4); }
 .cross-kicker, .cross-lead, .cross-dir, .cross-note { color:var(--color-white-65); }
-.cross-item { padding:var(--space-3) var(--space-2); border-top:1px dashed rgba(255,255,255,0.18);
+.cross-item { padding:var(--space-3) var(--space-2); border-top:1px dashed var(--rule);
   border-radius:var(--radius-xs);
   transition:background-color var(--duration-fast) var(--ease-smooth),
              border-top-color var(--duration-fast) var(--ease-smooth); }
-.cross-item:hover { background:rgba(255,255,255,0.05); border-top-color:var(--color-navy-600); }
+.cross-item:hover { background:var(--hover-wash); border-top-color:var(--color-navy-600); }
 .cross-item a { color:var(--color-white); transition:color var(--duration-fast) var(--ease-smooth); }
 .cross-item a:hover { color:var(--color-amber-100); }
 

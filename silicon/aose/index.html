@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>INTRE · 智能体操作系统工程（硅基侧）</title>
 <meta name="description" content="19 智能体操作系统工程（AOSE，硅基侧）：Agent OS 与 LLM 的双层架构入口，G-M-A-R 四门在智能体侧的指令级门控。">
+<meta property="og:title" content="INTRE · 智能体操作系统工程（硅基侧）">
+<meta property="og:description" content="19 智能体操作系统工程（AOSE，硅基侧）：Agent OS 与 LLM 的双层架构入口，G-M-A-R 四门在智能体侧的指令级门控。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/silicon/aose/">
+<meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INTRE · 智能体操作系统工程（硅基侧）">
+<meta name="twitter:description" content="19 智能体操作系统工程（AOSE，硅基侧）：Agent OS 与 LLM 的双层架构入口，G-M-A-R 四门在智能体侧的指令级门控。">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/silicon/aose/">
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -132,8 +141,55 @@
    （类名 ao- 前缀以并列选择器并写，DOM 的 class 属性值不动）。
    字色实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、
    悬停 navy-700（硅基域即 Crimson 800）于 slate-50 淡底 9.2。 —— */
+
+/* —— 焦点环：本页正文区的可聚焦元素显式落一遍，不靠公共件兜底。
+   环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px），只把色按底另选：
+   本页 #main-content 内的可聚焦件全在页间导流带的六个条目上（实测 6 枚，皆白底）
+   ⇒ 环色取域色 Crimson 600（实测白底 6.43，过非文字 3:1 线）。
+   双层架构的深色那一层（.stack-os）里没有链接与按钮，故不按容器另立一档；
+   英雄区同理（实测该区可聚焦件 0 枚）。
+   导航条与切域胶囊的焦点环归公共件（components.css／domain-switch.css 各在册），此处不重复覆写。 —— */
+#main-content a:focus-visible, #main-content button:focus-visible {
+  outline: 3px solid var(--color-navy-600);
+  outline-offset: 2px; }
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "INTRE · 智能体操作系统工程（硅基侧）",
+  "name": "INTRE · 智能体操作系统工程（硅基侧）",
+  "description": "19 智能体操作系统工程（AOSE，硅基侧）：Agent OS 与 LLM 的双层架构入口，G-M-A-R 四门在智能体侧的指令级门控。",
+  "inLanguage": "zh-CN",
+  "url": "https://project003125.github.io/INTRE-website/silicon/aose/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "双层架构"
+    },
+    {
+      "@type": "Thing",
+      "name": "G-M-A-R 四门"
+    },
+    {
+      "@type": "Thing",
+      "name": "Agent OS"
+    }
+  ]
+}
+</script>
 
 </head>
 

@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>INTRE · 智能科学域（硅基侧）</title>
 <meta name="description" content="INTRE 智能科学域（硅基侧）入口：19 智能体操作系统、20 意识共振、22 智能科学建构、26 硅基探针、14 边界巡检，与两域共用的理论地基。">
+<meta property="og:title" content="INTRE · 智能科学域（硅基侧）">
+<meta property="og:description" content="INTRE 智能科学域（硅基侧）入口：19 智能体操作系统、20 意识共振、22 智能科学建构、26 硅基探针、14 边界巡检，与两域共用的理论地基。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/silicon/">
+<meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INTRE · 智能科学域（硅基侧）">
+<meta name="twitter:description" content="INTRE 智能科学域（硅基侧）入口：19 智能体操作系统、20 意识共振、22 智能科学建构、26 硅基探针、14 边界巡检，与两域共用的理论地基。">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/silicon/">
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +50,13 @@
    ============================================================ */
 
 /* ---------- ① 结构计数带（碳基 .identity-strip 同名件） ---------- */
+/* 公共件 .identity-grid 的轨数按碳基首页那五枚牌写死（>1024 为 repeat(5,1fr)），
+   本页只有四枚 ⇒ 1200 下第五轨整空：实测四枚并集宽 864px 对容器内宽 1080px，右端空 216px。
+   此处按本页枚数改四轨（每轨 270px，并集=容器内宽）。窄端两档照抄公共件逐字同值
+   （≤1024 三轨＋row-gap 2rem／≤768 二轨），只为把本条挡在 1024 以上，窄端几何零变动。 */
+.identity-grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) { .identity-grid { grid-template-columns: repeat(3, 1fr); row-gap: 2rem; } }
+@media (max-width: 768px) { .identity-grid { grid-template-columns: repeat(2, 1fr); } }
 .identity-strip .identity-label { color: var(--color-white-65); }
 /* 第三枚的高亮位：公共件写的是 Amber 500，硅基底上 4.49 ⇒ 升同族一档 */
 .identity-strip .identity-item:nth-child(3) .identity-num { color: var(--color-amber-100); }
@@ -257,7 +273,67 @@
     .read-step__title { font-size: var(--text-base); }
     .read-step__no { padding-top: 0.3rem; }
 }
+
+/* ---------- 焦点环（本页深浅底混排 ⇒ 按容器分档，不落一条全局） ----------
+   环粗与净空走 brand.css 全局 :focus-visible 那一档（3px ＋ outline-offset 2px），只把色按底另选：
+   浅底（卡列六枚＋读法指引六枚＋术语表行内链）走域色 Crimson 600（实测白底 6.43，过非文字 3:1 线）；
+   深底容器（英雄区／结构计数带／收尾导流带，皆为 --color-navy-800 即 Crimson 800）走 --color-white
+   （实测 9.63，且导流带那枚琥珀按钮底 #B45309 上 Crimson 600 只剩 1.28 ⇒ 浅底档在那儿不成立）。
+   实测本页 #main-content 内可聚焦件 15 枚：浅底 13 枚、深底 2 枚（都在收尾导流带的两枚按钮上），
+   英雄区与结构计数带当前无可聚焦件，仍按容器并进来，以免深底整段漏档。
+   特异度：深底那三条各带 #main-content（1,3,1）压过浅底那条（1,2,1），与书写先后无关。
+   导航条与切域胶囊的焦点环归公共件（components.css／domain-switch.css 各在册），此处不重复覆写。 */
+#main-content a:focus-visible, #main-content button:focus-visible {
+    outline: 3px solid var(--color-navy-600);
+    outline-offset: 2px;
+}
+#main-content .hero a:focus-visible, #main-content .hero button:focus-visible,
+#main-content .identity-strip a:focus-visible, #main-content .identity-strip button:focus-visible,
+#main-content .cta-section a:focus-visible, #main-content .cta-section button:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 2px;
+}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "INTRE · 智能科学域（硅基侧）",
+  "name": "INTRE · 智能科学域（硅基侧）",
+  "description": "INTRE 智能科学域（硅基侧）入口：19 智能体操作系统、20 意识共振、22 智能科学建构、26 硅基探针、14 边界巡检，与两域共用的理论地基。",
+  "inLanguage": "zh-CN",
+  "url": "https://project003125.github.io/INTRE-website/silicon/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "INTRE",
+    "url": "https://project003125.github.io/INTRE-website/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "智能科学域（硅基侧）"
+    },
+    {
+      "@type": "Thing",
+      "name": "M-R-D-S 状态语法"
+    },
+    {
+      "@type": "Thing",
+      "name": "G-M-A-R 操作语法"
+    },
+    {
+      "@type": "Thing",
+      "name": "三层坐标"
+    }
+  ]
+}
+</script>
 
 </head>
 

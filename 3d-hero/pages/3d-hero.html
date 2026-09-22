@@ -37,26 +37,6 @@
 }
 
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
-    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
-    <style type="text/tailwindcss">
-  @theme inline {
-    --color-background: var(--intre-background);
-    --color-foreground: var(--intre-foreground);
-    --color-card: var(--intre-card);
-    --color-card-foreground: var(--intre-card-foreground);
-    --color-primary: var(--intre-primary);
-    --color-primary-foreground: var(--intre-primary-foreground);
-    --color-muted: var(--intre-muted);
-    --color-muted-foreground: var(--intre-muted-foreground);
-    --color-border: var(--intre-border);
-    --color-input: var(--intre-input);
-    --color-ring: var(--intre-ring);
-    --radius-sm: var(--intre-radius-sm);
-    --radius-md: var(--intre-radius-md);
-    --radius-lg: var(--intre-radius-md);
-  }
-    </style>
 
     <style>
       .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -75,7 +55,7 @@
       }
     </style>
 </head>
-<body class="min-h-screen font-sans antialiased">
+<body>
     <main>
       <!-- Three.js 滚动驱动场景画布 -->
       <canvas id="gl" aria-hidden="true"></canvas>
@@ -93,7 +73,7 @@
       <!-- 移动端顶部提示 banner -->
       <div id="mobile-banner" aria-hidden="true">
         <span class="mb-text">用桌面浏览器获得完整 3D 交互体验</span>
-        <span class="mb-close">×</span>
+        <button class="mb-close" type="button" aria-label="关闭提示">×</button>
       </div>
 
       <!-- 滚动驱动区：1170vh（非线性节奏重映射 pace()） -->
@@ -121,7 +101,7 @@
       </nav>
 
       <!-- 公式芯片（Act 1 场景元素，随开场淡出） -->
-      <a id="formula-chip" href="https://project003125.github.io/INTRE-website/glossary/" target="_blank" rel="noopener noreferrer" aria-hidden="true">Ψ(t) ∈ ℝ⁴² · 6 × 7</a>
+      <a id="formula-chip" href="https://project003125.github.io/INTRE-website/glossary/" target="_blank" rel="noopener noreferrer" aria-label="状态向量 Ψ(t) ∈ ℝ⁴²：6 模块 × 7 维度（打开术语表）">Ψ(t) ∈ ℝ⁴² · 6 × 7</a>
 
       <!-- 右侧三层指示器 -->
       <nav id="hud-rail" aria-label="三层结构指示器">
@@ -210,7 +190,7 @@
 
       <!-- B3 节点点击展开面板 -->
       <div id="node-detail" aria-hidden="true">
-        <div class="nd-header"><span class="nd-code"></span><span class="nd-close">×</span></div>
+        <div class="nd-header"><span class="nd-code"></span><button class="nd-close" type="button" aria-label="关闭节点详情">×</button></div>
         <div class="nd-title"></div>
         <div class="nd-body"></div>
         <div class="nd-markers"></div>
@@ -281,7 +261,7 @@
         font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); color: var(--intre-navy-50);
       }
       #mobile-banner.is-shown { display: flex; }
-      .mb-close { font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: pointer; line-height: 1; padding: 0 4px; }
+      .mb-close { appearance: none; border: 0; background: none; font-family: inherit; font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: pointer; line-height: 1; padding: 0 4px; }
 
       /* ---------- P1.7: 生产模式 (?prod=1) 隐藏 HUD ---------- */
       body.prod-mode #status-bar,
@@ -314,11 +294,13 @@
 
       /* ---------- Act 面板（fixed 覆盖层，靠 opacity 切换） ---------- */
       .act {
-        position: fixed; left: 6vw; bottom: 12vh; z-index: 30;
+        position: fixed; left: 6vw; bottom: 10vh; z-index: 30;
         max-width: 560px; text-align: left;
         opacity: 0; pointer-events: none;
       }
       #act-1 { bottom: 16vh; }
+      /* 幕三＝七行轴名的空间账：面板每高一档，就有一行轴名被守卫藏掉，故单独下压 */
+      #act-3 { bottom: 8vh; }
       .kicker {
         margin: 0 0 12px;
         font-family: var(--intre-font-mono); font-size: var(--type-kicker); font-weight: 400;
@@ -338,6 +320,9 @@
         color: var(--intre-navy-50);
       }
       .act-body { margin: 0; max-width: 480px; font-family: var(--intre-font-cjk); font-weight: 400; font-size: var(--type-body); line-height: 1.9; color: var(--intre-navy-50); }
+      /* 打字机＝占位揭示：字先占好位再亮，行数不再随打字增减 */
+      .tw { opacity: 0; transition: opacity 0.12s linear; }
+      .tw.is-on { opacity: 1; }
       .badge-42 {
         display: inline-flex; align-items: center; margin: 22px 0 0;
         padding: 6px 12px; border-radius: var(--intre-radius-pill);
@@ -560,7 +545,7 @@
       #node-detail.is-shown { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
       .nd-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--intre-navy-600); }
       .nd-code { font-family: var(--intre-font-mono); font-size: var(--type-label); letter-spacing: 0.06em; color: var(--intre-amber-500); }
-      .nd-close { font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: none; pointer-events: auto; line-height: 1; }
+      .nd-close { appearance: none; border: 0; background: none; padding: 0; font-family: inherit; font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: none; pointer-events: auto; line-height: 1; }
       .nd-close:hover { color: var(--intre-navy-50); }
       .nd-body { padding: 16px 18px; font-family: var(--intre-font-cjk); font-size: var(--type-body); line-height: 1.8; color: var(--intre-navy-50); }
       .nd-title { padding: 8px 18px 0; font-family: var(--intre-font-cjk); font-size: var(--type-sub); font-weight: 500; color: var(--intre-navy-50); line-height: 1.5; }
@@ -1008,19 +993,37 @@
         requestAnimationFrame(tick);
       };
 
-      /* ====================== C3 打字机效果 ====================== */
-      const typeWriter = (el, text, speed) => {
-        if (!el || el.dataset.typed) return;
-        el.dataset.typed = '1';
+      /* ====================== C3 打字机效果（占位揭示，不改盒型） ====================== */
+      /* 逐字 textContent += 每字符重排一次：幕框按 bottom 定位，行数增长把整块文字往上顶，读起来在跳。
+         改为一次写入全文、逐字只切 opacity——盒型自始定稿，揭示不再挪动任何一行。 */
+      const TW_STEP = 0.032;
+      const typeWriters = [];
+      const setupTypewriter = (el, text) => {
+        if (!el || el.dataset.tw) return null;
+        el.dataset.tw = '1';
         el.textContent = '';
-        let i = 0;
-        const type = () => {
-          if (i >= text.length) return;
-          el.textContent += text[i];
-          i++;
-          setTimeout(type, speed);
-        };
-        type();
+        const chars = [];
+        const frag = document.createDocumentFragment();
+        for (const ch of text) {
+          const s = document.createElement('span');
+          s.className = 'tw';
+          s.textContent = ch;
+          frag.appendChild(s);
+          chars.push(s);
+        }
+        el.appendChild(frag);
+        return { chars, i: 0, acc: 0, done: false };
+      };
+      const stepTypewriters = (dt) => {
+        for (const tw of typeWriters) {
+          if (tw.done) continue;
+          tw.acc += dt;
+          while (tw.acc >= TW_STEP) {
+            tw.acc -= TW_STEP;
+            tw.chars[tw.i++].classList.add('is-on');
+            if (tw.i >= tw.chars.length) { tw.done = true; break; }
+          }
+        }
       };
       const actTexts = [
         { body: '在现象与神经之间，建立可计算的功能层' },
@@ -1052,15 +1055,28 @@
       /* ====================== D3 数据流连线 ====================== */
       const flowSvg = document.getElementById('data-flow-svg');
       const flowPath = document.getElementById('flow-path');
+      /* 走线原取 x = 视口宽×0.94−10，正落在层指示器面板内部（面板 z20 盖住 svg z15），
+         于是只在三个条目之间的缝隙露出几段虚线，读起来像渲染破口。
+         改为贴指示器左缘外，端点取各条目真实中心：整条弧可见，且真的在"连接三层"。 */
+      let railLeftPx = 0;
+      const railAnchors = [0, 0, 0];
+      const measureRail = () => {
+        const rail = document.getElementById('hud-rail');
+        if (!rail) return;
+        const rr = rail.getBoundingClientRect();
+        railLeftPx = rr.left;
+        const items = rail.querySelectorAll('.rail-item');
+        for (let i = 0; i < 3; i++) {
+          const b = items[i] ? items[i].getBoundingClientRect() : null;
+          railAnchors[i] = b && b.height ? b.top + b.height / 2 : rr.top + rr.height * (i + 0.5) / 3;
+        }
+      };
       const updateFlowPath = (p) => {
-        const w = innerWidth, h = innerHeight;
-        const railX = w - innerWidth * 0.06 - 10;
-        const y1 = h * 0.3, y2 = h * 0.5, y3 = h * 0.7;
+        const railX = Math.max(200, railLeftPx - 14);
         const active = p < 0.3 ? 0 : p < 0.52 ? 1 : 2;
-        const ys = [y1, y2, y3];
-        const ya = ys[active], yb = ys[Math.min(active + 1, 2)];
+        const ya = railAnchors[active], yb = railAnchors[Math.min(active + 1, 2)];
         const ctrlY = (ya + yb) / 2;
-        flowPath.setAttribute('d', 'M' + railX + ',' + ya + ' C' + (railX - 60) + ',' + ctrlY + ' ' + (railX - 60) + ',' + ctrlY + ' ' + railX + ',' + yb);
+        flowPath.setAttribute('d', 'M' + railX + ',' + ya + ' C' + (railX - 52) + ',' + ctrlY + ' ' + (railX - 52) + ',' + ctrlY + ' ' + railX + ',' + yb);
         flowPath.style.setProperty('--dash', reducedMotion ? 0 : -(performance.now() * 0.05) % 100);
       };
 
@@ -1143,6 +1159,12 @@
       const PR = Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2);   /* 触摸设备像素比上限 1.5 */
       renderer.setPixelRatio(PR);
       renderer.setSize(innerWidth, innerHeight, false);   /* false＝只定绘冲区，不写内联盒型 */
+      /* 零尺寸绘冲区（标签页隐藏、0 高容器、窗口未就绪）下每帧 glClear/glDraw 都会报
+         GL_INVALID_FRAMEBUFFER_OPERATION，一帧十余条、纯刷日志且白耗 CPU——尺寸不足即跳过出图 */
+      const drawFrame = () => {
+        if (canvas.clientWidth < 2 || canvas.clientHeight < 2) return;
+        if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+      };
       /* v2.9: ACT4 神经层基底 — 按品牌规范 §3.1 用 Navy 800 #122F5C（深色模式底色）
          之前 v2.8 用 #000000 纯黑违反品牌规范 §3.5 第 4 点"渐变禁止"对应："所有 UI 和品牌视觉使用纯色填充"，
          纯黑与品牌色系脱节。Navy 800 既符合"深空蓝"美学、又与导航栏/深色模式一致。 */
@@ -2178,12 +2200,15 @@
       /* dtiMouseTarget：pointermove 中设置（0=未命中，1=命中），tick() 中平滑趋近 */
       let dtiMouseTarget = 0;
       /* v2.5 D33: 射线投射目标（3D 脑或 2D 平面） */
-      const dtiRayTarget = () => {
+      /* 一律返回数组：脑壳为 Group 时曾直接返回 children，调用方却用单数 intersectObject，
+         于是幕四每次 pointermove/pointerup 都抛 TypeError（object.layers undefined），
+         鼠标跟随高亮与点击脉冲全废——目标集与 API 必须同形 */
+      const dtiRayTargets = () => {
         if (brainMesh && brainMesh.userData && brainMesh.userData.kind === 'brain-shell-shells') {
           /* v2.9: 脑壳为 Group，需要把所有 Line2 子对象作为点击目标 */
           return brainMesh.children;
         }
-        return brainMesh || dtiPlane;
+        return brainMesh ? [brainMesh] : [dtiPlane];
       };
       /* 从命中点计算球面投影 UV（3D 脑用 localPos 球面映射，2D 平面用 uv） */
       const hitToProjUV = (hit) => {
@@ -2217,7 +2242,7 @@
         if (pCur < 0.80 || coarsePointer) { dtiMouseTarget = 0; return; }
         ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
         raycaster.setFromCamera(ndc, camera);
-        const hits = raycaster.intersectObject(dtiRayTarget(), false);
+        const hits = raycaster.intersectObjects(dtiRayTargets(), false);
         if (hits.length) {
           const uv = hitToProjUV(hits[0]);
           dtiMat.uniforms.uMouseUV.value.copy(uv);
@@ -2235,7 +2260,7 @@
         if (Math.abs(e.clientX - downPX) > 6 || Math.abs(e.clientY - downPY) > 6) return;
         ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
         raycaster.setFromCamera(ndc, camera);
-        const hits = raycaster.intersectObject(dtiRayTarget(), false);
+        const hits = raycaster.intersectObjects(dtiRayTargets(), false);
         if (hits.length) {
           const uv = hitToProjUV(hits[0]);
           dtiMat.uniforms.uPulsePos.value.copy(uv);
@@ -2266,6 +2291,16 @@
       const projV = new THREE.Vector3();
       /* 投影出的轴标签盒：放不下视口或不落在当前幕文字框上就不显示（行标签盒在锚点左侧、列标签盒在锚点上方居中） */
       const LABEL_INSET = 8;
+      /* 顶栏与移动端提示条是 fixed 压在场景上：轴标签落进这条带里就等于压在导航字上，
+         故可放位上界不取视口顶，而取"导航带下沿"（无导航时退回视口内缩） */
+      const topChrome = () => {
+        const nav = document.querySelector('nav.site-nav');
+        const banner = document.getElementById('mobile-banner');
+        let b = LABEL_INSET;
+        if (nav) b = Math.max(b, nav.getBoundingClientRect().bottom + 6);
+        if (banner && banner.classList.contains('is-shown')) b = Math.max(b, banner.getBoundingClientRect().bottom + 6);
+        return b;
+      };
       const labelBox = (el, x, y) => {
         const bw = el.offsetWidth, bh = el.offsetHeight;
         const rowSide = el.classList.contains('row-label');
@@ -2273,12 +2308,13 @@
         const top = rowSide ? y - bh / 2 : y - bh;
         return { left, top, right: left + bw, bottom: top + bh };
       };
-      const labelPlaceable = (b, vw, vh, keep) =>
-        b.left >= LABEL_INSET && b.top >= LABEL_INSET && b.right <= vw - LABEL_INSET && b.bottom <= vh - LABEL_INSET
+      const labelPlaceable = (b, vw, vh, keep, topBound) =>
+        b.left >= LABEL_INSET && b.top >= topBound && b.right <= vw - LABEL_INSET && b.bottom <= vh - LABEL_INSET
         && (!keep || b.right <= keep.left || b.left >= keep.right || b.bottom <= keep.top || b.top >= keep.bottom);
       const updateLabels = () => {
         const o = clamp01((uLatticeCur - 0.7) / 0.3) * (1 - ss(pCur, 0.80, 0.88));   /* 标签随晶格一起淡出（配合平台期延后到 0.80） */
         const w = innerWidth, h = innerHeight;
+        const topBound = topChrome();
         for (let c = 0; c < COLS; c++) {
           const el = labelEls[c];
           if (o <= 0.01) { el.style.setProperty('--o', '0'); continue; }
@@ -2288,7 +2324,7 @@
           if (projV.z > 1) { el.style.setProperty('--o', '0'); continue; }
           const x = (projV.x * 0.5 + 0.5) * w;
           const y = (-projV.y * 0.5 + 0.5) * h;
-          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox)) { el.style.setProperty('--o', '0'); continue; }
+          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox, topBound)) { el.style.setProperty('--o', '0'); continue; }
           el.style.setProperty('--o', o.toFixed(3));
           el.style.setProperty('--px', x.toFixed(1) + 'px'); el.style.setProperty('--py', y.toFixed(1) + 'px');
         }
@@ -2302,7 +2338,7 @@
           if (projV.z > 1) { el.style.setProperty('--o', '0'); continue; }
           const x = (projV.x * 0.5 + 0.5) * w;
           const y = (-projV.y * 0.5 + 0.5) * h;
-          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox)) { el.style.setProperty('--o', '0'); continue; }
+          if (!labelPlaceable(labelBox(el, x, y), w, h, narrativeBox, topBound)) { el.style.setProperty('--o', '0'); continue; }
           el.style.setProperty('--o', o.toFixed(3));
           el.style.setProperty('--px', x.toFixed(1) + 'px'); el.style.setProperty('--py', y.toFixed(1) + 'px');
         }
@@ -2310,10 +2346,22 @@
 
       /* ================= 场景状态：由滚动进度 p 驱动 ================= */
       let uLatticeCur = 0;
+      const fitFwd = new THREE.Vector3();
       const applyScene = (p) => {
         samplePath(p);
         camera.position.set(camPos[0], camPos[1], camPos[2]);
         camera.lookAt(lookPos[0], lookPos[1], lookPos[2]);
+
+        /* 幕三适配：1440×900 下棋盘 7 行整体偏低，STR-C／STR-S 两行轴名被当幕文字框吃掉
+           （投影守卫只能藏标签，不能让标签压进正文）。平台期相机后撤 + 视点下探：
+           整盘缩小约 15%、上移约 90px，七行轴名全部回到文字框之上。只动相机，
+           纤维束端点与节点同坐标，故下潜段（0.76→0.82 已淡出）不受牵连 */
+        const boardFit = ss(p, 0.54, 0.66) * (1 - ss(p, 0.76, 0.82));
+        if (boardFit > 0.001) {
+          camera.getWorldDirection(fitFwd);
+          camera.position.addScaledVector(fitFwd, -3.4 * boardFit);
+          camera.lookAt(lookPos[0], lookPos[1] - 1.9 * boardFit, lookPos[2]);
+        }
 
         /* v2.8: ACT4 场景雾 — 纯黑纵深，星场/晶格在远处自然消融 */
         if (scene.fog) scene.fog.density = 0.008 * ss(p, 0.70, 0.85);
@@ -2336,14 +2384,15 @@
         constMat.opacity = 0.75 * constAppear * (1 - uConverge) * (1 - ss(p, 0.55, 0.65));
         cylMat.opacity = 0.5 * constAppear * (1 - uConverge) * (1 - ss(p, 0.55, 0.65));
         /* v2.5 D35: D21 转场——棋盘渐进退场+收尾幽灵化（守住反还原论） */
-        /* 晶格在脑图浮现时渐退至 40%（让脑成为视觉主体），收尾再幽灵化至 15% */
-        const recedeFade = ss(p, 0.82, 0.92);
+        /* 晶格退场窗口提前到 0.76：相机自 0.72 起下潜，棋盘在屏幕上整体上移，
+           0.82 才退的话亮橙节点会压在顶栏导航与纤维束上（终幕主体是脑，不是棋盘） */
+        const recedeFade = ss(p, 0.76, 0.86);
         const ghostFade = ss(p, 0.96, 1.0);
         const latticeFadeBase = clamp01((uLattice - 0.04) / 0.16);
-        /* 连线：先退至 40%，再幽灵化至 ~6% */
-        const latticeFade = latticeFadeBase * (1 - 0.6 * recedeFade) * (1 - 0.85 * ghostFade);
-        /* 节点：先退至 50%，再幽灵化至 15% */
-        const nodeFade = latticeFadeBase * (1 - 0.5 * recedeFade) * (1 - 0.7 * ghostFade);
+        /* 连线：先退至 ~20%，再幽灵化至 ~3% */
+        const latticeFade = latticeFadeBase * (1 - 0.8 * recedeFade) * (1 - 0.85 * ghostFade);
+        /* 节点：先退至 ~28%，再幽灵化至 ~8%（终幕"42 维并未消失"＝留可辨幽灵，不抹干净） */
+        const nodeFade = latticeFadeBase * (1 - 0.72 * recedeFade) * (1 - 0.7 * ghostFade);
         /* 蜂巢 ⇄ 棋谱连线 crossfade：uLattice 0.30→0.62 区间两套拓扑透明度互换（拉长） */
         const cross = ss(uLattice, 0.30, 0.62);
         const latBase = (0.55 + 0.25 * uLattice) * latticeFade;   /* 基底提亮：连线在深空背景上保持可读 */
@@ -2702,8 +2751,8 @@
             dtiMat.uniforms.uPulseStrength.value
           );
         }
-        /* v2.7: 后处理管线就绪时走 composer，否则直接渲染 */
-        if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+        /* v2.7: 后处理管线就绪时走 composer，否则直接渲染（零尺寸绘冲区时不出图） */
+        drawFrame();
         doRaycast();
         updateLabels();
         /* ===== 新增功能每帧调用 ===== */
@@ -2716,13 +2765,17 @@
         if (!badgeAnimated && pCur > 0.58 && pCur < 0.70) animateBadge();
         const actIdx = pCur < 0.3 ? 0 : pCur < 0.52 ? 1 : pCur < 0.80 ? 2 : 3;
         if (!typedActs[actIdx]) {
-          /* 第一幕文字在 .act-sub，第二至四幕在 .act-body，需合并选取 */
+          /* 第一幕文字在 .act-sub，第二至四幕在 .act-body，需合并选取；减弱动效下不建打字机，正文按 HTML 原样常驻 */
           const actSub = document.querySelector('.act-sub');
           const actBodies = document.querySelectorAll('.act-body');
           const allTexts = [actSub, ...Array.from(actBodies)];
-          if (allTexts[actIdx]) typeWriter(allTexts[actIdx], actTexts[actIdx].body, 30);
+          if (!reducedMotion) {
+            const tw = setupTypewriter(allTexts[actIdx], actTexts[actIdx].body);
+            if (tw) typeWriters.push(tw);
+          }
           typedActs[actIdx] = true;
         }
+        stepTypewriters(dt);
         /* FPS 采样与降级判定 */
         frameDts.push(dt);
         if (frameDts.length > 60) frameDts.shift();
@@ -2740,10 +2793,13 @@
 
       addEventListener('scroll', readScroll, { passive: true });
       readScroll();
+      measureRail();   /* 走线锚点取指示器真实盒位，须在布局稳定后量一次 */
       pCur = pTarget;   /* 同步到当前滚动位置：中途刷新时直接从该帧继续，不从 0 回放收敛动画 */
 
       let scheduleStatic = null;
       addEventListener('resize', () => {
+        if (innerWidth < 2 || innerHeight < 2) return;   /* 0 尺寸时保留上一次有效绘冲区，不建零尺寸帧缓冲 */
+        measureRail();
         camera.aspect = innerWidth / innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(innerWidth, innerHeight, false);
@@ -2773,7 +2829,7 @@
             pCur = pTarget;
             applyScene(pCur);
             updateHUD(pCur);
-            if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+            drawFrame();
             updateLabels();
             updateFlowPath(pCur);
           });
@@ -2794,6 +2850,5 @@
       }
     })();
     </script>
-    <script>lucide.createIcons();</script>
 </body>
 </html>

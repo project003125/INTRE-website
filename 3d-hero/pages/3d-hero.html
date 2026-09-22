@@ -254,7 +254,8 @@
       body { background: var(--intre-navy-950); }
 
       /* ---------- 3D 画布与滚动驱动区 ---------- */
-      #gl { position: fixed; inset: 0; z-index: 0; display: block; }
+      /* 盒型交给 CSS：像素比 >1 时绘冲区宽于 CSS 盒，replaced 元素退回固有尺寸会把画面放大 PR 倍 */
+      #gl { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
       #scroll-space { height: 1170vh; }
 
       /* ---------- WebGL 降级层 ---------- */
@@ -1141,7 +1142,7 @@
 
       const PR = Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2);   /* 触摸设备像素比上限 1.5 */
       renderer.setPixelRatio(PR);
-      renderer.setSize(innerWidth, innerHeight);
+      renderer.setSize(innerWidth, innerHeight, false);   /* false＝只定绘冲区，不写内联盒型 */
       /* v2.9: ACT4 神经层基底 — 按品牌规范 §3.1 用 Navy 800 #122F5C（深色模式底色）
          之前 v2.8 用 #000000 纯黑违反品牌规范 §3.5 第 4 点"渐变禁止"对应："所有 UI 和品牌视觉使用纯色填充"，
          纯黑与品牌色系脱节。Navy 800 既符合"深空蓝"美学、又与导航栏/深色模式一致。 */
@@ -2745,7 +2746,7 @@
       addEventListener('resize', () => {
         camera.aspect = innerWidth / innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(innerWidth, innerHeight);
+        renderer.setSize(innerWidth, innerHeight, false);
         if (composer) composer.setSize(innerWidth, innerHeight);
         if (dtiFibers) dtiFibers.setResolution(innerWidth, innerHeight);
         if (scheduleStatic) scheduleStatic();

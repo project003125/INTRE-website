@@ -4,6 +4,9 @@
    域色不在此处：品牌色覆盖一律走 ../shared/domain-switch.css。
    文末「网页版 PPT 外壳」段是 core／icre 两页共引的分屏样式唯一出处，
    两页不再各自内联；翻页脚本同理只在 deck.js 一处。
+   再往下的「页内重复件的唯一出处」段是本轮单源化收口：凡两页以上逐字同值的
+   页级组件（导流带／工位带／母题／卡列／进度轨）一律在此一处，各页只留确有分歧
+   的那几行；同名异体（ao-／en-、pass-／loop-）以并列选择器并写，不改 class 属性值。
    ============================================================================ */
 
 /* 行宽两档（本子树唯一出处；brand.css 只登记了 --reading-width:740px 一个长度，
@@ -242,3 +245,153 @@ html { scroll-snap-type: y proximity; }
 @media (max-width: 480px) {
   .layer-table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
 }
+
+/* ============================================================================
+   页内重复件的唯一出处（本轮自各页 inline style 上收）
+   ----------------------------------------------------------------------------
+   收拢口径：只收「两页以上逐字同值」的版式，且只动版式不动字。
+   两页同件而类名不同（aose 带 ao-、engram 带 en-、工位带 aose 叫 pass-／
+   engram 叫 loop-）⇒ 此处以并列选择器并写，不改 DOM 的 class 属性值；
+   某页在同一件上确有异值者（sipe 的导流带是深底版），异值留它页内后置覆写
+   ——inline 在本文件之后、特异度相同 ⇒ 覆写必然生效，计算值与上收前逐字相等。
+   ============================================================================ */
+
+/* —— 深底面板的网格底纹＋内容抬升：home 的收尾导流带与 isce 的定义带同值同法，
+       纹格 44px、线色白 .025 两页一致（图形档 alpha，非文字档，沿用 .glance 那条的口径）。
+       面板本体（圆角／内距／上距）两页各异，仍留各自页内。 —— */
+.cta-section::before, .def-plate::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size:44px 44px;
+}
+.cta-section > *, .def-plate > * { position:relative; z-index:1; }
+
+/* —— 章节母题（aose 的 ao-／engram 的 en-）：与上方 .art 同族，是「板块标题上一枚
+       26px 单线件」这一档的唯一出处；与 .art--card(28)／--corner(64)／--mast(40) 不并值，
+       故单列一条而不再套一层 .art--* 修饰名（改名要动 class 属性值，越出本轮边界）。
+       navy-400 在硅基域即 Crimson 600，只作图形描边、不作文字色 ⇒ 不触品牌层文字色边界。 —— */
+.ao-motif, .en-motif { display:block; width:26px; height:26px; margin:0 auto var(--space-3);
+  color:var(--color-navy-400); }
+@media (max-width:480px) { .ao-motif, .en-motif { width:24px; height:24px; } }
+
+/* —— 工位流程带（aose 过门六工位 pass-／engram 巡检回路 loop-）：同一套「细描边卡片＋
+       相邻节点间一道连线一枚箭头」的几何，两页逐字同值者收在此；
+       编号字距、窄端连线左移量、注上距三处两页确有分歧，一律留页内（见各页注释）。
+       连线与箭头只走 --color-navy-500（硅基域即 Crimson 500，按在册边界只作图形与线条、
+       不落文字），线宽走 --stroke-structure 一档。 —— */
+.pass-flow, .loop-flow { display:flex; gap:var(--space-5); list-style:none; margin-top:var(--space-5); }
+.pass-node, .loop-node { position:relative; flex:1 1 0; min-width:0; background:var(--color-white);
+  border:var(--stroke-hairline) solid var(--color-slate-200); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-xs); padding:var(--space-4);
+  transition:box-shadow var(--duration-fast) var(--ease-smooth); }
+.pass-node:hover, .loop-node:hover { box-shadow:var(--shadow-sm); }
+.pass-node + .pass-node::before, .loop-node + .loop-node::before { content:''; position:absolute;
+  top:50%; left:calc(var(--space-5) * -1);
+  width:var(--space-5); height:0; border-top:var(--stroke-structure) solid var(--color-navy-500); }
+.pass-node + .pass-node::after, .loop-node + .loop-node::after { content:''; position:absolute;
+  top:50%; left:calc(var(--space-5) * -1 + .95rem);
+  transform:translateY(-50%); width:0; height:0; border-left:5px solid var(--color-navy-500);
+  border-top:3.5px solid transparent; border-bottom:3.5px solid transparent; }
+.pass-name, .loop-name { display:block; margin-top:var(--space-2); font-size:var(--text-base); font-weight:600;
+  color:var(--color-slate-900); }
+.pass-target, .loop-target { display:block; margin-top:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-slate-600);
+  overflow-wrap:anywhere; text-wrap:balance; }
+.pass-node.is-here, .loop-node.is-here { border:var(--stroke-structure) solid var(--color-navy-600);
+  background:var(--color-navy-600-bg-subtle); }
+.pass-flag, .loop-flag { display:inline-block; margin-bottom:var(--space-2); font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-navy-600);
+  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-navy-600-border);
+  border-radius:var(--radius-xs); padding:.28rem .62rem; }
+/* 窄端转竖排：只有「改向」这一步两页同值，连线落点两页各按自己节点内距调，留页内 */
+@media (max-width:768px) { .pass-flow, .loop-flow { flex-direction:column; } }
+@media (prefers-reduced-motion:reduce) { .pass-node, .loop-node { transition:none; } }
+
+/* —— 末页导流屏「下一站」卡列（core 九屏／icre 十三屏同一件）：两页逐字同值，整件上收。
+       观感不新造第三族：微标签走 .card-code／.lock-tag 的 mono 一档，细线走 --stroke-hairline
+       ＋--color-slate-200，hover 只换描边与底色为品牌色淡档、不位移。
+       字色在册且实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、
+       回首页一行悬停升 navy-800（硅基即 Crimson 800，于白底 9.63）。 —— */
+.leg-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:.7rem; max-width:var(--measure-read); margin-top:var(--space-5); }
+.leg { display:flex; flex-direction:column; min-width:0; padding:.7rem .9rem .78rem;
+  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200);
+  border-radius:var(--radius-xs); box-shadow:var(--shadow-xs);
+  transition:border-color var(--duration-fast) var(--ease-smooth),
+             background-color var(--duration-fast) var(--ease-smooth); }
+.leg:hover { border-color:var(--color-navy-600); background:var(--color-navy-600-bg); }
+.leg-code { font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:600;
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600); }
+.leg-name { margin-top:.22rem; font-size:var(--text-sm); font-weight:600; line-height:1.55;
+  color:var(--color-slate-900); overflow-wrap:anywhere; }
+.leg-desc { margin-top:.16rem; font-size:var(--text-xs); line-height:1.7;
+  color:var(--color-slate-600); text-wrap:pretty; overflow-wrap:anywhere; }
+/* 回子树首页的一条：mono 微标签＋底细线，与 .mini-footer 的链接同族但更明确 */
+.leg-home { display:inline-block; margin-top:var(--space-5); padding-bottom:.2rem;
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:var(--tracking-tech);
+  text-transform:uppercase; color:var(--color-navy-600); border-bottom:var(--stroke-structure)
+  solid var(--color-navy-600-border); }
+.leg-home:hover { color:var(--color-navy-800); border-bottom-color:var(--color-navy-600); }
+/* 动效降级：brand.css 已全局把 transition-duration 压到 0.01ms，此处再显式归零一次，
+   使导流件不依赖公共件兜底；母题与进度轨本无动画，故无需另写。 */
+@media (prefers-reduced-motion: reduce) { .leg { transition: none; } }
+@media (max-width:480px) { .leg-list { grid-template-columns:1fr; } }
+
+/* —— 屏内推演链进度轨（core 六格 00~05／icre 七格 01~07，同族同值）：极细一道 224×20，
+       当前格实心，与屏内 .step-no 同字不同级。只挂步序屏——结论／边界屏无步序号，
+       挂上去会谎报次序；序标对读屏是噪声 ⇒ DOM 上 aria-hidden。
+       icre 另有一条「窄端退到 12rem 且保 7 格」的本地量，core 六格不需要，留 icre 页内。 —— */
+.chain { display:flex; gap:1px; max-width:14rem; margin:0 0 var(--space-4);
+  border:var(--stroke-hairline) solid var(--color-slate-300); }
+.chain span { flex:1 1 0; min-width:0; padding:.18rem 0; text-align:center;
+  font-family:var(--font-mono); font-size:var(--text-2xs); line-height:1.5;
+  letter-spacing:.06em; color:var(--color-slate-600); }
+.chain .on { background:var(--color-navy-600); color:var(--color-white); font-weight:600; }
+
+/* —— 步内母题（core／icre 每屏一枚 24px 单线，纯装饰 aria-hidden）：与 .step-no 同列成读 —— */
+.step-mark { display:block; width:24px; height:24px; margin:-.3rem 0 .55rem;
+  color:var(--color-navy-400); }
+@media (max-width:480px) { .step-mark { width:20px; height:20px; } }
+
+/* —— 页间导流带「下一站」（isce／aose／engram 浅底版为本体，sipe 深底版只在色与线制上换档）：
+       mono 微标签＋细线＋hover 只提亮顶线与底色，不位移不换行。
+       浅底字色在册且实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、
+       悬停 navy-700（硅基域即 Crimson 800）于 slate-50 淡底 9.2。
+       margin-bottom 三页写 var(--space-2)、sipe 写字面 .5rem —— 同算 8px，此处取 token 那一式。 —— */
+.cross, .ao-cross, .en-cross { margin-top:var(--space-7); padding-top:var(--space-5);
+  border-top:var(--stroke-structure) solid var(--color-navy-600-border); }
+.cross-kicker, .ao-cross-kicker, .en-cross-kicker { display:block; font-family:var(--font-mono);
+  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); text-transform:uppercase;
+  color:var(--color-navy-600); margin-bottom:var(--space-2); }
+.cross-lead, .ao-cross-lead, .en-cross-lead { max-width:var(--measure-read); font-size:var(--text-sm);
+  color:var(--color-slate-600); line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
+.cross-list, .ao-cross-list, .en-cross-list { list-style:none; display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
+.cross-item, .ao-cross-item, .en-cross-item { display:flex; flex-direction:column;
+  gap:var(--space-1); min-width:0;
+  padding:var(--space-3) var(--space-3) var(--space-3) 0;
+  border-top:var(--stroke-hairline) solid var(--color-slate-200);
+  transition:border-top-color var(--duration-fast) var(--ease-smooth),
+             background-color var(--duration-fast) var(--ease-smooth); }
+.cross-item:hover, .ao-cross-item:hover, .en-cross-item:hover { border-top-color:var(--color-navy-600);
+  background-color:var(--color-slate-50); }
+.cross-dir, .ao-cross-dir, .en-cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs);
+  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-slate-600); }
+.cross-item a, .ao-cross-item a, .en-cross-item a { font-size:var(--text-base); font-weight:600;
+  line-height:1.5; color:var(--color-navy-600); }
+.cross-item a:hover, .ao-cross-item a:hover, .en-cross-item a:hover { color:var(--color-navy-700); }
+.cross-note, .ao-cross-note, .en-cross-note { font-size:var(--text-sm); color:var(--color-slate-600);
+  line-height:1.75; text-wrap:pretty; }
+/* 本条须排在上面 .cross-item 之后：同特异度下后写者胜，窄端的 padding-right:0 才落得下来。 */
+@media (max-width:768px) {
+  .cross-list, .ao-cross-list, .en-cross-list { grid-template-columns:1fr; gap:var(--space-2); }
+  .cross-item, .ao-cross-item, .en-cross-item { padding-right:0; }
+}
+/* 480 退档历史上只有 aose／engram 两页声明过：把 .cross 一起并进来会顺手把 sipe
+   那条深底面板的上间距从 48px 改成 32px，属改观感 ⇒ 并列选择器不含 .cross。 */
+@media (max-width:480px) { .ao-cross, .en-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
+/* 降级同理只跟着声明过它的那两页走：isce／sipe 本就没写这一条，不替它们补。 */
+@media (prefers-reduced-motion:reduce) { .ao-cross-item, .en-cross-item { transition:none; } }

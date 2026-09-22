@@ -200,28 +200,22 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
 .console-boundary .lock-panel { margin-top:var(--space-2); padding:var(--space-5) var(--space-5) var(--space-4); }
 
 /* —— E · 页间导流带：压在深底机座之外的白地上，自成一块同款机座（细线、空槽、mono 微标签）。
-   链路文字走 --color-white（深底上域色 Crimson 600 只有 3.6，不作文字色），
-   方向牌与注记走 --color-white-65。 */
-.cross { position:relative; margin-top:var(--space-7); background:var(--color-navy-950);
+   几何与栅格（上距 48px、站牌列 auto-fit 220px、条目 flex＋gap、窄端转单列）与 isce／aose／
+   engram 的浅底版逐字同值，已上收 ../shared.css；此处只留本区的深底换档——
+   面板壳、四段文字色、条目线制（浅底是 0.5px 实线细边，这里压成 1px 白虚线空槽）、
+   悬停底色与链路字色。链路文字走 --color-white（深底上域色 Crimson 600 只有 3.6，不作文字色），
+   方向牌与注记走 --color-white-65。这些覆写与公共件同特异度、inline 在本件之后 ⇒ 逐条生效。 —— */
+.cross { position:relative; background:var(--color-navy-950);
   border:1px solid var(--color-navy-700); border-radius:var(--radius-sm);
   padding:var(--space-5) var(--space-5) var(--space-4); }
-.cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
-  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65); margin-bottom:.5rem; }
-.cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-white-65);
-  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
-.cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
-.cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
-  padding:var(--space-3) var(--space-2); border-top:1px dashed rgba(255,255,255,0.18); border-radius:var(--radius-xs);
+.cross-kicker, .cross-lead, .cross-dir, .cross-note { color:var(--color-white-65); }
+.cross-item { padding:var(--space-3) var(--space-2); border-top:1px dashed rgba(255,255,255,0.18);
+  border-radius:var(--radius-xs);
   transition:background-color var(--duration-fast) var(--ease-smooth),
              border-top-color var(--duration-fast) var(--ease-smooth); }
 .cross-item:hover { background:rgba(255,255,255,0.05); border-top-color:var(--color-navy-600); }
-.cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
-  text-transform:uppercase; color:var(--color-white-65); }
-.cross-item a { color:var(--color-white); font-size:var(--text-base); font-weight:600; line-height:1.5;
-  transition:color var(--duration-fast) var(--ease-smooth); }
+.cross-item a { color:var(--color-white); transition:color var(--duration-fast) var(--ease-smooth); }
 .cross-item a:hover { color:var(--color-amber-100); }
-.cross-note { font-size:var(--text-sm); color:var(--color-white-65); line-height:1.75; text-wrap:pretty; }
 
 @media (max-width:768px) {
   .console { padding:var(--space-5) var(--space-4); --slot:2.9rem; --pcols:var(--slot) minmax(0,1fr); }
@@ -233,8 +227,8 @@ h3.ctl-id { font-family:var(--font-mono); font-size:var(--text-sm); font-weight:
   /* 轨道同样收平：阶梯感让给次序本身，状态词回到阶段名下方（与上两条同一处置） */
   .rung { margin-left:0; grid-template-columns:var(--riser) minmax(0,1fr); }
   .rung-state { grid-column:2; justify-self:start; text-align:left; margin-top:var(--space-1); }
+  /* 深底机座本体的窄端内距（导流带同一面板名，栅格那两条已随公共件走） */
   .cross { padding:var(--space-5) var(--space-4) var(--space-4); }
-  .cross-list { grid-template-columns:1fr; gap:var(--space-2); }
 }
 @media (max-width:480px) {
   .console { padding:var(--space-5) var(--space-3); --slot:2.5rem; }

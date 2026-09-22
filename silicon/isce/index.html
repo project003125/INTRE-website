@@ -126,40 +126,17 @@
 .essay p:last-child { margin-bottom:0; }
 .essay b { color:var(--color-slate-900); font-weight:600; }
 
-/* —— 页间导流带：与 sipe 同款结构（眉标＋引导句＋站牌列），浅底版按本页线制收口 —— */
-.cross { margin-top:var(--space-7); padding-top:var(--space-5);
-  border-top:var(--stroke-structure) solid var(--color-navy-600-border); }
-.cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
-  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600); margin-bottom:var(--space-2); }
-.cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-slate-600);
-  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
-.cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
-.cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
-  padding:var(--space-3) var(--space-3) var(--space-3) 0;
-  border-top:var(--stroke-hairline) solid var(--color-slate-200);
-  transition:border-top-color var(--duration-fast) var(--ease-smooth),
-             background-color var(--duration-fast) var(--ease-smooth); }
-.cross-item:hover { border-top-color:var(--color-navy-600); background-color:var(--color-slate-50); }
-.cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
-  text-transform:uppercase; color:var(--color-slate-600); }
-.cross-item a { font-size:var(--text-base); font-weight:600; line-height:1.5; color:var(--color-navy-600); }
-.cross-item a:hover { color:var(--color-navy-700); }
-.cross-note { font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.75; text-wrap:pretty; }
+/* —— 页间导流带：与 sipe 同款结构（眉标＋引导句＋站牌列），浅底版即公共件本值，
+   整套已上收 ../shared.css，本页不再留副本。 —— */
 
 /* —— ① 定义带（本页核心件）：深底反白面板，把「智能是什么」这句立在最前。
    三档文字色全部沿用硅基深底的实测值，不自另立：主文字 --color-white（Crimson 800 上 9.63）、
    次文字 --color-white-65（5.00）、Amber 高亮走同族 --color-amber-100（7.10；公共件那档
-   amber-500 在红底上只剩 4.49，不达线）。网格底纹与首页 .cta-section 同值。 —— */
+   amber-500 在红底上只剩 4.49，不达线）。44px 网格底纹与首页 .cta-section 同值，
+   该纹与「内容抬到纹上」两条已并入 ../shared.css，此处只留面板本体的壳。 —— */
 .def-plate { position:relative; overflow:hidden; margin:0 0 var(--space-6);
   background:var(--color-navy-800); border-radius:var(--radius-md);
   padding:var(--space-6) var(--space-6) var(--space-5); }
-.def-plate::before { content:''; position:absolute; inset:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size:44px 44px; }
-.def-plate > * { position:relative; z-index:1; }
 .def-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
   letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-white-65);
   margin-bottom:var(--space-4); line-height:1.7; }
@@ -247,9 +224,6 @@
   .def-plate { padding:var(--space-5) var(--space-4) var(--space-4); }
   .def-main { font-size:var(--text-lg); }
   .def-meta { gap:var(--space-1) var(--space-4); }
-  /* 站牌列改单列堆叠：注行长句需要整幅行宽 */
-  .cross-list { grid-template-columns:1fr; gap:var(--space-2); }
-  .cross-item { padding-right:0; }
 }
 @media (max-width:480px) {
   .page-header h1 { font-size:1.6rem; }

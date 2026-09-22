@@ -75,33 +75,14 @@
   .supply-arrow { transform:rotate(90deg); }
 }
 
-/* —— 巡检回路图示（本页私有组件）：四工位闭环，节点用 mono 编号，回程走细虚线。
+/* —— 巡检回路图示：四工位闭环的卡片几何、连线与箭头、强调态与角标已上收 ../shared.css
+   （与 aose 过门带同一件，本页类名 loop- 以并列选择器并写，DOM 的 class 属性值不动）。
    连线与箭头只走 --color-navy-500（硅基域即 Crimson 500，按在册边界只作图形与线条、不作文字色），
-   线宽取 --stroke-structure 一档；强调态给「当前位」。 —— */
-.loop-flow { display:flex; gap:var(--space-5); list-style:none; margin-top:var(--space-5); }
-.loop-node { position:relative; flex:1 1 0; min-width:0; background:var(--color-white);
-  border:var(--stroke-hairline) solid var(--color-slate-200); border-radius:var(--radius-sm);
-  box-shadow:var(--shadow-xs); padding:var(--space-4);
-  transition:box-shadow var(--duration-fast) var(--ease-smooth); }
-.loop-node:hover { box-shadow:var(--shadow-sm); }
-.loop-node + .loop-node::before { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1);
-  width:var(--space-5); height:0; border-top:var(--stroke-structure) solid var(--color-navy-500); }
-.loop-node + .loop-node::after { content:''; position:absolute; top:50%; left:calc(var(--space-5) * -1 + .95rem);
-  transform:translateY(-50%); width:0; height:0; border-left:5px solid var(--color-navy-500);
-  border-top:3.5px solid transparent; border-bottom:3.5px solid transparent; }
+   线宽取 --stroke-structure 一档；强调态给「当前位」。本页只留两处与 aose 确有分歧的量：
+   编号带 --tracking-tech（aose 那枚不带）、注行上距 var(--space-4)（aose 是 space-5，
+   因为本页注行紧贴回程带，多一档会顶开）。 —— */
 .loop-no { display:block; font-family:var(--font-mono); font-weight:600; font-size:var(--text-xl);
   line-height:1; color:var(--color-navy-600); letter-spacing:var(--tracking-tech); }
-.loop-name { display:block; margin-top:var(--space-2); font-size:var(--text-base); font-weight:600;
-  color:var(--color-slate-900); }
-.loop-target { display:block; margin-top:var(--space-2); font-family:var(--font-mono);
-  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-slate-600);
-  overflow-wrap:anywhere; text-wrap:balance; }
-.loop-node.is-here { border:var(--stroke-structure) solid var(--color-navy-600);
-  background:var(--color-navy-600-bg-subtle); }
-.loop-flag { display:inline-block; margin-bottom:var(--space-2); font-family:var(--font-mono);
-  font-size:var(--text-2xs); letter-spacing:var(--tracking-tech); color:var(--color-navy-600);
-  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-navy-600-border);
-  border-radius:var(--radius-xs); padding:.28rem .62rem; }
 /* 回程：开口朝上的三道细虚线（左·下·右），左端一个向上的箭头收回 01 号工位 */
 .loop-return { position:relative; height:3.4rem; }
 .loop-return::before { content:''; position:absolute; top:0; bottom:0; left:1.75rem; right:1.75rem;
@@ -150,8 +131,9 @@
 @media (max-width:1024px) {
   .branch-name { font-size:var(--text-base); }
 }
+/* 窄端：回路带转竖排（改向那条已上收），连线落点比 aose 过门带右移 .15rem——
+   两页节点内距同名同值而箭头终点要落在各自字列上，实测差这一档，不并值。 */
 @media (max-width:768px) {
-  .loop-flow { flex-direction:column; }
   .loop-node + .loop-node::before { top:calc(var(--space-5) * -1); left:calc(var(--space-4) + .75rem);
     width:0; height:var(--space-5); border-top:0; border-left:var(--stroke-structure) solid var(--color-navy-500); }
   .loop-node + .loop-node::after { top:calc(var(--space-5) * -1 + var(--space-4));
@@ -165,52 +147,20 @@
   .branch-band { grid-template-columns:minmax(0,1fr); }
 }
 @media (prefers-reduced-motion:reduce) {
-  .loop-node, .branch-cell--in { transition:none; }
+  .branch-cell--in { transition:none; }   /* .loop-node 那条已随工位带上收到 ../shared.css */
 }
 
 /* —— 章节母题：每个内容板块一枚与该板块语义同指的极简单线件（26px、aria-hidden、currentColor）。
-   取值与 core 六步屏的 .step-mark 同族（navy-400 在硅基域即 Crimson 600，只作图形描边、不作文字色）；
-   纯静态描边、无 transition／animation ⇒ 天然满足减弱动效偏好。
-   逐板块对位：
+   尺寸／色档与 aose 的 ao-motif 逐字同值，两条已上收 ../shared.css；此处只留逐板块对位：
      巡检是什么＝放大镜压住一道被扫的平面    ／ 双分支结构＝一干分两枝，碳基一枝画虚线（不在本页）
      巡检什么＝四行流水，左端一枚戳记         ／ 巡检回路＝首尾相衔的闭环带回程箭头
      上游供证＝三节点两枚去向箭头（14 → 26 → 19）
    边界与状态屏不放母题：那里没有板块语义，挂上去只成装饰（与 core 尾屏同一处置）。 —— */
-.en-motif { display:block; width:26px; height:26px; margin:0 auto var(--space-3);
-  color:var(--color-navy-400); }
-@media (max-width:480px) { .en-motif { width:24px; height:24px; } }
 
-/* —— 页间导流带「下一站」：本页原先读完就断，此处补一条与 core／icre 末页导流屏同族、
-   与 isce 浅底导流带同构的带子（mono 微标签＋细线＋hover 只提亮顶线与底色，不位移不换行）。
-   类名一律带 en- 前缀，不与新收拢中的公共件同名；字色全走在册 token 并已实测过线：
-   navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、悬停 navy-700
-   （硅基域即 Crimson 800）于 slate-50 淡底 9.2。 —— */
-.en-cross { margin-top:var(--space-7); padding-top:var(--space-5);
-  border-top:var(--stroke-structure) solid var(--color-navy-600-border); }
-.en-cross-kicker { display:block; font-family:var(--font-mono); font-size:var(--text-2xs);
-  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600);
-  margin-bottom:var(--space-2); }
-.en-cross-lead { max-width:var(--measure-read); font-size:var(--text-sm); color:var(--color-slate-600);
-  line-height:1.85; margin-bottom:var(--space-4); text-wrap:pretty; }
-.en-cross-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:var(--space-3) var(--space-5); margin:0; padding:0; }
-.en-cross-item { display:flex; flex-direction:column; gap:var(--space-1); min-width:0;
-  padding:var(--space-3) var(--space-3) var(--space-3) 0;
-  border-top:var(--stroke-hairline) solid var(--color-slate-200);
-  transition:border-top-color var(--duration-fast) var(--ease-smooth),
-             background-color var(--duration-fast) var(--ease-smooth); }
-.en-cross-item:hover { border-top-color:var(--color-navy-600); background-color:var(--color-slate-50); }
-.en-cross-dir { font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-tech);
-  text-transform:uppercase; color:var(--color-slate-600); }
-.en-cross-item a { font-size:var(--text-base); font-weight:600; line-height:1.5; color:var(--color-navy-600); }
-.en-cross-item a:hover { color:var(--color-navy-700); }
-.en-cross-note { font-size:var(--text-sm); color:var(--color-slate-600); line-height:1.75; text-wrap:pretty; }
-@media (max-width:768px) {
-  .en-cross-list { grid-template-columns:1fr; gap:var(--space-2); }
-  .en-cross-item { padding-right:0; }
-}
-@media (max-width:480px) { .en-cross { margin-top:var(--space-6); padding-top:var(--space-4); } }
-@media (prefers-reduced-motion:reduce) { .en-cross-item { transition:none; } }
+/* —— 页间导流带「下一站」：与 isce／aose 同族同值的浅底版已整件上收 ../shared.css
+   （类名 en- 前缀以并列选择器并写，DOM 的 class 属性值不动）。
+   字色实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、slate-600 于白底 8.9、
+   悬停 navy-700（硅基域即 Crimson 800）于 slate-50 淡底 9.2。 —— */
 </style>
 
 </head>

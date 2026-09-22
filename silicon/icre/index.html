@@ -22,62 +22,25 @@
 /* 网页版 PPT 外壳（分屏／页码／封面／装饰／极简页脚）已上收至 ../shared.css，
    翻页脚本走 ../deck.js —— 本页不再本地定义，避免与 core 再度分叉。 */
 
-/* —— 七步屏的推演链进度轨 ——
-   与 core 同族同值（core 那份也写在页内：shared.css 此刻有别的窗在改，不上收不打补丁）。
+/* —— 七步屏的推演链进度轨（.chain 三条）与屏内母题（.step-mark 两条）：与 core 同族同值，
+   已整件上收 ../shared.css。此处只留一条本页独有的窄端量——
+   七格比 core 的六格多一格，14rem 那道在 480 以下每格不足 18px、两位 mono 会被挤断，
+   故本页单独退到 12rem 并保 7 格；core 六格无此问题，不跟。
    七格＝01~07，与屏内 .step-no 同字不同级；只挂七步屏——09~12 补充屏与 13 边界屏无步序号，
-   挂上去会谎报次序。序标对读屏是噪声 ⇒ aria-hidden。窄端由 14rem 退到 12rem 并保 7 格。 */
-.chain { display:flex; gap:1px; max-width:14rem; margin:0 0 var(--space-4);
-  border:var(--stroke-hairline) solid var(--color-slate-300); }
-.chain span { flex:1 1 0; min-width:0; padding:.18rem 0; text-align:center;
-  font-family:var(--font-mono); font-size:var(--text-2xs); line-height:1.5;
-  letter-spacing:.06em; color:var(--color-slate-600); }
-.chain .on { background:var(--color-navy-600); color:var(--color-white); font-weight:600; }
-
-/* —— 七步屏的屏内母题（每屏一枚，24px 单线，纯装饰 aria-hidden）——
-   与 .step-no 同列成读，作该步的图形摘要；色档同 silicon/index.html 的 .art--card
-   （navy-400 在硅基域即 Crimson 600，图形件不作文字色）。
-   七枚语义逐屏对位：
+   挂上去会谎报次序。序标对读屏是噪声 ⇒ DOM 上 aria-hidden。
+   七枚母题语义逐屏对位：
      01 四点串成一场、第五点独处＝关系场且参与集合开放
      02 两路汇入一点＝外源／内源双路触发与点火
      03 两柱承一道断开横梁＝双支柱，顶部不假装接通（完备性悬置）
      04 一站于基准线的三枚空心圈＝候选机制菜单，空心即待校验
      05 分叉后落在其中一支的一点＝意义不被推导、被认领
      06 十字两轴切四格＝互斥且穷尽的价值地图
-     07 方框内一枚圆＝以最严苛的边，护最柔软的那一点
-   静态描边、无 transition／animation ⇒ 天然满足 prefers-reduced-motion。 */
-.step-mark { display:block; width:24px; height:24px; margin:-.3rem 0 .55rem;
-  color:var(--color-navy-400); }
+     07 方框内一枚圆＝以最严苛的边，护最柔软的那一点 —— */
 @media (max-width:480px) {
-  .step-mark { width:20px; height:20px; }
   .chain { max-width:12rem; }
 }
 
-/* —— 末页导流屏「下一站」（与 core 页同族：mono 微标签＋细线＋只提亮底色的 hover）——
-   字色全走在册 token 并实测过线：navy-600 于白底 6.43、slate-900 于白底 17.4、
-   回首页一行悬停升 navy-800（硅基即 Crimson 800，于白底 9.63）。 */
-.leg-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
-  gap:.7rem; max-width:var(--measure-read); margin-top:var(--space-5); }
-.leg { display:flex; flex-direction:column; min-width:0; padding:.7rem .9rem .78rem;
-  background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200);
-  border-radius:var(--radius-xs); box-shadow:var(--shadow-xs);
-  transition:border-color var(--duration-fast) var(--ease-smooth),
-             background-color var(--duration-fast) var(--ease-smooth); }
-.leg:hover { border-color:var(--color-navy-600); background:var(--color-navy-600-bg); }
-.leg-code { font-family:var(--font-mono); font-size:var(--text-2xs); font-weight:600;
-  letter-spacing:var(--tracking-tech); text-transform:uppercase; color:var(--color-navy-600); }
-.leg-name { margin-top:.22rem; font-size:var(--text-sm); font-weight:600; line-height:1.55;
-  color:var(--color-slate-900); overflow-wrap:anywhere; }
-.leg-desc { margin-top:.16rem; font-size:var(--text-xs); line-height:1.7;
-  color:var(--color-slate-600); text-wrap:pretty; overflow-wrap:anywhere; }
-.leg-home { display:inline-block; margin-top:var(--space-5); padding-bottom:.2rem;
-  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:var(--tracking-tech);
-  text-transform:uppercase; color:var(--color-navy-600); border-bottom:var(--stroke-structure)
-  solid var(--color-navy-600-border); }
-.leg-home:hover { color:var(--color-navy-800); border-bottom-color:var(--color-navy-600); }
-/* 动效降级：brand.css 已全局把 transition-duration 压到 0.01ms，此处再显式归零一次，
-   使本页的导流件不依赖公共件兜底；母题与进度轨本无动画，故无需另写。 */
-@media (prefers-reduced-motion: reduce) { .leg { transition: none; } }
-@media (max-width:480px) { .leg-list { grid-template-columns:1fr; } }
+/* —— 末页导流屏「下一站」（与 core 页同族同值）：整套 .leg* 已上收 ../shared.css。 —— */
 </style>
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 

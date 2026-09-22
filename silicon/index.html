@@ -125,24 +125,15 @@
     border-radius: var(--radius-pill);
 }
 
-/* ---------- ③ 收尾导流带（碳基 .cta-section 同名件） ---------- */
+/* ---------- ③ 收尾导流带（碳基 .cta-section 同名件） ----------
+   深底面板的 44px 网格底纹与「内容抬到纹上」两条与 isce 定义带同值，已上收 shared.css；
+   此处只留本域那圈壳：radius-sharp 与 4.4rem／3rem 内距是本页一档，不并它页。 */
 .cta-section {
     background: var(--color-navy-800);
     border-radius: var(--radius-sharp);
     padding: 4.4rem 3rem;
     text-align: center;
 }
-.cta-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 44px 44px;
-    pointer-events: none;
-}
-.cta-section > * { position: relative; z-index: 1; }
 .cta-section .tech-label { color: var(--color-white-65); }   /* 深底眉标：碳基走 amber，本域升白档 */
 .cta-section h3 {
     /* 字档照碳基 2.1rem；CJK 标题无断词点，故加 clamp 下限（公共件

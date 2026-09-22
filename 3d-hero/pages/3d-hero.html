@@ -1092,7 +1092,7 @@
         const ya = ys[active], yb = ys[Math.min(active + 1, 2)];
         const ctrlY = (ya + yb) / 2;
         flowPath.setAttribute('d', 'M' + railX + ',' + ya + ' C' + (railX - 60) + ',' + ctrlY + ' ' + (railX - 60) + ',' + ctrlY + ' ' + railX + ',' + yb);
-        flowPath.style.setProperty('--dash', -(performance.now() * 0.05) % 100);
+        flowPath.style.setProperty('--dash', reducedMotion ? 0 : -(performance.now() * 0.05) % 100);
       };
 
       /* ====================== D4 坐标读数 ====================== */
@@ -2327,7 +2327,7 @@
 
       /* ================= 场景状态：由滚动进度 p 驱动 ================= */
       let uLatticeCur = 0;
-      const applyScene = (p, poster) => {
+      const applyScene = (p) => {
         samplePath(p);
         camera.position.set(camPos[0], camPos[1], camPos[2]);
         camera.lookAt(lookPos[0], lookPos[1], lookPos[2]);
@@ -2338,7 +2338,7 @@
         /* 节奏调整：开头快、中间慢、结尾快 */
         /* RCT1 满天星辰 → RCT2 星座勾勒（串联）→ RCT2~3 星辰汇聚 → RCT3 晶格展开 */
         const uConverge = ss(p, 0.38, 0.58);              /* 星星汇聚：先收敛移动（用户认可的原版时序） */
-        const uLattice = poster ? 1 : ss(p, 0.50, 0.72);  /* 晶格展开拉长 1.5x，中部慢 */
+        const uLattice = ss(p, 0.50, 0.72);   /* 晶格展开拉长 1.5x，中部慢 */
         uLatticeCur = uLattice;
         /* uStarFade 延后至脑图透出阶段：星辰贯穿渐入与正中晶格期，再随脑图慢慢淡出 */
         starMat.uniforms.uConverge.value = uConverge;
@@ -2779,21 +2779,25 @@
       });
 
       if (reducedMotion) {
-        /* v2.5 D37: 静帧海报定格 p=0.86（接驳完成态，纤维束+棋盘+脑图三层共存） */
-        pCur = pTarget = 0.86;
-        let posterQueued = false;
-        const renderPoster = () => {
-          applyScene(0.86, true);
-          updateHUD(0.86);
-          updateLabels();
-          if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+        /* 减弱动效＝去掉时间轴（镜头平滑、晶格自转、粒子、走线、打字机），状态改为随滚动直接定格：
+           与常规路径同一 applyScene/updateHUD，故任一滚动位置上的终态一致，内容不被抹掉 */
+        let staticQueued = false;
+        const renderStatic = () => {
+          if (staticQueued) return;
+          staticQueued = true;
+          requestAnimationFrame(() => {
+            staticQueued = false;
+            pCur = pTarget;
+            applyScene(pCur);
+            updateHUD(pCur);
+            if (composer) { composer.render(); } else { renderer.render(scene, camera); }
+            updateLabels();
+            updateFlowPath(pCur);
+          });
         };
-        scheduleStatic = () => {   /* resize 时重绘海报 */
-          if (posterQueued) return;
-          posterQueued = true;
-          requestAnimationFrame(() => { posterQueued = false; renderPoster(); });
-        };
-        renderPoster();
+        scheduleStatic = renderStatic;
+        addEventListener('scroll', renderStatic, { passive: true });
+        renderStatic();
       } else {
         tick();
       }

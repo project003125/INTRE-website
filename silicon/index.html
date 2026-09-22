@@ -45,8 +45,9 @@
    --color-white-65（实测 5.00，与 domain-switch.css 补正页脚两处用的
    同一档），Amber 高亮沿同族升到 --color-amber-100（实测 7.10）。
    强调节点另不填 Crimson 600（--color-navy-600 在硅基即 #A63A2E，
-   白字 .65 只剩 3.63）而填 --color-navy-800；投影不引 --shadow-hard-navy*
-   （其色 --color-navy-975 未入域表，红底上会带出蓝影）。
+   白字 .65 只剩 3.63）而填 --color-navy-800；硬边缘阴影 --shadow-hard-navy* 自本轮起
+   可用（其色 --color-navy-975 已在域表就近映射到 Crimson 950），
+   但仍只给公共件本就带它的件（.stat-card），别处不新增用途。
    ============================================================ */
 
 /* ---------- ① 结构计数带（碳基 .identity-strip 同名件） ---------- */
@@ -392,6 +393,26 @@
     <div class="glance" role="list" aria-label="工程速览">
       <span role="listitem">01 / 核心理论</span><span role="listitem">19 / AOSE</span><span role="listitem">20 / ICRE</span>
       <span role="listitem">22 / ISCE</span><span role="listitem">26 / SIPE</span><span role="listitem">14 / ENGRAM 分支</span>
+    </div>
+    <!-- 结构计数卡＝碳基 .hero-stats 同名件。四格一律是坐标结构数（两域／三轴／四门／五层），
+         不碰任何测量值；工程数不在这里重复（上面速览条已逐一列名）。 -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num">2<span class="stat-unit">域</span></span>
+        <span class="stat-label">心理科学域 ↔ 智能科学域</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3<span class="stat-unit">轴</span></span>
+        <span class="stat-label">资源 R · 调度 D · 结构 S</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">4<span class="stat-unit">门</span></span>
+        <span class="stat-label">门控 · 调制 · 校准 · 重联</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">5<span class="stat-unit">层</span></span>
+        <span class="stat-label">存在公理 → 原子操作集</span>
+      </div>
     </div>
   </div>
 </section>

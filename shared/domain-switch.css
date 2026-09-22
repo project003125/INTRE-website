@@ -76,6 +76,7 @@
 body[data-domain="silicon"] {
   --color-navy-950: #431410;
   --color-navy-900: #431410;
+  --color-navy-975: #431410;   /* 原站硬边缘阴影色（--shadow-hard-navy*），就近映射到同档最深处 */
   --color-navy-800: #7A2A21;
   --color-navy-700: #7A2A21;
   --color-navy-600: #A63A2E;
@@ -88,6 +89,13 @@ body[data-domain="silicon"] {
   --color-navy-600-border:     rgba(166, 58, 46, 0.12);
   --shadow-navy-sm: 0 2px 8px rgba(166, 58, 46, 0.25);
   --shadow-navy-md: 0 4px 12px rgba(166, 58, 46, 0.35);
+  /* 硬边缘阴影必须整条重声明，不能只换 --color-navy-975：
+     自定义属性的 var() 替换发生在「声明它的那个元素」上，`--shadow-hard-navy*` 写在 :root，
+     继承下来时颜色已经钉死成碳基的 #081831（实测 .stat-card 阴影在红域仍是蓝边）。
+     这里几何值与 brand.css 逐字相同，只有颜色换成本域最深处；
+     hover 那条（.stat-card:hover 直接写 var(--color-navy-975)）由上面的 975 映射自动转红。 */
+  --shadow-hard-navy: 6px 6px 0 #431410;
+  --shadow-hard-navy-sm: 4px 4px 0 #431410;
 }
 /* 胶囊当前项底色随域：碳基白底蓝字，硅基白底红字（只改颜色） */
 body[data-domain="silicon"] .domain-switch a[aria-current="page"] { color: #7A2A21; }
@@ -100,6 +108,10 @@ body[data-domain="silicon"] a:hover { color: var(--color-navy-600); }
 /* components.css 的 .hero::after 与 ::selection 写死了碳基蓝面（rgba(10,30,61)/(31,72,128)），
    不走域表 ⇒ 域内换成等 alpha 的红面，否则硅基 hero 底缘与选区仍是蓝。 */
 body[data-domain="silicon"] .hero::after { background: rgba(67, 20, 16, 0.15); }
+/* components.css 的 .stat-card 底色写成碳基面 rgba(13,35,71,.72)（Navy 900 的字面色值，
+   不走域表）⇒ 落在红域深底英雄区上会是一块蓝面板。按同 alpha 换成本域最深处同值，
+   与上面 .hero::after 的补正同一手法（只改颜色，尺寸与排布两域同值）。 */
+body[data-domain="silicon"] .stat-card { background-color: rgba(67, 20, 16, 0.72); }
 body[data-domain="silicon"]::selection,
 body[data-domain="silicon"] *::selection { background: rgba(166, 58, 46, 0.15); }
 

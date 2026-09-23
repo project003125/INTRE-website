@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（WRK-CORE-M1M6… v0.8.0，术语登记见 06-S-02 §二十一），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（先过 D-R2 盲评再转正），尚未取代 01-M-01。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
+代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -31,9 +31,9 @@
         .container { margin:0 auto; padding:2rem; }
         h1 { font-family:var(--font-body); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 0.4rem; letter-spacing:-0.02em; }
         .subhead { font-family:var(--font-body); font-size:1.3rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; max-width:900px; }
-        .section-label { font-family:var(--font-body); font-size:1rem; font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); padding-bottom:0.4rem; padding-left:0; display:flex; align-items:center; gap:.5rem; }
+        .section-label { font-family:var(--font-body); font-size:var(--text-xl,1.5rem); font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); padding-bottom:0.4rem; padding-left:0; display:flex; align-items:center; gap:.5rem; }
         .section-label i { color:var(--color-navy-400); font-size:1rem; background:var(--color-navy-600-bg); border-radius:50%; width:2.2rem; height:2.2rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
-        h4 { font-family:var(--font-body); font-size:1.2rem; font-weight:600; color:var(--color-navy-400); margin:1.2rem 0 .6rem; }
+        h4 { font-family:var(--font-body); font-size:var(--text-md,1.125rem); font-weight:600; color:var(--color-navy-400); margin:1.2rem 0 .6rem; }
         .card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; margin-bottom:2rem; }
         .table-responsive { overflow-x:auto; margin:1.5rem 0; border-radius:var(--radius-sm); border:var(--stroke-hairline) solid var(--color-slate-200); }
         .table { width:100%; border-collapse:collapse; font-size:.95rem; min-width:600px; }
@@ -46,13 +46,13 @@
         .grid-6 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin:2rem 0; }
         @media (max-width:1024px) { .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)} h1{font-size:1.9rem} .subhead{font-size:1.2rem} }
         @media (max-width:768px) { .grid-2,.grid-3,.grid-4,.grid-6{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} }
-        @media (max-width:480px) { .container{padding:1.2rem} h1{font-size:1.6rem} .subhead{font-size:0.95rem} .section-label{font-size:0.9rem} .card{padding:1rem} }
+        @media (max-width:480px) { .container{padding:1.2rem} h1{font-size:1.6rem} .subhead{font-size:0.95rem} .section-label{font-size:var(--text-lg,1.25rem)} .card{padding:1rem} }
         .info-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); margin:1.5rem 0; }
         .code-block { background:var(--color-slate-900); color:var(--color-slate-200); padding:1rem 1.5rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.85rem; line-height:1.65; overflow-x:auto; margin:1rem 0; border:var(--stroke-hairline) solid rgba(255,255,255,0.05); }
         .badge { background:var(--color-navy-400); color:var(--color-white); font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:var(--radius-pill); margin-left:.5rem; display:inline-block; }
         .module-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
         .module-card .module-code { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.8rem; font-weight:600; margin-bottom:.5rem; align-self:flex-start; }
-        .module-card h4 { color:var(--color-navy-600); font-size:1.2rem; }
+        .module-card h4 { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); }
         .module-card .module-detail { font-size:.9rem; color:var(--color-slate-700); }
         .op-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
         .op-card .op-target { font-family:var(--font-mono); font-size:.78rem; color:var(--color-iods); margin-top:.5rem; }

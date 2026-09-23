@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（WRK-CORE-M1M6… v0.8.0，术语登记见 06-S-02 §二十一），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（先过 D-R2 盲评再转正），尚未取代 01-M-01。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
+代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -34,8 +34,9 @@
         .subhead { font-size:1.05rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; }
         .intro-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); margin:1.5rem 0; }
         .intro-box p { color:var(--color-slate-700); }
-        .section-label { font-size:1rem; font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 0.8rem; padding-bottom:0.4rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); display:flex; align-items:center; gap:.5rem; }
-        .section-label i { color:var(--color-navy-600); font-size:1.1rem; width:1.2rem; }
+        /* 区块主标题：div 承担 h2 角色，非 eyebrow，须 ≥ 卡内文字 */
+        .section-label { font-size:var(--text-xl,1.5rem); font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 0.8rem; padding-bottom:0.4rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); display:flex; align-items:center; gap:.5rem; }
+        .section-label i { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); width:1.2rem; }
         .chapter-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:.5rem; margin:1rem 0; }
         .chapter-card { background:var(--color-white); border-radius:var(--radius-sharp); border:var(--stroke-hairline) solid var(--color-slate-200); padding:.8rem 1rem; transition:all .2s var(--ease-smooth); cursor:pointer; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
         .chapter-card:hover { background:var(--color-slate-100); border-color:rgba(31,72,128,0.2); box-shadow:0 2px 12px rgba(31,72,128,0.06); }
@@ -53,7 +54,7 @@
         .appendix-item:hover { padding-left:1rem; background:rgba(31,72,128,.06); color:var(--color-navy-600); }
         .appendix-item strong { color:var(--color-navy-600); }
 
-        @media (max-width:768px) { .chapter-grid{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} .subhead{font-size:.9rem} .section-label{font-size:.9rem} }
+        @media (max-width:768px) { .chapter-grid{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} .subhead{font-size:.9rem} .section-label{font-size:var(--text-lg,1.25rem)} }
         @media (max-width:480px) { h1{font-size:1.4rem} .container{padding:1.2rem} .chapter-card{padding:.65rem .8rem} .chapter-card .ch-title{font-size:.82rem} }
     </style>
 <script type="application/ld+json">

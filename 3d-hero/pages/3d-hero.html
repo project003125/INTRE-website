@@ -25,15 +25,18 @@
 :root {
   /* 幕序排版合成：取档一律走 shared/brand.css 的 --text-* 标尺，本块不另立阶梯 */
   --type-display: clamp(4.5rem, 9vw, 8rem);  /* Hero 基准（联动锚点，移动端在 media 中覆盖） */
-  --type-h2: var(--text-3xl);                 /* 幕标题 */
-  --type-sub: var(--text-lg);                 /* 副标题 */
-  --type-body: var(--text-base);              /* 正文 */
-  --type-kicker: var(--text-2xs);             /* 小标 kicker */
-  --type-brand: var(--text-xl);               /* 左上角品牌标志 */
-  --type-brand-sub: var(--text-sm);           /* 品牌副标 */
-  --type-label: var(--text-xs);               /* 晶格标签/图例 */
-  --type-mono: var(--text-2xs);               /* 等宽小字（badge-42/rail/tip） */
-  --type-mono-xs: var(--text-2xs);            /* 等宽极小字（HUD/hint） */
+  /* 每一档都带字面量兜底：brand.css 一旦取不到（本仓已踩过一次：@import 路径在
+     Pages 子路径下 404），裸 var 会让 font-size 整条失效并退回继承的 16px——
+     幕标题与小标会同时变成 16px，看起来就是"标题没放大"。兜底后不会静默塌陷。 */
+  --type-h2: var(--text-3xl, 2.5rem);         /* 幕标题 */
+  --type-sub: var(--text-lg, 1.25rem);        /* 副标题 */
+  --type-body: var(--text-base, 1rem);        /* 正文 */
+  --type-kicker: var(--text-2xs, 0.72rem);    /* 小标 kicker */
+  --type-brand: var(--text-xl, 1.5rem);       /* 左上角品牌标志 */
+  --type-brand-sub: var(--text-sm, 0.875rem); /* 品牌副标 */
+  --type-label: var(--text-xs, 0.8125rem);    /* 晶格标签/图例 */
+  --type-mono: var(--text-xs, 0.8125rem);     /* 等宽小字（badge-42/公式芯片/tip 主行）——原与 mono-xs 同为 2xs，两级并成一级 */
+  --type-mono-xs: var(--text-2xs, 0.72rem);   /* 等宽极小字（HUD/hint/tip 副行） */
 }
 
     </style>
@@ -194,7 +197,7 @@
         <div class="nd-title"></div>
         <div class="nd-body"></div>
         <div class="nd-markers"></div>
-        <a class="nd-link" href="#" target="_blank" rel="noopener noreferrer">查看教材详解 →</a>
+        <a class="nd-link" href="https://project003125.github.io/INTRE-website/textbook/" target="_blank" rel="noopener noreferrer">查看教材详解 →</a>
         <span class="feat-tag">#14</span>
       </div>
 
@@ -261,7 +264,7 @@
         font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); color: var(--intre-navy-50);
       }
       #mobile-banner.is-shown { display: flex; }
-      .mb-close { appearance: none; border: 0; background: none; font-family: inherit; font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: pointer; line-height: 1; padding: 0 4px; }
+      .mb-close { appearance: none; border: 0; background: none; font-family: inherit; font-size: var(--text-lg, 1.25rem); color: var(--intre-scene-text-muted); cursor: pointer; line-height: 1; padding: 0 4px; }
 
       /* ---------- P1.7: 生产模式 (?prod=1) 隐藏 HUD ---------- */
       body.prod-mode #status-bar,
@@ -471,6 +474,11 @@
 
       /* ---------- 状态走 class、逐帧数值走自定义属性：页内不留声明式内联 style ---------- */
       .act.is-live { opacity: 1; transform: translateY(var(--shift, 0px)); }
+      /* 幕框本体保持不可点（否则压在场景上的整块面板吞掉滚轮与拖拽），
+         但框内的真实可点件必须恢复可点：实测 badge-42／replay-btn／end-link／
+         legend-item 在 is-live 状态下全部 pointer-events:none、命中测试打到 canvas，
+         即"重看 4 幕""反馈体验""三通道"与 42/42 徽章对鼠标用户完全失效 */
+      .act.is-live a, .act.is-live button { pointer-events: auto; }
       .act.is-inert { visibility: hidden; pointer-events: none; }
       .act-h1, .act-h2 { text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
       .kicker, .act-h1, .act-h2, .act-sub, .act-body, .badge-42, .legend,
@@ -544,14 +552,14 @@
       }
       #node-detail.is-shown { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
       .nd-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--intre-navy-600); }
-      .nd-code { font-family: var(--intre-font-mono); font-size: var(--type-label); letter-spacing: 0.06em; color: var(--intre-amber-500); }
-      .nd-close { appearance: none; border: 0; background: none; padding: 0; font-family: inherit; font-size: 1.25rem; color: var(--intre-scene-text-muted); cursor: none; pointer-events: auto; line-height: 1; }
+      .nd-code { font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.06em; color: var(--intre-amber-500); }
+      .nd-close { appearance: none; border: 0; background: none; padding: 0; font-family: inherit; font-size: var(--text-lg, 1.25rem); color: var(--intre-scene-text-muted); cursor: none; pointer-events: auto; line-height: 1; }
       .nd-close:hover { color: var(--intre-navy-50); }
       .nd-body { padding: 16px 18px; font-family: var(--intre-font-cjk); font-size: var(--type-body); line-height: 1.8; color: var(--intre-navy-50); }
       .nd-title { padding: 8px 18px 0; font-family: var(--intre-font-cjk); font-size: var(--type-sub); font-weight: 500; color: var(--intre-navy-50); line-height: 1.5; }
-      .nd-markers { padding: 0 18px 14px; font-family: var(--intre-font-mono); font-size: var(--type-mono); line-height: 1.7; color: var(--intre-scene-text-muted); border-bottom: 1px solid var(--intre-navy-600); }
+      .nd-markers { padding: 0 18px 14px; font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); line-height: 1.7; color: var(--intre-scene-text-muted); border-bottom: 1px solid var(--intre-navy-600); }
       .nd-markers::before { content: '生物标记 '; color: var(--intre-amber-500); font-weight: 500; }
-      .nd-link { display: block; padding: 10px 18px 14px; font-family: var(--intre-font-cjk); font-size: var(--type-mono); color: var(--intre-amber-500); text-decoration: none; border-top: 1px solid var(--intre-navy-600); cursor: none; }
+      .nd-link { display: block; padding: 10px 18px 14px; font-family: var(--intre-font-cjk); font-size: var(--type-brand-sub); color: var(--intre-amber-500); text-decoration: none; border-top: 1px solid var(--intre-navy-600); cursor: none; }
       .nd-link:hover { color: var(--intre-navy-50); }
 
       /* ====================== B4 拖尾画布 ====================== */
@@ -567,7 +575,7 @@
       /* ====================== 底部状态条（遥测+坐标合并） ====================== */
       #status-bar {
         position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 80;
-        display: flex; align-items: center; gap: 20px;
+        display: flex; align-items: center; gap: 20px; flex-wrap: nowrap; white-space: nowrap;
         padding: 6px 16px; border-radius: var(--intre-radius-pill);
         border: none; background: transparent;
         font-family: var(--intre-font-mono); font-size: var(--type-mono-xs); letter-spacing: 0.04em;
@@ -576,7 +584,7 @@
       }
       /* P1-4: 3秒无操作自动淡出 */
       #status-bar.is-idle { opacity: 0.25; }
-      #telemetry { display: flex; align-items: center; gap: 14px; }
+      #telemetry { display: flex; align-items: center; gap: 14px; flex-wrap: nowrap; }
       .tel-label { color: var(--intre-amber-500); font-weight: 400; letter-spacing: 0.12em; }
       .tel-line b { color: var(--intre-navy-50); font-weight: 500; }
       #coord-readout { display: flex; gap: 12px; }
@@ -615,11 +623,11 @@
       @media (max-width: 768px) {
         :root {
           --type-display: clamp(2.5rem, 12vw, 4rem);  /* 移动端 INTRE h1 缩小到 2.5-4rem 区间，与 2D --text-3xl/4xl 对齐 */
+          --type-h2: var(--text-2xl, 2rem);           /* 幕标题移动端下限：走别名层覆盖，不在规则处另写一档 */
         }
         /* 汉堡菜单与折叠抽屉整段取自公共件（components.css ≤768 导航块），页内不再另写一套 */
         .act { left: 5vw; right: 5vw; bottom: 8vh; max-width: none; }
         .act-body { max-width: none; }
-        .act-h2 { font-size: var(--text-2xl); }
         .legend { flex-wrap: wrap; gap: 12px 20px; }
         #hud-rail { display: none; }
         /* 窄屏整条遥测收起：它与幕框下沿争同一条底带，且 #coord-readout 早已收起，
@@ -636,11 +644,14 @@
           overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
         #node-detail.is-shown { transform: scale(1); }
-        .nd-close { font-size: 28px; padding: 4px 8px; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; }
+        .nd-close { font-size: var(--text-xl, 1.5rem); padding: 4px 8px; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; }
       }
 
       /* ====================== 触摸设备关闭自定义光标 ====================== */
       @media (pointer: coarse) {
+        /* 轴锁交给合成器：横向留给棋盘旋转，纵向滑动照常翻页（比 JS 里判方向更稳，
+           也不会出现"手指已动、页面还没决定归谁"的抖动） */
+        #gl { touch-action: pan-y; }
         body { cursor: auto; }
         #custom-cursor { display: none; }
         .rail-item, .nd-close, .nd-link, .nav-links a, .nav-logo, .legend-item, #formula-chip, .badge-42, .end-btn, .end-link, .mb-close { cursor: pointer; }
@@ -673,7 +684,10 @@
       });
       /* P1.7: 重看4幕按钮 */
       document.getElementById('replay-btn').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        /* 用 instant 而非 smooth：8667px 的长距平滑回滚在重帧下会卡在起始处
+           （实测 8667→8601 后 7s 不动，而同一页内 rail/键程的短距平滑跳均正常落位）。
+           "重看 4 幕"要的是确定回到开场，不是一段可能被饿死的滑行 */
+        window.scrollTo({ top: 0, behavior: 'instant' });
       });
       addEventListener('keydown', (e) => {
         if (e.key === 'h' || e.key === 'H') { document.body.classList.toggle('show-tags'); }
@@ -888,14 +902,14 @@
           ndBody.textContent = node.desc;
           ndMarkers.textContent = node.markers;
           /* Q3 决策：教材映射暂用 # 占位，v1.1 精细分章 */
-          ndLink.href = '#';
+          ndLink.href = 'https://project003125.github.io/INTRE-website/textbook/';
           ndLink.textContent = '教材详解（v1.1 上线） →';
         } else {
           ndCode.textContent = 'M' + (col + 1) + ' × R' + (row + 1);
           ndTitle.textContent = '';
           ndBody.textContent = '节点数据加载中…';
           ndMarkers.textContent = '';
-          ndLink.href = '#';
+          ndLink.href = 'https://project003125.github.io/INTRE-website/textbook/';
           ndLink.textContent = '教材详解（v1.1 上线） →';
         }
         nodeDetailEl.classList.add('is-shown');
@@ -2041,7 +2055,9 @@
       const ROT_Y_MAX = 0.21, ROT_X_MAX = 0.12;
       addEventListener('pointermove', (e) => {
         mousePX = e.clientX; mousePY = e.clientY;
-        if (coarsePointer || reducedMotion) return;
+        /* 触摸档原本整条退出，于是竖屏只有正对镜头的 12/42 个节点可点、其余 30 个永远够不到。
+           放开拖拽后由 CSS 的 touch-action: pan-y 做轴锁：横滑转棋盘，竖滑仍归页面滚动 */
+        if (reducedMotion) return;
         if (dragging) {
           dragY = dBY + (e.clientX - dSX) * 0.003;
           dragX = dBX + (e.clientY - dSY) * 0.0024;
@@ -2050,7 +2066,7 @@
         my = e.clientY / innerHeight;
       }, { passive: true });
       addEventListener('pointerdown', (e) => {
-        if (coarsePointer || reducedMotion) return;
+        if (reducedMotion) return;
         if (e.target.closest && e.target.closest('a')) return;
         dragging = true;
         dSX = e.clientX; dSY = e.clientY;
@@ -2105,10 +2121,12 @@
       };
       /* B3: 点击节点弹出详情面板 */
       let downPX = 0, downPY = 0;
-      addEventListener('pointerdown', (e) => { downPX = e.clientX; downPY = e.clientY; });
+      /* 按下即登记坐标：触摸的一次轻点常常只有 pointerdown/pointerup 而没有 pointermove，
+         原 `mousePX < 0` 前置会把移动端节点详情整条判死；坐标一律改用事件自带值，不依赖悬停残留 */
+      addEventListener('pointerdown', (e) => { downPX = e.clientX; downPY = e.clientY; mousePX = e.clientX; mousePY = e.clientY; });
       addEventListener('pointerup', (e) => {
         if (Math.abs(e.clientX - downPX) > 6 || Math.abs(e.clientY - downPY) > 6) return;  /* 拖拽不触发 */
-        if (uLatticeCur < 0.2 || mousePX < 0) return;
+        if (uLatticeCur < 0.2) return;
         ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
         raycaster.setFromCamera(ndc, camera);
         const hits = raycaster.intersectObjects(nodes, false);
@@ -2120,6 +2138,14 @@
 
       /* v2.7: ACT4 调试钩子（QA 脚本隔离渲染成本用，同 __intreOpenNodeDetail 先例） */
       window.__intreAct4 = {
+        /* QA 钩子：取某节点当前投影到屏幕的位置——触摸档命中区只有几像素，
+           没有这个坐标就无法写可复现的点击用例（网格盲扫会整片落空，测不出真伪） */
+        nodeScreen: (c, r) => {
+          const v = new THREE.Vector3();
+          nodes[nIdx(c, r)].getWorldPosition(v);
+          v.project(camera);
+          return { x: +(((v.x * 0.5) + 0.5) * innerWidth).toFixed(1), y: +(((-v.y * 0.5) + 0.5) * innerHeight).toFixed(1), onScreen: v.z < 1 };
+        },
         setFiberOpacity: (v) => { if (dtiFibers) dtiFibers.setOpacity(v); },
         setShellOpacity: (v) => { if (brainMat3D) brainMat3D.uniforms.uOpacity.value = v; },
         setRadialOpacity: (v) => { if (dtiFibers && dtiFibers.materials.radialMat) dtiFibers.materials.radialMat.uniforms.opacity.value = v; },
@@ -2379,7 +2405,7 @@
         }
 
         /* v2.8: ACT4 场景雾 — 纯黑纵深，星场/晶格在远处自然消融 */
-        if (scene.fog) scene.fog.density = 0.008 * ss(p, 0.70, 0.85);
+        if (scene.fog) scene.fog.density = 0.008 * ss(p, 0.70, 0.85);   /* 试到 0.02 收益不成立（SwiftShader 截图对比无明显退底，真机反而有压暗风险），回 0.008 */
 
         /* 节奏调整：开头快、中间慢、结尾快 */
         /* RCT1 满天星辰 → RCT2 星座勾勒（串联）→ RCT2~3 星辰汇聚 → RCT3 晶格展开 */
@@ -2423,7 +2449,9 @@
         /* 脑图透明度：分三阶段渐进显现，避免突兀 */
         const brainOpacity = 0.3 * ss(p, 0.72, 0.80) + 0.35 * ss(p, 0.80, 0.88) + 0.35 * ss(p, 0.88, 0.94);
         /* v2.6: DTI 纤维束透明度 — 脑模型显现后逐步淡入，形成"脑壳→纤维填充"的层次感 */
-        const dtiFiberOpacity = ss(p, 0.76, 0.92);
+        /* 纤维束满不透明度实测糊成草垛（800×500 截图取证）：束体本身已够密，压到 0.72
+           才让脑壳体积与通道色分得开，且给放射丝留出可读的对比 */
+        const dtiFiberOpacity = 0.72 * ss(p, 0.76, 0.92);
         /* v2.5 D33: 驱动 3D 脑模型（优先）或 2D 平面（fallback） */
         /* 脑模型固定在 y=-14（晶格下方），纤维束从 y≈0 垂直下延至 y≈-14，相机沿垂直束下潜 */
         if (brainMesh) {

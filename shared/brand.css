@@ -221,7 +221,7 @@ h2:lang(zh) {
 
 h3 {
   font-family: var(--font-body);
-  font-size: 1.15rem;
+  font-size: var(--text-lg, 1.25rem);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.01em;

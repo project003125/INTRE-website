@@ -5,10 +5,13 @@
  * 数据来源：AI 基于理论文档生成，待用户审校
  */
 
-/* 6 大模块（顺序 = 棋盘行序 = INTRE_NODES 分组序） */
+/* 6 大模块（顺序 = 棋盘列序 = INTRE_NODES 分组序；页面上列标签 M1…M6） */
 window.INTRE_MODULES = ["具身", "认知", "意志", "情绪", "言语", "行为"];
 
-/* 7 个子维度（顺序 = 棋盘列序 = INTRE_NODES 组内序） */
+/* 7 个子维度（顺序 = 棋盘行序 = INTRE_NODES 组内序；页面上行标签 RES-D…STR-S）
+   ⚠️ 以下 label 与站内术语表 glossary（RES-D 调度资源 / RES-B 基底资源 / DSP-F 前台调度 /
+   DSP-B 后台调度 / STR-R 规则结构 / STR-C 连接结构 / STR-S 序列结构）不一致，
+   且 STR-* 三条的 desc 是按"策略"而非"结构"写的——属内容审校项，未擅改，待主理定名后整批对齐。 */
 window.INTRE_SUBDIMS = [
   { key: "RES-D", label: "描述性资源" },
   { key: "RES-B", label: "基础资源" },

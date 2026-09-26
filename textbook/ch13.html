@@ -71,6 +71,8 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第13章 流派生成：从语法空位到预测疗法</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
 
 <hr class="section-divider">
@@ -101,26 +103,28 @@
 
 <h2>13.2 典范案例：默认模式调度疗法（DMD）</h2>
 
+<blockquote><p><strong>v1.3.0 同步声明（EX-14）</strong>：本节依主理 Agent 2026-08-13 核准（DR-2026-08-13-DIVE-002-18号工程审查-裁决清单-决策记录）全面同步至 <code>03-C-13 v2.0.0</code> / <code>DMD-P2 修订提案 v1.0</code> 口径——网络表述改为三网络 + DMN 子系统 + 动态耦合；DMD-P2 拆分为 P2a/P2b/P2c；M1-DSP-F 取代 M3-DSP-F；删除"DMN-TPN 反相关作为组织原则"表述。教学使用本节内容时须以 v2.0.0 03-C-13 为权威源。</p></blockquote>
+
 <p>默认模式调度疗法(DMD)是INTRE生成的十个预测性流派中最具代表性的方案。它展示了一个流派如何从功能层空位出发，经由G-M-A-R操作设计，最终形成可检验的干预协议。</p>
 
-<p><strong>问题识别：反刍与担忧的功能层定位</strong>。反刍和担忧是跨诊断的常见症状。传统流派各有侧重：CBT关注内容，ACT关注功能，正念关注态度。然而，它们都未能系统占据一个更基础的功能靶点：<strong>反刍进程本身作为一个调度过程</strong>。</p>
+<p><strong>问题识别：反刍与担忧的功能层定位</strong>。反刍和担忧是跨诊断的常见症状。传统流派各有侧重：CBT关注内容，元认知疗法（Metacognitive Therapy，下文简称 MCT）关注元认知信念，ACT关注功能，正念关注态度。然而，它们都未能系统占据一个更基础的功能靶点：<strong>反刍进程本身作为一个调度过程</strong>。</p>
 
-<p>在INTRE框架中，反刍和担忧被定位为<strong>M2-DSP-B（认知后台调度）的失控激活</strong>——一个自动化的、持续运行的认知过程。问题不在于反刍的“内容”错了，而在于<strong>反刍这个进程的“播放开关”坏了</strong>——系统失去了关闭它的能力。</p>
+<p>在INTRE框架中，反刍和担忧被定位为<strong>M2-DSP-B（认知后台调度）的失控激活</strong>——一个自动化的、持续运行的认知过程。问题不在于反刍的"内容"错了，而在于<strong>反刍这个进程的"播放开关"坏了</strong>——系统失去了关闭它的能力。<strong>v1.3.0 注</strong>：当代神经框架下，DMN-TPN 简单反相关已非"功能组织原则"——Spreng (2012) 与 Sormaz 等 (2018) 已证伪；当代主流为 Menon 三网络（SN+CEN+DMN）+ Andrews-Hanna 子系统分割 + 动态重配置（Menon 2011/2023）。反刍的关键病理差异在于<strong>注意网络（VAN/SN）对 DMN 的门控耦合减弱</strong>（Chen 2025 待核验）。</p>
 
-<p><strong>核心洞察：从内容修正到调度门控</strong>。DMD的核心洞察：反刍和担忧在功能层上是“调度失控”。因此，DMD不直接处理信念内容（那是ALIGN的任务），而是直接训练个体快速切换注意通道的能力——即<strong>GATE– M2-DSP-B</strong>（抑制反刍进程）和<strong>GATE+ M1-DSP-F</strong>（激活感官前台）的联合操作。</p>
+<p><strong>核心洞察：从内容修正到调度门控</strong>。DMD的核心洞察：反刍和担忧在功能层上是"调度失衡"——DMN 与注意网络动态解耦合及其上游通路（DMD 主攻调度通路，不否定内容通路；双通道模型）。因此，DMD不直接处理信念内容（那是ALIGN的任务），而是直接训练个体快速切换注意通道的能力——即<strong>GATE– M2-DSP-B</strong>（抑制反刍进程）和<strong>GATE+ M1-DSP-F</strong>（激活感官前台）的联合操作。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
 <th>对比维度</th>
-<th>传统CBT</th>
+<th>传统 CBT</th>
 <th>DMD</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>问题定位</td>
 <td>信念内容错误</td>
-<td>注意调度失控</td>
+<td>注意调度失衡（DMN 与注意网络动态解耦合）</td>
 </tr>
 <tr>
 <td>干预目标</td>
@@ -172,25 +176,28 @@
 <td>感受双脚踩地、呼吸进出</td>
 </tr>
 <tr>
-<td>“想法不是命令”规则</td>
+<td>"想法不是命令"规则</td>
 <td>ALIGN</td>
 <td>M2-STR-R</td>
-<td>建立“有这个想法≠必须跟随它”</td>
+<td>建立"有这个想法≠必须跟随它"</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>DMD的标准化协议</strong>（6-12次会话）：</p>
+<p><strong>DMD的标准化协议</strong>（<strong>七个标准化模块</strong>·6-12次会话；v1.3.0 同步 03-C-13 v2.0.0 模块计数）：</p>
 <ul>
-<li><strong>觉察阶段（1-2次）</strong>：心理教育（DMN与TPN的类比），反刍日志记录</li>
-<li><strong>替代技能训练阶段（3-8次）</strong>：感官锚定、计数法、身体锚定</li>
-<li><strong>内化与维持阶段（9-12次）</strong>：内化“想法不是命令”规则，制定预防计划</li>
+<li><strong>觉察阶段（1-2次，对应模块 1）</strong>：心理教育（三网络+DMN子系统面向患者的简化表述，详见 03-C-13 v2.0.0 模块 1 心理教育"面向患者的简化表述"注），反刍日志记录；<strong>前置告知排除条件（DID/DPDR 等严重解离）</strong></li>
+<li><strong>替代技能训练阶段（3-8次，对应模块 2-5）</strong>：感官锚定（模块 2）、计数法/身体锚定等高级替代（模块 3）、提前切断——早期信号识别（模块 4）、睡前调度协议（模块 5）</li>
+<li><strong>内化与维持阶段（9-12次，对应模块 6-7）</strong>：内化"想法不是命令"规则 + <strong>模块 6 吸纳元认知疗法（MCT）元认知信念工作（识别/实验/CAS 教育）</strong>（v1.4.0/v2.0.0 主理 Agent 核准；详见 03-C-13 v2.0.0 模块 6 步骤表：步骤 2 元认知实验）+ 预防复发与生活方式整合（模块 7）</li>
 </ul>
 
-<p><strong>DMD的神经科学基础</strong>：DMN（默认模式网络）在心智游移时激活，FPN（额顶控制网络）在外部任务导向时激活，两者呈反相关。反刍个体表现为DMN过度激活和切换障碍。DMD的感官锚定旨在通过激活TPN间接抑制DMN。</p>
+<p><strong>DMD的神经科学基础（v1.3.0 同步）</strong>：</p>
+<p>当代主流为 <strong>Menon 三网络模型（SN+CEN+DMN）+ Andrews-Hanna 子系统分割（mPFC-PCC 核心子系统 / dmPFC-MTL 子系统）+ 动态重配置</strong>（Menon 2011/2023；Andrews-Hanna 2014）。"DMN-TPN 反相关"作为现象学观察仍部分成立，但作为<strong>功能组织原则已被 2020-2026 证据否定</strong>（Spreng 2012 / Sormaz 2018）。<strong>反刍的真正病理差异在注意网络（VAN/SN）对 DMN 的门控耦合</strong>（Chen 2025 待核验；Ghaznavi 2023）。DMD 的神经机制主张从 v1.3.x 的"训练 DMN-TPN 切换效率"更新为 <strong>"重塑 DMN 内部动态稳定性（hypostability 反义——反刍态 DMN 动态稳定性偏低，干预后状态方差增大 = 稳定性回升）+ 增强注意网络（VAN/SN）对 DMN 的门控耦合"</strong>。感官锚定不再仅是"激活 TPN 间接抑制 DMN"，而是以"加工模式转换（具体 vs 抽象，Watkins 2008/2009）+ 替代反刍进程的双重机制"起作用。</p>
 
-<p><strong>DMD的可检验预测</strong>（详见《INTRE 核心预测清单 v3.0》）：</p>
+<p><strong>DMD的可检验预测</strong>（详见 <code>03-C-13 v2.0.0 §六</code> / DMD-P2 修订提案 v1.0）：</p>
+
+<blockquote><p><strong>预测体系结构修订（v1.3.0）</strong>：原表中"DMD-P2 探索性"已按主理 Agent 裁决拆分为 <strong>DMD-P2a（行为主结局）/ DMD-P2b（神经机制）/ DMD-P2c（耦合检验）</strong> 三层结构；DMD-P1 由探索性升级为"假说性预估"+ SUDS 5/15/30min 测量；DMD-P3 / DMD-P4 / DMD-P5 各按 03-C-13 v2.0.0 EX-27/29/30 修订为分层预测 / 客观测量（眼动）/ 分层（含严重解离排除）。效果量符号统一为 Hedges g。</p></blockquote>
 
 <div class="table-wrap">
 <table>
@@ -203,45 +210,66 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>**DMD-P1**</td>
-<td>单次感官锚定（5‑4‑3‑2‑1）后，反刍即刻中断成功率 **> 50%（实验室）或 > 35%（EMA）**，显著优于主动控制组。效应量期望 **d ≥ 0.30‑0.50**</td>
+<td>**DMD-P1**（假说性预估）</td>
+<td>单次感官锚定（5‑4‑3‑2‑1）后，反刍即刻中断成功率 **> 50%（实验室）或 > 35%（EMA）**，显著优于主动控制组。效应量期望 **Hedges g ≥ 0.30‑0.50**。**标注：5‑4‑3‑2‑1 无独立 RCT 校准，待行为实验验证**；SUDS 5/15/30min 三次采集</td>
 <td>实验室诱发反刍 + EMA 自然情境；设主动控制组</td>
-<td>成功率 < 30%（实验室）或与主动控制无差异（d < 0.20）</td>
+<td>成功率 < 30%（实验室）或与主动控制无差异（Hedges g < 0.20）</td>
 <td>L2</td>
 </tr>
 <tr>
-<td>**DMD‑P2** (探索)</td>
-<td>DMD 训练后，DMN‑FPN 切换效率可检测到 **≥ 5% 的改善**（探索性，不设严格证伪）</td>
-<td>静息态 fMRI 前后测，动态功能连接分析</td>
-<td>效应量 < 0.10 或 95% CI 包含零（不构成理论证伪）</td>
-<td>L3</td>
+<td>**DMD-P2a**（核心主结局）</td>
+<td>8 周 DMD 训练后，**反刍严重程度（RRS-Brooding 子量表）显著降低**——DMD 整体有效性的必要条件。接受阈值 **Hedges g ≥ 0.30**。**灰区处置（0.20–0.30）**：证据不足，转入 WP-D3 追加检验</td>
+<td>预注册 RCT；主结局 RRS-Brooding 减分；次要：RRS-Reflection、HAM-D</td>
+<td>主结局减分 Hedges g < 0.20；训练完成率 < 70%；严重不良事件率 > 5%</td>
+<td>L2</td>
 </tr>
 <tr>
-<td>**DMD‑P3**</td>
-<td>8 周 DMD 改善反刍**不劣于 CBT**（非劣效边界 **d = 0.25**）。前提：CBT 组显著优于等待组（assay sensitivity）</td>
-<td>预注册 RCT，N ≥ 120，非劣效检验</td>
-<td>DMD 显著劣于 CBT（差值 > 5 分且 95% CI 下限 > 3），或 CBT 未优于等待组</td>
+<td>**DMD‑P2b**（机制预测）</td>
+<td>8 周 DMD 训练后，神经机制指标改善（三选一即可）：① DMN 核心子系统动态功能连接**稳定性回升**（hypostability 改善，状态方差增加 ≥5% 或 Hedges g ≥ 0.30）；② VAN/SN 对 DMN 的**门控耦合强度增加**（耦合系数变化 ≥ 0.10）；③ dmPFC 与 MTL 子系统的**功能分化提升**（分化指数 ≥ 0.05）</td>
+<td>任务态 fMRI rumination-distraction 范式 + sliding-window DCC + granger/动态贝叶斯 + 图论指标</td>
+<td>三指标 95% CI 均含 0 且 Hedges g < 0.20 → 修订为"行为有效但机制未明"；**不否定 DMD 整体**</td>
+<td>L2/L3</td>
+</tr>
+<tr>
+<td>**DMD‑P2c**（耦合检验·关键）</td>
+<td>P2b 神经参数变化与 P2a 行为改善之间存在**显著相关**——检验 INTRE "功能层中介于神经与现象"命题。**r > 0.30 为必要条件**；进一步要求 Hayes PROCESS 中介分析间接效应 CI 不含 0</td>
+<td>个体水平相关（Pearson r）；中介分析（Hayes PROCESS）</td>
+<td>r ≤ 0.30 或 p ≥ 0.05；或中介 CI 含 0 → **功能层独立中介命题失败**，修订为神经-行为解耦</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>**DMD‑P3**（分层预测）</td>
+<td>8 周 DMD 改善反刍**不劣于 CBT**（非劣效边界 Hedges g = 0.25）。分层：DMD 在 RRS-Brooding 上等价于 CBT，在 RRS-Reflection 上**不优于** CBT。前提：CBT 组显著优于等待组</td>
+<td>预注册 RCT，N ≥ 128，非劣效 + 分层分析</td>
+<td>DMD 显著劣于 CBT（差值 > 5 分且 95% CI 下限 > 3）</td>
 <td>L2</td>
 </tr>
 <tr>
 <td>**DMD‑P4**</td>
-<td>DMD 的效果**不能被认知重构完全中介**；调度能力改善独立预测症状变化，**增量 R² ≥ 0.05**</td>
-<td>中介分析，控制信念改变（DAS）</td>
+<td>DMD 的效果**不能被认知重构完全中介**；调度能力改善独立预测症状变化，**增量 R² ≥ 0.05**。**测量改用客观指标**：眼动注意脱离潜伏期 + fMRI 反刍任务态（替代自我报告 ACS）</td>
+<td>中介分析，控制信念改变（DAS）+ 眼动客观测量</td>
 <td>增量 R² < 0.05 或间接效应 > 80%</td>
 <td>L2</td>
 </tr>
 <tr>
-<td>**DMD‑P5** (探索)</td>
-<td>在高焦虑/创伤人群中，DMD 脱落率**低于正念**（绝对差值 ≥ 10%），作为应用可行性假设</td>
-<td>RCT 记录脱落率及原因分类</td>
-<td>脱落率差异 < 5% 或 DMD 更高</td>
+<td>**DMD‑P5**（分层预测）</td>
+<td>应用可行性：在高反刍 + **严重失眠**人群中，DMD 脱落率**可能高于正念**（分层反转假设）；在高反刍且无严重解离人群中，DMD 脱落率**低于正念**（绝对差值 ≥ 10%）。**纳入前提**：入组前**优先排除严重解离（DID, DPDR）**——入组筛查应包含解离量表（DES/DIS-Q）</td>
+<td>RCT 记录脱落率及原因分类；入组筛查含解离量表</td>
+<td>脱落率差异 < 5% 或方向与分层假设相反</td>
 <td>L3</td>
+</tr>
+<tr>
+<td>**DMD-P6**（新增 · 探索性）</td>
+<td>**子量表耦合预测**：DMD 后 RRS-Brooding 减分与 RRS-Reflection 减分比 **> 1.5**（brooding 反应更强）。承认子量表减分比存在方差与基线依赖——本指标为**探索性**而非确认性，需报告基线方差比对、使用对数变换后比值、报告 95% CI</td>
+<td>预注册 RCT 分层分析；对数变换后比值 ≥ ln(1.5) ≈ 0.405</td>
+<td>减分比 ≤ 1.5 或 95% CI 包含 ≤ 1.5</td>
+<td>L3（探索性）</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>DMD的独特贡献</strong>：填补了现有流派均未系统占据的功能层靶点——<strong>注意调度过程本身</strong>(M2-DSP-B → M1-DSP-F的门控转换)。适用人群：“理性上知道但停不下来”者、对正念不耐受者。禁忌症：急性自杀危机、需要深思的决策情境、严重解离或精神病性障碍活跃期。</p>
+<p><strong>DMD的独特贡献</strong>：填补了现有流派均未系统占据的功能层靶点——<strong>注意调度过程本身</strong>(M2-DSP-B → M1-DSP-F 的门控转换)；与元认知疗法（MCT）形成"调度靶点 + 元认知信念靶点"的互补分工，三者（CBT-内容 / MCT-元认知 / DMD-调度）在模块 6 层叠合。适用人群："理性上知道但停不下来"者、对正念不耐受者、对 MCT 元信念负担与调度失衡双重靶点人群。禁忌症：急性自杀危机、需要深思的决策情境、<strong>严重解离（DID/DPDR，需入组前解离筛查）</strong>、精神病性障碍活跃期。</p>
 
 <hr class="section-divider">
 
@@ -273,7 +301,7 @@
 <tr>
 <td>**DMD**</td>
 <td>默认模式调度疗法</td>
-<td>M2-DSP-B高 + M3-DSP-F低</td>
+<td>M2-DSP-B高 + M1-DSP-F低</td>
 <td>GATE– M2-DSP-B</td>
 </tr>
 <tr>
@@ -362,8 +390,8 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.2.0</td>
-<td>2026-06-07</td>
+<td>v1.3.2</td>
+<td>2026-09-18</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -382,7 +410,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

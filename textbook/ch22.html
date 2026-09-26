@@ -71,6 +71,8 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第22章 神经对接：翻译与约束的根本差异</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解为什么“翻译”策略适用于现象层对接而不适用于神经层对接——多重实现度的层级梯度；(2)掌握以“约束”为主轴的神经层对接方法论逻辑；(3)区分兼容性证据与证伪性判据的区分及其方法论意义；(4)了解UNIP如何将约束原则工程化为可运行的神经输入系统。</p></blockquote>
 
 <hr class="section-divider">
@@ -216,7 +218,7 @@
 
 <h2>22.5 从原则到工程：UNIP的约束分类实现</h2>
 
-<p>前四节确立了"神经层对接是约束而非翻译"的哲学原则。本节展示这一原则如何在 UNIP（统一神经接口端口）中被工程化为可运行的架构组件。UNIP 是 INTRE 新管线体系中 PSE 感知层 L1 的<strong>神经模态输入端口（L1-N，IODS 端口之一）</strong>，与 UPLP（L1-S）、UBMP（L1-B）并列——它不再是"四大核心基础设施"之一，而是 IODS 三端口中专门处理神经生理信号的端口。其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \) 并输出至 PSE 状态层（L2+）。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5 神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。<small style="color:var(--color-slate-500);font-size:0.85em;">（2026-07 管线体系更新：原"FLP 四大基础设施之一"表述已替换为 PSE 感知层 L1 神经端口定位。）</small></p>
+<p>前四节确立了“神经层对接是约束而非翻译”的哲学原则。本节展示这一原则如何在UNIP（统一神经接口端口）中被工程化为可运行的架构组件。UNIP是PSE感知层（L1）的神经输入端口（原“FLP四大基础设施”定位已废止，01-M-00 §10.4），其任务是将神经信号转换为功能层似然 \( p(y_n \mid \Psi_t) \)。在完成这一任务的过程中，神经层对功能层的约束通过<strong>L5神经先验库（NPL）</strong>和<strong>跨层仲裁合约</strong>来具体实现。</p>
 
 <h3>22.5.1 约束的三级分类及其工程对应</h3>
 
@@ -380,7 +382,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.0</td>
+<td>v1.0.2</td>
 <td>2026-05-30</td>
 <td>初始创建</td>
 </tr>
@@ -400,7 +402,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

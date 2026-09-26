@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。影子非线性口径（15-RPT-49 v1.3 承诺句·2026-09-25 复检补并，原改字句本页无存、系并入非替换）：预测值全 >5%（实测 glm 批 4.47% 已跌破）；三厂观测高于独立噪声模型预测 28%–50%、方向相同（出处：CORR-CORE-役后时效追加 §一.2）。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
--->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第15章 语义架构：PSA推理与PSL编译 · INTRE 导论教材</title>
@@ -74,7 +71,11 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
+
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章叙述基于管线重构前的 UPLP 系统视角。按 01-M-00 v1.3.0（管线总纲）：PCUI-L/PSL-L 的静态定义属 IODS（01-M-02，L0，§五/§四），语义编译流水线与文化变体参数归 L1-S 语义模态（01-M-07），PSA 的结构约束定义在 IODS §三、推理执行随编译流水线在 L1-S。下文"UPLP"泛指语义通道（PSE 内部模块名），请按此映射理解。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -552,7 +553,7 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLP静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使UPLP不仅是一个术语词典，更是一个可运行的、支持临床推理的知识基础设施。</p>
+<p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLP静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使IODS知识基础设施与UPLP语义编译端口协同工作，不仅是一个术语词典，更是一个可运行的、支持临床推理的语义知识体系。</p>
 
 <blockquote><p><strong>关键术语</strong>：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
 
@@ -570,7 +571,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.0</td>
+<td>v1.0.2</td>
 <td>2026-05-30</td>
 <td>初始创建</td>
 </tr>
@@ -590,7 +591,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

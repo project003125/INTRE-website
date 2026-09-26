@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。影子非线性口径（15-RPT-49 v1.3 承诺句·2026-09-25 复检补并，原改字句本页无存、系并入非替换）：预测值全 >5%（实测 glm 批 4.47% 已跌破）；三厂观测高于独立噪声模型预测 28%–50%、方向相同（出处：CORR-CORE-役后时效追加 §一.2）。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
--->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第14章 概念标识：PCUI编码与同义词映射 · INTRE 导论教材</title>
@@ -74,9 +71,13 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第14章 概念标识：PCUI编码与同义词映射</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PCUI如何解决心理学的术语碎片化问题；(2)掌握PCUI编码格式和M-R-D-S坐标标注规则；(3)列举至少3个多流派同义词映射示例；(4)理解PCUI元数据标注的五项防御机制。</p></blockquote>
 
-<blockquote><p><strong>本章定位</strong>：PCUI是UPLP三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。</p></blockquote>
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章叙述基于管线重构前的 UPLP 系统视角。按 01-M-00 v1.3.0（管线总纲）：PCUI 的静态定义属 IODS（01-M-02，L0，本体定义系统），语义编译流水线与文化变体参数归 L1-S 语义模态（01-M-07，即 UPLP 端口）。下文“UPLP”泛指语义知识体系（IODS 静态定义 + UPLP 编译执行的统称），请按此映射理解。</p></blockquote>
+
+<blockquote><p><strong>本章定位</strong>：PCUI是IODS三层知识基础设施中的“概念标识层”，负责为每个心理概念分配唯一的结构化编码。PSA（语义架构）和PSL（专家词典）分别在第15章详述。UPLP（L1-S语义端口）负责通过PSL将自然语言编译为PCUI条目对应的M-R-D-S坐标。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -113,7 +114,7 @@
 </table>
 </div>
 
-<blockquote><p><strong>关键差异</strong>：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，UPLP必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
+<blockquote><p><strong>关键差异</strong>：医学的UMLS成功依赖于疾病实体的相对客观性（糖尿病、心肌梗死有独立测量标准）。心理学缺乏这种客观锚点——“焦虑”不是像“血糖”那样可独立测量的物理实体。因此，IODS必须首先建立功能坐标系统（M-R-D-S），再在这个坐标系中定义每个概念的“位置”。没有坐标系的映射只是术语表，而非统一语言。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -477,7 +478,7 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.0</td>
+<td>v1.0.2</td>
 <td>2026-05-30</td>
 <td>初始创建</td>
 </tr>
@@ -497,7 +498,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。影子非线性口径（15-RPT-49 v1.3 承诺句·2026-09-25 复检补并，原改字句本页无存、系并入非替换）：预测值全 >5%（实测 glm 批 4.47% 已跌破）；三厂观测高于独立噪声模型预测 28%–50%、方向相同（出处：CORR-CORE-役后时效追加 §一.2）。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
--->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第17章 逻辑指纹：解析差异的标准化治理 · INTRE 导论教材</title>
@@ -74,9 +71,13 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第17章 逻辑指纹：解析差异的标准化治理</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
 
-<blockquote><p><strong>本章定位</strong>：第14-15章介绍了UPLP的静态知识架构，第16章介绍了多视角共识工程。本章讨论UPLP知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章的逻辑指纹体系在管线体系中归 L1-S 语义模态（01-M-07）的差异治理工具；PCUI/PSA 的静态定义属 IODS（01-M-02，L0 本体）。下文"UPLP"泛指语义知识体系（IODS 静态定义 + UPLP 编译执行 + 逻辑指纹治理的统称），请按此映射理解。</p></blockquote>
+
+<blockquote><p><strong>本章定位</strong>：第14-15章介绍了IODS的静态知识架构（PCUI/PSA/PSL），第16章介绍了多视角共识工程。本章讨论UPLP语义端口知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -531,7 +532,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：逻辑指纹体系是UPLP治理解析差异的核心工具。四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。五种错误解析判据（E1-E5）确保了UPLP的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLP知识库的可靠性。通过逻辑指纹，UPLP能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识基础设施。</p>
+<p><strong>本章小结</strong>：逻辑指纹体系是UPLP治理解析差异的核心工具。四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。五种错误解析判据（E1-E5）确保了UPLP的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLP知识库的可靠性。通过逻辑指纹，UPLP语义端口能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识治理体系，支撑IODS知识基础设施的质量控制。</p>
 
 <blockquote><p><strong>关键术语</strong>：逻辑指纹，模块指纹，资源指纹，层级指纹，操作指纹，错误解析判据（E1-E5），编码员间一致性，Cohen’s κ</p></blockquote>
 
@@ -549,7 +550,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.0</td>
+<td>v1.0.2</td>
 <td>2026-05-30</td>
 <td>初始创建</td>
 </tr>
@@ -569,7 +570,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

@@ -73,6 +73,8 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLP语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIP的神经似然输入。</p></blockquote>
 
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章基于 PSE 系统视角叙述。按 01-M-00 v1.3.0 管线体系：PSE 覆盖 L1-L5，UPLP/UBMP/UNIP 为 PSE 感知层（L1）的三个输入端口（内部模块名保留），L2 状态估计见 01-M-11，L3 动力学为 01-M-03 主体，L4+L5 见 01-M-12；"五层引擎"为 PSE 内部组织的历史表述，已被管线级组织替代。</p></blockquote>
+
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 
 <hr class="section-divider">
@@ -83,9 +85,9 @@
 
 <p><strong>第一层：架构层(Architecture Layer)</strong>——PSE的静态本体论基础。包含：</p>
 <ul>
-<li><strong>M-R-D-S内感架构</strong>：42维状态空间的定义</li>
+<li><strong>M-R-D-S内部架构</strong>：42维状态空间的定义</li>
 <li><strong>G-M-A-R操作语法</strong>：四个原子操作的定义</li>
-<li><strong>S-P外感架构</strong>：环境输入的六层来源分类</li>
+<li><strong>S-P外部架构</strong>：环境输入的六层来源分类</li>
 <li><strong>N-S-R元架构</strong>：最高阶组织原则，在MDT优化目标函数中体现为长期功能完整性指数\(O_i(T)\)的驱动</li>
 </ul>
 
@@ -153,7 +155,7 @@
 
 <p><strong>PSE的输入通道</strong>：PSE是一个多模态贝叶斯融合引擎，其输入来自三个通道：</p>
 <ul>
-<li><strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMP（统一行为测量端口）提供标准化观测函数、工具桥接和个体化贝叶斯校准，最终输出行为似然 p(y_b | Ψ_t)</li>
+<li><strong>行为通道</strong>：传统心理量表、行为任务（如Stroop、N-back）、生态瞬时评估(EMA)——由UBMP（统一行为测量端口）经五层流水线处理（B1 BMR 标准化测量登记 → B2 BAL 行为对齐 → B3 BLK 行为链接 → B4 BCI 行为校准与个体化 → B5 BLI 行为似然接口 <code>/behavioral_likelihood</code>），最终输出行为似然 p(y_b | Ψ_t)</li>
 <li><strong>语义通道</strong>：通过UPLP的PSL将自然语言编译为PCUI，再映射为M-R-D-S状态向量的先验分布</li>
 <li><strong>神经通道</strong>：通过UNIP（统一神经接口端口）将原始神经信号（EEG、fNIRS、PPG等）转换为神经似然 \( p(y_n \mid \Psi_t) \)，以<code>/func_likelihood</code>协议传入PSE</li>
 </ul>
@@ -209,7 +211,7 @@
 
 <h2>18.2.1 定律速查：26条核心命题</h2>
 
-<blockquote><p><strong>说明</strong>：以下26条定律构成心智六论的形式化核心。完整推导及数学细节见01-X-03（心智六论形式化规范）。验证状态分为：<strong>F</strong>=已有实证支持；<strong>X</strong>=理论推导/待验证；<strong>P</strong>=预测性子单元/前瞻性实证待完成。</p></blockquote>
+<blockquote><p><strong>说明</strong>：以下26条定律构成心智六论的形式化核心。完整推导及数学细节见01-X-03（心智六论形式化规范，其 :59 自注「以下数值来自 PSE-M 仿真运行（P2i-m），非经验数据」）。验证状态分为：<strong>X</strong>=理论推导/待验证；<strong>P</strong>=预测性子单元/前瞻性实证待完成；<strong>待补文献</strong>=09-26 改档批遗留位，该条或属外部学科既有事实，待属主窗补可定位文献锚点后定档。本表不设实证档：IET v3.0 中 F＝既有事实、实证档是 E（分册VI:94／附录A:24），而本表无一条可回溯实证读数，故 F 义项不再列于本表。表内点值与点区间为 PSE-M 仿真取值，非经验测量。〔09-26 改档：原「F=已有实证支持」系误标，据 01-M-03:261-288 状态列无一条称实证＋01-X-03:59 自注非经验数据；函 A2／A3〕</p></blockquote>
 
 <p><strong>MCT（心智编译理论）——5条定律</strong></p>
 
@@ -237,8 +239,8 @@
 <tr>
 <td>MCT-3</td>
 <td>语境消歧优先</td>
-<td>当多义词存在语境关键词匹配时，优先采用高置信度消歧规则，仅在置信度<0.5时退回人工确认</td>
-<td>F</td>
+<td>当多义词存在语境关键词匹配时，优先采用高置信度消歧规则，仅在置信度<0.5时退回人工确认（该阈值为工程设计规则，非经验测量）〔09-26 改档：原 F 系误标，无实证锚点，依 R-1 降为 X；函 B7〕</td>
+<td>X</td>
 </tr>
 <tr>
 <td>MCT-4</td>
@@ -309,8 +311,8 @@
 <tr>
 <td>MKT-1</td>
 <td>恢复不对称</td>
-<td>RES-D的恢复速率显著慢于消耗速率，恢复半衰期约为消耗半衰期的3-5倍</td>
-<td>F</td>
+<td>RES-D的恢复速率显著慢于消耗速率，恢复半衰期约为消耗半衰期的3-5倍（PSE-M 仿真取值，非经验测量）〔09-26 改档：原 F 系误标，据 01-X-03:59 该值非经验数据；函 B8 存疑-2：3-5 倍与 01-X-03:83「不对称比 M2=2.5:1」不一，数值孰真待 01 号属主核定，本窗未改数〕</td>
+<td>X</td>
 </tr>
 <tr>
 <td>MKT-2</td>
@@ -321,8 +323,8 @@
 <tr>
 <td>MKT-3</td>
 <td>结构慢变</td>
-<td>STR层的有效变化速率比RES层慢1-2个数量级，比DSP层慢2-3个数量级</td>
-<td>F</td>
+<td>STR层的有效变化速率比RES层慢1-2个数量级，比DSP层慢2-3个数量级（数量级比值为 PSE-M 仿真取值，非经验测量，真实分布待 PSE-C 锚定）〔09-26 改档：原 F 系误标，无实证锚点，依 R-1 降为 X；函 B9〕</td>
+<td>X</td>
 </tr>
 <tr>
 <td>MKT-4</td>
@@ -393,8 +395,8 @@
 <tr>
 <td>MPT-1</td>
 <td>塑性三阶段</td>
-<td>结构改变必须依次经历去稳定化（destabilization）→ 修改（modification）→ 巩固（consolidation），不可跳过</td>
-<td>F</td>
+<td>结构改变必须依次经历去稳定化（destabilization）→ 修改（modification）→ 巩固（consolidation），不可跳过〔09-26 改档：「已有实证支持」字样撤销（R-1：同处无 DIVE／SIPE 编号、无 DOI＋页码＋效应量）；本条读起来像外部神经科学既有事实，本窗既不代为背书亦不代为定档——标为待补文献，函存疑-3〕</td>
+<td>待补文献</td>
 </tr>
 <tr>
 <td>MPT-2</td>
@@ -405,14 +407,14 @@
 <tr>
 <td>MPT-3</td>
 <td>巩固不稳定</td>
-<td>新修改的STR连接在初始巩固期（约4-12周）内不稳定，易被应激事件回弹</td>
-<td>F</td>
+<td>新修改的STR连接在初始巩固期（约4-12周）内不稳定，易被应激事件回弹（4-12 周为 PSE-M 仿真取值，非经验测量）〔09-26 改档：同 MPT-1，撤实证字样、标待补文献，函 B11／存疑-3〕</td>
+<td>待补文献</td>
 </tr>
 <tr>
 <td>MPT-4</td>
 <td>塑性窗口时间锁</td>
-<td>重大结构改变（RELINK）需匹配睡眠依赖的再巩固时间窗，脱离该时间窗的效率降低>50%</td>
-<td>F</td>
+<td>重大结构改变（RELINK）需匹配睡眠依赖的再巩固时间窗，脱离该时间窗的效率降低>50%（>50% 为模型内仿真取值，非经验测量；「睡眠依赖的再巩固」系类比自外部睡眠与记忆研究，非本框架实测）〔09-26 改档：同 MPT-1，撤实证字样、标待补文献，函 B12／R-3〕</td>
+<td>待补文献</td>
 </tr>
 </tbody>
 </table>
@@ -491,7 +493,7 @@
 
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLP）和神经（UNIP）三个通道的输入。</p></blockquote>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些基础设施提供？UNIP在其中扮演什么角色？</p></blockquote>
+<blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些 L1 输入端口提供？UNIP在其中扮演什么角色？</p></blockquote>
 <hr class="section-divider">
 <hr class="section-divider">
 <div class="version-record-title">版本记录</div>
@@ -503,8 +505,8 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.0</td>
-<td>2026-05-31</td>
+<td>v1.1.0</td>
+<td>2026-09-26</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -523,7 +525,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

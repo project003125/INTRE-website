@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。影子非线性口径（15-RPT-49 v1.3 承诺句·2026-09-25 复检补并，原改字句本页无存、系并入非替换）：预测值全 >5%（实测 glm 批 4.47% 已跌破）；三厂观测高于独立噪声模型预测 28%–50%、方向相同（出处：CORR-CORE-役后时效追加 §一.2）。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
--->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录L：架构速查——推导链与公理体系 · INTRE 导论教材</title>
@@ -73,6 +70,9 @@
 
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">附录L：架构速查——推导链与公理体系</h1>
+
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <p><strong>本附录定位</strong>：改编自INTRE项目源文档02-A-17（架构论证概要v2.4），是第5章“架构推导链”的完整展开。本速查版保留核心推导逻辑和关键结论，省略详细论证材料和替代方案比较。</p>
 
 <hr class="section-divider">
@@ -127,7 +127,7 @@
 <p><strong>关键符号区分</strong>：</p>
 <ul>
 <li>N-S-R中的R = Realization（实现）</li>
-<li>M-R-P中的R = Ring（调度环）</li>
+<li>M-R-P中的R = Ring（控制环）</li>
 <li>M-R-D-S中的R = Resource（资源）</li>
 </ul>
 
@@ -236,7 +236,7 @@
 
 <hr class="section-divider">
 
-<h2>L.5 内感架构（M-R-D-S）：心智的状态描述语法</h2>
+<h2>L.5 内部架构（M-R-D-S）：心智的状态描述语法</h2>
 
 <p><strong>三维骨架</strong>：</p>
 
@@ -446,7 +446,7 @@
 
 <hr class="section-divider">
 
-<h2>L.8 外感架构（S-P）：环境参照系的注入</h2>
+<h2>L.8 外部架构（S-P）：环境参照系的注入</h2>
 
 <p><strong>S-层（Source）</strong>：六层次环境分类——微系统、中系统、外系统、宏系统、时间系统、数字系统</p>
 
@@ -487,13 +487,11 @@
 <td>C4: D→R→S序列默认优先级</td>
 <td>低功能系统中跳过序列效果更优</td>
 </tr>
-<tr>
-<td>C5: M3-RES-D独立存在</td>
-<td>**强证伪**：相关均<0.20；**灰区**：0.20-0.25；**支持**：>0.25</td>
-</tr>
 </tbody>
 </table>
 </div>
+
+<blockquote><p><strong>v1.1.3 同步说明（2026-08-26）</strong>：原「五条核心主张可证伪性」表中 C5（M3-RES-D 独立存在）作为测试探针的主张已于 2026-08-26 废除——M3-RES-D 保留为架构构念、不再承担独立实证靶点角色（详见 05-R-01 v1.3.0、05-M-02 v4.1.0）。<strong>实证测试探针锚定于 18 号工程 DIVE（DMD 迭代验证工程）</strong>，通过 DMD-P1~P6 连锁预测（主结局 → 神经机制 → 耦合检验）检验框架核心命题。本表保留 C1-C5 完整格式作为历史示例，读者判断主张时以 05-R-01 v1.3.0 现行版本为准。</p></blockquote>
 
 <p><strong>构念状态管理体系</strong>：Normative Core → Provisional Construct → Derived/Dependent → Deprecated</p>
 
@@ -639,8 +637,6 @@
 </tbody>
 </table>
 </div>
-
-<hr class="section-divider">
 <hr class="section-divider">
 <hr class="section-divider">
 <div class="version-record-title">版本记录</div>
@@ -652,8 +648,8 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.1.1</td>
-<td>2026-05-30</td>
+<td>v1.1.3</td>
+<td>2026-08-26</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -672,7 +668,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

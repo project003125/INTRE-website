@@ -71,6 +71,8 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第19章 系统动力学：资源、调度与结构方程</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)掌握RES-D的耗竭-恢复方程的基本形式及参数含义；(2)理解DSP-F/B切换的阈值模型；(3)描述STR-C权重更新和STR-R信念更新的学习规则；(4)理解模块间耦合的数学表达及其在依赖矩阵中的体现。</p></blockquote>
 
 <hr class="section-divider">
@@ -97,7 +99,7 @@ $$
 
 <blockquote><p><strong>⚠️ 工程判断声明</strong>：当前使用指数衰减作为简化形式，可根据实证数据替换为幂律、双指数或带记忆项等更复杂模型。</p></blockquote>
 
-<p>（v1.1 补充；在 2026-07 管线体系下更新）在当前 PSE 感知层 L1 的三端口输入架构中，上述动力学方程的观测输入来自三个 IODS 输入端口的贝叶斯融合：UBMP 作为 L1-B 行为端口提供行为似然 p(y_b|Ψ)，UPLP 作为 L1-S 语义端口提供语义似然 p(y_s|Ψ)，UNIP 作为 L1-N 神经端口提供神经似然 p(y_n|Ψ)。三端口似然通过 PSE 状态层（L2+）的贝叶斯乘积更新状态后验（详见第 18 章 §18.1 及 01-A-01）。当某端口不可用时，该端口似然置为 1，系统退化为剩余端口融合。<small style="color:var(--color-slate-500);font-size:0.85em;">（旧表述"FLP 四基础设施架构"已于 2026-07 替换为 IODS 三端口 + PSE 状态层的两系统边界。）</small></p>
+<p>（v1.1 补充，2026-07 管线语境化）在当前管线架构中，上述动力学方程的观测输入来自三个独立通道（PSE 感知层 L1 输入端口）的贝叶斯融合：UBMP 提供行为似然 p(y_b|Ψ)，UPLP 提供语义似然 p(y_s|Ψ)，UNIP 提供神经似然 p(y_n|Ψ)。三通道似然通过贝叶斯乘积更新状态后验（详见第 18 章 §18.1 及 01-A-01）。当某通道不可用时，该通道似然置为 1，系统退化为剩余通道融合。</p>
 
 <p><strong>多资源竞争</strong>。多个RES-D分量可能共享同一上游供给源。当总需求超过供给时，资源分配遵循竞争规则：</p>
 
@@ -139,7 +141,7 @@ $$
 </table>
 </div>
 
-<p><strong>恢复不对称定律的经验基础</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\(\gamma / \beta > 1\)，典型比值2-5。</p>
+<p><strong>恢复不对称的类比性依据（外部学科现象观察，非本框架实测）</strong>：自我控制任务表现下降在短暂休息后仅部分恢复；睡眠剥夺后的认知功能需要更长的恢复时间。PSE中形式化为\(\gamma / \beta > 1\)，典型比值2-5（PSE-M 仿真取值，非经验测量；外部文献锚点待补）。〔09-26 改档：原「经验基础」措辞违 R-1／R-3；据 01-X-03:59 该比值非经验数据、01-X-03:83 该项推导基础自注「热力学/生理学经验值（类比外推，L2s-2）」；函 C2／C3〕</p>
 
 <hr class="section-divider">
 
@@ -325,8 +327,8 @@ $$
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.1.0</td>
-<td>2026-06-07</td>
+<td>v1.1.3</td>
+<td>2026-09-26</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -345,7 +347,7 @@ $$
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--
-代际注记（定义代际 · 06-格式治理 2026-09-17）：本页所引 M1-M6 定义系 01-M-01 现行正式定义。11-CORE 第二轮子课题02 已产出 M1-M6 当前工作定义（现 v0.10.4，Preview·达标冻结版，术语登记见 06-S-02 §二十一，权威登记 00-M-05 §三；规范副本与活指针已同步 v0.10.4），该体系经 DR-2026-09-17-CORE-003 择定走路径 B（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 DR-2026-09-22-CORE-004 §五 两行必用句式同句标「池／线／独立性」），尚未取代 01-M-01。影子非线性口径（15-RPT-49 v1.3 承诺句·2026-09-25 复检补并，原改字句本页无存、系并入非替换）：预测值全 >5%（实测 glm 批 4.47% 已跌破）；三厂观测高于独立噪声模型预测 28%–50%、方向相同（出处：CORR-CORE-役后时效追加 §一.2）。故本页正文、数据与结论保持原貌、未作改写；转正批落地后，本页所涉分量名与结论须按新代际另行复核。处置依据：RPT-CORE-M1M6四分句版转正前置调查 §八 第 3／4 批；标注体例沿用 06-S-02 §十五（标注 ≠ 修订，不升版）。本注记为源码级编排标注，页面尚未上线；可见化呈现与上线另行报批（06-S-06 §14）。
--->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第5章 架构推导：从元公理到操作系统 · INTRE 导论教材</title>
@@ -74,6 +71,8 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第5章 架构推导：从元公理到操作系统</h1>
 
+<blockquote><p><strong>代际注记（定义代际 · 06-格式治理 2026-09-17）</strong>：本文所引 M1-M6 定义系 <code>01-M-01</code> <strong>现行正式定义</strong>。11-CORE 第二轮子课题02 已产出 M1-M6 <strong>当前工作定义</strong>（现 <strong>v0.10.4</strong>，<strong>Preview·达标冻结版</strong>，术语登记见 <code>06-S-02</code> §二十一，权威登记 <code>00-M-05</code> §三；规范副本与活指针已同步 v0.10.4），该体系经 <code>DR-2026-09-17-CORE-003</code> 择定走<strong>路径 B</strong>（前置门＝门 A；D-R2／D-R2b 两役已跑完、门 A 未过 ⇒ 转正未启动，引用读数须按 <code>DR-2026-09-22-CORE-004</code> §五 两行必用句式同句标「池／线／独立性」），<strong>尚未取代</strong> <code>01-M-01</code>。故本文正文、数据与结论<strong>保持原貌、未作改写</strong>；转正批落地后，本文所涉分量名与结论须按新代际<strong>另行复核</strong>。处置依据：<code>RPT-CORE-M1M6四分句版转正前置调查</code> §八 第 3／4 批；标注不修改原文任何措辞、不升版。</p></blockquote>
+
 <blockquote><p><strong>本章定位</strong>：本章展示推导链的逻辑骨架。完整的论证材料、替代方案比较和数学细节见<strong>附录L</strong>。建议读者先通读本章获得整体图景，再根据需要查阅附录。</p></blockquote>
 
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 画出从 N-S-R 元公理到 G-M-A-R 操作语法的完整推导链；(2) 解释每一步推导中“上位概念如何被操作化定义为下位概念”；(3) 陈述 R-D-S 三维作为存量-流量-结构在系统动力学中的数学对应；(4) 理解 G-M-A-R 四操作的靶点合法性矩阵是如何从 R-D-S 状态空间自然导出的；(5) 说明为什么 INTRE 的组件不是“被发明”的，而是“被推导”的。</p></blockquote>
@@ -137,11 +136,11 @@
 
 <pre><code class="language-mermaid">flowchart TD
     A[&quot;N-S-R 元公理&lt;br&gt;需要→结构→实现循环&quot;]
-    A -- &quot;S 被操作化定义为&quot; --&gt; B[&quot;M-R-P 通用架构&lt;br&gt;模块 + 调度环 + 剧本&quot;]
+    A -- &quot;S 被操作化定义为&quot; --&gt; B[&quot;M-R-P 通用架构&lt;br&gt;模块 + 控制环 + 剧本&quot;]
     B -- &quot;特化到人类心智&quot; --&gt; C[&quot;M1-M6 六功能模块&quot;]
     B -- &quot;状态描述需求&quot; --&gt; D[&quot;M-R-D-S 状态语法&lt;br&gt;资源·调度·结构 三维&quot;]
     D -- &quot;干预需求自然导出&quot; --&gt; E[&quot;G-M-A-R 操作语法&lt;br&gt;门控·调制·校准·重联&quot;]
-    B -- &quot;环境完整性&quot; --&gt; F[&quot;S-P 外感架构&lt;br&gt;源·模式 六层次&quot;]
+    B -- &quot;环境完整性&quot; --&gt; F[&quot;S-P 外部架构&lt;br&gt;源·模式 六层次&quot;]
     E &lt;--&gt; F
     D &lt;--&gt; F</code></pre>
 
@@ -171,7 +170,7 @@
 <li>M-R-D-S 的 S = Structure（实例化），领域特化为 STR-R/C/S 三分法</li>
 </ul>
 
-<p>具体而言，N-S-R 中的 S 是一个跨域通用的<strong>概念槽</strong>。在后续推导中，这个 S 被逐步实例化：在 M-R-P 层，S 被操作化定义为“模块+调度环+剧本”；在 M-R-D-S 层，S 进一步被特化为 STR-R、STR-C 和 STR-S。三者是“上位概念 → 实例化”的推导关系。</p>
+<p>具体而言，N-S-R 中的 S 是一个跨域通用的<strong>概念槽</strong>。在后续推导中，这个 S 被逐步实例化：在 M-R-P 层，S 被操作化定义为“模块+控制环+剧本”；在 M-R-D-S 层，S 进一步被特化为 STR-R、STR-C 和 STR-S。三者是“上位概念 → 实例化”的推导关系。</p>
 
 <hr class="section-divider">
 
@@ -185,7 +184,7 @@
 
 <ul>
 <li><strong>M（Module 模块）</strong>：系统的功能组件集与能力边界。回答“用什么来做”的问题。</li>
-<li><strong>R（Ring 调度环）</strong>：R1→R5 负反馈控制流程。回答“如何持续调整”的问题。</li>
+<li><strong>R（Ring 控制环）</strong>：R1→R5 负反馈控制流程。回答“如何持续调整”的问题。</li>
 <li><strong>P（Playbook 剧本）</strong>：可配置的具体策略与价值协议。回答“具体怎么做”的问题。</li>
 </ul>
 
@@ -196,9 +195,9 @@
 <li><strong>工业机器人</strong>：M = 传感/机械臂，P = 装配序列</li>
 </ul>
 
-<p><strong>符号消歧</strong>：M-R-P 中的 R 指 Ring（调度环），与 N-S-R 中的 R（Realization）和 M-R-D-S 中的 R（Resource）含义不同。</p>
+<p><strong>符号消歧</strong>：M-R-P 中的 R 指 Ring（控制环），与 N-S-R 中的 R（Realization）和 M-R-D-S 中的 R（Resource）含义不同。</p>
 
-<blockquote><p><strong>符号消歧（三 R 总览）</strong>：INTRE 体系中有三个 R，含义各不相同：<br>- N-S-R 中的 R = Realization（实现），指行为输出<br>- M-R-P 中的 R = Ring（调度环），指模块间的信息调度环路<br>- M-R-D-S 中的 R = Resource（资源），指能耗与时间预算</p></blockquote>
+<blockquote><p><strong>符号消歧（三 R 总览）</strong>：INTRE 体系中有三个 R，含义各不相同：<br>- N-S-R 中的 R = Realization（实现），指行为输出<br>- M-R-P 中的 R = Ring（控制环），指模块间的信息控制环路<br>- M-R-D-S 中的 R = Resource（资源），指能耗与时间预算</p></blockquote>
 
 <hr class="section-divider">
 
@@ -235,7 +234,7 @@
 <td>**M3**</td>
 <td>意志</td>
 <td>中央调度与决策</td>
-<td>M-R-P 中调度环（Ring）的核心载体</td>
+<td>M-R-P 中控制环（Ring）的核心载体</td>
 </tr>
 <tr>
 <td>**M4**</td>
@@ -393,13 +392,13 @@
 </tr>
 <tr>
 <td>**GATE**</td>
-<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
+<td>DSP-F, DSP-B, STR-S 激活面（与 D 通道状态结构同构的二值激活态）</td>
 <td>过程/序列失控（过程问题）</td>
 <td>D 维度的流量特性 → 需要通道开关操作</td>
 </tr>
 <tr>
 <td>**ALIGN**</td>
-<td>STR-R</td>
+<td>STR-R（含 STR-S 内容面归约）</td>
 <td>内部规则错误（内容问题）</td>
 <td>S-R 的命题性 → 需要逻辑修正操作</td>
 </tr>
@@ -425,8 +424,8 @@
 <tbody>
 <tr>
 <td>**GATE**</td>
-<td>DSP-F, DSP-B, 运行中的 STR-S 序列</td>
-<td>GATE STR-R, GATE STR-C</td>
+<td>DSP-F, DSP-B, STR-S 激活面（与 D 通道状态结构同构的二值激活态）</td>
+<td>GATE STR-R, GATE STR-C；GATE STR-S 须限定指激活面（内容面归约至 STR-R，由 ALIGN 处理）</td>
 </tr>
 <tr>
 <td>**MODULATE**</td>
@@ -435,8 +434,8 @@
 </tr>
 <tr>
 <td>**ALIGN**</td>
-<td>STR-R</td>
-<td>ALIGN STR-C, ALIGN STR-S</td>
+<td>STR-R（含 STR-S 内容面归约）</td>
+<td>ALIGN STR-C, ALIGN STR-S 激活面</td>
 </tr>
 <tr>
 <td>**RELINK**</td>
@@ -456,11 +455,11 @@
 
 <hr class="section-divider">
 
-<h2>5.7 环境参照：S-P外感架构的补全</h2>
+<h2>5.7 环境参照：S-P外部架构的补全</h2>
 
 <p>M-R-D-S 描述内部状态，G-M-A-R 定义干预操作，但还缺少一个关键维度：<strong>系统在什么样的环境中运行？</strong></p>
 
-<p>S-P（源-模式）外感架构补全了这个缺失的维度：</p>
+<p>S-P（源-模式）外部架构补全了这个缺失的维度：</p>
 
 <ul>
 <li><strong>S-层（Source）</strong>：环境的层级分类。采用并拓展布朗芬布伦纳的生态系统理论——微系统、中系统、外系统、宏系统、时间系统、数字系统。</li>
@@ -469,7 +468,7 @@
 
 <p>S-P 架构不改变 G-M-A-R 原子操作的功能定义，但作为<strong>战略上下文注入器</strong>，决定其执行优先级、时序和风险阈值。</p>
 
-<p><strong>S-P与UNIP的互补</strong>。S-P外感架构描述的是环境信息的<strong>类别和模式</strong>（"什么环境因素在影响系统"），而UNIP神经接口系统描述的是环境信息通过神经通道的<strong>测量和转化</strong>（"如何将环境对神经系统的客观影响转化为功能似然"）。两者的关系是：S-P定义了环境输入的来源分类（微系统到数字系统、P-分量方向），UNIP提供了其中一类——神经生理信号——的标准化采集、校准和映射管道。例如，S-P标注"数字系统环境→M4-DSP-B（情绪唤醒）"这一环境输入路径，UNIP则通过EEG→NFD→NFM→RTE管道将其转化为可量化的神经似然，传入PSE。S-P是<strong>语义框架</strong>（"什么在发生"），UNIP是<strong>测量实现</strong>（"如何量化检测"）。两者共同构成功能层的环境感知体系。</p>
+<p><strong>S-P与UNIP的互补</strong>。S-P外部架构描述的是环境信息的<strong>类别和模式</strong>（"什么环境因素在影响系统"），而UNIP神经接口系统描述的是环境信息通过神经通道的<strong>测量和转化</strong>（"如何将环境对神经系统的客观影响转化为功能似然"）。两者的关系是：S-P定义了环境输入的来源分类（微系统到数字系统、P-分量方向），UNIP提供了其中一类——神经生理信号——的标准化采集、校准和映射管道。例如，S-P标注"数字系统环境→M4-DSP-B（情绪唤醒）"这一环境输入路径，UNIP则通过EEG→NFD→NFM→RTE管道将其转化为可量化的神经似然，传入PSE。S-P是<strong>语义框架</strong>（"什么在发生"），UNIP是<strong>测量实现</strong>（"如何量化检测"）。两者共同构成功能层的环境感知体系。</p>
 
 <hr class="section-divider">
 
@@ -490,7 +489,7 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：INTRE 的五大核心架构不是孤立的发明，而是从一个简洁的元公理出发，经过层层操作化定义被推导出来的完整演绎系统。N-S-R 元公理确立了“需要→结构→实现”的元逻辑；M-R-P 将 S 操作化定义为“模块+调度环+剧本”；M1-M6 将 M 特化为人类心智的六个功能模块；R-D-S 在存量-流量-结构的系统动力学框架下为每个模块提供三维状态描述语法；G-M-A-R 从 R-D-S 的状态空间拓扑中自然导出四个原子干预操作；S-P 补全了环境参照系。这个推导链使 INTRE 区别于“观点集合”，升级为“演绎系统”。</p>
+<p><strong>本章小结</strong>：INTRE 的五大核心架构不是孤立的发明，而是从一个简洁的元公理出发，经过层层操作化定义被推导出来的完整演绎系统。N-S-R 元公理确立了“需要→结构→实现”的元逻辑；M-R-P 将 S 操作化定义为“模块+控制环+剧本”；M1-M6 将 M 特化为人类心智的六个功能模块；R-D-S 在存量-流量-结构的系统动力学框架下为每个模块提供三维状态描述语法；G-M-A-R 从 R-D-S 的状态空间拓扑中自然导出四个原子干预操作；S-P 补全了环境参照系。这个推导链使 INTRE 区别于“观点集合”，升级为“演绎系统”。</p>
 
 <blockquote><p><strong>关键术语</strong>：N-S-R 元公理，M-R-P 通用架构，推导链，操作化定义，存量-流量-结构，靶点合法性矩阵，S-P与UNIP互补</p></blockquote>
 
@@ -508,8 +507,8 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.1.1</td>
-<td>2026-05-30</td>
+<td>v1.2.0</td>
+<td>2026-08-20</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -528,7 +527,7 @@
         <div class="footer-links">
             <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
-            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">

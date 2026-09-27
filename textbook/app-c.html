@@ -116,6 +116,8 @@ print(&quot;PSE environment ready.&quot;)</code></pre>
 
 <p>PSE的核心数据结构是42维状态向量<code>Psi</code>。本示例定义状态向量的索引映射和初始状态。</p>
 
+<blockquote><p><strong>尺子说明（2026-09-25 增 · 依 <code>DR-2026-09-25-KREF-001</code> 第 2 项「改教材侧不改契约侧」）</strong>：本附录是<strong>教学呈现层</strong>，其状态向量为<strong>双尺混用</strong>——RES/DSP 类条目按 0-100（如 <code>M1_RES_D = 75.0</code>），STR 信念／连接类条目按 0-1（如 <code>M4_STR_R = 0.3</code>；<code>:76</code> <code>M2_STR_R</code>、<code>:89</code> <code>M4_STR_C</code> 已自注 0-1），<strong>另有 <code>M3_STR_R</code>、<code>M4_STR_R</code>、<code>M5_STR_R</code>、<code>M6_STR_S</code> 及全部未加注释的条目在尺子标注上属空缺</strong>，读者不得据数值大小反推其尺。PSE 引擎侧唯一有效尺是观测契约 <code>01-M-10:141-144</code> 规定的 <code>y[i] ∈ [0,1]</code>、<code>σ[i] ∈ [0, 1/√12]</code>；迁移规则＝<strong>0-100 项一律 ÷100、0-1 项直接采用、尺子未标项禁止直接进引擎</strong>（须先在 <code>01-M-02</code>／<code>附录A：42子维度列表——符号、定义、分类与测量.md</code> 查明其尺并回标本附录）。实现侧换算通道唯一化于 <code>../12-内核重构工程（KREF）/PSE/pse/contracts/state.py::from_teaching_scale()</code>，本附录不另立第二套换算式。<strong>行号位移登记</strong>：本行为插入行，其后全部行号整体下移 <strong>+2</strong>（被多件引用的 <code>:99</code>→<code>:101</code>、<code>:104</code>→<code>:106</code>、<code>:112</code>→<code>:114</code>、<code>:134</code>→<code>:136</code>、<code>:259</code>→<code>:261</code>、<code>:307</code>→<code>:309</code>、<code>:317</code>→<code>:319</code>），引用本件行号者须按此重锚。</p></blockquote>
+
 <pre><code class="language-python"># 定义子维度索引（简化版，仅列出部分核心维度）
 STATE_INDICES = {
     # M1 具身
@@ -462,8 +464,8 @@ t, states = run_intervention_simulation(intervention, params, t_max=72)
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.0.1</td>
-<td>2026-05-30</td>
+<td>v1.0.2</td>
+<td>2026-09-25</td>
 <td>初始创建</td>
 </tr>
 </tbody>

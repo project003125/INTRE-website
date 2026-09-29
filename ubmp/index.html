@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="../shared/brand.css">
-    <link rel="stylesheet" href="../shared/components.css">
-  <link rel="stylesheet" href="../shared/domain-switch.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20260929">
+    <link rel="stylesheet" href="../shared/components.css?v=20260929">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20260929">
     <style>
         html { scroll-behavior: smooth; }
 
@@ -273,7 +273,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>演变说明（v1.0.0 → v1.1.0）：</strong> 旧 UBMP 三层 <em>L1 注册库 / L2 校准与桥接引擎 / L3 行为似然 API</em>（BHI / BCE / BLA）在 01-M-10 v1.1.0 中扩展为五层 B1-B5。原 <strong>L1（行为测量注册库）</strong> 与 <strong>L3（行为似然 API）</strong> 保持不变，分别对应 <strong>B1 BMR</strong> 与 <strong>B5 BLI</strong>。原 <strong>L2（校准与桥接引擎，BCE）</strong> 因验证对象不同（构念等价性 / 跨工具参数等价性 / 观测函数拟合度）无法合并，拆分为 <strong>B2 BAL</strong>（门控，构念对齐）+ <strong>B3 BLK</strong>（IRT 桥接）+ <strong>B4 BCI</strong>（观测函数 + 个体化）。这一拆分由 01-M-10 §4.1 权威定义。</p>
+            <p><strong>层级演变（01-M-10 v1.1.0）：</strong>旧三层 L1/L2/L3 扩展为五层 B1-B5——原 L2 按验证对象不同拆分为 B2 BAL / B3 BLK / B4 BCI，原 L1、L3 即 B1、B5。</p>
         </div>
 
         <!-- 二、PSE 感知层端口定位 -->
@@ -394,9 +394,8 @@
 
         <!-- 结尾 info-box · 与 IODS 的边界 -->
         <div class="info-box">
-            <p><strong>UBMP 的定位（2026-08 端口体系更新）：</strong> UBMP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>行为模态输入端口（L1-B）</strong>，与 UPLP（语义端口 L1-S）、UNIP（神经端口 L1-N）并列。UBMP 的 B2 BAL（行为语义对齐层）<strong>依赖 UPLP</strong>——两个量表跨工具桥接前必须经 UPLP 语义对齐确认同一 M-R-D-S 构念，这是 UBMP 与 IODS 的核心交叉点。</p>
-            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong> UBMP 不重新定义 42 维坐标系——坐标系的定义侧（M-R-D-S / G-M-A-R / PCUI-L / PSL-L）归 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）。UBMP 是"观测侧"——把结构化行为观测（BHI 条目、量表、EMA、数字表型）转化为 42 维分布上的行为似然 p(y<sub>b</sub>|Ψ)。</p>
-            <p style="margin-top:.6rem;"><strong>当前进展：</strong> UBMP 处于规范设计阶段；五层管道（B1 BMR / B2 BAL / B3 BLK / B4 BCI / B5 BLI）已落定。待 PSE-C 实证校准（B4 校准与个体化层）后可用于临床决策。</p>
+            <p><strong>定位：</strong>UBMP 与 UPLP（L1-S）、UNIP（L1-N）并列构成 IODS 三输入端口；B2 语义对齐前置依赖 UPLP（见 §3.1）。当前处于规范设计阶段，五层管道已落定，待 PSE-C 实证校准（B4）后可用于临床决策。</p>
+            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong>坐标系定义侧归 <a href="/INTRE-website/iods/">IODS</a>；UBMP 是观测侧——把结构化行为观测（BHI 条目、量表、EMA、数字表型）转化为 42 维分布上的行为似然 p(y<sub>b</sub>|Ψ)。</p>
         </div>
     </main>
 
@@ -413,7 +412,7 @@
             <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
-    <script src="../shared/nav-toggle.js"></script>
-  <script src="../shared/domain-switch.js"></script>
+    <script src="../shared/nav-toggle.js?v=20260929"></script>
+  <script src="../shared/domain-switch.js?v=20260929"></script>
 </body>
 </html>

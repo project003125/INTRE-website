@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="../shared/brand.css">
-    <link rel="stylesheet" href="../shared/components.css">
-  <link rel="stylesheet" href="../shared/domain-switch.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20260929">
+    <link rel="stylesheet" href="../shared/components.css?v=20260929">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20260929">
     <style>
         html { scroll-behavior: smooth; }
         .container { margin:0 auto; padding:2rem; }
@@ -54,6 +54,7 @@
         .module-card .module-code { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.8rem; font-weight:600; margin-bottom:.5rem; align-self:flex-start; }
         .module-card h4 { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); }
         .module-card .module-detail { font-size:.9rem; color:var(--color-slate-700); }
+        .op-card h3 { font-size:1rem; letter-spacing:0; margin:0 0 .6rem; }
         .op-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
         .op-card .op-target { font-family:var(--font-mono); font-size:.78rem; color:var(--color-iods); margin-top:.5rem; }
         .op-card .op-detail { font-size:.9rem; color:var(--color-slate-700); }
@@ -179,22 +180,22 @@
 
         <div class="grid-4">
             <div class="op-card">
-                <h4><i class="fas fa-door-open" aria-hidden="true"></i> GATE · 门控</h4>
+                <h3><i class="fas fa-door-open" aria-hidden="true"></i> GATE · 门控</h3>
                 <p class="op-detail">通道开关：启动、抑制或重定向目标进程。调节激活阈值，不改变进程内容。</p>
                 <p class="op-target">直接合法靶点：DSP-F / DSP-B / 运行中的 STR-S 序列</p>
             </div>
             <div class="op-card">
-                <h4><i class="fas fa-sliders-h" aria-hidden="true"></i> MODULATE · 调节</h4>
+                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> MODULATE · 调节</h3>
                 <p class="op-detail">数量调节：注入或节约能量，改变资源存量水平与可用性。</p>
                 <p class="op-target">直接合法靶点：RES-D（唯一直接合法）</p>
             </div>
             <div class="op-card">
-                <h4><i class="fas fa-arrows-spin" aria-hidden="true"></i> ALIGN · 校准</h4>
+                <h3><i class="fas fa-arrows-spin" aria-hidden="true"></i> ALIGN · 校准</h3>
                 <p class="op-detail">规则修正：改写错误的、不合理的信念或决策算法。</p>
                 <p class="op-target">直接合法靶点：STR-R（规则内容）</p>
             </div>
             <div class="op-card">
-                <h4><i class="fas fa-link" aria-hidden="true"></i> RELINK · 重联</h4>
+                <h3><i class="fas fa-link" aria-hidden="true"></i> RELINK · 重联</h3>
                 <p class="op-detail">联系重构：解除病态的情感绑定或建立新的价值连接。</p>
                 <p class="op-target">直接合法靶点：STR-C（连接结构）</p>
             </div>
@@ -334,7 +335,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>PSA-L 为历史名</strong>：PSA-L（心理语义网络 / Psychological Semantic Architecture-Layer）作为历史命名保留，其内容按 R1 决策已重组入 <strong>§二（状态空间）</strong>、<strong>§三（结构约束）</strong>、<strong>§四（PSL-L，本节）</strong>、<strong>§五（PCUI-L，本节）</strong>、<strong>§六（概念编码）</strong>——PSA-L 不再作为独立组件名。</p>
+            <p><strong>PSA-L 为历史名</strong>（心理语义网络）：内容已重组入本页 §二-§六，不再作为独立组件名。</p>
             <p style="margin-top:.5rem;"><strong>核心定义层 vs 术语实例层</strong>：PCUI/PSL 编码体系与五层词汇结构属<strong>核心定义层</strong>（架构级 A-16 四条件，极慢）；具体术语词条增补、归属调整属<strong>术语实例层</strong>（数据驱动，由 L1-S 通过知识生产流水线管理，详见 01-M-07）。</p>
         </div>
 
@@ -416,7 +417,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>与 UPLP 的边界</strong>：IODS 定义"是什么"（状态坐标系、操作语法、知识基础设施）；UPLP 编译"怎么观测"（自然语言 → 语义似然的五层编译流水线 S1-S5）。<strong>IODS 不可用则编译无降级</strong>——UPLP 作为 PSE 感知层 L1-S 语义输入端口，<strong>强依赖</strong> IODS；IODS 不可用时 UPLP 无可编译的坐标系，编译无降级路径。IODS 与 UPLP 并列，共同构成 L0 + L1-S 的静态-观测分层。</p>
+            <p><strong>与 UPLP 的边界</strong>：IODS 定义"是什么"（坐标系、操作语法、知识基础设施）；UPLP 编译"怎么观测"（自然语言 → 语义似然，S1-S5）。UPLP <strong>强依赖</strong> IODS——无坐标系则编译无降级路径。二者并列构成 L0 + L1-S 的静态-观测分层。</p>
             <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）</strong>：IODS <strong>继承原 UPLP 定义功能</strong>——原 UPLP 文档族中的 A 面（定义面，UPLP-A）整体迁移至 IODS；B 面（编译面，UPLP-B）保留为现行 UPLP 页（L1-S 端口）。这是 v1.0 拆分决策（P1 + R1）的落地结果：定义侧与编译侧解耦，使 UPLP 聚焦于"自然语言 → 语义似然"的工程行为，IODS 聚焦于"42 维坐标系 + 操作语法 + 知识基础设施"的本体参照。</p>
             <p style="margin-top:.6rem;"><strong>与 PSE / UPLP / UBMP / UNIP 的关系图（简版）</strong>：</p>
             <div class="code-block" style="font-size:0.82rem;">
@@ -449,7 +450,7 @@ PSE 系统层（综合：贝叶斯融合、规划、伦理门控）
             <p>版本 v2.4 (2026-08-03) · CC0 1.0</p>
         </div>
     </footer>
-    <script src="../shared/nav-toggle.js"></script>
-  <script src="../shared/domain-switch.js"></script>
+    <script src="../shared/nav-toggle.js?v=20260929"></script>
+  <script src="../shared/domain-switch.js?v=20260929"></script>
 </body>
 </html>

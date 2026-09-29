@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="../shared/brand.css">
-    <link rel="stylesheet" href="../shared/components.css">
-  <link rel="stylesheet" href="../shared/domain-switch.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20260929">
+    <link rel="stylesheet" href="../shared/components.css?v=20260929">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20260929">
     <style>
         html { scroll-behavior: smooth; }
         .container { margin:0 auto; padding:2rem; }
@@ -48,7 +48,7 @@
         .code-block { background:var(--color-slate-900); color:var(--color-slate-200); padding:1rem 1.5rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.85rem; line-height:1.65; overflow-x:auto; margin:1rem 0; border:var(--stroke-hairline) solid rgba(255,255,255,0.05); }
         .badge { background:var(--color-navy-400); color:var(--color-white); font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:var(--radius-pill); margin-left:.5rem; display:inline-block; }
         .layer-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.4rem; }
-        .layer-card h4 { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); margin:0.4rem 0 0.5rem; }
+        .layer-card h3 { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); margin:0.4rem 0 0.5rem; }
         .layer-card .layer-num { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.75rem; font-weight:600; margin-bottom:.5rem; letter-spacing:.05em; }
         .layer-card .layer-tag { display:inline-block; background:var(--color-navy-50); color:var(--color-navy-600); padding:.15rem .55rem; border-radius:var(--radius-pill); font-size:.7rem; font-weight:600; margin-left:.4rem; }
         .layer-card p { font-size:.88rem; line-height:1.55; margin:.3rem 0; color:var(--color-slate-700); }
@@ -99,31 +99,31 @@
         <div class="grid-5">
             <div class="layer-card">
                 <span class="layer-num">S1</span> <span class="layer-tag">STP</span>
-                <h4>Semantic Text Preprocessing</h4>
+                <h3>Semantic Text Preprocessing</h3>
                 <p><strong>语义文本预处理</strong>：分词、实体识别、语境消歧、形态归一化，将原始文本拆分为可匹配的结构化单元。</p>
                 <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PSL-L（形态变体层、上下文规则层）</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">S2</span> <span class="layer-tag">SMT</span>
-                <h4>Semantic Mapping &amp; Tokenization</h4>
+                <h3>Semantic Mapping &amp; Tokenization</h3>
                 <p><strong>语义词汇匹配</strong>：将结构化文本单元匹配到 PSL-L 词条，生成 PCUI 候选集（含消歧与共现修正），每个候选携带初始置信度。</p>
                 <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PSL-L 语义映射层</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">S3</span> <span class="layer-tag">SCM</span>
-                <h4>Semantic Coordinate Mapping</h4>
+                <h3>Semantic Coordinate Mapping</h3>
                 <p><strong>语义坐标映射</strong>：将 PCUI 候选映射到 M-R-D-S 坐标，生成 42 维分布（含坐标范围与分布形态）。稀疏观测维度在本步保留为空。</p>
                 <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：PCUI-L（坐标映射、文化变体）</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">S4</span> <span class="layer-tag">SCW</span>
-                <h4>Semantic Confidence Weighting</h4>
+                <h3>Semantic Confidence Weighting</h3>
                 <p><strong>语义置信加权</strong>：按编译确定性（W<sub>编译</sub>、副词强度 λ、隐喻映射、文化权重）调制似然形状：歧义越大，σ<sub>s</sub> 越大，似然越平坦。</p>
                 <p style="color:var(--color-slate-500);font-size:.82rem;">涉及库：仪器参数层（本页 §三）</p>
             </div>
             <div class="layer-card">
                 <span class="layer-num">S5</span> <span class="layer-tag">SLO</span>
-                <h4>Semantic Likelihood Output</h4>
+                <h3>Semantic Likelihood Output</h3>
                 <p><strong>语义似然输出</strong>：按 L1-I §2.4 观测块格式 {y<sub>s</sub>, σ<sub>s</sub>} 封装，不可编译维度写入无信息编码。</p>
                 <p style="color:var(--color-slate-500);font-size:.82rem;">涉及契约：L1-I §2.4 / §3.1</p>
             </div>
@@ -270,10 +270,9 @@
 
         <!-- 结尾 info-box -->
         <div class="info-box">
-            <p><strong>UPLP 的定位（2026-08 端口体系更新）：</strong> UPLP 是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>，与 UNIP（神经端口 L1-N）、UBMP（行为端口 L1-B）并列，构成 IODS 三输入端口。三端口通过 PSE 状态层（L2+）执行贝叶斯乘积融合，将各自输出合并为联合似然：</p>
+            <p><strong>定位：</strong>UPLP 与 UNIP（L1-N）、UBMP（L1-B）并列构成 IODS 三输入端口，经 PSE 状态层（L2+）贝叶斯乘积融合：</p>
             <p style="text-align:center;font-family:var(--font-mono);font-size:1rem;margin:.6rem 0;">p(y | Ψ) = p(y<sub>b</sub> | Ψ) · p(y<sub>s</sub> | Ψ) · p(y<sub>n</sub> | Ψ)</p>
-            <p><strong>当前进展：</strong> UPLP 处于规范设计阶段。定义侧内容（M-R-D-S 状态语法 / G-M-A-R 操作语法 / PCUI-L / PSL-L 等）已整体迁移至 <a href="/INTRE-website/iods/">IODS</a>（L0 本体页）；UPLP 本体页聚焦于"编译行为 + 接口契约 + 离线知识生产流水线"。五层编译流水线与降级模式以本文档为准，待 PSE-C 实证校准（仪器参数 P2i-m）后可用于临床决策。</p>
-            <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）：</strong> 原 UPLP 文档族（v1.0）由 A 面（定义面，UPLP-A：M-R-D-S/G-M-A-R/PCUI-L/PSL-L）与 B 面（编译面，UPLP-B：五层流水线 S1-S5 + 接口契约）构成；v1.0 拆分决策（P1 + R1）将 <strong>A 面整体移交给 IODS</strong>（<strong>IODS 继承原 UPLP 定义功能</strong>），B 面保留为现行 UPLP。本页仅承载 B 面（编译行为 + 接口契约 + 离线知识生产流水线）；定义侧的所有语法、坐标、操作均不再在 UPLP 重复定义——请前往 <a href="/INTRE-website/iods/">IODS</a> 查阅。</p>
+            <p style="margin-top:.6rem;"><strong>当前进展：</strong>规范设计阶段，五层流水线与降级模式以本页为准，待 PSE-C 实证校准（P2i-m）后可用于临床决策。定义侧（M-R-D-S / G-M-A-R / PCUI-L / PSL-L）已整体移交 <a href="/INTRE-website/iods/">IODS</a>，本页只承载编译行为 + 接口契约 + 离线知识生产流水线。</p>
         </div>
     </main>
 
@@ -290,7 +289,7 @@
             <p>版本 v2.5 (2026-08-03) · CC0 1.0</p>
         </div>
     </footer>
-    <script src="../shared/nav-toggle.js"></script>
-  <script src="../shared/domain-switch.js"></script>
+    <script src="../shared/nav-toggle.js?v=20260929"></script>
+  <script src="../shared/domain-switch.js?v=20260929"></script>
 </body>
 </html>

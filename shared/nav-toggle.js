@@ -101,3 +101,55 @@
         });
     });
 })();
+
+// ------------------------------------------------------------------
+// v2.5 顶部阅读进度条（rAF 节流；纯装饰性读数，无障碍中性）
+// 样式在 shared/components.css 的 .scroll-progress；无 JS 时不渲染。
+// ------------------------------------------------------------------
+(function() {
+    'use strict';
+    if (!document.body) return;
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    function update() {
+        ticking = false;
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - window.innerHeight;
+        var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        bar.style.transform = 'scaleX(' + p + ')';
+    }
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(update);
+        }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+})();
+
+// ------------------------------------------------------------------
+// v2.5.1 移动端表格滑动提示：仅当 .table-responsive 实际横向溢出时
+// 标注 .is-scrollable（配合 components.css 的条件显示），resize 时复扫。
+// ------------------------------------------------------------------
+(function() {
+    'use strict';
+    function scan() {
+        var els = document.querySelectorAll('.table-responsive');
+        for (var i = 0; i < els.length; i++) {
+            var el = els[i];
+            var scrollable = el.scrollWidth - el.clientWidth > 4;
+            el.classList.toggle('is-scrollable', scrollable);
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scan);
+    } else {
+        scan();
+    }
+    window.addEventListener('resize', scan);
+})();

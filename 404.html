@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 · 状态未定义 · INTRE</title>
+    <meta name="description" content="你要访问的页面不在 INTRE 当前状态空间中——链接可能已移动，或地址有误。">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="404 · 状态未定义 · INTRE">
+    <meta property="og:description" content="你要访问的页面不在 INTRE 当前状态空间中——链接可能已移动，或地址有误。">
+    <meta property="og:type" content="website">
+    <!-- 404 会被 GitHub Pages 在任意缺失路径下原样吐出，资源一律用站点根绝对路径 -->
+    <link rel="icon" href="/INTRE-website/assets/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/INTRE-website/shared/brand.css?v=20260929">
+    <link rel="stylesheet" href="/INTRE-website/shared/components.css?v=20260929">
+    <style>
+        /* 404 专页（15 号扫尾批 2026-09-29）——自足单页，token 全取自 brand.css */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-navy-900);
+            color: var(--color-white);
+        }
+        .nf-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .nf-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            pointer-events: none;
+        }
+        .nf-card {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 560px;
+            background: rgba(13, 35, 71, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            box-shadow: var(--shadow-hard-navy);
+            padding: 3rem 2.6rem 2.8rem;
+        }
+        .nf-code {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: var(--tracking-tech);
+            text-transform: uppercase;
+            color: var(--color-amber-500);
+            display: block;
+            margin-bottom: 1.4rem;
+        }
+        .nf-title {
+            font-family: var(--font-logo);
+            font-size: clamp(2.4rem, 8vw, 3.6rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--color-white);
+            margin-bottom: 1.1rem;
+        }
+        .nf-sub {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2.2rem;
+        }
+        .nf-path {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.55);
+            word-break: break-all;
+            margin-bottom: 2.2rem;
+        }
+        .nf-actions {
+            display: flex;
+            gap: 0.9rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nf-actions .btn-outline {
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .nf-actions .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--color-white);
+        }
+        .nf-coord {
+            position: relative;
+            z-index: 1;
+            padding: 0.85rem 1.5rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.55);
+            border-top: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(8, 24, 49, 0.75);
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .nf-coord .coord-accent { color: var(--color-amber-500); }
+        @media (max-width: 480px) {
+            .nf-card { padding: 2.2rem 1.5rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <main class="nf-main">
+        <div class="nf-card">
+            <span class="nf-code">HTTP 404 · State Not Defined</span>
+            <h1 class="nf-title">该状态向量不存在</h1>
+            <p class="nf-sub">你要访问的页面不在当前状态空间——链接可能已移动，或地址有误。</p>
+            <span class="nf-path" id="nf-path"></span>
+            <div class="nf-actions">
+                <a class="btn btn-amber" href="/INTRE-website/">返回首页 <span aria-hidden="true">→</span></a>
+                <a class="btn btn-outline" href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </main>
+    <footer class="nf-coord" aria-hidden="true">
+        <span class="coord-accent">ERR::404</span>&nbsp;—&nbsp;ψ(<span id="nf-coord-path"></span>)&nbsp;undefined&nbsp;·&nbsp;IET v3.0&nbsp;·&nbsp;FLP·CORE
+    </footer>
+    <script>
+        (function () {
+            var p = decodeURI(location.pathname).replace(/\/$/, '');
+            document.getElementById('nf-path').textContent = p || '/';
+            document.getElementById('nf-coord-path').textContent = p || '/';
+        })();
+    </script>
+</body>
+</html>

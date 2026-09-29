@@ -23,11 +23,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="../shared/brand.css">
-    <link rel="stylesheet" href="../shared/components.css">
-  <link rel="stylesheet" href="../shared/domain-switch.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20260929">
+    <link rel="stylesheet" href="../shared/components.css?v=20260929">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20260929">
     <style>
         html { scroll-behavior: smooth; }
+
+        /* GLOSSARY SEARCH */
+        .glossary-search {
+            display: flex; align-items: center; gap: .5rem;
+            max-width: 420px; margin-top: 1rem;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sm);
+            padding: .55rem .9rem;
+        }
+        .glossary-search i { color: var(--color-navy-400); }
+        .glossary-search input {
+            flex: 1; min-width: 0; border: none; outline: none;
+            font-family: var(--font-body); font-size: .92rem; color: var(--color-slate-900);
+            background: transparent;
+        }
+        .glossary-search-count { font-family: var(--font-mono); font-size: .72rem; color: var(--color-slate-500); white-space: nowrap; }
 
         /* PAGE HEADER */
         .page-header {
@@ -289,6 +306,11 @@
                 <span><i class="fas fa-tag" aria-hidden="true"></i> 80+ 术语</span>
                 <span><i class="fas fa-layer-group" aria-hidden="true"></i> 8 类别</span>
             </div>
+            <div class="glossary-search">
+                <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" id="glossary-q" placeholder="筛选术语，如 GMAR、依赖、门控…" aria-label="筛选术语">
+                <span class="glossary-search-count" id="glossary-count" role="status" aria-live="polite"></span>
+            </div>
         </div>
     </div>
 
@@ -414,7 +436,7 @@
         <div class="term-grid">
             <div class="term-item"><strong>REVER</strong> <span class="sep">—</span> <span class="def">关系型 AI 伦理引擎：结构化伦理门控</span></div>
             <div class="term-item"><strong>Dₛ</strong> <span class="sep">—</span> <span class="def">依赖分数：量化用户依恋程度</span></div>
-            <div class="term-item"><strong>四道门控</strong> <span class="sep">—</span> <span class="def">输入 → 诊断 → 依赖 → 输出，四重伦理检查</span></div>
+            <div class="term-item"><strong>六门控一回环</strong> <span class="sep">—</span> <span class="def">G0 定义 → G1 观测 → G2 估计 → G3 动力学 → G4 规划 → G5 执行 ＋ EC 伦理回环（2026-09 定稿，取代旧「四道门控」口径）</span></div>
         </div>
 
         <h2 class="section-heading"><i class="fas fa-balance-scale" aria-hidden="true"></i> 证据等级标签 (IET v3.0)</h2>
@@ -446,7 +468,38 @@
             <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
         </div>
     </footer>
-    <script src="../shared/nav-toggle.js"></script>
-  <script src="../shared/domain-switch.js"></script>
+    <script>
+    /* glossary/?q= 过滤——兑现首页 JSON-LD SearchAction 承诺；无 JS 时输入框不渲染行为，列表全量可见 */
+    (function () {
+        'use strict';
+        var input = document.getElementById('glossary-q');
+        if (!input) return;
+        var items = Array.prototype.slice.call(document.querySelectorAll('.term-item'));
+        var grids = Array.prototype.slice.call(document.querySelectorAll('.term-grid'));
+        var count = document.getElementById('glossary-count');
+        var initial = new URLSearchParams(location.search).get('q');
+        if (initial) input.value = initial;
+        function apply() {
+            var q = input.value.trim().toLowerCase();
+            var visible = 0;
+            items.forEach(function (el) {
+                var hit = !q || el.textContent.toLowerCase().indexOf(q) !== -1;
+                el.style.display = hit ? '' : 'none';
+                if (hit) visible++;
+            });
+            grids.forEach(function (g) {
+                var any = g.querySelector('.term-item:not([style*="none"])');
+                g.style.display = any ? '' : 'none';
+                var h = g.previousElementSibling;
+                if (h && h.classList && h.classList.contains('section-heading')) h.style.display = any ? '' : 'none';
+            });
+            count.textContent = q ? (visible ? visible + ' 条' : '无命中') : '';
+        }
+        input.addEventListener('input', apply);
+        apply();
+    })();
+    </script>
+    <script src="../shared/nav-toggle.js?v=20260929"></script>
+  <script src="../shared/domain-switch.js?v=20260929"></script>
 </body>
 </html>

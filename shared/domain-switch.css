@@ -125,3 +125,13 @@ body[data-domain="silicon"] .footer-desc { color: rgba(255, 255, 255, 0.65); opa
 /* 胶囊未选中项：白 .65 落在导航深红底上实测 4.50（贴线），域内升到 .72 留出余量 */
 body[data-domain="silicon"] .domain-switch a:not([aria-current="page"]) { color: rgba(255, 255, 255, 0.72); }
 body[data-domain="silicon"] .domain-switch a:focus-visible { outline-color: #A63A2E; }
+
+/* ---------- ≤480px 紧凑化（15 号扫尾批 2026-09-29）：单行放下，不再独占一行 ----------
+   授权：主理 Agent「备选三项自己决策自己干」。只缩尺寸与间距，两域同值，零颜色声明（铁律不触）。
+   计算：390px 视口 − logo ~60 − 汉堡 44 − 容器 padding ~48 ≈ 238px 可用；
+   胶囊 .68rem×8 字 ×2 + padding ≈ 224px ⇒ 单行可容。
+   320px 级超窄屏放不下时由上方 ≤480 块的 flex-wrap 兜底折行，不横向溢出。 */
+@media (max-width: 480px) {
+  .domain-switch { order: 0; flex: 0 1 auto; margin-top: 0; min-width: 0; }
+  .domain-switch a { font-size: 0.64rem; padding: 0.28rem 0.5rem; white-space: nowrap; }
+}

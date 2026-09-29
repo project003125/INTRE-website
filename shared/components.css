@@ -310,7 +310,7 @@ tbody tr:hover {
   content: '← 滑动查看 →';
   position: absolute;
   bottom: 0.5rem;
-  right: 0.8rem;
+  left: 0.8rem;
   font-size: 0.72rem;
   color: var(--color-slate-400);
   background: var(--color-white);
@@ -323,8 +323,10 @@ tbody tr:hover {
   z-index: 1;
 }
 
+/* 15 号扫尾批：提示仅在表格实际横向溢出时出现（.is-scrollable 由 nav-toggle.js 标注），
+   不溢出的表格不再显示假提示；锚点改左侧＝滚动起点处可见 */
 @media (max-width: 768px) {
-  .table-responsive::after {
+  .table-responsive.is-scrollable::after {
     opacity: 1;
   }
 }
@@ -644,6 +646,15 @@ hr {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* 15 号移动端扫尾批：grid 子项默认 min-width:auto，会被长 ASCII 串
+   （如 PSE 页动力学公式）撑到视口之外且 .table-responsive 随之失效；
+   允许收缩后文本按空格自然换行。 */
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > * {
+  min-width: 0;
 }
 
 /* ===== 通道徽章 ===== */
@@ -1852,3 +1863,91 @@ body.sidebar-open { overflow: hidden; }
   justify-content: center;
   flex-shrink: 0;
 }
+
+/* ==========================================================
+   v2.5 科技控制台层（Tech Console Layer）
+   包豪斯几何 × 终端等宽语汇；全部动效尊重 prefers-reduced-motion
+   ========================================================== */
+
+/* ---- 顶部阅读进度条（amber 2px，功能性微交互，由 nav-toggle.js 注入） ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-amber-600);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 300;
+  pointer-events: none;
+}
+
+/* ---- Hero 底部状态条升级：左公式 / 右系统读数 ---- */
+.hero-coord {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.hero-coord .coord-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-tech);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+.coord-status .status-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-amber-500);
+  animation: led-pulse 2.4s var(--ease-in-out) infinite;
+}
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coord-status .status-led { animation: none; }
+}
+@media (max-width: 768px) {
+  .hero-coord { justify-content: center; }
+  .hero-coord .coord-status { display: none; }
+}
+
+/* ---- Hero 英文标语终端光标 ---- */
+.hero-sub .hero-en::after {
+  content: '▍';
+  margin-left: 3px;
+  color: var(--color-amber-500);
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-sub .hero-en::after { animation: none; }
+}
+
+/* ---- 统计卡悬停瞄准角（blueprint reticle，几何非发光） ---- */
+.stat-card { position: relative; }
+.stat-card::before,
+.stat-card::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--color-navy-200);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+  pointer-events: none;
+}
+.stat-card::before { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+.stat-card::after { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+.stat-card:hover::before,
+.stat-card:hover::after { opacity: 0.85; }

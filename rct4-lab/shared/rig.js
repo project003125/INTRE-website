@@ -162,7 +162,7 @@ export function createLab({ title, tag, desc, bloom = {}, camera = {}, onFrame }
   /* ---- 参考图对比角 ---- */
   const ref = document.createElement('div');
   ref.id = 'lab-ref';
-  ref.innerHTML = `<img src="../intre-3d-hero/assets/dti-reference.png" alt="DTI Reference">
+  ref.innerHTML = `<img src="../3d-hero/assets/dti-reference.png" alt="DTI Reference">
     <div class="cap">REFERENCE · DTI (Nature 级范式)</div>`;
   document.body.appendChild(ref);
 

@@ -73,10 +73,10 @@ body {
 .page-label {
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--color-slate-400);
+    color: var(--color-slate-600);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    background: var(--bg);
+    background: var(--color-slate-50);
     padding: 0.12rem 0.55rem;
     border-radius: var(--radius-sm);
     border: var(--stroke-hairline) solid var(--border);
@@ -197,6 +197,22 @@ body {
 }
 
 .textbook-content pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* Inline code and formulas must never widen the mobile layout viewport */
+.textbook-content p code,
+.textbook-content li code,
+.textbook-content blockquote code,
+.textbook-content td code {
+    overflow-wrap: anywhere;
+}
+
+.textbook-content .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.35rem 0;
+    -webkit-overflow-scrolling: touch;
+}
 
 /* ========== LISTS ========== */
 .textbook-content ul, .textbook-content ol {
@@ -426,12 +442,19 @@ body {
 .chapter-nav-list { padding: 0; }
 
 .chapter-nav-section {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    color: var(--color-slate-400);
+    color: var(--color-slate-600);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 0.6rem 0.75rem 0.25rem;
+}
+
+/* Drawer labels inherit the same readable contrast as desktop section labels.
+   Scoped to body because shared/components.css loads after this file. */
+body .textbook-sidebar-drawer-section {
+    font-size: 0.78rem;
+    color: var(--color-slate-600);
 }
 
 .chapter-nav-section:first-child { padding-top: 0; }

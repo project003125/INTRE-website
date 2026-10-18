@@ -229,7 +229,7 @@ def convert_markdown_body(body):
         # 脚注引用 [^1]
         text = re.sub(
             r"\[\^(\d+)\](?!\])",
-            r'<sup><a href="#fn\1" id="fnref\1">[\1]</a></sup>',
+            r'<sup><a href="#fn\1-2" id="fnref\1">[\1]</a></sup>',
             text,
         )
         # 上标引用（已处理过的）
@@ -394,7 +394,7 @@ def convert_markdown_body(body):
         for num in sorted(footnote_defs.keys()):
             fn_text = convert_inline(footnote_defs[num])
             output.append(
-                f'<sup><a href="#fn{num}-2" id="fn{num}">[{num}]</a></sup>: {fn_text}'
+                f'<p id="fn{num}-2"><sup><a href="#fnref{num}">[{num}]</a></sup>: {fn_text}</p>'
             )
 
     return "\n".join(output)
@@ -445,7 +445,7 @@ def markdown_table_to_html(lines):
 
 # --- HTML 模板 ---
 
-CSS_VERSION = "v=10"
+CSS_VERSION = "v=11"
 SHARED_VERSION = "v=20260929"   # 15 号扫尾批：共享三件缓存版本号，与全站 ?v=20260929 对齐；改 shared/ 下文件时同步 +1
 BASE_URL = "https://project003125.github.io/INTRE-website"
 
@@ -494,7 +494,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <div class="toc-overlay" id="tocOverlay"></div>
 
-<nav>
+<nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>

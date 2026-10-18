@@ -91,7 +91,7 @@
 
     <script type="module">
         try {
-            const THREE = await import('./three.module.js');
+            const THREE = await import('../../lib/three.module.js');
             window.__threeLoaded = true;
             clearTimeout(window.__threeTimeout);
             document.getElementById('loading-msg').style.display = 'none';

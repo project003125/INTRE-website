@@ -6675,22 +6675,28 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
 })();
 </script>
 <style>
-/* ── 右侧悬浮目录（DeepSeek 式·2026-10-31 减负批） ── */
-.toc-fab{position:fixed;right:18px;top:50%;transform:translateY(-50%);width:232px;max-height:66vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-soft,0 16px 40px -28px rgba(32,35,31,.28));padding:10px 8px;z-index:55;display:none;scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent;}
+/* ── 右侧悬浮目录（DeepSeek 式·收起态仅节点列·悬停展开） ── */
+.toc-fab{position:fixed;right:14px;top:50%;transform:translateY(-50%);width:auto;max-height:66vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow-soft,0 16px 40px -28px rgba(32,35,31,.28));padding:10px 9px;z-index:55;display:none;scrollbar-width:none;}
+.toc-fab::-webkit-scrollbar{display:none;}
 .toc-fab.on{display:block;}
-.toc-fab a{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:8px;color:var(--ink-soft);font-size:12.5px;line-height:1.45;text-decoration:none;}
+.toc-fab.expanded{border-radius:14px;background:var(--surface);padding:10px 8px;min-width:200px;max-width:232px;}
+.toc-fab a{display:flex;align-items:center;gap:0;padding:4px 5px;border-radius:8px;color:var(--ink-soft);font-size:12.5px;line-height:1.45;text-decoration:none;}
 .toc-fab a:hover{background:var(--surface-2);}
-.toc-fab a .tt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.toc-fab a .tick{flex:0 0 auto;width:12px;height:2px;border-radius:2px;background:var(--line-strong);}
-.toc-fab a.act{color:var(--accent);background:var(--accent-soft);}
+.toc-fab a .tt{max-width:0;opacity:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:max-width .2s ease,opacity .16s ease;}
+.toc-fab.expanded a{gap:7px;padding:5px 8px;}
+.toc-fab.expanded a .tt{max-width:178px;opacity:1;}
+.toc-fab a .tick{flex:0 0 auto;width:12px;height:2px;border-radius:2px;background:var(--line-strong);transition:background .15s ease,width .15s ease;}
+.toc-fab a:hover .tick{background:var(--ink-soft);}
 .toc-fab a.act .tick{background:var(--accent);width:16px;}
+.toc-fab a.act{color:var(--accent);background:var(--accent-soft);}
 @media (max-width:1279px){.toc-fab{display:none!important;}}
+
 </style><nav class="toc-fab" id="tocFab" aria-label="本章目录"></nav>
 <script>
 (function(){
   var fab = document.getElementById("tocFab");
   if(!fab) return;
-  var items = [];
+  var items = [], pend = 0;
   function activeChapter(){
     var wrap = document.querySelector(".page-wrap.active");
     return wrap ? wrap.querySelector(".chapter.active") : null;
@@ -6706,7 +6712,7 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
       var h = hs[i];
       var label = (h.childNodes[0] && h.childNodes[0].nodeValue ? h.childNodes[0].nodeValue : h.textContent).replace(/#+$/,"").trim();
       items.push(h.id);
-      html += '<a href="#' + ch.id + "/" + h.id + '" data-h="' + h.id + '"><span class="tt">' + label + '</span><span class="tick"></span></a>';
+      html += '<a href="#' + ch.id + "/" + h.id + '" data-h="' + h.id + '" title="' + label.replace(/"/g,"&quot;") + '"><span class="tt">' + label + '</span><span class="tick"></span></a>';
     }
     fab.innerHTML = html;
     fab.classList.add("on");
@@ -6732,6 +6738,16 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
     requestAnimationFrame(function(){ spy(); tick = false; });
   }, {passive:true});
   window.addEventListener("hashchange", function(){ setTimeout(rebuild, 60); });
+  var mo = new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      if(fab.contains(muts[i].target)) return;
+    }
+    clearTimeout(pend);
+    pend = setTimeout(rebuild, 80);
+  });
+  mo.observe(document.body, {attributes:true, attributeFilter:["class"], subtree:true});
+  fab.addEventListener("mouseenter", function(){ fab.classList.add("expanded"); });
+  fab.addEventListener("mouseleave", function(){ fab.classList.remove("expanded"); });
   rebuild();
   setTimeout(rebuild, 400);
 })();

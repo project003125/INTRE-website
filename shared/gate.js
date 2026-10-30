@@ -1,4 +1,4 @@
-/* INTRE 阅读须知门禁（2026-10-31 主理会话令；同日视觉改版）——全站首次访问拦截，sessionStorage 会话记忆 */
+/* INTRE 阅读须知门禁（2026-10-31 主理会话令；同日视觉改版＋外审文案返修 v1.1）——全站首次访问拦截，sessionStorage 会话记忆 */
 (function () {
   try { if (sessionStorage.getItem('intre-gate-ack') === '1') return; } catch (e) {}
   if (document.querySelector('.intre-gate')) return;
@@ -46,17 +46,20 @@
     var rows = [
       ['阶段状态', '本项目处于早期建构阶段（理论蓝图期），内容持续修订中，暂不宜作为定稿引用。'],
       ['术语变动', '术语与命名可能随版本修订调整，请以各页标注的最新版本为准。'],
-      ['错漏与修订', '内容可能存在错漏；学术规范性表述与伦理规则相关问题将优先修订。'],
-      ['反馈渠道', '如有明显异议或勘误建议，请邮件联系 zhou781670711@outlook.com。'],
-      ['非专业建议', '本站内容不构成医疗、心理诊断、治疗或任何专业建议；相关需求请咨询合格专业人士。'],
+      ['错漏与修订', '内容可能存在错漏，欢迎指出；学术规范与伦理相关问题将优先核实（不构成持续更新承诺）。'],
+      ['反馈渠道', '如有异议或勘误建议，欢迎邮件反馈：zhou781670711@outlook.com（仅用于沟通，不作他用）。'],
+      ['非专业建议', '本站内容不构成医疗、心理诊断、治疗或任何专业建议；干预语法（如 DMD）为研究性描述、量表数值为示例，均不可用于个体诊疗或产品决策；相关需求请咨询合格专业人士。'],
       ['非机构背书', '站内观点仅代表作者个人，不代表任何教育或研究机构立场。']
     ];
     var full = [
-      ['研究快照·无更新义务', '页面内容为撰写时点快照，按「现状」提供（as is）；作者不承担持续更新或纠错义务。在法律允许的最大范围内，对因使用或依赖本站内容产生的任何损失不承担责任。'],
-      ['学术引用规范', '本站内容采用 CC0 1.0 公共领域贡献；CC0 不免除学术诚信义务——引用请注明出处、版本与访问日期。'],
-      ['未认证声明', '本站内容（含 REVER 伦理引擎设计、实验方案与量表数值）未通过伦理审查、同行评审定稿或任何监管认证，不构成合规依据或伦理合规认证。'],
-      ['第三方内容', '站内涉及的 DSM-5、RDoC 等第三方分类体系版权归原机构；外部链接（Zenodo、GitHub 等）内容归其所有者，链接不构成背书。'],
-      ['观点属性', '本框架属建构期一家之言，不代表学界共识；建议将支持性与批评性证据并读。']
+      ['研究快照·无更新义务', '页面内容为撰写时点快照，按「现状」提供（as is）；作者不承担持续更新或纠错义务。在法律允许的最大范围内不承担责任；本条不排除依法不得排除的责任（如故意或重大过失、人身损害）。'],
+      ['学术引用规范', '本站原创内容采用 CC0 1.0 公共领域贡献（第三方内容除外，见下条）；CC0 不免除学术诚信义务——引用请注明出处、版本与访问日期（此为学术规范请求，非 CC0 附加条件）。'],
+      ['未认证声明', '本站内容（含 REVER 伦理引擎设计、实验方案与量表数值）未经伦理审查、同行评审定稿或任何监管认证（不构成 IRB／伦理委员会批准、医疗器械注册或心理治疗资质）；REVER 为设计性伦理护栏，不构成伦理合规认证或合规依据。'],
+      ['第三方内容', '站内涉及的 DSM-5、RDoC 等第三方分类体系，其版权与商标归原机构；外部链接（Zenodo、GitHub 等）内容归其所有者，链接不构成背书。'],
+      ['观点属性', '本框架属建构期一家之言，不代表学界共识；建议将支持性与批评性证据并读。'],
+      ['未成年人提示', '本站面向研究者与成年读者；未满 18 周岁请在监护人指导下阅读，本站不提供任何专业服务。'],
+      ['隐私与数据', '本站不主动收集个人数据；门禁仅以 sessionStorage 记忆本次确认（关闭标签页即失效）；邮件反馈以邮件内容为限。'],
+      ['适用法律与管辖', '本须知及本站使用适用中华人民共和国法律；因本站内容产生的争议，由作者住所地有管辖权的人民法院管辖。']
     ];
     var trs = rows.map(function (r) {
       return '<div class="ig-row"><div class="ig-k">' + r[0] + '</div><div class="ig-v">' + r[1] + '</div></div>';
@@ -75,21 +78,32 @@
         '</div>' +
         '<div class="ig-body">' +
           trs +
-          '<details class="ig-more"><summary>阅读完整声明（免责与使用条款）</summary><div class="ig-full">' + ps + '</div></details>' +
+          '<details class="ig-more"><summary>阅读完整声明（免责与使用条款 · 8 条）</summary><div class="ig-full">' + ps + '</div></details>' +
         '</div>' +
-        '<div class="ig-foot"><div class="ig-hint">确认仅在本浏览器会话内有效</div><button class="ig-btn" type="button">我已阅读并理解 · 确认进入</button></div>' +
+        '<div class="ig-foot"><div class="ig-hint">确认仅在本浏览器会话内有效 · 按 Esc 可暂离（不记忆）</div><button class="ig-btn" type="button">我已阅读并理解 · 确认进入</button></div>' +
       '</div>';
     document.body.appendChild(ov);
     document.documentElement.style.overflow = 'hidden';
     var btn = ov.querySelector('.ig-btn');
+    var summary = ov.querySelector('.ig-more summary');
     try { btn.focus({ preventScroll: true }); } catch (e) { btn.focus(); }
-    btn.addEventListener('click', function () {
-      try { sessionStorage.setItem('intre-gate-ack', '1'); } catch (e) {}
+    function close(remember) {
+      if (remember) { try { sessionStorage.setItem('intre-gate-ack', '1'); } catch (e) {} }
       ov.classList.add('ig-out');
       window.setTimeout(function () {
         if (ov.parentNode) ov.parentNode.removeChild(ov);
         document.documentElement.style.overflow = '';
       }, 160);
+    }
+    btn.addEventListener('click', function () { close(true); });
+    ov.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { close(false); return; }
+      if (e.key === 'Tab') {
+        var f = [summary, btn].filter(Boolean);
+        var i = f.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+      }
     });
   });
 })();

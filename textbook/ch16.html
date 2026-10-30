@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=12">
+    <link rel="stylesheet" href="textbook.css?v=11">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -55,7 +55,8 @@
                 <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a><a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
@@ -73,6 +74,7 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLP三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
 
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）在管线体系中归 L1-S 语义模态（01-M-07）的离线校准流程（P1 决策，见 01-M-02 §1.3）；PCUI-L/PSL-L 静态定义属 IODS（01-M-02，L0）。下文"UPLP"泛指语义知识体系（PSE 内部模块名），请按此映射理解。</p></blockquote>
 
 <blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构（属IODS L0本体）。本章和第17章（逻辑指纹）共同构成UPLP语义端口的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
 
@@ -526,27 +528,11 @@
 
 <hr class="section-divider">
 
-<p class="summary-lead"><strong>本章小结</strong></p>
-<ul class="summary-list">
-  <li>UPLP的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。</li>
-  <li>PCC-P以广度优先采集概念原材料，通过率约95%；</li>
-  <li>PCF-P以精度优先编译为标准化草案，通过率约60%；</li>
-  <li>PCV-P以权威优先进行跨流派共识验证，通过率约75%。</li>
-  <li>五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。</li>
-  <li>异议档案制度使分歧透明化，为知识演化提供了基础。</li>
-  <li>版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</li>
-</ul>
+<p><strong>本章小结</strong>：UPLP的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
 
 <blockquote><p><strong>关键术语</strong>：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
 
-<blockquote>
-<p><strong>常见误区</strong></p>
-<ul class="mistake-list">
-  <li>❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率<60%），即使总体支持率90%，条目也不能发布。</li>
-  <li>❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。</li>
-  <li>❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</li>
-</ul>
-</blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率<60%），即使总体支持率90%，条目也不能发布。<br>- ❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。<br>- ❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 如果一个PCUI条目在PCV-P中获得总体支持率85%，但精神分析流派支持率仅为55%，应如何处理？<br>2. 判断“将M3-RES-D的恢复速率从0.12/h更新为0.11/h（基于新元分析）”属于Type-1还是Type-2变更？为什么？<br>3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
 <hr class="section-divider">
@@ -594,7 +580,7 @@
 
     <script src="../shared/nav-toggle.js?v=20260929"></script>
     <script src="../shared/sidebar.js"></script>
-<script src="/INTRE-website/shared/gate.js" defer></script>
-<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
 </body>
 </html>

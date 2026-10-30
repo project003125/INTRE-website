@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=12">
+    <link rel="stylesheet" href="textbook.css?v=11">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -55,7 +55,8 @@
                 <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a><a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
@@ -288,27 +289,11 @@ $$
 
 <hr class="section-divider">
 
-<p class="summary-lead"><strong>本章小结</strong></p>
-<ul class="summary-list">
-  <li>PSE的仿真与校准方法由三个阶段构成。</li>
-  <li>PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；</li>
-  <li>PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；</li>
-  <li>PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。</li>
-  <li>PSE-C的完整似然来自行为、语义（UPLP）和神经（UNIP）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。</li>
-  <li>RTE-Cal是UNIP与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。</li>
-  <li>不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</li>
-</ul>
+<p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLP）和神经（UNIP）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIP与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
 
 <blockquote><p><strong>关键术语</strong>：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
 
-<blockquote>
-<p><strong>常见误区</strong></p>
-<ul class="mistake-list">
-  <li>❌ "蒙特卡罗仿真就是计算机算命" → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。</li>
-  <li>❌ "PSE-C可以直接用于临床决策" → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。</li>
-  <li>❌ "神经似然是功能状态的'直接读数'" → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</li>
-</ul>
-</blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ "蒙特卡罗仿真就是计算机算命" → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。<br>- ❌ "PSE-C可以直接用于临床决策" → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。<br>- ❌ "神经似然是功能状态的'直接读数'" → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 区分PSE-M蒙特卡罗仿真和PSE-C贝叶斯校准的功能定位。<br>2. 以一个具体的效应量为例，说明桥接的四层验证流程。<br>3. 集合预报在天气预报中已被广泛采用。讨论将这一思想应用于心理状态预测时面临的独特挑战。<br>4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
 <hr class="section-divider">
@@ -356,7 +341,7 @@ $$
 
     <script src="../shared/nav-toggle.js?v=20260929"></script>
     <script src="../shared/sidebar.js"></script>
-<script src="/INTRE-website/shared/gate.js" defer></script>
-<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
 </body>
 </html>

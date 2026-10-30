@@ -510,6 +510,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
@@ -551,6 +552,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <script src="../shared/nav-toggle.js?{shared_version}"></script>
     <script src="../shared/sidebar.js"></script>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
 </body>
 </html>"""
 

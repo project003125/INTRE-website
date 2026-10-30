@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=12">
+    <link rel="stylesheet" href="textbook.css?v=11">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -55,7 +55,8 @@
                 <a href="/INTRE-website/ubmp/">UBMP</a>
                 <a href="/INTRE-website/pse/">PSE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
-                <a href="/INTRE-website/textbook/" class="active">教材</a><a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
             </div>
         </div>
@@ -73,6 +74,7 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLP语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIP的神经似然输入。</p></blockquote>
 
+<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章基于 PSE 系统视角叙述。按 01-M-00 v1.3.0 管线体系：PSE 覆盖 L1-L5，UPLP/UBMP/UNIP 为 PSE 感知层（L1）的三个输入端口（内部模块名保留），L2 状态估计见 01-M-11，L3 动力学为 01-M-03 主体，L4+L5 见 01-M-12；"五层引擎"为 PSE 内部组织的历史表述，已被管线级组织替代。</p></blockquote>
 
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 
@@ -486,26 +488,11 @@
 
 <hr class="section-divider">
 
-<p class="summary-lead"><strong>本章小结</strong></p>
-<ul class="summary-list">
-  <li>PSE是INTRE框架的计算核心，采用五层架构将功能层静态描述转化为可运行的动力学仿真系统。</li>
-  <li>架构层定义坐标系统，算法层提供演化规则（心智六论），参数层提供先验分布，方法论层规定四阶段仿真流程（I/M/P/C），协议层提供临床接口。</li>
-  <li>PSE的输入来自三个通道：行为、语义（UPLP）和神经（UNIP），通过贝叶斯融合实现多模态状态估计。</li>
-  <li>心智六论分工明确：MCT编译输入，MTT描述拓扑，MKT提供速率方程，MDT规划干预，MPT约束结构改变，MET耦合环境。</li>
-  <li>PSE-I是将理论规范编译为可执行代码的注入阶段，文化变体在此纳入。</li>
-  <li>PSE的设计类比于数值天气预报——它不是在已有数据上拟合统计规律，而是从理论方程出发，通过同化观测数据来逼近个体真实状态。</li>
-</ul>
+<p><strong>本章小结</strong>：PSE是INTRE框架的计算核心，采用五层架构将功能层静态描述转化为可运行的动力学仿真系统。架构层定义坐标系统，算法层提供演化规则（心智六论），参数层提供先验分布，方法论层规定四阶段仿真流程（I/M/P/C），协议层提供临床接口。PSE的输入来自三个通道：行为、语义（UPLP）和神经（UNIP），通过贝叶斯融合实现多模态状态估计。心智六论分工明确：MCT编译输入，MTT描述拓扑，MKT提供速率方程，MDT规划干预，MPT约束结构改变，MET耦合环境。PSE-I是将理论规范编译为可执行代码的注入阶段，文化变体在此纳入。PSE的设计类比于数值天气预报——它不是在已有数据上拟合统计规律，而是从理论方程出发，通过同化观测数据来逼近个体真实状态。</p>
 
 <blockquote><p><strong>关键术语</strong>：PSE，五层架构，心智六论，MCT/MTT/MKT/MDT/MPT/MET，PSE-I/M/P/C，三通道输入，UNIP</p></blockquote>
 
-<blockquote>
-<p><strong>常见误区</strong></p>
-<ul class="mistake-list">
-  <li>❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。</li>
-  <li>❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。</li>
-  <li>❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLP）和神经（UNIP）三个通道的输入。</li>
-</ul>
-</blockquote>
+<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLP）和神经（UNIP）三个通道的输入。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些 L1 输入端口提供？UNIP在其中扮演什么角色？</p></blockquote>
 <hr class="section-divider">
@@ -519,8 +506,8 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>v1.1.0</td>
-<td>2026-09-26</td>
+<td>v1.1.1</td>
+<td>2026-10-31</td>
 <td>初始创建</td>
 </tr>
 </tbody>
@@ -553,7 +540,7 @@
 
     <script src="../shared/nav-toggle.js?v=20260929"></script>
     <script src="../shared/sidebar.js"></script>
-<script src="/INTRE-website/shared/gate.js" defer></script>
-<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
 </body>
 </html>

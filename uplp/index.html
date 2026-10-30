@@ -63,6 +63,10 @@
   "publisher": {'@type': 'Organization', 'name': 'INTRE', 'url': 'https://project003125.github.io/INTRE-website/'}
 }
 </script>
+<style>
+.info-box ul{margin:.6rem 0 0;padding-left:1.2rem;}
+.info-box li{margin:.35rem 0;line-height:1.7;}
+</style>
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
@@ -88,8 +92,11 @@
         <div class="subhead">统一心理语言端口 · PSE 感知层 <strong>L1-S 语义模态输入端口</strong> <span class="channel-badge uplp">语义通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-08 五层编译流水线 / 端口体系更新）</small></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            UPLP（Unified Psychological Language Port）是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>（归属 PSE 感知层 L1，非对外独立系统，P7 已决）。它将自然语言输入（临床叙述、量表文本、自由陈述）经 <strong>五层编译流水线 S1-S5</strong> 转化为标准化的语义似然 p(y<sub>s</sub>|Ψ) ，输出观测块 {y<sub>s</sub>, σ<sub>s</sub>}（42 维）。UPLP 强依赖 IODS（L0 本体）提供的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典——坐标系与词典的定义侧内容归 IODS，本页只覆盖 UPLP 本体的编译行为与接口契约。
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UPLP（Unified Psychological Language Port）是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>（归属 PSE 感知层 L1，非对外独立系统，P7 已决）。</p>
+            <ul>
+                <li>它将自然语言输入（临床叙述、量表文本、自由陈述）经 <strong>五层编译流水线 S1-S5</strong> 转化为标准化的语义似然 p(y<sub>s</sub>|Ψ) ，输出观测块 {y<sub>s</sub>, σ<sub>s</sub>}（42 维）。</li>
+                <li>UPLP 强依赖 IODS（L0 本体）提供的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典——坐标系与词典的定义侧内容归 IODS，本页只覆盖 UPLP 本体的编译行为与接口契约。</li>
+            </ul>
         </div>
 
         <!-- 一、五层编译流水线 -->

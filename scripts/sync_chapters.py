@@ -29,7 +29,7 @@ VAULT_DIR = WEBSITE_DIR.parent / "08-导论教材"
 
 # --- 工具函数 ---
 
-MM_G1_CARD = '<strong>代际注（M1-M6）</strong>：本页所引系 <code>01-M-01</code> 现行正式定义；11-CORE 当前工作定义 v0.10.4（Preview·未转正）尚未取代，权威链＝<code>00-M-05</code> §三／<code>06-S-02</code> §二十一（工作面记号〔MM·G1〕）；转正批落地后涉名与结论按新代际复核。'
+# MM_G1_CARD 已撤（2026-10-31 对外呈现面减负批）：〔MM·G1〕独立码引不再渲染，见下方 continue 分支
 
 def parse_frontmatter(text):
     """解析简单的 YAML frontmatter (key: value 格式，无嵌套)。返回 (meta, body)。"""
@@ -372,7 +372,8 @@ def convert_markdown_body(body):
             i = j
             quote_html = "<br>".join(quote_lines) if len(quote_lines) > 1 else quote_lines[0]
             if quote_html.strip() == "〔MM·G1〕":
-                quote_html = MM_G1_CARD   # 对外呈现面：一级码渲染为三级卡注（METH-四级简约标注质量评价 §二）
+                i += 0  # 对外呈现面减负（主理 2026-10-31 会话令）：独立码引〔MM·G1〕不渲染为代际注卡，源件码引保留；权威链＝00-M-05 §三／06-S-02 §二十一
+                continue   # 跳过整卡输出（原渲染规则已撤·防回退点）
             output.append(f"<blockquote><p>{quote_html}</p></blockquote>")
             continue
 

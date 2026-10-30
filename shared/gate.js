@@ -23,6 +23,7 @@
       '.ig-more summary::-webkit-details-marker{display:none;}',
       '.ig-more summary::after{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:2px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .18s ease;}',
       '.ig-more[open] summary::after{transform:rotate(-135deg);}',
+      '.ig-more summary:focus-visible{outline:2px solid rgba(31,72,128,.35);outline-offset:2px;border-radius:6px;}',
       '.ig-full{padding:0 14px 12px;border-top:1px solid rgba(31,72,128,.08);}',
       '.ig-clause{padding:10px 0;border-bottom:1px dashed rgba(31,72,128,.10);}',
       '.ig-clause:last-child{border-bottom:0;padding-bottom:4px;}',

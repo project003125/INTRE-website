@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=11">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -362,11 +362,29 @@
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIP神经前端（可选）+ UBMP行为通道 + PSE内核（状态估计与干预规划）+ REVER伦理护栏（全流程门控审查）+ LLM界面（自然语言编译与生成）。它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIP提供高时间分辨率、抗主观偏倚的神经通道输入。在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。在老年照护中，遵循"社交放大而非替代"原则，检测孤独感并提供认知刺激。在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。在心理健康聊天机器人中，实现了从"话术匹配"到"功能层干预"的跃迁。心理AI与REVER的协同确保了技术落地的伦理安全性。</p>
+<p class="summary-lead"><strong>本章小结</strong></p>
+<ul class="summary-list">
+  <li>心理AI是以INTRE功能层语法为内核、以LLM为人机交互界面的智能系统，核心架构为UNIP神经前端（可选）+ UBMP行为通道 + PSE内核（状态估计与干预规划）+ REVER伦理护栏（全流程门控审查）+ LLM界面（自然语言编译与生成）。</li>
+  <li>它区别于纯LLM聊天机器人的关键是将临床推理与语言生成分离，并通过UNIP提供高时间分辨率、抗主观偏倚的神经通道输入。</li>
+  <li>在教育场景中，心理AI监测认知疲劳、学习焦虑和意志枯竭，动态优化个性化学习路径。</li>
+  <li>在老年照护中，遵循"社交放大而非替代"原则，检测孤独感并提供认知刺激。</li>
+  <li>在企业EAP中，通过工作数字痕迹早期识别职业倦怠风险，推送分级干预。</li>
+  <li>在心理健康聊天机器人中，实现了从"话术匹配"到"功能层干预"的跃迁。</li>
+  <li>心理AI与REVER的协同确保了技术落地的伦理安全性。</li>
+</ul>
 
 <blockquote><p><strong>关键术语</strong>：心理AI，PSE内核+LLM界面，UNIP神经前端，UBMP行为测量，社交放大而非替代，冷启动，三通道融合</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ "心理AI可以替代人类治疗师" → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。<br>- ❌ "心理AI的核心能力是更像人" → ✅ 心理AI的核心能力是"更懂功能"——将自然语言编译为状态向量并基于动力学模型决策。<br>- ❌ "UNIP是心理AI的必需品" → ✅ UNIP是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。<br>- ❌ "行为通道就是量表分数" → ✅ UBMP将量表分数转化为功能似然时经过五层处理（B1-B5）：注册库（BMR）存储工具信息、语义对齐（BAL）裁决构念等价性、跨工具桥接（BLK）执行 IRT 换算、校准与个体化（BCI）执行个体化修正、似然接口（BLI）提供标准化输出。这远超出了简单的分数对照。<br>- ❌ "REVER是UPLP的伦理层/约束层" → ✅ REVER是独立的伦理护栏，横跨整个功能层（L1-L5），基于IODS的M-R-D-S语法进行伦理评估。REVER可以通过UPLP端口获取语义输入，但REVER本身不依附于UPLP。</p></blockquote>
+<blockquote>
+<p><strong>常见误区</strong></p>
+<ul class="mistake-list">
+  <li>❌ "心理AI可以替代人类治疗师" → ✅ 心理AI是辅助工具，不能替代专业心理治疗，特别是对于高危人群。</li>
+  <li>❌ "心理AI的核心能力是更像人" → ✅ 心理AI的核心能力是"更懂功能"——将自然语言编译为状态向量并基于动力学模型决策。</li>
+  <li>❌ "UNIP是心理AI的必需品" → ✅ UNIP是可选的增强通道。在无可穿戴设备的场景下，心理AI仍可仅使用行为和语义通道运行。</li>
+  <li>❌ "行为通道就是量表分数" → ✅ UBMP将量表分数转化为功能似然时经过五层处理（B1-B5）：注册库（BMR）存储工具信息、语义对齐（BAL）裁决构念等价性、跨工具桥接（BLK）执行 IRT 换算、校准与个体化（BCI）执行个体化修正、似然接口（BLI）提供标准化输出。这远超出了简单的分数对照。</li>
+  <li>❌ "REVER是UPLP的伦理层/约束层" → ✅ REVER是独立的伦理护栏，横跨整个功能层（L1-L5），基于IODS的M-R-D-S语法进行伦理评估。REVER可以通过UPLP端口获取语义输入，但REVER本身不依附于UPLP。</li>
+</ul>
+</blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 画出心理AI的四层架构图，标注每层的数据流向。<br>2. 传统聊天机器人与心理AI在响应“我感到焦虑”时，内部处理流程的根本差异是什么？<br>3. 如果自主性优先原则被严格执行，心理AI的商业模型将如何受到影响？讨论商业利益与伦理设计之间的张力。<br>4. UNIP在心理AI中扮演什么角色？在什么场景下UNIP通道最为关键？</p></blockquote>
 <hr class="section-divider">

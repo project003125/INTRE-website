@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=11">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -327,11 +327,26 @@ $$
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：功能层心理学的研究方法从变量范式的研究设计转向个体内密集追踪、N-of-1设计和分层贝叶斯。数据采集融合EMA、可穿戴设备和数字表型，实现多模态、高时间分辨率的观测。数据分析采用状态空间模型（卡尔曼滤波、粒子滤波）、贝叶斯参数估计（MCMC、PMCMC）和机器学习方法（高斯过程、RNN作为替代模型）。可重复性通过扩展的预注册（包括模型规格、预测量化形式和证伪条件）、受控数据共享（去标识化、合成数据）和模型开源来保障。解析差异通过四组逻辑指纹（模块、资源、层级、操作）和多视角共识工程进行治理，编码员间一致性应达到κ ≥ 0.60。这些方法共同构成了功能层心理学从理论建构到实证检验的完整方法论基础设施。</p>
+<p class="summary-lead"><strong>本章小结</strong></p>
+<ul class="summary-list">
+  <li>功能层心理学的研究方法从变量范式的研究设计转向个体内密集追踪、N-of-1设计和分层贝叶斯。</li>
+  <li>数据采集融合EMA、可穿戴设备和数字表型，实现多模态、高时间分辨率的观测。</li>
+  <li>数据分析采用状态空间模型（卡尔曼滤波、粒子滤波）、贝叶斯参数估计（MCMC、PMCMC）和机器学习方法（高斯过程、RNN作为替代模型）。</li>
+  <li>可重复性通过扩展的预注册（包括模型规格、预测量化形式和证伪条件）、受控数据共享（去标识化、合成数据）和模型开源来保障。</li>
+  <li>解析差异通过四组逻辑指纹（模块、资源、层级、操作）和多视角共识工程进行治理，编码员间一致性应达到κ ≥ 0.60。</li>
+  <li>这些方法共同构成了功能层心理学从理论建构到实证检验的完整方法论基础设施。</li>
+</ul>
 
 <blockquote><p><strong>关键术语</strong>：N-of-1设计，状态空间模型，粒子滤波，逻辑指纹，编码员间一致性，分层贝叶斯</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “状态空间模型只是时间序列分析的另一种叫法” → ✅ 状态空间模型的核心是区分潜变量（功能状态）与观测变量，并利用动力学先验约束潜变量推断。<br>- ❌ “N-of-1设计不能推广到群体” → ✅ 多个N-of-1模型可通过分层贝叶斯在群体层面整合——先个体精准，再群体聚合。<br>- ❌ “κ≥0.60的要求太宽松” → ✅ 这是“可接受”的最低门槛（Landis & Koch中的“substantial”），临床决策要求κ≥0.75。</p></blockquote>
+<blockquote>
+<p><strong>常见误区</strong></p>
+<ul class="mistake-list">
+  <li>❌ “状态空间模型只是时间序列分析的另一种叫法” → ✅ 状态空间模型的核心是区分潜变量（功能状态）与观测变量，并利用动力学先验约束潜变量推断。</li>
+  <li>❌ “N-of-1设计不能推广到群体” → ✅ 多个N-of-1模型可通过分层贝叶斯在群体层面整合——先个体精准，再群体聚合。</li>
+  <li>❌ “κ≥0.60的要求太宽松” → ✅ 这是“可接受”的最低门槛（Landis & Koch中的“substantial”），临床决策要求κ≥0.75。</li>
+</ul>
+</blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 解释为什么功能层研究需要个体内密集追踪设计而非传统横断面设计。<br>2. 为M3-RES-D是否独立于M1-RES-D这一研究问题设计一个预注册的N-of-1研究方案。<br>3. 粒子滤波和卡尔曼滤波都是状态估计的方法，在什么条件下应选择粒子滤波而非卡尔曼滤波？</p></blockquote>
 <hr class="section-divider">

@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=11">
+    <link rel="stylesheet" href="textbook.css?v=12">
     <link rel="stylesheet" href="../shared/brand.css?v=20260929">
     <link rel="stylesheet" href="../shared/components.css?v=20260929">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -530,11 +530,25 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：逻辑指纹体系是UPLP治理解析差异的核心工具。四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。五种错误解析判据（E1-E5）确保了UPLP的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLP知识库的可靠性。通过逻辑指纹，UPLP语义端口能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识治理体系，支撑IODS知识基础设施的质量控制。</p>
+<p class="summary-lead"><strong>本章小结</strong></p>
+<ul class="summary-list">
+  <li>逻辑指纹体系是UPLP治理解析差异的核心工具。</li>
+  <li>四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。</li>
+  <li>五种错误解析判据（E1-E5）确保了UPLP的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。</li>
+  <li>编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLP知识库的可靠性。</li>
+  <li>通过逻辑指纹，UPLP语义端口能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识治理体系，支撑IODS知识基础设施的质量控制。</li>
+</ul>
 
 <blockquote><p><strong>关键术语</strong>：逻辑指纹，模块指纹，资源指纹，层级指纹，操作指纹，错误解析判据（E1-E5），编码员间一致性，Cohen’s κ</p></blockquote>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。<br>- ❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。<br>- ❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ>70）或经过严格安全评估的特殊情况。</p></blockquote>
+<blockquote>
+<p><strong>常见误区</strong></p>
+<ul class="mistake-list">
+  <li>❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。</li>
+  <li>❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。</li>
+  <li>❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ>70）或经过严格安全评估的特殊情况。</li>
+</ul>
+</blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 给定两份解析（见17.5微案例），尝试自己提取四组指纹并与文中对比。<br>2. 如果两位编码员对10个概念的模块指纹判定有3处分歧（一致率70%），计算κ值（假设随机一致率50%），判定一致性水平。<br>3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
 <hr class="section-divider">

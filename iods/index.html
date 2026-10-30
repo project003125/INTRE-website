@@ -69,6 +69,10 @@
   "publisher": {'@type': 'Organization', 'name': 'INTRE', 'url': 'https://project003125.github.io/INTRE-website/'}
 }
 </script>
+<style>
+.info-box ul{margin:.6rem 0 0;padding-left:1.2rem;}
+.info-box li{margin:.35rem 0;line-height:1.7;}
+</style>
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
@@ -94,8 +98,12 @@
         <div class="subhead">INTRE 本体定义体系 · <strong>L0 本体</strong>（P7 对外系统边界组成）<span class="channel-badge iods">定义体系</span></div>
 
         <div class="info-box">
-            <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            IODS 是 INTRE 管线体系 <strong>L0 本体</strong>——为整条管线（L0→L5）提供命名空间与合法性：<strong>42 维 M-R-D-S 状态坐标系</strong>、<strong>G-M-A-R 操作语法</strong>、<strong>PCUI/PSL 知识基础设施</strong>。L0 文档族由三份组成：<strong>IODS</strong>（本文档） + <strong>01-M-08 G-M-A-R 操作语法</strong> + <strong>01-M-09 S-P 环境参照系</strong>。IODS 是原 UPLP 定义身份（UPLP-A）的整体继承者，<strong>继承原 UPLP 定义功能</strong>——不含运行时、无 API、不含动力学方程——它是所有观测、估计、规划与执行的<strong>静态参照系</strong>。
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> <strong>IODS</strong> 是 INTRE 管线体系的 <strong>L0 本体</strong>，为整条管线（L0→L5）提供命名空间与合法性：</p>
+            <ul>
+                <li><strong>42 维 M-R-D-S 状态坐标系</strong></li>
+                <li><strong>G-M-A-R 操作语法</strong></li>
+                <li><strong>PCUI/PSL 知识基础设施</strong></li>
+            </ul>
         </div>
 
         <!-- 一、M-R-D-S 内感架构 -->
@@ -417,7 +425,12 @@
         </div>
 
         <div class="info-box">
-            <p><strong>与 UPLP 的边界</strong>：IODS 定义"是什么"（坐标系、操作语法、知识基础设施）；UPLP 编译"怎么观测"（自然语言 → 语义似然，S1-S5）。UPLP <strong>强依赖</strong> IODS——无坐标系则编译无降级路径。二者并列构成 L0 + L1-S 的静态-观测分层。</p>
+            <p><strong>与 UPLP 的边界</strong></p>
+            <ul>
+                <li><strong>IODS</strong> 定义"是什么"（坐标系、操作语法、知识基础设施）。</li>
+                <li><strong>UPLP</strong> 编译"怎么观测"（自然语言 → 语义似然，S1-S5）。</li>
+                <li>UPLP <strong>强依赖</strong> IODS——无坐标系则编译无降级路径；二者并列构成 L0 + L1-S 的静态-观测分层。</li>
+            </ul>
             <p style="margin-top:.6rem;"><strong>继承关系（2026-08 端口体系更新）</strong>：IODS <strong>继承原 UPLP 定义功能</strong>——原 UPLP 文档族中的 A 面（定义面，UPLP-A）整体迁移至 IODS；B 面（编译面，UPLP-B）保留为现行 UPLP 页（L1-S 端口）。这是 v1.0 拆分决策（P1 + R1）的落地结果：定义侧与编译侧解耦，使 UPLP 聚焦于"自然语言 → 语义似然"的工程行为，IODS 聚焦于"42 维坐标系 + 操作语法 + 知识基础设施"的本体参照。</p>
             <p style="margin-top:.6rem;"><strong>与 PSE / UPLP / UBMP / UNIP 的关系图（简版）</strong>：</p>
             <div class="code-block" style="font-size:0.82rem;">

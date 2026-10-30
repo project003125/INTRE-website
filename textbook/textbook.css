@@ -864,3 +864,10 @@ body.toc-open {
     .toc-sidebar-list .toc-item { padding: 0.65rem 0.8rem; font-size: 0.88rem; }
     .toc-sidebar-list .toc-item.toc-h2 { padding: 0.7rem 0.8rem; font-size: 0.92rem; }
 }
+
+/* 2026-10-31 prose list formatting */
+.summary-lead{margin:0 0 .4rem;font-weight:600;}
+.summary-list,.mistake-list{margin:.5rem 0 0;padding-left:1.25rem;}
+.summary-list li,.mistake-list li{margin:.35rem 0;line-height:1.85;}
+.summary-list li::marker,.mistake-list li::marker{color:#1F4880;}
+.mistake-list{font-style:normal;}

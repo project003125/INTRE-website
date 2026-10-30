@@ -371,6 +371,8 @@ def convert_markdown_body(body):
                 j += 1
             i = j
             quote_html = "<br>".join(quote_lines) if len(quote_lines) > 1 else quote_lines[0]
+            if re.match(r"管线重构注记（2026-07）", quote_html):
+                continue   # 对外呈现面减负（2026-10-31 主理会话令）：日期过程卡不渲染，源件承载面保留
             if quote_html.strip() == "〔MM·G1〕":
                 i += 0  # 对外呈现面减负（主理 2026-10-31 会话令）：独立码引〔MM·G1〕不渲染为代际注卡，源件码引保留；权威链＝00-M-05 §三／06-S-02 §二十一
                 continue   # 跳过整卡输出（原渲染规则已撤·防回退点）

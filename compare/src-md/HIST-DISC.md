@@ -1,23 +1,3 @@
----
-title: HIST-DISC · 双范式对比学习模块 · DISC 系（讨论专案）版本沿革（冷层档案·分册）
-version: v1.0.1
-date: 2026-10-18
-status: active
-taxonomy: IET v3.0
-document_type: archive_index
-decision_level: D5（14 号工程内历史档案建件·A 批拆分）
-archive_tier: mandatory
-author: general-261018-095740（基座 DeepSeek-V4.1-Flash·主理披露）——依主理 2026-10-18 会话令及方案 v0.4.0 §4.7.2
-layer: 14-ENGRAM · 01-碳基分支 · 03_双范式对比学习模块（冷层版本沿革·DISC 分册）
-dependencies:
-  - ../../00-方案与协议/PLAN-双范式对比学习模块-revision_notes压缩与版本表分工方案-v0.1-2026-10-18.md
-  - ../README.md
-  - HIST-01_双范式对比学习模块-版本沿革-v1.0-2026-10-18.md
-revision_notes: |
-  v1.0.1 2026-10-25 B261025-03：补登记 2026-10-25 三层判据落位批（B261025-01/02）与候办清账批（B261025-03）版本行（各件见对应节）；DISC-11 新增文档节（仅 HIST-DISC）。未 commit。
-  v1.0.0 2026-10-18 A 批拆分（D5·B261018-08）：自 HIST-01 v1.1.0 总索引拆出 DISC 分册；逐字承接原 43 节中本系 10 节，锚 id 保持 doc-N，内容零改写；未 commit。
----
-
 # HIST-DISC · 双范式对比学习模块 · DISC 系（讨论专案）版本沿革（冷层档案·分册）
 
 > **定位**：本件是 `03_双范式对比学习模块/` DISC 系（讨论专案）10 件的冷层版本档案，为 [HIST-01 总索引](HIST-01_双范式对比学习模块-版本沿革-v1.0-2026-10-18.md) 的分册之一，承接主文档热层外迁的旧版表与原 rn。

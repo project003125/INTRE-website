@@ -449,7 +449,7 @@ def markdown_table_to_html(lines):
 # --- HTML 模板 ---
 
 CSS_VERSION = "v=11"
-SHARED_VERSION = "v=20260929"   # 15 号扫尾批：共享三件缓存版本号，与全站 ?v=20260929 对齐；改 shared/ 下文件时同步 +1
+SHARED_VERSION = "v=20261031f"   # 2026-10-31 对齐教材页现行 ?v=20261031f（8619592 双侧栏改版批刷至 f；非教材页仍 b——教材页若回写 b 会把已刷缓存回退）；改 shared/ 下文件时同步 +1
 BASE_URL = "https://project003125.github.io/INTRE-website"
 
 HTML_TEMPLATE = """<!DOCTYPE html>

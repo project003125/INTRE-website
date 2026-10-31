@@ -131,10 +131,10 @@
   --glass-shadow:      0 8px 32px rgba(10, 30, 61, 0.10), 0 2px 8px rgba(10, 30, 61, 0.06);
   --glass-shadow-hover: 0 18px 48px rgba(10, 30, 61, 0.16), 0 4px 12px rgba(10, 30, 61, 0.08);
   --glow-blue:         rgba(59, 111, 181, 0.22);
-  --gradient-navy:     linear-gradient(135deg, #2A5DA0 0%, #122F5C 100%);
-  --gradient-page:     radial-gradient(900px 520px at 12% -8%, rgba(59,111,181,0.22), transparent 60%),
-                       radial-gradient(760px 460px at 98% 2%, rgba(189,208,232,0.40), transparent 58%),
-                       radial-gradient(700px 500px at 60% 102%, rgba(59,111,181,0.10), transparent 60%);
+  --gradient-navy:     linear-gradient(135deg, var(--color-navy-500) 0%, var(--color-navy-800) 100%);
+  --gradient-page:     radial-gradient(900px 520px at 12% -8%, color-mix(in srgb, var(--color-navy-400) 22%, transparent), transparent 60%),
+                       radial-gradient(760px 460px at 98% 2%, color-mix(in srgb, var(--color-navy-200) 40%, transparent), transparent 58%),
+                       radial-gradient(700px 500px at 60% 102%, color-mix(in srgb, var(--color-navy-400) 10%, transparent), transparent 60%);
 
   /* ---- 间距系统 (4px 基数) ---- */
   --space-1:  4px;
@@ -193,7 +193,7 @@ img, video, svg {
 }
 
 html {
-  font-size: 17px;
+  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -204,7 +204,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: #f6f9fd;
+  background-color: color-mix(in srgb, var(--color-navy-50) 28%, #fff);
   background-image: var(--gradient-page);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -217,7 +217,7 @@ body {
 /* ---- 排版层级 ---- */
 h1 {
   font-family: var(--font-body);
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -231,7 +231,7 @@ h1:lang(zh) {
 
 h2 {
   font-family: var(--font-body);
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -264,7 +264,7 @@ h4, h5, h6 {
 }
 
 p {
-  line-height: 1.75;
+  line-height: 1.7;
   margin-bottom: 1em;
 }
 

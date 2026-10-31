@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="../shared/brand.css?v=20261031">
-    <link rel="stylesheet" href="../shared/components.css?v=20261031">
-  <link rel="stylesheet" href="../shared/domain-switch.css?v=20261031">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
+    <link rel="stylesheet" href="../shared/components.css?v=20261031b">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20261031b">
     <style>
         html { scroll-behavior: smooth; }
         .container { margin:0 auto; padding:2rem; }
@@ -77,10 +77,10 @@
         main.container { counter-reset: sec; }
         .hero-editorial { display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; padding:2.5rem 0 3rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); }
         .hero-eyebrow { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; color:var(--color-slate-500); margin-bottom:1.1rem; }
-        .hero-editorial h1 { font-family:var(--font-logo); font-size:clamp(4.4rem,9.5vw,7rem); line-height:.9; letter-spacing:-.05em; margin:0 0 1.2rem; color:var(--color-navy-950); }
-        .hero-lede { max-width:36rem; font-size:1.12rem; line-height:1.7; color:var(--color-slate-600); margin-bottom:1.6rem; }
+        .hero-editorial h1 { font-family:var(--font-logo); font-size:clamp(4rem,9vw,6.5rem); line-height:.9; letter-spacing:-.05em; margin:0 0 1.2rem; color:var(--color-navy-950); }
+        .hero-lede { max-width:36rem; font-size:1.05rem; line-height:1.7; color:var(--color-slate-600); margin-bottom:1.6rem; }
         .hero-facts { display:flex; gap:2.5rem; flex-wrap:wrap; margin-bottom:1.4rem; }
-        .fact-num { display:block; font-family:var(--font-mono); font-size:1.75rem; font-weight:600; color:var(--color-navy-600); line-height:1.1; }
+        .fact-num { display:block; font-family:var(--font-mono); font-size:1.6rem; font-weight:600; color:var(--color-navy-600); line-height:1.1; }
         .fact-label { display:block; font-size:.72rem; color:var(--color-slate-500); margin-top:.2rem; }
         .hero-matrix { display:grid; grid-template-columns:2rem repeat(7,1fr); gap:4px; padding:.9rem; border:var(--stroke-hairline) solid var(--color-slate-200); background:var(--color-slate-50); border-radius:var(--radius-md); margin:0; }
         .mx-label { display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:.55rem; color:var(--color-slate-400); }
@@ -92,10 +92,10 @@
         .l0-strip > div { padding:1.1rem 1.25rem; border-left:var(--stroke-hairline) solid var(--color-slate-200); }
         .l0-strip > div:first-child { border-left:0; padding-left:0; }
         .strip-num { display:block; font-family:var(--font-mono); font-size:.66rem; color:var(--color-navy-400); margin-bottom:.35rem; }
-        .l0-strip strong { font-size:1rem; color:var(--color-slate-800); }
+        .l0-strip strong { font-size:.92rem; color:var(--color-slate-800); }
         h2.section-label { counter-increment:sec; }
         h2.section-label i { display:none; }
-        h2.section-label::before { content:"0" counter(sec); font-family:var(--font-mono); font-size:1.4rem; font-weight:600; color:var(--color-navy-200); letter-spacing:-.04em; margin-right:.85rem; }
+        h2.section-label::before { content:"0" counter(sec); font-family:var(--font-mono); font-size:1.3rem; font-weight:600; color:var(--color-navy-200); letter-spacing:-.04em; margin-right:.85rem; }
         .hero-copy, .hero-matrix { animation:rise .6s var(--ease-smooth) both; }
         .hero-matrix { animation-delay:.08s; }
         @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }

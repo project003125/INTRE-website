@@ -1,0 +1,17 @@
+Brain anatomy asset attribution
+
+Source model: Allen_F_Brain.glb, HuBMAP CCF 3D Reference Object Library v1.2
+https://github.com/hubmapconsortium/ccf-releases/blob/main/v1.2/models/Allen_F_Brain.glb
+
+Anatomy: Allen Human Reference Atlas 3D (2020)
+GLB conversion: Jim Gee
+Anatomical mapping: Amy Bernard
+Library and attribution: https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html
+
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Local changes: selected cerebral cortex, cerebellum and brainstem meshes;
+simplified geometry; normalized coordinates; packed into four binary mesh
+batches as brain-anatomy.bin. brain-fallback.png is a rendered derivative.
+This visualization is not intended for clinical or diagnostic use.

@@ -1,11 +1,11 @@
 ---
 title: INTRE 3D Hero 子项目 — 系统介绍
-version: v2.0.0
+version: v2.0.1
 date: 2026-10-31
 status: review
 taxonomy: IET v3.0
 document_type: report
-revision_notes: v2.0.0 四幕体验从零重构，拆分 HTML/CSS/JS，接入程序化脑与 DTI 纤维；等待主理验收放行。
+revision_notes: v2.0.1 神经层改用真实解剖脑网格，重建 DTI 透明度层级，并以同模型静态渲染替换文字降级示意。
 ---
 
 # INTRE 3D Hero 子项目 — 系统介绍
@@ -35,7 +35,10 @@ revision_notes: v2.0.0 四幕体验从零重构，拆分 HTML/CSS/JS，接入程
 │   └── dti/
 │       ├── fibers.js           # 程序化解剖纤维束
 │       └── dec.js              # DEC 方向编码颜色
-├── assets/brain-cortex-texture.jpg
+├── assets/
+│   ├── brain-anatomy.bin        # 本地精简解剖脑网格：双半球、小脑、脑干
+│   ├── brain-fallback.png       # 同一模型的文字模式静态渲染
+│   └── brain-anatomy.LICENSE.txt
 ├── docs/                      # 需求、IA、线框、设计、QA 等规格
 └── qa/                        # 1440/390 四幕截图与本轮验收记录
 ```
@@ -56,22 +59,24 @@ revision_notes: v2.0.0 四幕体验从零重构，拆分 HTML/CSS/JS，接入程
 ## 四、3D 与性能策略
 
 - 唯一 Three.js 来源为 `lib/three.module.js`，通过 import map 映射 `three`。
-- 无 Bloom、无 EffectComposer、无外部 GLB；使用本地几何和纹理。
-- 脑模型包含双半球、小脑、脑干和程序化皮层起伏；皮层纹理仅作低强度 bump。
+- 无 Bloom、无 EffectComposer、无运行时外部模型请求；所有 3D 资产均本地化。
+- 脑模型来自真实解剖网格，包含双半球、小脑、脑干与可辨认脑回；本地精简为 4 个网格批次，不再使用椭球或轮廓拉伸壳。
 - DTI 使用 `buildFibers()` 与 `decFromTangent()`：红=左右 X、绿=前后 Z、蓝=上下 Y。
 - 全部纤维合并为一个 `LineSegments`，42 背景节点使用一个 `InstancedMesh`。
 - DPR 上限 1.6；`?lite` 降为 1.0，并减少星点、纤维数量及采样密度。
 - 纤维采用受控颜色、透明度与 NormalBlending，避免叠白和过曝。
 - 页面隐藏时暂停动画；reduced-motion 下停用连续动画，仅按幕切换静态渲染。
 
+脑网格来源为 [Allen Human Reference Atlas 3D (2020) / HuBMAP CCF v1.2](https://github.com/hubmapconsortium/ccf-releases/blob/main/v1.2/models/Allen_F_Brain.glb)，许可为 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。本地处理包括解剖结构筛选、网格简化、坐标归一化与四组二进制合批；详见资产旁许可说明。
+
 ## 五、降级与可访问性
 
 | 场景 | 行为 |
 |---|---|
 | 无 JavaScript | 四幕正文可读；42 节点均为教材链接；不显示空白 canvas |
-| 无 WebGL / 上下文丢失 | 自动切换文字状态与 CSS 结构示意 |
-| `?no3d` | 强制文字模式，不初始化 Three.js |
-| `?lite` | 降低粒子、纤维密度、几何细分与 DPR |
+| 无 WebGL / 上下文丢失 | 自动切换文字状态与同一脑模型的静态渲染 |
+| `?no3d` | 强制文字模式，不初始化 Three.js；显示静态脑图 |
+| `?lite` | 降低粒子、纤维密度、采样密度与 DPR |
 | reduced-motion | 关闭平滑滚动与连续场景运动 |
 | 键盘 | 1–4 切幕；Tab 聚焦节点；Escape 关闭详情 |
 

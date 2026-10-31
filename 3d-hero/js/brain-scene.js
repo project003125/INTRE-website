@@ -46,8 +46,8 @@ export function createHeroScene(canvas, options) {
     const mobile = width <= 640;
     phenomena.position.set(mobile ? 0.8 : 2.1, mobile ? -0.2 : 0, 0);
     phenomena.scale.setScalar(mobile ? 0.72 : 1);
-    brain.position.set(mobile ? 0.7 : 2.05, mobile ? -0.55 : 0, 0);
-    brain.scale.setScalar(mobile ? 0.92 : 1.35);
+    brain.position.set(mobile ? 0 : 2.05, mobile ? -1.5 : 0, 0);
+    brain.scale.setScalar(mobile ? 0.85 : 1.55);
     lattice.position.set(0, 0, -3);
     lattice.scale.setScalar(mobile ? 0.65 : 1);
   }
@@ -70,7 +70,7 @@ export function createHeroScene(canvas, options) {
     if (!options.reducedMotion) {
       stars.rotation.y = t * 0.006;
       phenomena.rotation.y = -0.25 + Math.sin(t * 0.16) * 0.08;
-      brain.rotation.y = -0.32 + Math.sin(t * 0.18) * 0.12;
+      brain.rotation.y = -0.98 + Math.sin(t * 0.14) * 0.07;
       brain.rotation.x = Math.sin(t * 0.13) * 0.025;
     }
     if (currentAct !== targetAct) {
@@ -175,47 +175,21 @@ function createLattice() {
 
 function createBrain(lite) {
   const group = new THREE.Group();
-  const texture = new THREE.TextureLoader().load('../assets/brain-cortex-texture.jpg');
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set(2.5, 2.5);
-  const shellMaterial = new THREE.MeshStandardMaterial({
-    color: 0x467aa5, emissive: 0x07182a, emissiveIntensity: 0.35,
-    roughness: 0.82, metalness: 0, transparent: true, opacity: 0.24,
-    depthWrite: false, bumpMap: texture, bumpScale: 0.055, side: THREE.FrontSide
-  });
-  const left = new THREE.Mesh(makeCortexGeometry(-1, lite), shellMaterial);
-  const right = new THREE.Mesh(makeCortexGeometry(1, lite), shellMaterial);
-  left.renderOrder = right.renderOrder = 3;
-  group.add(left, right);
+  loadBrainAnatomy(group);
 
-  const cerebellumMaterial = shellMaterial.clone();
-  cerebellumMaterial.color.setHex(0x355f83);
-  cerebellumMaterial.opacity = 0.36;
-  cerebellumMaterial.bumpScale = 0.08;
-  for (const side of [-1, 1]) {
-    const lobe = new THREE.Mesh(new THREE.SphereGeometry(0.48, lite ? 20 : 32, lite ? 14 : 22), cerebellumMaterial);
-    lobe.position.set(side * 0.35, -0.85, -0.68);
-    lobe.scale.set(1, 0.62, 0.82);
-    lobe.renderOrder = 3;
-    group.add(lobe);
-  }
-  const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.19, 0.85, 16, 4), cerebellumMaterial);
-  stem.position.set(0, -1.03, -0.25);
-  stem.rotation.x = -0.25;
-  stem.renderOrder = 3;
-  group.add(stem);
-
-  const { fibers } = buildFibers(lite ? 0.24 : 0.5, 20261031, 0.8, lite ? 32 : 48);
+  const { fibers } = buildFibers(lite ? 0.32 : 0.55, 20261031, 0.62, lite ? 32 : 48);
+  const visibleTracts = new Set(['CC', 'CST', 'AF', 'CG', 'SLF', 'ILF', 'UF', 'IFOF', 'FX', 'OR']);
   const positions = [];
   const colors = [];
   const color = new THREE.Color();
   for (const fiber of fibers) {
+    if (!visibleTracts.has(fiber.tract.id)) continue;
     const samples = fiber.pts.length / 3;
     for (let i = 0; i < samples - 1; i++) {
       for (const j of [i, i + 1]) {
         positions.push(fiber.pts[j * 3], fiber.pts[j * 3 + 1], fiber.pts[j * 3 + 2]);
         const c = decFromTangent(fiber.tan[j * 3], fiber.tan[j * 3 + 1], fiber.tan[j * 3 + 2]);
-        color.setRGB(0.06 + c[0] * 0.48, 0.08 + c[1] * 0.44, 0.12 + c[2] * 0.5, THREE.SRGBColorSpace);
+        color.setRGB(0.04 + c[0] * 0.66, 0.05 + c[1] * 0.54, 0.08 + c[2] * 0.7, THREE.SRGBColorSpace);
         colors.push(color.r, color.g, color.b);
       }
     }
@@ -223,30 +197,69 @@ function createBrain(lite) {
   const fiberGeometry = new THREE.BufferGeometry();
   fiberGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   fiberGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-  const fiberMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.58, blending: THREE.NormalBlending, depthWrite: false });
+  const fiberMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.56, blending: THREE.NormalBlending, depthWrite: false });
   const fiberLines = new THREE.LineSegments(fiberGeometry, fiberMaterial);
-  fiberLines.renderOrder = 2;
+  fiberLines.renderOrder = 4;
   group.add(fiberLines);
-  group.rotation.set(0.04, -0.32, 0.04);
+  group.rotation.set(-0.1, -0.98, -0.03);
   return group;
 }
 
-function makeCortexGeometry(side, lite) {
-  const geometry = new THREE.SphereGeometry(1, lite ? 36 : 56, lite ? 26 : 42);
-  const position = geometry.attributes.position;
-  const vector = new THREE.Vector3();
-  for (let i = 0; i < position.count; i++) {
-    vector.fromBufferAttribute(position, i);
-    const originalX = vector.x;
-    const folds = Math.sin(vector.y * 24 + vector.z * 7) * Math.sin(vector.z * 20 - originalX * 5) * 0.026
-      + Math.sin((vector.y + vector.z) * 34) * 0.012;
-    const inferiorTaper = vector.y < -0.35 ? 1 - (-vector.y - 0.35) * 0.18 : 1;
-    vector.multiplyScalar(1 + folds);
-    vector.x = originalX * 0.76 * inferiorTaper + side * 0.43;
-    vector.y = vector.y * 1.02 + 0.12;
-    vector.z = vector.z * 1.23 + 0.05 * (1 - originalX * originalX);
-    position.setXYZ(i, vector.x, vector.y, vector.z);
-  }
-  geometry.computeVertexNormals();
-  return geometry;
+// Allen Human Reference Atlas 3D (2020), HuBMAP CCF v1.2, CC BY 4.0.
+// Source: https://github.com/hubmapconsortium/ccf-releases/blob/main/v1.2/models/Allen_F_Brain.glb
+// Preprocessed locally into four simplified meshes; no runtime external requests.
+function loadBrainAnatomy(group) {
+  const materials = {
+    cortex: new THREE.MeshStandardMaterial({
+      color: 0x6f9ab8, emissive: 0x081e32, emissiveIntensity: 0.32,
+      roughness: 0.82, metalness: 0.02, transparent: true, opacity: 0.24,
+      depthWrite: false, side: THREE.DoubleSide
+    }),
+    cerebellum: new THREE.MeshStandardMaterial({
+      color: 0x537f9e, emissive: 0x071a2c, emissiveIntensity: 0.28,
+      roughness: 0.88, transparent: true, opacity: 0.44, depthWrite: false
+    }),
+    brainstem: new THREE.MeshStandardMaterial({
+      color: 0x456f8e, emissive: 0x071827, emissiveIntensity: 0.24,
+      roughness: 0.9, transparent: true, opacity: 0.5, depthWrite: false
+    })
+  };
+
+  fetch('../assets/brain-anatomy.bin')
+    .then(response => {
+      if (!response.ok) throw new Error('Brain anatomy unavailable');
+      return response.arrayBuffer();
+    })
+    .then(buffer => {
+      const view = new DataView(buffer);
+      const count = view.getUint32(12, true);
+      let offset = 16;
+      for (let i = 0; i < count; i++) {
+        let name = '';
+        for (let j = 0; j < 16; j++) {
+          const code = view.getUint8(offset + j);
+          if (code) name += String.fromCharCode(code);
+        }
+        offset += 16;
+        const vertexCount = view.getUint32(offset, true);
+        const indexCount = view.getUint32(offset + 4, true);
+        offset += 8;
+        const positions = new Float32Array(buffer, offset, vertexCount * 3);
+        offset += positions.byteLength;
+        const indices = new Uint32Array(buffer, offset, indexCount);
+        offset += indices.byteLength;
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setIndex(new THREE.BufferAttribute(indices, 1));
+        geometry.computeVertexNormals();
+        geometry.computeBoundingSphere();
+        const material = name.startsWith('cortex') ? materials.cortex : materials[name];
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.renderOrder = 3;
+        group.add(mesh);
+      }
+    })
+    .catch(() => {
+      group.userData.anatomyUnavailable = true;
+    });
 }

@@ -72,6 +72,44 @@
         .op-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; height:100%; display:flex; flex-direction:column; }
         .op-card .op-target { font-family:var(--font-mono); font-size:.78rem; color:var(--color-iods); margin-top:.5rem; }
         .op-card .op-detail { font-size:.9rem; color:var(--color-slate-700); }
+
+        /* ---- 打样：编辑式 hero + 章节编号 + 42 格矩阵（仅本页） ---- */
+        main.container { counter-reset: sec; }
+        .hero-editorial { display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; padding:2.5rem 0 3rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); }
+        .hero-eyebrow { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; color:var(--color-slate-500); margin-bottom:1.1rem; }
+        .hero-editorial h1 { font-family:var(--font-logo); font-size:clamp(4.4rem,9.5vw,7rem); line-height:.9; letter-spacing:-.05em; margin:0 0 1.2rem; color:var(--color-navy-950); }
+        .hero-lede { max-width:36rem; font-size:1.12rem; line-height:1.7; color:var(--color-slate-600); margin-bottom:1.6rem; }
+        .hero-facts { display:flex; gap:2.5rem; flex-wrap:wrap; margin-bottom:1.4rem; }
+        .fact-num { display:block; font-family:var(--font-mono); font-size:1.75rem; font-weight:600; color:var(--color-navy-600); line-height:1.1; }
+        .fact-label { display:block; font-size:.72rem; color:var(--color-slate-500); margin-top:.2rem; }
+        .hero-matrix { display:grid; grid-template-columns:2rem repeat(7,1fr); gap:4px; padding:.9rem; border:var(--stroke-hairline) solid var(--color-slate-200); background:var(--color-slate-50); border-radius:var(--radius-md); margin:0; }
+        .mx-label { display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:.55rem; color:var(--color-slate-400); }
+        .mx-cell { aspect-ratio:1; background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); transition:background var(--duration-fast) var(--ease-smooth), border-color var(--duration-fast) var(--ease-smooth), transform var(--duration-fast) var(--ease-smooth); }
+        .mx-cell:hover { background:var(--color-navy-600); border-color:var(--color-navy-600); transform:scale(1.12); }
+        .mx-cell.is-hub { background:var(--color-navy-800); border-color:var(--color-navy-800); }
+        .hero-matrix figcaption { grid-column:1/-1; font-size:.68rem; color:var(--color-slate-500); margin-top:.45rem; line-height:1.5; }
+        .l0-strip { display:grid; grid-template-columns:repeat(3,1fr); border-top:var(--stroke-hairline) solid var(--color-slate-200); border-bottom:var(--stroke-hairline) solid var(--color-slate-200); margin:1.75rem 0 2.5rem; }
+        .l0-strip > div { padding:1.1rem 1.25rem; border-left:var(--stroke-hairline) solid var(--color-slate-200); }
+        .l0-strip > div:first-child { border-left:0; padding-left:0; }
+        .strip-num { display:block; font-family:var(--font-mono); font-size:.66rem; color:var(--color-navy-400); margin-bottom:.35rem; }
+        .l0-strip strong { font-size:1rem; color:var(--color-slate-800); }
+        h2.section-label { counter-increment:sec; }
+        h2.section-label i { display:none; }
+        h2.section-label::before { content:"0" counter(sec); font-family:var(--font-mono); font-size:1.4rem; font-weight:600; color:var(--color-navy-200); letter-spacing:-.04em; margin-right:.85rem; }
+        .hero-copy, .hero-matrix { animation:rise .6s var(--ease-smooth) both; }
+        .hero-matrix { animation-delay:.08s; }
+        @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+        @media (max-width:768px) {
+            .hero-editorial { grid-template-columns:1fr; gap:2rem; padding:1.5rem 0 2rem; }
+            .hero-matrix { max-width:420px; }
+            .l0-strip { grid-template-columns:1fr; }
+            .l0-strip > div { border-left:0; border-top:var(--stroke-hairline) solid var(--color-slate-200); padding:.9rem 0; }
+            .l0-strip > div:first-child { border-top:0; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            .hero-copy, .hero-matrix { animation:none; }
+            .mx-cell { transition:none; }
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -108,16 +146,35 @@
         </div>
     </nav>
     <main id="main-content" class="container">
-        <h1>IODS</h1>
-        <div class="subhead">INTRE 本体定义体系 · <strong>L0 本体</strong>（P7 对外系统边界组成）<span class="channel-badge iods">定义体系</span></div>
+        <header class="hero-editorial">
+            <div class="hero-copy">
+                <div class="hero-eyebrow">L0 · ONTOLOGY DEFINITION</div>
+                <h1>IODS</h1>
+                <p class="hero-lede"><strong>INTRE 本体定义体系</strong> · L0 本体（P7 对外系统边界组成）。为 L0→L5 全管线提供命名空间与合法性。</p>
+                <div class="hero-facts">
+                    <div><span class="fact-num">42</span><span class="fact-label">状态维度</span></div>
+                    <div><span class="fact-num">6×7</span><span class="fact-label">模块 × 维度</span></div>
+                    <div><span class="fact-num">L0→L5</span><span class="fact-label">管线覆盖</span></div>
+                </div>
+                <span class="channel-badge iods">定义体系</span>
+            </div>
+            <figure class="hero-matrix" aria-label="6 模块乘 7 维度共 42 维状态矩阵">
+                <span class="mx-label"></span>
+                <span class="mx-label">R-D</span><span class="mx-label">R-B</span><span class="mx-label">D-F</span><span class="mx-label">D-B</span><span class="mx-label">S-R</span><span class="mx-label">S-C</span><span class="mx-label">S-S</span>
+                <span class="mx-label">M1</span><span class="mx-cell" title="M1-RES-D"></span><span class="mx-cell" title="M1-RES-B"></span><span class="mx-cell" title="M1-DSP-F"></span><span class="mx-cell" title="M1-DSP-B"></span><span class="mx-cell" title="M1-STR-R"></span><span class="mx-cell" title="M1-STR-C"></span><span class="mx-cell" title="M1-STR-S"></span>
+                <span class="mx-label">M2</span><span class="mx-cell" title="M2-RES-D"></span><span class="mx-cell" title="M2-RES-B"></span><span class="mx-cell" title="M2-DSP-F"></span><span class="mx-cell" title="M2-DSP-B"></span><span class="mx-cell" title="M2-STR-R"></span><span class="mx-cell" title="M2-STR-C"></span><span class="mx-cell" title="M2-STR-S"></span>
+                <span class="mx-label">M3</span><span class="mx-cell" title="M3-RES-D"></span><span class="mx-cell" title="M3-RES-B"></span><span class="mx-cell" title="M3-DSP-F"></span><span class="mx-cell" title="M3-DSP-B"></span><span class="mx-cell" title="M3-STR-R"></span><span class="mx-cell" title="M3-STR-C"></span><span class="mx-cell" title="M3-STR-S"></span>
+                <span class="mx-label">M4</span><span class="mx-cell" title="M4-RES-D"></span><span class="mx-cell" title="M4-RES-B"></span><span class="mx-cell" title="M4-DSP-F"></span><span class="mx-cell is-hub" title="M4-DSP-B"></span><span class="mx-cell" title="M4-STR-R"></span><span class="mx-cell" title="M4-STR-C"></span><span class="mx-cell" title="M4-STR-S"></span>
+                <span class="mx-label">M5</span><span class="mx-cell" title="M5-RES-D"></span><span class="mx-cell" title="M5-RES-B"></span><span class="mx-cell" title="M5-DSP-F"></span><span class="mx-cell" title="M5-DSP-B"></span><span class="mx-cell" title="M5-STR-R"></span><span class="mx-cell" title="M5-STR-C"></span><span class="mx-cell" title="M5-STR-S"></span>
+                <span class="mx-label">M6</span><span class="mx-cell" title="M6-RES-D"></span><span class="mx-cell" title="M6-RES-B"></span><span class="mx-cell" title="M6-DSP-F"></span><span class="mx-cell" title="M6-DSP-B"></span><span class="mx-cell" title="M6-STR-R"></span><span class="mx-cell" title="M6-STR-C"></span><span class="mx-cell" title="M6-STR-S"></span>
+                <figcaption>6 模块 × 7 维度 = 42 维；R=资源，D=调度，S=结构。深色格示意 M4-DSP-B。</figcaption>
+            </figure>
+        </header>
 
-        <div class="info-box">
-            <p><i class="fas fa-quote-left" aria-hidden="true"></i> <strong>IODS</strong> 是 INTRE 管线体系的 <strong>L0 本体</strong>，为整条管线（L0→L5）提供命名空间与合法性：</p>
-            <ul>
-                <li><strong>42 维 M-R-D-S 状态坐标系</strong></li>
-                <li><strong>G-M-A-R 操作语法</strong></li>
-                <li><strong>PCUI/PSL 知识基础设施</strong></li>
-            </ul>
+        <div class="l0-strip">
+            <div><span class="strip-num">01</span><strong>42 维 M-R-D-S 状态坐标系</strong></div>
+            <div><span class="strip-num">02</span><strong>G-M-A-R 操作语法</strong></div>
+            <div><span class="strip-num">03</span><strong>PCUI / PSL 知识基础设施</strong></div>
         </div>
 
         <!-- 一、M-R-D-S 内感架构 -->
@@ -295,10 +352,6 @@
                     <tr><td>6</td><td>系统-环境耦合</td><td>系统与环境双向耦合：环境经 S-P 参照系驱动系统，系统经行为输出反作用于环境</td></tr>
                 </tbody>
             </table>
-        </div>
-
-        <div class="info-box">
-            <p><strong>结构规律的操作化表述，非动力学方程</strong>：L0 只定义上述六条约束的<strong>存在性与结构语义</strong>，方程形式与参数数值在 L3 动力学层（方程子层 + 参数子层）展开。修订条件为<strong>架构级（A-16 四条件）</strong>，参数数据不能直接修订结构约束。</p>
         </div>
 
         <!-- 四、知识基础设施 -->

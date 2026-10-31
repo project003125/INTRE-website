@@ -1,7 +1,7 @@
 /* ============================================================
-   INTRE Brand Design Tokens v2.2.1
-   基于 06-S-05-INTRE-品牌视觉规范
-   设计哲学：包豪斯内核 + Apple 简约
+   INTRE Brand Design Tokens v3.0.0
+   基于 06-S-05-INTRE-品牌视觉规范 v2.6.0 §十二「深蓝玻璃」扩展
+   设计哲学：包豪斯内核 + Apple 简约 + 深蓝玻璃（网站 UI）
 
    ⚠️ AI 协作者必读：
    本文件是规范的实现层。规范的权威定义在：
@@ -16,8 +16,9 @@
    ❌ 把 --font-body 的 Inter 改成其他字体
    ❌ 把 Inter / Josefin 改成 IBM Plex Sans / Fraunces
       （impeccable detector 报 overused-font 是已知误报，不要改）
-   ❌ 在 UI 区域用 linear-gradient（仅数据可视化例外）
-   ❌ 用 border-radius: >= 12px
+   ✅ 网站 UI 可用单色系渐变与玻璃拟态（06-S-05 §十二；须带不透明回退）
+   ❌ 用彩虹渐变或 gradient text（数据可视化例外）
+   ❌ 在架构图／文档阅读页用 > 12px 圆角或玻璃面（仍守锐利路线）
    ❌ 让单屏视口同时出现 ≥3 种大地通道色
    ❌ 让 Amber 面积 > 5%
    ============================================================ */
@@ -105,7 +106,9 @@
   --radius-xs:    2px;
   --radius-sm:    4px;
   --radius-md:    8px;
-  --radius-lg:   12px;
+  --radius-lg:   16px;   /* R5 · 玻璃表格/信息盒 */
+  --radius-xl:   20px;   /* R6 · 玻璃卡片/面板 */
+  --radius-2xl:  24px;   /* R7 · 浮层/Hero 卡 */
   --radius-pill:  999px;
 
   /* ---- 阴影规范 ---- */
@@ -115,6 +118,23 @@
   --shadow-navy-sm: 0 2px 8px rgba(31, 72, 128, 0.25);
   --shadow-navy-md: 0 4px 12px rgba(31, 72, 128, 0.35);
   --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.15);
+
+  /* ---- 深蓝玻璃扩展 v3.0.0（06-S-05 §十二） ---- */
+  --blur-glass:        18px;
+  --blur-glass-strong: 28px;
+  --glass-bg:          rgba(255, 255, 255, 0.52);
+  --glass-bg-strong:   rgba(255, 255, 255, 0.70);
+  --glass-bg-dark:     rgba(10, 30, 61, 0.52);
+  --glass-border:      rgba(255, 255, 255, 0.62);
+  --glass-border-dark: rgba(255, 255, 255, 0.14);
+  --glass-highlight:   inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --glass-shadow:      0 8px 32px rgba(10, 30, 61, 0.10), 0 2px 8px rgba(10, 30, 61, 0.06);
+  --glass-shadow-hover: 0 18px 48px rgba(10, 30, 61, 0.16), 0 4px 12px rgba(10, 30, 61, 0.08);
+  --glow-blue:         rgba(59, 111, 181, 0.22);
+  --gradient-navy:     linear-gradient(135deg, #2A5DA0 0%, #122F5C 100%);
+  --gradient-page:     radial-gradient(900px 520px at 12% -8%, rgba(59,111,181,0.22), transparent 60%),
+                       radial-gradient(760px 460px at 98% 2%, rgba(189,208,232,0.40), transparent 58%),
+                       radial-gradient(700px 500px at 60% 102%, rgba(59,111,181,0.10), transparent 60%);
 
   /* ---- 间距系统 (4px 基数) ---- */
   --space-1:  4px;
@@ -173,6 +193,7 @@ img, video, svg {
 }
 
 html {
+  font-size: 17px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -183,7 +204,10 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-white);
+  background-color: #f6f9fd;
+  background-image: var(--gradient-page);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--color-slate-900);
   line-height: 1.7;
   font-weight: 400;
@@ -193,7 +217,7 @@ body {
 /* ---- 排版层级 ---- */
 h1 {
   font-family: var(--font-body);
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -207,7 +231,7 @@ h1:lang(zh) {
 
 h2 {
   font-family: var(--font-body);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -240,7 +264,7 @@ h4, h5, h6 {
 }
 
 p {
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: 1em;
 }
 

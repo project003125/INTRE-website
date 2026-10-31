@@ -2,126 +2,85 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>INTRE · 3D 状态空间</title>
-  <meta name="description" content="INTRE 3D 状态空间：从现象层、功能层到神经层的四幕沉浸式体验。42 维状态向量、M-R-D-S 状态语法与三通道融合。">
-  <meta name="theme-color" content="#071a33">
-  <link rel="canonical" href="https://project003125.github.io/INTRE-website/3d-hero/pages/3d-hero.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTRE · 3D 体验暂未开放</title>
+  <meta name="description" content="INTRE 3D 体验正在重做，暂未上线。可先进入 2D 网站阅读 IODS、PSE 与教材。">
+  <meta name="robots" content="noindex">
   <link rel="icon" href="../../assets/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/brand.css?v=20261031b">
   <link rel="stylesheet" href="../../shared/components.css?v=20261031b">
-  <link rel="stylesheet" href="./3d-hero.css">
-  <noscript><style>#c,.stage-labels,.rail,.hud-bottom{display:none!important}.act-inner{opacity:1!important;transform:none!important}</style></noscript>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: color-mix(in srgb, var(--color-navy-50) 30%, #fff);
+      color: var(--color-slate-900);
+    }
+    .stub {
+      width: min(560px, 100%);
+      padding: 2.4rem 2.2rem 2.2rem;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 20px;
+      box-shadow: 0 18px 48px rgba(10, 30, 61, .10);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      text-align: center;
+    }
+    .brand {
+      display: inline-block;
+      font-family: var(--font-logo);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-navy-950);
+      text-decoration: none;
+      letter-spacing: -.02em;
+      margin-bottom: 1.6rem;
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      color: var(--color-slate-500);
+      margin: 0 0 .9rem;
+    }
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin: 0 0 .9rem;
+      letter-spacing: -.02em;
+    }
+    p {
+      max-width: 34rem;
+      margin: 0 auto 1.6rem;
+      color: var(--color-slate-600);
+      line-height: 1.75;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: .7rem 1.3rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-navy-500), var(--color-navy-800));
+      color: #fff;
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
-<body class="hero3d">
-  <a class="skip-link" href="#act-1">跳到内容</a>
-
-  <div class="stage" aria-hidden="true">
-    <canvas id="c"></canvas>
-    <div class="stage-labels"></div>
-  </div>
-
-  <header class="hud-top">
+<body>
+  <main class="stub">
     <a class="brand" href="../../index.html">INTRE</a>
-    <span class="hud-tag">3D · 状态空间</span>
-    <nav aria-label="快捷入口">
-      <a href="../../index.html">返回 2D</a>
-      <a href="../../iods/">IODS</a>
-      <a href="../../pse/">PSE</a>
-    </nav>
-  </header>
-
-  <aside class="rail" aria-label="幕导航">
-    <a href="#act-1" data-act="0" aria-current="true"><em>开场</em><span></span></a>
-    <a href="#act-2" data-act="1"><em>现象</em><span></span></a>
-    <a href="#act-3" data-act="2"><em>功能</em><span></span></a>
-    <a href="#act-4" data-act="3"><em>神经</em><span></span></a>
-  </aside>
-
-  <main class="track" id="track">
-    <section class="act" id="act-1" data-act="0">
-      <div class="act-inner">
-        <p class="eyebrow">INTRE · 状态空间</p>
-        <h1>把心理状态<br>变成可计算的坐标</h1>
-        <p class="lead">功能层心理学：在现象与神经之间，建立一套可描述、可仿真、可干预的状态语法。</p>
-        <div class="facts">
-          <div><b>42</b><span>状态维度</span></div>
-          <div><b>6×7</b><span>模块 × 维度</span></div>
-          <div><b>3</b><span>输入通道</span></div>
-        </div>
-        <p class="scroll-hint">向下滚动 · 或按 1–4 切幕</p>
-      </div>
-    </section>
-
-    <section class="act" id="act-2" data-act="1">
-      <div class="act-inner">
-        <p class="eyebrow">ACT 02 · 现象层</p>
-        <h2>体验、行为、症状，<br>先变成读数</h2>
-        <p>主观体验、行为表现与临床信号是可观测的输入；三条通道把它们编码成 42 维观测向量。</p>
-        <div class="chips">
-          <a class="chip" href="../../uplp/">语义 <small>UPLP</small></a>
-          <a class="chip" href="../../ubmp/">行为 <small>UBMP</small></a>
-          <a class="chip" href="../../unip/">神经 <small>UNIP</small></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="act" id="act-3" data-act="2">
-      <div class="act-inner">
-        <p class="eyebrow">ACT 03 · 功能层</p>
-        <h2>42 维状态，<br>一张可读的坐标</h2>
-        <p>6 个模块 × 7 个子维度。悬停或点击任一节点，查看它的功能定义与神经标记。</p>
-        <div class="formula">
-          <span>Ψ(t) ∈ ℝ⁴²</span>
-          <a href="../../glossary/?q=状态向量">查看定义 →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="act" id="act-4" data-act="3">
-      <div class="act-inner">
-        <p class="eyebrow">ACT 04 · 神经层</p>
-        <h2>三条通道，<br>汇成一个状态</h2>
-        <p>语义、行为、神经三路似然经贝叶斯融合，估计同一个 Ψ(t)；REVER 在每一级设门控。</p>
-        <p class="dec-note">DTI 方向色：<i class="dec red"></i>左右 <i class="dec green"></i>前后 <i class="dec blue"></i>上下</p>
-        <div class="chips">
-          <a class="chip" href="../../uplp/">UPLP <small>语义</small></a>
-          <a class="chip" href="../../ubmp/">UBMP <small>行为</small></a>
-          <a class="chip" href="../../unip/">UNIP <small>神经</small></a>
-        </div>
-        <div class="cta-row">
-          <a class="btn" href="../../iods/">进入 IODS</a>
-          <a class="btn ghost" href="../../pse/">PSE 引擎</a>
-          <a class="btn amber" href="../../textbook/">读教材</a>
-        </div>
-      </div>
-    </section>
+    <p class="eyebrow">3D · STATUS</p>
+    <h1>3D 体验暂未开放</h1>
+    <p>这一版正在重做，暂不上线。你可以先进入 2D 网站阅读 IODS、PSE 与教材。</p>
+    <a class="btn" href="../../index.html">返回 2D 网站</a>
   </main>
-
-  <aside class="node-panel" id="node-panel" aria-live="polite" hidden>
-    <button class="node-close" id="node-close" aria-label="关闭节点详情">×</button>
-    <p class="eyebrow" id="node-code"></p>
-    <h3 id="node-title"></h3>
-    <p id="node-desc"></p>
-    <p class="markers" id="node-markers"></p>
-  </aside>
-
-  <div class="fallback" id="fallback" hidden>当前浏览器未启用 WebGL，已切换文字版；四幕内容仍可正常阅读。</div>
-
-  <div class="hud-bottom" aria-hidden="true">
-    <span id="act-label">ACT 01 / 04</span>
-    <div class="bar"><i id="bar"></i></div>
-    <span class="hint">1–4 切幕 · 拖动旋转</span>
-  </div>
-
-  <script src="../lib/node-details.js"></script>
-  <script src="../lib/brain-outline-data.js"></script>
-  <script type="importmap">
-    { "imports": { "three": "../lib/three.module.js" } }
-  </script>
-  <script type="module" src="./3d-hero.js"></script>
 </body>
 </html>

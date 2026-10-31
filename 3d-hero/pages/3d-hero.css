@@ -257,6 +257,28 @@ body.hero3d ::selection { background: rgba(245, 158, 11, 0.25); }
 .formula a { font-family: var(--font-body, sans-serif); font-size: .78rem; color: #f5b64a; text-decoration: none; }
 .formula a:hover { text-decoration: underline; }
 
+.dec-note {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  flex-wrap: wrap;
+  margin: .2rem 0 1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: .7rem;
+  letter-spacing: .04em;
+  color: rgba(226, 236, 248, .62);
+}
+.dec {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: .35rem;
+}
+.dec.red { background: #d94b4b; }
+.dec.green { background: #4bd97a; }
+.dec.blue { background: #4b7fd9; }
+
 .cta-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
 .btn {
   display: inline-flex;

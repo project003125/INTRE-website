@@ -73,6 +73,10 @@ function init() {
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight(0xbcd6f2, 0x061426, 1.1));
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  keyLight.position.set(4, 7, 9);
+  scene.add(keyLight);
   const camera = new THREE.PerspectiveCamera(44, window.innerWidth / window.innerHeight, 0.1, 120);
   camera.position.set(0, 0, 16);
 
@@ -87,10 +91,12 @@ function init() {
 
   const brain = makeBrain();
   brain.group.rotation.y = -.35;
+  brain.group.position.x = .6;
   world.add(brain.group);
 
   const fiber = makeFibers();
   fiber.group.rotation.y = -.35;
+  fiber.group.position.x = .6;
   world.add(fiber.group);
 
   const labels = makeLabels();
@@ -99,9 +105,9 @@ function init() {
 
   const ACTS = [
     { pos: new THREE.Vector3(0, 0, 17.5), look: new THREE.Vector3(0, 0, 0), lat: .38, brain: .02, fib: 0, rot: .045 },
-    { pos: new THREE.Vector3(0, 1.1, 14.2), look: new THREE.Vector3(0, 0, 0), lat: .2, brain: .55, fib: .35, rot: .065 },
-    { pos: new THREE.Vector3(0, 0, 15.2), look: new THREE.Vector3(0, 0, 0), lat: 1, brain: .16, fib: .06, rot: .05 },
-    { pos: new THREE.Vector3(0, 1.7, 14.6), look: new THREE.Vector3(0, 0, 0), lat: .22, brain: .7, fib: .6, rot: .08 }
+    { pos: new THREE.Vector3(0, 1.1, 14.2), look: new THREE.Vector3(0, 0, 0), lat: .2, brain: .75, fib: .55, rot: .065 },
+    { pos: new THREE.Vector3(0, 0, 15.2), look: new THREE.Vector3(0, 0, 0), lat: 1, brain: .12, fib: .05, rot: .05 },
+    { pos: new THREE.Vector3(0, 1.4, 13.2), look: new THREE.Vector3(0, 0, 0), lat: .22, brain: 1, fib: 1, rot: .08 }
   ];
 
   const look = ACTS[0].look.clone();
@@ -236,38 +242,86 @@ function init() {
     const mats = [];
     if (!OUTLINE.length) return { group, mats };
 
-    const slices = LITE ? 6 : 9;
-    const S = .33;
-    for (let i = 0; i < slices; i++) {
-      const angle = (90 - (i * 180) / (slices - 1)) * Math.PI / 180;
-      const ca = Math.cos(angle);
-      const sa = Math.sin(angle);
-      const pts = OUTLINE.map((p) => new THREE.Vector3(
-        (p[0] * ca + p[2] * sa) * S,
-        p[1] * S,
-        (-p[0] * sa + p[2] * ca) * S
-      ));
-      const geo = new THREE.BufferGeometry().setFromPoints(pts);
-      const base = .05;
-      const mat = new THREE.LineBasicMaterial({
-        color: 0x4f7fb5,
-        transparent: true,
-        opacity: base,
-        depthWrite: false
-      });
-      group.add(new THREE.LineLoop(geo, mat));
-      mats.push({ mat, base });
+    const cortex = new THREE.TextureLoader().load('../assets/brain-cortex-texture.jpg');
+    cortex.wrapS = cortex.wrapT = THREE.RepeatWrapping;
+    cortex.repeat.set(2, 1);
+    const surfaceMat = new THREE.MeshPhysicalMaterial({
+      color: 0x9fc3ee,
+      bumpMap: cortex,
+      bumpScale: .06,
+      transparent: true,
+      opacity: .2,
+      roughness: .38,
+      metalness: .08,
+      clearcoat: .35,
+      clearcoatRoughness: .55,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+      emissive: 0x0a1e3d,
+      emissiveIntensity: .5
+    });
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x5b86bd,
+      wireframe: true,
+      transparent: true,
+      opacity: .045,
+      depthWrite: false
+    });
+    mats.push({ mat: surfaceMat, base: .2 });
+    mats.push({ mat: wireMat, base: .045 });
+
+    function fold(geo, amp) {
+      const p = geo.attributes.position;
+      for (let i = 0; i < p.count; i++) {
+        const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+        const r = Math.sqrt(x * x + y * y + z * z) || 1;
+        const f = 1 + amp * Math.sin((9 * x / r) * Math.PI) * Math.sin((7 * y / r) * Math.PI)
+          + amp * .6 * Math.cos((11 * z / r) * Math.PI);
+        p.setXYZ(i, x * f, y * f, z * f);
+      }
+      geo.computeVertexNormals();
+      return geo;
     }
-    // 矢状面轮廓：让正面视角也能读出“脑”的侧影
-    const sagittal = OUTLINE.map((p) => new THREE.Vector3(p[0] * S, p[1] * S, 0));
+
+    function hemisphere(z) {
+      const geo = fold(new THREE.SphereGeometry(2.45, LITE ? 36 : 56, LITE ? 24 : 34), .03);
+      const mesh = new THREE.Mesh(geo, surfaceMat);
+      mesh.scale.set(1.05, .82, .5);
+      mesh.position.set(0, .18, z);
+      group.add(mesh);
+      const wire = new THREE.Mesh(geo, wireMat);
+      wire.scale.copy(mesh.scale);
+      wire.position.copy(mesh.position);
+      group.add(wire);
+    }
+    hemisphere(-.5);
+    hemisphere(.5);
+
+    const cerebellumGeo = fold(new THREE.SphereGeometry(.95, LITE ? 28 : 40, LITE ? 18 : 24), .045);
+    const cerebellum = new THREE.Mesh(cerebellumGeo, surfaceMat);
+    cerebellum.scale.set(1.05, .55, .72);
+    cerebellum.position.set(0, -1.35, -.55);
+    group.add(cerebellum);
+    const cWire = new THREE.Mesh(cerebellumGeo, wireMat);
+    cWire.scale.copy(cerebellum.scale);
+    cWire.position.copy(cerebellum.position);
+    group.add(cWire);
+
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(.18, .26, 1.0, 16, 4, true), surfaceMat);
+    stem.position.set(0, -1.65, -.1);
+    stem.rotation.x = .12;
+    group.add(stem);
+
+    // 矢状面轮廓：一条很淡的侧影，帮助读出脑的朝向
+    const sagittal = OUTLINE.map((p) => new THREE.Vector3(p[0] * .33, p[1] * .33, 0));
     const sagMat = new THREE.LineBasicMaterial({
       color: 0xbcd6f2,
       transparent: true,
-      opacity: .95,
+      opacity: .18,
       depthWrite: false
     });
     group.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(sagittal), sagMat));
-    mats.push({ mat: sagMat, base: .95 });
+    mats.push({ mat: sagMat, base: .18 });
 
     return { group, mats };
   }
@@ -279,7 +333,7 @@ function init() {
     const { fibers } = buildFibers(LITE ? .4 : .7, 20260725, 1.0);
     const positions = [];
     const colors = [];
-    const S = 4.0;
+    const S = 3.4;
 
     for (const f of fibers) {
       const pts = f.pts;

@@ -1401,14 +1401,22 @@ body.sidebar-open { overflow: hidden; }
   position: fixed;
   top: 3.2rem;
   left: 0;
-  width: 240px;
+  width: 264px;
   height: calc(100vh - 3.2rem);
-  background: var(--color-slate-100);
+  background: var(--color-slate-50);
   border-right: var(--stroke-hairline) solid var(--color-slate-200);
-  padding: 0.8rem 0.5rem 1rem;
+  padding: 1.35rem 0.85rem 2rem;
   overflow-y: auto;
   z-index: 50;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-slate-300) transparent;
+}
+
+.textbook-sidebar::-webkit-scrollbar { width: 5px; }
+.textbook-sidebar::-webkit-scrollbar-thumb {
+  background: var(--color-slate-300);
+  border-radius: var(--radius-pill);
 }
 
 .textbook-sidebar-link {
@@ -1518,39 +1526,45 @@ body.sidebar-open { overflow: hidden; }
 }
 
 .textbook-sidebar-drawer-section {
-  font-size: 0.75rem;
+  font-size: 0.66rem;
   font-weight: 600;
   color: var(--color-slate-400);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.6rem 1rem 0.25rem;
+  letter-spacing: 0.14em;
+  padding: 1rem 0.85rem 0.35rem;
 }
 
 .textbook-sidebar-drawer-link {
-  display: block;
-  padding: 0.65rem 1rem;
-  font-size: 0.88rem;
+  display: grid;
+  grid-template-columns: 2.1rem 1fr;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.82rem;
   color: var(--color-slate-600);
   text-decoration: none;
-  border-radius: var(--radius-sm);
-  margin: 1px 0.5rem;
-  transition: background var(--duration-xfast) ease, color var(--duration-xfast) ease;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  margin: 2px 0.45rem;
+  transition: background var(--duration-xfast) ease, border-color var(--duration-xfast) ease, color var(--duration-xfast) ease;
 }
 
 .textbook-sidebar-drawer-link:hover {
-  color: var(--color-navy-600);
-  background: var(--color-slate-100);
+  color: var(--color-navy-700);
+  background: var(--color-white);
+  border-color: var(--color-slate-200);
 }
 
 .textbook-sidebar-drawer-link:active {
-  color: var(--color-navy-600);
+  color: var(--color-navy-700);
   background: var(--color-navy-50);
 }
 
 .textbook-sidebar-drawer-link.active {
-  color: var(--color-navy-600);
-  font-weight: 500;
+  color: var(--color-navy-700);
+  font-weight: 600;
   background: var(--color-navy-600-bg);
+  border-color: var(--color-navy-600-border);
 }
 
 /* --- Mobile FAB Toggle Button --- */
@@ -1560,25 +1574,57 @@ body.sidebar-open { overflow: hidden; }
   bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
   right: 1.2rem;
   z-index: 205;
-  background: var(--color-navy-600);
-  color: var(--color-white);
-  border: none;
-  width: 48px;
-  height: 48px;
+  background: var(--color-white);
+  color: var(--color-navy-700);
+  border: 1px solid var(--color-navy-600-border);
+  height: 44px;
+  min-width: 96px;
+  padding: 0 1rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  box-shadow: var(--shadow-navy-sm);
-  transition: box-shadow var(--duration-fast), transform 0.1s, background var(--duration-fast);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast), box-shadow var(--duration-fast), opacity 0.2s ease, transform 0.1s;
   align-items: center;
   justify-content: center;
+  gap: 0.42rem;
+}
+
+.textbook-sidebar-toggle svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+}
+
+.textbook-sidebar-toggle-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
 .textbook-sidebar-toggle:hover {
-  box-shadow: var(--shadow-navy-md);
+  background: var(--color-navy-600-bg);
+  color: var(--color-navy-800);
+  border-color: var(--color-navy-600-border);
+  box-shadow: var(--shadow-navy-sm);
 }
 
 .textbook-sidebar-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
+}
+
+/* Hide the chapter pill while its own drawer is open */
+body.sidebar-open .textbook-sidebar-toggle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* Scroll-down auto-hide (mirrors .toc-toggle-btn.btn-hidden in textbook.css) */
+.textbook-sidebar-toggle.btn-hidden {
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* --- Mobile Overlay --- */
@@ -1641,6 +1687,17 @@ body.sidebar-open { overflow: hidden; }
 .breadcrumb-current {
   color: var(--color-slate-700);
   font-weight: 500;
+}
+
+/* Desktop: align breadcrumb with the reading column between both sidebars */
+@media (min-width: 1200px) {
+  .breadcrumb-list {
+    margin-left: max(264px, calc(264px + (100vw - 1228px) / 2));
+    margin-right: auto;
+    max-width: var(--reading-width);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* --- Responsive: Mobile (< 960px) --- */

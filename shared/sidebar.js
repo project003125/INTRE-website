@@ -102,9 +102,20 @@
 
   /* ================================================================
      Desktop Sidebar (left, chapter navigation)
-     Fixed position, 240px, always visible on wide screens.
-     Collapses to icon on tablets (< 1200px).
+     Fixed position, 264px, visible at >= 1200px.
+     Hidden below 1200px (mobile uses the bottom drawer).
      ================================================================ */
+  function chapterCode(shortTitle, isAppendix) {
+    var raw = shortTitle.split(' ')[0];
+    if (isAppendix) return raw;
+    return raw.length < 2 ? '0' + raw : raw;
+  }
+
+  function chapterLabel(shortTitle) {
+    var parts = shortTitle.split(' ');
+    return parts.slice(1).join(' ');
+  }
+
   function buildChapterSidebar() {
     var currentPage = getCurrentPage();
 
@@ -112,6 +123,16 @@
     nav.className = 'textbook-sidebar';
     nav.id = 'chapterNav';
     nav.setAttribute('aria-label', '章节目录');
+
+    var chapterCount = CHAPTERS.filter(function (ch) { return !ch[1].startsWith('app-'); }).length;
+    var appendixCount = CHAPTERS.length - chapterCount;
+
+    var head = document.createElement('div');
+    head.className = 'textbook-sidebar-head';
+    head.innerHTML = '<div class="ts-eyebrow">INTRE · 导论教材</div>' +
+      '<div class="ts-title">功能状态心理学</div>' +
+      '<div class="ts-sub">' + chapterCount + ' 章正文 · ' + appendixCount + ' 则附录</div>';
+    nav.appendChild(head);
 
     var list = document.createElement('div');
     list.className = 'chapter-nav-list';
@@ -138,7 +159,8 @@
         a.setAttribute('aria-current', 'page');
       }
       a.href = ch[1];
-      a.textContent = ch[2];
+      a.innerHTML = '<span class="chapter-nav-code">' + chapterCode(ch[2], ch[1].startsWith('app-')) +
+        '</span><span class="chapter-nav-text">' + chapterLabel(ch[2]) + '</span>';
       list.appendChild(a);
     });
 
@@ -206,7 +228,8 @@
         a.setAttribute('aria-current', 'page');
       }
       a.href = ch[1];
-      a.textContent = ch[2];
+      a.innerHTML = '<span class="chapter-nav-code">' + chapterCode(ch[2], ch[1].startsWith('app-')) +
+        '</span><span class="chapter-nav-text">' + chapterLabel(ch[2]) + '</span>';
       a.addEventListener('click', closeDrawer);
       list.appendChild(a);
     });
@@ -220,7 +243,7 @@
     fab.setAttribute('aria-label', '打开章节目录');
     fab.setAttribute('aria-expanded', 'false');
     fab.setAttribute('aria-controls', 'sidebarDrawer');
-    fab.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="1.5" rx="0.75" fill="currentColor"/><rect x="3" y="9.25" width="14" height="1.5" rx="0.75" fill="currentColor"/><rect x="3" y="14.5" width="14" height="1.5" rx="0.75" fill="currentColor"/></svg>';
+    fab.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4.6C8.6 3.6 6.8 3.1 5 3.1H3.4v12.2H5c1.8 0 3.6.5 5 1.5 1.4-1 3.2-1.5 5-1.5h1.6V3.1H15c-1.8 0-3.6.5-5 1.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/><path d="M10 4.6v12.2" stroke="currentColor" stroke-width="1.25"/></svg><span class="textbook-sidebar-toggle-label">章节</span>';
 
     // Append to body
     document.body.appendChild(overlay);
@@ -352,6 +375,17 @@
     function isDesktop() { return window.innerWidth >= 1200; }
 
     var headings = document.querySelectorAll('.textbook-content h2, .textbook-content h3');
+
+    // Page-level heading block (mirrors the chapter sidebar head)
+    var pageLabel = document.querySelector('.page-label');
+    var head = document.createElement('div');
+    head.className = 'toc-side-head';
+    head.innerHTML = '<div class="toc-eyebrow">本页</div>' +
+      '<div class="toc-side-title">本章目录</div>' +
+      '<div class="toc-side-sub">' + (pageLabel ? pageLabel.textContent.trim() + ' · ' : '') +
+      headings.length + ' 节</div>';
+    sidebar.insertBefore(head, list);
+
     headings.forEach(function (h, i) {
       var id = 's' + i;
       if (!h.id) h.id = id;
@@ -446,6 +480,9 @@
 
     // Scroll spy
     if (headings.length > 0) {
+      var firstItem = list.querySelector('.toc-item');
+      if (firstItem) firstItem.classList.add('active');
+
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {

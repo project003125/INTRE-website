@@ -7,6 +7,16 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeAct = 1;
 let sceneController;
 
+// 深链保持期：#act-N 直开时，锚点平滑滚动（html{scroll-behavior:smooth}）落位前，
+// 滚动同步会在 scrollY≈0 时抢跑改写当前幕与 hash（实测 #act-3 被改写为 #act-1）。
+// 保持期内抑制 rAF/load 滚动同步；由用户手势、hashchange 或落位后的滚动事件解除。
+let deepLinkHold = false;
+let deepLinkAct = 0;
+function releaseDeepLinkHold() {
+  deepLinkHold = false;
+  deepLinkAct = 0;
+}
+
 function setActiveAct(number, updateHash = true) {
   if (number === activeAct && body.dataset.active) return;
   activeAct = number;
@@ -22,6 +32,7 @@ function setActiveAct(number, updateHash = true) {
 }
 
 function syncActiveFromScroll() {
+  if (deepLinkHold) return;
   const probe = scrollY + Math.min(innerHeight * 0.34, 340);
   let number = 1;
   acts.forEach((act, index) => {
@@ -30,8 +41,10 @@ function syncActiveFromScroll() {
   setActiveAct(number);
 }
 
+const initTime = performance.now();
 let scrollPending = false;
 window.addEventListener('scroll', () => {
+  if (deepLinkHold && performance.now() - initTime > 1200) releaseDeepLinkHold();
   if (scrollPending) return;
   scrollPending = true;
   requestAnimationFrame(() => {
@@ -39,14 +52,20 @@ window.addEventListener('scroll', () => {
     syncActiveFromScroll();
   });
 }, { passive: true });
+['wheel', 'touchstart'].forEach(event =>
+  window.addEventListener(event, releaseDeepLinkHold, { passive: true, once: true }));
 
 window.addEventListener('hashchange', () => {
   const match = location.hash.match(/^#act-([1-4])$/);
-  if (match) setActiveAct(Number(match[1]), false);
+  if (match) {
+    releaseDeepLinkHold();
+    setActiveAct(Number(match[1]), false);
+  }
 });
 
 document.addEventListener('keydown', event => {
   if (event.altKey || event.ctrlKey || event.metaKey || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
+  releaseDeepLinkHold();
   if (/^[1-4]$/.test(event.key)) {
     event.preventDefault();
     document.querySelector(`#act-${event.key}`).scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
@@ -132,7 +151,7 @@ async function initScene() {
     const testCanvas = document.createElement('canvas');
     const gl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl');
     if (!gl) throw new Error('WebGL unavailable');
-    const { createHeroScene } = await import('./brain-scene.js');
+    const { createHeroScene } = await import('./brain-scene.js?v=20261031g');
     sceneController = createHeroScene(document.querySelector('#scene'), {
       lite: params.has('lite'),
       reducedMotion,
@@ -147,7 +166,13 @@ async function initScene() {
 }
 
 const initialHash = location.hash.match(/^#act-([1-4])$/);
-setActiveAct(initialHash ? Number(initialHash[1]) : 1, false);
+if (initialHash) {
+  deepLinkHold = true;
+  deepLinkAct = Number(initialHash[1]);
+  setActiveAct(deepLinkAct, false);
+} else {
+  setActiveAct(1, false);
+}
 initScene();
-window.addEventListener('load', syncActiveFromScroll);
-requestAnimationFrame(syncActiveFromScroll);
+requestAnimationFrame(() => { if (!deepLinkHold) syncActiveFromScroll(); });
+window.addEventListener('load', () => { if (!deepLinkHold) syncActiveFromScroll(); });

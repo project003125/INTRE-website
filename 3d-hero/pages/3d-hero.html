@@ -1,86 +1,130 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh-CN" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INTRE · 3D 体验暂未开放</title>
-  <meta name="description" content="INTRE 3D 体验正在重做，暂未上线。可先进入 2D 网站阅读 IODS、PSE 与教材。">
-  <meta name="robots" content="noindex">
-  <link rel="icon" href="../../assets/favicon.png" type="image/png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#06172e">
+  <meta name="description" content="INTRE 四幕 3D 体验：从现象层、42 维功能层到神经层，理解在现象与神经之间建立可计算的功能层。">
+  <title>INTRE · 功能层 3D 体验</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../shared/brand.css?v=20261031b">
-  <link rel="stylesheet" href="../../shared/components.css?v=20261031b">
-  <style>
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      background: color-mix(in srgb, var(--color-navy-50) 30%, #fff);
-      color: var(--color-slate-900);
-    }
-    .stub {
-      width: min(560px, 100%);
-      padding: 2.4rem 2.2rem 2.2rem;
-      background: rgba(255, 255, 255, .72);
-      border: 1px solid rgba(255, 255, 255, .9);
-      border-radius: 20px;
-      box-shadow: 0 18px 48px rgba(10, 30, 61, .10);
-      -webkit-backdrop-filter: blur(18px);
-      backdrop-filter: blur(18px);
-      text-align: center;
-    }
-    .brand {
-      display: inline-block;
-      font-family: var(--font-logo);
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--color-navy-950);
-      text-decoration: none;
-      letter-spacing: -.02em;
-      margin-bottom: 1.6rem;
-    }
-    .eyebrow {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      letter-spacing: .18em;
-      color: var(--color-slate-500);
-      margin: 0 0 .9rem;
-    }
-    h1 {
-      font-size: clamp(1.7rem, 4vw, 2.2rem);
-      margin: 0 0 .9rem;
-      letter-spacing: -.02em;
-    }
-    p {
-      max-width: 34rem;
-      margin: 0 auto 1.6rem;
-      color: var(--color-slate-600);
-      line-height: 1.75;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: .7rem 1.3rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--color-navy-500), var(--color-navy-800));
-      color: #fff;
-      text-decoration: none;
-      font-size: .86rem;
-      font-weight: 600;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Josefin+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/3d-hero.css">
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+  <script type="importmap">{"imports":{"three":"../lib/three.module.js"}}</script>
+  <script src="../lib/node-details.js" defer></script>
+  <script type="module" src="../js/3d-hero.js"></script>
 </head>
 <body>
-  <main class="stub">
-    <a class="brand" href="../../index.html">INTRE</a>
-    <p class="eyebrow">3D · STATUS</p>
-    <h1>3D 体验暂未开放</h1>
-    <p>这一版正在重做，暂不上线。你可以先进入 2D 网站阅读 IODS、PSE 与教材。</p>
-    <a class="btn" href="../../index.html">返回 2D 网站</a>
+  <a class="skip-link" href="#act-1">跳到主要内容</a>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="../../index.html" aria-label="返回 INTRE 首页">INTRE<span>功能层体验</span></a>
+    <div class="top-actions">
+      <span class="render-status" id="render-status">3D</span>
+      <a class="text-mode" href="?no3d" id="text-mode">文字模式</a>
+    </div>
+  </header>
+
+  <nav class="act-rail" aria-label="四幕导航">
+    <a href="#act-1" aria-label="第一幕：开场" aria-current="step"><span>01</span><i></i><b>开场</b></a>
+    <a href="#act-2" aria-label="第二幕：现象层"><span>02</span><i></i><b>现象层</b></a>
+    <a href="#act-3" aria-label="第三幕：功能层"><span>03</span><i></i><b>功能层</b></a>
+    <a href="#act-4" aria-label="第四幕：神经层"><span>04</span><i></i><b>神经层</b></a>
+  </nav>
+
+  <main>
+    <section class="act act-hero" id="act-1" data-act="1" aria-labelledby="hero-title">
+      <div class="act-inner hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">INTEGRATED PSYCHOLOGICAL LAYER ENGINEERING</p>
+          <h1 id="hero-title">INTRE</h1>
+          <p class="hero-statement">在现象与神经之间，<br>建立可计算的功能层。</p>
+          <a class="formula-chip" href="../../glossary/?q=%E7%8A%B6%E6%80%81%E5%90%91%E9%87%8F" aria-label="在术语表中查看状态向量">
+            <span>Ψ(t) ∈ ℝ<sup>42</sup></span><i></i><span>6 × 7</span>
+          </a>
+        </div>
+        <a class="scroll-cue" href="#act-2"><span>向下探索</span><i aria-hidden="true"></i></a>
+      </div>
+    </section>
+
+    <section class="act act-phenomena" id="act-2" data-act="2" aria-labelledby="phenomena-title">
+      <div class="act-inner split-layout">
+        <div class="section-copy glass-panel">
+          <p class="eyebrow">01 / PHENOMENAL LAYER</p>
+          <h2 id="phenomena-title">从无限，<br>到有限。</h2>
+          <p>纷繁的心理现象，被组织成可描述、可比较的模式。三条通道，从语义、行为与神经信号进入同一状态空间。</p>
+          <div class="channel-links" aria-label="三通道入口">
+            <a href="../../uplp/"><span class="channel-dot uplp"></span><strong>UPLP</strong><small>统一语义</small><i>↗</i></a>
+            <a href="../../ubmp/"><span class="channel-dot ubmp"></span><strong>UBMP</strong><small>校准行为</small><i>↗</i></a>
+            <a href="../../unip/"><span class="channel-dot unip"></span><strong>UNIP</strong><small>对接神经</small><i>↗</i></a>
+          </div>
+          <p class="section-note">现象是入口，不是终点。</p>
+        </div>
+        <div class="visual-fallback constellation" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <section class="act act-function" id="act-3" data-act="3" aria-labelledby="function-title">
+      <div class="act-inner function-layout">
+        <div class="function-heading">
+          <div>
+            <p class="eyebrow">02 / FUNCTIONAL LAYER</p>
+            <h2 id="function-title">六模块 × 七子维</h2>
+          </div>
+          <a class="count-badge" href="../../textbook/ch08.html"><strong>42</strong><span>可数状态维度</span></a>
+        </div>
+        <div class="function-workspace glass-panel">
+          <div class="lattice-wrap">
+            <div class="module-labels" aria-hidden="true"><span>M1<small>具身</small></span><span>M2<small>认知</small></span><span>M3<small>意志</small></span><span>M4<small>情绪</small></span><span>M5<small>言语</small></span><span>M6<small>行为</small></span></div>
+            <div class="lattice-body">
+              <div class="subdim-labels" aria-hidden="true"><span>RES-D</span><span>RES-B</span><span>DSP-F</span><span>DSP-B</span><span>STR-R</span><span>STR-C</span><span>STR-S</span></div>
+              <div class="node-grid" id="node-grid" aria-label="42 个功能层节点">
+                <a href="../../textbook/ch08.html" data-node="0" aria-label="M1 RES-D 具身·调度资源">1</a><a href="../../textbook/ch08.html" data-node="7" aria-label="M2 RES-D 认知·调度资源">2</a><a href="../../textbook/ch08.html" data-node="14" aria-label="M3 RES-D 意志·调度资源">3</a><a href="../../textbook/ch08.html" data-node="21" aria-label="M4 RES-D 情绪·调度资源">4</a><a href="../../textbook/ch08.html" data-node="28" aria-label="M5 RES-D 言语·调度资源">5</a><a href="../../textbook/ch08.html" data-node="35" aria-label="M6 RES-D 行为·调度资源">6</a>
+                <a href="../../textbook/ch08.html" data-node="1" aria-label="M1 RES-B 具身·基底资源">7</a><a href="../../textbook/ch08.html" data-node="8" aria-label="M2 RES-B 认知·基底资源">8</a><a href="../../textbook/ch08.html" data-node="15" aria-label="M3 RES-B 意志·基底资源">9</a><a href="../../textbook/ch08.html" data-node="22" aria-label="M4 RES-B 情绪·基底资源">10</a><a href="../../textbook/ch08.html" data-node="29" aria-label="M5 RES-B 言语·基底资源">11</a><a href="../../textbook/ch08.html" data-node="36" aria-label="M6 RES-B 行为·基底资源">12</a>
+                <a href="../../textbook/ch08.html" data-node="2" aria-label="M1 DSP-F 具身·前台调度">13</a><a href="../../textbook/ch08.html" data-node="9" aria-label="M2 DSP-F 认知·前台调度">14</a><a href="../../textbook/ch08.html" data-node="16" aria-label="M3 DSP-F 意志·前台调度">15</a><a href="../../textbook/ch08.html" data-node="23" aria-label="M4 DSP-F 情绪·前台调度">16</a><a href="../../textbook/ch08.html" data-node="30" aria-label="M5 DSP-F 言语·前台调度">17</a><a href="../../textbook/ch08.html" data-node="37" aria-label="M6 DSP-F 行为·前台调度">18</a>
+                <a href="../../textbook/ch08.html" data-node="3" aria-label="M1 DSP-B 具身·后台调度">19</a><a href="../../textbook/ch08.html" data-node="10" aria-label="M2 DSP-B 认知·后台调度">20</a><a href="../../textbook/ch08.html" data-node="17" aria-label="M3 DSP-B 意志·后台调度">21</a><a href="../../textbook/ch08.html" data-node="24" aria-label="M4 DSP-B 情绪·后台调度">22</a><a href="../../textbook/ch08.html" data-node="31" aria-label="M5 DSP-B 言语·后台调度">23</a><a href="../../textbook/ch08.html" data-node="38" aria-label="M6 DSP-B 行为·后台调度">24</a>
+                <a href="../../textbook/ch08.html" data-node="4" aria-label="M1 STR-R 具身·规则结构">25</a><a href="../../textbook/ch08.html" data-node="11" aria-label="M2 STR-R 认知·规则结构">26</a><a href="../../textbook/ch08.html" data-node="18" aria-label="M3 STR-R 意志·规则结构">27</a><a href="../../textbook/ch08.html" data-node="25" aria-label="M4 STR-R 情绪·规则结构">28</a><a href="../../textbook/ch08.html" data-node="32" aria-label="M5 STR-R 言语·规则结构">29</a><a href="../../textbook/ch08.html" data-node="39" aria-label="M6 STR-R 行为·规则结构">30</a>
+                <a href="../../textbook/ch08.html" data-node="5" aria-label="M1 STR-C 具身·连接结构">31</a><a href="../../textbook/ch08.html" data-node="12" aria-label="M2 STR-C 认知·连接结构">32</a><a href="../../textbook/ch08.html" data-node="19" aria-label="M3 STR-C 意志·连接结构">33</a><a href="../../textbook/ch08.html" data-node="26" aria-label="M4 STR-C 情绪·连接结构">34</a><a href="../../textbook/ch08.html" data-node="33" aria-label="M5 STR-C 言语·连接结构">35</a><a href="../../textbook/ch08.html" data-node="40" aria-label="M6 STR-C 行为·连接结构">36</a>
+                <a href="../../textbook/ch08.html" data-node="6" aria-label="M1 STR-S 具身·序列结构">37</a><a href="../../textbook/ch08.html" data-node="13" aria-label="M2 STR-S 认知·序列结构">38</a><a href="../../textbook/ch08.html" data-node="20" aria-label="M3 STR-S 意志·序列结构">39</a><a href="../../textbook/ch08.html" data-node="27" aria-label="M4 STR-S 情绪·序列结构">40</a><a href="../../textbook/ch08.html" data-node="34" aria-label="M5 STR-S 言语·序列结构">41</a><a href="../../textbook/ch08.html" data-node="41" aria-label="M6 STR-S 行为·序列结构">42</a>
+              </div>
+            </div>
+          </div>
+          <aside class="node-detail" id="node-detail" aria-live="polite" aria-label="节点详情">
+            <div class="detail-empty" id="detail-empty"><span>42 / 42</span><p>悬停、聚焦或点击节点，<br>查看状态维度。</p></div>
+            <div class="detail-content" id="detail-content" hidden>
+              <div class="detail-top"><span id="detail-code">M1 · RES-D</span><button id="detail-close" type="button" aria-label="关闭节点详情">×</button></div>
+              <h3 id="detail-title"></h3>
+              <p id="detail-desc"></p>
+              <div class="detail-markers" id="detail-markers"></div>
+              <a href="../../textbook/ch08.html" class="detail-link">阅读功能层教材 <span>↗</span></a>
+            </div>
+          </aside>
+        </div>
+        <p class="function-caption">每个节点可被测量、定位与干预。<span>M-R-D-S 结构归属 IODS。</span></p>
+      </div>
+    </section>
+
+    <section class="act act-neural" id="act-4" data-act="4" aria-labelledby="neural-title">
+      <div class="act-inner neural-layout">
+        <div class="neural-copy glass-panel">
+          <p class="eyebrow">03 / NEURAL LAYER</p>
+          <h2 id="neural-title">向下扎根。</h2>
+          <p>功能层不是神经层的替代。三通道似然经 PSE 贝叶斯融合，更新状态后验；功能结构始终保留自己的解释位置。</p>
+          <div class="dec-legend" aria-label="DTI 方向编码颜色"><span><i class="dec-x"></i>左右 · X</span><span><i class="dec-y"></i>前后 · Z</span><span><i class="dec-z"></i>上下 · Y</span></div>
+          <div class="brain-fallback" aria-hidden="true"><i></i><i></i><b></b></div>
+          <p class="section-note">DTI 纤维以局部切线方向编码颜色，仅作结构可视化。</p>
+        </div>
+      </div>
+      <footer class="experience-footer">
+        <div><span>继续深入</span><a href="../../iods/">IODS</a><a href="../../pse/">PSE</a><a href="../../textbook/">教材</a><a href="../../glossary/">术语表</a></div>
+        <a href="#act-1" class="replay">重看四幕 ↑</a>
+      </footer>
+    </section>
   </main>
+  <noscript><style>#scene,.act-rail,.render-status,.text-mode{display:none}.act{opacity:1}.glass-panel{backdrop-filter:none}.node-detail{display:none}.function-workspace{display:block}</style><p class="noscript-note">当前为无 JavaScript 阅读模式；四幕内容与 42 节点教材链接仍可访问。</p></noscript>
 </body>
 </html>

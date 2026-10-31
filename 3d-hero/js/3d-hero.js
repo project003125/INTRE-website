@@ -95,13 +95,19 @@ function clearDetail() {
 }
 
 nodes.forEach(link => {
-  link.addEventListener('mouseenter', () => showDetail(link));
+  link.addEventListener('mouseenter', () => { if (!pinnedNode) showDetail(link); });
   link.addEventListener('mouseleave', () => pinnedNode ? showDetail(pinnedNode) : clearDetail());
   link.addEventListener('focus', () => showDetail(link));
   link.addEventListener('click', event => {
     if (!window.INTRE_NODES) return;
     event.preventDefault();
     showDetail(link, true);
+    if (matchMedia('(max-width: 640px)').matches) {
+      document.querySelector('#node-detail').scrollIntoView({
+        behavior: reducedMotion ? 'auto' : 'smooth',
+        block: 'nearest'
+      });
+    }
   });
 });
 document.querySelector('#detail-close').addEventListener('click', clearDetail);
@@ -115,6 +121,11 @@ async function initScene() {
   if (params.has('no3d')) {
     body.classList.add('force-text');
     document.querySelector('#render-status').textContent = 'TEXT';
+    const toggle = document.querySelector('#text-mode');
+    if (toggle) {
+      toggle.textContent = '3D 模式';
+      toggle.href = location.pathname + location.hash;
+    }
     return;
   }
   try {

@@ -1,11 +1,11 @@
 ---
 title: INTRE 3D Hero 子项目 — 系统介绍
-version: v2.0.1
+version: v2.0.2
 date: 2026-10-31
 status: review
 taxonomy: IET v3.0
 document_type: report
-revision_notes: v2.0.1 神经层改用真实解剖脑网格，重建 DTI 透明度层级，并以同模型静态渲染替换文字降级示意。
+revision_notes: v2.0.2 英文全称按 06-S-02 术语对照表改为 Internal Regulation Engine；统一排版间距、幕间过渡与深浅视口布局。
 ---
 
 # INTRE 3D Hero 子项目 — 系统介绍
@@ -17,6 +17,8 @@ revision_notes: v2.0.1 神经层改用真实解剖脑网格，重建 DTI 透明�
 ## 一、定位与边界
 
 3D Hero 是 INTRE 的四幕叙事体验页，用简短视觉路径连接现象层、功能层与神经层；2D 网站仍承担教材、术语和模块详述。功能层保持独立的解释位置，不被表达为神经层的附属或替代。
+
+英文全称以 `06-S-02-INTRE-术语对照表` §1.0 的 2026-08-03 权威定型为准：**INTRE = Internal Regulation Engine**，中文品牌名「慧执」。首屏 eyebrow 使用该全称。
 
 本版遵循品牌视觉规范 v2.7.1：Navy 主色、深蓝玻璃、Josefin Sans / Inter / Noto Sans SC / JetBrains Mono。页面样式完全局部化，不修改 `shared/` 的 2D 站共享 CSS。
 

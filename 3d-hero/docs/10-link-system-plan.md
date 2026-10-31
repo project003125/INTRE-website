@@ -176,7 +176,7 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 建议在 3D Hero 底部增加一个极简信息条，提供完整导航出口：
 
 ```
-INTRE · 功能层心理学    UPLP · UNIP · UBMP · PSE · REVER    教材    术语表    GitHub
+INTRE · 功能状态心理学    UPLP · UNIP · UBMP · PSE · REVER    教材    术语表    GitHub
 ```
 
 ---

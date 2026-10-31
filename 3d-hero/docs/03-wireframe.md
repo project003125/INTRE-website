@@ -1,4 +1,4 @@
-# INTRE · 功能层心理学首页 — 第 3 步 · 线框稿（事实底稿）
+# INTRE · 功能状态心理学首页 — 第 3 步 · 线框稿（事实底稿）
 
 > **文件编号**：03-wireframe.md（MECE 编号体系：第 3 阶段 · 低保真线框稿）
 > **本文件位置**：UI 设计流程**第 3 步 · 低保真线框稿**
@@ -26,7 +26,7 @@
 ┌──────────────────────────────────────────────────────────────────────────┐
 │ #hud-top ── 顶栏 ── height: 3.2rem (≈ 51px) ── fixed top:0 ──           │
 │ ┌────────────────────────────────────────────────────────────────────┐   │
-│ │ INTRE                       FLP · 01-04  首页 UPLP UNIP UBMP PSE REVER │ │
+│ │ INTRE                       FSP · 01-04  首页 UPLP UNIP UBMP PSE REVER │ │
 │ │ [wordmark]                   [brand-sub]  [nav-links 8项]            │ │
 │ └────────────────────────────────────────────────────────────────────┘   │
 │                                                                          │
@@ -118,7 +118,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
+│ INTRE · FSP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                                              ┌─○─ 现象层 (激活)            │
@@ -151,7 +151,7 @@
 | 区域 | 元素 | 实测位置 | 样式 |
 |---|---|---|---|
 | 顶部 | .wordmark INTRE | left: 1.5rem / top: 0 / baseline 在 3.2rem 内 | font-size: 24px / Josefin Sans |
-| 顶部 | .brand-sub FLP | 紧随 wordmark / 间隔 0.5rem | font-size: 14px / Noto Sans SC |
+| 顶部 | .brand-sub FSP | 紧随 wordmark / 间隔 0.5rem | font-size: 14px / Noto Sans SC |
 | 顶部 | .nav-links 8 项 | right: 1.5rem / top: 0 | font-size: 16px / CJK weight 500 |
 | 中央 | 3D 星空 | canvas 全屏覆盖 / 400 粒子随机分布（Q8：1800→400 性能优化） | 点尺寸 0.5-2px / 暗星尺寸下限 0.03 / uScale 600 / 逐颗色温抖动（v2.4） |
 | 中右 | #formula-chip | right: 6vw / top: 7rem | font-size: 12px / amber 边框 1px |
@@ -179,7 +179,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
+│ INTRE · FSP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─●─ 现象层 (激活) ●         │
 │                                              ├─○─ 功能层                   │
@@ -232,7 +232,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
+│ INTRE · FSP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─○─ 现象层                   │
 │                                              ├─●─ 功能层 (激活)             │
@@ -302,7 +302,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ INTRE · FLP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
+│ INTRE · FSP                  首页 UPLP UNIP UBMP PSE REVER 教材 术语表     │
 ├──────────────────────────────────────────────────────────────────────────┤
 │                                              ┌─○─ 现象层                   │
 │                                              ├─○─ 功能层                   │
@@ -431,7 +431,7 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 ### 6.1 顶栏内部间距
 
 ```
-[INTRE 24px] [· 8px] [FLP 14px]               gap-flex              [首页 16px] [· 6px] [UPLP 16px] [· 6px] ...
+[INTRE 24px] [· 8px] [FSP 14px]               gap-flex              [首页 16px] [· 6px] [UPLP 16px] [· 6px] ...
 ├──────────┤    ├────┤                          ├──────────────────┤  ├────┤    ├────┤    ├────┤    ├────┤
   wordmark      brand-sub                        flex-grow:1            nav-link  gap  nav-link  gap  nav-link
   24px          14px CJK                         1fr                    16px CJK  6px  16px CJK  6px  16px CJK
@@ -535,7 +535,7 @@ RCT4 永驻后，act-4 浮岛底部出现 `.act-end-actions` 容器，包含"重
 │                     │
 │                     │
 │                     │
-│ 01 · FLP            │
+│ 01 · FSP            │
 │ INTRE              │  ← h1 缩到 40-64px（clamp(2.5rem, 12vw, 4rem)）
 │ 在现象与神经之间，    │
 │ 建立可计算的功能层  │

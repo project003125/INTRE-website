@@ -253,7 +253,7 @@ K0↔K1↔K2↔K3↔K4↔K5 之间用 smoothstep 平滑插值，每帧更新一�
 
 ## 7. 降级模式（WebGL 不可用时）
 
-显示 `#fallback`：纯文本居中"INTRE · 功能层心理学 / 在现象与神经之间，建立可计算的功能层 / WEBGL UNAVAILABLE · STATIC FALLBACK"。无 3D、无滚动联动、无 4 幕切换。文字幕仍按 `p` 闪现，保证基础叙事。
+显示 `#fallback`：纯文本居中"INTRE · 功能状态心理学 / 在现象与神经之间，建立可计算的功能层 / WEBGL UNAVAILABLE · STATIC FALLBACK"。无 3D、无滚动联动、无 4 幕切换。文字幕仍按 `p` 闪现，保证基础叙事。
 
 ---
 
@@ -388,7 +388,7 @@ K0↔K1↔K2↔K3↔K4↔K5 之间用 smoothstep 平滑插值，每帧更新一�
 | 编号 | 名称 | CSS 类 / ID | 视觉 |
 |---|---|---|---|
 | T01 | 品牌标志 INTRE | `.nav-logo` `.wordmark` | 24px Josefin Sans / left: 1.5rem |
-| T02 | 品牌副标 FLP | `.brand-sub` | 14px Noto Sans SC / 灰 |
+| T02 | 品牌副标 FSP | `.brand-sub` | 14px Noto Sans SC / 灰 |
 | T03 | 8 项导航 | `.nav-links a` | 16px Noto Sans SC / gap 0.15rem |
 | T04 | 移动端菜单按钮 | `.nav-toggle` | 3 杠图标 / 仅 ≤768px 显示 |
 

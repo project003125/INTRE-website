@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=13">
+    <link rel="stylesheet" href="textbook.css?v=14">
     <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
     <link rel="stylesheet" href="../shared/components.css?v=20261031f">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +65,6 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第8章</span>
         </div>
     </div>
 
@@ -578,7 +577,7 @@ $$
 </table>
 </div>
 
-<blockquote><p><strong>P7 系统边界说明</strong>：依 WP-07 v1.4.0 P7 决策，UBMP/UPLP/UNIP 不构成对外独立系统，而是 PSE 感知层的三个输入端口——如同雷达/摄像头是自动驾驶系统的组成部分而非独立系统。对外系统边界为 IODS（定义，L0）+ PSE（计算，L1-L5）。</p></blockquote>
+<blockquote><p><strong>系统边界说明</strong>：UBMP/UPLP/UNIP 不构成对外独立系统，而是 PSE 感知层的三个输入端口——如同雷达/摄像头是自动驾驶系统的组成部分而非独立系统。对外系统边界为 IODS（定义，L0）+ PSE（计算，L1-L5）。</p></blockquote>
 
 <p>L2 在每一时间步接收这三个端口的似然，通过贝叶斯更新计算状态后验分布：</p>
 
@@ -599,28 +598,11 @@ $$
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。<br>- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S可类比的编码格式，使环境输入可直接进入动力学方程。<br>- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 写出状态向量的数学表示形式并解释各符号的含义。<br>2. 选择拖延和焦虑两个现象，在42维表格中标注它们最可能涉及的核心子维度。<br>3. 恢复不对称动力学假设声称消耗快于恢复。如果对称假设成立，人类的心理生活会有什么不同？<br>4. PSE 感知层的三个输入端口分别是什么？每个端口由哪个文档实现？当神经端口与语义端口的似然方向相反时，可能提示什么临床现象？</p></blockquote>
-<hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
-<div class="table-wrap"><table>
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>v1.0.4</td>
-<td>2026-06-04</td>
-<td>初始创建</td>
-</tr>
-</tbody>
-</table></div>
-    </main>
+
+</main>
 
     <div class="page-footer-nav">
         <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 功能模块</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
 <a href="ch09.html" class="nav-link next">测量方法 ›</a></div>
     </div>
 

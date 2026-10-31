@@ -70,18 +70,6 @@ body {
 
 .back-link:hover { color: var(--color-navy-600); }
 
-.page-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--color-slate-600);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    background: var(--color-slate-50);
-    padding: 0.12rem 0.55rem;
-    border-radius: var(--radius-sm);
-    border: var(--stroke-hairline) solid var(--border);
-}
-
 /* ========== MAIN CONTENT ========== */
 .textbook-content {
     max-width: var(--max-width);
@@ -254,15 +242,6 @@ body {
 }
 
 .textbook-content tr:last-child td { border-bottom: none; }
-
-/* 版本记录标题（替代 h2，避免被 TOC 抓取） */
-.version-record-title {
-    font-size: 1.42rem;
-    font-weight: 600;
-    color: var(--color-navy-950);
-    margin: 2.8rem 0 0.95rem;
-    letter-spacing: -0.02em;
-}
 
 /* ========== HORIZONTAL RULES ========== */
 .textbook-content hr.section-divider {

@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=13">
+    <link rel="stylesheet" href="textbook.css?v=14">
     <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
     <link rel="stylesheet" href="../shared/components.css?v=20261031f">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +65,6 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第29章</span>
         </div>
     </div>
 
@@ -137,7 +136,7 @@
 
 <p>INTRE框架在理论建构阶段经历了系统性的内部压力测试和外部替代测试。替代测试读数的权威源为 05-V-17《十六项核心组件替代测试结果总表》与 05-R-03《多重约束下的集成架构——替代测试证据与竞争定位》（本件 frontmatter 的 source_authority 与 dependencies 已直连该二源）；教材内部的附录H 同为指向该二源的指针化摘要。本节仅做结论性要点总结，不单独维护测试数字。</p>
 
-<p><strong>内部理论压力测试（17项）</strong>：12项完全通过，5项条件性通过，0项失败。条件性通过的项目均指向形式化不完整或边界声明缺失，可通过补充规则修复，无需修改核心架构。<strong>实证测试探针锚定于 18 号工程 DIVE（DMD 迭代验证工程）</strong>——以 DMD 法作为整个理论的实证探针，通过 DMD-P1~P6 连锁预测（主结局 → 神经机制 → 耦合检验）检验框架核心命题。C5（M3-RES-D 独立存在性）作为测试探针的主张已于 2026-08-26 废除（与 05-R-01 v1.3.0 同步）——M3-RES-D 保留为架构构念、不再承担独立实证靶点角色。</p>
+<p><strong>内部理论压力测试（17项）</strong>：12项完全通过，5项条件性通过，0项失败。条件性通过的项目均指向形式化不完整或边界声明缺失，可通过补充规则修复，无需修改核心架构。<strong>实证测试探针锚定于 DIVE（DMD 迭代验证工程）</strong>——以 DMD 法作为整个理论的实证探针，通过 DMD-P1~P6 连锁预测（主结局 → 神经机制 → 耦合检验）检验框架核心命题。C5（M3-RES-D 独立存在性）作为测试探针的主张已于 2026-08-26 废除（与 05-R-01 v1.3.0 同步）——M3-RES-D 保留为架构构念、不再承担独立实证靶点角色。</p>
 
 <p><strong>外部兼容性压力测试（10篇既有论文）</strong>：10篇论文均未触发预设主要失败条件。若干跨论文发现与INTRE核心功能区分形成高度相容，包括敬畏感元分析（GATE与RELINK独立操作区分）、社会排斥实验（RES-D快速补充 vs RES-B慢修复）等。</p>
 
@@ -201,7 +200,7 @@
 </table>
 </div>
 
-<p><strong>“阿喀琉斯之踵”</strong>：C5（M3-RES-D的独立存在性）作为测试探针的主张已于 2026-08-26 废除（与 05-R-01 v1.3.0 同步）——M3-RES-D 保留为架构构念、不再承担独立实证靶点角色。框架当前的实证测试探针锚定于 <strong>18 号工程 DIVE（DMD 迭代验证工程）</strong>，通过 DMD-P1~P6 连锁预测（主结局 → 神经机制 → 耦合检验）检验框架核心命题。即使 DIVE 探针在关键环节失败，框架的其他部分（如 STR 三分法、DSP 二分法、级联机制）仍可能成立——这是与原 C5 时代不同的可证伪结构：DIVE 探针失败不等于框架结构性崩塌，仅需局部修正。原“阿喀琉斯之踵”概念在此表述下失效（v1.2.0 同步说明：架构构念 M3-RES-D 保留，“C5 是分水岭”的修辞作废）。</p>
+<p><strong>“阿喀琉斯之踵”</strong>：C5（M3-RES-D的独立存在性）作为测试探针的主张已于 2026-08-26 废除（与 05-R-01 v1.3.0 同步）——M3-RES-D 保留为架构构念、不再承担独立实证靶点角色。框架当前的实证测试探针锚定于 <strong>DIVE（DMD 迭代验证工程）</strong>，通过 DMD-P1~P6 连锁预测（主结局 → 神经机制 → 耦合检验）检验框架核心命题。即使 DIVE 探针在关键环节失败，框架的其他部分（如 STR 三分法、DSP 二分法、级联机制）仍可能成立——这是与原 C5 时代不同的可证伪结构：DIVE 探针失败不等于框架结构性崩塌，仅需局部修正。原“阿喀琉斯之踵”概念在此表述下失效（v1.2.0 同步说明：架构构念 M3-RES-D 保留，“C5 是分水岭”的修辞作废）。</p>
 
 <p><strong>强反例触发条件</strong>。一个经验反常要构成“强反例”，须同时满足：(1)稳定性——至少三项预注册独立研究，元分析95%置信区间不包含0；(2)不可归约性——无法被现有架构解释，且非测量误差或编码培训不足导致；(3)增量预测力——在独立验证集上RMSE降低≥10%或AIC差异≥6。</p>
 
@@ -369,28 +368,11 @@
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “‘计算科学’是把心理学变成物理学” → ✅ 计算科学指采用计算建模方法（形式化、仿真、校准），不是物理还原论。心理学必须处理意向性和意义。<br>- ❌ “INTRE声称已经正确” → ✅ INTRE的细节几乎必然会被修正，但它所开启的问题空间——心理学需要功能层的状态语法和操作语法——可能保留下来。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 列举INTRE五个核心主张C1-C5及其对应的证伪条件。<br>2. 从五个证伪条件中选出你认为最可能在实证中被触发的一个，预测它对框架的连锁影响。<br>3. 心理学作为计算科学的愿景将心理学类比为气象学的数值天气预报。这一类比在哪些维度是恰当的，在哪些维度是误导的？</p></blockquote>
-<hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
-<div class="table-wrap"><table>
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>v1.4.1</td>
-<td>2026-10-31</td>
-<td>初始创建</td>
-</tr>
-</tbody>
-</table></div>
-    </main>
+
+</main>
 
     <div class="page-footer-nav">
         <div class="chapter-nav"><a href="ch28.html" class="nav-link prev">‹ 研究方法</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
 <a href="app-a.html" class="nav-link next">42子维度列表 ›</a></div>
     </div>
 

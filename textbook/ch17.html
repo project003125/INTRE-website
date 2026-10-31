@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=13">
+    <link rel="stylesheet" href="textbook.css?v=14">
     <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
     <link rel="stylesheet" href="../shared/components.css?v=20261031f">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +65,6 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第17章</span>
         </div>
     </div>
 
@@ -75,7 +74,7 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
 
-<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章的逻辑指纹体系在管线体系中归 L1-S 语义模态（01-M-07）的差异治理工具；PCUI/PSA 的静态定义属 IODS（01-M-02，L0 本体）。下文"UPLP"泛指语义知识体系（IODS 静态定义 + UPLP 编译执行 + 逻辑指纹治理的统称），请按此映射理解。</p></blockquote>
+<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。逻辑指纹体系属 L1-S 语义模态的差异治理工具，PCUI/PSA 的静态定义归 IODS（L0 本体）；下文“UPLP”泛指语义知识体系。</p></blockquote>
 
 <blockquote><p><strong>本章定位</strong>：第14-15章介绍了IODS的静态知识架构（PCUI/PSA/PSL），第16章介绍了多视角共识工程。本章讨论UPLP语义端口知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
 
@@ -539,28 +538,11 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。<br>- ❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。<br>- ❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ>70）或经过严格安全评估的特殊情况。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 给定两份解析（见17.5微案例），尝试自己提取四组指纹并与文中对比。<br>2. 如果两位编码员对10个概念的模块指纹判定有3处分歧（一致率70%），计算κ值（假设随机一致率50%），判定一致性水平。<br>3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
-<hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
-<div class="table-wrap"><table>
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>v1.0.2</td>
-<td>2026-05-30</td>
-<td>初始创建</td>
-</tr>
-</tbody>
-</table></div>
-    </main>
+
+</main>
 
     <div class="page-footer-nav">
         <div class="chapter-nav"><a href="ch16.html" class="nav-link prev">‹ 共识工程</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
 <a href="ch18.html" class="nav-link next">PSE架构 ›</a></div>
     </div>
 

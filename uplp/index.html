@@ -89,10 +89,10 @@
     </nav>
     <main id="main-content" class="container">
         <h1>UPLP</h1>
-        <div class="subhead">统一心理语言端口 · PSE 感知层 <strong>L1-S 语义模态输入端口</strong> <span class="channel-badge uplp">语义通道</span> <small style="color:var(--color-slate-500);font-size:0.8rem;margin-left:0.5rem;">（2026-08 五层编译流水线 / 端口体系更新）</small></div>
+        <div class="subhead">统一心理语言端口 · PSE 感知层 <strong>L1-S 语义模态输入端口</strong> <span class="channel-badge uplp">语义通道</span> </div>
 
         <div class="info-box">
-            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UPLP（Unified Psychological Language Port）是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>（归属 PSE 感知层 L1，非对外独立系统，P7 已决）。</p>
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UPLP（Unified Psychological Language Port）是 INTRE 新管线体系 PSE 感知层 L1 的 <strong>语义模态输入端口（L1-S）</strong>。</p>
             <ul>
                 <li>它将自然语言输入（临床叙述、量表文本、自由陈述）经 <strong>五层编译流水线 S1-S5</strong> 转化为标准化的语义似然 p(y<sub>s</sub>|Ψ) ，输出观测块 {y<sub>s</sub>, σ<sub>s</sub>}（42 维）。</li>
                 <li>UPLP 强依赖 IODS（L0 本体）提供的 42 维 M-R-D-S 坐标系与 PSL-L/PCUI-L 词典——坐标系与词典的定义侧内容归 IODS，本页只覆盖 UPLP 本体的编译行为与接口契约。</li>
@@ -188,12 +188,12 @@
         </div>
 
         <div class="info-box">
-            <p><strong>校准轴：</strong> 群体先验（注册库标准参数 + 知识生产流水线积累的编译统计）→ 个体后验（PSE-C 临床数据贝叶斯校准 + 个体编译历史反馈，层级收缩个体化）。参数校准属"参数填充"层级（数据 → 参数值，WP-04 §3.5），不触发架构级修订。</p>
+            <p><strong>校准轴：</strong> 群体先验（注册库标准参数 + 知识生产流水线积累的编译统计）→ 个体后验（PSE-C 临床数据贝叶斯校准 + 个体编译历史反馈，层级收缩个体化）。参数校准属"参数填充"层级（数据 → 参数值），不触发架构级修订。</p>
         </div>
 
         <!-- 四、降级模式 -->
         <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 四、降级模式</h2>
-        <p>UPLP 的降级模式与 L1-I §四（降级协议）保持一致：<strong>缺一模态 → 精度下降不瘫痪</strong>（WP-07 §6.1 降级运行）。语义模态的降级分两个粒度。</p>
+        <p>UPLP 的降级模式按降级协议执行：<strong>缺一模态 → 精度下降不瘫痪</strong>。语义模态的降级分两个粒度。</p>
 
         <div class="table-responsive">
             <table class="table">
@@ -222,8 +222,8 @@
             <table class="table">
                 <thead><tr><th>ID</th><th>主张</th><th>证伪条件</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>SC1</strong></td><td><strong>语义通道必要性</strong>（继承 WP-06 §4.7）</td><td>证明自然语言中不包含任何可被稳定映射到 M-R-D-S 坐标的功能层信息（语义似然始终接近均匀分布，编译后 σ<sub>s</sub> 恒接近 1/√12）；充分反例需在至少三个独立的高质量语料上复现</td></tr>
-                    <tr><td><strong>SC2</strong></td><td><strong>IODS 强依赖</strong>（继承 WP-06 §4.7）</td><td>证明存在无需 IODS 坐标系即可有效计算语义似然的路径，且其精度显著优于 UPLP 输出；充分反例需提供可复现的独立实现与公平比较</td></tr>
+                    <tr><td><strong>SC1</strong></td><td><strong>语义通道必要性</strong></td><td>证明自然语言中不包含任何可被稳定映射到 M-R-D-S 坐标的功能层信息（语义似然始终接近均匀分布，编译后 σ<sub>s</sub> 恒接近 1/√12）；充分反例需在至少三个独立的高质量语料上复现</td></tr>
+                    <tr><td><strong>SC2</strong></td><td><strong>IODS 强依赖</strong></td><td>证明存在无需 IODS 坐标系即可有效计算语义似然的路径，且其精度显著优于 UPLP 输出；充分反例需提供可复现的独立实现与公平比较</td></tr>
                     <tr><td><strong>SC3</strong></td><td><strong>五层流水线契约充分性</strong>（L1-I §3.1）</td><td>发现一类合法语言观测无法经五层流水线（文本预处理 → 词汇匹配 → 坐标映射 → 置信度加权 → 似然输出）编译，且该信息对 L2 融合不可省略（需要改变 L1-I §3.1 规定的阶段划分）；充分反例需提供具体观测类型与 L2 融合中的信息损失论证</td></tr>
                     <tr><td><strong>SC4</strong></td><td><strong>仪器参数理论设定</strong>（P2i-m）</td><td>PSE-C 校准后，某仪器参数（W<sub>编译</sub>、τ、隐喻映射强度、W<sub>文化</sub>）在独立数据上持续无法收敛或出现系统性偏差（如 W<sub>文化</sub> 在不同生态位下方向相反）；参数修订属 L1 仪器层，不触发 L0 架构修订</td></tr>
                 </tbody>
@@ -232,7 +232,7 @@
 
         <!-- 六、知识生产流水线（新增 / 移入 L1-S） -->
         <h2 class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 六、知识生产流水线</h2>
-        <p class="section-intro">知识生产流水线（PCC-P → PCF-P → PCV-P）按 P1 决策从 L0 内容中移出，重新定位为 <strong>L1-S 的离线校准流程</strong>（01-M-07 §三，01-M-02 §1.3 行 76、§七 行 316 明确移入）。它是离线、非运行时的，持续为编译流水线供给、修正 PSL-L/PCUI-L 的术语实例层（R1 已决：术语实例层数据驱动修订，不触发架构级审查）。</p>
+        <p class="section-intro">知识生产流水线（PCC-P → PCF-P → PCV-P）已从 L0 内容中移出，重新定位为 <strong>L1-S 的离线校准流程</strong>。它是离线、非运行时的，持续为编译流水线供给、修正 PSL-L/PCUI-L 的术语实例层（术语实例层按数据驱动修订，不触发架构级审查）。</p>
 
         <div class="grid-3">
             <div class="card">
@@ -272,7 +272,7 @@
         </div>
 
         <div class="info-box">
-            <p><strong>与编译流水线的闭环：</strong> 运行时编译（S1-S5 流水线）中发现新术语 / 新用法 / 编译歧义 → 反馈至 <strong>PCC-P（采集新概念原材料）→ PCF-P（编译为 PCUI 草案）→ PCV-P（跨流派验证）</strong> → 验证通过后写入 IODS 术语实例层（PSL-L / PCUI-L 增补）→ 经词典加载接口（01-M-07 §6.2）更新 L1-S 本地词典缓存，后续编译生效。<strong>运行时的编译反馈（新术语、新用法进入术语主表）不触发 IODS 架构级审查</strong>（R1 已决：术语实例层数据驱动修订；核心定义层仍属 IODS）。</p>
+            <p><strong>与编译流水线的闭环：</strong> 运行时编译（S1-S5 流水线）中发现新术语 / 新用法 / 编译歧义 → 反馈至 <strong>PCC-P（采集新概念原材料）→ PCF-P（编译为 PCUI 草案）→ PCV-P（跨流派验证）</strong> → 验证通过后写入 IODS 术语实例层（PSL-L / PCUI-L 增补）→ 经词典加载接口更新 L1-S 本地词典缓存，后续编译生效。<strong>运行时的编译反馈（新术语、新用法进入术语主表）不触发 IODS 架构级审查</strong>（术语实例层按数据驱动修订，核心定义层仍属 IODS）。</p>
         </div>
 
         <!-- 结尾 info-box -->

@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=13">
+    <link rel="stylesheet" href="textbook.css?v=14">
     <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
     <link rel="stylesheet" href="../shared/components.css?v=20261031f">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +65,6 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第18章</span>
         </div>
     </div>
 
@@ -74,7 +73,7 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述PSE五层架构的职责；(2)简述心智六论各自解决的核心问题；(3)理解PSE-I理论注入如何将UPLP语法转化为可计算模型；(4)区分PSE四个仿真阶段的功能定位；(5)了解PSE的三个输入通道及UNIP的神经似然输入。</p></blockquote>
 
-<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章基于 PSE 系统视角叙述。按 01-M-00 v1.3.0 管线体系：PSE 覆盖 L1-L5，UPLP/UBMP/UNIP 为 PSE 感知层（L1）的三个输入端口（内部模块名保留），L2 状态估计见 01-M-11，L3 动力学为 01-M-03 主体，L4+L5 见 01-M-12；"五层引擎"为 PSE 内部组织的历史表述，已被管线级组织替代。</p></blockquote>
+<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。PSE 覆盖 L1-L5，UPLP/UBMP/UNIP 为 PSE 感知层的三个输入端口；“五层引擎”为已被管线级组织替代的历史表述。</p></blockquote>
 
 <blockquote><p><strong>⚠️ 实证成熟度声明</strong>：PSE当前处于<strong>概念设计阶段</strong>（v0.1-alpha）。本章中的所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
 
@@ -495,28 +494,11 @@
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSE是已经工作的引擎” → ✅ PSE当前处于概念蓝图阶段，大规模校准和实证验证未完成。<br>- ❌ “心智六论是六个独立的模型” → ✅ 它们是同一个动力学系统的不同侧面，通过状态向量\(\Psi(t)\)和依赖矩阵耦合。<br>- ❌ “PSE只需要行为数据” → ✅ PSE是多模态融合引擎，需要行为、语义（UPLP）和神经（UNIP）三个通道的输入。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 画出PSE的五层架构图，每层用一句话概括其职责。<br>2. 心智六论中MKT和MTT的关系是什么？为什么两者必须协同工作？<br>3. PSE目前处于概念蓝图阶段。如果其核心预测在实证中持续失败，问题最可能出在哪一层？为什么？<br>4. PSE的三个输入通道分别由哪些 L1 输入端口提供？UNIP在其中扮演什么角色？</p></blockquote>
-<hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
-<div class="table-wrap"><table>
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>v1.1.1</td>
-<td>2026-10-31</td>
-<td>初始创建</td>
-</tr>
-</tbody>
-</table></div>
-    </main>
+
+</main>
 
     <div class="page-footer-nav">
         <div class="chapter-nav"><a href="ch17.html" class="nav-link prev">‹ 逻辑指纹</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
 <a href="ch19.html" class="nav-link next">系统动力学 ›</a></div>
     </div>
 

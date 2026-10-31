@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="textbook.css?v=13">
+    <link rel="stylesheet" href="textbook.css?v=14">
     <link rel="stylesheet" href="../shared/brand.css?v=20261031b">
     <link rel="stylesheet" href="../shared/components.css?v=20261031f">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +65,6 @@
     <div class="page-header">
         <div class="page-header-inner">
             <a href="index.html" class="back-link">← 返回目录</a>
-            <span class="page-label">第15章</span>
         </div>
     </div>
 
@@ -75,7 +74,7 @@
 
 <blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
 
-<blockquote><p><strong>管线重构注记（2026-07）</strong>：本章叙述基于管线重构前的 UPLP 系统视角。按 01-M-00 v1.3.0（管线总纲）：PCUI-L/PSL-L 的静态定义属 IODS（01-M-02，L0，§五/§四），语义编译流水线与文化变体参数归 L1-S 语义模态（01-M-07），PSA 的结构约束定义在 IODS §三、推理执行随编译流水线在 L1-S。下文"UPLP"泛指语义通道（PSE 内部模块名），请按此映射理解。</p></blockquote>
+<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。PCUI-L/PSL-L 的静态定义归 IODS（L0 本体），语义编译流水线与文化变体参数归 L1-S 语义模态，PSA 的结构约束定义在 IODS、推理执行随编译流水线在 L1-S；下文“UPLP”泛指语义通道。</p></blockquote>
 
 <hr class="section-divider">
 
@@ -560,28 +559,11 @@
 <blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。<br>- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。<br>- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
 
 <blockquote><p><strong>练习题</strong>：<br>1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？<br>2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。<br>3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
-<hr class="section-divider">
-<hr class="section-divider">
-<div class="version-record-title">版本记录</div>
-<div class="table-wrap"><table>
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>变更内容</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>v1.0.2</td>
-<td>2026-05-30</td>
-<td>初始创建</td>
-</tr>
-</tbody>
-</table></div>
-    </main>
+
+</main>
 
     <div class="page-footer-nav">
         <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 概念标识</a>
-<a href="index.html" class="nav-link up">☰ 目录</a>
 <a href="ch16.html" class="nav-link next">共识工程 ›</a></div>
     </div>
 

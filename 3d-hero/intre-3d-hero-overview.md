@@ -10,6 +10,8 @@ revision_notes: v1.0.0 补 frontmatter（2026-08-10 by Mavis · WRK-E12 季度�
 
 # INTRE 3D Hero 子项目 — 系统介绍
 
+> **2026-10-31 v3.0 重写注**：现行入口为 `pages/3d-hero.html`＋`pages/3d-hero.css`／`pages/3d-hero.js`（四幕滚动、42 节点晶格、脑壳与 DTI 纤维、节点详情、无 WebGL 降级）。本文以下 1170vh／GLB 脑模型等描述属 v2.x 旧实现，仅作历史参考。
+
 > **项目位置**：`d:\INTRE\intre-3d-hero\`
 > **项目状态**：v2.5 视觉质量升级定稿（部分功能已实现，部分待执行）
 > **最后更新**：2026-07-24

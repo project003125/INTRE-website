@@ -21,12 +21,24 @@ function setActiveAct(number, updateHash = true) {
   sceneController?.setAct(number);
 }
 
-const actObserver = new IntersectionObserver(entries => {
-  const visible = entries.filter(entry => entry.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if (visible) setActiveAct(Number(visible.target.dataset.act));
-}, { rootMargin: '-22% 0px -22% 0px', threshold: [0, 0.15, 0.35, 0.6] });
-acts.forEach(act => actObserver.observe(act));
+function syncActiveFromScroll() {
+  const probe = scrollY + Math.min(innerHeight * 0.34, 340);
+  let number = 1;
+  acts.forEach((act, index) => {
+    if (act.getBoundingClientRect().top + scrollY <= probe) number = index + 1;
+  });
+  setActiveAct(number);
+}
+
+let scrollPending = false;
+window.addEventListener('scroll', () => {
+  if (scrollPending) return;
+  scrollPending = true;
+  requestAnimationFrame(() => {
+    scrollPending = false;
+    syncActiveFromScroll();
+  });
+}, { passive: true });
 
 window.addEventListener('hashchange', () => {
   const match = location.hash.match(/^#act-([1-4])$/);
@@ -126,3 +138,5 @@ async function initScene() {
 const initialHash = location.hash.match(/^#act-([1-4])$/);
 setActiveAct(initialHash ? Number(initialHash[1]) : 1, false);
 initScene();
+window.addEventListener('load', syncActiveFromScroll);
+requestAnimationFrame(syncActiveFromScroll);

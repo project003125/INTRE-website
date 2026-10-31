@@ -10,7 +10,7 @@ revision_notes: v2.0.1 神经层改用真实解剖脑网格，重建 DTI 透明�
 
 # INTRE 3D Hero 子项目 — 系统介绍
 
-> **当前状态**：2026-10-31 重构候选版，独立分支验收中；首页入口暂不添加，不直接发布 main。
+> **当前状态**：2026-10-31 已合并 `main` 并发布；首页 Hero 恢复「进入 3D 体验」入口。
 > **页面入口**：`pages/3d-hero.html`
 > **旧实现**：171KB 单体源码仅留档于 `.work/general-261031-072118/3d-hero-draft-20261031/`，未被本版复用。
 
@@ -88,7 +88,7 @@ revision_notes: v2.0.1 神经层改用真实解剖脑网格，重建 DTI 透明�
 
 `https://project003125.github.io/INTRE-website/3d-hero/pages/3d-hero.html`
 
-首页入口暂未添加。候选版只在 `ws/3d-hero-rebuild-20261031` 分支提交，待主理验收后再放行上线。
+首页 Hero 已恢复「进入 3D 体验」入口，链接为相对路径 `3d-hero/pages/3d-hero.html`，本地预览与 GitHub Pages 项目站点均可用。
 
 ## 七、验收证据
 

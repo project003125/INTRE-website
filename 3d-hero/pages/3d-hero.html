@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#06172e">
+  <meta name="theme-color" content="#04101f">
   <meta name="description" content="INTRE 四幕 3D 体验：从现象层、42 维功能层到神经层，理解在现象与神经之间建立可计算的功能层。">
   <title>INTRE · 功能层 3D 体验</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Josefin+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/3d-hero.css?v=20261031g">
+  <link rel="stylesheet" href="../css/3d-hero.css?v=20261101a">
   <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
   <script type="importmap">{"imports":{"three":"../lib/three.module.js"}}</script>
-  <script src="../lib/node-details.js?v=20261031g" defer></script>
-  <script type="module" src="../js/3d-hero.js?v=20261031g"></script>
+  <script src="../lib/node-details.js?v=20261101a" defer></script>
+  <script type="module" src="../js/3d-hero.js?v=20261101a"></script>
 </head>
 <body>
   <a class="skip-link" href="#act-1">跳到主要内容</a>
   <canvas id="scene" aria-hidden="true"></canvas>
-  <div class="ambient" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="topbar">
     <a class="brand" href="../../index.html" aria-label="返回 INTRE 首页">INTRE<span>功能层体验</span></a>
@@ -28,6 +30,8 @@
       <a class="text-mode" href="?no3d" id="text-mode">文字模式</a>
     </div>
   </header>
+
+  <div class="progress-track" aria-hidden="true"><i id="progress-fill"></i></div>
 
   <nav class="act-rail" aria-label="四幕导航">
     <a href="#act-1" aria-label="第一幕：开场" aria-current="step"><span>01</span><i></i><b>开场</b></a>
@@ -38,20 +42,25 @@
 
   <main>
     <section class="act act-hero" id="act-1" data-act="1" aria-labelledby="hero-title">
+      <span class="act-index" aria-hidden="true">01</span>
       <div class="act-inner hero-layout">
         <div class="hero-copy">
           <p class="eyebrow">INTERNAL REGULATION ENGINE</p>
           <h1 id="hero-title">INTRE</h1>
           <p class="hero-statement">在现象与神经之间，<br>建立可计算的功能层。</p>
-          <a class="formula-chip" href="../../glossary/?q=%E7%8A%B6%E6%80%81%E5%90%91%E9%87%8F" aria-label="在术语表中查看状态向量">
-            <span>Ψ(t) ∈ ℝ<sup>42</sup></span><i></i><span>6 × 7</span>
-          </a>
+          <div class="hero-meta">
+            <a class="formula-chip" href="../../glossary/?q=%E7%8A%B6%E6%80%81%E5%90%91%E9%87%8F" aria-label="在术语表中查看状态向量">
+              <span>Ψ(t) ∈ ℝ<sup>42</sup></span><i></i><span>6 × 7</span>
+            </a>
+            <span class="hint">滚动 · 数字键 1–4 切换</span>
+          </div>
         </div>
         <a class="scroll-cue" href="#act-2"><span>向下探索</span><i aria-hidden="true"></i></a>
       </div>
     </section>
 
     <section class="act act-phenomena" id="act-2" data-act="2" aria-labelledby="phenomena-title">
+      <span class="act-index" aria-hidden="true">02</span>
       <div class="act-inner split-layout">
         <div class="section-copy glass-panel">
           <p class="eyebrow">01 / PHENOMENAL LAYER</p>
@@ -69,6 +78,7 @@
     </section>
 
     <section class="act act-function" id="act-3" data-act="3" aria-labelledby="function-title">
+      <span class="act-index" aria-hidden="true">03</span>
       <div class="act-inner function-layout">
         <div class="function-heading">
           <div>
@@ -109,6 +119,7 @@
     </section>
 
     <section class="act act-neural" id="act-4" data-act="4" aria-labelledby="neural-title">
+      <span class="act-index" aria-hidden="true">04</span>
       <div class="act-inner neural-layout">
         <div class="neural-copy glass-panel">
           <p class="eyebrow">03 / NEURAL LAYER</p>
@@ -125,6 +136,6 @@
       </footer>
     </section>
   </main>
-  <noscript><style>#scene,.act-rail,.render-status,.text-mode{display:none}.act{opacity:1}.glass-panel{backdrop-filter:none}.node-detail{display:none}.function-workspace{display:block}</style><p class="noscript-note">当前为无 JavaScript 阅读模式；四幕内容与 42 节点教材链接仍可访问。</p></noscript>
+  <noscript><style>#scene,.act-rail,.render-status,.text-mode,.progress-track,.act-index,.grain,.veil,.aurora{display:none}.act{opacity:1}.glass-panel{backdrop-filter:none}.node-detail{display:none}.function-workspace{display:block}</style><p class="noscript-note">当前为无 JavaScript 阅读模式；四幕内容与 42 节点教材链接仍可访问。</p></noscript>
 </body>
 </html>

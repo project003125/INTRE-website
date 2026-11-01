@@ -2,10 +2,12 @@ const root = document.documentElement;
 const body = document.body;
 const acts = [...document.querySelectorAll('.act')];
 const railLinks = [...document.querySelectorAll('.act-rail a')];
+const progressFill = document.querySelector('#progress-fill');
 const params = new URLSearchParams(location.search);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeAct = 1;
 let sceneController;
+let progress = 0;
 
 // 深链保持期：#act-N 直开时，锚点平滑滚动（html{scroll-behavior:smooth}）落位前，
 // 滚动同步会在 scrollY≈0 时抢跑改写当前幕与 hash（实测 #act-3 被改写为 #act-1）。
@@ -31,6 +33,13 @@ function setActiveAct(number, updateHash = true) {
   sceneController?.setAct(number);
 }
 
+function readProgress() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+  if (progressFill) progressFill.style.transform = `scaleX(${progress})`;
+  sceneController?.setProgress(progress);
+}
+
 function syncActiveFromScroll() {
   if (deepLinkHold) return;
   const probe = scrollY + Math.min(innerHeight * 0.34, 340);
@@ -39,6 +48,7 @@ function syncActiveFromScroll() {
     if (act.getBoundingClientRect().top + scrollY <= probe) number = index + 1;
   });
   setActiveAct(number);
+  readProgress();
 }
 
 const initTime = performance.now();
@@ -60,8 +70,10 @@ window.addEventListener('hashchange', () => {
   if (match) {
     releaseDeepLinkHold();
     setActiveAct(Number(match[1]), false);
+    readProgress();
   }
 });
+window.addEventListener('resize', readProgress, { passive: true });
 
 document.addEventListener('keydown', event => {
   if (event.altKey || event.ctrlKey || event.metaKey || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
@@ -74,23 +86,18 @@ document.addEventListener('keydown', event => {
 });
 
 const nodes = [...document.querySelectorAll('[data-node]')];
+const nodeByIndex = new Map(nodes.map(link => [Number(link.dataset.node), link]));
 const detailEmpty = document.querySelector('#detail-empty');
 const detailContent = document.querySelector('#detail-content');
 const detailCode = document.querySelector('#detail-code');
 const detailTitle = document.querySelector('#detail-title');
 const detailDesc = document.querySelector('#detail-desc');
 const detailMarkers = document.querySelector('#detail-markers');
-const subdims = ['RES-D', 'RES-B', 'DSP-F', 'DSP-B', 'STR-R', 'STR-C', 'STR-S'];
 const subdimNames = ['调度资源', '基底资源', '前台调度', '后台调度', '规则结构', '连接结构', '序列结构'];
 const legacyTerms = [['描述性资源', '调度资源'], ['基础资源', '基底资源'], ['前向处理', '前台调度'], ['后向处理', '后台调度'], ['资源策略', '规则结构'], ['核心策略', '连接结构'], ['系统策略', '序列结构']];
 let pinnedNode = null;
 
-function showDetail(link, pin = false) {
-  const index = Number(link.dataset.node);
-  const data = window.INTRE_NODES?.[index];
-  if (!data) return;
-  if (pin) pinnedNode = link;
-  nodes.forEach(node => node.classList.toggle('is-active', node === link));
+function renderDetail(data, index) {
   const moduleName = window.INTRE_MODULES[Math.floor(index / 7)];
   const glossaryText = text => legacyTerms.reduce((value, [legacy, current]) => value.replaceAll(legacy, current), text);
   detailCode.textContent = `${data.code}`;
@@ -104,6 +111,24 @@ function showDetail(link, pin = false) {
   }));
   detailEmpty.hidden = true;
   detailContent.hidden = false;
+}
+
+function showDetail(link, pin = false) {
+  const index = Number(link.dataset.node);
+  const data = window.INTRE_NODES?.[index];
+  if (!data) return;
+  if (pin) pinnedNode = link;
+  nodes.forEach(node => node.classList.toggle('is-active', node === link));
+  renderDetail(data, index);
+}
+
+function showDetailByIndex(index, pin = false) {
+  const link = nodeByIndex.get(index);
+  if (!link) return;
+  showDetail(link, pin);
+  if (pin && matchMedia('(max-width: 760px)').matches) {
+    document.querySelector('#node-detail').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+  }
 }
 
 function clearDetail() {
@@ -121,7 +146,7 @@ nodes.forEach(link => {
     if (!window.INTRE_NODES) return;
     event.preventDefault();
     showDetail(link, true);
-    if (matchMedia('(max-width: 640px)').matches) {
+    if (matchMedia('(max-width: 760px)').matches) {
       document.querySelector('#node-detail').scrollIntoView({
         behavior: reducedMotion ? 'auto' : 'smooth',
         block: 'nearest'
@@ -151,13 +176,20 @@ async function initScene() {
     const testCanvas = document.createElement('canvas');
     const gl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl');
     if (!gl) throw new Error('WebGL unavailable');
-    const { createHeroScene } = await import('./brain-scene.js?v=20261031g');
+    const { createHeroScene } = await import('./brain-scene.js?v=20261101a');
     sceneController = createHeroScene(document.querySelector('#scene'), {
       lite: params.has('lite'),
       reducedMotion,
-      onContextLost: () => setTextMode('TEXT')
+      onContextLost: () => setTextMode('TEXT'),
+      onNodeHover: index => {
+        if (pinnedNode) return;
+        if (index === null) clearDetail();
+        else showDetailByIndex(index);
+      },
+      onNodePick: index => showDetailByIndex(index, true)
     });
     sceneController.setAct(activeAct);
+    sceneController.setProgress(progress);
     document.querySelector('#render-status').textContent = params.has('lite') ? 'LITE' : '3D';
   } catch (error) {
     console.warn('3D 场景不可用，已切换文字模式。');
@@ -173,6 +205,7 @@ if (initialHash) {
 } else {
   setActiveAct(1, false);
 }
+readProgress();
 initScene();
 requestAnimationFrame(() => { if (!deepLinkHold) syncActiveFromScroll(); });
 window.addEventListener('load', () => { if (!deepLinkHold) syncActiveFromScroll(); });

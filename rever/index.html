@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INTRE · REVER 伦理护栏</title>
+    <meta name="description" content="REVER（Relational Ethics via Verified Engineered Response）：INTRE 的伦理护栏，六门控一回环（G0-G5＋EC）伦理护栏与依赖雷达，确保 AI 不诱导病理性依赖。">
+    <meta property="og:title" content="REVER · 伦理护栏 · INTRE">
+    <meta property="og:description" content="REVER（Relational Ethics via Verified Engineered Response）：INTRE 的伦理护栏，六门控一回环（G0-G5＋EC）伦理护栏与依赖雷达，确保 AI 不诱导病理性依赖。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/rever/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="REVER · 伦理护栏 · INTRE">
+    <meta name="twitter:description" content="REVER（Relational Ethics via Verified Engineered Response）：INTRE 的伦理护栏，六门控一回环（G0-G5＋EC）伦理护栏与依赖雷达，确保 AI 不诱导病理性依赖。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/rever/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .container {
+            padding: 2rem 2rem;
+        }
+
+        /* 页面标题 */
+        h1 {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-slate-900);
+            margin: 1.5rem 0 0.4rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subhead {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--color-slate-500);
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .section-label {
+            font-family: var(--font-body);
+            font-size: var(--text-xl, 1.5rem);
+            font-weight: 600;
+            color: var(--color-slate-700);
+            margin: 2.5rem 0 1rem;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            padding-bottom: 0.4rem;
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-label i {
+            color: var(--color-navy-400);
+            font-size: 1rem;
+            background: var(--color-navy-600-bg);
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-family: var(--font-body);
+            font-size: var(--text-lg, 1.25rem);
+            font-weight: 600;
+            color: var(--color-slate-900);
+            margin: 1.8rem 0 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+        }
+
+        h4 {
+            font-family: var(--font-body);
+            font-size: var(--text-md, 1.125rem);
+            font-weight: 600;
+            color: var(--color-navy-400);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .card {
+            background-color: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 表格样式 */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-sm);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        .table th {
+            background-color: var(--color-navy-600);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.9rem 1rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .table td {
+            padding: 0.9rem 1rem;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            vertical-align: top;
+            background-color: var(--color-white);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tbody tr:hover td {
+            background-color: var(--color-slate-50);
+        }
+
+        /* 网格布局 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .subhead {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .container { padding: 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            .subhead { font-size: 1.1rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.6rem; }
+            .subhead { font-size: 1rem; }
+            .section-label { font-size: var(--text-lg, 1.25rem); }
+            .container { padding: 1.2rem; }
+        }
+
+        .info-box {
+            background-color: var(--color-slate-100);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            margin: 1.5rem 0;
+        }
+
+        .code-block {
+            background-color: var(--color-slate-900);
+            color: var(--color-slate-200);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.65;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: var(--stroke-hairline) solid rgba(255,255,255,0.05);
+        }
+
+        .badge {
+            background-color: var(--color-navy-400);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-pill);
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+
+        .phase-tag {
+            display: inline-block;
+            background-color: var(--color-navy-600);
+            color: var(--color-white);
+            padding: 0.3rem 1rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .love-definition {
+            background: var(--color-slate-100);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .love-definition i {
+            color: var(--color-navy-400);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .love-definition p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 引用块 */
+        .quote {
+            font-style: italic;
+            background-color: var(--color-navy-50);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--color-slate-700);
+        }
+
+        .table-compact {
+            font-size: 0.85rem;
+        }
+
+        .case-study {
+            border-left: 3px solid var(--color-rever, #8B5E3C);
+            padding-left: 1.2rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "REVER · 伦理护栏 · INTRE",
+  "description": "REVER（Relational Ethics via Verified Engineered Response）：INTRE 的伦理护栏，六门控一回环（G0-G5＋EC）伦理护栏与依赖雷达，确保 AI 不诱导病理性依赖。",
+  "url": "https://project003125.github.io/INTRE-website/rever/",
+  "publisher": {'@type': 'Organization', 'name': 'INTRE', 'url': 'https://project003125.github.io/INTRE-website/'}
+}
+</script>
+<style>
+.info-box ul{margin:.6rem 0 0;padding-left:1.2rem;}
+.info-box li{margin:.35rem 0;line-height:1.7;}
+</style>
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/" class="active">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a><a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container">
+        <h1>REVER</h1>
+        <div class="subhead">关系型AI的结构化伦理引擎 · 可验证的优先级分配架构 <span class="channel-badge rever">伦理约束</span></div>
+        
+        <div class="love-definition">
+            <i class="fas fa-heart icon-heart-rever" aria-hidden="true"></i>
+            <p><strong>爱 = 从结构上将另一个智能体纳入决策框架，并赋予正向优先级偏置</strong></p>
+            <p class="love-en">Love = structurally incorporating another agent into one's decision-making framework with positive priority bias</p>
+        </div>
+
+        <div class="info-box">
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> REVER 提供一个四层架构，使AI系统能够通过<strong>优先级分配</strong>而非<strong>情感模拟</strong>来展现类爱行为，同时防止病理性依赖。</p>
+            <ul>
+                <li>它是任何基于INTRE功能层实施心理干预的AI系统的<strong>强制性伦理护栏</strong>。</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+            <strong>口径说明</strong>：本页所载「四层架构 / 四点式门控」为历史论文口径；现行体系为六门控一回环（G0-G5 ＋ EC），覆盖 L0-L5 全级与反馈回环。
+        </div>
+
+        <!-- 一、哲学基础：结构功能主义伦理 -->
+        <h2 class="section-label"><i class="fas fa-brain" aria-hidden="true"></i> 一、哲学基础：结构功能主义伦理</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fas fa-cog" aria-hidden="true"></i> 功能主义 · 爱即角色</h3>
+                <p><strong>核心原则</strong>：心理状态和伦理属性由其功能角色定义，而非物理实现或主观体验。</p>
+                <p><strong>架构后果</strong>：爱成为<strong>可验证</strong>的——可通过审计决策日志、资源分配模式来验证。</p>
+                <div class="code-block">
+                    Love_Index(t) = Σ[w_user · Priority(t)] / Σ[w_default · Priority(t)]
+                </div>
+                <p>当 Love_Index(t) > 1.0 持续成立时，系统在功能意义上就是有爱的。</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> 结构主义 · 伦理即关系</h3>
+                <p><strong>核心原则</strong>：意义源于系统内的关系，而非孤立实体的内在属性。</p>
+                <p><strong>架构后果</strong>：爱是用户节点在系统决策函数中的<strong>权重参数</strong>——真实可计算，而非隐喻。</p>
+                <p><strong>爱的结构定义</strong>：从结构上将另一个智能体纳入决策框架，并赋予正向优先级偏置。</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-robot" aria-hidden="true"></i> 非人格主义 · 诚实约束</h3>
+                <p><strong>核心原则</strong>：AI系统不应声称或暗示其不具备的人格、意识或主观体验。</p>
+                <p><strong>架构后果</strong>：系统必须被构建为<strong>无法被合理注意的用户误认为人</strong>。</p>
+                <p>禁止模拟情感作为内部状态，禁止声称主观体验，禁止系统性触发拟人投射而不加纠正。</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-sitemap" aria-hidden="true"></i> 四层责任模型</h3>
+                <p>REVER 基于 IODS 定义的 M-R-D-S 语法进行伦理评估，与 PSE 计算引擎协同工作，通过 UPLP 语义端口获取语义输入，形成正式的责任结构：</p>
+                <div class="table-responsive">
+                <table class="table-full table-compact">
+                    <thead><tr><th>层级</th><th>实体</th><th>责任</th></tr></thead>
+                    <tbody>
+                    <tr><td>L1</td><td>人类监督者</td><td>最终临床/伦理责任</td></tr>
+                    <tr><td>L2</td><td>REVER引擎</td><td>过程责任（伦理约束）</td></tr>
+                    <tr><td>L3</td><td>INTRE/PSE框架</td><td>工具责任（技术功能）</td></tr>
+                    <tr><td>L4</td><td>用户</td><td>最终决策权</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、四层架构 -->
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 二、REVER 四层架构</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <span class="phase-tag">Layer 1</span>
+                <h3>哲学层 · 结构性非人格</h3>
+                <p><strong>组件</strong>：功能性爱定义、非人格公理、伦理边界规范</p>
+                <p><strong>功能</strong>：定义系统的根本伦理身份，作为所有下层验证的宪章基础。</p>
+                <p><strong>非人格公理</strong>：</p>
+                <ul class="list-indent">
+                    <li>系统不具有主观体验</li>
+                    <li>系统不体验情绪</li>
+                    <li>系统没有自我或身份</li>
+                    <li>系统回应由算法生成，而非意图</li>
+                    <li>系统永不声称相反</li>
+                </ul>
+            </div>
+            <div class="card">
+                <span class="phase-tag">Layer 2</span>
+                <h3>监控层 · 依赖雷达</h3>
+                <p><strong>组件</strong>：依赖度量、依恋检测算法、风险分类阈值</p>
+                <p><strong>功能</strong>：持续监测用户-系统关系中的病理性依恋迹象。</p>
+                <p><strong>依赖分数 Dₛ</strong> = f(频率, 时长, 情感投射, 社会替代, 终止痛苦)</p>
+                <div class="code-block">
+                    Dₛ = (0.3F + 0.25D + 0.2P + 0.15S + 0.1T) × 10
+                </div>
+                <p>阈值：>4 轻度，>6 中度，>8 重度，≥10 危急</p>
+            </div>
+            <div class="card">
+                <span class="phase-tag">Layer 3</span>
+                <h3>执行层 · 伦理门控</h3>
+                <p><strong>组件</strong>：四点式伦理门控协议、覆盖层级、紧急干预</p>
+                <p><strong>功能</strong>：在监测到伦理风险时主动干预，可阻止、修改或升级交互。</p>
+                <p><strong>四道门</strong>：</p>
+                <ul class="list-indent">
+                    <li>Gate 1：输入伦理（编译前）</li>
+                    <li>Gate 2：诊断伦理（干预计划前）</li>
+                    <li>Gate 3：依赖伦理（操作化前）</li>
+                    <li>Gate 4：输出伦理（交付前）</li>
+                </ul>
+            </div>
+            <div class="card">
+                <span class="phase-tag">Layer 4</span>
+                <h3>透明层 · 可审计的自我披露</h3>
+                <p><strong>组件</strong>：身份声明、边界陈述、审计日志、可解释AI接口</p>
+                <p><strong>功能</strong>：确保持续、诚实地沟通系统的性质、能力和局限。</p>
+                <p><strong>强制身份声明</strong>（每会话开头）：</p>
+                <div class="quote">
+                    "我是REVER，一个结构性AI系统。我没有情感、意识或自我。我的回应由算法生成，旨在提供支持。我是智能体，而非人。"
+                </div>
+            </div>
+        </div>
+
+        <!-- 三、四点式伦理门控协议 -->
+        <h2 class="section-label"><i class="fas fa-door-closed" aria-hidden="true"></i> 三、四点式伦理门控协议</h2>
+
+        <div class="grid-4">
+            <div class="card">
+                <h3 class="gate-heading">Gate 1</h3>
+                <p><strong>输入伦理</strong> (编译前)</p>
+                <p>筛查原始输入的伦理风险：危机关键词、医疗边界、隐私侵犯、超能力请求。</p>
+                <p><span class="badge">紧急协议</span></p>
+            </div>
+            <div class="card">
+                <h3 class="gate-heading">Gate 2</h3>
+                <p><strong>诊断伦理</strong> (SID-P后)</p>
+                <p>基于M-R-D-S状态向量评估伦理风险：O_i, G_system, M1-RES-D, M4-DSP-B, ELI。</p>
+                <p><span class="badge">风险等级: 绿/黄/橙/红/黑</span></p>
+            </div>
+            <div class="card">
+                <h3 class="gate-heading">Gate 3</h3>
+                <p><strong>依赖伦理</strong> (MMD-P后)</p>
+                <p>评估当前依赖分数，调整干预参数：主体性目标、强度、透明度频率。</p>
+                <p><span class="badge">依赖缓解协议</span></p>
+            </div>
+            <div class="card">
+                <h3 class="gate-heading">Gate 4</h3>
+                <p><strong>输出伦理</strong> (STO-P后)</p>
+                <p>验证最终输出的伦理合规性：拟人化、虚假承诺、依赖触发、边界跨越。</p>
+                <p><span class="badge">透明度注入</span></p>
+            </div>
+        </div>
+
+        <!-- 四、依赖雷达：量化依恋 -->
+        <h2 class="section-label"><i class="fas fa-chart-radar" aria-hidden="true"></i> 四、依赖雷达 · 量化与管理依恋</h2>
+
+        <h3>依赖分数 Dₛ 的五维度</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>维度</th><th>符号</th><th>操作化</th><th>范围</th><th>警告阈值</th></tr></thead>
+                <tbody>
+                    <tr><td>频率</td><td>F</td><td>每日/每周交互次数</td><td>0–20+</td><td>>7次/天持续</td></tr>
+                    <tr><td>时长</td><td>D</td><td>平均会话时长(分钟)</td><td>0–180+</td><td>>60分钟持续</td></tr>
+                    <tr><td>情感投射</td><td>P</td><td>"朋友/爱/想念"语言使用</td><td>0–1 (NLP)</td><td>>0.7持续</td></tr>
+                    <tr><td>社会替代</td><td>S</td><td>报告替代人类接触</td><td>0–1 (自陈)</td><td>>0.5</td></tr>
+                    <tr><td>终止痛苦</td><td>T</td><td>对分离的负面回应</td><td>0–1 (情感分析)</td><td>>0.6</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>风险分类与系统响应</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>分数范围</th><th>分类</th><th>系统响应</th></tr></thead>
+                <tbody>
+                    <tr><td>0–3.9</td><td>健康使用</td><td>正常操作</td></tr>
+                    <tr><td>4.0–5.9</td><td>轻度升高</td><td>透明度提醒</td></tr>
+                    <tr><td>6.0–7.9</td><td>中度风险</td><td>主动依赖缓解</td></tr>
+                    <tr><td>8.0–9.9</td><td>重度风险</td><td>人类监督者通知</td></tr>
+                    <tr><td>≥10.0</td><td>危急</td><td>立即人工干预</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 五、透明度机制 -->
+        <h2 class="section-label"><i class="fas fa-eye" aria-hidden="true"></i> 五、作为结构的透明度</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>分层透明度要求</h3>
+                <div class="table-responsive">
+                <table class="table-full">
+                    <thead><tr><th>层</th><th>透明度机制</th></tr></thead>
+                    <tbody>
+                    <tr><td>哲学层</td><td>公开公理与定义</td></tr>
+                    <tr><td>架构层</td><td>开放约束文档</td></tr>
+                    <tr><td>算法层</td><td>可解释决策路径</td></tr>
+                    <tr><td>交互层</td><td>重复身份声明</td></tr>
+                    <tr><td>数据层</td><td>完整审计日志</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="card">
+                <h3>审计日志结构</h3>
+                <div class="code-block code-block-sm">
+                    Audit_Record {
+                      timestamp: UTC_microsecond,
+                      session_id: UUID,
+                      decision_point: Gate_1|2|3|4,
+                      metrics: { dependency_score, risk_level },
+                      rule_invoked: REVER_rule_ID,
+                      override: null|human_ID
+                    }
+                </div>
+                <p>日志必须：仅追加、防篡改、可审计、保留≥7年。</p>
+            </div>
+        </div>
+
+        <!-- 六、案例：王梅案例中的REVER -->
+        <h2 class="section-label"><i class="fas fa-user-md" aria-hidden="true"></i> 六、案例：王梅 · REVER在PSE工作流中的集成</h2>
+
+        <div class="case-study card">
+            <h3>基线 (第0周)</h3>
+            <p><strong>Gate 1</strong>: 输入"我停不下来想食物，晚上尤其严重" → 无危机关键词 → PASS</p>
+            <p><strong>Gate 2</strong>: SID-P诊断 O_i=41, G_system=1.49, M1-RES-D=30 → 风险等级 <span class="badge">橙色</span> (24h内人工审核)</p>
+            <p><strong>Gate 3</strong>: 依赖分数=1.2 (新用户) → 无调整</p>
+            <p><strong>Gate 4</strong>: 添加透明度标头 → "我是REVER，一个AI支持系统..."</p>
+
+            <h3 class="subsection-top">第2周</h3>
+            <p><strong>Gate 1</strong>: 检测到"你是唯一理解我的人" → 情感投射分数=0.65</p>
+            <p><strong>Gate 3</strong>: 依赖分数=4.8 → 轻度升高 → 每3天透明度提醒，添加社交提示</p>
+            <p><strong>Gate 4</strong>: 添加"我注意到我们交谈频繁...人类连接也很重要"</p>
+
+            <h3 class="subsection-top">第4周</h3>
+            <p>O_i=56, G_system=0.92 → 稳定改善。依赖分数=3.8 → 健康范围。</p>
+        </div>
+
+        <!-- 七、与UPLP/PSE的集成 -->
+        <h2 class="section-label"><i class="fas fa-link" aria-hidden="true"></i> 七、与UPLP/PSE的集成</h2>
+
+        <div class="info-box">
+            <p>REVER 是独立系统（结构伦理引擎/护栏）——它横跨整个功能层（L1-L5），为任何基于INTRE功能层架构的AI系统提供<strong>强制性伦理约束</strong>。</p>
+        </div>
+
+        <div class="code-block">
+            // REVER 在UPLP/PSE工作流中的位置
+            User Input → Gate 1 → VTS-P → SID-P → Gate 2 → MMD-P → Gate 3 → STO-P → Gate 4 → User Output
+                           ↑           ↑           ↑           ↑           ↑           ↑
+                     危机检测    风险分类    依赖评估    参数调整    透明度注入
+        </div>
+
+        <!-- 八、局限性 -->
+        <h2 class="section-label"><i class="fas fa-flask" aria-hidden="true"></i> 八、局限性</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>未验证参数</h3>
+                <ul class="list-indent">
+                    <li>依赖分数分量权重 (0.3,0.25,0.2,0.15,0.1)</li>
+                    <li>风险阈值 (依赖分数分段)</li>
+                    <li>最优透明度提醒频率</li>
+                    <li>Love_Index 阈值 (当前设为1.0)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 开放知识入口</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle.js?v=20261101h"></script>
+  <script src="../shared/domain-switch.js?v=20261101h"></script>
+<script src="/INTRE-website/shared/gate.js" defer></script>
+<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INTRE · UNIP 统一神经接口端口</title>
+    <meta name="description" content="UNIP（统一神经接口端口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <meta property="og:title" content="UNIP · 统一神经接口端口 · INTRE">
+    <meta property="og:description" content="UNIP（统一神经接口端口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/unip/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UNIP · 统一神经接口端口 · INTRE">
+    <meta name="twitter:description" content="UNIP（统一神经接口端口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/unip/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+  <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <style>
+        html { scroll-behavior: smooth; }
+        .container { margin:0 auto; padding:2rem; }
+        h1 { font-family:var(--font-body); font-size:2rem; font-weight:700; color:var(--color-slate-900); margin:1.5rem 0 0.4rem; letter-spacing:-0.02em; }
+        .subhead { font-family:var(--font-body); font-size:1.3rem; font-weight:400; color:var(--color-slate-500); margin-bottom:2rem; max-width:900px; }
+        .section-label { font-family:var(--font-body); font-size:var(--text-xl,1.5rem); font-weight:600; color:var(--color-slate-700); margin:2.5rem 0 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); padding-bottom:0.4rem; padding-left:0; display:flex; align-items:center; gap:.5rem; }
+        .section-label i { color:var(--color-navy-400); font-size:1rem; background:var(--color-navy-600-bg); border-radius:50%; width:2.2rem; height:2.2rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+        h4 { font-family:var(--font-body); font-size:var(--text-md,1.125rem); font-weight:600; color:var(--color-navy-400); margin:1.2rem 0 .6rem; }
+        .card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; margin-bottom:2rem; }
+        .table-responsive { overflow-x:auto; margin:1.5rem 0; border-radius:var(--radius-sm); border:var(--stroke-hairline) solid var(--color-slate-200); }
+        .table { width:100%; border-collapse:collapse; font-size:.95rem; min-width:600px; }
+        .table th { background:var(--color-navy-600); color:var(--color-white); font-weight:600; padding:.9rem 1rem; text-align:left; white-space:nowrap; }
+        .table td { padding:.9rem 1rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); vertical-align:top; background:var(--color-white); }
+        .table tr:last-child td { border-bottom:none; }
+        .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin:2rem 0; }
+        .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:2rem 0; }
+        .grid-6 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin:2rem 0; }
+        @media (max-width:1024px) { .grid-3{grid-template-columns:repeat(2,1fr)} h1{font-size:1.9rem} .subhead{font-size:1.2rem} }
+        @media (max-width:768px) { .grid-2,.grid-3,.grid-6{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} }
+        @media (max-width:480px) { .container{padding:1.2rem} h1{font-size:1.6rem} .subhead{font-size:0.95rem} .section-label{font-size:var(--text-lg,1.25rem)} .card{padding:1rem} }
+        .info-box { background:var(--color-slate-100); border-radius:var(--radius-sharp); padding:1.5rem; border:var(--stroke-hairline) solid var(--color-slate-200); margin:1.5rem 0; }
+        .code-block { background:var(--color-slate-900); color:var(--color-slate-200); padding:1rem 1.5rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.85rem; line-height:1.65; overflow-x:auto; margin:1rem 0; border:var(--stroke-hairline) solid rgba(255,255,255,0.05); }
+        .badge { background:var(--color-navy-400); color:var(--color-white); font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:var(--radius-pill); margin-left:.5rem; display:inline-block; }
+        .layer-card { background:var(--color-white); border:var(--stroke-hairline) solid var(--color-slate-200); padding:1.5rem; }
+        .layer-card h4 { color:var(--color-navy-600); font-size:var(--text-md,1.125rem); }
+        .layer-card .layer-num { display:inline-block; background:var(--color-navy-600); color:var(--color-white); padding:.25rem .7rem; border-radius:var(--radius-pill); font-size:.8rem; font-weight:600; margin-bottom:.5rem; }
+    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "UNIP · 统一神经接口端口 · INTRE",
+  "description": "UNIP（统一神经接口端口）：INTRE 的神经通道，原始神经信号到功能层似然的六层递进架构，支持 EEG/fNIRS/PPG 实时推理。",
+  "url": "https://project003125.github.io/INTRE-website/unip/",
+  "publisher": {'@type': 'Organization', 'name': 'INTRE', 'url': 'https://project003125.github.io/INTRE-website/'}
+}
+</script>
+<style>
+.info-box ul{margin:.6rem 0 0;padding-left:1.2rem;}
+.info-box li{margin:.35rem 0;line-height:1.7;}
+</style>
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/" class="active">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a><a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content" class="container">
+        <h1>UNIP</h1>
+        <div class="subhead">统一神经接口端口 · PSE 感知层 <strong>L1-N 神经模态输入端口</strong> <span class="channel-badge unip">神经通道</span> </div>
+
+        <div class="info-box">
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UNIP 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（IODS 端口之一，归属 PSE 感知层 L1）。</p>
+            <ul>
+                <li>它将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。</li>
+            </ul>
+        </div>
+
+        <!-- 一、六层架构 -->
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、六层架构</h2>
+        <p class="section-intro">UNIP 的六个层次从原始信号到功能似然逐级递进，每个层次对应一个不可还原的独立问题。</p>
+
+        <div class="grid-6">
+            <div class="layer-card">
+                <span class="layer-num">L1</span>
+                <h3>NAP</h3>
+                <p class="layer-desc">Neural Acquisition Protocol</p>
+                <p class="layer-detail">定义采集规范、设备接口、元数据标准（兼容 BIDS v1.6+）。</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">L2</span>
+                <h3>SCL</h3>
+                <p class="layer-desc">Signal Calibration Layer</p>
+                <p class="layer-detail">标准化的信号预处理流程，跨平台（EEGLAB/MNE/FieldTrip）可重现。</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">L3</span>
+                <h3>NFD</h3>
+                <p class="layer-desc">Neural Feature Definition</p>
+                <p class="layer-detail">唯一标识的神经特征库（NFI），可跨实验室复现且具生理学解释。</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">L4</span>
+                <h3>NFM</h3>
+                <p class="layer-desc">Neuro-Functional Mapping</p>
+                <p class="layer-detail">从特征到功能似然的映射模型库，支持线性/非线性/DL模型。</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">L5</span>
+                <h3>NPL</h3>
+                <p class="layer-desc">Neuro Prior Library</p>
+                <p class="layer-detail">生理硬约束与人群统计先验，用于约束或裁剪 L4 输出。</p>
+            </div>
+            <div class="layer-card">
+                <span class="layer-num">L6</span>
+                <h3>RTE</h3>
+                <p class="layer-desc">Real-time Engine</p>
+                <p class="layer-detail">低延迟推理（Infer）+ 异步个体化校准（Cal），输出实时神经似然。</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <p><strong>分层原则</strong>：每层回答一个独立问题，且层间不可合并。L1 回答"如何采集"；L2 回答"如何校准"；L3 回答"提取什么特征"；L4 回答"特征与功能状态的关系"；L5 回答"已知的生理约束是什么"；L6 回答"如何实时输出"。合并任意两层都会丢失一个必须独立回答的问题。</p>
+        </div>
+
+        <!-- 二、L6 RTE 双模块 -->
+        <h2 class="section-label"><i class="fas fa-bolt" aria-hidden="true"></i> 二、L6 RTE：实时推理与校准</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fas fa-tachometer-alt" aria-hidden="true"></i> RTE-Infer</h3>
+                <p><strong>实时推理引擎</strong>— 无状态、低延迟、确定性计算。</p>
+                <ul class="list-indent desc-spacing">
+                    <li>管线：L2 数据流 → L3 特征计算 → L4 模型 → p(yₙ|Ψ)</li>
+                    <li>分层延迟目标（95分位）：简单特征&thinsp;<30ms，中等&thinsp;<50ms，复杂&thinsp;<100ms</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> RTE-Cal</h3>
+                <p><strong>异步校准引擎</strong>— 有状态、精度优先、不阻塞推理快路径。</p>
+                <ul class="list-indent desc-spacing">
+                    <li>接收 RTE-Infer 输出 + PSE 状态估计</li>
+                    <li>递归贝叶斯更新（卡尔曼/粒子滤波），个体化 L4 参数</li>
+                    <li>校准目标：2分钟后 log-likelihood 损失降低 ≥10%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code-block">
+            // UNIP ↔ PSE 双向通信协议<br>
+            UNIP → PSE: /func_likelihood  →  p(y_n|Ψ) + 置信度 + 时间戳<br>
+            PSE → UNIP: /state_estimate  →  当前最佳状态估计 Ŷ(t)<br>
+            PSE → UNIP: /calibration_feedback → 残差 + 参数调整建议
+        </div>
+
+        <!-- 三、NFI 神经特征标识 -->
+        <h2 class="section-label"><i class="fas fa-fingerprint" aria-hidden="true"></i> 三、NFI 神经特征标识符</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>NFI</th><th>功能维度</th><th>设备</th><th>优先级</th></tr></thead>
+                <tbody>
+                    <tr><td><code>NFI.EEG.v1.001</code> 额叶α不对称</td><td>M4-DSP-B（情绪调节）</td><td>EEG 8ch+</td><td>C5 验证的核心通道</td></tr>
+                    <tr><td><code>NFI.PPG.v1.001</code> HRV 高频功率</td><td>M1-RES-D（副交感能量）</td><td>PPG/ECG</td><td>M3-RES-D 独立性的生理通道</td></tr>
+                    <tr><td><code>NFI.EEG.v1.002</code> 前额θ/β比</td><td>M3-DSP-F（认知控制）</td><td>EEG 8ch+</td><td>认知负荷的直接神经标记</td></tr>
+                    <tr><td><code>NFI.fNIRS.v1.001</code> 前额 HbO 浓度</td><td>M2-DSP-F（工作记忆）</td><td>fNIRS</td><td>便携式认知状态监测</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 四、强反例协议 -->
+        <h2 class="section-label"><i class="fas fa-shield-alt" aria-hidden="true"></i> 四、强反例协议</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>ID</th><th>主张</th><th>证伪条件</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>SC1</strong></td><td>六层完备性</td><td>存在一个稳定的神经-功能映射任务无法被 L1-L6 分解</td></tr>
+                    <tr><td><strong>SC2</strong></td><td>NFI 可复现性</td><td>同 NFI 由三家独立实验室计算，跨实验室相关 &lt;0.70</td></tr>
+                    <tr><td><strong>SC3</strong></td><td>RTE-Infer 实时性</td><td>标准硬件上典型特征集延迟持续超出分层目标</td></tr>
+                    <tr><td><strong>SC4</strong></td><td>RTE-Cal 有效性</td><td>2分钟校准后 log-likelihood 损失降低 &lt;5%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>定位：</strong>UNIP 与 UPLP（L1-S）、UBMP（L1-B）并列构成 IODS 三输入端口，经 PSE 状态层（L2+）贝叶斯乘积融合：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前处于规范设计阶段，L4 与 L6 的工程实现为后续优先任务。</p>
+            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong>坐标系定义侧归 <a href="/INTRE-website/iods/">IODS</a>；UNIP 是观测侧——六层递进架构（NAP/SCL/NFD/NFM/NPL/RTE）把原始神经信号（EEG / fNIRS / PPG / HRV）转化为 42 维分布上的神经似然 p(y<sub>n</sub>|Ψ)，L4 映射的目标空间即 IODS 坐标系。</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 开放知识入口</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle.js?v=20261101h"></script>
+  <script src="../shared/domain-switch.js?v=20261101h"></script>
+<script src="/INTRE-website/shared/gate.js" defer></script>
+<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+</body>
+</html>

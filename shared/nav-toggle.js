@@ -1,3 +1,69 @@
+// ------------------------------------------------------------------
+// 夜间模式开关（2026-11-01）
+// 开关位：html[data-theme="light"|"dark"]；视觉规则在 components.css 末段。
+// 默认跟随系统；用户点选后写入 localStorage（intre-theme）覆盖系统。
+// ------------------------------------------------------------------
+(function() {
+    'use strict';
+    var KEY = 'intre-theme';
+    var root = document.documentElement;
+
+    function stored() {
+        try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(mode) {
+        root.setAttribute('data-theme', mode);
+    }
+    function syncButton(btn) {
+        var dark = root.getAttribute('data-theme') === 'dark';
+        btn.textContent = dark ? '☀' : '☾';
+        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        btn.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到夜间模式');
+        btn.title = dark ? '浅色模式' : '夜间模式';
+    }
+
+    var initial = stored();
+    if (!initial) {
+        initial = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    apply(initial);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var nav = document.querySelector('nav.site-nav .nav-container') ||
+                  document.querySelector('.nav-container');
+        if (!nav) return;
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'theme-toggle';
+        syncButton(btn);
+
+        btn.addEventListener('click', function() {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            apply(next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncButton(btn);
+        });
+
+        var links = nav.querySelector('.nav-links');
+        if (links) {
+            nav.insertBefore(btn, links);
+        } else {
+            nav.appendChild(btn);
+        }
+
+        // 未手动选择时，跟随系统切换
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mq.addEventListener) {
+            mq.addEventListener('change', function(e) {
+                if (stored()) return;
+                apply(e.matches ? 'dark' : 'light');
+                syncButton(btn);
+            });
+        }
+    });
+})();
+
 // Shared navigation toggle script (M4)
 // Replaces inline onclick handlers with accessible JS
 // v2.4.3 — 断点回退 768px（P2-6a 修正：959px 导致平板横排导航折叠为汉堡菜单）

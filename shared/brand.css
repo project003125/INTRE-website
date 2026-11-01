@@ -75,6 +75,19 @@
   --color-pse:   #7B6080;
   --color-rever: #8B6050;
 
+  /* ---- 语义层（组件只认这一层；夜间由本件末段整体覆盖） ---- */
+  --bg-page:        color-mix(in srgb, var(--color-navy-50) 28%, #fff);
+  --bg-surface:     var(--color-white);
+  --bg-surface-2:   var(--color-slate-100);
+  --border-subtle:  rgba(15, 23, 42, 0.12);
+  --border-faint:   rgba(15, 23, 42, 0.06);
+  --text-strong:    var(--color-slate-900);
+  --text-body:      var(--color-slate-900);
+  --text-muted:     var(--color-slate-600);
+  --link:           var(--color-navy-600);
+  --link-hover:     var(--color-navy-500);
+  --shadow-raise:   0 8px 28px rgba(10, 30, 61, 0.10);
+
   /* ---- 排版系统 ---- */
   /* 字体族（遵循 06-S-05 品牌视觉规范） */
   --font-logo:    'Josefin Sans', 'Century Gothic', 'Futura', sans-serif;
@@ -204,14 +217,16 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: color-mix(in srgb, var(--color-navy-50) 28%, #fff);
+  background-color: var(--bg-page);
   background-image: var(--gradient-page);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: var(--color-slate-900);
+  color: var(--text-body);
   line-height: 1.7;
   font-weight: 400;
   font-size: 1rem;
+  transition: background-color var(--duration-medium) var(--ease-smooth),
+              color var(--duration-medium) var(--ease-smooth);
 }
 
 /* ---- 排版层级 ---- */
@@ -269,13 +284,13 @@ p {
 }
 
 a {
-  color: var(--color-navy-600);
+  color: var(--link);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-smooth);
 }
 
 a:hover {
-  color: var(--color-navy-500);
+  color: var(--link-hover);
 }
 
 /* Amber 链接仅用于 CTA / 重点标记 */
@@ -403,4 +418,75 @@ code, pre, .mono {
 
   /* 等宽技术标签字距 */
   --tracking-tech: 0.14em;
+}
+
+/* ============================================================
+   夜间模式令牌（2026-11-01）
+   原则：色相全部保留 —— Navy 主色、Amber 强调、六通道大地色、
+        硅基红域均不改；只反相 slate 中性阶并重定义语义层。
+   开关位：html[data-theme="light"|"dark"]（shared/nav-toggle.js 维护）
+   ============================================================ */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: #0A1424;
+
+  /* 原语层：slate 中性阶反相（唯一需要动的原语组） */
+  --color-slate-900: #EAF1F9;
+  --color-slate-800: #DDE7F3;
+  --color-slate-700: #C7D5E6;
+  --color-slate-600: #AFC0D3;
+  --color-slate-500: #97A9BF;
+  --color-slate-400: #8095AB;
+  --color-slate-300: rgba(255, 255, 255, 0.28);
+  --color-slate-200: rgba(255, 255, 255, 0.12);
+  --color-slate-100: #16263D;
+  --color-slate-50:  #101D31;
+
+  /* 语义层：承载面 / 文字 / 描边 / 链接 / 阴影 */
+  --bg-page:        #0A1424;
+  --bg-surface:     #101D31;
+  --bg-surface-2:   #16263D;
+  --border-subtle:  rgba(255, 255, 255, 0.10);
+  --border-faint:   rgba(255, 255, 255, 0.06);
+  --text-strong:    #F1F6FB;
+  --text-body:      #DCE6F2;
+  --text-muted:     #A9B9CD;
+  --link:           #8FB7E8;
+  --link-hover:     #BAD3F2;
+  --shadow-raise:   0 8px 28px rgba(0, 0, 0, 0.45);
+
+  /* 玻璃面（06-S-05 §十二「深蓝玻璃」夜间取值，保留不透明回退） */
+  --glass-bg:          rgba(16, 29, 49, 0.62);
+  --glass-bg-strong:   rgba(16, 29, 49, 0.78);
+  --glass-border:      rgba(255, 255, 255, 0.12);
+  --glass-highlight:   inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --glass-shadow:      0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.30);
+  --glass-shadow-hover: 0 18px 48px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.35);
+
+  /* 既有阴影档位同幅加深 */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+
+  /* 页面光晕换夜间版（Navy 同族，只降亮度不换色相） */
+  --gradient-page:
+    radial-gradient(900px 520px at 12% -8%, rgba(59, 111, 181, 0.18), transparent 60%),
+    radial-gradient(760px 460px at 98% 2%, rgba(29, 58, 102, 0.30), transparent 58%),
+    radial-gradient(700px 500px at 60% 102%, rgba(59, 111, 181, 0.08), transparent 60%);
+
+  scrollbar-color: rgba(255, 255, 255, 0.22) #0A1424;
+}
+
+/* 打印面强制浅色，避免深底打出黑页 */
+@media print {
+  html[data-theme="dark"] {
+    --bg-page: #FFFFFF;
+    --bg-surface: #FFFFFF;
+    --bg-surface-2: #F1F5F9;
+    --text-strong: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --border-subtle: rgba(15, 23, 42, 0.12);
+    --gradient-page: none;
+  }
 }

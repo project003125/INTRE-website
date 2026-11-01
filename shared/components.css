@@ -2201,3 +2201,200 @@ main .section-label::before {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   夜间模式（2026-11-01）
+   原则：品牌色（Navy 蓝／Amber 琥珀／通道大地色／表格头蓝底白字）
+        一律不动；只把白色/浅灰承载面压暗，文字与描边取同族降饱和值。
+   开关：shared/nav-toggle.js 注入 .theme-toggle，存 localStorage；
+        html[data-theme="light"|"dark"] 为唯一开关位。
+   ============================================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 0.4rem;
+  padding: 0;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-pill);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-smooth),
+              border-color var(--duration-fast) var(--ease-smooth),
+              background-color var(--duration-fast) var(--ease-smooth);
+}
+
+.theme-toggle:hover {
+  color: var(--color-white);
+  border-color: var(--color-amber-500);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle:focus-visible {
+  outline: var(--stroke-structure) solid var(--color-amber-500);
+  outline-offset: 3px;
+}
+
+/* 夜间令牌本体在 shared/brand.css（原语反相＋语义层），本段只做组件接入。 */
+
+html[data-theme="dark"] body {
+  background-color: var(--bg-page);
+  background-image: var(--gradient-page);
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] strong,
+html[data-theme="dark"] b,
+html[data-theme="dark"] dt {
+  color: #F1F6FB;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] dd,
+html[data-theme="dark"] td,
+html[data-theme="dark"] th,
+html[data-theme="dark"] figcaption,
+html[data-theme="dark"] small {
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] a {
+  color: var(--link);
+}
+
+html[data-theme="dark"] a:hover {
+  color: var(--link-hover);
+}
+
+html[data-theme="dark"] hr {
+  border-top-color: var(--border-subtle);
+}
+
+html[data-theme="dark"] blockquote {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-top-color: var(--border-subtle);
+  border-bottom-color: var(--border-subtle);
+  color: #C4D3E5;
+}
+
+html[data-theme="dark"] code,
+html[data-theme="dark"] pre,
+html[data-theme="dark"] .mono,
+html[data-theme="dark"] .code-block {
+  background-color: #0B1626;
+  border-color: var(--border-subtle);
+  color: #D6E3F3;
+}
+
+/* ---- 旧版白色承载面（页面内联样式与旧组件同名者一并接管） ---- */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .subpage-card,
+html[data-theme="dark"] .module-card,
+html[data-theme="dark"] .op-card,
+html[data-theme="dark"] .layer-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .info-box,
+html[data-theme="dark"] .chapter-card,
+html[data-theme="dark"] .entry-card,
+html[data-theme="dark"] .layer-node,
+html[data-theme="dark"] .branch-cell,
+html[data-theme="dark"] .supply-node,
+html[data-theme="dark"] .manifesto-quote,
+html[data-theme="dark"] .fusion-section {
+  background: var(--bg-surface);
+  background-color: var(--bg-surface);
+  border-color: var(--border-subtle);
+  color: var(--text-body);
+  box-shadow: var(--shadow-raise);
+}
+
+html[data-theme="dark"] .table td {
+  background-color: var(--bg-surface);
+  border-bottom-color: var(--border-faint);
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] .table tbody tr:nth-child(even) td {
+  background-color: var(--bg-surface-2);
+}
+
+/* 表格头（Navy 蓝底白字）属品牌色区块，保持原样 */
+
+html[data-theme="dark"] .mx-cell {
+  background-color: var(--bg-surface-2);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Navy 系文字在深底上提亮一档（仍属同一蓝色族，不换色相） */
+html[data-theme="dark"] .fact-num,
+html[data-theme="dark"] .strip-num,
+html[data-theme="dark"] .hero-eyebrow,
+html[data-theme="dark"] .section-label {
+  color: #8FB7E8;
+}
+
+html[data-theme="dark"] .log-stamp,
+html[data-theme="dark"] .loop-return-tag {
+  background: var(--bg-surface-2);
+  background-color: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] .nav-links a.active {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+}
+
+/* 域名切换器 active 胶囊（domain-switch.css 的白底）夜间改半透明 */
+html[data-theme="dark"] .domain-switch a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+}
+
+html[data-theme="dark"] body[data-domain="silicon"] .domain-switch a[aria-current="page"] {
+  background: rgba(166, 58, 46, 0.35);
+  color: var(--color-white);
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background-color: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-track,
+html[data-theme="dark"]::-webkit-scrollbar-track,
+html[data-theme="dark"] body::-webkit-scrollbar-track,
+html[data-theme="dark"] *::-webkit-scrollbar-track {
+  background-color: var(--bg-page);
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-pill);
+}
+
+html[data-theme="dark"] {
+  scrollbar-color: rgba(255, 255, 255, 0.22) #0A1424;
+}

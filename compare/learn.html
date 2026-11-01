@@ -1294,6 +1294,15 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor { opacity: 1; }
   .mark-read { margin-left: 0; }
   .quiz-card { padding: 20px 16px; }
   .quiz-result .score { font-size: 52px; }
+  .series-count { font-size: 11px; }
+  .prose th, .prose td { min-width: 76px; }
+  .topbar { gap: 6px; }
+  .top-actions { gap: 2px; }
+  .icon-btn { width: 30px; height: 30px; border-radius: 8px; }
+  .icon-btn svg { width: 15px; height: 15px; }
+  .progress-ring { width: 26px; height: 26px; margin-left: 0; }
+  .progress-ring::before { width: 19px; height: 19px; }
+  .progress-ring b { font-size: 7px; }
 }
 
 .icon-sun { display: none; }
@@ -1562,7 +1571,7 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
 <h2 id="overview--h9">五、一句话总结<a class="anchor" href="#overview--h9" aria-label="本节锚点">#</a></h2>
 <blockquote class="note"><p>两者都是实证主义，K3 是主要矛盾——换单位，不换大框架。变量实在论在现象层有效，功能实在论在功能层有效。两套范式不是替代关系，不是竞争关系，而是分工关系——现象层用变量范式，功能层用状态范式，通过观测函数 h 连接。</p></blockquote>
 <hr>
-<h2 id="overview--h10">附录、总体宏观图表：变量范式 × 状态范式<a class="anchor" href="#overview--h10" aria-label="本节锚点">#</a></h2>
+<h2 id="overview--h10">附录、科学研究纲领表：变量范式 × 状态范式<a class="anchor" href="#overview--h10" aria-label="本节锚点">#</a></h2>
 <p>K1–K5 表给出哲学承诺轴；本表给出科学纲领速览轴。</p>
 <div class="table-wrap"><div class="table-toolbar"><span class="table-legend"><span><i class="dot-var"></i>变量范式</span><span><i class="dot-str"></i>状态范式</span></span><span class="col-focus" role="group" aria-label="列聚焦"><button type="button" data-focus="all" class="active">双栏</button><button type="button" data-focus="var">只看变量</button><button type="button" data-focus="str">只看状态</button></span></div><table class="compare-table" data-var-col="2" data-str-col="3"><thead><tr><th>维度</th><th>核心问题</th><th class="col-var">变量范式</th><th class="col-str">状态范式</th><th>分岔点 / 关系</th></tr></thead><tbody><tr><td><strong>纲领定位</strong></td><td>这套科学纲领怎么组织？</td><td class="col-var">以“变量”为基本单位的概率—统计纲领</td><td class="col-str">以“功能状态 Ψ”为基本单位的状态空间—动力学纲领</td><td>共享实证主义底色；K3 换基本单位，是根节点</td></tr><tr><td><strong>本体论</strong></td><td>研究对象“是什么”？</td><td class="col-var">心理现象可分解为<strong>变量/潜变量</strong>；变量是真实心理属性、有因果力；潜变量由观测协方差定义；默认在现象层内工作、不建独立功能描述层</td><td class="col-str">心理现象可描述为<strong>42 维功能状态 Ψ</strong>；功能层是独立描述层级；功能组件是功能因果网络中的角色实体；三层架构：现象层—功能层—神经层；约束功能主义</td><td><strong>变量 vs Ψ</strong>；K3 主要矛盾。变量实在论在现象层有效，功能实在论在功能层有效</td></tr><tr><td><strong>认识论</strong></td><td>我们“如何知道”？什么算证据？知识如何被证成？</td><td class="col-var">可观察→操作定义→测量→统计推断→因果识别；构念效度、法则网络、潜在结果、DAG、可忽略性；节点本体不清、构念膨胀、复制危机是其结构性困难</td><td class="col-str">“可检验”外延扩展为<strong>预测—干预效能 + 神经层约束</strong>；功能性抽象、语义自足、可表达≠已实例化；观测函数 h、逆问题、多模态一致性、强反例协议、IET 证据分级、IEGP 治理</td><td>变量范式证据链偏“观测层关系证成”；状态范式要求“生成机制+干预效能+约束”共同证成。状态范式认识论负担更重</td></tr><tr><td><strong>方法论</strong></td><td>用什么方法获得证据？</td><td class="col-var">CTT/IRT/CFA、信效度、测量不变性、回归/ANOVA/SEM/HLM/贝叶斯、DSEM/RI-CLPM、RCT/IV/RDD/DID/PSM、预注册/开放科学、计算建模/网络分析</td><td class="col-str">M-R-D-S 状态语法、G-M-A-R 操作语法、S-P 环境参照、L0–L5 计算管线、L1 三端口、L2 贝叶斯融合、L3 动力学/BMA、L4/L5 规划执行、PSE 校准、多模态状态估计、DMD 干预验证、IEGP/ACCP 治理、跨基质对照</td><td>统计方法构成变量范式方法论的核心；状态范式方法论核心是“状态建模+状态估计+干预规划+治理”。二者可在方法论层面整合</td></tr><tr><td><strong>目的论</strong></td><td>为什么研究？达到什么目标？</td><td class="col-var">描述变量间关系；解释方差；预测条件均值 E(Y|X)；控制处理效应；服务群体平均效应与现象层规律发现</td><td class="col-str">描述状态；解释生成机制；预测轨迹分布、级联路径、风险时点；控制/规划最优 G-M-A-R 操作序列与干预靶点；服务个体化状态轨迹与功能层干预</td><td>变量范式在“现象层描述/群体效应”强；状态范式在“功能层轨迹预测/最优控制”强。目标决定基本单位</td></tr><tr><td><strong>失败模式与修正</strong></td><td>各自怎么失败？</td><td class="col-var">失败多在<strong>硬核层面</strong>：节点本体不清、构念膨胀、复制危机、WEIRD 样本；保护带修正难根治</td><td class="col-str">失败多在<strong>保护带层面</strong>：逆问题、高维、参数校准、可辨识性；可通过算法、数据、治理逐步缓解，但当前多处于设计与推导面（实证待 18 号 DIVE 进场）</td><td>变量范式问题偏结构性；状态范式问题偏技术性、收敛式，但不能说已兑现</td></tr><tr><td><strong>总体关系</strong></td><td>两套范式能不能共存？</td><td class="col-var">现象层用变量范式：变量实在论仍有效；提供观测材料、先验、外部校验</td><td class="col-str">功能层用状态范式：功能实在论；提供功能架构、生成模型、状态估计、干预规划</td><td><strong>分工关系</strong>：基本单位不同时承认，不还原；可互译（有成本）、可配合；通过观测函数 h 连接。硬核互斥但范式可通约；保护带整合已实现，方法论整合部分实现，本体论整合不可实现</td></tr></tbody></table></div>
 <p><strong>一句话总图：</strong>变量范式 = 现象层的变量—概率—统计纲领；状态范式 = 功能层的 Ψ—状态空间—动力学纲领。二者共享实证主义，K3 换基本单位处分岔；目的论上分别承载“群体/现象层关系”与“个体/功能层轨迹与控制”，因此总体是分工而非替代。</p>

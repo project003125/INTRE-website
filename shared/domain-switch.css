@@ -134,4 +134,7 @@ body[data-domain="silicon"] .domain-switch a:focus-visible { outline-color: #A63
 @media (max-width: 480px) {
   .domain-switch { order: 0; flex: 0 1 auto; margin-top: 0; min-width: 0; }
   .domain-switch a { font-size: 0.64rem; padding: 0.28rem 0.5rem; white-space: nowrap; }
+  /* 紧凑字号不动（保 390px 单行测算），用伪元素外扩触控热区至 ≥40px 高，不改布局 */
+  .domain-switch a { position: relative; }
+  .domain-switch a::after { content: ""; position: absolute; inset: -9px -4px; }
 }

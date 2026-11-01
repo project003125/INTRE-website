@@ -427,7 +427,7 @@ body {
 /* Sidebar masthead (chapter panel) */
 .textbook-sidebar-head { padding: 0.15rem 0.6rem 1.05rem; }
 .ts-eyebrow {
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -490,7 +490,7 @@ body .textbook-sidebar-drawer-section {
 
 .chapter-nav-code {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     letter-spacing: 0.02em;
     color: var(--color-slate-400);
     white-space: nowrap;
@@ -588,7 +588,7 @@ body .textbook-sidebar-drawer-section {
 /* Panel masthead (page TOC) */
 .toc-side-head { padding: 0.35rem 1rem 0.9rem; }
 .toc-eyebrow {
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -950,6 +950,7 @@ body.toc-open {
     .toc-sidebar-header { padding: 0.2rem 0.8rem 0.3rem; }
     .toc-sidebar-list .toc-item { padding: 0.65rem 0.8rem; font-size: 0.88rem; }
     .toc-sidebar-list .toc-item.toc-h2 { padding: 0.7rem 0.8rem; font-size: 0.92rem; }
+    .textbook-content th, .textbook-content td { padding: 0.5rem 0.55rem; }
 }
 
 /* 2026-10-31 prose list formatting */

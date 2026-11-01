@@ -100,7 +100,7 @@
         .card-wrap { display: block; text-decoration: none; color: inherit; height: 100%; }
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
             gap: 1.4rem;
         }
         .card {
@@ -262,6 +262,10 @@
             .manifesto-quote p { font-size: 1rem; }
             .hero-cta-3d { margin-bottom: 1.6rem; }
             .hero-cta-3d .btn-amber { padding: 0.9rem 1.9rem; font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .fusion-formula code { font-size: 0.8rem; }
+            .fusion-formula { padding: 1.1rem 1rem; }
         }
     </style>
     <script type="application/ld+json">

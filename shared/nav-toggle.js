@@ -218,4 +218,7 @@
         scan();
     }
     window.addEventListener('resize', scan);
+    // 字体晚到／转屏后溢出状态会变，补 load 与 orientationchange 复扫，提示不失真
+    window.addEventListener('load', scan);
+    window.addEventListener('orientationchange', scan);
 })();

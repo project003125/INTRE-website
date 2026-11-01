@@ -586,6 +586,17 @@ hr {
   border-bottom: none;
 }
 
+/* ≤480px：收紧单元格内边距与字号以缩短宽表横向滑动距离；min-width:600 保持不变 */
+@media (max-width: 480px) {
+  .table {
+    font-size: 0.9rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.65rem 0.6rem;
+  }
+}
+
 .table tbody tr:nth-child(even) td {
   background-color: var(--color-slate-100);
 }
@@ -2231,6 +2242,15 @@ main .section-label::before {
               background-color var(--duration-fast) var(--ease-smooth);
 }
 
+/* 触屏触控目标提至 44×44（WCAG 2.5.5 目标尺寸惯例）；桌面指针设备保持 32px 视觉不变 */
+@media (pointer: coarse) {
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+    margin-right: 0.35rem;
+  }
+}
+
 .theme-toggle:hover {
   color: var(--color-white);
   border-color: var(--color-amber-500);
@@ -2276,6 +2296,12 @@ html[data-theme="dark"] small {
 
 html[data-theme="dark"] hr {
   border-top-color: var(--border-subtle);
+}
+
+/* 教材章标题为类级特异规则（.textbook-content h1.chapter-title），压过上方全局 h1 翻转，
+   暗色下留在页面底色上不可读 ⇒ 同色值定向补翻（侧栏面板底仍是白面，其 navy 标题不动）。 */
+html[data-theme="dark"] .textbook-content h1.chapter-title {
+  color: #F1F6FB;
 }
 
 html[data-theme="dark"] blockquote {

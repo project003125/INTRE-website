@@ -2216,8 +2216,9 @@ main .section-label::before {
   justify-content: center;
   width: 32px;
   height: 32px;
-  margin-left: 0.4rem;
+  margin: 0 0.55rem 0 1rem;
   padding: 0;
+  flex: 0 0 auto;
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-pill);
@@ -2271,13 +2272,7 @@ html[data-theme="dark"] small {
   color: var(--text-body);
 }
 
-html[data-theme="dark"] a {
-  color: var(--link);
-}
-
-html[data-theme="dark"] a:hover {
-  color: var(--link-hover);
-}
+/* 链接色由 brand.css 的 --link 令牌随主题切换，此处不再覆写，避免压过 .btn-* 自带色 */
 
 html[data-theme="dark"] hr {
   border-top-color: var(--border-subtle);
@@ -2325,6 +2320,15 @@ html[data-theme="dark"] .table td {
   background-color: var(--bg-surface);
   border-bottom-color: var(--border-faint);
   color: var(--text-body);
+}
+
+/* 旧版行底色（rgba 白 42%）夜间转透明，隔行改用微亮面 */
+html[data-theme="dark"] table tbody tr {
+  background: transparent;
+}
+
+html[data-theme="dark"] table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 html[data-theme="dark"] .table tbody tr:nth-child(even) td {
@@ -2382,6 +2386,49 @@ html[data-theme="dark"] ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
+/* 硅基侧组件（silicon/shared.css 用白面）夜间转深，红域主色不动 */
+html[data-theme="dark"] .lock-panel,
+html[data-theme="dark"] .gate,
+html[data-theme="dark"] .slide-inner,
+html[data-theme="dark"] .pass-node,
+html[data-theme="dark"] .loop-node,
+html[data-theme="dark"] .mini-footer,
+html[data-theme="dark"] .point-list li {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] .tech-label,
+html[data-theme="dark"] .branch-mark,
+html[data-theme="dark"] .leg {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: var(--border-subtle);
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] .page-header {
+  background-color: var(--bg-surface-2);
+  color: var(--text-body);
+}
+
+/* 硅基红域：正文段落继承亮色（页面未显式设色的 P 默认黑，深底不可读） */
+html[data-theme="dark"] body[data-domain="silicon"] main p,
+html[data-theme="dark"] body[data-domain="silicon"] main li {
+  color: var(--text-body);
+}
+
+/* 搜索框与表单面 */
+html[data-theme="dark"] input[type="search"],
+html[data-theme="dark"] .glossary-search,
+html[data-theme="dark"] .search-box {
+  background-color: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  color: var(--text-body);
+}
+
+/* 浅色专用表格行底（components.css 旧段 rgba 白 42%）夜间已转透明，见上 */
 
 html[data-theme="dark"] ::-webkit-scrollbar-track,
 html[data-theme="dark"]::-webkit-scrollbar-track,

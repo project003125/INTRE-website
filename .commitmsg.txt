@@ -1,0 +1,6 @@
+fix(site): 夜间与间距整修——导航留白、CTA 文字色回归白、硅基白面转深、表格行底与搜索框修正
+
+- shared/components.css：主题按钮外边距 1rem/0.55rem；删夜间 a 覆写（修复 .btn-amber 文字被 --link 压成蓝）；table tbody tr 白底转透明；硅基 lock-panel/gate/slide-inner/pass-node/loop-node/mini-footer/point-list li/tech-label/branch-mark/leg/page-header 夜间转深；搜索框与硅基正文补亮色
+- shared/brand.css：夜间令牌分层（语义层＋slate 反相，前一提交已含）
+- 7 个硅基页补齐 shared 资源版本 query；55 页版本串刷至 v=20261101h
+- 全站本地链接 0 断链、各页无横向溢出、夜间无残留白面

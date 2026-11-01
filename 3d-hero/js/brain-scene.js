@@ -37,9 +37,12 @@ function smoothstep(a, b, x) {
 export function createHeroScene(canvas, options = {}) {
   const lite = !!options.lite;
   const reduced = !!options.reducedMotion;
+  const query = new URLSearchParams(location.search);
+  const forceLow = query.get('quality') === 'low';
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !lite, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lite ? 1 : 1.6));
+  const baseDpr = Math.min(window.devicePixelRatio || 1, lite ? 1 : (window.innerWidth > 1600 ? 1.25 : 1.5));
+  renderer.setPixelRatio(baseDpr);
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -48,7 +51,7 @@ export function createHeroScene(canvas, options = {}) {
 
   // 泛光后处理：仅高质量路径启用（lite / reduced-motion / 窄屏走直接渲染）
   let composer = null;
-  if (!lite && !reduced) {
+  if (!lite && !reduced && !forceLow) {
     try {
       composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
@@ -99,6 +102,8 @@ export function createHeroScene(canvas, options = {}) {
   const clock = new THREE.Clock();
   let frameId = 0;
   let last = 0;
+  let slowFrames = 0;
+  let sampleCount = 0;
   let disposed = false;
 
   function layout() {
@@ -153,7 +158,7 @@ export function createHeroScene(canvas, options = {}) {
     dust.material.opacity = 0.22 + 0.28 * w[0];
   }
 
-  function updateCamera(p, w) {
+  function updateCamera(p, w, dt = 16.7) {
     for (let i = 0; i < KF.length - 1; i++) {
       if (p <= KF[i + 1].p) {
         const span = KF[i + 1].p - KF[i].p;
@@ -178,7 +183,8 @@ export function createHeroScene(canvas, options = {}) {
     aim.y += aimYShift;
 
     camera.position.set(camPos.x + parallax.x, camPos.y + parallax.y, camPos.z);
-    lookTarget.lerp(aim, 0.08);
+    const damping = 1 - Math.exp(-dt * 0.0055);
+    lookTarget.lerp(aim, damping);
     camera.lookAt(lookTarget);
   }
 
@@ -232,7 +238,7 @@ export function createHeroScene(canvas, options = {}) {
     return hits[0].instanceId ?? -1;
   }
 
-  function renderOnce(time = 0) {
+  function renderOnce(time = 0, dt = 16.7) {
     const t = time / 1000;
     const w = weights(progress);
     applyWeights(w);
@@ -259,7 +265,7 @@ export function createHeroScene(canvas, options = {}) {
       updateNodes(t);
     }
 
-    updateCamera(progress, w);
+    updateCamera(progress, w, dt);
 
     if (lattice.group.visible && !reduced) {
       const hit = pick();
@@ -277,9 +283,22 @@ export function createHeroScene(canvas, options = {}) {
   function loop(time) {
     if (disposed) return;
     frameId = requestAnimationFrame(loop);
-    if (time - last < 14) return;
+    const dt = last ? Math.min(50, time - last) : 16.7;
     last = time;
-    renderOnce(time);
+    renderOnce(time, dt);
+    if (composer) {
+      sampleCount++;
+      if (dt > 24) slowFrames++;
+      if (sampleCount >= 90) {
+        if (slowFrames > 45) {
+          composer = null;
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.2));
+          console.warn('[3D] 帧率偏低，已自动关闭泛光并降低渲染分辨率。');
+        }
+        sampleCount = 0;
+        slowFrames = 0;
+      }
+    }
   }
 
   function start() {

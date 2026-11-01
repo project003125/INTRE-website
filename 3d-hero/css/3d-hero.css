@@ -71,8 +71,8 @@ body.node-hovering { cursor: pointer; }
   background:
     radial-gradient(44% 38% at 70% 28%, rgba(62, 142, 224, 0.34), transparent 70%),
     radial-gradient(38% 34% at 22% 74%, rgba(26, 96, 168, 0.3), transparent 72%);
-  animation: aurora-drift 26s ease-in-out infinite alternate;
-  will-change: transform;
+  animation: none;
+  will-change: auto;
 }
 body[data-active="1"] .aurora {
   background:
@@ -107,7 +107,7 @@ body[data-active="4"] .aurora {
   background:
     linear-gradient(90deg, rgba(3, 11, 21, 0.92) 0%, rgba(3, 11, 21, 0.55) 34%, transparent 62%),
     radial-gradient(120% 100% at 50% 50%, transparent 46%, rgba(2, 8, 16, 0.72) 100%);
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   opacity: 0.92;
 }
 .grain {
@@ -115,11 +115,10 @@ body[data-active="4"] .aurora {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.12;
   background-image:
     repeating-linear-gradient(0deg, rgba(140, 190, 240, 0.055) 0 1px, transparent 1px 3px);
   background-size: 100% 3px;
-  mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 100%);
 }
 
 .skip-link {
@@ -308,8 +307,8 @@ h1, h2, h3, p { margin-top: 0; }
   border: 1px solid var(--line);
   border-radius: 22px;
   box-shadow: 0 26px 90px rgba(0, 6, 18, 0.42), inset 0 1px 0 rgba(160, 200, 240, 0.08);
-  backdrop-filter: blur(20px) saturate(115%);
-  -webkit-backdrop-filter: blur(20px) saturate(115%);
+  backdrop-filter: blur(14px) saturate(110%);
+  -webkit-backdrop-filter: blur(14px) saturate(110%);
 }
 .section-note { font-size: 0.72rem; color: var(--faint); margin: 24px 0 0; letter-spacing: 0.02em; }
 .visual-fallback { display: none; }
@@ -713,7 +712,7 @@ body.force-text .veil {
   .act-index { right: 16px; bottom: 2vh; font-size: clamp(5.4rem, 30vw, 9rem); }
   .eyebrow { font-size: 0.54rem; letter-spacing: 0.14em; margin-bottom: 16px; }
   h2 { font-size: clamp(2.4rem, 12vw, 3.6rem); }
-  .glass-panel { border-radius: 18px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .glass-panel { border-radius: 18px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   .hero-layout { align-items: center; }
   .hero-copy { padding-bottom: 0; }
   h1 { font-size: clamp(5rem, 26vw, 6.4rem); letter-spacing: 0.04em; margin-bottom: 28px; }

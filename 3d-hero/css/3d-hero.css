@@ -259,6 +259,7 @@ main { position: relative; z-index: 3; }
   display: flex;
   position: relative;
 }
+.hero-layout, .split-layout, .function-layout, .neural-layout { width: 100%; }
 .act-index {
   position: absolute;
   right: clamp(58px, 9vw, 150px);
@@ -723,6 +724,8 @@ body.force-text .veil {
   .scroll-cue { left: 16px; bottom: 18px; font-size: 0.6rem; }
   .scroll-cue i { width: 38px; }
   .section-copy { padding: 26px 22px; }
+  .section-copy > p:not(.eyebrow):not(.section-note),
+  .neural-copy > p:not(.eyebrow):not(.section-note) { max-width: 100%; }
   .section-copy > p:not(.eyebrow):not(.section-note) { font-size: 0.86rem; }
   .channel-links { margin-top: 20px; }
   .channel-links a { grid-template-columns: 10px 52px 1fr 16px; gap: 9px; min-height: 48px; }

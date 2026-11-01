@@ -16,7 +16,7 @@ const KF = [
   { p: 0.0, pos: [0.0, 0.15, 8.6] },
   { p: 0.33, pos: [0.55, 0.20, 7.7] },
   { p: 0.67, pos: [0.95, 0.55, 7.1] },
-  { p: 1.0, pos: [1.20, 0.35, 6.3] }
+  { p: 1.0, pos: [1.35, 0.35, 5.9] }
 ];
 
 const COL = {
@@ -52,7 +52,7 @@ export function createHeroScene(canvas, options = {}) {
     try {
       composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
-      composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.55, 0.5, 0.62));
+      composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.5, 0.5, 0.66));
       composer.addPass(new OutputPass());
     } catch (error) {
       composer = null;
@@ -89,6 +89,7 @@ export function createHeroScene(canvas, options = {}) {
   let pointer = new THREE.Vector2(-4, -4);
   let parallax = { x: 0, y: 0 };
   let aimShift = 1.55;
+  let aimYShift = 0;
   const fadeScale = [1, 1, 1, 1];
   const lookTarget = new THREE.Vector3(1.4, 0, 0);
   const aim = new THREE.Vector3(1.4, 0, 0);
@@ -110,6 +111,7 @@ export function createHeroScene(canvas, options = {}) {
 
     const mobile = w <= 760;
     aimShift = mobile ? 0 : 1.55;
+    aimYShift = mobile ? 0.5 : 0;
     fadeScale[2] = mobile ? 0.5 : 1;
     fadeScale[0] = mobile ? 0.55 : 1;
     hero.group.position.set(mobile ? 0 : 2.15, mobile ? 0.6 : 0.1, mobile ? -1.4 : -0.4);
@@ -118,8 +120,8 @@ export function createHeroScene(canvas, options = {}) {
     phenomena.group.scale.setScalar(mobile ? 0.8 : 1);
     lattice.group.position.set(mobile ? 0 : 2.15, mobile ? 0.15 : 0.15, mobile ? -1.6 : 0);
     lattice.group.scale.setScalar(mobile ? 0.95 : 0.85);
-    brain.group.position.set(mobile ? 0 : 2.0, mobile ? -0.1 : -0.02, mobile ? -1.2 : 0);
-    brain.group.scale.setScalar(mobile ? 0.82 : 1.45);
+    brain.group.position.set(mobile ? 0 : 2.45, mobile ? -0.1 : -0.02, mobile ? -1.2 : 0);
+    brain.group.scale.setScalar(mobile ? 1.1 : 1.95);
   }
 
   function resize() {
@@ -173,6 +175,7 @@ export function createHeroScene(canvas, options = {}) {
     });
     aim.multiplyScalar(1 / total);
     aim.x -= aimShift;
+    aim.y += aimYShift;
 
     camera.position.set(camPos.x + parallax.x, camPos.y + parallax.y, camPos.z);
     lookTarget.lerp(aim, 0.08);
@@ -245,6 +248,10 @@ export function createHeroScene(canvas, options = {}) {
       brain.group.rotation.y = -0.95 + Math.sin(t * 0.1) * 0.28;
       brain.group.rotation.x = -0.05 + Math.sin(t * 0.16) * 0.04;
       brain.signals.update(t);
+      brain.rings.rotation.y = t * 0.14;
+      brain.rings.rotation.x = Math.sin(t * 0.2) * 0.12;
+      brain.scan.update(t);
+      brain.coreLight.intensity = 1.3 + Math.sin(t * 1.5) * 0.45;
       if (lattice.group.visible) {
         lattice.group.rotation.y = Math.sin(t * 0.16) * 0.16 - 0.04;
         lattice.group.rotation.x = -0.1 + Math.cos(t * 0.2) * 0.03;
@@ -714,32 +721,76 @@ function makeBrain(glowTex, lite) {
   const group = new THREE.Group();
   group.rotation.set(-0.08, -0.95, -0.02);
 
+  const coreLight = new THREE.PointLight(0x66c8ff, 1.5, 3.0, 2);
+  group.add(coreLight);
+  const fill = new THREE.PointLight(0x7a6bff, 0.9, 4.2);
+  fill.position.set(-1.2, 0.5, -0.9);
+  group.add(fill);
+
   const aura = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: glowTex, color: 0x1d5f9f, transparent: true, opacity: 0.14,
+    map: glowTex, color: 0x1d5f9f, transparent: true, opacity: 0.16,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
-  aura.scale.setScalar(6.2);
+  aura.scale.setScalar(7.6);
   aura.position.set(0, 0, -0.4);
   group.add(aura);
 
+  const rings = new THREE.Group();
+  [1.0, 1.14, 1.28].forEach((radius, index) => {
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, 0.004, 4, 160),
+      new THREE.MeshBasicMaterial({
+        color: index === 1 ? 0x8fd6ff : 0x4f8fd0,
+        transparent: true, opacity: index === 1 ? 0.18 : 0.1,
+        blending: THREE.AdditiveBlending, depthWrite: false
+      })
+    );
+    ring.rotation.set(Math.PI / 2 + index * 0.5, index * 0.7, index * 0.3);
+    rings.add(ring);
+  });
+  group.add(rings);
+
+  // 全息扫描带：沿脑体上下移动的光带
+  const sweeps = [];
+  [[0x9fd8ff, 0.34, 2.5, 0.11], [0xffffff, 0.16, 1.9, 0.05]].forEach(([hex, base, width, height], index) => {
+    const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: glowTex, color: hex, transparent: true, opacity: 0,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    sprite.scale.set(width, height, 1);
+    group.add(sprite);
+    sweeps.push({ sprite, base, phase: index * 0.14 });
+  });
+
+  const scan = {
+    update(t) {
+      sweeps.forEach(({ sprite, base, phase }) => {
+        const p = (t * 0.42 + phase) % 1;
+        sprite.position.set(0, -0.72 + p * 1.44, 0.05);
+        sprite.material.opacity = base * Math.sin(Math.PI * p);
+      });
+    }
+  };
+
   const cortex = new THREE.MeshStandardMaterial({
-    color: 0x6d9cbc, emissive: 0x0a2b4a, emissiveIntensity: 0.4,
-    roughness: 0.85, metalness: 0.05, transparent: true, opacity: 0.2,
+    color: 0x6fa6c8, emissive: 0x0b3356, emissiveIntensity: 0.38,
+    roughness: 0.72, metalness: 0.12, transparent: true, opacity: 0.22,
     depthWrite: false, side: THREE.DoubleSide
   });
   const cerebellum = new THREE.MeshStandardMaterial({
-    color: 0x557f9d, emissive: 0x08233c, emissiveIntensity: 0.4,
-    roughness: 0.9, metalness: 0.04, transparent: true, opacity: 0.38, depthWrite: false
+    color: 0x5a8fb0, emissive: 0x082641, emissiveIntensity: 0.5,
+    roughness: 0.85, metalness: 0.06, transparent: true, opacity: 0.4, depthWrite: false
   });
   const brainstem = new THREE.MeshStandardMaterial({
-    color: 0x48738f, emissive: 0x071e33, emissiveIntensity: 0.38,
-    roughness: 0.92, transparent: true, opacity: 0.46, depthWrite: false
+    color: 0x4c7c9c, emissive: 0x072238, emissiveIntensity: 0.48,
+    roughness: 0.88, transparent: true, opacity: 0.5, depthWrite: false
   });
   const shellMat = new THREE.MeshBasicMaterial({
-    color: COL.beam, wireframe: true, transparent: true, opacity: 0.07,
+    color: COL.beam, wireframe: true, transparent: true, opacity: 0.09,
     blending: THREE.AdditiveBlending, depthWrite: false
   });
-  const rimMat = fresnelMaterial(0x4b8fd2, 3.2, 0.28);
+  const rimMat = fresnelMaterial(0x5aa8e8, 2.4, 0.36);
+  const rimViolet = fresnelMaterial(0x7f6bff, 3.4, 0.14);
 
   fetch('../assets/brain-anatomy.bin')
     .then(response => {
@@ -783,6 +834,9 @@ function makeBrain(glowTex, lite) {
           const rim = new THREE.Mesh(geometry, rimMat);
           rim.renderOrder = 6;
           group.add(rim);
+          const violet = new THREE.Mesh(geometry, rimViolet);
+          violet.renderOrder = 7;
+          group.add(violet);
         }
       }
       fades.push(...registerFades(group).filter(m => !fades.includes(m)));
@@ -824,7 +878,7 @@ function makeBrain(glowTex, lite) {
   fiberGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   fiberGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const fiberLines = new THREE.LineSegments(fiberGeo, new THREE.LineBasicMaterial({
-    vertexColors: true, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.NormalBlending
+    vertexColors: true, transparent: true, opacity: 0.62, depthWrite: false, blending: THREE.NormalBlending
   }));
   fiberLines.renderOrder = 4;
   group.add(fiberLines);
@@ -839,7 +893,7 @@ function makeBrain(glowTex, lite) {
   group.add(sparkPoints);
 
   // 脑外粒子晕：把模型"托"起来
-  const haloCount = lite ? 240 : 560;
+  const haloCount = lite ? 300 : 760;
   const haloPos = new Float32Array(haloCount * 3);
   let seed = 913;
   const rnd = () => {
@@ -857,13 +911,13 @@ function makeBrain(glowTex, lite) {
   const haloGeo = new THREE.BufferGeometry();
   haloGeo.setAttribute('position', new THREE.BufferAttribute(haloPos, 3));
   const haloPoints = new THREE.Points(haloGeo, new THREE.PointsMaterial({
-    map: glowTex, color: 0x9ecdff, size: 0.032, transparent: true, opacity: 0.28,
+    map: glowTex, color: 0x9ecdff, size: 0.032, transparent: true, opacity: 0.32,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
   group.add(haloPoints);
 
   // 沿纤维游走的信号点
-  const signalCount = lite ? 18 : 60;
+  const signalCount = lite ? 24 : 90;
   const sigPos = new Float32Array(signalCount * 3);
   const sigState = [];
   for (let i = 0; i < signalCount; i++) {
@@ -879,7 +933,7 @@ function makeBrain(glowTex, lite) {
   const sigGeo = new THREE.BufferGeometry();
   sigGeo.setAttribute('position', new THREE.BufferAttribute(sigPos, 3));
   const sigPoints = new THREE.Points(sigGeo, new THREE.PointsMaterial({
-    map: glowTex, color: 0xf2f9ff, size: 0.05, transparent: true, opacity: 0.7,
+    map: glowTex, color: 0xf2f9ff, size: 0.055, transparent: true, opacity: 0.75,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
   sigPoints.renderOrder = 7;
@@ -903,7 +957,7 @@ function makeBrain(glowTex, lite) {
     }
   };
 
-  return { group, fades: registerFades(group), signals };
+  return { group, fades: registerFades(group), signals, rings, scan, coreLight };
 }
 
 function makeDust(count, glowTex) {

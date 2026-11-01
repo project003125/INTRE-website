@@ -1,0 +1,64 @@
+/* ==========================================================
+   INTRE 夜间模式（shared 家族覆盖层）
+   原则：白/中性面转暗；Navy、Amber、通道色等品牌色相不变；
+   深色面板上的白字语义（--color-white/-65/-55）不动。
+   启用：html[data-theme="dark"]（由 theme.js 写入并记忆）
+   ========================================================== */
+html[data-theme="dark"]{color-scheme:dark}
+
+/* 令牌重映射：Slate 中性带亮度翻转（色相不变） */
+html[data-theme="dark"]{
+  --color-slate-50:#12161d;--color-slate-100:#171d26;--color-slate-200:#242d3a;
+  --color-slate-300:#3a4658;--color-slate-400:#8ba0b8;--color-slate-500:#a2b2c6;
+  --color-slate-600:#b7c5d6;--color-slate-700:#cdd9e6;--color-slate-800:#dfe7f0;--color-slate-900:#eff4fa;
+  --color-navy-50:#1a2534;--color-navy-200:#2f4a6b;
+  --color-navy-600-bg:rgba(139,177,221,.10);--color-navy-600-bg-subtle:rgba(139,177,221,.06);
+  --color-navy-600-border:rgba(139,177,221,.24);
+  --color-amber-100:#33270f;--color-amber-900:#fcd34d;
+  --shadow-hard-slate:5px 5px 0 #242d3a;--shadow-md:0 6px 20px rgba(0,0,0,.45);
+  --border:#242d3a;
+}
+
+/* 页面底色：暖 Navy 夜色（品牌色相不变，仅明度重置） */
+html[data-theme="dark"] body{
+  background-color:#0f141b;
+  background-image:radial-gradient(circle at 12% -8%, rgba(59,111,181,.16), transparent 34rem),
+                   radial-gradient(circle at 88% 0%, rgba(217,119,6,.06), transparent 30rem);
+  background-attachment:fixed;
+  color:#dbe4ee;
+}
+html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,html[data-theme="dark"] h5,html[data-theme="dark"] h6{color:#eef3fa}
+html[data-theme="dark"] main a:not([class*="btn"]):not([class*="badge"]){color:#8fb8ea}
+html[data-theme="dark"] main a:not([class*="btn"]):not([class*="badge"]):hover{color:#b0cdf3}
+
+/* 浅色面板 → 暗面板（选择器取自白底面全量清单） */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .subpage-card,
+html[data-theme="dark"] .layer-node,
+html[data-theme="dark"] .textbook-sidebar-drawer,
+html[data-theme="dark"] .textbook-sidebar-drawer-header,
+html[data-theme="dark"] .textbook-sidebar-toggle,
+html[data-theme="dark"] .toc-toggle-btn,
+html[data-theme="dark"] .info-box{background-color:#171d26;border-color:#242d3a}
+html[data-theme="dark"] .layer-node{color:#dbe4ee}
+html[data-theme="dark"] .table td{background-color:#141a22;border-color:#242d3a}
+html[data-theme="dark"] .table-responsive::after{opacity:0}
+html[data-theme="dark"] .section-head .tech-label{background:#1c2431;color:#a2b2c6}
+html[data-theme="dark"] .nav-links a.active{background-color:#1c2431;color:#eef3fa;border-color:#33415a}
+html[data-theme="dark"] .domain-switch a[aria-current="page"]{background-color:#1c2431;color:#eef3fa}
+html[data-theme="dark"] .chapter-nav-link:hover,
+html[data-theme="dark"] .toc-sidebar-list .toc-item:hover,
+html[data-theme="dark"] .textbook-sidebar-drawer-link:hover{background-color:#1c2431;color:#b0cdf3}
+html[data-theme="dark"] .chapter-nav-link,
+html[data-theme="dark"] .toc-item,
+html[data-theme="dark"] .nav-link{color:#b9cfe8}
+
+/* 代码块：保持暗底（避免随 slate-900 重映射变亮） */
+html[data-theme="dark"] pre,
+html[data-theme="dark"] .textbook-content pre{background:#10151c;color:#cdd9e6;border-color:#242d3a}
+html[data-theme="dark"] .textbook-content pre code{color:inherit}
+html[data-theme="dark"] code{background-color:#1c2431;color:#e2c9a8}
+
+/* 边框微调 */
+html[data-theme="dark"] blockquote{border-color:#2c3850}

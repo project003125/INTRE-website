@@ -5741,8 +5741,7 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
 
   function initTheme() {
     const saved = storage.get(KEY_THEME, null);
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(saved || (prefersDark ? "dark" : "light"), false);
+    applyTheme(saved || "light", false);
     const btn = $("#themeBtn");
     if (btn) {
       btn.addEventListener("click", () => {

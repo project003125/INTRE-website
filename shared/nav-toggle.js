@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------
 // 夜间模式开关（2026-11-01）
 // 开关位：html[data-theme="light"|"dark"]；视觉规则在 components.css 末段。
-// 默认跟随系统；用户点选后写入 localStorage（intre-theme）覆盖系统。
+// 默认日间；用户点选后写入 localStorage（intre-theme）覆盖默认值。
 // ------------------------------------------------------------------
 (function() {
     'use strict';
@@ -22,10 +22,7 @@
         btn.title = dark ? '浅色模式' : '夜间模式';
     }
 
-    var initial = stored();
-    if (!initial) {
-        initial = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    var initial = stored() || 'light';
     apply(initial);
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -52,15 +49,7 @@
             nav.appendChild(btn);
         }
 
-        // 未手动选择时，跟随系统切换
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        if (mq.addEventListener) {
-            mq.addEventListener('change', function(e) {
-                if (stored()) return;
-                apply(e.matches ? 'dark' : 'light');
-                syncButton(btn);
-            });
-        }
+        // 默认日间，不跟随系统切换；仅用户点选后覆盖。
     });
 })();
 

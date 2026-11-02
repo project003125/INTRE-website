@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>附录M：数学速成——函数、微分、概率与滤波 · INTRE 导论教材</title>
-    <meta name="description" content="```text">
-    <meta property="og:title" content="附录M：数学速成——函数、微分、概率与滤波">
-    <meta property="og:description" content="```text">
+    <title>附录M 数学速成 · INTRE 导论教材</title>
+    <meta name="description" content="函数、导数、概率、贝叶斯与滤波的最小工具箱。">
+    <meta property="og:title" content="附录M 数学速成">
+    <meta property="og:description" content="函数、导数、概率、贝叶斯与滤波的最小工具箱。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-m.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-m.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="附录M：数学速成——函数、微分、概率与滤波">
-    <meta name="twitter:description" content="```text">
+    <meta name="twitter:title" content="附录M 数学速成">
+    <meta name="twitter:description" content="函数、导数、概率、贝叶斯与滤波的最小工具箱。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,513 +69,102 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">附录M：数学速成——函数、微分、概率与滤波</h1>
+        <h1 class="chapter-title">附录M 数学速成</h1>
 
-<blockquote><p><strong>目标读者</strong>：具备中国高考中等数学水平、正在学习或从事心理学、认知科学、临床医学等专业的学生或研究者。本附录帮助你快速掌握阅读第8、19、20、28、29章所必需的数学概念。</p></blockquote>
+<p>读懂状态范式不需要整本数学分析。五个工具够用：函数、导数、概率、贝叶斯更新、递归滤波。每个工具只需要知道它在管线里替哪一步说话。</p>
 
-<blockquote><p><strong>学习路线</strong>：建议按“→”顺序阅读，每节约15-30分钟。可根据需要跳跃。</p></blockquote>
+<h2>M.1 函数与映射</h2>
 
-<pre><code class="language-text">函数与导数 → 微分方程 → 线性代数基础 → 概率与贝叶斯 → 状态估计思想 → 粒子滤波 → 非线性动力学
-    ↓            ↓           ↓              ↓              ↓               ↓            ↓
-  第8章       第8/19章    第8章（向量）   第20章        第20章          第20章      第29章</code></pre>
+<p>函数是输入到输出的对应。状态范式里常见三种映射：观测映射把状态变成读数，转移映射把上一刻状态变成下一刻状态，干预映射把操作变成状态改变。</p>
 
-<hr class="section-divider">
+\[ y = h(\Psi, E) + \varepsilon \]
 
-<h2>M.1 函数与导数（高中回顾）</h2>
+\[ \Psi_{t+1} = f(\Psi_t, E_t, u_t) + \eta_t \]
 
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是随时间变化的函数；导数描述“变化快慢”。</p>
+<p>h 是观测函数，E 是环境项，u 是操作项，ε 与 η 是噪声。线性形式 \(y = ax + b\) 只适合做局部近似；状态量有阈值与饱和，常用非线性形式，例如 S 形函数</p>
+
+\[ \sigma(x) = \frac{1}{1 + e^{-x}} \]
+
+<p>它的作用是把任意实数压到 0 与 1 之间。观测值域用 [0,1]、呈现尺用 0–100，两者之间只做线性换算，不改变形状。</p>
+
+<h2>M.2 导数与变化率</h2>
+
+<p>导数衡量瞬时变化率。一元形式是</p>
+
+\[ f'(x) = \lim_{\Delta x \to 0} \frac{f(x+\Delta x) - f(x)}{\Delta x} \]
+
+<p>多元函数对某一个变量求偏导 \(\partial f / \partial x_i\)，把所有偏导排成向量就是梯度 \(\nabla f\)。梯度指向函数上升最快的方向；在规划里，它用来判断往哪个维度加操作最省力。</p>
+
+<p>资源方程是最常用的一阶动态：</p>
+
+\[ \frac{dR}{dt} = S(t) - cR(t) \]
+
+<p>它的解是 \(R(t) = R^* + (R_0 - R^*)e^{-ct}\)，其中 \(R^* = S/c\)。参数 c 越大，恢复越快；c 越小，恢复越慢。恢复不对称就是消耗项与恢复项的 c 不相等。</p>
+
+<h2>M.3 概率与分布</h2>
+
+<p>随机变量把取值与概率连起来。离散情形用分布列 \(p(x)\)，连续情形用密度 \(p(x)\)。期望与方差分别是</p>
+
+\[ \mathbb{E}[X] = \sum_x x\,p(x), \qquad \mathrm{Var}(X) = \mathbb{E}[(X-\mathbb{E}[X])^2] \]
+
+<p>高斯分布是最常用的近似：</p>
+
+\[ p(x) = \frac{1}{\sqrt{2\pi}\,\sigma} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \]
+
+<p>μ 是中心，σ 是宽度。σ 越大，分布越平，信息量越低。观测契约里的不确定度就是 σ；无信息编码取均匀分布 \(U(0,1)\) 的均值 0.5 与标准差 \(1/\sqrt{12}\)。</p>
+
+<h2>M.4 贝叶斯更新</h2>
+
+<p>贝叶斯公式把先验与似然合成后验：</p>
+
+\[ p(\Psi \mid y) = \frac{p(y \mid \Psi)\,p(\Psi)}{p(y)} \]
+
+<p>分母是与 Ψ 无关的归一化常数，实际计算常写成正比形式：</p>
+
+\[ p(\Psi \mid y) \propto p(y \mid \Psi)\,p(\Psi) \]
+
+<p>在状态估计里，先验来自上一刻的转移预测，似然来自当前观测块。三模态融合就是三个似然相乘再归一化。先验太强会压住新证据，似然太强会让估计追逐噪声；σ 决定谁说话更响。</p>
+
+<h2>M.5 递归滤波</h2>
+
+<p>滤波把贝叶斯更新重复到时间轴上。每一步分两段：预测与更新。</p>
+
+\[ p(\Psi_t \mid y_{1:t-1}) = \int p(\Psi_t \mid \Psi_{t-1})\,p(\Psi_{t-1} \mid y_{1:t-1})\,d\Psi_{t-1} \]
+
+\[ p(\Psi_t \mid y_{1:t}) \propto p(y_t \mid \Psi_t)\,p(\Psi_t \mid y_{1:t-1}) \]
+
+<p>预测段用转移模型把昨天的后验推到今天，更新段用今天的观测修正。线性高斯情形有闭式解，非线性高维情形用近似。状态范式里 42 维、强非线性、无地面真值，近似是常态而不是例外。</p>
+
+<h2>M.6 最小工具箱对照</h2>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>数学形式</th>
-<th>心理学例子</th>
-</tr></thead>
+<thead>
+<tr>
+<th>工具</th>
+<th>核心符号</th>
+<th>一句话用途</th>
+<th>在管线中的位置</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td>**函数**</td>
-<td>一个量随另一个量变化的规则</td>
-<td>\(y = f(x)\)</td>
-<td>意志资源 \(R\) 随时间 \(t\) 变化：\(R(t)\)</td>
-</tr>
-<tr>
-<td>**导数**</td>
-<td>函数在某点的瞬时变化率</td>
-<td>\(\frac{dy}{dt}\) 或 \(y'\)</td>
-<td>意志资源的消耗速率 \(dR/dt\)</td>
-</tr>
-<tr>
-<td>**指数衰减**</td>
-<td>按当前值的固定比例减少</td>
-<td>\(\frac{dR}{dt} = -\alpha R\)</td>
-<td>资源消耗速率与当前资源量成正比</td>
-</tr>
+<tr><td>函数与映射</td><td>h, f, σ(x)</td><td>把输入对应到输出，或把状态推到下一刻</td><td>L1 观测、L3 动力学</td></tr>
+<tr><td>导数与梯度</td><td>f′, ∂f/∂x, ∇f</td><td>量变化率，找改变最快的方向</td><td>L3 方程、L4 规划</td></tr>
+<tr><td>概率分布</td><td>p(x), μ, σ</td><td>用分布而不是单点描述不确定性</td><td>L1 似然、L2 后验</td></tr>
+<tr><td>期望与方差</td><td>E[X], Var(X)</td><td>取中心与宽度，判断信息量</td><td>L2 状态估计</td></tr>
+<tr><td>贝叶斯更新</td><td>p(Ψ|y) ∝ p(y|Ψ)p(Ψ)</td><td>先验加证据得到后验</td><td>L2 融合</td></tr>
+<tr><td>递归滤波</td><td>预测 + 更新</td><td>沿时间轴重复贝叶斯更新</td><td>L2 运行时</td></tr>
+<tr><td>模型平均</td><td>Σ w<sub>k</sub> p<sub>k</sub></td><td>多候选模型按后验权重加权</td><td>L3 模型选择</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>关键式子</strong>：若 \(\frac{dR}{dt} = -\alpha R\)，则 \(R(t) = R_0 e^{-\alpha t}\)（指数衰减）。</p>
-<blockquote><p>📌 你不需要会推导，只需知道：指数衰减意味着“越剩越少，减少得越慢”。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.2 微分方程基础</h2>
-
-<p><strong>为什么需要</strong>：第8、19章用微分方程描述心理状态如何随时间演化。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>解释</th>
-<th>第19章对应</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**常微分方程（ODE）**</td>
-<td>包含未知函数及其导数的方程</td>
-<td>\(\frac{dR}{dt} = \text{供给} - \alpha R - \text{消耗}\)</td>
-</tr>
-<tr>
-<td>**解**</td>
-<td>满足方程的函数 \(R(t)\)</td>
-<td>资源随时间变化的轨迹</td>
-</tr>
-<tr>
-<td>**初始条件**</td>
-<td>\(t=0\) 时的状态值 \(R(0)\)</td>
-<td>初始评估时的资源水平</td>
-</tr>
-<tr>
-<td>**参数**</td>
-<td>方程中不变的常数（如 \(\alpha\)）</td>
-<td>消耗速率、恢复速率</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>核心思想</strong>：给定初始状态和演化规则，计算机可以通过数值积分（如欧拉方法）近似算出未来轨迹——<strong>你不必手工解方程</strong>，只需理解输入输出。</p>
-
-<p><strong>欧拉方法直观</strong>：\(R(t+\Delta t) \approx R(t) + \frac{dR}{dt} \times \Delta t\)，一步接一步，像动画片逐帧播放。</p>
-
-<hr class="section-divider">
-
-<h2>M.3 线性代数基础（第8章必备）</h2>
-
-<p><strong>为什么需要</strong>：第8章的状态向量 \(\Psi(t)\) 是42维向量，涉及向量运算、正交性、欧氏距离等概念。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>数学形式</th>
-<th>心理学例子</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**向量**</td>
-<td>一组有序的数字列表</td>
-<td>\(\vec{v} = (v_1, v_2, \dots, v_n)\)</td>
-<td>42维状态向量 \(\Psi\)</td>
-</tr>
-<tr>
-<td>**向量的模长（范数）**</td>
-<td>向量的长度</td>
-<td>\(\</td>
-<td>\vec{v}\</td>
-<td>= \sqrt{v_1^2 + v_2^2 + \cdots}\)</td>
-<td>状态向量的“总偏离”程度</td>
-</tr>
-<tr>
-<td>**向量点积（内积）**</td>
-<td>两向量对应分量乘积之和</td>
-<td>\(\vec{u} \cdot \vec{v} = \sum u_i v_i\)</td>
-<td>用于计算相似度</td>
-</tr>
-<tr>
-<td>**欧氏距离**</td>
-<td>两向量之间的直线距离</td>
-<td>\(d = \sqrt{\sum (u_i - v_i)^2}\)</td>
-<td>两个心理状态的相似性</td>
-</tr>
-<tr>
-<td>**正交**</td>
-<td>两向量点积为零，互相垂直</td>
-<td>\(\vec{u} \cdot \vec{v} = 0\)</td>
-<td>R、D、S维度功能独立</td>
-</tr>
-<tr>
-<td>**矩阵**</td>
-<td>二维数字表格</td>
-<td>\(A_{m \times n}\)</td>
-<td>依赖矩阵（42×42）</td>
-</tr>
-<tr>
-<td>**转置**</td>
-<td>行列互换</td>
-<td>\(A^T\)</td>
-<td>用于计算协方差</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<blockquote><p>📌 你不需要手算高维向量，只需理解：状态向量是心理系统在42个坐标轴上的读数；两个状态之间的距离越短，越相似。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.4 概率与贝叶斯定理</h2>
-
-<p><strong>为什么需要</strong>：第20章用贝叶斯校准融合观测数据，更新对状态的不确定性。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-<th>符号</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**概率**</td>
-<td>事件发生的可能性（0到1）</td>
-<td>\(P(A)\)</td>
-</tr>
-<tr>
-<td>**条件概率**</td>
-<td>在B发生下A的概率</td>
-<td>\(P(A \mid B)\)</td>
-</tr>
-<tr>
-<td>**贝叶斯定理**</td>
-<td>已知 \(P(B \mid A)\) 求 \(P(A \mid B)\)</td>
-<td>\(P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}\)</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>心理学解释</strong>：</p>
-<ul>
-<li><strong>先验</strong> \(P(A)\)：观测数据之前的初始信念（如生态位先验）</li>
-<li><strong>似然</strong> \(P(B \mid A)\)：在给定状态A下观测到数据B的可能性</li>
-<li><strong>后验</strong> \(P(A \mid B)\)：观测数据后更新的信念</li>
-</ul>
-
-<p><strong>例子</strong>：怀疑意志资源很低（A）。做任务表现差（B）。先验30%，似然90%，后验≈68%。这就是<strong>校准</strong>。</p>
-
-<hr class="section-divider">
-
-<h2>M.5 状态估计的思想</h2>
-
-<p><strong>为什么需要</strong>：第20章的粒子滤波是卡尔曼滤波的推广。先理解核心思想。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>解释</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**状态**</td>
-<td>你关心的隐藏量（如真实意志资源水平）</td>
-</tr>
-<tr>
-<td>**观测**</td>
-<td>你能测到的量（如量表分数），但含噪声</td>
-</tr>
-<tr>
-<td>**状态估计**</td>
-<td>利用历史观测和动力学模型，猜出当前状态的最佳值</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>卡尔曼滤波的四个步骤</strong>（只需记逻辑）：</p>
-<ol>
-<li><strong>预测</strong>：用动力学方程推测下一时刻状态</li>
-<li><strong>观测</strong>：获得带噪声的读数</li>
-<li><strong>更新</strong>：结合预测和观测，按不确定性加权平均</li>
-<li><strong>重复</strong></li>
-</ol>
-
-<blockquote><p>📌 类比：开车进隧道前知道速度（预测），隧道内推算位置（预测），出隧道后GPS恢复（观测），结合修正（更新）。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.6 粒子滤波概念</h2>
-
-<p><strong>为什么需要</strong>：当系统是非线性、非高斯时（心理系统正是如此），卡尔曼滤波失效。粒子滤波是通用替代方法。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**粒子**</td>
-<td>一个“假设”——某个可能的状态值</td>
-</tr>
-<tr>
-<td>**粒子群**</td>
-<td>成千上万个假设，覆盖各种可能性</td>
-</tr>
-<tr>
-<td>**权重**</td>
-<td>每个粒子与观测数据的符合程度</td>
-</tr>
-<tr>
-<td>**重采样**</td>
-<td>删掉低权重粒子，复制高权重粒子</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>粒子滤波循环</strong>：</p>
-<pre><code>初始粒子群（均匀散布）
-    ↓
-预测：根据动力学方程移动每个粒子
-    ↓
-观测：计算每个粒子的权重（与数据符合度）
-    ↓
-重采样：高权重粒子繁殖，低权重淘汰
-    ↓
-（循环）</code></pre>
-
-<p><strong>最终输出</strong>：粒子群聚集区 = 状态最佳估计；分散程度 = 不确定性。</p>
-
-<blockquote><p>📌 类比：用一群侦探分头追踪嫌疑人，每步用新线索淘汰不靠谱侦探，让靠谱侦探繁殖。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.7 集合预报与CRPS（第20章）</h2>
-
-<p><strong>为什么需要</strong>：PSE输出概率预测，需要评估预测质量。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>解释</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**集合预报**</td>
-<td>用多个粒子（成员）的轨迹集合表示预测分布</td>
-<td>类似气象学中的“台风路径集合”</td>
-</tr>
-<tr>
-<td>**中位数轨迹**</td>
-<td>集合中排在中间的那条轨迹</td>
-<td>最可能的估计</td>
-</tr>
-<tr>
-<td>**预测区间**</td>
-<td>2.5%和97.5%百分位数之间的区域</td>
-<td>95%置信区间</td>
-</tr>
-<tr>
-<td>**CRPS（连续排序概率得分）**</td>
-<td>评估整个预测分布与真实观测的吻合度</td>
-<td>越小越好，完美预测=0</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<blockquote><p>📌 CRPS惩罚过宽（太保守）和过窄（太自信）的预测区间。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.8 非线性动力学基本概念（第29章）</h2>
-
-<p><strong>为什么需要</strong>：第29章讨论混沌、吸引子、非线性系统。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>通俗解释</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**非线性系统**</td>
-<td>输出不与输入成正比，叠加原理不成立</td>
-<td>心理系统常见（如阈值效应）</td>
-</tr>
-<tr>
-<td>**相空间**</td>
-<td>状态向量 \(\Psi\) 所在的虚拟空间</td>
-<td>42维空间，每个点代表一种心理状态</td>
-</tr>
-<tr>
-<td>**吸引子**</td>
-<td>系统长期趋向的“偏好区域”</td>
-<td>健康状态是一种吸引子，抑郁症是另一种</td>
-</tr>
-<tr>
-<td>**混沌**</td>
-<td>确定性但不可预测：初始微小差异导致巨大不同</td>
-<td>“蝴蝶效应”</td>
-</tr>
-<tr>
-<td>**临界慢化**</td>
-<td>系统靠近临界点（相变前）的恢复速度变慢</td>
-<td>心理崩溃前兆</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<blockquote><p>📌 这些概念只需定性理解，帮助读懂第29章的研究展望。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.9 高级统计计算概念（第28章，可选）</h2>
-
-<p>第28章涉及一些更专业的概念，对于理解PSE原理不是必须的。下表供好奇读者参考：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>概念</th>
-<th>简短说明</th>
-<th>出现在第28章</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**马尔可夫链蒙特卡罗（MCMC）**</td>
-<td>从复杂分布中采样的通用算法</td>
-<td>28.3节</td>
-</tr>
-<tr>
-<td>**变分贝叶斯（VB）**</td>
-<td>用简单分布近似复杂后验，速度更快</td>
-<td>28.3节</td>
-</tr>
-<tr>
-<td>**高斯过程（GP）**</td>
-<td>对未知函数进行非参数建模的贝叶斯方法</td>
-<td>28.3节</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<blockquote><p>📌 初学阶段可跳过这些内容。PSE的实际校准使用粒子滤波，不要求掌握MCMC或VB。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>M.10 总结：各章需要的数学知识速查表</h2>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>章节</th>
-<th>需要的概念</th>
-<th>掌握要求</th>
-<th>本附录对应节</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>第8章</td>
-<td>函数、导数、向量、矩阵、欧氏距离、正交</td>
-<td>理解含义</td>
-<td>M.1, M.3</td>
-</tr>
-<tr>
-<td>第19章</td>
-<td>微分方程、参数、数值积分</td>
-<td>会读方程</td>
-<td>M.1, M.2</td>
-</tr>
-<tr>
-<td>第20章</td>
-<td>贝叶斯公式、先验/后验、粒子滤波逻辑、集合预报、CRPS</td>
-<td>理解流程</td>
-<td>M.4, M.5, M.6, M.7</td>
-</tr>
-<tr>
-<td>第28章</td>
-<td>分层贝叶斯、MCMC（可选）</td>
-<td>知道存在即可</td>
-<td>M.9</td>
-</tr>
-<tr>
-<td>第29章</td>
-<td>非线性、吸引子、混沌</td>
-<td>定性理解</td>
-<td>M.8</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>你不需要</strong>：</p>
-<ul>
-<li>手工解微分方程 → 计算机数值积分</li>
-<li>手工做贝叶斯积分 → 粒子滤波自动完成</li>
-<li>推导MCMC算法 → 本书不要求</li>
-<li>计算高维向量内积 → 理解概念即可</li>
-</ul>
-
-<hr class="section-divider">
-
-<h2>M.11 推荐自学资源（免费中文）</h2>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>资源</th>
-<th>适合部分</th>
-<th>获取方式</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>可汗学院《微分方程》</td>
-<td>M.1, M.2</td>
-<td>网易公开课</td>
-</tr>
-<tr>
-<td>3Blue1Brown《贝叶斯定理》</td>
-<td>M.4</td>
-<td>B站搜索</td>
-</tr>
-<tr>
-<td>3Blue1Brown《线性代数本质》</td>
-<td>M.3</td>
-<td>B站有中文字幕</td>
-</tr>
-<tr>
-<td>《统计之都》粒子滤波科普</td>
-<td>M.6</td>
-<td>公众号搜索</td>
-</tr>
-<tr>
-<td>王梓坤《概率论基础》</td>
-<td>M.4</td>
-<td>图书馆借阅</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<blockquote><p><strong>学习策略</strong>：先通读本附录，理解核心思想。遇到正文公式时回来对照“心理学例子”类比。<strong>目标不是学会数学，而是能读懂PSE的输入输出逻辑</strong>。</p></blockquote>
-
-</main>
+<p>使用顺序按问题定：问“这是什么”用观测映射；问“会怎么变”用导数与转移；问“证据够不够”用概率与 σ；问“证据来了怎么改”用贝叶斯；问“连续来证据怎么办”用滤波。工具箱不是知识点清单，是五类问题的对应表。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 架构速查</a>
-<a href="app-n.html" class="nav-link next">概念速查 ›</a></div>
+        <div class="chapter-nav"><a href="app-l.html" class="nav-link prev">‹ 附录L</a>
+<a href="app-n.html" class="nav-link next">附录N ›</a></div>
     </div>
 
     <footer>
@@ -588,7 +177,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

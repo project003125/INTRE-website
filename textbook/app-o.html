@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>附录O 双范式对照 · INTRE 导论教材</title>
+    <meta name="description" content="变量范式与状态范式的七维总表与一句话总图。">
+    <meta property="og:title" content="附录O 双范式对照">
+    <meta property="og:description" content="变量范式与状态范式的七维总表与一句话总图。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-o.html">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-o.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="附录O 双范式对照">
+    <meta name="twitter:description" content="变量范式与状态范式的七维总表与一句话总图。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=14">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261031f">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body lang="zh">
+
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+    <nav class="toc-sidebar" id="tocSidebar">
+        <div class="toc-sidebar-header">
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+        </div>
+        <div class="toc-sidebar-list" id="tocSidebarList"></div>
+    </nav>
+
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    </button>
+
+    <div class="toc-overlay" id="tocOverlay"></div>
+
+<nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+        </div>
+    </div>
+
+    <main class="textbook-content" id="main-content">
+        <h1 class="chapter-title">附录O 双范式对照</h1>
+
+<p>变量范式与状态范式都从实证主义出发，分岔在基本单位。变量范式以变量为基本单位，变量由观测协方差定义；状态范式以功能状态 Ψ 为基本单位，Ψ 由功能架构定义。七维表把这条分岔摊开，避免把“方法不同”误读成“谁缺构件”。</p>
+
+<h2>O.1 七维总表</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>核心问题</th>
+<th>变量范式</th>
+<th>状态范式</th>
+<th>分岔点与关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>纲领定位</td>
+<td>这套科学纲领怎么组织</td>
+<td>以变量为基本单位的概率—统计纲领</td>
+<td>以 Ψ 为基本单位的状态空间—动力学纲领</td>
+<td>共享实证主义底色；基本单位分岔是根节点</td>
+</tr>
+<tr>
+<td>本体论</td>
+<td>研究对象是什么</td>
+<td>心理现象可分解为变量或潜变量；变量是真实属性并具因果力；默认在现象层内工作</td>
+<td>心理现象可描述为 42 维功能状态；功能层是独立描述层级；功能组件是功能因果网络中的角色实体</td>
+<td>变量与 Ψ 的对立；变量实在论在现象层有效，功能实在论在功能层有效</td>
+</tr>
+<tr>
+<td>认识论</td>
+<td>如何知道、什么算证据</td>
+<td>可观察→操作定义→测量→统计推断→因果识别；构念效度、法则网络、潜在结果、DAG</td>
+<td>可检验外延为预测—干预效能加神经层约束；观测函数、逆问题、多模态一致性、强反例协议、证据分级</td>
+<td>变量范式偏观测层关系证成；状态范式要求生成机制、干预效能与约束共同证成</td>
+</tr>
+<tr>
+<td>方法论</td>
+<td>用什么方法获得证据</td>
+<td>CTT、IRT、CFA、SEM、HLM、贝叶斯、DSEM、RCT、IV、RDD、DID、PSM</td>
+<td>M-R-D-S、G-M-A-R、S-P、L0–L5 管线、三端口、贝叶斯融合、BMA、PSE 校准、DMD</td>
+<td>统计方法构成变量范式的方法核心；状态范式核心是状态建模、状态估计、干预规划与治理</td>
+</tr>
+<tr>
+<td>目的论</td>
+<td>为什么研究、达到什么目标</td>
+<td>描述变量关系；解释方差；预测条件均值；控制处理效应；服务群体平均效应</td>
+<td>描述状态；解释生成机制；预测轨迹分布、级联路径与风险时点；规划最优操作序列</td>
+<td>变量范式强在现象层描述与群体效应；状态范式强在功能层轨迹预测与最优控制</td>
+</tr>
+<tr>
+<td>失败模式</td>
+<td>各自怎么失败</td>
+<td>失败多在硬核层：节点本体不清、构念膨胀、复制危机、WEIRD 样本；保护带修正难根治</td>
+<td>失败多在保护带层：逆问题、高维、参数校准、可辨识性；可通过算法、数据与治理逐步缓解</td>
+<td>变量范式问题偏结构性；状态范式问题偏技术性、收敛式，当前多处于设计与推导面</td>
+</tr>
+<tr>
+<td>总体关系</td>
+<td>两套范式能否共存</td>
+<td>现象层用变量范式；提供观测材料、先验与外部校验</td>
+<td>功能层用状态范式；提供功能架构、生成模型、状态估计与干预规划</td>
+<td>分工关系：基本单位不同时承认，不还原；可互译但有成本；通过观测函数 h 连接</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>O.2 一句话总图</h2>
+
+<blockquote>
+<p><strong>变量范式是现象层的变量—概率—统计纲领；状态范式是功能层的 Ψ—状态空间—动力学纲领。二者共享实证主义，在基本单位处分岔；目的论上分别承载群体与现象层关系、个体与功能层轨迹及控制，因此总体是分工而非替代。</strong></p>
+</blockquote>
+
+<h2>O.3 读表的三个提醒</h2>
+
+<p>第一，差异的判据是数学对象的承载范围，不是构件清单。拿变量范式的构件去数状态范式缺什么，会得到“缺变量”这种无效结论；反过来也一样。两套纲领各自回答不同层级的问题。</p>
+
+<p>第二，分工不等于没有冲突。硬核层面基本单位互斥，不能同时把变量与 Ψ 当作最终实体；保护带层面可以整合，观测函数 h 就是接口。整合有翻译成本，成本落在观测映射、误差传播与参数校准上。</p>
+
+<p>第三，状态范式的失败模式要单独记账。逆问题、高维、参数不可辨识不会因为换了基本单位就消失；它们从“结构性困难”变成“技术性困难”，需要算法、数据与治理逐项处理。把换单位当成万能解，会遮住这些具体工作。</p>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-n.html" class="nav-link prev">‹ 附录N</a>
+<a href="app-p.html" class="nav-link next">附录P ›</a></div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 导论教材</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
+        </div>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+
+    <script src="../shared/nav-toggle.js?v=20261101h"></script>
+    <script src="../shared/sidebar.js?v=20261031f"></script>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
+</body>
+</html>

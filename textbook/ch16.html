@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第16章 共识工程：三阶段知识生产流水线 · INTRE 导论教材</title>
-    <meta name="description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
-    <meta property="og:title" content="第16章 共识工程：三阶段知识生产流水线">
-    <meta property="og:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
+    <title>第16章 L2 状态估计 · INTRE 导论教材</title>
+    <meta name="description" content="L2 把语义、行为、神经三路观测与动力学转移先验合成为 Ψ_t 后验，输出 42 维均值与 42×42 协方差，并给出无地面真值条件下的三条间接验证路径。">
+    <meta property="og:title" content="第16章 L2 状态估计">
+    <meta property="og:description" content="L2 把语义、行为、神经三路观测与动力学转移先验合成为 Ψ_t 后验，输出 42 维均值与 42×42 协方差，并给出无地面真值条件下的三条间接验证路径。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch16.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch16.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第16章 共识工程：三阶段知识生产流水线">
-    <meta name="twitter:description" content="PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套三阶段知识生产流水线——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。">
+    <meta name="twitter:title" content="第16章 L2 状态估计">
+    <meta name="twitter:description" content="L2 把语义、行为、神经三路观测与动力学转移先验合成为 Ψ_t 后验，输出 42 维均值与 42×42 协方差，并给出无地面真值条件下的三条间接验证路径。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,477 +69,199 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第16章 共识工程：三阶段知识生产流水线</h1>
+        <h1 class="chapter-title">第16章 L2 状态估计</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)描述UPLP三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）；(2)理解各阶段的核心任务和通过率目标；(3)掌握PCV-P的五重共识标准；(4)理解异议档案的作用和意义。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：(1) 说明 L2 如何把三模态观测融成 Ψ_t 后验；(2) 列出 F1–F5 的职能与验证对象；(3) 解释 42×42 协方差为何不能截断为对角阵；(4) 区分运行时迭代滤波与校准期联合推断；(5) 判断三条间接验证路径各自能证明什么。</p></blockquote>
 
-<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）属 L1-S 语义模态的离线校准流程，PCUI-L/PSL-L 静态定义归 IODS（L0）；下文“UPLP”泛指语义知识体系。</p></blockquote>
+<h2>16.1 L2 的任务：从三模态观测到 Ψ_t 后验</h2>
 
-<blockquote><p><strong>本章定位</strong>：第14-15章介绍了PCUI/PSA/PSL的静态知识架构（属IODS L0本体）。本章和第17章（逻辑指纹）共同构成UPLP语义端口的知识治理基础设施——前者解决“如何生产可信的知识”，后者解决“如何判定解析差异”。</p></blockquote>
+<p>状态估计回答的问题很窄：给定此刻的三路观测，Ψ_t 最可能是什么，以及这个判断有多不确定。它不问“为什么状态会这样”，也不问“下一步该做什么”。这两个问题分别属于 L3 动力学与 L4 规划。</p>
 
-<hr class="section-divider">
+<p>L1 的三个端口各自输出一个 42 维观测块：语义块 \(y_s\) 来自语言编译，行为块 \(y_b\) 来自量表、EMA 与数字表型，神经块 \(y_n\) 来自 EEG、fNIRS、PPG 等信号。每个块都带同维度的不确定度向量 \(\sigma_s,\sigma_b,\sigma_n\)。观测块描述的是“看到了什么”，不是“状态是什么”。L2 的职责是把观测块、不确定度与 L3 给出的转移先验合成为状态后验。</p>
 
-<h2>16.1 全景流程：PCC-P→PCF-P→PCV-P</h2>
+\[
+p(\Psi_t\mid y_t)\ \propto\ p(y_s\mid\Psi_t)\,p(y_b\mid\Psi_t)\,p(y_n\mid\Psi_t)\,p(\Psi_t\mid\Psi_{t-1})
+\]
 
-<p>PCUI条目的创建不是一人一票的随意行为，也不是某个流派的理论宣言。UPLP建立了一套<strong>三阶段知识生产流水线</strong>——PCC-P（采集）、PCF-P（形式化编译）、PCV-P（验证）——以确保每个PCUI条目具有跨流派代表性、可追溯性和可证伪性。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>阶段</th>
-<th>名称</th>
-<th>核心任务</th>
-<th>参与方</th>
-<th>通过率目标</th>
-<th>时间估计</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**PCC-P**</td>
-<td>心理概念采集协议</td>
-<td>广度优先采集概念原材料</td>
-<td>自动化工具 + 人工审核</td>
-<td>~95%</td>
-<td>1-2周</td>
-</tr>
-<tr>
-<td>**PCF-P**</td>
-<td>心理概念形式化协议</td>
-<td>多学科专家编译为标准化草案</td>
-<td>15-20人跨流派专家团队</td>
-<td>~60%</td>
-<td>2-4周</td>
-</tr>
-<tr>
-<td>**PCV-P**</td>
-<td>心理概念验证协议</td>
-<td>跨流派同行评议与共识判定</td>
-<td>25-35人多样化评议团</td>
-<td>~75%</td>
-<td>4-6周</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>核心设计理念</strong>：</p>
-<ul>
-<li><strong>阶段分离</strong>：采集、编译、验证由不同团队执行，避免利益冲突</li>
-<li><strong>通过率递减</strong>：从采集（宽松）到验证（严格）逐步提高标准</li>
-<li><strong>可追溯性</strong>：每个阶段的决策、争议、修改都记录在案</li>
-<li><strong>失败友好</strong>：未通过的条目有明确的修订通道，不意味着“失败”而是“暂未成熟”</li>
-</ul>
-
-<blockquote><p><strong>微案例</strong>：如果让一位CBT专家直接撰写“焦虑”的PCUI条目，他很可能会将其定位为M2-STR-R（认知规则扭曲），忽略M4-STR-C的贡献。三阶段流水线强制跨流派参与：PCC-P采集精神分析和行为主义的文献，PCF-P由多流派专家编译，PCV-P由独立评议团审查。最终条目会包含多流派视角的注解。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>16.2 采集协议：广度优先与五重质量门</h2>
-
-<p>PCC-P是流水线的第一阶段，遵循“<strong>广度优先</strong>”原则：先广泛覆盖各流派、各文化、各来源类型，容忍模糊和不一致。</p>
-
-<p><strong>四类输入源</strong>：</p>
+<p>式中的三项似然由 L1 的观测块实例化而来，转移先验由 L3 的加权预测分布提供。L2 不定义似然的分布族，也不决定候选动力学方程。它只做一件事：把已经定义好的部件按贝叶斯规则组合起来，并完整保留组合产生的不确定性。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>来源类型</th>
-<th>具体内容</th>
-<th>采集方法</th>
-<th>特殊要求</th>
+<th>输入或输出</th>
+<th>来源</th>
+<th>维度</th>
+<th>在融合中的角色</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>理论文献</td>
-<td>INTRE、CBT、精神分析、神经科学等核心著作</td>
-<td>半自动化（LLM辅助提取）</td>
-<td>各流派均衡覆盖</td>
-</tr>
-<tr>
-<td>临床实践</td>
-<td>去标识化的临床案例、督导记录</td>
-<td>结构化案例报告模板</td>
-<td>严格隐私保护</td>
-</tr>
-<tr>
-<td>社区与新兴</td>
-<td>患者社区讨论、社交媒体话题</td>
-<td>网络爬虫+人工筛选</td>
-<td>标注“非专业来源”</td>
-</tr>
-<tr>
-<td>多语言与跨文化</td>
-<td>中文、日文、韩文、西班牙文等文献</td>
-<td>翻译+文化适配审核</td>
-<td>非西方来源≥30%</td>
-</tr>
+<tr><td>语义观测块 \(y_s,\sigma_s\)</td><td>L1-S 语言端口</td><td>42 + 42</td><td>语言似然 \(p(y_s\mid\Psi_t)\)，σ 决定似然宽度</td></tr>
+<tr><td>行为观测块 \(y_b,\sigma_b\)</td><td>L1-B 行为端口</td><td>42 + 42</td><td>行为似然 \(p(y_b\mid\Psi_t)\)，未对齐时按无信息处理</td></tr>
+<tr><td>神经观测块 \(y_n,\sigma_n\)</td><td>L1-N 神经端口</td><td>42 + 42</td><td>神经似然 \(p(y_n\mid\Psi_t)\)，信号质量决定权重</td></tr>
+<tr><td>转移先验</td><td>L3 模型选择子层</td><td>均值 42，协方差 42×42</td><td>BMA 加权预测分布，约束相邻时刻状态</td></tr>
+<tr><td>状态后验</td><td>L2 输出</td><td>均值 42，协方差 42×42</td><td>供 L3 作初始条件、供 L4 作规划起点</td></tr>
+<tr><td>诊断字段</td><td>L2 输出</td><td>标量</td><td>有效模态数、迭代次数、收敛标志</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>自动化采集六步流程</strong>：文献获取 → 文本预处理 → 术语识别 → 概念提取 → 元数据标注 → 质量初筛</p>
+<p>描述与预测在数学上可以分开。后验更新只需要转移先验的数值，不需要知道动力学方程的候选集合；动力学预测只需要当前状态分布，不需要知道观测似然的具体形式。把两者合并，会让状态估计的误差直接混入预测误差，之后再也分不清一个偏差究竟来自“看错了”还是“算错了”。L2 作为独立一级，首先是为了保住这条误差分界线。</p>
 
-<p><strong>五重质量门</strong>：</p>
+<p>L2 的边界同样清晰：三模态端口内部实现不属于它，似然的分布族与仪器参数不属于它，动力学方程与 BMA 权重不属于它，干预规划与执行不属于它。L2 只消费这些部件，不重新定义它们。</p>
+
+<h2>16.2 内部层 F1–F5</h2>
+
+<p>L2 内部按“多传感器融合到状态后验”的通用管线分为五层。每层有独立的输入类型、输出类型与验证对象，层与层之间没有职责重叠，五层合起来覆盖从 L1 观测消息到 L2 后验输出的完整变换。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>质量门</th>
-<th>标准</th>
-<th>不通过处理</th>
+<th>编号</th>
+<th>缩写</th>
+<th>中文全称</th>
+<th>职能</th>
+<th>输入 → 输出</th>
+<th>验证对象</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>基础验证</td>
-<td>至少1个定义，1个来源</td>
-<td>退回补充</td>
-</tr>
-<tr>
-<td>唯一性检查</td>
-<td>与现有PCUI无完全重复</td>
-<td>标记为“已有概念的同义词”</td>
-</tr>
-<tr>
-<td>可信度检查</td>
-<td>来源可信度评分≥0.3</td>
-<td>标注“低可信度来源”，不阻断但降权</td>
-</tr>
-<tr>
-<td>理论多样性检查</td>
-<td>跨理论概念需至少2个流派来源</td>
-<td>退回补充</td>
-</tr>
-<tr>
-<td>文化敏感性检查</td>
-<td>非西方来源需本地文化审核</td>
-<td>强制人工审核</td>
-</tr>
+<tr><td>F1</td><td>FIV</td><td>融合输入验证</td><td>校验观测消息的契约版本、42 维完整性、降级标志与语义对齐声明，拒绝不合规消息</td><td>L1 观测消息 → 合规消息或拒绝记录</td><td>契约合规性</td></tr>
+<tr><td>F2</td><td>FLC</td><td>融合似然构造</td><td>把三模态观测块实例化为似然函数；无信息模态生成常数似然</td><td>合规观测块 → 三路似然</td><td>似然实例化正确性、降级处理正确性</td></tr>
+<tr><td>F3</td><td>FPC</td><td>融合先验消费</td><td>接收 L3 的 BMA 加权预测分布，校验维度一致性与权重归一化</td><td>L3 预测分布 → 合规先验</td><td>先验格式一致性、维度匹配</td></tr>
+<tr><td>F4</td><td>FBU</td><td>融合贝叶斯更新</td><td>执行后验计算，支持多轮迭代，按后验变化阈值判断收敛</td><td>三路似然 + 先验 → 后验均值与协方差</td><td>数值精度、收敛性、迭代稳定性</td></tr>
+<tr><td>F5</td><td>FDO</td><td>融合分布输出</td><td>封装均值、协方差与诊断信息，按规定格式交给 L3 与 L4</td><td>后验 → 输出消息</td><td>格式合规、维度完整性、诊断完整性</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>通过率目标</strong>：约95%。未通过的5%主要是低质量、无来源或高度重复的条目。</p>
+<p>F2 与 F4 不能合并。似然的分布族选择是观测侧决策，融合算法是估计侧决策，两者的修订节奏不同；换似然形式不应迫使融合算法重写。F1 与 F3 也不能合并。两者都在“接收并校验”，但来源不同、格式不同、失败模式不同：F1 面对的是模态降级，F3 面对的是先验不一致。合并会让两种校验共用一套错误码，审计时无法区分问题出在端口还是动力学。</p>
 
-<hr class="section-divider">
+<p>F2 的动词是“实例化”，不是“定义”。似然的参数形式由各模态文档持有，F2 在运行时把具体观测值与不确定度代入。F4 的迭代次数不固定，由收敛判据控制；后验变化低于阈值即停，不用预设轮数。</p>
 
-<h2>16.3 编译协议：多学科强制形式化</h2>
+<h2>16.3 后验更新与协方差输出</h2>
 
-<p>PCF-P将PCC-P采集的概念原材料编译为符合PSA规范的标准化PCUI条目草案。与PCC-P的“广度优先”不同，PCF-P是“<strong>精度优先</strong>”。</p>
+<p>融合结果不是一个点，而是一个分布。L2 输出 42 维均值向量 \(\mu_t\) 与 42×42 协方差矩阵 \(\Sigma_t\)。均值给出每一维的中心估计，协方差给出每一维的方差以及维度之间的协方差。</p>
 
-<p><strong>编译专家团队配置（15-20人）</strong>：</p>
+\[
+\mu_t[i]=\mathbb{E}[\Psi_t[i]\mid y_t],\qquad
+\Sigma_t[i][j]=\operatorname{Cov}(\Psi_t[i],\Psi_t[j]\mid y_t)
+\]
+
+<p>第 i 维的置信区间由对角元导出：</p>
+
+\[
+\mu_t[i]\pm z\sqrt{\Sigma_t[i][i]}
+\]
+
+<p>完整协方差不能截断为对角阵。维度间的协方差承载融合带来的交叉信息：语言通道说“睡眠尚可”，神经通道说“交感活动偏高”，两条信息对 M1-RES-D 的约束方向不同，融合后的不确定性不能由两个独立方差相加得到。丢掉非对角元，等于丢掉通道之间的互补与冲突，后续 L3 的不确定度传播也会随之失真。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>领域</th>
-<th>人数</th>
-<th>职责</th>
+<th>输出字段</th>
+<th>类型</th>
+<th>含义</th>
+<th>下游用途</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>INTRE架构</td>
-<td>2-3人</td>
-<td>确保M-R-D-S坐标和G-M-A-R映射准确</td>
-</tr>
-<tr>
-<td>CBT</td>
-<td>2-3人</td>
-<td>提供认知流派的概念定义</td>
-</tr>
-<tr>
-<td>精神分析</td>
-<td>2-3人</td>
-<td>提供动力流派的概念定义</td>
-</tr>
-<tr>
-<td>人本主义</td>
-<td>2-3人</td>
-<td>提供体验流派的概念定义</td>
-</tr>
-<tr>
-<td>神经科学</td>
-<td>2-3人</td>
-<td>确保与神经层映射兼容</td>
-</tr>
-<tr>
-<td>文化心理学</td>
-<td>2-3人</td>
-<td>审核文化变体参数</td>
-</tr>
+<tr><td>posterior_mean</td><td>42 维向量</td><td>后验均值 \(\mu_t\)</td><td>L3 演化的初始条件；L4 规划的状态起点</td></tr>
+<tr><td>posterior_cov</td><td>42×42 矩阵</td><td>后验协方差 \(\Sigma_t\)</td><td>L3 初始不确定度；L2 自身置信区间</td></tr>
+<tr><td>effective_modalities</td><td>整数 0–3</td><td>本次融合实际有效的模态数</td><td>判断后验可信度；触发端口检查</td></tr>
+<tr><td>iteration_count</td><td>整数</td><td>迭代滤波轮次</td><td>诊断收敛成本与稳定性</td></tr>
+<tr><td>converged</td><td>布尔</td><td>是否达到收敛判据</td><td>未收敛时下游降低置信</td></tr>
+<tr><td>timestamp</td><td>时间字符串</td><td>估计时刻</td><td>时序对齐；闭环反馈的时间锚点</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>五个形式化编译阶段</strong>：</p>
+<p>降级不需要为每种缺失模态写分支。L1 把不可用模态编码为无信息块，F2 将其转成常数似然，融合自动退化为剩余模态加先验。三模态全部缺失时，后验等于先验，输出仍是完整的 42 维均值与协方差，但均值与协方差完全由 L3 的预测分布决定。此时后验的“置信”只反映纯预测的不确定性，不反映任何当刻观测。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>阶段</th>
-<th>任务</th>
-<th>输出</th>
-<th>质量检查</th>
+<th>降级场景</th>
+<th>融合行为</th>
+<th>后验协方差的变化</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>阶段1：理论中立化</td>
-<td>提取功能共识核心</td>
-<td>中立化定义草案</td>
-<td>至少4个流派评分≥4.0/5</td>
-</tr>
-<tr>
-<td>阶段2：参数化定义</td>
-<td>定性描述转为概率分布</td>
-<td>参数表</td>
-<td>自动化逻辑检查无矛盾</td>
-</tr>
-<tr>
-<td>阶段3：M-R-D-S映射</td>
-<td>精确定位坐标</td>
-<td>ModuleSignature</td>
-<td>PSA合规性分数≥0.9</td>
-</tr>
-<tr>
-<td>阶段4：多流派解释</td>
-<td>配备多视角注释</td>
-<td>多视角注释</td>
-<td>每流派评分≥3.5/5</td>
-</tr>
-<tr>
-<td>阶段5：逻辑一致性检查</td>
-<td>五维自动化检查</td>
-<td>合规报告</td>
-<td>全部通过</td>
-</tr>
+<tr><td>单模态缺失</td><td>该路似然为常数，剩余两路加先验</td><td>相关维度方差增大，非对角元保留剩余通道信息</td></tr>
+<tr><td>双模态缺失</td><td>退化为单路似然加先验</td><td>方差进一步增大，置信区间变宽</td></tr>
+<tr><td>三模态全部缺失</td><td>后验等于转移先验</td><td>完全由 L3 预测协方差决定</td></tr>
+<tr><td>行为块未对齐</td><td>按无信息处理并写入审计日志</td><td>与单模态缺失相同</td></tr>
+<tr><td>先验不可用</td><td>沿用上一时刻先验或均匀先验，并加诊断标记</td><td>方差取所沿用先验的方差</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>冲突解决机制</strong>（三级递进）：</p>
-<ol>
-<li>专家小组内部讨论（2-3天）</li>
-<li>扩大会议（1周），引入额外专家仲裁</li>
-<li>指导委员会仲裁（72小时），记录异议档案</li>
-</ol>
+<h2>16.4 迭代滤波：运行时与校准期两种模式</h2>
 
-<p>所有异议——无论是否被采纳——都被结构化记录，存入PCUI条目的“异议档案”中。</p>
+<p>L2 需要 L3 的转移先验，L3 需要 L2 的状态估计作为演化起点。这是一个双向依赖，但不必合并两级。解决方式是迭代滤波：上一时刻的后验进入 L3，L3 输出加权预测分布，L2 把它当作先验，与本时刻观测融合，得到新的后验，再交回 L3。</p>
 
-<p><strong>通过率目标</strong>：约60%。未通过的40%包括争议过大、参数化不充分或架构映射模糊的条目。</p>
+\[
+p(\Psi_t\mid\Psi_{t-1})=\sum_k w_k\,p_k(\Psi_t\mid\Psi_{t-1},\theta_k),\qquad \sum_k w_k=1
+\]
 
-<hr class="section-divider">
+<p>运行时，BMA 权重固定。L2 收到的是加权后的预测分布，看不到内部有几个候选方程，也不参与权重更新。候选方程族的增删、权重的重新估计都发生在 L3 内部；L2 的融合算法不感知模型集合的变化。这条隔离让换积分算法、换候选方程、换似然形式三件事互不阻塞。</p>
 
-<h2>16.4 验证协议：五重共识标准与异议档案</h2>
-
-<p>PCV-P通过跨流派同行评议和共识判定，将PCF-P草案确立为正式发布的PCUI条目。PCV-P是“<strong>权威性优先</strong>”阶段。</p>
-
-<p><strong>评议团配置（25-35人）</strong>：</p>
+<p>校准期是另一种模式。PSE-C 把模型权重、参数与状态序列放在同一次联合推断中，用真实数据重新确定各候选方程的后验权重。L2 在校准期提供历史状态估计序列，不改变自身的运行时行为；更新后的权重经 L3 的模型选择子层，在下一个运行时周期生效。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
 <th>维度</th>
-<th>强制要求</th>
-<th>说明</th>
+<th>运行时迭代滤波</th>
+<th>校准期联合推断</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>流派覆盖</td>
-<td>≥5个主要流派</td>
-<td>INTRE、CBT、精神分析、人本、神经科学为必选</td>
-</tr>
-<tr>
-<td>职业阶段</td>
-<td>早期20%，中期50%，资深30%</td>
-<td>平衡经验与新鲜视角</td>
-</tr>
-<tr>
-<td>性别平衡</td>
-<td>任何性别≥40%</td>
-<td>防止性别偏见</td>
-</tr>
-<tr>
-<td>文化多样性</td>
-<td>非西方背景≥30%</td>
-<td>对抗WEIRD偏见</td>
-</tr>
-<tr>
-<td>机构多样性</td>
-<td>同一机构≤20%</td>
-<td>防止“学派近亲繁殖”</td>
-</tr>
-<tr>
-<td>地理分布</td>
-<td>≥8个国家</td>
-<td>全球化视角</td>
-</tr>
+<tr><td>触发方式</td><td>每个观测时刻自动执行</td><td>定期校准，离线执行</td></tr>
+<tr><td>L2 的角色</td><td>消费先验、输出后验</td><td>提供状态估计序列</td></tr>
+<tr><td>模型权重</td><td>固定，不更新</td><td>与参数、状态一起更新</td></tr>
+<tr><td>参数</td><td>只消费已校准值</td><td>执行后验更新</td></tr>
+<tr><td>迭代对象</td><td>后验分布，直到变化低于阈值</td><td>权重、参数与状态</td></tr>
+<tr><td>产出</td><td>当刻 \(\mu_t,\Sigma_t\)</td><td>新的权重后验与参数后验</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>两阶段评议流程</strong>：</p>
+<p>还有第三种调用方式用于快速筛查：只问“当前状态是什么”，不需要 L3 预测。此时 F3 不等待新的预测分布，直接把上一时刻后验当作先验，F4、F5 照常完成。层结构不变，改变的只是先验来源。</p>
+
+<h2>16.5 无地面真值下的间接验证：三条路径</h2>
+
+<p>心理状态没有独立于框架的地面真值。没有任何外部仪器能直接读出“M2-STR-R 的真实值”，因此 L2 无法用完全外在于框架的数据证明自己的后验正确。可行的约束来自三条间接路径，它们各自捕捉不同的问题，也各自有盲区。</p>
+
+<p>第一条是多模态一致性检验。融合前三路似然对同一维度的峰值位置应当大致靠拢；若语言指向“资源充足”、行为指向“资源枯竭”、神经指向“唤起作用偏高”，峰值严重分歧就提示融合或端口校准出了问题。它复用三路观测块的独立输出机制，不需要额外采集数据。盲区是共享偏差：三个通道可能一起错，且错得一致。</p>
+
+<p>第二条是 L3 预测精度反推。L3 以 L2 的 \(\mu_t\) 为起点做演化，用后续真实观测检验预测。若预测精度跨个体、跨时段持续偏低，L2 的估计质量被反向质疑。这条路径的弱点是误差不可分离：预测偏差同时包含 L2 的估计误差与 L3 的模型误差，模型误差占主导时，它对 L2 的判别力下降。</p>
+
+<p>第三条是临床专家交叉校准。把 L2 后验的维度排序结构与独立临床评估的排序结构做一致性比较。临床评估本身也是理论构成的，因此这不是对外部真值的验证，而是算法通道与临床通道之间的交叉校准。它的价值在于临床通道相对独立于融合算法，能给排序结构提供有意义的约束。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>阶段</th>
-<th>时长</th>
-<th>内容</th>
-<th>评分维度</th>
+<th>方法</th>
+<th>能证明什么</th>
+<th>不能证明什么</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>结构化评议</td>
-<td>14天</td>
-<td>五维度独立评分（1-5分）</td>
-<td>逻辑严密性、跨理论相容性、操作化清晰度、知识一致性、临床适用性</td>
-</tr>
-<tr>
-<td>公开评议</td>
-<td>14天</td>
-<td>社区实名或匿名反馈</td>
-<td>开放性意见，不计入量化共识</td>
-</tr>
+<tr><td>多模态一致性检验</td><td>通道之间是否失谐；融合或端口校准是否存在明显问题</td><td>不能发现三通道共享的系统性偏差</td></tr>
+<tr><td>L3 预测精度反推</td><td>估计质量是否长期劣化；后验作为初始条件是否可用</td><td>不能把 L2 误差与 L3 模型误差分开</td></tr>
+<tr><td>临床专家交叉校准</td><td>后验排序结构与临床判断是否一致；校准数据可服务 PSE-C</td><td>不能构成独立于框架的外部真值确证</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>五重共识标准</strong>（必须同时满足）：</p>
+<p>三条路径合起来，给 L2 提供的是相对约束，不是绝对正确。它们能发现“明显不对”，不能证明“完全正确”。在无地面真值的系统里，这是可执行的上限；把间接验证说成独立验证，会让使用者误以为后验已经获得外部背书。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>标准</th>
-<th>阈值</th>
-<th>说明</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>流派覆盖</td>
-<td>≥4个流派参与评议</td>
-<td>确保不是“单流派自娱自乐”</td>
-</tr>
-<tr>
-<td>总体支持率</td>
-<td>≥80%</td>
-<td>核心量化指标</td>
-</tr>
-<tr>
-<td>各流派最低支持率</td>
-<td>≥60%</td>
-<td>防止“多数支持但某一流派强烈反对”</td>
-</tr>
-<tr>
-<td>临床工作者支持率</td>
-<td>≥70%</td>
-<td>确保条目对临床实践有用</td>
-</tr>
-<tr>
-<td>原则性冲突</td>
-<td>无</td>
-<td>无不可调和的理论分歧</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h2>16.6 无独立参数的制度含义</h2>
 
-<p><strong>失败分级处理</strong>：</p>
+<p>L2 不拥有独立参数。它消费 L1 的仪器参数来决定似然形状，消费 L3 的系统参数与 BMA 权重来决定转移先验。融合算法本身使用概率论的固定结构，没有需要校准的自由参数。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>支持率区间</th>
-<th>处理方式</th>
-<th>修订通道</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>75-80%</td>
-<td>中等修订后重审</td>
-<td>2-3周快速通道</td>
-</tr>
-<tr>
-<td>60-75%</td>
-<td>重大修订后重审</td>
-<td>1-2个月完整重审</td>
-</tr>
-<tr>
-<td>40-60%</td>
-<td>暂行存档，每年重审一次</td>
-<td>存档标记，不发布为正式条目</td>
-</tr>
-<tr>
-<td><40%</td>
-<td>拒绝（保留60天上诉通道）</td>
-<td>退回PCF-P重编译</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>这不削弱 L2 的独立级地位。独立级由三个问题界定：它回答的功能问题是否与其他级正交，它的验证是否与其他级分离，它的修订是否与其他级隔离。参数所有权不在其中。把参数所有权当作独立性判据，会迫使每个级自建一套校准通道，最终得到四套互不一致的参数账。</p>
 
-<p><strong>异议档案</strong>：PCV-P阶段的所有反对意见、争议点、未决问题被结构化记录并永久保存在PCUI条目的元数据中。包含：反对者姓名和机构、反对的具体内容、支持证据、评审团回应、未采纳的理由。</p>
-
-<hr class="section-divider">
-
-<h2>16.5 版本治理：双轨发布与追溯更新</h2>
-
-<p><strong>异议档案的价值</strong>：</p>
-<ol>
-<li><strong>学术诚信</strong>：公开记录分歧，不掩盖不同观点</li>
-<li><strong>知识演化</strong>：为未来修订提供起点——新证据出现时可从异议档案快速定位争议点</li>
-<li><strong>教育价值</strong>：新人可看到学科内部的真实争议</li>
-</ol>
-
-<p><strong>版本治理</strong>：PCUI条目的版本管理遵循双轨发布协议：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>变更类型</th>
-<th>通道</th>
-<th>触发条件</th>
-<th>决策层级</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**数值精化**</td>
-<td>Type-1自动通道</td>
-<td>均值偏移<1σ，方差变化<30%，样本量≥500</td>
-<td>自动化系统</td>
-</tr>
-<tr>
-<td>**概念修订**</td>
-<td>Type-2评审通道</td>
-<td>概念定义变更、机制描述变更、显著数值偏移(≥1σ)</td>
-<td>PCV-P评审委员会</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>版本号语义</strong>：<code>vMAJOR.MINOR.PATCH</code></p>
-<ul>
-<li>MAJOR：架构级变更（如模块重定义）</li>
-<li>MINOR：概念修订（Type-2触发）</li>
-<li>PATCH：数值精化（Type-1触发）</li>
-</ul>
-
-<p>每个PCUI条目的完整变更历史可通过其DOI追溯。</p>
-
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：UPLP的三阶段知识生产流水线（PCC-P→PCF-P→PCV-P）确保了PCUI条目具有跨流派代表性、可追溯性和可证伪性。PCC-P以广度优先采集概念原材料，通过率约95%；PCF-P以精度优先编译为标准化草案，通过率约60%；PCV-P以权威优先进行跨流派共识验证，通过率约75%。五重共识标准（流派覆盖≥4、总体支持率≥80%、各流派≥60%、临床支持率≥70%、无原则性冲突）和失败分级处理机制确保了条目的质量。异议档案制度使分歧透明化，为知识演化提供了基础。版本治理的双轨协议（Type-1自动通道/Type-2评审通道）区分了数值精化与概念修订，确保变更可追溯。</p>
-
-<blockquote><p><strong>关键术语</strong>：PCC-P，PCF-P，PCV-P，五重共识标准，异议档案，双轨发布，Type-1/Type-2变更</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PCV-P的80%支持率是民主投票” → ✅ 它是共识的下限，不是“赢了就好”。如果某一流派强烈反对（支持率<60%），即使总体支持率90%，条目也不能发布。<br>- ❌ “异议档案是失败记录” → ✅ 它是知识演化的起点。许多条目第一次评审未通过，修订后成功发布。<br>- ❌ “三阶段流水线是官僚主义” → ✅ 它是确保跨流派有效性的必要代价。没有这套机制，PCUI将沦为某一流派的理论宣言。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 如果一个PCUI条目在PCV-P中获得总体支持率85%，但精神分析流派支持率仅为55%，应如何处理？<br>2. 判断“将M3-RES-D的恢复速率从0.12/h更新为0.11/h（基于新元分析）”属于Type-1还是Type-2变更？为什么？<br>3. 异议档案中记录了反对者的姓名和机构。这是否合理？如何平衡透明度和安全性？</p></blockquote>
-
-</main>
+<p>制度上的含义很直接：仪器参数修订走 L1 的版本化流程，系统参数与权重修订走 L3 的校准流程，融合算法修订留在 L2 内部。三条修订线各自有负责人、各自有审计记录。任何一次后验异常，都可以沿参数来源回溯到具体端口或具体方程，而不是在一团共享参数里猜测。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch15.html" class="nav-link prev">‹ 语义架构</a>
-<a href="ch17.html" class="nav-link next">逻辑指纹 ›</a></div>
+        <div class="chapter-nav"><a href="ch15.html" class="nav-link prev">‹ 神经接口</a>
+<a href="ch17.html" class="nav-link next">L3 动力学 ›</a></div>
     </div>
 
     <footer>
@@ -552,7 +274,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第17章 逻辑指纹：解析差异的标准化治理 · INTRE 导论教材</title>
-    <meta name="description" content="在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。">
-    <meta property="og:title" content="第17章 逻辑指纹：解析差异的标准化治理">
-    <meta property="og:description" content="在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。">
+    <title>第17章 L3 动力学：方程、参数、模型与校准 · INTRE 导论教材</title>
+    <meta name="description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
+    <meta property="og:title" content="第17章 L3 动力学：方程、参数、模型与校准">
+    <meta property="og:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch17.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch17.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第17章 逻辑指纹：解析差异的标准化治理">
-    <meta name="twitter:description" content="在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。">
+    <meta name="twitter:title" content="第17章 L3 动力学：方程、参数、模型与校准">
+    <meta name="twitter:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,481 +69,237 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第17章 逻辑指纹：解析差异的标准化治理</h1>
+        <h1 class="chapter-title">第17章 L3 动力学：方程、参数、模型与校准</h1>
 
+<blockquote><p><strong>学习目标</strong>：(1) 写出 L3 主方程并解释四个符号；(2) 按六论分组统计 26 条动力学假设；(3) 说明 340+ 参数的五库分工与来源链；(4) 解释 BMA 权重、退化与异常触发；(5) 区分 PSE 四阶段校准的输入与产出。</p></blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解解析差异的必然性及其治理必要性；(2)掌握四组逻辑指纹（模块/资源/层级/操作）的定义和判定方法；(3)识别五种错误解析判据（E1-E5）；(4)了解编码员间一致性标准（Cohen‘s κ等）；(5)能够应用逻辑指纹判定两份解析是否指向同一心理实体。</p></blockquote>
+<h2>17.1 总方程：\(d\Psi/dt=\sum_k w_k f_k(\Psi,E,\theta_k)\)</h2>
 
-<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。逻辑指纹体系属 L1-S 语义模态的差异治理工具，PCUI/PSA 的静态定义归 IODS（L0 本体）；下文“UPLP”泛指语义知识体系。</p></blockquote>
+<p>L3 的工作是把当前状态推演为未来分布。它不重新估计状态，也不决定干预方案。推演的数学形式是一个 42 维耦合向量场，按候选模型加权求和。</p>
 
-<blockquote><p><strong>本章定位</strong>：第14-15章介绍了IODS的静态知识架构（PCUI/PSA/PSL），第16章介绍了多视角共识工程。本章讨论UPLP语义端口知识治理的另一半：当不同分析者对同一概念产生不同解析时，如何判定这些解析是合法变体还是错误——<strong>逻辑指纹体系</strong>正是为此设计的标准化工具。</p></blockquote>
+\[
+\frac{d\Psi}{dt}=\sum_{k=1}^{K} w_k\,f_k\bigl(\Psi,E(t),\theta_k\bigr),
+\qquad \sum_{k=1}^{K} w_k=1
+\]
 
-<hr class="section-divider">
-
-<h2>17.1 治理必要性：解析差异的必然性</h2>
-
-<p>在将传统心理学概念编译为M-R-D-S状态向量时，不同分析者（人类专家或LLM）对同一心理现象常常产生不同的解析。例如，两位治疗师对“防御机制”的功能层定位——一个强调情绪调节（M4-STR-S），另一个强调认知回避（M2-STR-S）——可能给出不同的模块指纹。</p>
-
-<p><strong>这不是UPLP框架的逻辑缺陷，而是心理现象复杂性的自然体现。</strong> 解析差异的根源包括：</p>
-<ul>
-<li><strong>流派聚焦差异</strong>：CBT训练者更容易看到认知成分（M2），精神分析师更容易看到情感连接（M4）</li>
-<li><strong>临床经验差异</strong>：儿童治疗师和成人治疗师对同一概念可能有不同的权重分配</li>
-<li><strong>文化背景差异</strong>：东亚文化中的“神经衰弱”和西方文化中的“焦虑”可能映射到不同的M-R-D-S配置</li>
-</ul>
-
-<p><strong>治理的必要性</strong>：如果不加以治理，解析差异会导致：(1)UPLP知识库的不一致性；(2)临床决策的不稳定性；(3)可重复性危机。</p>
-
-<blockquote><p><strong>微案例</strong>：假设70%的分析者将“心理韧性”定位为M3-RES-B，30%定位为M4-RES-B。简单采用多数决会抹杀30%的洞察。逻辑指纹体系的目标正是：<strong>判定分歧是否属于合法变体</strong>，而非消灭分歧。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>17.2 四组指纹：模块、资源、层级与操作</h2>
-
-<p>逻辑指纹是判定不同解析是否描述同一心理实体的标准化工具。四组指纹从四个正交维度捕获心理现象的不同侧面，组合使用可形成稳定的功能特征签名。</p>
+<p>\(f_k\) 不是 42 个独立标量方程的拼接，而是一个接受完整 42 维状态、环境驱动与参数向量、输出 42 维导数的向量场。维度之间的耦合写在 \(f_k\) 内部：M4-RES-D 的变化可以影响 M3-DSP-F，M2-STR-R 的刚性可以改变 M1-RES-D 的恢复斜率。正因如此，积分器必须处理全耦合系统，不能逐维独立积分。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>指纹类型</th>
-<th>判定问题</th>
-<th>正交性保证</th>
-<th>取值示例（以“心理防御机制”为例）</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**模块指纹**</td>
-<td>涉及哪些模块？各模块角色？</td>
-<td>只回答“谁参与及角色”</td>
-<td>`{(M4, primary), (M2, secondary), (M3, secondary)}`</td>
-</tr>
-<tr>
-<td>**资源指纹**</td>
-<td>消耗或保护哪类资源？方向？</td>
-<td>只回答资源类型和方向</td>
-<td>`{(RES-D, -), (RES-B, +)}`</td>
-</tr>
-<tr>
-<td>**层级指纹**</td>
-<td>表现层与根源层？因果关系方向？</td>
-<td>只回答哪层是表现、哪层是根源</td>
-<td>表现: `DSP-B`；根源: `{STR-R, STR-C}`；方向: `表现 ← 根源`</td>
-</tr>
-<tr>
-<td>**操作指纹**</td>
-<td>优先干预操作？序列符合D→R→S？</td>
-<td>只回答操作类型和顺序</td>
-<td>`[GATE-, ALIGN, RELINK]`</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<h3>17.2.1 模块指纹（M-fingerprint）</h3>
-
-<p><strong>定义</strong>：描述一个心理现象涉及哪些功能模块（M1-M6），以及各模块在该现象中的功能角色。</p>
-
-<p><strong>角色标签</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>角色</th>
-<th>代码</th>
+<th>符号</th>
 <th>含义</th>
+<th>来源</th>
+<th>在方程中的角色</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>核心</td>
-<td>**C**</td>
-<td>该模块是该现象的主要功能定位点</td>
-</tr>
-<tr>
-<td>支撑</td>
-<td>**S**</td>
-<td>为现象运行提供资源或结构支撑</td>
-</tr>
-<tr>
-<td>受冲击</td>
-<td>**I**</td>
-<td>失调的次级影响区，非原发性</td>
-</tr>
-<tr>
-<td>触发</td>
-<td>**T**</td>
-<td>该模块的状态变化是现象激活的触发条件</td>
-</tr>
-<tr>
-<td>输出</td>
-<td>**O**</td>
-<td>该模块是现象的行为或体验输出通道</td>
-</tr>
+<tr><td>\(\Psi\)</td><td>M-R-D-S 42 维状态向量</td><td>L2 后验均值</td><td>被演化的对象</td></tr>
+<tr><td>\(E(t)\)</td><td>S-P 环境驱动项，时变</td><td>L3 内部构造</td><td>外部驱动，不是第 43 维状态</td></tr>
+<tr><td>\(f_k\)</td><td>第 k 个候选方程</td><td>26 条动力学假设的候选族</td><td>局部或全局的向量场</td></tr>
+<tr><td>\(w_k\)</td><td>第 k 个候选方程的 BMA 后验权重</td><td>校准期联合推断</td><td>决定各模型的加权比例</td></tr>
+<tr><td>\(\theta_k\)</td><td>第 k 个候选方程的参数向量</td><td>参数子层五大知识库</td><td>决定方程的具体数值行为</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>示例：心理防御机制</strong>：</p>
+<p>环境驱动 \(E(t)\) 的归属容易混淆。42 维坐标系里没有“环境”这一维，所以 L1 不观测它，L2 也不估计它。L3 从两个方向构造 \(E(t)\)：一条是慢变与中变的环境先验，例如环境基线税率与负荷指数；另一条是运行时从 Ψ 的变化模式识别急性环境事件。前一条是参数，后一条是驱动信号。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>理论视角</th>
-<th>模块指纹</th>
+<th>\(E(t)\) 分量</th>
+<th>变化尺度</th>
+<th>来源</th>
+<th>构造层</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>精神分析视角</td>
-<td>`{(M4, primary), (M3, secondary)}`（情绪调节为主，意志参与）</td>
-</tr>
-<tr>
-<td>CBT视角</td>
-<td>`{(M2, primary), (M4, secondary)}`（认知回避为主）</td>
-</tr>
-<tr>
-<td>整合共识视角</td>
-<td>`{(M4, primary), (M2, secondary), (M3, secondary)}`</td>
-</tr>
+<tr><td>环境基线 \(Tax\_rate\)</td><td>慢变，月到年</td><td>S-P 生态位先验，经校准</td><td>参数子层</td></tr>
+<tr><td>环境负荷 \(ELI\)</td><td>中变，周到月</td><td>S-P 先验与语义观测的间接推导</td><td>参数子层与数值演化层</td></tr>
+<tr><td>急性环境事件</td><td>快变，小时到天</td><td>从 Ψ 变化模式识别</td><td>数值演化层</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>判定规则</strong>：只要一份解析的模块指纹可以归入已建立的多视角集合，即视为合法变体。</p>
+<p>运行时使用固定权重，只做加权预测，不更新参数；校准期把权重、参数与状态放在一起推断。两条时间线分开，避免每次预测都触发一次重新校准。</p>
 
-<h3>17.2.2 资源指纹（R-fingerprint）</h3>
+<h2>17.2 D1 方程子层与 26 条动力学假设</h2>
 
-<p><strong>定义</strong>：描述一个心理现象涉及哪些资源类型（RES-D / RES-B），以及资源的变化方向（消耗<code>-</code> / 补充<code>+</code>）。</p>
+<p>方程子层持有理论假设及其候选形式。每条假设给出 2 到 3 个候选方程，遵循“最简形式加一个更复杂形式”的形式空间控制，避免开放式生成导致候选爆炸。候选形式的来源有三类约束：假设的功能含义、计算精神病学与认知建模中已使用的函数形式、以及参数总量上限。</p>
 
-<p><strong>取值格式</strong>：<code>{(RES-D, ±), (RES-B, ±)}</code></p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>现象</th>
-<th>资源指纹</th>
-<th>解释</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>反刍思维</td>
-<td>`{(RES-D, -)}`</td>
-<td>消耗认知/意志资源</td>
-</tr>
-<tr>
-<td>心理防御机制</td>
-<td>`{(RES-D, -), (RES-B, +)}`</td>
-<td>短期消耗RES-D，长期保护RES-B</td>
-</tr>
-<tr>
-<td>正念冥想</td>
-<td>`{(RES-D, +)}`</td>
-<td>通过降低消耗间接补充资源</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>判定规则</strong>：资源指纹必须完全一致（包括方向和是否出现）才能判定为同一实体。</p>
-
-<h3>17.2.3 层级指纹（D/S-fingerprint）</h3>
-
-<p><strong>定义</strong>：描述一个心理现象在调度层（DSP）和结构层（STR）之间的分配——哪些是表现（当前的、动态的），哪些是根源（稳定的、配置性的）。</p>
-
-<p><strong>取值格式</strong>：</p>
-<ul>
-<li>表现层：<code>{DSP-F, DSP-B, none}</code></li>
-<li>根源层：<code>{STR-R, STR-C, STR-S, 组合}</code></li>
-<li>因果方向：<code>表现 ← 根源</code> | <code>表现 → 根源</code> | <code>双向</code></li>
-</ul>
+<p>26 条假设按心智六论分组，但六论是教学与叙事标签，不是架构层。四条属于观测编译侧，五条属于规划决策侧，真正进入 L3 右端式的只是其中一部分。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>现象</th>
-<th>表现层</th>
-<th>根源层</th>
-<th>方向</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>惊恐发作（急性）</td>
-<td>`DSP-B`</td>
-<td>`{M4-STR-C, M4-STR-R}`</td>
-<td>表现 ← 根源</td>
-</tr>
-<tr>
-<td>行为激活（干预）</td>
-<td>`DSP-F`</td>
-<td>`M4-STR-C`</td>
-<td>表现 → 根源</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>判定规则</strong>：如果两份解析的因果方向相反，或表现/根源分配完全颠倒，则触发E3错误判据。</p>
-
-<h3>17.2.4 操作指纹（G-M-A-R-fingerprint）</h3>
-
-<p><strong>定义</strong>：描述干预该现象的首选G-M-A-R操作序列。</p>
-
-<p><strong>取值格式</strong>：有序列表<code>[op1, op2, ...]</code>，允许空列表。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>现象</th>
-<th>操作指纹</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>反刍思维</td>
-<td>`[GATE-, MODULATE+, RELINK/ALIGN]`</td>
-</tr>
-<tr>
-<td>惊恐发作（急性）</td>
-<td>`[GATE-, MODULATE+]`</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>判定规则</strong>：</p>
-<ul>
-<li>序列必须符合D→R→S深度逻辑（在低功能系统中），否则触发E4</li>
-<li>不同流派对同一现象的操作指纹可能不同，只要提供理论依据且不违反D→R→S，可视为合法变体</li>
-</ul>
-
-<hr class="section-divider">
-
-<h2>17.3 错误判据：E1-E5可证伪性锚点</h2>
-
-<p>为确保可证伪性，逻辑指纹体系明确规定了五种错误解析判定标准。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
+<th>六论分组</th>
+<th>条数</th>
 <th>编号</th>
+<th>管线归属</th>
+<th>验证状态（主口径）</th>
+</tr></thead>
+<tbody>
+<tr><td>MCT 心智编译</td><td>4</td><td>L1.1–L1.4</td><td>L1-S 观测编译；其中 L1.3、L1.4 不入右端式</td><td>理论预测，待仿真检验</td></tr>
+<tr><td>MTT 心智拓扑</td><td>3</td><td>L2.1–L2.3</td><td>L2.1、L2.2 入 L3 方程子层；L2.3 属参数与积分标定</td><td>预期可获 PSE-M 一致性检验</td></tr>
+<tr><td>MKT 心智动力</td><td>6</td><td>L3.6、L3.7、L3.9、L3.14、L3.16、L3.17</td><td>L3 方程子层</td><td>预期可获仿真检验；L3.9 数学推导、L3.7 类比外推</td></tr>
+<tr><td>MDT 心智调度</td><td>5</td><td>L4.1–L4.5</td><td>L4 干预规划</td><td>L4.1、L4.2 部分验证；其余理论预测</td></tr>
+<tr><td>MPT 心智塑性</td><td>4</td><td>L5.1–L5.4</td><td>L5.3、L5.4 入 L3；L5.1、L5.2 为门控与预算约束</td><td>预期可获 PSE-M 一致性检验</td></tr>
+<tr><td>MET 心智生态</td><td>4</td><td>L6.1–L6.4</td><td>L6.1、L6.3 构成 \(E(t)\) 驱动项；L6.2、L6.4 属决策选择</td><td>理论预测，待仿真检验</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>在册总数是 26 条，其中 7 条按定义不进入 \(d\Psi/dt\) 的右端项：L1.3、L1.4 属观测编译，L2.3 属参数与积分标定，L5.1、L5.2 属门控与预算，L6.2、L6.4 属决策选择。可实现的右端式子集因此是 19 条，候选方程规模按 \(19\times 2\text{–}3=38\text{–}57\) 计算。讲理论清单用 26，讲候选方程规模用 19，两套计数不能混用。</p>
+
+<p>验证状态按证据基础分层。阈值触发有非线性系统鞍结分岔的数学推导作支撑；恢复不对称属于类比外推，其推导基础来自热力学与生理学的经验关系；资源预算硬约束与干预 ROI 精算有部分验证，但参数分布仍待临床数据锚定。其余多数条目当前只有理论预测与“预期可获仿真一致性检验”的标注。这个分布本身就是 L3 的真实状态：理论骨架完整，经验约束稀薄。</p>
+
+<h2>17.3 D2 参数子层与 340+ 参数</h2>
+
+<p>参数子层持有约 340 到 370 个概率分布参数，按功能领域分为五个知识库。参数不是点估计，而是带均值、方差与置信区间的分布；同一参数在不同生态位下还可以有调制规则。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>知识库</th>
+<th>中文名称</th>
+<th>对应理论</th>
+<th>参数数量</th>
+<th>代表性参数</th>
+</tr></thead>
+<tbody>
+<tr><td>SPMC-L</td><td>测量编译库</td><td>MCT</td><td>35–40</td><td>多模态融合权重、语义衰减系数、记忆半衰期</td></tr>
+<tr><td>SPSM-L</td><td>结构机制库</td><td>MTT/MKT/MPT</td><td>180–200</td><td>模块依赖强度、睡眠恢复速率、创伤绑定阈值</td></tr>
+<tr><td>SPER-L</td><td>环境识别库</td><td>MKT/MET</td><td>45–50</td><td>环境税率、负荷指数阈值、适配度理想匹配</td></tr>
+<tr><td>SPDC-L</td><td>调度控制库</td><td>MDT</td><td>35–40</td><td>认知负荷阈值、门控成功概率、暴露衰减率</td></tr>
+<tr><td>SPOT-L</td><td>操作转化库</td><td>MPT</td><td>35–40</td><td>信念屈服能量、塑性变形率、最小强化次数</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>参数来源是一条五环节链：L0 定义参数是什么、落在哪个坐标上；PSE-M 仿真生成先验；L1 三模态观测提供真实世界证据；PSE-C 用贝叶斯更新得到后验；方程子层与模型选择子层消费后验。定义权、生成权、观测权、校准权、消费权分属不同环节，任何一环都不能替代另一环。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>阶段</th>
+<th>做什么</th>
+<th>谁提供</th>
+<th>产出形态</th>
+</tr></thead>
+<tbody>
+<tr><td>定义</td><td>参数是什么、在哪个坐标上</td><td>L0 本体</td><td>符号与语义约束</td></tr>
+<tr><td>先验生成</td><td>参数可能取什么值</td><td>PSE-M 仿真</td><td>先验分布</td></tr>
+<tr><td>观测输入</td><td>真实世界的证据</td><td>L1 三模态端口</td><td>似然</td></tr>
+<tr><td>后验校准</td><td>先验与似然合成后验</td><td>PSE-C</td><td>后验分布</td></tr>
+<tr><td>消费</td><td>用参数跑预测</td><td>D1 方程子层与 D3 模型选择</td><td>加权预测分布</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>参数形态以社交恢复速率为例。设计形态是一个 Gamma 分布，均值约 0.35/h，标准差约 0.10，95% 区间覆盖 0.18 到 0.55/h；同一参数还带人格调制与环境调制规则，内向者的恢复速率乘 0.5，外向者乘 1.3，支持性社交环境再乘 1.2。这样的分层调制让“恢复速率”不再是一个全民通用的常数，而是随生态位变化的分布族。</p>
+
+<p>参数总量中约 88% 预期可以具备仿真先验，约 12% 集中在干预效果预测与临床资源约束，仍需真实临床数据锚定。这个比例是设计目标，不是已完成的事实；PSE-M 尚未实际运行，PSE-C 也没有真实数据。</p>
+
+<h2>17.4 D3 模型选择与 BMA</h2>
+
+<p>模型选择子层回答“每个候选方程该占多少权重”。它持有 BMA 后验权重，运行时输出加权预测分布，校准期执行联合推断。BMA 的意义不是选出唯一正确方程，而是把模型形式的不确定性显式携带：预测分布是多个候选预测的加权混合，方差既包含参数不确定性，也包含模型分歧。</p>
+
+<p>候选方程规模为 38 到 57 个。权重满足归一化条件，单个权重趋近 1 是合法输出，但需要诊断：先验过强、数据不足、候选族过窄，都会把权重推向单一模型。权重振荡说明校准不稳定；全部候选拟合都差，说明模型族本身不够用。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>退化场景</th>
+<th>模型选择子层的处理</th>
+<th>数值演化层的处理</th>
+</tr></thead>
+<tbody>
+<tr><td>某权重趋近 1</td><td>检查先验强度、数据量与候选族宽度，报告退化诊断</td><td>正常执行，单模型预测是合法输出</td></tr>
+<tr><td>权重振荡</td><td>增大先验正则化，报告不稳定诊断</td><td>使用上一稳定权重</td></tr>
+<tr><td>全部候选拟合差</td><td>报告模型族不充分，建议扩展候选形式</td><td>使用最小权重截断 \(w_k\ge\varepsilon\)</td></tr>
+<tr><td>部分方程参数未校准</td><td>把未校准方程的权重置 0</td><td>只用已校准子集积分，精度下降</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>异常触发检查处理“某候选模型在所有数据下持续占优或持续被证伪”的情况。触发后审查该假设的演绎链条是否存在跳跃，而不是直接修改本体定义。若问题出在推导，按架构修订层级处理；若问题出在参数，回到参数填充层级修正。权重更新本身属于参数填充，不直接触发架构修订。</p>
+
+<h2>17.5 D4 数值演化：刚性系统与积分器选择</h2>
+
+<p>数值演化层对加权方程执行积分，输出未来状态分布、级联路径与风险时点。42 维耦合系统通常是刚性的：资源恢复的时间尺度可能是小时，结构改变的时间尺度可能是月，两者相差两三个数量级。显式积分器在这种尺度差下容易失稳，需要隐式 Runge-Kutta 或自适应步长。</p>
+
+<p>稀疏耦合是参数量的硬约束。若每个候选方程都全耦合，耦合参数规模会达到 \(42^2\approx 1764\)，远超 340+ 的总量。因此方程子层在定义候选时必须声明耦合结构，多数方程只涉及两三个模块的局部耦合，全耦合只留给少数全局假设，例如恢复不对称与临界点相变。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>数值情形</th>
+<th>处理策略</th>
+<th>输出标记</th>
+</tr></thead>
+<tbody>
+<tr><td>刚性耦合</td><td>隐式 Runge-Kutta 或自适应步长</td><td>记录步长与积分误差</td></tr>
+<tr><td>稀疏 Jacobian</td><td>按声明的耦合结构选择稀疏积分</td><td>记录实际耦合维度</td></tr>
+<tr><td>积分发散</td><td>缩小步长重试；仍失败则输出上一时刻预测</td><td>附加警告，供 L2 识别过期先验</td></tr>
+<tr><td>\(E(t)\) 不可用</td><td>取零环境驱动继续积分</td><td>附加诊断标记，提示无环境修正</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>数值演化层不判断权重是否合理。它执行“给定权重的加权积分”；权重合理性属于模型选择子层的验证对象。这条分工让换积分算法与换退化策略互不触发。</p>
+
+<h2>17.6 D5 校准流程：PSE-I / M / P / C</h2>
+
+<p>校准是离线元流程，运行时不执行。四个阶段的顺序是理论注入、规模仿真、先验提取、临床锚定。每一阶段的产出是下一阶段的输入，任何一阶段缺失，后面的产出都只能是设计值。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>阶段</th>
+<th>输入</th>
+<th>产出</th>
+<th>当前状态</th>
+</tr></thead>
+<tbody>
+<tr><td>PSE-I 理论注入</td><td>26 条动力学假设</td><td>仿真环境中的硬约束与更新规则</td><td>理论设计，未运行</td></tr>
+<tr><td>PSE-M 规模仿真</td><td>理论约束、差异化初始状态、生态位、压力脉冲</td><td>\(10^4\)–\(10^6\) 量级智能体的演化轨迹</td><td>理论设计，未运行</td></tr>
+<tr><td>PSE-P 先验提取</td><td>演化轨迹</td><td>各生态位下参数的概率分布</td><td>理论设计，未运行</td></tr>
+<tr><td>PSE-C 临床锚定</td><td>先验分布与真实临床数据</td><td>参数后验与模型权重后验</td><td>未执行，零实证数据</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>理论注入把假设写成智能体逐步更新时的硬约束，而不是论文里的装饰条款。规模仿真给每个智能体差异化的初始状态、人格特质、生态位与结构刚性，再施加标准化压力脉冲，记录从功能失调到级联失效、再到不同干预序列下恢复的轨迹。先验提取按生态位聚类拟合，得到参数的分布。临床锚定用真实数据做贝叶斯更新，使均值趋近真实值、方差因收缩而收窄。</p>
+
+<p>设计目标里有两个数字需要单独说明：先验提取的精度预期约为 70%，临床锚定后预期提升 15 到 20 个百分点。这两个数字是理论预期，不是实测结果。当前四阶段全部停留在设计状态，仿真没有首跑，临床校准没有数据。任何引用都必须带上“预期”二字，不能写成“已达”。</p>
+
+<h2>17.7 参数三态与未校准披露</h2>
+
+<p>参数存在三种状态，三者不能互相替代。理论推演态只有公式形式与来源设计，没有运行值；已入引擎态在代码中有占位值或常数，能跑通管线，但数值不可作经验结论；已临床校准态经过真实数据的贝叶斯更新，才能称为校准后的后验。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>参数态</th>
 <th>判据</th>
-<th>说明</th>
-<th>示例</th>
+<th>当前规模</th>
+<th>可对外表述</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>**E1**</td>
-<td>完全遗漏公认核心模块</td>
-<td>多视角确认的核心模块完全未被提及</td>
-<td>防御机制解析中完全未涉及M4</td>
-</tr>
-<tr>
-<td>**E2**</td>
-<td>资源方向与标准完全相反</td>
-<td>资源方向（+/-）与标准颠倒</td>
-<td>将反刍思维描述为`{(RES-D, +)}`</td>
-</tr>
-<tr>
-<td>**E3**</td>
-<td>层级因果方向颠倒</td>
-<td>因果方向与标准相反</td>
-<td>将创伤反应描述为`STR ← DSP`</td>
-</tr>
-<tr>
-<td>**E4**</td>
-<td>操作序列违背D→R→S逻辑</td>
-<td>在低功能系统中深层操作出现在浅层操作之前</td>
-<td>对Oᵢ<40患者给出`[RELINK, GATE-]`</td>
-</tr>
-<tr>
-<td>**E5**</td>
-<td>模块角色与三组指纹系统矛盾</td>
-<td>模块角色导致资源/层级/操作指纹不可调和矛盾</td>
-<td>将M1标记为核心，却声称无RES-D消耗</td>
-</tr>
+<tr><td>理论推演</td><td>有方程形式与分布设计，无运行值</td><td>340+ 参数的设计框架；约 88% 预期可具仿真先验</td><td>只能说“设计”或“预期”</td></tr>
+<tr><td>已入引擎</td><td>代码中有占位值、常数或按证据仿真值，管线可运行</td><td>首役台账登记 29 项：占位 23、按证据仿真 5、常数 1</td><td>只能说“占位”或“待标定”</td></tr>
+<tr><td>已临床校准</td><td>经 PSE-C 用真实数据完成贝叶斯后验更新</td><td>0 项；PSE-C 未执行</td><td>不能说“已校准”</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>错误解析的处理流程</strong>：一旦触发E1-E5中的任一条，退回编译者附带错误判据编号；连续3次触发同一错误，解析标记为“无效”。</p>
+<p>三种状态的区分是审计要求，不是修辞分层。理论推演讲的是“这个参数应该长什么样”，已入引擎讲的是“代码现在拿什么值跑”，已临床校准讲的是“真实数据把后验拉到了哪里”。把三者混在一起，读者会误以为占位值已经获得经验支持；把三者完全分开，又能让每一条结论都落在可核查的位置上。</p>
 
-<hr class="section-divider">
-
-<h2>17.4 一致性检验：编码员间Kappa标准</h2>
-
-<p>在功能层研究中使用逻辑指纹进行编码时，必须报告<strong>编码员间一致性</strong>。</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>指纹类型</th>
-<th>变量类型</th>
-<th>推荐指标</th>
-<th>可接受</th>
-<th>良好</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>模块指纹</td>
-<td>名义类别</td>
-<td>Cohen‘s κ / Fleiss’ κ</td>
-<td>κ ≥ 0.60</td>
-<td>κ ≥ 0.75</td>
-</tr>
-<tr>
-<td>资源指纹</td>
-<td>有序类别</td>
-<td>加权κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
-</tr>
-<tr>
-<td>层级指纹</td>
-<td>名义+方向</td>
-<td>Fleiss‘ κ</td>
-<td>≥ 0.60</td>
-<td>≥ 0.75</td>
-</tr>
-<tr>
-<td>操作指纹</td>
-<td>有序序列</td>
-<td>位置一致率 + 编辑距离</td>
-<td>位置一致率≥70%</td>
-<td>≥ 85%</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>κ值的解释</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>κ范围</th>
-<th>一致性程度</th>
-<th>行动建议</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>< 0.40</td>
-<td>较差</td>
-<td>编码手册重大修订，重新培训</td>
-</tr>
-<tr>
-<td>0.40-0.59</td>
-<td>中等</td>
-<td>可接受探索性研究，但需改进</td>
-</tr>
-<tr>
-<td>0.60-0.74</td>
-<td>良好</td>
-<td>可接受大多数研究用途</td>
-</tr>
-<tr>
-<td>≥ 0.75</td>
-<td>优秀</td>
-<td>可接受高 stakes 临床决策</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>示例：计算Cohen‘s κ</strong>（Python）：</p>
-<pre><code class="language-python">from sklearn.metrics import cohen_kappa_score
-kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
-
-<hr class="section-divider">
-
-<h2>17.5 微案例：指纹判定两份解析的合法性</h2>
-
-<p><strong>场景</strong>：两位治疗师对同一患者（表现为“一紧张就暴食”）进行功能层解析。</p>
-
-<p><strong>解析A（CBT取向）</strong>：“暴食是情绪驱动下的自动行为序列（M6-DSP-B），源于M4-STR-C中‘紧张→进食’的异常强连接。干预应通过暴露（RELINK M4-STR-C）和习惯逆转（GATE– M6-DSP-B）进行。”</p>
-
-<p><strong>解析B（精神动力取向）</strong>：“暴食是对不可承受情绪的防御性调节序列（M4-STR-S），根源在于M4-RES-B（安全感基底）薄弱。干预需通过治疗关系修复安全感（RELINK M4-STR-C → 涌现M4-RES-B）。”</p>
-
-<p><strong>逻辑指纹提取</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>指纹</th>
-<th>解析A</th>
-<th>解析B</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>模块指纹</td>
-<td>`{(M4, primary), (M6, secondary)}`</td>
-<td>`{(M4, primary), (M3, secondary)}`</td>
-</tr>
-<tr>
-<td>资源指纹</td>
-<td>`{(RES-D, -)}`</td>
-<td>`{(RES-D, -), (RES-B, +)}`</td>
-</tr>
-<tr>
-<td>层级指纹</td>
-<td>表现: `DSP-B`；根源: `STR-C`；方向: 表现←根源</td>
-<td>表现: `DSP-B`；根源: `STR-C + RES-B`；方向: 表现←根源</td>
-</tr>
-<tr>
-<td>操作指纹</td>
-<td>`[RELINK, GATE-]`</td>
-<td>`[RELINK, RELINK]`</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>判定</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>指纹</th>
-<th>是否一致</th>
-<th>说明</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>模块指纹</td>
-<td>合法变体</td>
-<td>都承认M4为核心，差异在次要模块（M6 vs M3）</td>
-</tr>
-<tr>
-<td>资源指纹</td>
-<td>合法变体</td>
-<td>解析B增加了RES-B，不构成矛盾</td>
-</tr>
-<tr>
-<td>层级指纹</td>
-<td>一致</td>
-<td>表现层、因果方向一致</td>
-</tr>
-<tr>
-<td>操作指纹</td>
-<td>合法变体</td>
-<td>序列差异可接受，均未违反D→R→S</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>结论</strong>：两份解析均合法，属于同一心理实体的不同理论视角。可纳入多视角集合。</p>
-
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：逻辑指纹体系是UPLP治理解析差异的核心工具。四组指纹（模块、资源、层级、操作）从正交维度捕获心理现象的功能特征，组合使用可稳定判定两份解析是否指向同一心理实体。五种错误解析判据（E1-E5）确保了UPLP的可证伪性——任何违反核心功能约束的解析都会被明确拒绝。编码员间一致性标准（κ≥0.60为可接受，κ≥0.75为良好）确保了UPLP知识库的可靠性。通过逻辑指纹，UPLP语义端口能够在不强制统一理论的前提下，建立跨流派可比较、可检验的知识治理体系，支撑IODS知识基础设施的质量控制。</p>
-
-<blockquote><p><strong>关键术语</strong>：逻辑指纹，模块指纹，资源指纹，层级指纹，操作指纹，错误解析判据（E1-E5），编码员间一致性，Cohen’s κ</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “逻辑指纹是给概念贴标签的游戏” → ✅ 它是可证伪性的工程实现。如果两份解析指纹一致却被视为不同概念，或指纹不一致却被视为同一概念，逻辑指纹就失去了区分力。<br>- ❌ “κ值低一定是编码培训不足” → ✅ 可能揭示了概念本身的边界模糊性，这本身就是值得研究的科学发现。<br>- ❌ “E4例外可以随意引用” → ✅ 仅适用于高功能系统（Oᵢ>70）或经过严格安全评估的特殊情况。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 给定两份解析（见17.5微案例），尝试自己提取四组指纹并与文中对比。<br>2. 如果两位编码员对10个概念的模块指纹判定有3处分歧（一致率70%），计算κ值（假设随机一致率50%），判定一致性水平。<br>3. 设计一个可能触发E5（模块角色与三组指纹系统矛盾）的错误解析示例。</p></blockquote>
-
-</main>
+<p>未校准披露因此是常态，而不是例外。当前 L3 的全部动力学假设与参数都未完成临床校准，模型权重也只有设计口径。后续工作的优先级很清楚：先跑 PSE-M 建立仿真先验，再用真实数据完成 PSE-C 锚定，最后才谈预测精度的实测数字。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch16.html" class="nav-link prev">‹ 共识工程</a>
-<a href="ch18.html" class="nav-link next">PSE架构 ›</a></div>
+        <div class="chapter-nav"><a href="ch16.html" class="nav-link prev">‹ L2 状态估计</a>
+<a href="ch18.html" class="nav-link next">L4 干预规划 ›</a></div>
     </div>
 
     <footer>
@@ -556,7 +312,7 @@ kappa = cohen_kappa_score(coder1, coder2)  # 预期约0.85</code></pre>
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

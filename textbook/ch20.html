@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第20章 仿真校准：蒙特卡罗与贝叶斯 · INTRE 导论教材</title>
-    <meta name="description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
-    <meta property="og:title" content="第20章 仿真校准：蒙特卡罗与贝叶斯">
-    <meta property="og:description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
+    <title>第20章 临床走查：从观测到执行 · INTRE 导论教材</title>
+    <meta name="description" content="用广泛性焦虑、创伤后应激与抑郁复发三个示教案例，走完三端口观测、L2 状态估计、L3 预测、L4 规划与 L5 执行的完整链路，并比较状态模型与常规统计的差异。">
+    <meta property="og:title" content="第20章 临床走查：从观测到执行">
+    <meta property="og:description" content="用广泛性焦虑、创伤后应激与抑郁复发三个示教案例，走完三端口观测、L2 状态估计、L3 预测、L4 规划与 L5 执行的完整链路，并比较状态模型与常规统计的差异。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch20.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch20.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第20章 仿真校准：蒙特卡罗与贝叶斯">
-    <meta name="twitter:description" content="PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。">
+    <meta name="twitter:title" content="第20章 临床走查：从观测到执行">
+    <meta name="twitter:description" content="用广泛性焦虑、创伤后应激与抑郁复发三个示教案例，走完三端口观测、L2 状态估计、L3 预测、L4 规划与 L5 执行的完整链路，并比较状态模型与常规统计的差异。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,238 +69,232 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第20章 仿真校准：蒙特卡罗与贝叶斯</h1>
+        <h1 class="chapter-title">第20章 临床走查：从观测到执行</h1>
 
+<blockquote><p><strong>学习目标</strong>：(1) 走完焦虑案例的三端口观测到执行链路；(2) 说明创伤案例为何强制稳定化优先；(3) 识别抑郁复发的风险时点与触发条件；(4) 公平比较状态模型与常规统计的差异；(5) 判断示教推演的适用边界。</p></blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)理解PSE-M大规模蒙特卡罗仿真的目的；(2)掌握PSE-P先验提取的桥接策略；(3)理解PSE-C的贝叶斯校准流程，含UNIP神经似然注入；(4)描述RTE-Cal异步校准与UNIP↔PSE双向协议；(5)描述不确定性量化的基本方法。</p></blockquote>
+<h2>20.1 广泛性焦虑：三端口观测 → L2 → L3 → L4/L5</h2>
 
-<blockquote><p><strong>⚠️ 实证成熟度声明</strong>：本章所有数值、仿真结果和预测均为基于理论推导的模拟演示，<strong>不可用于临床决策</strong>。</p></blockquote>
+<p>案例设置为一名三十四岁项目经理，近半年持续担忧项目失误会导致失业，入睡约四小时半，白天注意力涣散，GAD-7 为 15 分。无明确创伤史，无物质使用。三端口在同一个观测窗口内各输出一个 42 维块，表中只列出与焦虑签名相关的维度。</p>
 
-<hr class="section-divider">
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>端口</th>
+<th>原始观测</th>
+<th>映射到状态维度</th>
+<th>观测值</th>
+<th>不确定度 \(\sigma\)</th>
+</tr></thead>
+<tbody>
+<tr><td>语义</td><td>“项目一出问题就觉得会失业”“停不下来地想最坏结果”</td><td>M2-DSP-B 担忧、M4-DSP-B 威胁评估、M2-STR-R 不确定性规则</td><td>0.78 / 0.72 / 0.70</td><td>0.10 / 0.13 / 0.15</td></tr>
+<tr><td>行为</td><td>GAD-7 15 分；睡眠 4.5 小时；静息心率 92</td><td>M3-RES-D 资源、M1-DSP-B 躯体紧张</td><td>0.32 / 0.74</td><td>0.12 / 0.16</td></tr>
+<tr><td>神经</td><td>心率变异性偏低，EEG 高频活动偏高</td><td>M1-DSP-B 唤醒、M4-DSP-B 威胁背景</td><td>0.70 / 0.66</td><td>0.20 / 0.22</td></tr>
+</tbody>
+</table>
+</div>
 
-<h2>20.1 PSE-M：大规模蒙特卡罗智能体仿真</h2>
+<p>三路观测的指向基本一致：担忧背景过程活跃，威胁评估弥散，资源被持续警觉消耗，躯体唤醒偏高。行为端口还给出一个关键约束：资源维度只有 0.32，接近枯竭。神经端口的 \(\sigma\) 较大，说明这次采集的信号质量一般，融合时应降低其权重。</p>
 
-<p>PSE-M的核心任务是在参数空间中大规模采样，通过运行数百万个虚拟智能体的状态演化，生成合成轨迹数据，并从中提取统计规律。PSE-M解决了心理学研究中的一个根本性困境：真实世界的纵向数据稀缺且昂贵，而理论驱动的仿真可以在不收集真实数据的情况下，先期探索参数空间的行为。</p>
-
-<p><strong>虚拟智能体的定义</strong>。每个虚拟智能体由一组参数向量\(\theta\)定义，包括：</p>
-<ul>
-<li>初始状态\(\Psi(0)\)（从生态位先验分布中采样）</li>
-<li>动力学参数：消耗速率\(\alpha_i\)、恢复速率\(\beta_i\)、阈值\(\theta_{\text{switch}}\)、学习率\(\eta\)等</li>
-<li>耦合参数：依赖矩阵中的权重\(w_{ij}\)</li>
-<li>环境参数：S-P输入的强度、频率、持续时间</li>
-</ul>
-
-<p><strong>蒙特卡罗仿真流程</strong>：</p>
-<ol>
-<li><strong>初始化</strong>：从先验分布中采样\(\theta\)和\(\Psi(0)\)</li>
-<li><strong>环境序列生成</strong>：根据生态位的典型S-P配置生成环境输入序列\(E(t)\)</li>
-<li><strong>数值积分</strong>：使用MKT微分方程进行数值积分（四阶Runge-Kutta）</li>
-<li><strong>事件记录</strong>：记录资源枯竭、调度切换、症状发作等关键事件</li>
-<li><strong>干预模拟（可选）</strong>：在特定时间点施加G-M-A-R操作</li>
-</ol>
-
-<p>典型PSE-M仿真运行100万至1000万个智能体，每个仿真时长为数周到数月。借助GPU并行计算，千万级仿真可在数小时至数天内完成。</p>
-
-<p><strong>PSE-M的输出</strong>：</p>
-<ul>
-<li><strong>参数后验的合成先验</strong>：在给定生态位和干预条件下的参数条件分布</li>
-<li><strong>轨迹聚类</strong>：通过无监督学习将轨迹聚类为典型模式（如“快速恢复型”“持续恶化型”）</li>
-<li><strong>干预效果的分布</strong>：效应量分布、起效时间分布、复发率分布</li>
-<li><strong>早期预警信号</strong>：临界转变前自相关、方差的变化模式</li>
-</ul>
-
-<p><strong>PSE-M的认识论地位</strong>：输出是<strong>理论导出的合成数据</strong>，而非经验发现。其价值在于探索理论的推论并生成可检验的预测。</p>
-
-<hr class="section-divider">
-
-<h2>20.2 PSE-P：先验提取与生态位库</h2>
-
-<p>PSE-P的任务是将PSE-M生成的海量合成数据以及变量范式积累的实证知识（元分析、量表常模、实验效应量），压缩为可供PSE-C使用的<strong>先验参数分布</strong>和<strong>生态位库</strong>。</p>
-
-<p><strong>生态位的定义与分层</strong>。生态位是个体典型S-P环境配置与M-R-D-S基线状态的联合分布。分类维度包括：</p>
+<p>L2 把三路似然与 L3 的转移先验合成后验。先验来自上一时刻状态与动力学预测，本次观测把担忧与资源两维进一步拉开。协方差中，M2-DSP-B 与 M3-RES-D 呈负相关：担忧越强，资源消耗越快。这个非对角元在后续预测里会被用到。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
 <th>维度</th>
-<th>示例取值</th>
-<th>影响参数</th>
+<th>先验均值</th>
+<th>观测锚点</th>
+<th>后验均值</th>
+<th>后验标准差</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>年龄/发展阶段</td>
-<td>儿童、青少年、成人、老年</td>
-<td>恢复速率、学习率</td>
-</tr>
-<tr>
-<td>职业/角色</td>
-<td>知识工作者、体力劳动者、失业</td>
-<td>M3-RES-D消耗速率</td>
-</tr>
-<tr>
-<td>社会支持</td>
-<td>高支持、中等、孤立</td>
-<td>M4-RES-B基线</td>
-</tr>
-<tr>
-<td>文化背景</td>
-<td>个人主义、集体主义</td>
-<td>躯体化倾向、情绪表达</td>
-</tr>
-<tr>
-<td>临床特征</td>
-<td>焦虑为主、抑郁为主</td>
-<td>级联起始节点</td>
-</tr>
+<tr><td>M2-DSP-B 担忧背景</td><td>0.60</td><td>语义 0.78；行为 0.72</td><td>0.74</td><td>0.09</td></tr>
+<tr><td>M3-RES-D 可调度资源</td><td>0.40</td><td>行为 0.32；神经 0.36</td><td>0.34</td><td>0.08</td></tr>
+<tr><td>M1-DSP-B 躯体唤醒</td><td>0.50</td><td>行为 0.74；神经 0.70</td><td>0.71</td><td>0.11</td></tr>
+<tr><td>M4-DSP-B 威胁评估</td><td>0.55</td><td>语义 0.72；神经 0.66</td><td>0.67</td><td>0.13</td></tr>
+<tr><td>M2-STR-R 不确定性规则</td><td>0.55</td><td>语义 0.70</td><td>0.66</td><td>0.14</td></tr>
+<tr><td>M4-STR-C 威胁连接</td><td>0.50</td><td>语义 0.60；无直接行为观测</td><td>0.58</td><td>0.18</td></tr>
 </tbody>
 </table>
 </div>
 
-<p>当前版本生态位库包含约20个常见生态位（如“青少年焦虑障碍”“高压知识工作者”），基于DSM-5流行病学数据和临床专家共识（F级）。</p>
+<p>后验不确定性并不均匀。M4-STR-C 的标准差为 0.18，明显高于其他维度，因为行为端口没有直接观测它，语义证据也偏弱。这个高不确定维度会进入伦理门控的高不确定清单，涉及它的高强度干预不会被自动放行。</p>
 
-<blockquote><p><strong>⚠️ 工程判断声明</strong>：生态位分类与先验分布为初始工程选择，随数据积累可修订、合并或增删。</p></blockquote>
-
-<p><strong>参数先验的提取流程</strong>：</p>
-<ol>
-<li><strong>知识桥接</strong>：从变量范式中提取实证发现，转换为参数分布。当存在复制争议时，先验方差被扩大</li>
-<li><strong>仿真校准</strong>：在PSE-M中运行该生态位的智能体种群，调整参数使仿真输出与实证数据匹配</li>
-<li><strong>不确定性量化</strong>：记录参数估计的不确定性</li>
-<li><strong>生态位谱系构建</strong>：识别生态位间的层级关系，支持降级匹配</li>
-</ol>
-
-<p><strong>先验分布的形式</strong>：Gamma分布（消耗速率）、Beta分布（0-1参数）、正态分布（截断）、Dirichlet分布（多类别权重）。</p>
-
-<p><strong>生态位库的伦理考量</strong>：每个生态位标注其数据来源的人群特征，在样本代表性不足时扩大先验不确定性。文化变体参数被显式编码为调节因子。</p>
-
-<hr class="section-divider">
-
-<h2>20.3 PSE-C：粒子滤波贝叶斯校准</h2>
-
-<p>PSE-C将PSE-P提供的先验分布与个体的真实观测数据相结合，通过贝叶斯更新计算个体化的后验状态估计。</p>
-
-<p><strong>贝叶斯校准的数学框架</strong>：</p>
-
-$$
-p(\Psi(t), \theta \mid y_{1:t}) \propto p(y_{1:t} \mid \Psi(t), \theta) \cdot p(\Psi(0), \theta)
-$$
-
-<p>由于状态空间维度高（42维）、动力学非线性，PSE-C采用<strong>序贯蒙特卡罗（粒子滤波）</strong>或<strong>集合卡尔曼滤波(EnKF)</strong>进行近似推理。</p>
-
-<p><strong>校准流程</strong>：</p>
-<ol>
-<li><strong>生态位匹配</strong>：基于患者基本信息匹配最相似的生态位，加载先验分布</li>
-<li><strong>初始观测编译</strong>：使用VTS-P协议将初始评估数据编译为初始状态向量的似然</li>
-<li><strong>递推校准</strong>：每次新观测到达时：预测步（用MKT向前传播）→ 更新步（更新粒子权重）→ 重采样</li>
-<li><strong>收敛判断</strong>：当核心参数的后验分布标准差低于预设阈值时，达到临床可用精度</li>
-<li><strong>预测输出</strong>：基于当前后验分布，输出未来状态轨迹的概率预测</li>
-</ol>
-
-<p><strong>观测模型的设计</strong>。观测似然\(p(y \mid \Psi)\)定义不同类型观测数据到状态向量的映射：</p>
-<ul>
-<li><strong>量表分数</strong>：线性关系\(y = a + b\psi + \epsilon\)，系数通过桥接研究校准</li>
-<li><strong>EMA条目</strong>：伯努利分布或序数Logistic回归</li>
-<li><strong>可穿戴数据</strong>：HRV映射到M1-DSP-B和M4-RES-D</li>
-<li><strong>行为任务</strong>：Stroop干扰效应映射到M3-DSP-F效能</li>
-</ul>
-
-<p><strong>个体差异的处理</strong>：PSE-C同时估计状态轨迹\(\Psi(t)\)和个体的固定参数\(\theta\)（消耗速率、学习率），实现"个性化"。</p>
-
-<p><strong>三通道贝叶斯融合</strong>。PSE-C的完整似然来自三个独立通道的乘积（假设条件独立）：</p>
-
-$$
-p(y_{1:t} \mid \Psi(t), \theta) = \underbrace{p(y_b \mid \Psi)}_{\text{行为似然}} \cdot \underbrace{p(y_s \mid \Psi)}_{\text{语义似然(UPLP)}} \cdot \underbrace{p(y_n \mid \Psi)}_{\text{神经似然(UNIP)}}
-$$
-
-<p>其中神经似然 \(p(y_n \mid \Psi)\) 由UNIP L6 RTE实时输出。当所有三个通道都可用时，后验分布的收敛速度显著快于单一通道；当某一通道暂时不可用时（如用户未佩戴可穿戴设备），PSE-C自动退化为双通道或单通道模式。</p>
-
-<h3>20.3.1 RTE-Cal：神经映射的异步个体化校准</h3>
-
-<p>RTE-Cal是UNIP L6 RTE与PSE-C之间的异步双向校准协议，解决的核心问题是：<strong>群体级的NFM神经-功能映射模型如何被个体化微调以适应该用户的独特神经特征</strong>。</p>
-
-<p><strong>校准环路</strong>。RTE-Cal运行一个异步闭环：</p>
-
-<ol>
-<li><strong>前向通路</strong>（UNIP → PSE）：RTE从实时神经数据流中提取NFI特征值，调用NFM模型输出神经似然 \(p(y_n \mid \Psi_t^{\text{prior}})\)，通过 <code>/func_likelihood</code> 协议传入PSE-C</li>
-<li><strong>状态推断</strong>（PSE内部）：PSE-C融合行为、语义、神经三通道似然，计算状态后验 \(p(\Psi_t \mid y_{1:t})\)</li>
-<li><strong>残差计算</strong>（PSE内部）：当行为通道（经UBMP校准）和神经通道（经UNIP转换）对同一子单元的推断出现系统性分歧时，PSE-C记录校准残差 \(\delta_t = \Psi_t^{\text{behavior}} - \Psi_t^{\text{neural}}\)</li>
-<li><strong>反向通路</strong>（PSE → UNIP）：PSE通过 <code>/calibration_feedback</code> 协议将累积残差发送给RTE，RTE使用这些残差对NFM的个体级映射参数进行贝叶斯更新</li>
-</ol>
-
-<p><strong>分层更新速率</strong>。RTE-Cal严格遵守UNIP的分层更新纪律：</p>
+<p>L3 以这组后验为初始条件，按 BMA 加权方程推演四周。设计示例中，三个候选方程的权重设为 0.55、0.30、0.15，分别偏向资源消耗、威胁放大与规则刚性。推演结果给出两个风险时点：第二到第三周资源跌破 0.25 的概率约 61%，第三到第四周担忧背景维持在 0.80 以上的概率约 47%。级联路径从 M2-DSP-B 到 M3-RES-D，再到 M6-DSP-F 行为抑制。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>更新目标</th>
-<th>速率</th>
-<th>触发条件</th>
+<th>预测指标</th>
+<th>当前值</th>
+<th>四周后预测</th>
+<th>概率</th>
+<th>风险含义</th>
 </tr></thead>
 <tbody>
-<tr>
-<td>NFM个体偏置参数</td>
-<td>每次会话</td>
-<td>新数据到达</td>
-</tr>
-<tr>
-<td>NFM个体缩放参数</td>
-<td>每5-10次会话</td>
-<td>残差稳定累积</td>
-</tr>
-<tr>
-<td>NFM模型结构</td>
-<td>仅在群体级证据触发</td>
-<td>元分析或大规模验证</td>
-</tr>
+<tr><td>M3-RES-D</td><td>0.34</td><td>低于 0.25</td><td>约 61%</td><td>资源枯竭，执行能力下降</td></tr>
+<tr><td>M2-DSP-B</td><td>0.74</td><td>高于 0.80</td><td>约 47%</td><td>担忧固化为背景过程</td></tr>
+<tr><td>M6-DSP-F</td><td>0.52</td><td>低于 0.40</td><td>约 38%</td><td>行为抑制，工作功能受损</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>工程意义</strong>。RTE-Cal使UNIP从一个"群体平均"的神经-功能映射系统升级为"个体自适应"的校准系统——这类似于脑电的个体化源定位：使用群体模板作为初始估计，再通过个体解剖数据进行微调。在PSE-C的概念设计阶段，RTE-Cal的完整实现依赖于NFM模型的群体级验证——当前所有NFI的映射模型均为探索性P级（详见Ch22）。</p>
+<p>L4 的输入里有两条硬约束：RES-D 为 0.34，低于 0.40 的日预算门槛，日上限十分钟；当前没有达到需要审批的深层结构操作。P1 先把 RELINK 深层 STR-C 从合法空间移除，P2 在剩余空间里生成候选序列，P4 选出一条三阶段方案。</p>
 
-<hr class="section-divider">
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>阶段</th>
+<th>操作</th>
+<th>靶点</th>
+<th>剂量</th>
+<th>时间窗</th>
+<th>门控</th>
+</tr></thead>
+<tbody>
+<tr><td>D 稳定</td><td>GATE− 担忧窗口，GATE+ 感官锚定</td><td>M2-DSP-B / M1-DSP-F</td><td>每日十分钟，分两次</td><td>第一到第二周</td><td>passed</td></tr>
+<tr><td>R 恢复</td><td>MODULATE+ 睡眠与节律</td><td>M3-RES-D / M1-RES-D</td><td>每日十分钟睡眠练习</td><td>第二到第四周</td><td>passed</td></tr>
+<tr><td>S 重建</td><td>ALIGN 不确定性规则</td><td>M2-STR-R</td><td>每周两次，每次十分钟</td><td>第五到第八周</td><td>passed</td></tr>
+<tr><td>暂缓</td><td>RELINK 威胁连接</td><td>M4-STR-C</td><td>不分配</td><td>资源回升后再评估</td><td>未提交</td></tr>
+</tbody>
+</table>
+</div>
 
-<h2>20.4 不确定性量化：集合预报与CRPS评分</h2>
+<p>方案整体成功概率设计为 0.58，时间窗集中在第二到第三周，因为那正是资源跌破阈值前的窗口。L5 收到方案后，E1 把每日十分钟拆成两个五分钟微练习，E2 记录完成率与脱落点，E3 把每日 EMA 转成行为观测块送回 L1-B。若第二周完成率连续低于五成，E4 判为软重规划，只缩短后续阶段剂量；若出现明显的惊恐发作或睡眠进一步恶化，转硬回滚。</p>
 
-<p>PSE-C的输出是<strong>概率预测</strong>——以分布的形式表达预测的不确定性。</p>
+<h2>20.2 创伤后应激：序列强制与稳定化</h2>
 
-<p><strong>不确定性的三个来源</strong>：</p>
-<ol>
-<li><strong>状态估计不确定性（认识论）</strong>：因观测有限且存在噪声，随数据增加而减少</li>
-<li><strong>参数不确定性</strong>：个体动力学参数从数据中推断，也随数据增加而减少</li>
-<li><strong>固有随机性（偶然不确定性）</strong>：系统本身的随机性，无法消除</li>
-</ol>
+<p>案例设置为一名二十九岁来访者，车祸后三个月，反复闪回，回避驾驶与相关路段，夜间惊醒，PCL-5 为 48 分。三端口显示语义叙事碎片化，行为量表高分，神经唤醒偏高。功能签名集中在创伤记忆连接、侵入性再激活、躯体创伤编码与回避序列。</p>
 
-<p>PSE通过<strong>集合预报</strong>表示总不确定性：从PSE-C后验分布中采样M个粒子，将每个粒子前向积分，得到M条轨迹的集合分布。</p>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>维度</th>
+<th>观测证据</th>
+<th>后验均值</th>
+<th>后验标准差</th>
+</tr></thead>
+<tbody>
+<tr><td>M4-STR-C 创伤记忆连接</td><td>语义叙事碎片化；行为回避；无直接神经标记</td><td>0.82</td><td>0.19</td></tr>
+<tr><td>M4-DSP-B 侵入性再激活</td><td>闪回频率；夜间惊醒；神经唤醒偏高</td><td>0.85</td><td>0.12</td></tr>
+<tr><td>M1-STR-C 躯体创伤编码</td><td>接近路段时的躯体反应</td><td>0.76</td><td>0.16</td></tr>
+<tr><td>M6-STR-S 回避序列</td><td>回避驾驶、绕路、减少外出</td><td>0.74</td><td>0.13</td></tr>
+<tr><td>M3-RES-D 可调度资源</td><td>睡眠四小时；日间疲惫</td><td>0.28</td><td>0.09</td></tr>
+<tr><td>M4-RES-B 情绪基线</td><td>持续低落；兴趣减退</td><td>0.30</td><td>0.14</td></tr>
+</tbody>
+</table>
+</div>
 
-<p><strong>预测区间的计算</strong>：</p>
-<ul>
-<li><strong>中位数轨迹</strong>：M条轨迹在每一时间点的中位数</li>
-<li><strong>置信区间</strong>：第2.5和第97.5百分位数轨迹（95%预测区间）</li>
-<li><strong>事件概率</strong>：发生该事件的轨迹数 / M</li>
-<li><strong>最可能轨迹</strong>：具有最高后验密度的轨迹</li>
-</ul>
+<p>这组后验里最危险的组合不是单一维度的高低，而是创伤连接与侵入再激活同时高、资源同时低。此时直接做深层 RELINK，等于在资源枯竭时拆开高负荷记忆，失稳风险显著上升。L4 的 P1 因此把该来访者的脆弱性等级判为 E3：只允许 GATE 与 MODULATE，禁止 S 层深干预，并强制外部转介项。</p>
 
-<p><strong>临床决策中的不确定性表达</strong>。典型输出：“该患者在未来48小时内发生情绪崩溃（M4-RES-D < 20）的概率为30% [95%预测区间: 15%-45%]。主要风险因素是持续性睡眠不足。建议在明日上午安排一次休息窗口，可将概率降至15%以下。”</p>
+<p>D→R→S 的顺序在这里不是建议，而是硬约束。稳定化先行的理由有三条：资源不足以承受记忆加工的高负荷；侵入再激活未受控时，加工过程容易被新的创伤体验打断；回避序列尚未松动时，深层操作缺少可迁移的行为基础。三条理由任意一条成立，都足以把 S 层操作推到后续阶段。</p>
 
-<p><strong>校准检验</strong>。一个概率预测系统的核心质量指标是<strong>校准度</strong>：预测的概率是否与实际发生的频率一致。PSE需要对校准度进行持续监控——如果系统性偏离，触发闭环修正。</p>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>阶段</th>
+<th>时间窗</th>
+<th>操作</th>
+<th>靶点</th>
+<th>剂量</th>
+<th>门控</th>
+</tr></thead>
+<tbody>
+<tr><td>D 稳定化</td><td>第一到第三周</td><td>MODULATE+ 睡眠与唤醒调节；GATE− 侵入再激活</td><td>M1-RES-D / M3-RES-D / M4-DSP-B</td><td>每日十分钟，不安排暴露</td><td>passed，E3 允许</td></tr>
+<tr><td>R 恢复</td><td>第三到第八周</td><td>MODULATE+ 情绪基线；GATE− 回避序列；ALIGN 自责规则</td><td>M4-RES-B / M6-STR-S / M2-STR-R</td><td>资源回升至 0.45 后每日十五分钟</td><td>passed</td></tr>
+<tr><td>S 重建</td><td>第九周以后</td><td>RELINK 创伤记忆与躯体编码</td><td>M4-STR-C / M1-STR-C</td><td>每周一次，每次三十分钟</td><td>pending，须四级审批</td></tr>
+<tr><td>暂缓</td><td>等级未降时</td><td>不启动 S 层</td><td>—</td><td>—</td><td>rejected 时维持 R 层</td></tr>
+</tbody>
+</table>
+</div>
 
-<p><strong>预测精度的评估指标</strong>：RMSE（均方根误差）、CRPS（连续排序概率得分）、区间覆盖率、Brier评分。</p>
+<p>方案整体成功概率设计为 0.46，明显低于焦虑案例，原因不是操作本身更弱，而是约束更多、可执行空间更窄。L5 的监控重点放在唤醒水平、睡眠时长与闪回频率；任何一项越过中止判据，E4 立即硬回滚，保存中止点，退回 L4 重规划。若只是改善低于预期但仍在轨道，E4 走软重规划，保持当前阶段，调整后续剂量。</p>
 
-<hr class="section-divider">
+<p>稳定化阶段不做“提前加工”。提前加工在资源不足时会制造新的失败体验，破坏治疗联盟，并可能把一次可控的暴露变成一次再创伤。序列强制的意义就在这里：它不是官僚流程，而是把“能不能承受”放在“想不想做”之前。</p>
 
-<p><strong>本章小结</strong>：PSE的仿真与校准方法由三个阶段构成。PSE-M通过大规模蒙特卡罗仿真生成合成轨迹数据，从理论中提取统计规律；PSE-P将这些规律和既有实证知识压缩为先验参数分布，并构建生态位库；PSE-C通过贝叶斯校准将先验与个体真实观测相结合，输出个体化的后验状态估计。PSE-C的完整似然来自行为、语义（UPLP）和神经（UNIP）三个通道的乘积——三通道融合显著提升了状态后验的收敛速度。RTE-Cal是UNIP与PSE之间的异步双向校准协议：神经似然通过 <code>/func_likelihood</code> 前向传入PSE，PSE的状态残差通过 <code>/calibration_feedback</code> 反向传回RTE，用于个体化微调NFM映射参数。不确定性量化是PSE的核心特征——它区分三种不确定性来源，通过集合预报输出预测区间和事件概率。</p>
+<h2>20.3 抑郁复发：风险时点与个性化预防</h2>
 
-<blockquote><p><strong>关键术语</strong>：蒙特卡罗仿真，粒子滤波，贝叶斯校准，集合预报，CRPS，生态位库，三通道融合，RTE-Cal，神经似然，/calibration_feedback</p></blockquote>
+<p>案例设置为一名四十岁来访者，重性抑郁缓解八个月，PHQ-9 为 8 分，仍有残余的担忧、动力不足与早醒。既往两次发作，最近一次在两年半前。功能签名显示情绪基线偏低、行为激活不足、担忧背景仍活跃、资源恢复偏慢。</p>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ "蒙特卡罗仿真就是计算机算命" → ✅ 仿真不追求精确预言，而是探索参数空间中的可能性分布和临界条件。<br>- ❌ "PSE-C可以直接用于临床决策" → ✅ 当前处于概念设计阶段，所有数值为模拟演示，不可用于临床。<br>- ❌ "神经似然是功能状态的'直接读数'" → ✅ 神经似然是概率映射，需与行为、语义似然融合后才形成状态估计。</p></blockquote>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>风险因素</th>
+<th>监测指标</th>
+<th>阈值</th>
+<th>触发动作</th>
+</tr></thead>
+<tbody>
+<tr><td>睡眠不足</td><td>连续一周睡眠少于六小时</td><td>周均值低于 6 小时</td><td>前置睡眠保护，提升 MODULATE+ 剂量</td></tr>
+<tr><td>反刍回升</td><td>M2-DSP-B 后验均值</td><td>连续两周高于 0.65</td><td>启动 GATE− 担忧窗口，增加 EMA 频率</td></tr>
+<tr><td>情绪基线下滑</td><td>M4-RES-B 后验均值</td><td>低于 0.35 并持续两周</td><td>评估是否进入复发预警，缩短复诊间隔</td></tr>
+<tr><td>行为激活不足</td><td>M6-DSP-F 后验均值</td><td>低于 0.40</td><td>恢复低剂量行为激活，不叠加新任务</td></tr>
+<tr><td>环境负荷升高</td><td>工作截止期、家庭冲突、纪念日</td><td>负荷指数连续上升</td><td>提前两周加密监测，收窄方案</td></tr>
+</tbody>
+</table>
+</div>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 区分PSE-M蒙特卡罗仿真和PSE-C贝叶斯校准的功能定位。<br>2. 以一个具体的效应量为例，说明桥接的四层验证流程。<br>3. 集合预报在天气预报中已被广泛采用。讨论将这一思想应用于心理状态预测时面临的独特挑战。<br>4. RTE-Cal在行为通道与神经通道出现系统性分歧时如何工作？如果分歧持续无法消解，这对NFM映射模型意味着什么？</p></blockquote>
+<p>L3 的风险推演给出两个时点：第六到第十周是首次预警窗，若睡眠与反刍两项同时越线，八周内复发概率设计为约 52%；纪念日与年度考核前后是第二类时点，风险来自环境负荷的短时抬升，而不是状态本身的缓慢漂移。两类时点的干预不同：前者调状态，后者调环境与节奏。</p>
 
-</main>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>风险时点</th>
+<th>触发条件</th>
+<th>预测概率</th>
+<th>预防动作</th>
+</tr></thead>
+<tbody>
+<tr><td>第六到第十周</td><td>睡眠少于六小时且反刍高于 0.65，持续两周</td><td>约 52%</td><td>加密 EMA；恢复 GATE− 与 ALIGN 的低剂量组合</td></tr>
+<tr><td>纪念日前后</td><td>环境负荷指数短期上升</td><td>约 35%</td><td>提前两周安排支持性接触；暂缓新增任务</td></tr>
+<tr><td>年度考核期</td><td>工作负荷与睡眠同时恶化</td><td>约 41%</td><td>收窄方案至睡眠保护与行为激活两项</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>个性化预防的核心不是“终身吃药式”的高频干预，而是把资源放在风险时点。稳定期维持低剂量 MODULATE+ 与每月一次 EMA；预警窗启动 GATE− 反刍、ALIGN 规则与睡眠保护；时点过后回到维持剂量。方案随状态走，不随日历走。</p>
+
+<p>L5 在这个案例里承担的主要是监测与触发，而不是高强度执行。E2 连续跟踪睡眠、EMA 与完成率；E4 在阈值触发时执行软重规划，把修正约束送回 L4；E3 把复诊量表与 EMA 转成行为观测，进入 L2。复发预防的效果，很大程度上取决于反馈回路是否真的闭合，而不是方案写得多漂亮。</p>
+
+<h2>20.4 模型比较：状态模型与常规统计的差异</h2>
+
+<p>状态模型不是常规统计的替代品。两者回答的问题不同，擅长的尺度也不同。常规统计在群体层面估计效应、比较组间差异、建立风险评分；状态模型在个体层面估计当前状态、推演未来轨迹、选择操作靶点。把两者放在同一张表上比较，必须用同一组维度量双方，不能用一方的构件去判另一方。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>比较维度</th>
+<th>状态模型</th>
+<th>常规统计模型</th>
+</tr></thead>
+<tbody>
+<tr><td>输入</td><td>42 维多模态观测块与不确定度</td><td>量表总分、诊断类别、协变量</td></tr>
+<tr><td>输出</td><td>带协方差的状态后验与未来分布</td><td>点估计、置信区间、风险分组</td></tr>
+<tr><td>时间结构</td><td>状态转移与多步预测</td><td>重复测量的趋势或组间差异</td></tr>
+<tr><td>个体内变化</td><td>逐时刻更新，允许维度间耦合</td><td>以群体参数为中心，个体偏差进随机项</td></tr>
+<tr><td>干预选择</td><td>按靶点坐标与预算搜索操作序列</td><td>按诊断、严重度或指南选择方案</td></tr>
+<tr><td>不确定性</td><td>后验协方差与模型权重并存</td><td>系数标准误与预测区间</td></tr>
+<tr><td>验证方式</td><td>间接验证，无外部地面真值</td><td>内部效度、外部效度、随机对照试验</td></tr>
+<tr><td>主要优势</td><td>个体化时点、靶点定位、机制假设可计算</td><td>群体推断稳健、证据体系成熟、量表心理测量学清楚</td></tr>
+<tr><td>主要局限</td><td>校准未完成，参数多为理论值</td><td>个体预测弱，难以给出逐时刻靶点</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>在焦虑案例里，GAD-7 的 15 分是常规统计最熟悉的输入，它能稳定地告诉你“属于中度焦虑”。状态模型接受这个分数作为行为端口的一个观测，但不把它当作状态本身；它进一步问：担忧背景、资源、唤醒、威胁连接各是多少，哪一维先崩，什么时候崩。前者回答“有多重”，后者回答“往哪走、先动哪”。</p>
+
+<p>在创伤案例里，PCL-5 的 48 分同样是有用的人群比较工具，但它不区分创伤记忆连接与侵入再激活的相对高低。状态模型把两者分开，才能判断“现在能不能做深层加工”。这个判断不是常规统计的强项，也不是状态模型的既成结论；它依赖后验、依赖门控、依赖资源预算。</p>
+
+<p>两者可以分层使用。常规量表是 L1-B 的重要观测来源，随机对照试验是外部效度的重要证据，群体风险模型可以进入环境与资源参数。状态模型不排斥这些工具，它把工具的输出当作观测或先验，再用自己的方式合成。真正的差异在输出形态：一边给群体参数，一边给个体后验与可执行序列。</p>
+
+<h2>20.5 案例性质声明</h2>
+
+<p>本章三个案例是示教推演。观测值、后验均值、预测概率、方案剂量与时间窗，都是按框架规则构造的演算示例，用于展示信息如何从端口逐级变形为决策。它们不是临床实证结果，不来自真实受试者，也不构成诊疗建议。真实使用需要三件事同时到位：L1 端口的仪器校准、PSE-C 的真实数据锚定、REVER 的门控与临床监督。缺任何一件，演算示例都只能停留在教学层面。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">‹ 系统动力学</a>
-<a href="ch21.html" class="nav-link next">临床案例 ›</a></div>
+        <div class="chapter-nav"><a href="ch19.html" class="nav-link prev">‹ L5 执行与闭环</a>
+<a href="ch21.html" class="nav-link next">神经对接与双向约束 ›</a></div>
     </div>
 
     <footer>
@@ -313,7 +307,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

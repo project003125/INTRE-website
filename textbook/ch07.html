@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第7章 功能模块：M1至M6划分与级联 · INTRE 导论教材</title>
-    <meta name="description" content="INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对功能角色的分解。">
-    <meta property="og:title" content="第7章 功能模块：M1至M6划分与级联">
-    <meta property="og:description" content="INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对功能角色的分解。">
+    <title>第7章 环境与动力学总览 · INTRE 导论教材</title>
+    <meta name="description" content="S-P 六层环境、E(t) 驱动项、资源-调度-结构三轴方程与级联拓扑。">
+    <meta property="og:title" content="第7章 环境与动力学总览">
+    <meta property="og:description" content="S-P 六层环境、E(t) 驱动项、资源-调度-结构三轴方程与级联拓扑。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch07.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch07.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第7章 功能模块：M1至M6划分与级联">
-    <meta name="twitter:description" content="INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对功能角色的分解。">
+    <meta name="twitter:title" content="第7章 环境与动力学总览">
+    <meta name="twitter:description" content="S-P 六层环境、E(t) 驱动项、资源-调度-结构三轴方程与级联拓扑。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,523 +69,182 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第7章 功能模块：M1至M6划分与级联</h1>
+<h1 class="chapter-title">第7章 环境与动力学总览</h1>
 
+<blockquote>
+<p><strong>学习目标</strong>：</p>
+<p>1. 说出 S-P 六层环境来源及其划分依据。</p>
+<p>2. 区分 E(t) 的慢变、中变、快变分量。</p>
+<p>3. 理解资源、调度、结构三轴方程的基本形式。</p>
+<p>4. 描述依赖矩阵与典型级联路径。</p>
+<p>5. 分清环境参照系与动力学层各自负责的内容。</p>
+</blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)陈述M1-M6六模块的划分依据与否定性特异崩溃论证；(2)描述每个核心模块的功能定义、典型失调和干预接口；(3)识别三类模块间耦合机制；(4)解释枢纽模块概念及其在级联干预中的杠杆作用；(5)理解边界模糊的必然性及其管理策略。</p></blockquote>
+<p>状态坐标描述系统内部，环境参照系描述系统外部，动力学描述两者如何随时间共同演化。三者缺一不可：只看内部状态会忽略情境驱动，只看环境会失去内部中介，只看静态坐标则无法回答“下一步会怎样”。本章给出环境与动力学的总览，把方程形式、驱动项与级联结构放在同一张图上。</p>
 
-<hr class="section-divider">
+<h2>7.1 S-P 五层环境：微、中、外、宏、时序，另加数字系统</h2>
 
-<h2>7.1 划分依据：否定性特异崩溃论证</h2>
+<p>S-P 外部架构分两层。S 层识别环境影响从哪来，P 层描述环境作用于哪个模块、哪个维度、往哪个方向。S 层沿用生态系统理论的五个层次，并增加数字系统作为第六层。六层不是六个并列的“东西”，而是六种不同的环境作用方式。</p>
 
-<p>INTRE将人类心智的功能层分解为六个模块——M1具身、M2认知、M3意志、M4情绪、M5言语、M6行为。这一划分不是对大脑解剖区域的直接映射，而是对<strong>功能角色</strong>的分解。</p>
-
-<p><strong>划分的逻辑依据</strong>。六个模块的划分源于一个进化上的功能性追问：一个需要在不确定环境中生存、适应并繁衍的生物有机体，其心理系统至少需要具备哪些不可相互替代的功能能力？答案指向六个基本功能：</p>
+<p>微系统是个体直接、面对面互动的环境，如家庭、职场、同伴群体。中系统是微系统之间的相互作用与连接，如家校联系、工作与家庭的冲突。外系统是个体未直接参与但间接受影响的环境，如父母的工作环境、组织政策、社区资源。宏系统是文化、价值观与意识形态背景，如社会规范、代际观念。时序系统是环境事件与随时间的变化，如生命转折、经济周期、时代变迁。数字系统是数字信息环境，如社交媒体、算法推荐、即时通讯。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>模块</th>
-<th>核心功能</th>
-<th>进化逻辑</th>
-</tr></thead>
+<thead>
+<tr><th>S 层</th><th>核心定义</th><th>互斥依据</th><th>典型 P 层作用</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**M1** 具身</td>
-<td>能量与稳态调控</td>
-<td>没有能量摄入，其他功能都无法运行</td>
-</tr>
-<tr>
-<td>**M2** 认知</td>
-<td>世界建模与预测</td>
-<td>需要预测环境因果关系以指导行为</td>
-</tr>
-<tr>
-<td>**M3** 意志</td>
-<td>目标选择与执行控制</td>
-<td>需要在多方案中决策并维持长期目标</td>
-</tr>
-<tr>
-<td>**M4** 情绪</td>
-<td>价值评估与动机</td>
-<td>需要对刺激进行快速好坏评估</td>
-</tr>
-<tr>
-<td>**M5** 言语</td>
-<td>符号化与社会协调</td>
-<td>需要传递复杂信息、形成文化积累</td>
-</tr>
-<tr>
-<td>**M6** 行为</td>
-<td>行动执行与习惯化</td>
-<td>需要将决策转化为物理动作并自动化</td>
-</tr>
+<tr><td>微系统</td><td>个体直接、面对面互动的环境</td><td>互动方式</td><td>日常资源消耗与支持</td></tr>
+<tr><td>中系统</td><td>微系统之间的相互作用与连接</td><td>系统间关系</td><td>角色冲突、支持传递</td></tr>
+<tr><td>外系统</td><td>个体未直接参与但间接受影响的环境</td><td>个体参与度</td><td>政策压力、资源可及性</td></tr>
+<tr><td>宏系统</td><td>文化、价值观与意识形态背景</td><td>抽象层级</td><td>规则结构与价值根基的长期塑造</td></tr>
+<tr><td>时序系统</td><td>环境事件与随时间的变化</td><td>时间维度</td><td>转折事件、累积负荷</td></tr>
+<tr><td>数字系统</td><td>数字信息环境与平台化互动</td><td>媒介形态</td><td>注意碎片化、社会比较、算法茧房</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>否定性特异崩溃论证</strong>。这是模块划分最核心的论证方式：每个模块的缺失会引发独特的、其他模块难以完全代偿的系统性崩溃模式。例如：</p>
-<ul>
-<li><strong>M1严重受损</strong>（慢性疲劳）→ 资源基线全面下降，表现为“能量崩溃”，但信念、连接可能基本完好</li>
-<li><strong>M3严重受损</strong>（意志瘫痪）→ 目标维持能力丧失，但情绪体验和理解可能正常</li>
-<li><strong>M4严重受损</strong>（情绪麻木）→ 价值评估信号缺失，决策困难，但理性推理可能正常</li>
-</ul>
+<p>数字系统列为独立层次的依据有三条。算法个性化使不同用户在同一平台获得不同内容环境；设备与网络的持续性打破传统环境的时间与空间边界；虚拟身份可以独立于物理身份并对现实关系产生替代效应。数字系统与微系统、宏系统存在功能重叠，其独立性是分析上的实用独立，不是本体论上的根本独立。</p>
 
-<p>这些崩溃模式的可分离性是检验模块独立性的关键实证路径。<strong>双分离</strong>——不同病因导致同一现象，不同干预产生不同效果——是验证模块功能独立性的核心方法。</p>
+<p>P 层的命名规则是“受影响的单元加作用方向”。方向用 \(+\)、\(-\)、\(0\) 表示增强、削弱、中性。二值标记适合快速记录，精细分析使用多靶点向量，一次记录同一环境对多个维度的影响。例如“高压项目组”可以同时消耗 M1-RES-D 与 M3-RES-D，又通过应对技能学习增强 M6-STR-S。</p>
 
-<p><strong>工程判断声明</strong>：M1-M6 六模块划分是针对人类心智功能分解的工程最优选择，属工程判断（engineering judgment），非公理级别的完备性支撑，不适用于所有智能体类型。</p>
+\[
+\text{S-微系统:职场-高压项目组} \rightarrow
+P\{M1\text{-RES-D}:-\, M3\text{-RES-D}:-\, M6\text{-STR-S}:+\}
+\]
 
-<p><strong>工程完备性的三重支撑</strong>（工程合理性支撑，而非公理证明）：(1)逻辑推导——六模块展开并承载N-S-R循环的关键功能节点；(2)工程验证——每模块缺失导致独特的不可补偿崩溃模式；(3)进化启发性支持——六模块对应功能地层的逐层叠加（启发性支持）。</p>
+<p>P 层映射的完备性主张是：不存在不经过某个 M-R-D-S 单元而直接影响心理状态的环境因素。任何环境影响最终都表现为对某个模块某个维度的改变。该主张是形式语法层面的框架主张，其对已建模环境影响的覆盖程度属于工程完备性，需要实证检验。</p>
 
-<p><strong>边界模糊的预告</strong>：M1-M6的模块边界在某些边缘案例中存在模糊（如内部言语同时涉及M2和M5）。这些模糊不是设计缺陷，而是心理系统作为高维非线性复杂系统的固有特征在形式化模型中的自然投影。INTRE的策略是通过工程机制<strong>管理难以消除的模糊</strong>（见第9章局部映射协议）。</p>
+<p>环境负荷指数 ELI 把来源、模式与净负荷聚合成一个可比较的量度。它区分净消耗与净补充，保留短期资源与长期资本的分层，并且不脱离具体作用面。ELI 的语义与结构性质属于环境参照系，数值、阈值与分布属于动力学参数。环境改善但内部结构仍在旧模式中运行的情况，需要单独判定内化边界，该边界的时间窗口仍是开放问题。</p>
 
-<hr class="section-divider">
+<h2>7.2 E(t) 驱动项：慢变、中变、快变</h2>
 
-<h2>7.2 M1具身：能量调控、稳态与内感受</h2>
+<p>环境不进入 42 维状态本身，而作为动力学方程的外部驱动项 \(E(t)\) 进入。核心方程写成：</p>
 
-<p><strong>功能定义</strong>。M1是心理系统的物理基座与能量引擎。它负责：生物能量的获取、储存和分配；内部稳态的维持（体温、pH值）；内感受信号的生成与处理（内脏感觉、疲劳感、饥饿感）；生理节律的调控（睡眠-觉醒周期）。</p>
+\[
+\frac{d\Psi}{dt}=\sum_k w_k f_k(\Psi,E(t),\theta_k)
+\]
 
-<blockquote><p><strong>临床锚定</strong>：连续熬夜三天后，连起床都困难——M1-RES-D枯竭。</p></blockquote>
-
-<p><strong>核心子维度</strong>（M1在R-D-S上的投射）：</p>
+<p>其中 \(f_k\) 是候选向量场，\(w_k\) 是模型权重，\(\theta_k\) 是参数。\(E(t)\) 不新增状态维度，它改变状态演化的速度与方向。环境信息通过两条路径进入：一条是观测驱动，语言与行为观测先反映为状态维度的变化，动力学从变化模式反推环境负荷；另一条是先验驱动，环境基线、生态位与负荷指数作为参数子层的组成部分被校准。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>时间尺度</th>
-<th>干预接口</th>
-</tr></thead>
+<thead>
+<tr><th>分量</th><th>典型内容</th><th>时间尺度</th><th>进入方式</th><th>参数归属</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>M1-RES-D</td>
-<td>当前生理能量水平</td>
-<td>分钟-小时</td>
-<td>MODULATE+（睡眠、运动、营养）</td>
-</tr>
-<tr>
-<td>M1-RES-B</td>
-<td>长期健康根基</td>
-<td>月-年</td>
-<td>结构性操作间接建设</td>
-</tr>
-<tr>
-<td>M1-DSP-F</td>
-<td>需意识参与的生理调节</td>
-<td>秒-分</td>
-<td>GATE+（深呼吸、放松）</td>
-</tr>
-<tr>
-<td>M1-DSP-B</td>
-<td>自主神经系统运行</td>
-<td>秒-分</td>
-<td>GATE–（通过生物反馈调节）</td>
-</tr>
-<tr>
-<td>M1-STR-S</td>
-<td>生理节律脚本</td>
-<td>天</td>
-<td>MODULATE+（睡眠锚定）</td>
-</tr>
+<tr><td>慢变</td><td>环境基线、持续压力税率、生态位特征</td><td>月至年</td><td>先验设定加长期校准</td><td>动力学参数层</td></tr>
+<tr><td>中变</td><td>环境负荷指数、阶段性支持或剥夺</td><td>周至月</td><td>先验与观测间接推导并用</td><td>参数层与数值演化层</td></tr>
+<tr><td>快变</td><td>急性事件、冲突、突发丧失、临时高压</td><td>小时至天</td><td>从状态变化模式识别</td><td>运行时数值演化</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>典型失调</strong>：慢性疲劳（M1-RES-D↓）、失眠（M1-STR-S紊乱）、躯体化障碍（M1-DSP-B信号误归因）。</p>
+<p>三分量不是三个独立方程，而是同一驱动项在不同时间尺度上的分解。慢变分量决定系统的长期平衡位置，中变分量改变平衡点附近的波动幅度，快变分量触发短时偏离。三者叠加时，快变事件可能把一个原本稳定的系统推过阈值，而慢变背景决定它推过阈值后是回弹还是被病理盆地捕获。</p>
 
-<p><strong>测量候选</strong>：可穿戴设备（HRV、睡眠结构、活动量）、主观疲劳量表（A类）。</p>
+<p>环境驱动的一个关键约束是：动力学从状态变化模式反推环境，而不是从观测层直接接收“环境读数”。这保持了观测层的三端口结构，不需要为环境增设第四个端口。代价是环境识别带有反演误差，反演误差与状态估计误差会耦合。处理方式是显式标注环境分量的来源与不确定性，不把反推结果当作直接观测。</p>
 
-<hr class="section-divider">
+<h2>7.3 三轴方程：资源耗竭—恢复、调度阈值、结构塑性</h2>
 
-<h2>7.3 M2认知：世界模型、推理与知识表征</h2>
+<p>三轴方程对应三种时间尺度。资源方程描述存量如何被消耗与补充，调度方程描述前台与后台过程如何竞争切换，结构方程描述规则、连接与序列如何缓慢改变。三条方程不是三个独立系统，它们通过参数与状态耦合。</p>
 
-<p><strong>功能定义</strong>。M2是心理系统的建模引擎与知识库。它负责：从感官输入中提取模式并构建世界模型；存储和检索陈述性知识；执行推理、判断和问题解决；生成对过去、现在和未来的表征。</p>
+<p>资源方程的基本形式是恢复项减消耗项：</p>
 
-<blockquote><p><strong>临床锚定</strong>：明知道明天有考试，脑子里却全是“我肯定不及格”——M2-DSP-B反刍。</p></blockquote>
+\[
+\frac{dR}{dt}=\beta\,(R_{\max}-R)-\gamma\,A(t)\,R
+\]
 
-<p><strong>核心子维度</strong>：</p>
+<p>\(R\) 是资源水平，\(R_{\max}\) 是上限，\(\beta\) 是恢复速率，\(\gamma\) 是消耗速率，\(A(t)\) 是活动强度。恢复不对称体现为 \(\gamma>\beta\)：消耗快于恢复，偏离基线后需要更长时间回到原位。资源低于阈值时，消耗项会被阶梯放大，形成阈值触发效应。资源方程适用于 RES-D；RES-B 的变化更慢，通常由长期结构、经验与环境支持共同决定，不能用一次性补给直接恢复。</p>
+
+<p>调度方程描述前台与后台的竞争。临床常用的阈值形式是：</p>
+
+\[
+F_{\text{active}}=\mathbf{1}\left[(\text{Novelty}+\text{Conflict}>\theta_{\text{switch}})\land(R_{\text{res}}>\theta_{\text{res}})\right]
+\]
+
+<p>\(\theta_{\text{switch}}\) 是切换阈值，\(\theta_{\text{res}}\) 是资源门槛。资源高于门槛且冲突足够大时，前台接管；资源跌破门槛时，前台被迫让出控制权，后台自动过程自由运行。后台劫持的典型表现是反刍、情绪劫持与习惯失控。仿真中常用平滑函数近似指示函数，避免离散切换带来的数值不稳定。</p>
+
+<p>结构方程描述慢变量的更新。连接权重的赫布式更新写成：</p>
+
+\[
+\frac{dW_{ij}}{dt}=\eta_c\,(x_i x_j-\lambda W_{ij})\,g(\text{arousal})
+\]
+
+<p>\(x_i,x_j\) 是节点激活，\(\eta_c\) 是学习率，\(\lambda\) 是遗忘项，\(g\) 是唤醒调制。结构改变需要经过三个窗口：去稳定化、修改、巩固。去稳定化打开塑性窗口，修改在窗口内完成，巩固需要时间且不能被反复干扰。结构改变还受能量约束：资源低于阈值时，深度结构干预无法充分执行。这一约束把资源方程与结构方程耦合起来。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>干预接口</th>
-</tr></thead>
+<thead>
+<tr><th>轴</th><th>方程核心</th><th>关键参数</th><th>时间尺度</th><th>证据地位</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>M2-RES-D</td>
-<td>当前认知资源（注意带宽、工作记忆）</td>
-<td>MODULATE+（认知休息）</td>
-</tr>
-<tr>
-<td>M2-RES-B</td>
-<td>长期知识库（晶体智力）</td>
-<td>结构性建设</td>
-</tr>
-<tr>
-<td>M2-DSP-F</td>
-<td>受控推理、逻辑分析</td>
-<td>GATE+</td>
-</tr>
-<tr>
-<td>M2-DSP-B</td>
-<td>自动化联想、心智游移</td>
-<td>GATE–（正念打断）</td>
-</tr>
-<tr>
-<td>M2-STR-R</td>
-<td>认知规则与信念</td>
-<td>ALIGN（认知重构）</td>
-</tr>
-<tr>
-<td>M2-STR-C</td>
-<td>语义联想网络</td>
-<td>RELINK（间接）</td>
-</tr>
-<tr>
-<td>M2-STR-S</td>
-<td>认知程序（问题解决脚本）</td>
-<td>GATE（反复训练）</td>
-</tr>
+<tr><td>资源</td><td>恢复项减消耗项，阈值处阶梯放大</td><td>恢复速率、消耗速率、资源上限、阈值</td><td>小时至天</td><td>形式为理论假设，参数待校准</td></tr>
+<tr><td>调度</td><td>前台与后台竞争，阈值切换</td><td>切换阈值、资源门槛、交叉抑制系数</td><td>秒至时</td><td>形式为理论假设，阈值待校准</td></tr>
+<tr><td>结构</td><td>学习率乘以共激活减遗忘，受唤醒调制</td><td>学习率、遗忘率、屈服阈值、塑性窗口</td><td>周至月</td><td>形式为理论假设，窗口待校准</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>典型失调</strong>：工作记忆容量下降（M2-RES-D↓）、闯入性反刍（M2-DSP-B失控）、僵化规则（M2-STR-R扭曲）。</p>
+<p>三轴方程的参数不是凭空设定。参数来源链分为四段：坐标定义说明参数在哪个维度上；仿真生成先验取值范围；观测提供真实世界证据；贝叶斯更新把先验与似然合成后验。参数数值属于动力学层，坐标系不给出数值，也不因为数值不符合预期而修改坐标。</p>
 
-<p><strong>测量候选</strong>：n-back任务、Stroop、自动思维问卷（A类）。</p>
+<p>方程形式本身也有不确定性。资源方程可以是指数衰减，也可以是幂律、双指数或带记忆项；调度方程可以是阈值模型，也可以是竞争模型；结构方程可以是赫布式，也可以是预测误差驱动。模型选择子层用贝叶斯模型平均把多个候选方程按后验权重加权，避免把单一函数形式当作唯一真理。</p>
 
-<hr class="section-divider">
+<h2>7.4 级联与拓扑：D 矩阵、级联路径</h2>
 
-<h2>7.4 M3意志：目标选择、执行控制与价值</h2>
+<p>模块之间不是孤岛。依赖矩阵 \(D\) 是 6×6 有向加权方阵，行表示影响源，列表示受影响模块，元素 \(D[i][j]\) 表示模块 i 对模块 j 的影响强度。矩阵的结构性质属于坐标系：它存在、有向、加权、带枢纽。边强度的具体数值属于动力学参数，由结构机制库持有与校准。</p>
 
-<p><strong>功能定义</strong>。M3是心理系统的中央调度器。它负责：在多目标间进行优先级排序和资源分配；启动、维持或终止目标导向行为（意志力）；抑制与当前目标冲突的冲动或习惯；在不确定情境下做出承诺性决策。</p>
+<p>枢纽分析使用三类中心性。出度衡量一个模块影响他人的广度，入度衡量它受他人影响的广度，介数中心性衡量它在级联路径中出现的频率。跨诊断研究中，M4 情绪模块的出度与入度之和最高，M3 意志次之。M4 因此是最强枢纽：它的失调最容易沿依赖网络扩散。</p>
 
-<blockquote><p><strong>临床锚定</strong>：明明知道重要，就是启动不了——M3-RES-D耗竭或M3-DSP-F失灵。</p></blockquote>
-
-<p><strong>核心子维度</strong>：</p>
+<p>级联不是简单的线性传播。它沿三条结构机制展开：资源供给受限、调度控制降级、结构性错误归因。资源供给受限从 M1 向 M3、M2 传导；调度控制降级从 M3 向 M6、M4、M2 传导；结构性错误归因从 M4 或 M6 经 M2 向 M5 传导。三条机制是功能层推导的典型路径，不穷尽所有可能的传导方式。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>干预接口</th>
-</tr></thead>
+<thead>
+<tr><th>级联模式</th><th>典型路径</th><th>最高杠杆靶点</th><th>首选操作</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>M3-RES-D</td>
-<td>当前意志资源（自我控制能量）</td>
-<td>MODULATE+（休息、任务分段）</td>
-</tr>
-<tr>
-<td>M3-RES-B</td>
-<td>长期意志韧性</td>
-<td>结构性建设</td>
-</tr>
-<tr>
-<td>M3-DSP-F</td>
-<td>前景执行控制（抑制、切换）</td>
-<td>GATE+</td>
-</tr>
-<tr>
-<td>M3-DSP-B</td>
-<td>自动放弃倾向（C类预测性子单元）</td>
-<td>GATE–（间接）</td>
-</tr>
-<tr>
-<td>M3-STR-R</td>
-<td>价值与决策规则</td>
-<td>ALIGN（价值观澄清）</td>
-</tr>
-<tr>
-<td>M3-STR-C</td>
-<td>目标-行动-自我连接</td>
-<td>RELINK</td>
-</tr>
-<tr>
-<td>M3-STR-S</td>
-<td>自我管理程序（拖延脚本）</td>
-<td>GATE（行为排练）</td>
-</tr>
+<tr><td>资源崩溃型</td><td>M1-RES-D 下降 → M3-RES-D 下降 → M3-DSP-F 失效 → M6-DSP-B 上升</td><td>M1-RES-D</td><td>MODULATE+</td></tr>
+<tr><td>情绪驱动型</td><td>M4-STR-C 激活 → M4-DSP-B 上升 → M3-RES-D 下降 → M2-DSP-B 上升</td><td>M4-STR-C 或 M4-DSP-B</td><td>RELINK 或 GATE−</td></tr>
+<tr><td>习惯固化型</td><td>环境触发 → M6-DSP-B 重复 → M6-STR-S 巩固 → M3-DSP-F 门控失效</td><td>环境触发或 M6-DSP-B</td><td>GATE− 加 GATE+ 替代</td></tr>
+<tr><td>规则扭曲型</td><td>M2-STR-R 错误规则 → M4-STR-R 扭曲 → M4-DSP-B 上升 → 回避</td><td>M2-STR-R</td><td>ALIGN</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>典型失调</strong>：拖延（M3-DSP-F启动困难）、决策疲劳（M3-RES-D耗竭）、习得性无助（M3-DSP-B被动放弃固化）。</p>
+<p>级联路径的工程用途是定位杠杆点。最高杠杆点不一定是病因源，而是阻断扩散最有效的节点。资源崩溃型的杠杆点在 M1-RES-D，因为它是整条链路的上游供给；情绪驱动型的杠杆点可能在 M4-STR-C，也可能在 M4-DSP-B，取决于连接权重与当前激活水平；习惯固化型的杠杆点在环境触发与替代行为两端；规则扭曲型的杠杆点在规则层，因为规则持续生成下游的解释与反应。</p>
 
-<p><strong>测量候选</strong>：自我控制量表、Stroop任务、主观疲劳量表（A类）；M3-DSP-B为C类。</p>
+<p>正反馈回路是级联的特殊形式。回路增益大于 1 时，扰动会自我放大而不是衰减。反刍—失眠—情绪脆弱是一个典型回路：M2-DSP-B 上升削弱 M1-STR-S，睡眠节律紊乱导致 M1-RES-D 下降，资源下降削弱 M4-RES-D，情绪容限下降又推高 M4-DSP-B，M4-DSP-B 反过来推高 M2-DSP-B。打断回路中任一条高权重边都能降低增益，工程上优先选择权重最高且最容易操作的边。</p>
 
-<p><strong>实证节点警告</strong>：M3-RES-D是INTRE框架最脆弱的实证节点（“阿喀琉斯之踵”）。若三通道收敛效度研究证伪其独立存在性，将连锁影响RES-D跨模块统一性及MODULATE操作靶点，但框架其他部分仍可能成立。</p>
+<p>级联分析依赖拓扑，但拓扑不是命运。同一张依赖矩阵在不同参数、不同环境、不同初始状态下会产生不同路径。高枢纽节点在一种状态下是杠杆点，在另一种状态下可能已经被代偿机制绕过。级联路径必须与状态估计和参数校准一起使用，不能只看矩阵结构就下结论。</p>
 
-<hr class="section-divider">
+<h2>7.5 与 L3 的分工</h2>
 
-<h2>7.5 M4情绪：威胁评估、奖赏与动机</h2>
-
-<p><strong>功能定义</strong>。M4是心理系统的价值评估中心与动机引擎。它负责：对内外刺激进行快速的情感标记（好/坏、安全/危险）；生成动机信号（趋近/回避）；调节情绪反应的强度和持续时间。</p>
-
-<blockquote><p><strong>临床锚定</strong>：一听到关门声就心慌——M4-DSP-B条件化恐惧。</p></blockquote>
-
-<p><strong>核心子维度</strong>：</p>
+<p>环境参照系与动力学层分工明确。环境参照系定义“环境长什么样”：六层来源、P 层命名、作用方向、负荷指数的语义与结构性质。动力学层定义“环境如何进入方程”：驱动项的分量分解、方程形式、参数取值、模型选择与预测轨迹。前者是命名空间，后者是计算实现。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>干预接口</th>
-</tr></thead>
+<thead>
+<tr><th>内容</th><th>环境参照系</th><th>动力学层</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>M4-RES-D</td>
-<td>当前情绪容限</td>
-<td>MODULATE+（情绪调节技能）</td>
-</tr>
-<tr>
-<td>M4-RES-B</td>
-<td>长期情绪安全基底（依恋安全感）</td>
-<td>RELINK（间接建设）</td>
-</tr>
-<tr>
-<td>M4-DSP-F</td>
-<td>前景情绪调节（重评、标签化）</td>
-<td>GATE+</td>
-</tr>
-<tr>
-<td>M4-DSP-B</td>
-<td>自动情绪激活（恐惧、情绪传染）</td>
-<td>GATE–（暴露、正念）</td>
-</tr>
-<tr>
-<td>M4-STR-R</td>
-<td>情绪评价规则</td>
-<td>ALIGN</td>
-</tr>
-<tr>
-<td>M4-STR-C</td>
-<td>情绪连接网络（创伤连接、依恋模式）</td>
-<td>RELINK</td>
-</tr>
-<tr>
-<td>M4-STR-S</td>
-<td>情绪应对程序（回避-压抑脚本）</td>
-<td>GATE</td>
-</tr>
+<tr><td>环境来源分类</td><td>定义六层来源与互斥依据</td><td>不重新定义来源</td></tr>
+<tr><td>环境影响模式</td><td>定义 P 层命名与方向</td><td>把模式转成驱动项分量</td></tr>
+<tr><td>环境负荷</td><td>定义负荷指数的语义与分层</td><td>给出数值、阈值与分布</td></tr>
+<tr><td>驱动项 E(t)</td><td>提供坐标依据与合法性</td><td>构造慢变、中变、快变分量</td></tr>
+<tr><td>方程与参数</td><td>不涉及</td><td>方程形式、参数校准、模型平均</td></tr>
+<tr><td>预测与级联</td><td>提供环境侧约束</td><td>给出未来分布、级联路径、风险时点</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>典型失调</strong>：焦虑障碍（M4-DSP-B过度激活）、抑郁症（M4-RES-D枯竭）、PTSD（M4-STR-C异常高权重）。</p>
+<p>分工的边界由修订条件固定。环境参照系的修订是架构级的，只有出现无法归入六层的新环境且满足稳定、不可归约、增量预测、非操作化不足四项条件时才触发。动力学参数的修订是数据驱动的，新观测可以更新参数后验，但不能因为参数异常就改写环境分类。两类修订的节奏不同，混在一起会让分类被短期数据牵着走，也会让参数失去稳定的坐标锚点。</p>
 
-<p><strong>测量候选</strong>：情绪Stroop、皮肤电导、情绪调节问卷（A类）。</p>
-
-<hr class="section-divider">
-
-<h2>7.6 M5言语：符号化、叙事与社会沟通</h2>
-
-<p><strong>功能定义</strong>。M5是心理系统的符号接口与社会协调器。它负责：将内部状态编码为可共享的符号；接收和解析他人发出的符号信息；构建和维持自我叙事；进行内在独白和言语思维。</p>
-
-<blockquote><p><strong>临床锚定</strong>：心里乱糟糟的，但说不出来——M5-STR-C情感-语言映射断裂。</p></blockquote>
-
-<p><strong>核心子维度</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>干预接口</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>M5-RES-D</td>
-<td>当前叙事整合资源</td>
-<td>MODULATE+（叙事写作）</td>
-</tr>
-<tr>
-<td>M5-RES-B</td>
-<td>长期叙事资本（身份连贯性）</td>
-<td>结构性建设</td>
-</tr>
-<tr>
-<td>M5-DSP-F</td>
-<td>前景叙事加工（有意识讲述）</td>
-<td>GATE+</td>
-</tr>
-<tr>
-<td>M5-DSP-B</td>
-<td>内在独白、自动叙事流</td>
-<td>GATE–</td>
-</tr>
-<tr>
-<td>M5-STR-R</td>
-<td>叙事规则与身份框架</td>
-<td>ALIGN（叙事重构）</td>
-</tr>
-<tr>
-<td>M5-STR-C</td>
-<td>事件-意义连接网络</td>
-<td>RELINK</td>
-</tr>
-<tr>
-<td>M5-STR-S</td>
-<td>人际语言脚本</td>
-<td>GATE（角色扮演）</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>典型失调</strong>：失语症（M5表达障碍）、述情障碍（M5-STR-C映射断裂）、自我叙事碎片化。</p>
-
-<p><strong>测量候选</strong>：叙事连贯性评分、语言流畅性任务（B类）。</p>
-
-<hr class="section-divider">
-
-<h2>7.7 M6行为：动作序列、习惯与技能执行</h2>
-
-<p><strong>功能定义</strong>。M6是心理系统的执行终端。它负责：将意志决策和情绪驱动力转化为外显的动作输出；通过重复练习将行为序列固化为习惯和技能；在习惯与目标导向控制之间切换。</p>
-
-<blockquote><p><strong>临床锚定</strong>：不知不觉又刷了2小时手机——M6-DSP-B习惯自动化。</p></blockquote>
-
-<p><strong>核心子维度</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>子维度</th>
-<th>功能定义</th>
-<th>干预接口</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>M6-RES-D</td>
-<td>当前行为启动能量（C类预测性子单元）</td>
-<td>MODULATE+（微动作预热）</td>
-</tr>
-<tr>
-<td>M6-RES-B</td>
-<td>长期行为可执行基底</td>
-<td>结构性建设</td>
-</tr>
-<tr>
-<td>M6-DSP-F</td>
-<td>前景行为调度（目标动作）</td>
-<td>GATE+（行为激活）</td>
-</tr>
-<tr>
-<td>M6-DSP-B</td>
-<td>习惯性行为、自动化回避</td>
-<td>GATE–（刺激控制）</td>
-</tr>
-<tr>
-<td>M6-STR-R</td>
-<td>行为规则与执行准则</td>
-<td>ALIGN</td>
-</tr>
-<tr>
-<td>M6-STR-C</td>
-<td>行为-情境触发网络</td>
-<td>RELINK</td>
-</tr>
-<tr>
-<td>M6-STR-S</td>
-<td>习惯脚本、动作序列</td>
-<td>GATE（反复训练）</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>典型失调</strong>：启动困难（M6-RES-D↓）、习惯成瘾（M6-DSP-B过度支配）、行为僵化。</p>
-
-<p><strong>测量候选</strong>：行为日志、加速度计数（B类）；M6-RES-D为C类。</p>
-
-<hr class="section-divider">
-
-<h2>7.8 耦合机制：模块间三类约束关系</h2>
-
-<p>六个模块并非孤立运行。它们通过三类核心机制相互耦合，形成级联效应。</p>
-
-<p><strong>第一类耦合：资源供给阻断</strong>。M1-RES-D的下降会通过供给关系影响M3-RES-D和M2-RES-D。例如，睡眠不足(M1-RES-D↓)导致意志力下降(M3-RES-D↓)和注意涣散(M2-RES-D↓)。</p>
-
-<p><strong>第二类耦合：调度权限降级</strong>。当M3-RES-D低于阈值时，M3-DSP-F失效，调度权限降级给M6-DSP-B和M4-DSP-B。这导致了“明知不该做却停不下来”的现象。</p>
-
-<p><strong>第三类耦合：结构约束</strong>。STR层的结构参数对调度层和资源层施加约束。例如，M2-STR-R中的完美主义规则会增加M3-RES-D的消耗速率。</p>
-
-<p><strong>级联路径示例（拖延行为逆向追溯）</strong>：</p>
-<pre><code class="language-text">M6-DSP-B（刷手机）→ M4-DSP-B（任务焦虑触发）→ M4-STR-C（任务-威胁连接）
-→ M2-STR-R（完美主义规则）→ M3-RES-D耗竭 → M1-RES-D不足（睡眠不足）</code></pre>
-<p>每向上追溯一层，就获得一个潜在干预靶点——行为激活(M6)、暴露(M4)、认知重构(M2)、睡眠锚定(M1)。</p>
-
-<p><strong>枢纽模块识别</strong>。在依赖矩阵中，M4（情绪模块）的出度和入度均较高——M4→M3（情绪消耗意志力）、M4→M6（恐惧驱动回避）、M2→M4（认知触发情绪）、M1→M4（能量基底影响情绪容限）。在焦虑和抑郁谱系中，M4通常具有最高的枢纽度，是级联传播的核心节点。这意味着，在复杂病例中，稳定M4可能是中断级联扩散的关键杠杆点。</p>
-
-<hr class="section-divider">
-
-<h2>7.9 边界模糊：计算不可约性与工程管理</h2>
-
-<p><strong>观察到的边界模糊</strong>。M1-M6的模块边界在边缘案例中存在模糊：内部言语同时具有M5的符号化属性和M2的推理属性；情绪生理唤醒既属于M1的能量代谢，也是M4情绪自动激活的产物；习惯性回避既是M6的行为序列，也携带M4的情感连接。</p>
-
-<p><strong>理论基础：计算不可约性</strong>。在一个计算不可约的系统中，不存在一组有限、互斥、完备的功能类别，使得每个心理过程可被唯一归入其中且不丢失信息。心理系统满足计算不可约系统的全部特征：极高自由度、非线性耦合、混沌动力学、历史与学习依赖。</p>
-
-<p><strong>INTRE的工程管理机制</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>机制</th>
-<th>作用</th>
-<th>示例</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>局部映射协议</td>
-<td>允许一个构念有多个落点</td>
-<td>“内部言语”主映射M5-DSP-B，次映射M2-DSP-B</td>
-</tr>
-<tr>
-<td>可信度分级</td>
-<td>将不确定性显式化</td>
-<td>M6-RES-D映射可信度7/10</td>
-</tr>
-<tr>
-<td>边界注释</td>
-<td>主动告知“在哪里会失真”</td>
-<td>“不含惊恐发作的躯体崩溃”</td>
-</tr>
-<tr>
-<td>功能解耦</td>
-<td>将复合现象分解为子单元组合</td>
-<td>“拖延”分解为M6-RES-D、M3-STR-R、M4-DSP-B</td>
-</tr>
-<tr>
-<td>闭环演化</td>
-<td>允许映射在偏差累积后修正</td>
-<td>M4-RES-B从单点映射修正为组合映射（见第24章）</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>科学姿态的转变</strong>：INTRE的边界模糊管理标志着心理学从“追求虚幻的绝对精确”转向“在认知极限内逼近有用模型”的成熟科学姿态。边界模糊不是需要被修复的bug，而是需要被接受并管理的feature。</p>
-
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：六模块(M1-M6)是对人类心智功能层的工程化分解，依据进化必需性和否定性特异崩溃论证。M1提供能量基底，M2构建世界模型，M3执行意志控制，M4生成价值评估，M5提供符号化接口，M6执行行为序列。每个模块在R-D-S三维上投射出具体的子单元，各有典型失调模式和G-M-A-R干预接口。模块间通过资源供给阻断、调度权限降级和结构约束三类机制相互耦合，形成可追踪的级联路径。枢纽模块（如M4）的识别为复杂病例的干预杠杆点选择提供了理论依据。边界模糊通过计算不可约性论证被确认为不可消除的固有属性，INTRE通过工程机制对其进行管理而非徒劳地追求绝对精确。</p>
-
-<blockquote><p><strong>关键术语</strong>：M1-M6，否定性特异崩溃，依赖矩阵，枢纽节点，级联效应，功能接口，计算不可约性</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “M1-M6必须满足福多模块论的信息封装标准” → ✅ INTRE的模块是工程学导向的<strong>功能接口</strong>，接受模块间的高交互性并将其作为可追踪、可干预的耦合路径。<br>- ❌ “边界模糊是设计缺陷” → ✅ 边界模糊是计算不可约系统的固有属性，INTRE通过局部映射协议等机制进行管理而非消除。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 什么是否定性特异崩溃论证？用它来为M3（意志模块）的独立性辩护。<br>2. 内部言语同时涉及M2和M5，这是否证伪了模块划分的互斥性？请运用边界模糊的必然性论述回应。<br>3. 福多论证了中央系统的不可模块化性。INTRE以功能接口重新定义模块，你认为这是诚实的工程策略还是回避了福多挑战的核心？</p></blockquote>
-
-</main>
+<p>总览层面包含环境六层、驱动三分量、三轴方程、依赖矩阵与级联路径。方程的具体形式、参数取值、模型选择、预测算法与风险时点计算属于动力学层的细节，放在第 17 章展开。掌握总览的作用是建立方向感：知道环境从哪里进入、状态沿哪条轴变化、扰动沿哪条路径扩散，再进入细节时就不会把局部方程误当成整体架构。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch06.html" class="nav-link prev">‹ 状态维度</a>
-<a href="ch08.html" class="nav-link next">状态向量 ›</a></div>
+        <div class="chapter-nav"><a href="ch06.html" class="nav-link prev">‹ 观测与测量</a>
+<a href="ch08.html" class="nav-link next">G-M-A-R 四类操作算子 ›</a></div>
     </div>
 
     <footer>
@@ -598,7 +257,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

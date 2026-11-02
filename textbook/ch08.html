@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第8章 状态向量：42维表示与动力学 · INTRE 导论教材</title>
-    <meta name="description" content="在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。">
-    <meta property="og:title" content="第8章 状态向量：42维表示与动力学">
-    <meta property="og:description" content="在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。">
+    <title>第8章 G-M-A-R 四类操作算子 · INTRE 导论教材</title>
+    <meta name="description" content="GATE、MODULATE、ALIGN、RELINK 的定义、靶点合法性、不可替代性与组合规则。">
+    <meta property="og:title" content="第8章 G-M-A-R 四类操作算子">
+    <meta property="og:description" content="GATE、MODULATE、ALIGN、RELINK 的定义、靶点合法性、不可替代性与组合规则。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch08.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch08.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第8章 状态向量：42维表示与动力学">
-    <meta name="twitter:description" content="在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。">
+    <meta name="twitter:title" content="第8章 G-M-A-R 四类操作算子">
+    <meta name="twitter:description" content="GATE、MODULATE、ALIGN、RELINK 的定义、靶点合法性、不可替代性与组合规则。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,541 +69,171 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第8章 状态向量：42维表示与动力学</h1>
+<h1 class="chapter-title">第8章 G-M-A-R 四类操作算子</h1>
 
+<blockquote>
+<p><strong>学习目标</strong>：</p>
+<p>1. 说明四类操作算子的定义与作用方向。</p>
+<p>2. 用靶点合法性矩阵判断操作是否合法。</p>
+<p>3. 理解双分离与替代测试如何证明不可替代性。</p>
+<p>4. 掌握组合、嵌套与交互的编码规则。</p>
+<p>5. 识别五类常见误用并给出正确分解。</p>
+</blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述42维状态向量的构成并区分各分量的时间尺度；(2)解释状态空间几何性质；(3)理解微分方程框架的一般形式；(4)陈述恢复不对称动力学假设及其临床意义；(5)描述S-P外部架构的六层环境来源与P-层模式编码；(6)了解多模态融合中神经似然的来源。</p></blockquote>
+<p>诊断语法回答“系统现在是什么状态”，操作语法回答“能对这个状态做什么”。G-M-A-R 把干预拆成四类原子算子：门控、调制、校准、重联。四类算子各自作用于不同层级的属性，合起来覆盖功能层的可干预空间。原子性不是说现实技术不可再分，而是说在功能层分析中，每类算子有一个相对独立的主靶点。</p>
 
-<hr class="section-divider">
+<h2>8.1 四个算子：GATE / MODULATE / ALIGN / RELINK</h2>
 
-<h2>8.1 完整列表：42子维度的符号与定义</h2>
+<p>GATE 是门控，作用于调度层与序列层的激活面，负责启动、抑制或切换某个心理过程。它只改变过程“是否被触发”，不改变过程内容、资源水平或连接权重。GATE+ 降低激活阈值，使目标过程更容易启动；GATE− 提高激活阈值，使非期望过程更难被触发。</p>
 
-<p>在M-R-D-S框架下，心理系统的任意时刻状态可以被表示为一个高维向量。该向量由六个功能模块(M1-M6)与七个状态子维度(RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S)的笛卡尔积构成，共计42个分量。每个分量代表某一特定功能模块在某一特定状态维度上的取值（通常归一化到0-100区间或-1到+1区间，视维度性质而定）。</p>
+<p>MODULATE 是调制，作用于资源层，通过注入或节约能量改变资源存量。它的直接合法靶点是 RES-D。MODULATE+ 补充资源，如睡眠恢复 M1-RES-D、休息恢复 M3-RES-D；MODULATE− 安全释放过剩能量或降低过度唤醒，如运动释放焦虑能量、放松训练降低交感激活。</p>
 
-<p><strong>42维状态向量的数学表示</strong>：</p>
+<p>ALIGN 是校准，作用于规则结构，改写错误的、不合理的信念或决策算法。它校准规则内容、评估标准与解释模型，不改变进程开关、资源水平或连接权重。校准通过证据检验、提问、行为实验等路径实现。</p>
 
-$$
-\Psi(t) = \begin{pmatrix}
-\psi_{1,RES-D}(t) \\ \psi_{1,RES-B}(t) \\ \psi_{1,DSP-F}(t) \\ \psi_{1,DSP-B}(t) \\ \psi_{1,STR-R}(t) \\ \psi_{1,STR-C}(t) \\ \psi_{1,STR-S}(t) \\
-\psi_{2,RES-D}(t) \\ \vdots \\ \psi_{6,STR-S}(t)
-\end{pmatrix}
-$$
-
-<p><strong>各分量的功能定义速查表</strong>（完整操作化定义见附录A）：</p>
+<p>RELINK 是重联，作用于连接结构，解除病态绑定或建立新的价值连接。它重组连接网络，修改关联模式、连接强度与意义绑定。实现路径包括体验式学习、矫正性情感体验、暴露与反应阻止、依恋关系修复。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>模块</th>
-<th>子维度</th>
-<th>符号</th>
-<th>功能定义（简）</th>
-<th>时间尺度</th>
-</tr></thead>
+<thead>
+<tr><th>算子</th><th>中文名</th><th>主靶点</th><th>核心问题</th><th>正向变体</th><th>负向变体</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**M1**</td>
-<td>RES-D</td>
-<td>M1-RES-D</td>
-<td>当前生理能量（精力）</td>
-<td>小时-天</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M1-RES-B</td>
-<td>长期健康根基</td>
-<td>月-年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M1-DSP-F</td>
-<td>主动生理调节（如深呼吸）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M1-DSP-B</td>
-<td>自主神经活动（HRV等）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M1-STR-S</td>
-<td>生理节律脚本（睡眠-觉醒）</td>
-<td>天</td>
-</tr>
-<tr>
-<td>**M2**</td>
-<td>RES-D</td>
-<td>M2-RES-D</td>
-<td>注意带宽/工作记忆容量</td>
-<td>分-小时</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M2-RES-B</td>
-<td>长期知识库/晶体智力</td>
-<td>年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M2-DSP-F</td>
-<td>受控推理/分析思维</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M2-DSP-B</td>
-<td>自动化联想/心智游移</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-R</td>
-<td>M2-STR-R</td>
-<td>信念规则/图式</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-C</td>
-<td>M2-STR-C</td>
-<td>语义联想网络权重</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M2-STR-S</td>
-<td>认知程序/问题解决脚本</td>
-<td>混合</td>
-</tr>
-<tr>
-<td>**M3**</td>
-<td>RES-D</td>
-<td>M3-RES-D</td>
-<td>当前意志资源（自我控制能量）</td>
-<td>小时-天</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M3-RES-B</td>
-<td>长期意志韧性</td>
-<td>月-年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M3-DSP-F</td>
-<td>前景执行控制（抑制/切换）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M3-DSP-B</td>
-<td>背景意志调度（放弃倾向）</td>
-<td>混合</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-R</td>
-<td>M3-STR-R</td>
-<td>价值规则/决策优先级</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-C</td>
-<td>M3-STR-C</td>
-<td>目标-行动-自我连接</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M3-STR-S</td>
-<td>自我管理程序（如拖延脚本）</td>
-<td>混合</td>
-</tr>
-<tr>
-<td>**M4**</td>
-<td>RES-D</td>
-<td>M4-RES-D</td>
-<td>当前情绪容限</td>
-<td>小时-天</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M4-RES-B</td>
-<td>长期安全感/依恋安全</td>
-<td>月-年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M4-DSP-F</td>
-<td>前景情绪调节（重评等）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M4-DSP-B</td>
-<td>自动情绪激活（恐惧等）</td>
-<td>秒</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-R</td>
-<td>M4-STR-R</td>
-<td>情绪评价规则</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-C</td>
-<td>M4-STR-C</td>
-<td>情绪联想网络（如创伤连接）</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M4-STR-S</td>
-<td>情绪应对程序（回避-压抑链）</td>
-<td>混合</td>
-</tr>
-<tr>
-<td>**M5**</td>
-<td>RES-D</td>
-<td>M5-RES-D</td>
-<td>当前叙事整合资源</td>
-<td>小时-天</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M5-RES-B</td>
-<td>长期叙事资本/身份连贯性</td>
-<td>月-年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M5-DSP-F</td>
-<td>前景叙事加工（有意识讲述）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M5-DSP-B</td>
-<td>内在独白/自动叙事流</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-R</td>
-<td>M5-STR-R</td>
-<td>身份叙事规则/语法规则</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-C</td>
-<td>M5-STR-C</td>
-<td>事件-意义连接网络</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M5-STR-S</td>
-<td>人际语言脚本（请求/争辩）</td>
-<td>混合</td>
-</tr>
-<tr>
-<td>**M6**</td>
-<td>RES-D</td>
-<td>M6-RES-D</td>
-<td>当前行为启动能量</td>
-<td>分-小时</td>
-</tr>
-<tr>
-<td></td>
-<td>RES-B</td>
-<td>M6-RES-B</td>
-<td>长期行为可执行基底</td>
-<td>月-年</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-F</td>
-<td>M6-DSP-F</td>
-<td>前景行为调度（目标动作）</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>DSP-B</td>
-<td>M6-DSP-B</td>
-<td>习惯/自动化行为</td>
-<td>秒-分</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-R</td>
-<td>M6-STR-R</td>
-<td>行为规则/执行准则</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-C</td>
-<td>M6-STR-C</td>
-<td>行为-情境触发网络</td>
-<td>慢变量</td>
-</tr>
-<tr>
-<td></td>
-<td>STR-S</td>
-<td>M6-STR-S</td>
-<td>习惯脚本/动作序列</td>
-<td>混合</td>
-</tr>
+<tr><td>GATE</td><td>门控</td><td>DSP 与 STR-S 激活面</td><td>过程是否被触发</td><td>GATE+ 启动或促进</td><td>GATE− 抑制或阻断</td></tr>
+<tr><td>MODULATE</td><td>调制</td><td>RES-D</td><td>资源存量是否充足</td><td>MODULATE+ 补充</td><td>MODULATE− 释放或降低</td></tr>
+<tr><td>ALIGN</td><td>校准</td><td>STR-R</td><td>规则内容是否正确</td><td>改写、校正规则</td><td>限制过强规则的作用范围</td></tr>
+<tr><td>RELINK</td><td>重联</td><td>STR-C</td><td>连接是否过强或断裂</td><td>建立新连接</td><td>解除病态绑定</td></tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>注</strong>：M1的STR-R和STR-C当前为理论空位（待后续细化）。STR-C在简化表示中可投影为平均连接强度（标量），STR-S可投影为序列僵化程度评分。完整表示保留矩阵或序列结构用于高精度仿真。</p></blockquote>
+<p>四类算子是基质中性的。同一套语法既可由外部治疗师施加，也可由系统自身执行。外源与内源是作用方向的二分，不是两套独立机制。外源操作有独立的操作者与观测参照，内源操作的操作者与被操作者同一，缺少独立观测参照，因此不在当前坐标系的测量范围内，登记为边界外现象，由其他模块承接。</p>
 
-<p><strong>42维的必要性</strong>：降维测试表明，在已测试的合并方案中，将模块合并（如将M1、M3、M4的资源层合并）或子维度合并（如将STR-R/C/S合并）的简化框架均导致了关键功能区分的丢失。例如，将M3-RES-D与M4-RES-D合并为单一“心理能量”，就无法解释为什么休息可以恢复意志资源但未必能恢复安全感。</p>
+<p>算子与日常技术不是一一对应。一个技术可能同时包含多类算子，例如暴露疗法既包含 GATE− 抑制回避，也包含 RELINK 建立新的安全连接。语法的作用是拆解技术的作用机制，不是给技术贴单一标签。</p>
 
-<hr class="section-divider">
+<h2>8.2 靶点合法性矩阵</h2>
 
-<h2>8.2 几何解释：正交轴、可行子空间与吸引子</h2>
-
-<p>42维状态向量\(\Psi(t)\)位于高维空间\(\mathbb{R}^{42}\)的子集中。该状态空间具有几个重要的几何性质。</p>
-
-<p><strong>正交轴假设</strong>。R、D、S三个维度被假设为<strong>功能正交</strong>——它们描述的是心理系统中不同类型的属性，在概念上相互独立。“正交性”是在功能定义层面上的概念独立性，不承诺在测量数据中彼此不相关。实际上，由于系统动力学，三个维度在数据中往往呈现相关，但这不违反概念正交性——正如物理学中的位置和动量在概念上正交，但在相空间中通过哈密顿方程耦合。</p>
-
-<p><strong>可行状态子空间</strong>。并非42维空间中的所有点都是心理系统可达的。生理、解剖和动力学约束限制了系统实际能够占据的子空间。例如，M3-RES-D不能高于M1-RES-D的供给上限（资源约束）；M4-DSP-B的过度激活往往伴随着M4-RES-D的消耗。可行状态子空间是一个低维流形，嵌入在42维空间中。PSE仿真的任务之一就是学习这个流形的结构。</p>
-
-<p><strong>高维流形与临床状态</strong>。不同的心理障碍对应状态空间中不同的区域或吸引子：</p>
-<ul>
-<li>重度抑郁（迟滞型）→ 低M3-RES-D + 低M4-RES-D + 低M1-RES-D + M2-STR-R负性偏向</li>
-<li>广泛性焦虑 → 高M4-DSP-B + 高M2-DSP-B + 中等M3-RES-D消耗</li>
-<li>创伤后应激 → M4-STR-C异常高权重 + M4-RES-B低 + M4-DSP-B易触发</li>
-</ul>
-
-<p><strong>状态空间的距离与相似性</strong>。两个状态向量之间的欧氏距离可以定义心理状态的相似性。在实际应用中，通常先对维度进行标准化（z-score），并考虑马氏距离作为欧氏距离的替代方案。</p>
-
-<hr class="section-divider">
-
-<h2>8.3 时间演化：微分方程框架的一般形式</h2>
-
-<blockquote><p><strong>符号约定</strong>：\(\Psi(t)\)表示42维状态向量，\(\psi_i(t)\)表示其第\(i\)个分量；\(\theta\)表示参数向量；\(E(t)\)表示环境输入向量（来自S-P外部架构）；\(u(t)\)表示干预输入向量（来自G-M-A-R操作）。</p></blockquote>
-
-<p>状态向量\(\Psi(t)\)随时间的变化由一组耦合的常微分方程(ODEs)描述。这些方程构成了PSE中心智动力学理论(MKT)的数学核心。</p>
-
-<p><strong>一般形式</strong>：</p>
-
-$$
-\frac{d\psi_i}{dt} = f_i(\Psi(t), E(t), u(t); \theta_i)
-$$
-
-<p><strong>资源动力学（RES-D）</strong>。RES-D分量的典型方程形式为：</p>
-
-$$
-\frac{dR}{dt} = \text{供给}(t) - \alpha \cdot R - \text{消耗率}(\Psi, E)
-$$
-
-<p><strong>简化示例：M3-RES-D的动力学方程</strong></p>
-
-$$
-\frac{dR_{\text{M3}}}{dt} = S_0 - \alpha R_{\text{M3}} - \beta \cdot \text{DSP-F负荷} - \gamma \cdot \text{M4-DSP-B}
-$$
-
-<p>其中\(S_0\)是来自M1-RES-D的供给，\(\alpha\)是基线消耗速率（约0.1-0.2/h），\(\beta\)是执行控制消耗系数，\(\gamma\)是情绪干扰消耗系数。当\(R_{\text{M3}}\)低于阈值\(\theta\)时，DSP-F自动失效，系统降级到DSP-B模式。</p>
-
-<p><strong>恢复不对称动力学假设</strong>：消耗速率通常大于恢复速率，导致资源耗竭比恢复更快。这一不对称性在心理疲劳研究和临床观察中得到支持。（依 Q6 术语决策，原"恢复不对称定律"措辞与框架认识论定位——"动力学假设"而非"自然定律"——不一致而统一。）</p>
-
-<p><strong>调度动力学（DSP-F/B）</strong>。DSP-F和DSP-B之间的切换通常建模为阈值触发模型：</p>
-
-$$
-\text{DSP-F激活} = \begin{cases}
-1, & \text{if } \text{冲突/新异性} > \theta_{\text{novel}} \text{ 且 } \text{RES-D} > \theta_{\text{res}} \\
-0, & \text{otherwise}
-\end{cases}
-$$
-
-<p>当DSP-F因资源枯竭而失效时，DSP-B过程可能“劫持”控制权。</p>
-
-<p><strong>结构动力学（STR）</strong>。STR层分量的变化通常较慢，由学习规则驱动：</p>
-
-<ul>
-<li><strong>STR-C权重更新</strong>（赫布学习）：\(\frac{dW_{ij}}{dt} = \eta \cdot (x_i x_j - \lambda W_{ij})\)</li>
-<li><strong>STR-R规则修正</strong>：\(\frac{dR_r}{dt} = \eta \cdot \text{证据积累} \cdot (\text{信念更新})\)</li>
-<li><strong>STR-S强化</strong>：\(\frac{dS_k}{dt} = \eta \cdot \text{强化信号} \cdot \text{序列执行频率}\)</li>
-</ul>
-
-<p><strong>模块间耦合项</strong>。不同模块的状态分量通过耦合函数相互影响。例如：</p>
-
-$$
-\frac{d \text{M3-RES-D}}{dt} = \text{供给}_{\text{M1→M3}} - \alpha_{\text{M3}} \cdot \text{M3-RES-D} - \beta \cdot \text{M4-DSP-B}
-$$
-
-<p>其中\(\beta\)是耦合系数（从依赖矩阵获得，如M4→M3权重0.75）。</p>
-
-<hr class="section-divider">
-
-<h2>8.4 环境耦合：S-P外部架构与生态位</h2>
-
-<p>状态向量\(\Psi(t)\)的演化不仅依赖于内部动力学，还持续受到外部环境的调制。INTRE通过<strong>S-P外部架构</strong>对环境进行结构化描述。</p>
-
-<p><strong>S-层：环境来源的分类</strong>。S-层借鉴并拓展了布朗芬布伦纳的生态系统理论：</p>
+<p>四类算子与 R-D-S 各子层之间存在严格的靶点合法性。合法性不是建议，而是 L4 规划搜索的硬约束：任何操作序列中的每个算子都必须落在其直接合法靶点集内。矩阵用三种标记：直表示直接合法靶点，间表示可产生间接影响但不作为主靶点，禁表示禁止作为该算子的靶点。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>层级</th>
-<th>名称</th>
-<th>定义</th>
-<th>示例</th>
-</tr></thead>
+<thead>
+<tr><th>算子</th><th>RES-D</th><th>RES-B</th><th>DSP-F</th><th>DSP-B</th><th>STR-R</th><th>STR-C</th><th>STR-S</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>S-微系统</td>
-<td>直接互动环境</td>
-<td>个体直接参与的、有即时双向互动的环境</td>
-<td>家庭、职场团队、治疗关系</td>
-</tr>
-<tr>
-<td>S-中系统</td>
-<td>微系统间关系</td>
-<td>多个微系统之间的互动和协调</td>
-<td>家校沟通、工作-家庭平衡</td>
-</tr>
-<tr>
-<td>S-外系统</td>
-<td>间接影响系统</td>
-<td>个体未直接参与但影响其发展环境</td>
-<td>父母的工作场所政策</td>
-</tr>
-<tr>
-<td>S-宏系统</td>
-<td>文化价值观与意识形态</td>
-<td>广泛的文化、社会、经济条件</td>
-<td>个人主义/集体主义</td>
-</tr>
-<tr>
-<td>S-时间系统</td>
-<td>历史变迁与生命历程</td>
-<td>随时间变化的环境事件</td>
-<td>历史事件、生命转折点</td>
-</tr>
-<tr>
-<td>S-数字系统</td>
-<td>数字与算法环境</td>
-<td>虚拟环境、社交媒体、算法推送</td>
-<td>推荐算法、在线社群</td>
-</tr>
+<tr><td>GATE</td><td>间</td><td>禁</td><td>直</td><td>直</td><td>禁</td><td>禁</td><td>直（限激活面）</td></tr>
+<tr><td>MODULATE</td><td>直</td><td>禁</td><td>间</td><td>间</td><td>禁</td><td>禁</td><td>禁</td></tr>
+<tr><td>ALIGN</td><td>间</td><td>间</td><td>间</td><td>间</td><td>直（含内容面归约）</td><td>禁</td><td>间（限内容面）</td></tr>
+<tr><td>RELINK</td><td>间</td><td>间</td><td>间</td><td>间</td><td>禁</td><td>直</td><td>禁</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>P-层：环境影响的模式</strong>。P-层描述环境输入以何种模式作用于M-R-D-S系统。其命名规则与M-R-D-S可类比：</p>
-
-<ul>
-<li><code>P-M3-RES-D-</code>：环境输入导致意志资源消耗</li>
-<li><code>P-M4-RES-B+</code>：环境输入补充安全感基底</li>
-<li><code>P-M2-DSP-B+</code>：环境输入激活自动化认知过程</li>
-</ul>
-
-<p><strong>S-P与M-R-D-S的耦合</strong>。环境输入通过以下方式进入状态演化方程：</p>
-
-$$
-\frac{d\Psi}{dt} = f_{\text{int}}(\Psi) + f_{\text{ext}}(\Psi, SP(t)) + u(t)
-$$
-
-<p><strong>生态位定义</strong>。个体的<strong>生态位</strong>是其典型S-P环境配置与M-R-D-S基线状态的联合分布。PSE-P为每个主要生态位（如“高压知识工作者”“退休老年人”）维护一组先验参数分布，解决冷启动问题。</p>
-
-<p><strong>环境工程干预</strong>。治疗师可以通过修改S-P架构来间接改变M-R-D-S状态。G-M-A-R四操作不仅适用于个体内部，也适用于环境层的S-P架构调整——同一套语法贯穿个体内部和外部环境。</p>
-
-<hr class="section-divider">
-
-<h2>8.5 多模态融合与神经似然</h2>
-
-<p>PSE（心理系统计算引擎）按六级管线组织（L0 本体 → L1 观测 → L2 状态估计 → L3 动力学 → L4 规划 → L5 执行），其状态估计层（L2）依赖于三个观测端口（L1 感知层）。三个端口及其实现文档为：</p>
+<p>矩阵中有两处需要特别解释。GATE 作用于 STR-S 时，只作用于激活面，即序列实例的运行或停止；若目标是长期程序结构，即步骤序列本身，必须分解为 ALIGN M-STR-R 加 GATE 或训练 M-STR-S。ALIGN 作用于 STR-R，同时接收 STR-S 内容面的归约：修正序列内容本质上是修正生成序列的规则，再由训练固化新序列。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>通道</th>
-<th>观测类型</th>
-<th>PSE 端口（实现文档）</th>
-<th>输出形式</th>
-</tr></thead>
+<thead>
+<tr><th>算子</th><th>直接合法靶点</th><th>间接影响</th><th>禁止或需改写的表述</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**行为通道**</td>
-<td>心理量表、行为任务、EMA</td>
-<td>L1-B 行为端口（01-M-05）</td>
-<td>行为似然 \( p(y_b \mid \Psi) \)</td>
-</tr>
-<tr>
-<td>**语义通道**</td>
-<td>自然语言、临床访谈、叙事</td>
-<td>L1-S 语义端口（01-M-07）</td>
-<td>语义似然 \( p(y_s \mid \Psi) \)</td>
-</tr>
-<tr>
-<td>**神经通道**</td>
-<td>EEG、fNIRS、PPG、可穿戴</td>
-<td>L1-N 神经端口（01-M-06）</td>
-<td>神经似然 \( p(y_n \mid \Psi) \)</td>
-</tr>
+<tr><td>GATE</td><td>DSP-F、DSP-B、STR-S 激活面</td><td>RES-D 消耗速率、STR-S 长期强化或削弱</td><td>GATE STR-R、GATE STR-C；GATE STR-S 须限定激活面</td></tr>
+<tr><td>MODULATE</td><td>RES-D</td><td>DSP 稳定性、短期执行力</td><td>MODULATE RES-B、MODULATE STR</td></tr>
+<tr><td>ALIGN</td><td>STR-R，含 STR-S 内容面归约</td><td>STR-C 的情绪权重、STR-S 的执行选择</td><td>ALIGN STR-C、ALIGN STR-S 激活面</td></tr>
+<tr><td>RELINK</td><td>STR-C</td><td>RES-B 恢复、DSP-B 触发概率</td><td>RELINK STR-R、RELINK STR-S</td></tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>系统边界说明</strong>：UBMP/UPLP/UNIP 不构成对外独立系统，而是 PSE 感知层的三个输入端口——如同雷达/摄像头是自动驾驶系统的组成部分而非独立系统。对外系统边界为 IODS（定义，L0）+ PSE（计算，L1-L5）。</p></blockquote>
+<p>RES-B 不能作为 MODULATE 的直接靶点，是矩阵中最容易被误读的一条。基底资源不是一次性补给的对象，它依赖长期结构、经验、环境支持与重复实践共同建设。睡眠可以补充当天的精力储备，但不能直接补充健康根基；一次积极体验可以提升情绪容限，但不能直接重建安全感。RES-B 的改善只能通过组合操作间接实现。</p>
 
-<p>L2 在每一时间步接收这三个端口的似然，通过贝叶斯更新计算状态后验分布：</p>
+<p>矩阵的合法性来自结构类型匹配。资源是存量，存量的调节必然是数量增减，对应 MODULATE。调度与序列激活是过程通道，过程的控制必然是通断，对应 GATE。规则是算法，算法的修正必然是内容更新，对应 ALIGN。连接是拓扑，拓扑的重组必然是关系重构，对应 RELINK。四类属性不可互相还原，四类算子因此不可互相替代。</p>
 
-$$
-p(\Psi_t \mid y_{b,t}, y_{s,t}, y_{n,t}) \propto p(y_{b,t} \mid \Psi_t) \cdot p(y_{s,t} \mid \Psi_t) \cdot p(y_{n,t} \mid \Psi_t) \cdot p(\Psi_t \mid \Psi_{t-1})
-$$
+<h2>8.3 不可替代性：双分离与替代测试</h2>
 
-<p>其中 \( p(y_n \mid \Psi_t) \) 由 L1-N 端口的实时引擎（RTE）输出。神经信号转换为功能层似然的过程已在第22.5节和第23.5节中详述。</p>
+<p>不可替代性需要两类证据。双分离证明不同算子作用于不同靶点时产生不同效果；替代测试证明用另一类算子替换原算子，目标效果不会出现。两者合起来排除“四类算子只是同一件事的四种说法”。</p>
 
-<p><strong>多模态融合的临床意义</strong>：当三个端口的似然指向同一方向时，状态估计的不确定性显著降低；当它们出现分歧时（如自我报告平静但神经信号显示高唤醒），分歧本身成为诊断信号——可能提示述情障碍、否认或M3-DSP-F/DSP-B失调。L2 不强制融合所有端口，而是在 L1-N 仲裁合约（§24.2）和 L2 内部融合逻辑的共同作用下，决定是否融合、如何加权，以及何时将冲突作为独立诊断证据输出。</p>
+<p>双分离的设计是：在同一靶点上比较两类算子。若目标效果只在一类算子下出现，说明两类算子的作用机制不同。替代测试的设计是：把原算子替换为另一类算子，保持剂量与时长相近，观察目标指标是否仍然改善。若目标指标不再改善，说明原算子的作用不能被替代。</p>
 
-<hr class="section-divider">
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>测试</th><th>设计</th><th>预期观察</th><th>排除的替代解释</th></tr>
+</thead>
+<tbody>
+<tr><td>GATE 与 MODULATE 双分离</td><td>同一 DSP-B 过程，分别施加门控与资源补充</td><td>只有门控停止过程；资源补充不停止过程</td><td>两类算子可互换</td></tr>
+<tr><td>ALIGN 与 RELINK 双分离</td><td>同一 STR-C 绑定，分别施加规则校准与连接重构</td><td>只有重联改变绑定强度；规则校准改变信念内容</td><td>连接问题可归约为规则问题</td></tr>
+<tr><td>MODULATE 替代测试</td><td>用资源补充替换门控，观察过程是否停止</td><td>过程继续运行，只是资源水位上升</td><td>门控只是资源效应的别名</td></tr>
+<tr><td>RELINK 替代测试</td><td>用规则校准替换重联，观察连接权重是否下降</td><td>连接权重不下降，信念表述改变</td><td>重联只是规则校准的副产品</td></tr>
+<tr><td>GATE 替代测试</td><td>用门控替换资源补充，观察资源存量是否恢复</td><td>资源存量不恢复，只是过程被暂停</td><td>暂停过程等于补充资源</td></tr>
+</tbody>
+</table>
+</div>
 
-<p><strong>本章小结</strong>：心理系统的完整状态由42维状态向量\(\Psi(t)\)表示，六个模块与七个R-D-S子维度的笛卡尔积构成。状态空间是高维空间，可行状态子空间构成一个低维流形，不同心理障碍对应不同的状态区域。状态的时间演化由耦合微分方程组描述，区分资源动力学（存量，快变量）、调度动力学（流量，中变量）和结构动力学（参数，慢变量）。恢复不对称动力学假设（消耗快于恢复）是资源动力学的关键特征。环境通过S-P外部架构与内部状态耦合：S-层对六类环境来源分类，P-层以与M-R-D-S可类比的模式编码环境影响。生态位是个体典型S-P配置与M-R-D-S基线的联合分布，用于冷启动先验匹配。PSE 通过感知层的三个端口（L1-B 行为 / L1-S 语义 / L1-N 神经）融合似然进行多模态状态估计，当端口间出现分歧时，分歧本身可成为独立的诊断信号。</p>
+<p>双分离的难点在于操纵特异性。若一次操纵同时改变资源、调度与结构，观察到的效果无法归因于单一算子。实验设计需要把剂量、时长、环境与个体差异控制在可比较范围内，并用独立评分者编码操作类型。主靶点编码的一致性本身也是不可替代性的证据：若编码者无法稳定区分四类算子，矩阵的区分度就受到挑战。</p>
 
-<blockquote><p><strong>关键术语</strong>：状态向量\(\Psi(t)\)，S-P外部架构，S-层六系统，P-层模式，生态位，恢复不对称动力学假设，多模态融合，神经似然，UNIP</p></blockquote>
+<p>替代测试的难点在于剂量等价。不同算子的能量成本与时间常数不同，简单等时长比较会低估慢算子。合理设计是按目标层的特征时间匹配剂量：门控以单次事件为单位，调制以资源恢复周期为单位，校准与重联以结构改变窗口为单位。剂量不等价时，替代测试只能说明“在这个剂量下没有效果”，不能说明“机制不可替代”。</p>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “42维状态向量是过度复杂化” → ✅ 降维测试表明精简版在关键临床现象上信息损失严重。<br>- ❌ “S-P架构只是生态心理学的翻版” → ✅ S-P不仅描述环境分类，更关键的是P-层与M-R-D-S可类比的编码格式，使环境输入可直接进入动力学方程。<br>- ❌ “PSE只需要行为数据就能准确估计状态” → ✅ PSE是多模态引擎，行为、语义、神经三个通道各有不可替代的信息——神经通道尤其在高时间分辨率和抗主观偏倚方面具有独特价值。</p></blockquote>
+<p>不可替代性还有一层结构论证。资源、调度、规则、连接四类属性在功能层上互不重叠：资源是存量，调度是过程，规则是条件逻辑，连接是关联权重。四类属性各自对应一类干预，若某一类属性可以被另一类完全表达，矩阵就会塌缩。STR-C 不可被 STR-R 或 STR-S 归并的论证，正是 RELINK 独立性的基础：创伤性刺激与恐惧反应的超强绑定，可以在没有任何“闻到气味就该恐惧”的信念规则时独立存在。</p>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 写出状态向量的数学表示形式并解释各符号的含义。<br>2. 选择拖延和焦虑两个现象，在42维表格中标注它们最可能涉及的核心子维度。<br>3. 恢复不对称动力学假设声称消耗快于恢复。如果对称假设成立，人类的心理生活会有什么不同？<br>4. PSE 感知层的三个输入端口分别是什么？每个端口由哪个文档实现？当神经端口与语义端口的似然方向相反时，可能提示什么临床现象？</p></blockquote>
+<h2>8.4 组合、嵌套与交互</h2>
 
-</main>
+<p>现实干预很少只用一个算子。组合规则解决“多个算子同时作用时如何编码”，嵌套规则解决“一个目标需要多步分解时如何排列”，交互规则解决“先后顺序如何影响效果”。三条规则共同保证复杂方案在语法上合法、在效果上可比较。</p>
+
+<p>组合的基本规则是主靶点编码。当一个干预同时改变规则与连接时，按预期主要作用机制确定主算子，次靶点在注释中说明。若无法确定主靶点，编码为组合操作，如“ALIGN + RELINK”，并在效果评估中保持组合操作与单一操作的可比性。主靶点编码不是文字游戏，它决定后续归因与剂量分配。</p>
+
+<p>嵌套的典型场景是序列结构改变。目标若是长期行为序列，不能直接写“GATE STR-S”，而应分解为 ALIGN M-STR-R 修正生成序列的规则，再用 GATE 或训练 M-STR-S 通过重复固化新序列。类似地，RES-B 的改善不能写“MODULATE RES-B”，而应组合长期环境支持、重复实践与结构校准。</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>模式</th><th>形式</th><th>示例</th><th>编码要点</th></tr>
+</thead>
+<tbody>
+<tr><td>并行组合</td><td>两类算子同时作用于不同靶点</td><td>GATE− M4-DSP-B 加 MODULATE+ M1-RES-D</td><td>分别标注靶点与剂量，不合并为单一算子</td></tr>
+<tr><td>主次组合</td><td>一类算子为主，另一类为辅</td><td>ALIGN M2-STR-R 为主，GATE+ M6-DSP-F 为辅</td><td>按主靶点编码，次靶点写入注释</td></tr>
+<tr><td>两步嵌套</td><td>先改规则，再训练序列</td><td>ALIGN M2-STR-R 加训练 M2-STR-S</td><td>不写 ALIGN STR-S 或 GATE STR-S 内容面</td></tr>
+<tr><td>时序嵌套</td><td>先稳定，再补资源，再改结构</td><td>GATE− 加 MODULATE+ 加 RELINK</td><td>遵循 D-R-S 默认序，阶段内可并行</td></tr>
+<tr><td>长期组合</td><td>多类算子跨周期重复</td><td>环境支持加重复实践加 ALIGN M3-STR-R</td><td>不把 RES-B 写成单次 MODULATE 靶点</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>交互的核心是能量约束。高能耗算子排在资源不足时，效果会被系统自身的资源保护机制截断。门控先行的作用不只是“让过程停下来”，还为后续调制创造可用的调度窗口；调制先行的作用不只是“补能量”，还为后续结构改造提供能量预算。顺序不是礼仪，而是由跨层依赖决定的可行性条件。</p>
+
+<p>组合还会产生交互效应，而非简单相加。门控降低后台激活后，同样的资源补充可能产生更大的主观改善；资源恢复后，同样的规则校准可能更容易被接受；连接重构后，规则校准的新内容更容易维持。交互效应的方向与大小属于动力学预测，语法只规定组合的合法形式，不承诺组合的加性效果。</p>
+
+<p>组合方案需要可分解性。一个方案若无法拆回四类算子及其靶点，就无法归因、无法比较、无法校准。可分解性不是要求每个临床动作都对应一个算子，而是要求方案在功能层分析中能说清“改变了哪类属性、通过什么机制、预期影响哪些维度”。说不清这三件事的方案，语法上不合法。</p>
+
+<h2>8.5 常见误用</h2>
+
+<p>误用大多来自把“效果”当成“靶点”。一个操作产生了某种效果，不代表它的合法靶点就是产生效果的那个维度。矩阵按直接靶点判定，间接效果写入注释，不能倒推为合法靶点。</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>误用</th><th>错误写法</th><th>正确分解</th><th>原因</th></tr>
+</thead>
+<tbody>
+<tr><td>把规则当开关</td><td>GATE STR-R</td><td>ALIGN STR-R</td><td>规则是内容，不是过程通道</td></tr>
+<tr><td>把连接当规则</td><td>ALIGN STR-C</td><td>RELINK STR-C</td><td>连接是权重，不是条件逻辑</td></tr>
+<tr><td>把规则当连接</td><td>RELINK STR-R</td><td>ALIGN STR-R</td><td>规则改写不改变关联强度</td></tr>
+<tr><td>把序列内容当开关</td><td>GATE STR-S（指内容面）</td><td>ALIGN M-STR-R 加训练 M-STR-S</td><td>GATE 只作用于激活面</td></tr>
+<tr><td>把基底资源当存量补给</td><td>MODULATE RES-B</td><td>长期组合：环境支持、重复实践、结构校准</td><td>RES-B 不能一次性直接补充</td></tr>
+<tr><td>把结构当资源</td><td>MODULATE STR</td><td>ALIGN STR-R 或 RELINK STR-C</td><td>结构改变不是数量增减</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>误用的后果不是“说法不好听”，而是规划层会按错误靶点分配剂量。把 GATE 写成 STR-R 靶点，规划器会以为一次门控就能改写信念，从而低估所需的重复与巩固；把 MODULATE 写成 RES-B 靶点，规划器会以为一次补给就能重建安全感，从而忽略长期环境与结构建设。语法错误会沿着管线放大成资源浪费与效果误判。</p>
+
+<p>避免误用的实用规则有三条。第一条，先问“要改变的是存量、过程、规则还是连接”，再选算子。第二条，若目标维度是 STR-S，先分清是激活面还是内容面；激活面用 GATE，内容面走 ALIGN 加训练。第三条，若目标维度是 RES-B，不要寻找单次补给技术，直接设计方案级的长期组合。三条规则覆盖大多数编码错误。</p>
+
+<p>四类算子的价值不在于给出四个标签，而在于给出一套可检查的合法性约束。约束让规划器不能随意组合，也让评估者能逐项核对方案。一个方案只要每个算子都落在合法靶点内、组合方式可分解、顺序符合能量约束，就具备进入执行层的基本语法资格。效果仍然需要动力学预测与实证检验，语法只保证“说得通”，不保证“一定有效”。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 功能模块</a>
-<a href="ch09.html" class="nav-link next">测量方法 ›</a></div>
+        <div class="chapter-nav"><a href="ch07.html" class="nav-link prev">‹ 环境与动力学总览</a>
+<a href="ch09.html" class="nav-link next">D-R-S 干预序列 ›</a></div>
     </div>
 
     <footer>
@@ -616,7 +246,7 @@ $$
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

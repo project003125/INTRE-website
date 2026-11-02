@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第10章 原子操作：GMAR语法与临床直觉 · INTRE 导论教材</title>
-    <meta name="description" content="如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的干预语言——一套从M-R-D-S状态空间直接推导出的原子操作集。">
-    <meta property="og:title" content="第10章 原子操作：GMAR语法与临床直觉">
-    <meta property="og:description" content="如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的干预语言——一套从M-R-D-S状态空间直接推导出的原子操作集。">
+    <title>第10章 流派分解与语法空位 · INTRE 导论教材</title>
+    <meta name="description" content="六大流派的功能签名、十流派口径、概念对照的证据级别、语法空位与验证路线。">
+    <meta property="og:title" content="第10章 流派分解与语法空位">
+    <meta property="og:description" content="六大流派的功能签名、十流派口径、概念对照的证据级别、语法空位与验证路线。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch10.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch10.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第10章 原子操作：GMAR语法与临床直觉">
-    <meta name="twitter:description" content="如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的干预语言——一套从M-R-D-S状态空间直接推导出的原子操作集。">
+    <meta name="twitter:title" content="第10章 流派分解与语法空位">
+    <meta name="twitter:description" content="六大流派的功能签名、十流派口径、概念对照的证据级别、语法空位与验证路线。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,318 +69,173 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第10章 原子操作：GMAR语法与临床直觉</h1>
+<h1 class="chapter-title">第10章 流派分解与语法空位</h1>
 
+<blockquote>
+<p><strong>学习目标</strong>：</p>
+<p>1. 用四类算子写出六大流派的功能签名。</p>
+<p>2. 说出十个流派的核心靶点与相邻差异。</p>
+<p>3. 区分概念对照与元分析能支持的主张。</p>
+<p>4. 理解语法空位如何生成预测性疗法。</p>
+<p>5. 掌握从概念验证到随机对照试验的验证路线。</p>
+</blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)严格定义GATE/MODULATE/ALIGN/RELINK四操作的靶点和操作本质；(2)运用靶点合法性矩阵判断操作-组件映射是否合法；(3)理解双分离论证在操作不可替代性证明中的作用；(4)描述操作组合的四种交互类型；(5)能够将常见临床技术分解为G-M-A-R操作序列。</p></blockquote>
+<p>流派之争常以理念为旗帜，以技术为武器。功能层分析不问哪面旗帜正确，而问每面旗帜实际改变了哪类属性。把流派技术分解为四类算子，就能在同一张表上比较它们的靶点、序列与证据。分解之后还会看到一些空位：有些功能靶点没有被任何主流流派系统占据，这些空位正是预测疗法的生成起点。</p>
 
-<hr class="section-divider">
+<h2>10.1 六流派 × 四算子的功能签名</h2>
 
-<h2>10.1 四操作定义：GATE、MODULATE、ALIGN与RELINK</h2>
-
-<p>如果M-R-D-S状态语法回答的是“心理系统现在处于什么状态”，那么G-M-A-R操作语法回答的是“我们可以对这个系统做什么来改变它的状态”。G-M-A-R是INTRE框架的<strong>干预语言</strong>——一套从M-R-D-S状态空间直接推导出的原子操作集。</p>
-
-<p><strong>原子操作的设计标准</strong>：靶点特异性（每个操作对应一个不可再分的功能靶点）、操作可区分性（不同操作之间存在清晰边界）、执行可转译性（每个操作可转译为具体的临床技术）、反馈可校准性（操作效果可在状态空间中被检测和量化）。</p>
-
-<p><strong>四个操作的概览</strong>：</p>
+<p>功能签名是一个流派的靶点与操作偏好。它不描述流派全部技术，只描述其核心机制在四类算子上的分布。主表示该流派的核心技术主要落在这一算子，辅表示有明确使用但不是主轴，弱表示很少系统使用。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>操作</th>
-<th>直接合法靶点</th>
-<th>操作本质</th>
-<th>临床直觉</th>
-<th>时间尺度</th>
-</tr></thead>
+<thead>
+<tr><th>流派</th><th>GATE</th><th>MODULATE</th><th>ALIGN</th><th>RELINK</th><th>功能签名</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**GATE**</td>
-<td>DSP-F, DSP-B, 运行中的STR-S序列</td>
-<td>管制过程通道（开/关/重定向）</td>
-<td>“启动/停止/切换一个进程”</td>
-<td>秒-分钟</td>
-</tr>
-<tr>
-<td>**MODULATE**</td>
-<td>RES-D</td>
-<td>调节即时资源数量（补充/消耗）</td>
-<td>“充电/放电”</td>
-<td>分钟-小时</td>
-</tr>
-<tr>
-<td>**ALIGN**</td>
-<td>STR-R</td>
-<td>修正内部规则（信念更新）</td>
-<td>“修改代码”</td>
-<td>周-月</td>
-</tr>
-<tr>
-<td>**RELINK**</td>
-<td>STR-C</td>
-<td>重塑组件间连接（情感/联想重连）</td>
-<td>“重焊电路”</td>
-<td>月-年</td>
-</tr>
+<tr><td>行为主义</td><td>主</td><td>辅</td><td>弱</td><td>辅</td><td>M6-DSP-B 与 S-P 环境触发，暴露与刺激控制为主</td></tr>
+<tr><td>正念与 ACT</td><td>主</td><td>弱</td><td>辅</td><td>辅</td><td>M2-DSP-B 与注意调度，解耦与价值澄清为主</td></tr>
+<tr><td>认知疗法 CBT</td><td>辅</td><td>弱</td><td>主</td><td>弱</td><td>M2-STR-R 规则结构，认知重构为主</td></tr>
+<tr><td>精神分析与动力学</td><td>辅</td><td>弱</td><td>辅</td><td>主</td><td>M4-STR-C 情感连接，移情与修通为主</td></tr>
+<tr><td>人本与体验</td><td>辅</td><td>弱</td><td>弱</td><td>主</td><td>M4-STR-C 与 M5-STR-C，矫正性体验为主</td></tr>
+<tr><td>系统治疗</td><td>主</td><td>弱</td><td>主</td><td>辅</td><td>S-P 系统层规则与序列，环境工程为主</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>GATE（门控）</strong>。GATE是作用于调度层(DSP)和运行中的序列(STR-S)的操作。它不改变资源存量或深层结构——它改变的是<strong>当前哪些进程在运行</strong>。</p>
+<p>行为主义的主轴是 GATE。暴露疗法可分解为 GATE− 抑制自动恐惧反应加 GATE+ 启动新的评估；系统脱敏可分解为 MODULATE+ 放松加 GATE− 分级暴露。行为主义也大量使用环境侧操作，刺激控制与强化安排直接改变 S-P 触发条件。</p>
 
-<ul>
-<li><strong>GATE+</strong>：启动或增强一个进程。临床示例：启动目标导向行为（行为激活）、开启正念觉察。</li>
-<li><strong>GATE–</strong>：抑制或减弱一个进程。临床示例：打断反刍思维（感官锚定）、抑制冲动行为（暴露与反应预防中的“不执行仪式”）。</li>
-<li><strong>GATE– + GATE+</strong>：将进程从一个通道切换到另一个通道。临床示例：将注意从灾难化思维切换到感官输入（5-4-3-2-1技术）。</li>
-</ul>
+<p>正念与 ACT 的主轴同样是 GATE，但靶点落在注意与认知解耦。正念呼吸可分解为 GATE− 中断自动思维加 GATE+ 把注意重新锚定在当下；认知解耦通过改变个体与想法的关系，而不是改写想法内容。ACT 的价值澄清落在 ALIGN，观察自我落在 RELINK，但两者都服务于 GATE 建立的观察距离。</p>
 
-<p>GATE的直接对象必须是<strong>运行中的过程</strong>，而不是静态的规则或结构。操作性判据：当序列的至少一个步骤正在被执行或已被触发但尚未完成时，该序列被视为“运行中”。GATE–可以中断当前正在执行的步骤或阻止下一步的启动。</p>
+<p>CBT 的主轴是 ALIGN。认知重构识别、挑战并改写关于自我、世界与未来的扭曲信念；行为实验通过 GATE+ 启动行动来收集新证据，再回到 ALIGN 固化新规则。CBT 对 STR-C 的处理较弱，这是它在创伤与依恋问题上的边界。</p>
 
-<p><strong>MODULATE（调制）</strong>。MODULATE是作用于资源层RES-D的操作。它改变的是<strong>系统当前可用的即时能量</strong>。</p>
+<p>精神分析与心理动力学的主轴是 RELINK。移情分析在安全关系中重现早期关系模式并重塑情感连接；防御机制分析用 GATE− 中断自动化防御程序，但核心机制仍是连接重构。修通是 RELINK 的迭代形式，需要反复激活与修正。</p>
 
-<ul>
-<li><strong>MODULATE+</strong>：补充资源。临床示例：睡眠卫生（补充M1-RES-D）、休息间隙（补充M3-RES-D）、社会支持激活（补充M4-RES-D）。</li>
-<li><strong>MODULATE–</strong>：消耗资源。可用于描述医源性效应，也可作为干预中的必要成本。临床示例：暴露治疗中情绪的短暂升高（消耗M4-RES-D，但这是RELINK的必要前提）。</li>
-</ul>
+<p>人本与体验流派的主轴也是 RELINK。以人为中心的疗法通过无条件积极关注重建自我与体验的连接；聚焦与空椅技术建立躯体感觉、情绪与语言之间的新连接。它与精神动力学的差异不在算子类型，而在工作材料：一个处理移情与防御，一个处理当下体验与自我不一致。</p>
 
-<p>MODULATE不能直接作用于RES-B（基底资源）。RES-B的提升需要通过ALIGN、RELINK和GATE的长期结构性操作间接实现。</p>
+<p>系统治疗的主轴横跨 GATE 与 ALIGN，作用面在 S-P 系统层。循环提问用 ALIGN 重构家庭共享的信念规则；悖论干预用 GATE 中断破坏性互动循环；家庭结构重塑用 RELINK 调整边界与联盟。系统层的 STR 是隐喻扩展，不等同于个体内部的 STR。</p>
 
-<p><strong>ALIGN（校准）</strong>。ALIGN是作用于规则结构STR-R的操作。它改变的是<strong>系统用来评估、推理和决策的命题性规则</strong>。</p>
+<h2>10.2 十流派口径与差异</h2>
 
-<ul>
-<li><strong>核心机制</strong>：通过新证据、逻辑分析和行为实验来修正信念、规则或图式。</li>
-<li><strong>临床示例</strong>：认知重构（修正“我必须完美”）、苏格拉底提问、行为实验、价值观澄清。</li>
-</ul>
-
-<p>ALIGN不改变情感连接(STR-C)的权重——这是RELINK的任务。这一区分解释了“道理都懂但感觉不变”的现象。临床鉴别：当患者在安全情境下反复陈述扭曲信念且情绪同步，问题更可能位于STR-R；当患者在谈论信念时情绪平静但一旦面临真实情境就失控，问题更可能位于STR-C。</p>
-
-<p><strong>RELINK（重联）</strong>。RELINK是作用于连接结构STR-C的操作。它改变的是<strong>系统内部组件之间的加权关联</strong>。</p>
-
-<ul>
-<li><strong>核心机制</strong>：通过新的体验（尤其是矫正性情感体验）来增加、减弱或重新加权连接。</li>
-<li><strong>临床示例</strong>：暴露与反应预防（建立“刺激→安全”的新连接）、EMDR、矫正性关系体验、空椅技术。</li>
-</ul>
-
-<p>RELINK是最深层的操作，时间尺度最长，能量成本最高。在资源不足或调度不稳定的情况下强行进行RELINK可能适得其反——这是D→R→S序列的核心论证。</p>
-
-<hr class="section-divider">
-
-<h2>10.2 对偶映射：靶点合法性矩阵</h2>
-
-<p>四个操作与M-R-D-S状态空间之间存在严格的对偶映射。每个操作有<strong>直接合法靶点</strong>、<strong>间接影响</strong>和<strong>禁止表述</strong>。这一矩阵是G-M-A-R形式语法的核心规则。</p>
+<p>十流派口径是在六流派框架上的扩展，增加 DBT、叙事、创伤聚焦与积极心理学。扩展的理由不是凑数，而是这些流派在靶点组合或序列结构上有独立特征，不能由前六个完全覆盖。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>操作</th>
-<th>直接合法靶点</th>
-<th>间接影响</th>
-<th>禁止表述</th>
-</tr></thead>
+<thead>
+<tr><th>流派</th><th>核心功能签名</th><th>主导算子</th><th>与最近邻的差异</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**GATE**</td>
-<td>DSP-F, DSP-B, 运行中的STR-S序列</td>
-<td>RES-D消耗速率，STR-S长期强化/削弱</td>
-<td>GATE STR-R, GATE STR-C</td>
-</tr>
-<tr>
-<td>**MODULATE**</td>
-<td>RES-D（所有模块）</td>
-<td>DSP稳定性</td>
-<td>MODULATE RES-B, MODULATE STR</td>
-</tr>
-<tr>
-<td>**ALIGN**</td>
-<td>STR-R（所有模块）</td>
-<td>STR-C的情绪权重</td>
-<td>ALIGN STR-C, ALIGN STR-S</td>
-</tr>
-<tr>
-<td>**RELINK**</td>
-<td>STR-C（所有模块）</td>
-<td>RES-B恢复</td>
-<td>RELINK STR-R, RELINK STR-S</td>
-</tr>
+<tr><td>CBT</td><td>M2-STR-R + M2-DSP-B + M4-DSP-B</td><td>ALIGN</td><td>与 ACT 相比，改内容而非改关系</td></tr>
+<tr><td>ACT</td><td>M2-DSP-B 与 M2-STR-R 融合 + M4-STR-S 回避 + M3-STR-R 价值</td><td>GATE</td><td>与 CBT 相比，先解耦再谈价值</td></tr>
+<tr><td>精神动力</td><td>M4-STR-C + M4-STR-S 防御 + M4-RES-B</td><td>RELINK</td><td>与人本相比，走移情解释而非当下接纳</td></tr>
+<tr><td>人本与体验</td><td>M4-STR-C 与 M5-STR-R 不一致 + M4-RES-B + M1-STR-C</td><td>RELINK</td><td>与精神动力相比，重当下体验与自我一致</td></tr>
+<tr><td>行为与 ABA</td><td>M6-DSP-B + M4-STR-C + S-P 后果</td><td>GATE</td><td>与 CBT 相比，改环境后果而非信念</td></tr>
+<tr><td>系统与家庭</td><td>S-P-STR-R + S-P-STR-C + S-P-STR-S</td><td>GATE 加 ALIGN</td><td>与个体流派相比，靶点是系统而非个人</td></tr>
+<tr><td>DBT</td><td>M4-RES-D 低 + M4-DSP-B 高 + M4-STR-C 无效环境 + M3-DSP-F 低</td><td>四类均衡</td><td>与 CBT 相比，技能训练加认可，阶段模型清晰</td></tr>
+<tr><td>叙事疗法</td><td>M5-STR-R + M5-STR-C + S-P 宏系统话语</td><td>ALIGN 加 RELINK</td><td>与 CBT 相比，改身份故事而非单条信念</td></tr>
+<tr><td>创伤聚焦</td><td>M4-STR-C 创伤网络 + M4-DSP-B 高 + M1-STR-C + M4-RES-B 低</td><td>RELINK 加 GATE</td><td>与暴露相比，强调双重注意与记忆再巩固</td></tr>
+<tr><td>积极心理学</td><td>M3-RES-B、M4-RES-B、M5-RES-B 等基底资源</td><td>MODULATE 组合加 ALIGN</td><td>与修复型流派相比，建设资源而非消除症状</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>对偶映射的临床意义</strong>。当一个治疗师说“我正在做认知重构”时，他实际上在执行ALIGN M2-STR-R。如果试图用认知辩论来治疗一个根深蒂固的创伤连接（M4-STR-C），就是在尝试用ALIGN替代RELINK——这往往导致“道理都懂，但感觉不变”的临床困境。</p>
+<p>DBT 的特殊性在于四类算子均衡。它同时使用 GATE 的正念与痛苦耐受、MODULATE 的生理资源补充、ALIGN 的核对事实、RELINK 的认可与连接修复。它的阶段模型与 D-R-S 序列高度对应：先稳定危机行为，再处理情绪失调，最后重建身份与关系。</p>
 
-<p><strong>GATE与STR-S的边界处理</strong>。GATE的直接对象是<strong>运行中的</strong>STR-S序列。例如，当一个人正在执行回避行为序列时，GATE–可以打断当前正在运行的这一序列。但要使这一序列的触发频率永久降低，需要反复执行GATE–，通过重复门控来逐步削弱STR-S的权重——这是GATE对STR-S的<strong>间接影响</strong>，而非直接操作。</p>
+<p>叙事疗法的特殊性在于靶点落在 M5。它不直接改写 M2 的信念规则，而改写组织经验的身份故事；问题外化把“我是问题”改成“问题在影响我”，独特结果寻找重新连接被忽略的成功经验。它与 CBT 的差异是层次差异，不是技术细节差异。</p>
 
-<blockquote><p><strong>常见临床误用示例</strong>：<br>- “我要用认知重构来治疗你的创伤连接” → 试图用ALIGN替代RELINK → 预期失败：“道理都懂，但感觉没变。”<br>- “我要用睡眠卫生来提升你的自我价值感” → 试图用MODULATE+ M1-RES-D直接提升M4-RES-B → 预期失败：“睡好了，但依然觉得自己没价值。”</p></blockquote>
+<p>创伤聚焦疗法的特殊性在于连接权重与激活控制同时使用。创伤记忆网络是 STR-C 的异常高权重结构，闪回是 DSP-B 的失控激活。只做 GATE 能压住闪回，但不能降低连接权重；只做 RELINK 能改写连接，但需要先有稳定的激活窗口。两类算子在这里的配合比单一算子更重要。</p>
 
-<hr class="section-divider">
+<p>积极心理学的特殊性在于靶点是基底资源。它不否认症状修复，但主轴是建设 M3-RES-B 的目标根基、M4-RES-B 的价值根基、M5-RES-B 的叙事根基。基底资源不能一次性补给，因此它的操作形态必然是长期组合，而不是单次技术。</p>
 
-<h2>10.3 不可替代性：双分离论证与替代测试</h2>
+<h2>10.3 跨流派概念对照的证据级别</h2>
 
-<p>G-M-A-R四操作是否可以被简化（合并为三个）或需要扩展（增加到五个）？不可替代性论证从两个方向展开：<strong>必要性</strong>（每个操作覆盖一个其他操作无法覆盖的功能靶点）和<strong>充分性</strong>（四个操作足以覆盖已知的心理干预功能靶点）。</p>
-
-<p><strong>必要性的双分离论证</strong>。两个操作如果功能不同，应该存在一种情境，其中一个操作有效而另一个无效：</p>
+<p>把两个流派的术语映射到同一坐标，是概念对照，不是元分析。概念对照能说明两套语言在功能层上指向什么，不能说明两套疗法在疗效上等价。把前者当后者，是跨流派比较中最常见的越级。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>对比</th>
-<th>预期双分离</th>
-<th>理论依据</th>
-</tr></thead>
+<thead>
+<tr><th>主张类型</th><th>证据级别</th><th>能支持什么</th><th>不能支持什么</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>MODULATE vs ALIGN</td>
-<td>资源枯竭型拖延对MODULATE+敏感，对ALIGN不敏感；信念扭曲型拖延反之</td>
-<td>RES-D与STR-R是不同功能靶点</td>
-</tr>
-<tr>
-<td>GATE vs RELINK</td>
-<td>急性惊恐发作对GATE–有即时效果，对RELINK无即时效果；创伤连接反之</td>
-<td>DSP-B是状态过程，STR-C是结构</td>
-</tr>
-<tr>
-<td>ALIGN vs RELINK</td>
-<td>信念问题对ALIGN敏感，对RELINK不敏感；情感连接问题反之</td>
-<td>STR-R与STR-C是不同知识类型</td>
-</tr>
+<tr><td>术语指向同一坐标</td><td>理论推导加专家编码</td><td>两流派可被同一坐标系比较</td><td>两构念在测量上等价</td></tr>
+<tr><td>技术分解为算子序列</td><td>机制分析与内容效度</td><td>技术的作用机制可被描述</td><td>该技术一定有效</td></tr>
+<tr><td>流派共享功能靶点</td><td>概念对照</td><td>不同技术可能作用于同一维度</td><td>不同技术疗效相同</td></tr>
+<tr><td>流派间效应量差异</td><td>元分析或头对头试验</td><td>在特定人群与结果上的相对效果</td><td>由概念映射直接推出优劣</td></tr>
+<tr><td>预测性流派的有效性</td><td>预注册实证检验</td><td>该疗法在指定判据下成立或失败</td><td>概念自洽即临床可用</td></tr>
 </tbody>
 </table>
 </div>
 
-<p>如果这些双分离在实证中得到验证，则四个操作各自具有不可替代的功能角色。</p>
+<p>概念对照的证据来自理论推导、专家编码与内容效度。它回答“这个术语在这套坐标里指什么”，不回答“这个疗法比那个疗法好”。专家编码需要独立评分者与一致性指标；一致性低时，映射只能作为工作假设，不能作为比较基础。</p>
 
-<p><strong>充分性的替代测试</strong>。在16项核心组件替代测试中，G-M-A-R操作架构接受了20个替代方案的遍历检验。替代方案包括：三操作合并（如将MODULATE归入GATE）、五操作扩展（如增加“CREATE”操作）、完全不同的操作分类。结果：没有替代方案能够同时满足靶点特异性、操作可区分性、执行可转译性和反馈可校准性四项标准。</p>
+<p>元分析回答的是另一类问题：在特定人群、特定结果、特定疗程下，多个研究的合并效应量是多少。元分析需要同质的结果测量、足够的研究数量与发表偏倚检查。概念对照不提供这些，它提供的是比较的语言。两者可以互补，不能互相替代。</p>
 
-<p><strong>“恰好四个”的工程最优性</strong>。少于四个操作会丢失关键区分：将MODULATE并入GATE会无法区分“资源补充”与“过程门控”；将RELINK并入ALIGN会无法区分“信念修正”与“连接重写”。多于四个操作会增加认知负荷而无足够的增量收益。</p>
+<p>跨流派比较的公平性要求同一维度量双方。不能拿一方的核心构件去判另一方的边缘构件，也不能用一方的强结果指标去比另一方的弱结果指标。公平比较至少要求：同一靶点层、同一结果域、同一时间窗、同一剂量强度。缺少任一条件，比较结论只能作为假设。</p>
 
-<p><strong>常见心理干预技术到G-M-A-R的映射</strong>：</p>
+<p>概念对照还有一个用途：识别冗余与缺口。若两个流派的技术分解后落在同一算子、同一靶点、同一序列，它们在同一种机制上可能是冗余的；若某个靶点没有任何流派系统占据，它就是语法空位。冗余不意味着其中一个流派无价值，它意味着两者的差异可能不在机制而在包装、关系或剂量。</p>
+
+<h2>10.4 语法空位生成的预测疗法：DMD 及其他</h2>
+
+<p>语法空位是坐标中存在、但主流流派没有系统占据的功能靶点。空位的判据有三条：靶点在 42 维中有明确位置；现有流派的技术分解后很少落在该靶点；该靶点的失调有可识别的影响模式。满足三条，就可以从语法生成一个候选疗法，并给出可检验预测。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>技术</th>
-<th>主要操作</th>
-<th>靶点</th>
-</tr></thead>
+<thead>
+<tr><th>空位</th><th>目标靶点</th><th>预测疗法</th><th>算子签名</th><th>可检验预测</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>认知重构</td>
-<td>ALIGN</td>
-<td>M2-STR-R</td>
-</tr>
-<tr>
-<td>行为激活</td>
-<td>GATE+</td>
-<td>M6-DSP-F</td>
-</tr>
-<tr>
-<td>暴露+反应阻止</td>
-<td>GATE–</td>
-<td>M4-DSP-B, M6-DSP-B</td>
-</tr>
-<tr>
-<td>正念观察</td>
-<td>GATE–</td>
-<td>M2-DSP-B</td>
-</tr>
-<tr>
-<td>EMDR</td>
-<td>RELINK</td>
-<td>M4-STR-C</td>
-</tr>
-<tr>
-<td>价值观澄清</td>
-<td>ALIGN</td>
-<td>M3-STR-R</td>
-</tr>
+<tr><td>默认后台认知未被主动调度替代</td><td>M2-DSP-B 高 + M3-DSP-F 低</td><td>默认模式调度疗法 DMD</td><td>GATE− 反刍加 GATE+ 感官锚定</td><td>四周训练后反刍频率下降，切换速度提升</td></tr>
+<tr><td>躯体感觉与语言意义之间缺少连接</td><td>M1-STR-C 低 + M5-STR-C 断裂</td><td>躯体—意义整合疗法 SMI</td><td>RELINK 为主加 GATE− 稳定</td><td>情感词汇量增加，躯体症状同步改善</td></tr>
+<tr><td>意志资源缺少实时预算</td><td>M3-RES-D 低 + 消耗速率快</td><td>意志资源预算疗法 VRB</td><td>MODULATE+ 加 ALIGN 预算规则</td><td>决策疲劳下降，资源崩溃时点后移</td></tr>
+<tr><td>行为启动门槛未被单独处理</td><td>M6-RES-D 低 + M6-DSP-F 阈值高</td><td>行为启动能量疗法 BIE</td><td>GATE+ 微动作加 MODULATE+</td><td>微动作后十秒内启动率显著提高</td></tr>
+<tr><td>算法不透明引发的规则与连接偏差</td><td>M2-STR-R 加 M4-STR-C</td><td>算法厌恶重塑疗法 AAR</td><td>ALIGN 加 RELINK 加分级 GATE+</td><td>算法采纳率上升，焦虑评分下降</td></tr>
+<tr><td>数字环境边界缺少系统规则</td><td>S-P 数字系统高侵入 + M3-STR-R 弱</td><td>数字环境边界疗法 DEB</td><td>环境侧 GATE− 加 ALIGN 内部规则</td><td>任务切换次数下降，持续注意改善</td></tr>
 </tbody>
 </table>
 </div>
 
-<hr class="section-divider">
+<p>DMD 是语法空位生成的代表。它的功能签名是 M2-DSP-B 高激活加 M3-DSP-F 低调控：默认后台认知在静息态自动运行，表现为反刍、担忧与思维漫游，而前台调度没有足够力量接管。现有正念与 ACT 处理的是个体与想法的关系，DMD 处理的是调度替代：用感官锚定把注意转移到可控制的输入通道，再用调度日志强化前台接管的自我效能。</p>
 
-<h2>10.4 操作组合：序列、嵌套与交互效应</h2>
+<p>DMD 的算子签名以 GATE 为主。反刍觉察是 GATE+ 监控，感官锚定是 GATE+ M1-DSP-F 加 GATE− M2-DSP-B，中断协议是标准化的 GATE− 流程，规则内化是 ALIGN M2-STR-R 建立“想法不是命令”的元认知规则。它与正念的差异在于主动替代，而不是观察接纳。</p>
 
-<p>真实世界的心理干预很少是单一原子操作。成熟疗法都是多个原子操作按特定序列组合而成的<strong>复合干预</strong>。</p>
+<p>DMD 的可检验预测包括：四周训练后高反刍个体的静息态网络切换速度提高，生态瞬时评估中的反刍频率下降；完成感官锚定任务后，后续反刍诱发任务中的坚持时间延长；与正念组相比，早期反刍下降速度更快。这些预测是方向性假设，需要预注册与独立样本检验。</p>
 
-<p><strong>操作序列</strong>。大多数心理干预遵循一个时间序列：</p>
+<p>其他空位疗法遵循同一生成流程：选未占据靶点，匹配合法算子，设计序列，界定适应症，给出可检验预测，标注边界与风险。流程不保证疗法有效，它保证疗法可被检验、可被比较、可被证伪。一个空位疗法若无法给出可检验预测，就还停留在概念草图，不是候选疗法。</p>
 
-<ul>
-<li><strong>CBT典型会话</strong>：<code>[GATE– M2-DSP-B（正念中断反刍）， ALIGN M2-STR-R（认知重构）， GATE+ M6-DSP-F（行为激活作业）]</code></li>
-<li><strong>PTSD的延长暴露</strong>：<code>[MODULATE+ M4-RES-D（稳定化准备）， GATE– M6-DSP-B（抑制回避）， RELINK M4-STR-C（暴露后安全学习）]</code></li>
-</ul>
+<h2>10.5 从概念验证到随机对照试验的验证路线</h2>
 
-<p><strong>序列中的操作交互</strong>。操作序列不是简单的和——操作之间可以产生协同或拮抗效应：</p>
+<p>预测疗法的验证不是一步到位的。它要经过概念验证、单例实验、试点试验、确证试验与实施研究五个阶段。每个阶段回答不同问题，判据也不同。跳过早期阶段直接做大样本试验，会把机制不清的方案推到昂贵的确证阶段；停在早期阶段宣称有效，则把可行性信号误读为疗效证据。</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr>
-<th>交互类型</th>
-<th>机制</th>
-<th>示例</th>
-</tr></thead>
+<thead>
+<tr><th>阶段</th><th>样本与设计</th><th>核心问题</th><th>判据</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>**资源奠基**</td>
-<td>前一操作为后一操作提供能量基础</td>
-<td>MODULATE+ → ALIGN</td>
-</tr>
-<tr>
-<td>**体验准备**</td>
-<td>前一操作激活后一操作所需的体验材料</td>
-<td>RELINK → ALIGN</td>
-</tr>
-<tr>
-<td>**门控清除**</td>
-<td>前一操作移除阻碍后一操作的自动化过程</td>
-<td>GATE– → RELINK</td>
-</tr>
-<tr>
-<td>**反馈强化**</td>
-<td>后一操作的结果反馈增强前一操作的效果</td>
-<td>ALIGN → 行为实验 → ALIGN</td>
-</tr>
+<tr><td>概念验证与仿真</td><td>模型仿真，多智能体状态演化</td><td>机制能否产生预期状态轨迹</td><td>轨迹方向符合预测，不违反结构约束</td></tr>
+<tr><td>单例实验</td><td>单个或少量个案，重复交替设计</td><td>操纵是否特异地改变目标维度</td><td>目标指标随操纵变化，撤除后回落</td></tr>
+<tr><td>试点试验</td><td>数十人，随机分配，含可行性指标</td><td>方案能否执行，信号是否值得追</td><td>依从性、脱落率、目标指标的可接受变化</td></tr>
+<tr><td>确证试验</td><td>数百人，预注册主要结果</td><td>疗效是否在指定人群与结果上成立</td><td>主要结果达到预设的临床意义阈值，安全性可控</td></tr>
+<tr><td>实施研究</td><td>真实场景，多中心或常规服务</td><td>在常规条件下能否维持效果</td><td>保真度、覆盖度、持续使用与长期结局</td></tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>嵌套组合</strong>。某些复合干预可以表示为嵌套结构。例如，“行为实验”的完整嵌套结构：</p>
-<ol>
-<li>ALIGN（前提）：建立假设</li>
-<li>GATE+ M6-DSP-F：执行实验行为</li>
-<li>观测结果</li>
-<li>比较：将结果与旧规则对比</li>
-<li>ALIGN（结论）：如果矛盾，修正规则</li>
-</ol>
+<p>概念验证阶段的判据是机制而非疗效。仿真中要看到目标维度沿预测方向变化，同时不违反资源、调度与结构约束。仿真通过只说明方案在模型内部自洽，不说明它在真人身上有效。把仿真结果当作临床证据，是把模型输出误读为现实。</p>
 
-<p><strong>干预处方的标准化</strong>。G-M-A-R序列可以作为干预处方的标准化语言。例如：</p>
+<p>单例实验的判据是特异性。目标指标应在操纵引入时变化，在操纵撤除后回落，且相邻维度不应等量变化。单例设计适合检验“这个技术是否真的打到了这个靶点”，不适合估计人群效应。它的价值在于排除“所有东西都在变，说不清是谁起的作用”。</p>
 
-<pre><code class="language-text">问题类型：拖延（M3-RES-D枯竭型）
-干预序列：
-1. MODULATE+ M1-RES-D：睡眠锚定
-2. MODULATE+ M3-RES-D：任务分段（25分钟工作+5分钟休息）
-3. GATE– M6-DSP-B：移除手机等自动化逃避线索
-4. （当M3-RES-D &gt; 50时）ALIGN M2-STR-R：检验“我必须完美”的规则</code></pre>
+<p>试点试验的判据是可行性与信号。样本量通常不足以检验疗效，重点看依从性、脱落率、实施负担与目标指标的变化幅度。试点成功不保证确证成功；试点失败通常意味着方案、剂量或人群假设需要修改。</p>
 
-<p><strong>注意</strong>：某些高级临床技能（如治疗联盟的建立、共情的传递）不能简单还原为G-M-A-R操作序列——它们是治疗关系中涌现的复杂交互。这些关系因素被建模为S-P环境输入和长期的RELINK效应，而不是简化为单次原子操作。</p>
+<p>确证试验的判据是预注册的主要结果与临床意义阈值。样本量按效应量、功效与多重比较校正计算，主要结果不能事后更换。确证失败时，要区分是机制不成立、剂量不足、人群不匹配还是实施失败。把失败全部归因于机制，会过早放弃有潜力的方案；把失败全部归因于实施，会保护一个不成立的机制。</p>
 
-<p><strong>可检验性</strong>：操作组合最重要的价值是使干预可检验。如果两个干预方案被表示为不同的G-M-A-R序列，我们可以检验序列的顺序是否重要、某个操作是否是必要成分、不同操作之间的交互是否如理论预期。</p>
+<p>实施研究的判据是常规条件下的保真度与持续性。一个方案在试验中有效，不等于在资源有限、人员流动、依从性波动的真实场景中有效。实施研究回答的是“能不能落地”，它与确证试验回答的“有没有效果”是不同问题。</p>
 
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：G-M-A-R是INTRE框架的原子干预操作语法，包含四个相互不可替代的操作。GATE管制调度层过程（对象必须是运行中的过程），MODULATE调节资源层的即时能量，ALIGN修正规则结构的命题性信念，RELINK重塑连接结构的情感与联想权重。操作与状态空间之间存在严格的对偶映射，合法性矩阵规定了每个操作的直接靶点、间接影响和禁止表述。操作的不可替代性通过双分离论证和替代测试得到初步支持。真实世界的复合干预通过操作序列（四类交互机制）和嵌套组合来表示，为干预的标准化、可比较和可检验提供了形式化语言。</p>
-
-<blockquote><p><strong>关键术语</strong>：GATE，MODULATE，ALIGN，RELINK，靶点合法性矩阵，操作不可替代性，操作序列</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “GATE可以作用于任何心理过程” → ✅ GATE只能作用于运行中的过程（DSP或运行中的STR-S序列），不能作用于静态的规则或连接。<br>- ❌ “CBT=ALIGN，精神动力=RELINK” → ✅ 每个流派都是多操作的组合。CBT也使用GATE（行为激活）和RELINK（暴露），精神动力也使用GATE（防御分析）和ALIGN（心理教育）。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 用自己的话解释GATE、MODULATE、ALIGN、RELINK四个操作的本质区别。<br>2. 给定一个临床技术（如“正念呼吸”），将其分解为G-M-A-R操作序列。<br>3. 为什么MODULATE不能直接作用于RES-B？如果试图这样做，临床后果可能是什么？</p></blockquote>
-
-</main>
+<p>五个阶段的共同底线是可证伪。每个阶段都要有预先写明的判据，失败了要能说清失败在哪一层。预测疗法的价值不在于它一定成功，而在于它把“可能有效”变成“可以被检验”。语法提供生成空间，验证路线提供淘汰机制，两者合起来才构成从空位到疗法的完整工程。</p>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch09.html" class="nav-link prev">‹ 测量方法</a>
-<a href="ch11.html" class="nav-link next">干预序列 ›</a></div>
+        <div class="chapter-nav"><a href="ch09.html" class="nav-link prev">‹ D-R-S 干预序列</a>
+<a href="ch11.html" class="nav-link next">IODS ›</a></div>
     </div>
 
     <footer>
@@ -393,7 +248,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

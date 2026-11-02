@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第15章 语义架构：PSA推理与PSL编译 · INTRE 导论教材</title>
-    <meta name="description" content="如果UPLP只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
-    <meta property="og:title" content="第15章 语义架构：PSA推理与PSL编译">
-    <meta property="og:description" content="如果UPLP只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
+    <title>第15章 L1-N 神经接口：UNIP · INTRE 导论教材</title>
+    <meta name="description" content="UNIP 六层架构、采集规范与信号校准、NFM 约束语义、先验库与实时引擎，以及当前工程状态。">
+    <meta property="og:title" content="第15章 L1-N 神经接口：UNIP">
+    <meta property="og:description" content="UNIP 六层架构、采集规范与信号校准、NFM 约束语义、先验库与实时引擎，以及当前工程状态。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch15.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch15.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第15章 语义架构：PSA推理与PSL编译">
-    <meta name="twitter:description" content="如果UPLP只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要推理的问题。">
+    <meta name="twitter:title" content="第15章 L1-N 神经接口：UNIP">
+    <meta name="twitter:description" content="UNIP 六层架构、采集规范与信号校准、NFM 约束语义、先验库与实时引擎，以及当前工程状态。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,433 +69,291 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第15章 语义架构：PSA推理与PSL编译</h1>
+        <h1 class="chapter-title">第15章 L1-N 神经接口：UNIP</h1>
 
-
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1)理解PSA如何将PCUI从字典升级为推理系统；(2)掌握依赖权重、级联路径模板和操作-组件映射的基本形式；(3)理解PSL的自然语言→PCUI映射机制和文化变体处理；(4)描述PCUI→PSA→PSL→PSE的接口关系。</p></blockquote>
-
-<blockquote><p><strong>说明</strong>：本章沿用旧系统命名。PCUI-L/PSL-L 的静态定义归 IODS（L0 本体），语义编译流水线与文化变体参数归 L1-S 语义模态，PSA 的结构约束定义在 IODS、推理执行随编译流水线在 L1-S；下文“UPLP”泛指语义通道。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 复述 N1–N6 六层职责；(2) 说出采集规范与信号校准要点；(3) 解释 NFM 的约束语义；(4) 区分先验库与仪器参数；(5) 说明实时引擎的正反通道。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>15.1 PSA定位：从词典到推理系统</h2>
+<h2>15.1 六层：N1 NAP → N6 RTE</h2>
 
-<p>如果UPLP只有PCUI，它将只是一个精美的术语词典——你可以查到一个概念对应的PCUI编码和M-R-D-S坐标，但无法回答诸如“如果M4-DSP-B长期高激活，M3-RES-D会怎样变化？”这类需要<strong>推理</strong>的问题。</p>
+<p>神经信号离功能状态最远。头皮电压、血氧变化与心率变异本身不携带“焦虑”或“反刍”的语义，必须经过格式统一、信号清洁、特征定义、功能映射、先验约束与在线推理，才成为可融合的似然。UNIP 用六层完成这条链，前五层离线，第六层在线。</p>
 
-<p>PSA（Psychological Semantic Architecture，心理语义架构）正是为了解决这一问题而设计的。PSA定义了PCUI概念之间的形式化关系——模块依赖权重、级联路径模板、操作-组件映射规则——将UPLP从<strong>静态词典</strong>升级为<strong>推理系统</strong>。</p>
+<p>六层的编号与管线级编号独立。N1–N6 是端口内部层级，不对应 L0–L5；N5 与 L3 参数层有交界面，但 N5 仍属 L1-N。把内部层号与管线级号混用，会让层级指称产生歧义。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>层级</th>
-<th>回答的问题</th>
-<th>示例</th>
+<th>编号</th>
+<th>层名</th>
+<th>阶段</th>
+<th>输入 → 输出</th>
+<th>验证对象</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>PCUI</td>
-<td>“是什么”</td>
-<td>慢性焦虑 = M4C+M2I+M3I+M1S+M6O</td>
+<td>N1</td>
+<td>NAP 神经采集规范</td>
+<td>离线</td>
+<td>原始数据 → 标准化数据集</td>
+<td>格式、同步等级、元数据完整性</td>
 </tr>
 <tr>
-<td>PSA</td>
-<td>“怎样关联”</td>
-<td>M4-DSP-B↑ → M3-RES-D消耗速率+30%，预计72h内跌破阈值</td>
+<td>N2</td>
+<td>SCL 信号校准层</td>
+<td>离线</td>
+<td>标准化数据集 → 清洁信号</td>
+<td>伪影去除、滤波、时间同步</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>NFD 神经特征定义</td>
+<td>离线</td>
+<td>清洁信号 → 标准化特征 NFI</td>
+<td>特征定义与参考实现一致性</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>NFM 神经-功能映射</td>
+<td>离线</td>
+<td>NFI 特征 → p(y_n|Ψ) 模型</td>
+<td>映射拟合度与泛化</td>
+</tr>
+<tr>
+<td>N5</td>
+<td>NPL 神经先验库</td>
+<td>离线</td>
+<td>生理与统计约束 → 先验分布</td>
+<td>先验可校准性</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>RTE 实时引擎</td>
+<td>在线</td>
+<td>实时神经流 → 观测块 {y_n, σ_n}</td>
+<td>推理延迟、在线校准稳定性</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>微案例</strong>：没有PSA时，查询“慢性焦虑”只得到坐标。有PSA时，系统自动加载依赖矩阵，输出：M4-DSP-B↑ → M3-RES-D消耗速率×1.3（权重0.75），M2-DSP-B↑ → M4-DSP-B↑（权重0.68），预测：当前M3-RES-D=42，若不干预，约48h后跌破30阈值。</p></blockquote>
+<p>六层的划分依据是“每个阶段是否非平凡”。神经信号从采集到功能读数，六个阶段各自有独立的学科归属与验证方法：实验物理管采集，信号处理管清洁，神经方法论管特征，认知神经科学管映射，神经生理学管先验，工程实现管实时。合并任意相邻两层，都会让两个验证对象混在一起。</p>
+
+<p>不再拆成七层，是因为 NFD 的“定义与计算”拆分会产生极薄层：计算在 RTE 在线执行，定义在 NFD 离线维护。NPL 拆成“硬约束与软先验”同样会得到两个验证对象重叠的薄层。六层是当前颗粒度的自然边界。</p>
+
+<p>前五层离线完成，输出的是标准与模型；第六层在线消费这些产出。N6 不在每次推理时重新训练映射，也不在每次推理时重新定义特征；它只执行已经登记与校准的映射，并做有限的个体化微调。离线与在线分开，使模型更新与实时服务互不阻塞。</p>
+
+<p>六层之间通过标准化数据契约通信。N1 输出数据集，N2 输出清洁信号，N3 输出 NFI 特征，N4 输出似然模型，N5 输出先验，N6 输出观测块。每层的输出格式可独立校验，失败定位不需要跨层猜测。</p>
+
+<p>离线层的产出是标准与模型，在线层的产出是观测块。标准与模型可以版本化、可以回滚；观测块只属于当前窗口，不承担版本管理。两类产物的生命周期不同，所以必须在不同层处理。</p>
 
 <hr class="section-divider">
 
-<h2>15.2 核心编码：依赖矩阵、级联模板与操作映射</h2>
+<h2>15.2 采集规范与信号校准</h2>
 
-<p>PSA的核心编码包含三类信息：<strong>模块依赖权重</strong>、<strong>级联路径模板</strong>和<strong>操作-组件映射规则</strong>。</p>
+<p>采集规范决定数据能不能进入管线。N1 规定数据格式、同步等级与元数据标准；格式不统一、时间不同步、元数据缺失的数据集，在后续层无法被可靠比较。神经数据的个体差异大，设备与导联布局差异更大，采集层不统一，映射层就无法跨样本训练。</p>
 
-<h3>15.2.1 模块依赖权重</h3>
-
-<p>模块依赖权重定义了M1-M6之间因果影响的强度（0-1）。以下为理论推导的标准矩阵（权重≥0.65加粗）：</p>
+<p>同步等级不是标签装饰。Tier-S 表示硬件级同步，Tier-A 表示事件级对齐，Tier-B 表示事后对齐；等级越低，时间误差越大，跨模态融合时的窗口就必须越宽。把低同步数据标成高等级，会让融合把时间错位当成状态变化。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>从↓ / 到→</th>
-<th>M1</th>
-<th>M2</th>
-<th>M3</th>
-<th>M4</th>
-<th>M5</th>
-<th>M6</th>
+<th>要素</th>
+<th>规定</th>
+<th>作用</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>**M1**</td>
-<td>—</td>
-<td>0.65</td>
-<td>**0.85**</td>
-<td>0.70</td>
-<td>0.30</td>
-<td>0.60</td>
+<td>数据格式</td>
+<td>统一目录结构与字段命名</td>
+<td>跨设备、跨研究可读</td>
 </tr>
 <tr>
-<td>**M2**</td>
-<td>0.20</td>
-<td>—</td>
-<td>0.55</td>
-<td>**0.65**</td>
-<td>0.50</td>
-<td>0.45</td>
+<td>同步等级</td>
+<td>Tier-S、Tier-A、Tier-B 三级</td>
+<td>标明时间对齐精度</td>
 </tr>
 <tr>
-<td>**M3**</td>
-<td>0.15</td>
-<td>0.50</td>
-<td>—</td>
-<td>0.40</td>
-<td>0.35</td>
-<td>**0.75**</td>
+<td>事件标记</td>
+<td>刺激、反应、分段的统一定义</td>
+<td>支持分段与对齐</td>
 </tr>
 <tr>
-<td>**M4**</td>
-<td>0.40</td>
-<td>**0.68**</td>
-<td>**0.75**</td>
-<td>—</td>
-<td>0.55</td>
-<td>**0.70**</td>
+<td>元数据</td>
+<td>设备、采样率、导联、过滤设置</td>
+<td>复现与差异诊断</td>
 </tr>
 <tr>
-<td>**M5**</td>
-<td>0.10</td>
-<td>0.45</td>
-<td>0.30</td>
-<td>0.45</td>
-<td>—</td>
-<td>0.50</td>
+<td>质量标记</td>
+<td>信噪比、伪影比例、坏道记录</td>
+<td>决定可用性</td>
 </tr>
 <tr>
-<td>**M6**</td>
-<td>0.25</td>
-<td>0.20</td>
-<td>0.15</td>
-<td>0.30</td>
-<td>0.25</td>
-<td>—</td>
+<td>校验文件</td>
+<td>逐记录的质量报告</td>
+<td>审计与降级依据</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>关键依赖解读</strong>：</p>
-<ul>
-<li><strong>M1→M3（0.85）</strong>：生理能量是意志资源的主要供给源——D-R-S序列中“先补充M1-RES-D再处理M3”的动力学依据</li>
-<li><strong>M4→M3（0.75）</strong>：情绪激活消耗意志资源——焦虑/抑郁患者“累”并非懒惰，而是M4-DSP-B持续消耗</li>
-<li><strong>M4→M2（0.68）</strong>：情绪驱动认知——焦虑时自动负性思维增加</li>
-<li><strong>M3→M6（0.75）</strong>：意志控制行为执行——M3-DSP-F失效时M6-DSP-B接管</li>
-</ul>
+<p>N2 做三件事：去伪影、滤波、时间同步。眼电、肌电、运动伪影会污染脑电；呼吸与运动会影响近红外与心率变异。滤波参数、去伪影方法与同步窗口必须登记，不能在不同样本上随意变化。质量标记低于阈值时，该记录按模态不可用处理，而不是带着噪声进入映射。</p>
 
-<h3>15.2.2 级联路径模板</h3>
+<p>去伪影没有普遍最优方法。眼电回归、独立成分分析、阈值剔除各有适用条件；方法选择要随设备与任务登记。滤波同样如此：低通截止频率影响高频特征，高通截止频率影响慢波成分。参数不登记，跨样本比较就没有共同基准。</p>
 
-<p>级联路径模板描述失调从起始模块到下游模块的典型传播模式：</p>
+<p>标准化的做法是复用成熟生态：数据格式沿用 BIDS，数据流同步沿用 LSL，模型交换沿用 ONNX，预处理沿用 EEGLAB 与 MNE。UNIP 只增加功能层所需的最小扩展，例如同步等级字段、质量报告文件与 NFI 编码。复用降低工程成本，也让神经端口不必重新发明数据格式。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>模板名称</th>
-<th>级联方向</th>
-<th>典型症状指纹</th>
-<th>最高杠杆干预靶点</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**资源崩溃型**</td>
-<td>M1-RES-D↓ → M3-RES-D↓ → M3-DSP-F失效 → M6-DSP-B↑</td>
-<td>疲劳、拖延、冲动</td>
-<td>MODULATE+ M1-RES-D</td>
-</tr>
-<tr>
-<td>**情绪驱动型**</td>
-<td>M4-STR-C激活 → M4-DSP-B↑ → M3-RES-D↓ → M2-DSP-B↑</td>
-<td>焦虑、反刍、回避</td>
-<td>RELINK M4-STR-C / GATE– M4-DSP-B</td>
-</tr>
-<tr>
-<td>**习惯固化型**</td>
-<td>S-P触发 → M6-DSP-B重复 → M6-STR-S巩固 → M3-DSP-F门控失效</td>
-<td>成瘾、强迫行为</td>
-<td>GATE– S-P触发 + GATE+替代行为</td>
-</tr>
-<tr>
-<td>**规则扭曲型**</td>
-<td>M2-STR-R错误规则 → M4-STR-R威胁评估扭曲 → M4-DSP-B↑ → 回避行为</td>
-<td>完美主义、灾难化</td>
-<td>ALIGN M2-STR-R</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>采集与校准都属于离线阶段，但它们的产物直接影响在线推理。采集错误无法靠滤波补救，滤波过度又会抹掉特征；两者的参数必须一起登记，不能分开维护。</p>
 
-<h3>15.2.3 操作-组件映射规则</h3>
+<p>采集规范还要处理坏道与缺失段。坏道不能简单插值补平，插值会制造看似连续的伪信号；缺失段要么标记为不可用，要么在特征层按缺失规则聚合。质量报告的作用，是让下游知道哪一段可以信、哪一段不能信。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>操作</th>
-<th>直接靶点</th>
-<th>间接影响</th>
-<th>操作合法性的充分必要条件</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**GATE**</td>
-<td>DSP-F, DSP-B, 运行中的STR-S</td>
-<td>RES-D消耗速率；STR-S长期削弱/强化</td>
-<td>靶点是运行中的过程，非静态结构</td>
-</tr>
-<tr>
-<td>**MODULATE**</td>
-<td>RES-D</td>
-<td>DSP稳定性</td>
-<td>靶点是RES-D，非RES-B、非STR</td>
-</tr>
-<tr>
-<td>**ALIGN**</td>
-<td>STR-R</td>
-<td>STR-C情绪权重</td>
-<td>靶点是STR-R的规则内容，非连接</td>
-</tr>
-<tr>
-<td>**RELINK**</td>
-<td>STR-C</td>
-<td>RES-B（涌现）</td>
-<td>靶点是STR-C的连接权重，非规则</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>临床意义</strong>：如果一个干预方案声称“用认知辩论治疗创伤连接”，PSA会标记为操作-组件错配（ALIGN不能直接替代RELINK），并推荐修正方案。</p>
+<p>质量报告还记录修复动作。哪一段被剔除、哪一段被插值、哪一段被标记缺失，都要可追溯；只写最终信噪比、不写处理过程，复现时无法判断差异来自数据还是来自处理。</p>
 
 <hr class="section-divider">
 
-<h2>15.3 PSL设计：自然语言到PCUI的映射接口</h2>
+<h2>15.3 神经—功能映射：NFM 的约束语义</h2>
 
-<p>PSL（Psychological Specialist Lexicon，心理专项词汇库）是UPLP的自然语言接口层。它的任务是：将临床口语、患者主诉、文化隐喻等非结构化的语言输入，映射为标准化的PCUI标识符和M-R-D-S坐标。</p>
+<p>NFM 存储从 NFI 特征到功能似然的预测模型。它不是“输入脑电、输出诊断”的黑箱分类器，而是受约束的条件分布模型：给定状态，特征应该呈现什么分布；给定特征，哪些维度可以被更新，哪些不能。</p>
 
-<p><strong>PSL-L五层结构</strong>：</p>
+<p>NFM 的模型可以是线性映射、核方法或深度网络，形式不固定；固定的是约束语义与输出契约。模型选择属于离线验证，不改变端口对外承诺。端口对外只承诺两件事：覆盖哪些维度，以及每维的不确定度如何表达。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>层级</th>
+<th>约束</th>
 <th>内容</th>
-<th>功能</th>
+<th>违反的后果</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>术语主表</td>
-<td>核心术语条目（5-10万）</td>
-<td>存储术语的规范形式、变体、定义</td>
+<td>覆盖约束</td>
+<td>只在已验证的维度上输出观测值</td>
+<td>未验证维度被伪观测污染</td>
 </tr>
 <tr>
-<td>语义映射层</td>
-<td>术语 ↔ PCUI + 置信度权重</td>
-<td>连接自然语言与PCUI</td>
+<td>生理硬约束</td>
+<td>先验库给出不可越过的生理边界</td>
+<td>映射输出违反基本生理事实</td>
 </tr>
 <tr>
-<td>形态变体层</td>
-<td>同义词、缩写、词形变化</td>
-<td>归一化处理</td>
+<td>统计规律约束</td>
+<td>输出分布需符合参照样本的统计形态</td>
+<td>模型在尾部失控</td>
 </tr>
 <tr>
-<td>上下文规则层</td>
-<td>消歧规则、共现模式</td>
-<td>一词多义消歧</td>
+<td>仲裁优先级</td>
+<td>领域专用优先、近期校准优先</td>
+<td>多模型冲突时输出不稳定</td>
 </tr>
 <tr>
-<td>多语言对齐层</td>
-<td>中文 ↔ 英文 ↔ 其他</td>
-<td>跨语言映射</td>
+<td>不确定度约束</td>
+<td>σ_n 必须反映映射与校准不确定度</td>
+<td>下游把猜测当读数</td>
+</tr>
+<tr>
+<td>离线训练约束</td>
+<td>在线只执行已登记模型</td>
+<td>实时推理不可审计</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>临床口语到PCUI的映射示例</strong>：</p>
+<p>覆盖约束是最重要的一条。NFM 只对经过验证的特征—维度对输出观测值；未覆盖维度写无信息编码。一个模型在 M2-RES-D 上验证过，不代表它也能读 M4-STR-C。把未验证维度填上预测值，会让神经通道看起来覆盖很广，实际是在制造伪信息。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>患者主诉（中文）</th>
-<th>可能的PCUI映射</th>
-<th>M-R-D-S坐标</th>
-<th>消歧规则</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>“心慌”</td>
-<td>焦虑语境→`ANXIETY_SOMATIC`</td>
-<td>M1-DSP-B↑ + M4-DSP-B↑</td>
-<td>若同时有“担心”→M4优先；仅躯体不适→M1优先</td>
-</tr>
-<tr>
-<td>“心里堵得慌”</td>
-<td>东亚文化躯体化→`SOMATIC_ANXIETY_EASTASIA`</td>
-<td>M1-DSP-B权重×1.3</td>
-<td>文化变体自动应用</td>
-</tr>
-<tr>
-<td>“脑子里停不下来”</td>
-<td>`RUMINATION`</td>
-<td>M2-DSP-B↑ + M4-DSP-B↑</td>
-<td>默认M2-DSP-B，伴情绪痛苦则加M4</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>约束语义还要求输出可复算。给定同一段清洁信号、同一版 NFI 定义与同一组 NFM 权重，在线推理应得到同一观测块；随机性只能出现在已声明的采样环节。不可复算的输出无法进入审计，也无法用于校准。</p>
+
+<p>覆盖约束也约束训练。一个 NFM 模型只能在有足够标注的维度上训练；没有标注的维度不能靠迁移学习“顺带”输出。跨维度的共享表征可以提高效率，但不能替代每个维度的验证。没有验证的维度，一律按未覆盖处理。</p>
+
+<p>多个 NFM 模型对同一维度给出冲突输出时，按优先级仲裁：领域专用模型优先于通用模型，近期校准的模型优先于历史校准模型。冲突持续时产生仲裁事件并记录审计日志，交由融合层按贝叶斯模型平均处理。仲裁规则不改变模型本身，只决定当前观测采信哪一路。</p>
+
+<p>约束语义的最终落点是观测块的形状。NFM 输出不是点估计，而是带 σ_n 的分布参数；σ_n 由映射不确定度与在线校准状态决定。若模型只给点值，端口必须自行补上不确定度，否则下游会把点值当成确定读数。</p>
+
+<p>仲裁优先级解决的是模型冲突，不解决模型错误。若两个模型都系统性偏离，仲裁只会选出一个更接近的错值。模型错误的发现依赖离线验证与在线残差监控，不能靠仲裁规则。</p>
+
+<p>N5 的先验库为映射提供边界。生理硬约束是不可越过的范围，例如某维度的取值不能超出对应生理量的可行区间；统计规律约束给出参照分布形态。先验库不是 L1 仪器参数，它的产出流向 L3 参数层，作为先验输入参与系统参数的整合与校准。</p>
 
 <hr class="section-divider">
 
-<h2>15.4 文化变体：参数化对抗WEIRD偏见</h2>
+<h2>15.4 先验库与实时引擎</h2>
 
-<p>心理学的一个重大挑战是<strong>WEIRD偏见</strong>（研究基于西方、教育程度高、工业化、富裕、民主的人口）。UPLP通过<strong>文化变体参数</strong>在架构层面对抗这一偏见。</p>
+<p>N5 是 L1-N 与 L3 参数层的交界面。它存储生理硬约束与统计规律约束，产出先验分布，交给 L3 参数层与仿真先验一起整合。N5 不归入 L1 仪器参数；它不设定“这次观测的权重”，而设定“这个参数可能取什么范围”。两者属于不同层级：前者是仪器校准，后者是系统参数的先验来源。</p>
 
-<p><strong>文化变体的三层处理策略</strong>：</p>
+<p>先验库与仿真先验是两条来源。仿真先验来自规则编码智能体的演化统计，先验库来自生理约束与参照样本的统计规律；两者在 L3 参数层整合，再经临床数据做后验校准。N5 只负责产出与格式，不负责整合。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>层级</th>
-<th>处理方式</th>
-<th>示例</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**PSL层**</td>
-<td>文化特定表达映射到标准PCUI，附带权重调整</td>
-<td>“神经衰弱”在东亚优先映射到`SOMATIC_ANXIETY`，M1权重×1.3</td>
-</tr>
-<tr>
-<td>**PCUI层**</td>
-<td>同一PCUI条目下存储多个文化的参数分布</td>
-<td>`ATTACHMENT_SECURITY`的东亚版本M4-RES-B基线低于西方版本</td>
-</tr>
-<tr>
-<td>**PSE层**</td>
-<td>文化变体在PSE-I阶段注入</td>
-<td>文化变体标签自动匹配生态位参数</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>文化变体参数示例（东亚 vs 西方）</strong>：</p>
+<p>这种分工避免了循环定义：如果 N5 同时产出先验并决定先验如何消费，先验就会在自己的消费规则里自我确认。交给 L3 整合，使先验必须与仿真先验和临床后验竞争，接受统一校准。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
 <th>参数</th>
-<th>东亚版本</th>
-<th>西方版本（基线）</th>
-<th>说明</th>
+<th>所属层</th>
+<th>归属</th>
+<th>作用</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>焦虑躯体化权重（M1-DSP-B）</td>
-<td>×1.30</td>
-<td>×1.00</td>
-<td>东亚文化中焦虑更多表现为躯体不适</td>
+<td>NFI 特征定义</td>
+<td>N3 NFD</td>
+<td>L1 仪器参数</td>
+<td>定义标准特征与编码</td>
 </tr>
 <tr>
-<td>情绪表达权重（M4-DSP-F）</td>
-<td>×0.85</td>
-<td>×1.00</td>
-<td>情绪表达内敛</td>
+<td>NFM 映射权重</td>
+<td>N4 NFM</td>
+<td>L1 仪器参数</td>
+<td>决定特征到似然的映射</td>
 </tr>
 <tr>
-<td>依恋安全感基线（M4-RES-B）</td>
-<td>均值-5</td>
-<td>均值+0</td>
-<td>集体主义文化中安全感更多来自关系</td>
+<td>RTE 校准参数</td>
+<td>N6 RTE</td>
+<td>L1 仪器参数</td>
+<td>在线个体化微调</td>
 </tr>
 <tr>
-<td>自我叙事独立性（M5-STR-R）</td>
-<td>互依型权重高</td>
-<td>独立型权重高</td>
-<td>文化自我构念差异</td>
+<td>NPL 先验分布</td>
+<td>N5 NPL</td>
+<td>L3 参数层交界面</td>
+<td>为系统参数提供先验输入</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<blockquote><p><strong>重要声明</strong>：文化变体参数初始值基于跨文化心理学文献和专家共识（F级），其跨文化等值性仍有待PSE-C大规模多文化样本校准验证（P级）。</p></blockquote>
+<p>N6 是在线层。它消费 N1–N5 的产出，把实时神经流转换为观测块，并在个体化校准中微调映射参数。前向通道是 `/func_likelihood`：输入神经生理信号，输出 42 维观测块。反向通道是 `/calibration_feedback`：把融合与校准阶段的残差送回实时引擎，用于在线微调。</p>
 
-<hr class="section-divider">
+<p>前向端点返回的观测块必须通过契约校验：长度 42、值域合法、σ 不超过上界。不符合者按无信息处理并记录审计日志，不能带着坏块进入融合。</p>
 
-<h2>15.5 接口关系：PCUI→PSA→PSL→PSE数据流</h2>
+<p>反向通道携带四个关键字段：校准目标、残差、残差不确定度、来源校准阶段。目标可以是某个 NFI 特征、某个 NFM 映射条目或某个 RTE 参数。闭环使神经端口能利用融合层的全局信息，而不是只靠端口内部的局部拟合。反向通道的协议必须在闭环试验中验证后才转正；在此之前，它只作为设计接口存在。</p>
 
-<p>UPLP静态三层与PSE动态引擎之间的接口关系，构成了从“静态知识”到“动态计算”的完整链路。</p>
+<p>反向通道的残差不是标签。它是融合后状态与端口观测之间的差异，可能来自映射偏差、个体差异或上游观测噪声。RTE 只能在自己的参数范围内微调；若残差持续指向模型形式错误，应回到离线层重修映射，而不是在线硬调。</p>
 
-<pre><code class="language-text">┌─────────────────────────────────────────────────────────────┐
-│                      自然语言输入                            │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSL-L：分词、术语识别、上下文消歧、文化变体匹配             │
-│  → 输出：候选PCUI列表 + 置信度权重                          │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PCUI-L：聚合为唯一PCUI，加载M-R-D-S坐标、参数分布、边界注释 │
-│  → 输出：初始M-R-D-S状态向量（概率分布）                     │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSA-L：加载依赖矩阵和级联模板，计算级联预测、推荐干预靶点   │
-│  → 输出：状态演化预测 + 干预优化建议                         │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│  PSE：MCT编译状态向量，MKT动力学积分，MDT干预序列优化        │
-│  → 输出：个体化轨迹预测 + 干预处方                           │
-└─────────────────────────────────────────────────────────────┘</code></pre>
+<p>降级规则与另外两个端口一致。神经数据流中断、质量不达标或主动禁用时，观测块整体写无信息编码；NFM 不支持某维度时，该维写无信息编码，其余维度正常输出。降级必须显式声明，不得静默省略，也不得用非均匀值填充。</p>
 
-<p><strong>关键接口协议</strong>：</p>
+<p>三端口降级规则一致，是为了让 L2 不需要按模态写分支。L2 只检查 available 与 σ，不关心缺失来自设备、质量还是覆盖；统一的无信息编码把工程差异挡在端口内部。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>接口</th>
-<th>方向</th>
-<th>数据格式</th>
-<th>触发条件</th>
+<th>降级类型</th>
+<th>触发场景</th>
+<th>处理</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>PSL → PCUI</td>
-<td>映射</td>
-<td>`(term, context) → list of (PCUI, confidence)`</td>
-<td>每次MCT编译时</td>
+<td>模态级</td>
+<td>数据流中断、质量标记低于阈值、主动禁用</td>
+<td>整体写 \(y=0.5\)、\(\sigma=1/\sqrt{12}\)</td>
 </tr>
 <tr>
-<td>PCUI → PSA</td>
-<td>加载</td>
-<td>PCUI编码 → M-R-D-S坐标 + 参数分布</td>
-<td>状态向量初始化时</td>
+<td>维度级</td>
+<td>NFM 不支持某维度的功能映射</td>
+<td>该维写无信息编码，其余正常</td>
 </tr>
 <tr>
-<td>PSA → PSE</td>
-<td>约束</td>
-<td>依赖权重、级联模板、操作-组件映射</td>
-<td>动力学积分和干预规划时</td>
-</tr>
-<tr>
-<td>PSE → PCUI</td>
-<td>反馈</td>
-<td>后验参数分布、校准后的权重</td>
-<td>PSE-C每轮更新后</td>
+<td>组合降级</td>
+<td>多模态同时不可用</td>
+<td>各模态分别写无信息编码</td>
 </tr>
 </tbody>
 </table>
@@ -503,68 +361,15 @@
 
 <hr class="section-divider">
 
-<h2>15.6 微案例：从主诉到PCUI的完整编译</h2>
+<h2>15.5 当前工程状态</h2>
 
-<p><strong>主诉</strong>：“我最近老是心慌，尤其是晚上一个人在家的时候。心跳得特别快，觉得要出事了，但去医院查了心脏没问题。”</p>
+<p>工程现状：N3（NFD）的 NFI 名册缺少可用参考实现，N5（NPL）与 N6（RTE）尚未实现；神经端口当前只能以无信息编码参与融合。</p>
 
-<p><strong>Step 1 – PSL分词与术语识别</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>词元</th>
-<th>候选PCUI</th>
-<th>置信度</th>
-<th>消歧依据</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>“心慌”</td>
-<td>`ANXIETY_SOMATIC`</td>
-<td>0.65</td>
-<td>焦虑躯体化</td>
-</tr>
-<tr>
-<td></td>
-<td>`CARDIAC_PALPITATION`</td>
-<td>0.20</td>
-<td>但下文“心脏没问题”降低此权重</td>
-</tr>
-<tr>
-<td>“晚上一个人在家”</td>
-<td>`CONTEXTUAL_TRIGGER_ISOLATION`</td>
-<td>0.70</td>
-<td>情境触发</td>
-</tr>
-<tr>
-<td>“觉得要出事了”</td>
-<td>`CATASTROPHIZING`</td>
-<td>0.80</td>
-<td>灾难化思维</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>Step 2 – PCUI加载与M-R-D-S坐标</strong>：最终确定主PCUI为<code>ANXIETY_PANIC</code>，坐标：M4-DSP-B↑（78），M4-STR-R灾难化权重（0.72），M1-DSP-B↑（82），M2-STR-R威胁评估偏置（0.65）。</p>
-
-<p><strong>Step 3 – PSA推理</strong>：加载依赖矩阵后自动计算：M4-DSP-B↑ → M3-RES-D消耗速率+30%（预计3天后跌破40）；M4-DSP-B↑ → M2-DSP-B↑（反刍风险+25%）；推荐干预：先GATE– M4-DSP-B（接地技术）+ MODULATE+ M1-RES-D（睡眠锚定），待资源稳定后再ALIGN M4-STR-R（灾难化信念挑战）。</p>
-
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：PSA（心理语义架构）和PSL（心理专项词汇库）构成了UPLP静态知识三层的核心。PSA通过模块依赖权重、级联路径模板和操作-组件映射规则，将PCUI从孤立的概念坐标升级为可推理的因果网络；PSL通过五层词汇体系和上下文消歧规则，将自然语言主诉编译为标准化的PCUI查询。文化变体处理在PSL和PCUI层分别注入，对抗WEIRD偏见。PCUI→PSA→PSL→PSE的接口关系形成了从“静态知识”到“动态计算”的完整链路，使IODS知识基础设施与UPLP语义编译端口协同工作，不仅是一个术语词典，更是一个可运行的、支持临床推理的语义知识体系。</p>
-
-<blockquote><p><strong>关键术语</strong>：PSA，依赖矩阵，级联路径模板，操作-组件映射，PSL，文化变体，WEIRD偏见，接口协议</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “PSA是大脑连接组的映射” → ✅ 依赖矩阵是功能层的关系，不声称与神经连接一一对应。<br>- ❌ “文化变体参数是政治正确的装饰” → ✅ 它直接影响M-R-D-S坐标和干预推荐，需要实证校准。<br>- ❌ “PSL消歧规则万无一失” → ✅ 当置信度过低时，系统要求人工确认而非自动决定。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 查阅本章的依赖矩阵，解释为什么M4→M3的权重（0.75）高于M2→M3（0.55），这一差异的临床含义是什么？<br>2. 选择一个你熟悉的文化群体，提出一个可能的文化变体参数调整建议。<br>3. 给定一句主诉“我一考试就肚子疼”，模拟PSL的术语识别和PCUI映射过程。</p></blockquote>
-
-</main>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 概念标识</a>
-<a href="ch16.html" class="nav-link next">共识工程 ›</a></div>
+        <div class="chapter-nav"><a href="ch14.html" class="nav-link prev">‹ 行为测量</a>
+<a href="ch16.html" class="nav-link next">L2 状态估计 ›</a></div>
     </div>
 
     <footer>
@@ -577,7 +382,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

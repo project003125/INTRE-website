@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第3章 框架总览：INTRE核心资产与子系统 · INTRE 导论教材</title>
-    <meta name="description" content="INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。">
-    <meta property="og:title" content="第3章 框架总览：INTRE核心资产与子系统">
-    <meta property="og:description" content="INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。">
+    <title>第3章 框架总览：从元公理到 IODS＋PSE · INTRE 导论教材</title>
+    <meta name="description" content="从 N-S-R 到 M-R-P 与 M1-M6，状态语法与操作语法的对偶，IODS 与 PSE 两系统，双工程与 31 个编号工程，四目标映射。">
+    <meta property="og:title" content="第3章 框架总览：从元公理到 IODS＋PSE">
+    <meta property="og:description" content="从 N-S-R 到 M-R-P 与 M1-M6，状态语法与操作语法的对偶，IODS 与 PSE 两系统，双工程与 31 个编号工程，四目标映射。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch03.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch03.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第3章 框架总览：INTRE核心资产与子系统">
-    <meta name="twitter:description" content="INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。">
+    <meta name="twitter:title" content="第3章 框架总览：从元公理到 IODS＋PSE">
+    <meta name="twitter:description" content="从 N-S-R 到 M-R-P 与 M1-M6，状态语法与操作语法的对偶，IODS 与 PSE 两系统，双工程与 31 个编号工程，四目标映射。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,257 +69,346 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第3章 框架总览：INTRE核心资产与子系统</h1>
+        <h1 class="chapter-title">第3章 框架总览：从元公理到 IODS＋PSE</h1>
 
+        <blockquote><p><strong>学习目标</strong>：(1) 复述 N-S-R → M-R-P → M1-M6 的推导链；(2) 说明状态语法与操作语法如何在 7 个维度上对偶；(3) 区分 IODS（L0）与 PSE（L1–L5）；(4) 说明知识治理五层与计算执行六级的关系；(5) 用四目标映射判断各级职责。</p></blockquote>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)列举INTRE六大核心资产并按方法论/工程化/研究纲领三档分级；(2)描述INTRE六级管线（L0-L5）的分工与协作关系（L0 IODS 本体、L1 三观测端口、L2 状态估计、L3 动力学、L4+L5 规划执行），以及REVER作为独立伦理护栏横跨功能层（L1-L5）的定位；(3)解释四阶范式转变框架及INTRE在其中的定位；(4)阐述框架的三层主张结构和版本演化协议；(5)识别IET v3.0的八级证据分类体系及其标注原则。</p></blockquote>
+        <hr class="section-divider">
 
-<blockquote><p><strong>说明</strong>：本章沿用管线重构前的“四系统族”叙述。现行体系为六级管线（L0 本体 → L1 观测 → L2 状态估计 → L3 动力学 → L4 规划 → L5 执行），对外系统边界为 IODS（本体定义）与 PSE（计算引擎，覆盖 L1-L5）。</p></blockquote>
+        <h2>3.1 N-S-R → M-R-P → M1-M6</h2>
 
-<hr class="section-divider">
+        <p>N-S-R 是框架性公理，不是从更基础前提推出的必然结论。它描述任何自适应系统的循环：需要（Need）→ 结构（Structure）→ 实现（Realization）→ 新的需要。N 是价值评估后的差距信号，S 是为弥合差距而调用的模型与方案，R 是把方案转成行动并回收反馈。</p>
 
-<h2>3.1 资产分级：方法论、工程化与研究纲领</h2>
+        <p>M-R-P 把 N-S-R 中的“结构”环节操作化。M 是模块库，回答系统“能做什么”；R 是控制环，回答目标如何转成行动；P 是剧本，回答特定情境下“具体怎么做”。M-R-P 不是新公理，而是对 S 环节的通用结构法则。</p>
 
-<p>INTRE框架包含六项核心资产，它们在理论地位和实证成熟度上并不等重。理解这种不等重性，是正确评估整个框架的前提。</p>
+        <p>M1-M6 把 M-R-P 的模块层落到人类心智的功能分解。M1 具身是能量与稳态基座，M2 认知是建模与知识库，M3 意志是中央调度器，M4 情绪是价值评估中心，M5 言语是符号接口与社会连接，M6 行为是外部执行器。六个模块覆盖“能量—建模—调度—估值—符号—执行”六类必要功能。</p>
 
-<p><strong>第一项资产：功能层定位</strong>。这是INTRE最具诊断价值的贡献——它明确指出心理学需要一个介于神经层与现象层之间的功能描述层。这一判断即使未来M-R-D-S的具体版本被大幅修订也仍然成立，因为它是对学科结构性缺口的识别，而非某一具体理论的命题。功能层定位的稳健性来源于三条独立路径的收敛（系统科学、认知科学、工程实践）。</p>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>层级</th>
+        <th>内容</th>
+        <th>回答的问题</th>
+        <th>操作化结果</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>N-S-R</td>
+        <td>需要 → 结构 → 实现 → 新需要</td>
+        <td>系统为何持续运行？</td>
+        <td>循环的存在条件</td>
+        </tr>
+        <tr>
+        <td>M-R-P</td>
+        <td>模块、控制环、剧本</td>
+        <td>结构环节由哪些部件组成？</td>
+        <td>通用组织法则</td>
+        </tr>
+        <tr>
+        <td>M1-M6</td>
+        <td>具身、认知、意志、情绪、言语、行为</td>
+        <td>人类心智需要哪些功能单元？</td>
+        <td>功能模块分解</td>
+        </tr>
+        <tr>
+        <td>R-D-S × M1-M6</td>
+        <td>每个模块按资源、调度、结构展开</td>
+        <td>每个模块内部状态如何描述？</td>
+        <td>42 维状态坐标系</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
 
-<p><strong>第二项资产：M-R-D-S状态语法</strong>。这是功能层的具体描述语言——六个模块(M1-M6)、三个维度(资源R、调度D、结构S)、42个子单元。M-R-D-S提供了将模糊的临床构念（如“焦虑”“抑郁”）分解为可定位的功能组件组合。然而，M-R-D-S的具体维数、模块边界和维度划分是<strong>可修订的工程选择</strong>，而非不可动摇的本体论真理。它的实证成熟度有待A/B/C三类子单元的测量工具开发和校准验证。</p>
+        <p>推导是功能意义的，不是解剖意义的。缺少 M1，系统失去能量来源；缺少 M2，系统无法建模；缺少 M3，冲突目标无法仲裁；缺少 M4，价值标记与动机生成失效；缺少 M5，符号协调断裂；缺少 M6，意图无法转成行动。六个模块是当前颗粒度下覆盖充分且互斥的工程分解，不是“所有智能体都必须具备六个模块”的公理断言。</p>
 
-<p><strong>第三项资产：G-M-A-R操作语法</strong>。这是从M-R-D-S的状态空间中推导出的原子干预操作集——门控(GATE)、调制(MODULATE)、校准(ALIGN)、重联(RELINK)。每类操作对应状态空间中一个特定的、不可相互替代的功能靶点。G-M-A-R是INTRE作为“操作语法生成层”的核心竞争力。在23个中间层候选架构的遍历比较中，INTRE满足了操作语法生成层的全部条件（靶点特异性、操作可区分性、执行可转译性、反馈可校准性、跨流派翻译≥80/100）。</p>
+        <h2>3.2 状态语法 ∥ 操作语法</h2>
 
-<p><strong>第四项资产：IODS（统一本体描述系统）与UPLP（统一心理语言端口）</strong>。IODS是INTRE的知识基础设施层（L0本体），包含PCUI（概念唯一标识）、PSA（语义架构）、PSL（专家词典）三个组件，其结构类比于医学领域的UMLS。IODS定义了M-R-D-S状态语法和G-M-A-R操作语法的静态描述规范，为跨流派概念映射提供标准化平台。UPLP则是PSE感知层L1的语义输入端口（L1-S），负责将自然语言编译为M-R-D-S坐标，是接入这套知识语法的语义编译流水线。二者的价值共同在于将“跨流派整合”从一个哲学口号转化为可操作的工程任务。</p>
+        <p>状态语法回答“系统现在是什么”，操作语法回答“能对它做什么”。两套语法共享同一组维度，构成对偶：每一个状态维度都有对应的操作类型，每一类操作都有合法的靶点集合。</p>
 
-<p><strong>第五项资产：PSE（心理系统工程引擎）</strong>。PSE是INTRE的计算核心，包含五层架构（架构层、算法层、参数层、方法论层、协议层）、心智六论（MCT/MTT/MKT/MDT/MPT/MET）、四阶段仿真管线（PSE-I/M/P/C）。PSE的目标是将功能层状态向量转化为可计算、可预测、可校准的动力学系统。当前，PSE处于<strong>概念蓝图阶段</strong>——其理论规范完整，但大规模参数校准和实证验证尚未完成。PSE不是“已经工作的引擎”，而是“值得建造的引擎”的设计图纸。</p>
+        <p>状态空间是 6 个模块 × 7 个维度的张量积：</p>
 
-<p><strong>第六项资产：UNIP（统一神经接口端口）</strong>。UNIP是INTRE新管线体系中 PSE 感知层 L1 的<strong>神经模态输入端口（L1-N）</strong>，与 UPLP（L1-S 语义端口）、UBMP（L1-B 行为端口）并列（不再与 PSE 并列为"FLP 三大工程支柱"）。它解决的核心问题是：如何将原始神经信号（EEG、fNIRS、PPG等）转换为功能层状态向量的神经似然 \( p(y_n \mid \Psi_t) \)。UNIP采用六层递进架构——L1采集规范(NAP)、L2信号校准(SCL)、L3神经特征定义(NFD)、L4神经-功能映射(NFM)、L5神经先验库(NPL)、L6实时引擎(RTE)——为PSE的多模态贝叶斯融合提供标准化的神经输入通道。UNIP与PSE之间通过双向通信协议（<code>/func_likelihood</code>、<code>/state_estimate</code>、<code>/calibration_feedback</code>）形成增强闭环：PSE的状态估计反馈回UNIP，用于实时个体化校准神经映射模型。当前UNIP同样处于<strong>规范设计阶段</strong>，其种子NFI（神经特征标识符）和NFM模型库的社区填充是后续工程化的核心任务。</p>
+        \[ \Psi \in \mathbb{R}^{42},\qquad \Psi=\{M_i\text{-}X: i\in[1,6],\ X\in\{\text{RES-D, RES-B, DSP-F, DSP-B, STR-R, STR-C, STR-S}\}\} \]
 
-<p><strong>资产分级与嵌套关系</strong>：这六项资产（含IODS与UPLP组合项）并不在同一层级上。</p>
+        <p>七个维度沿 R-D-S 展开：R 层是存量，含 RES-D 调度资源与 RES-B 基底资源；D 层是流量，含 DSP-F 前台调度与 DSP-B 后台调度；S 层是结构，含 STR-R 规则、STR-C 连接、STR-S 序列。每个模块重复这七个维度，42 个基本诊断维度由此形成。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>档次</th>
-<th>资产</th>
-<th>说明</th>
-<th>可修订性</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**第一档：方法论资产**</td>
-<td>功能层定位</td>
-<td>即使M-R-D-S被大幅修订，功能层作为分析层级的必要性仍然成立</td>
-<td>极难修订（范式级）</td>
-</tr>
-<tr>
-<td>**第二档：工程化资产**</td>
-<td>M-R-D-S、G-M-A-R</td>
-<td>具体维数、模块边界和操作分类是可修订的工程选择</td>
-<td>可修订（需强反例）</td>
-</tr>
-<tr>
-<td>**第三档：研究纲领资产**</td>
-<td>IODS/UPLP、PSE、UNIP、UBMP</td>
-<td>潜在价值高，但依赖后续验证和社区采纳</td>
-<td>常规科学活动</td>
-</tr>
-</tbody>
-</table>
-</div>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>状态维度</th>
+        <th>状态语义</th>
+        <th>对应操作</th>
+        <th>靶点合法性</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>RES-D 调度资源</td>
+        <td>快速波动的心理燃料，时间尺度小时至天</td>
+        <td>MODULATE</td>
+        <td>唯一直接作用于资源存量的操作</td>
+        </tr>
+        <tr>
+        <td>RES-B 基底资源</td>
+        <td>缓慢变化的心理资本，时间尺度周至年</td>
+        <td>MODULATE</td>
+        <td>同上，作用于存量水平而非流量</td>
+        </tr>
+        <tr>
+        <td>DSP-F 前台调度</td>
+        <td>需意识参与的目标导向进程，高能耗</td>
+        <td>GATE</td>
+        <td>通断控制，启动、抑制或切换进程</td>
+        </tr>
+        <tr>
+        <td>DSP-B 后台调度</td>
+        <td>无需意识参与的自动化进程，低能耗</td>
+        <td>GATE</td>
+        <td>通断控制，主要抑制失控的自动化进程</td>
+        </tr>
+        <tr>
+        <td>STR-R 规则结构</td>
+        <td>“如果 X 则 Y”的算法库与信念规则</td>
+        <td>ALIGN</td>
+        <td>规则修正，改写评估与决策算法</td>
+        </tr>
+        <tr>
+        <td>STR-C 连接结构</td>
+        <td>X 与 Y 的连接强度与情感绑定</td>
+        <td>RELINK</td>
+        <td>联系重构，解绑或建立连接</td>
+        </tr>
+        <tr>
+        <td>STR-S 序列结构</td>
+        <td>“先 X 再 Y”的固定程序与节律</td>
+        <td>GATE</td>
+        <td>作用于序列的激活面，属通断控制</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
 
-<p>IODS定义了M-R-D-S和G-M-A-R（前者是状态语法，后者是操作语法，二者构成统一的知识基础设施），因此后两者也作为独立资产列出，以示其可独立评估的工程价值。UPLP仅是PSE感知层L1的语义输入端口，负责把自然语言编译进这套语法。</p>
+        <p>对偶的计数正好闭合：2 个资源维度由 MODULATE 覆盖，2 个调度维度加 1 个序列维度由 GATE 覆盖，1 个规则维度由 ALIGN 覆盖，1 个连接维度由 RELINK 覆盖，2 + 3 + 1 + 1 = 7。六个模块重复同一模式，得到 42 维的完整覆盖。</p>
 
-<hr class="section-divider">
+        <p>对偶不是“一个维度只能配一个操作”的机械表。GATE 同时作用于 DSP 与 STR-S，因为二者共享激活态结构；ALIGN 对 STR-S 内容面有归约关系，但 STR-S 的激活面归 GATE。靶点合法性矩阵的作用，是防止操作越界：MODULATE 不能改规则，ALIGN 不能改连接，RELINK 不能替代资源补充。</p>
 
-<h2>3.2 工程核心组件（管线语境）+ REVER伦理护栏</h2>
+        <p>两套语法还共同约束干预顺序。D 层失控会持续消耗 R 层，R 层枯竭会让 S 层重建失去能量预算。推荐序列是先稳定调度，再恢复资源，最后重建结构。这个序列是工程优先原则，其最优性仍待实证检验。</p>
 
-<p>INTRE框架的工程功能组织为一条六级管线（L0 本体 → L1 观测 → L2 状态估计 → L3 动力学 → L4 规划 → L5 执行），REVER作为独立的伦理护栏横跨整个功能层（L1-L5）。管线语境下各核心组件可概括为：<strong>IODS是本体地图（L0），UNIP是神经天线（L1端口），UBMP是行为标尺（L1端口），PSE是动力学引擎（L1-L5）</strong>，而REVER是安全护栏。</p>
+        <h2>3.3 两系统：IODS（L0）＋ PSE（L1–L5）</h2>
 
-<p><strong>IODS：统一描述系统</strong>。IODS的任务是提供功能层的静态描述语法。它回答“心理系统由哪些功能组件构成，当前处于什么状态”。IODS的核心产出是M-R-D-S状态向量和PCUI概念映射库。IODS本身不回答“状态如何随时间变化”（那是PSE的任务），也不回答“干预应如何设计”（那是G-M-A-R的任务）。它是PSE和G-M-A-R的<strong>本体论基础</strong>——没有IODS定义的状态空间，PSE的动力学方程没有操作对象，G-M-A-R的操作没有靶点。（UPLP 端口负责把自然语言编译进这套语法，见第15章。）</p>
+        <p>对外系统边界是两个系统：IODS 负责定义，PSE 负责计算。IODS 是 L0 本体定义体系，只含静态定义——坐标系、词汇、语法、结构约束；它不是系统，不需要运行时，不需要 API。PSE 覆盖 L1–L5，承担观测、估计、动力学、规划与执行。</p>
 
-<p><strong>PSE：仿真预测引擎</strong>。PSE的任务是将IODS的静态状态空间转化为动态演化模型。它回答“给定当前状态和环境输入，系统未来会怎样演化”。PSE的核心能力包括：通过MKT微分方程计算状态轨迹，通过MTT分析级联传播路径，通过MDT优化干预序列，通过PSE-C贝叶斯校准将群体先验更新为个体后验。PSE是INTRE从“描述”走向“预测”的关键——它使心理学能够像数值天气预报那样，输出带置信区间的个体化轨迹预测。（详见第18-21章。）</p>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>级</th>
+        <th>系统</th>
+        <th>一句话职责</th>
+        <th>输入 → 输出</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>L0 本体</td>
+        <td>IODS</td>
+        <td>定义坐标系、词汇、语法与结构约束</td>
+        <td>无输入 → 42 维坐标、D 矩阵、STR 三分、级联规则、六条动力学约束</td>
+        </tr>
+        <tr>
+        <td>L1 观测</td>
+        <td>PSE 感知层</td>
+        <td>三端口把原始观测编译为带不确定度的观测向量</td>
+        <td>语义/行为/神经 → \(y_t=(y_s,y_b,y_n)\) 与不确定度</td>
+        </tr>
+        <tr>
+        <td>L2 状态估计</td>
+        <td>PSE 融合层</td>
+        <td>贝叶斯融合三模态似然与先验转移</td>
+        <td>观测 + 先验 → \(\Psi_t\) 后验与置信区间</td>
+        </tr>
+        <tr>
+        <td>L3 动力学</td>
+        <td>PSE 动力学层</td>
+        <td>用假设、参数与模型选择推演未来演化</td>
+        <td>\(\Psi_t\) + 环境驱动 → 未来分布、级联路径、风险时点</td>
+        </tr>
+        <tr>
+        <td>L4 规划</td>
+        <td>PSE 规划层</td>
+        <td>在约束下搜索最优 G-M-A-R 操作序列</td>
+        <td>状态 + 预测 + 约束 → 操作序列、成功概率、时间窗口</td>
+        </tr>
+        <tr>
+        <td>L5 执行</td>
+        <td>PSE 执行层</td>
+        <td>执行操作并采集反馈，闭环回到 L1</td>
+        <td>操作序列 → 执行记录、依从性数据</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
 
-<p><strong>UNIP：神经输入端口</strong>。UNIP的任务是将神经层观测信号转换为功能层状态向量的神经似然。它回答“在当前神经信号下，功能状态向量各个分量的概率分布是什么”。UNIP的核心产出是实时神经似然 \( p(y_n \mid \Psi_t) \)、置信度区间以及赋能信号（信号质量、同步等级、人群覆盖等）。UNIP是PSE多模态贝叶斯融合的三个输入通道（行为、语义、神经）之一。它与PSE之间通过双向通信协议形成增强闭环：PSE将状态估计和校准残差反馈给UNIP，UNIP据此进行在线个体化模型微调。UNIP不回答"功能状态如何演化"（那是PSE的任务），也不回答"如何改变状态"（那是G-M-A-R的任务）。（详见第22.6节及UNIP专项文档。）</p>
+        <p>L1 的三个输入端口是 PSE 内部模块，不是对外独立系统：UPLP 语义端口输出 \(p(y_s\mid\Psi)\)，UBMP 行为端口输出 \(p(y_b\mid\Psi)\)，UNIP 神经端口输出 \(p(y_n\mid\Psi)\)。三路似然只有在 L2 融合后才产生状态意义。</p>
 
-<p><strong>UBMP：行为测量端口</strong>。UBMP（Unified Behavioral Measurement Port，统一行为测量端口）是PSE感知层（L1）的行为输入端口（原"FLP 四大基础设施并列"定位已废止，01-M-00 §10.4）。UBMP的任务是将结构化行为观测——心理量表分数、EMA条目、认知任务表现、数字表型特征——转化为实时行为似然 \( p(y_b \mid \Psi_t) \)。UBMP采用五层架构B1-B5：B1行为测量注册库（BMR，观测函数、信效度矩阵、工具桥接参数），B2测量语义对齐（BAL，请求UPLP确认构念等价），B3跨工具桥接（BLK，IRT等价转换），B4校准与个体化（BCI，观测函数 p(y_b|Ψ) + 层级收缩），B5行为似然输出（BLI，JSON-RPC端点 <code>/behavioral_likelihood</code> 和 <code>/calibration_feedback</code>）。UBMP的核心设计原则是：数值桥接前必须先经UPLP语义对齐——两个量表只有在UPLP确认它们测量同一M-R-D-S组件后，才能进行IRT跨工具等价转换。UBMP不回答"语义含义是什么"（那是UPLP的任务），也不回答"状态如何演化"（那是PSE的任务）。当前UBMP处于<strong>规范性规范阶段</strong>，观测函数示例参数需实证校准，多数工具对的桥接参数尚未估计。（详见 01-P-04 UBMP专项论文。）</p>
+        <p>L2 与 L3 存在双向依赖：L2 需要 L3 的转移先验，L3 需要 L2 的状态估计作为初始条件。运行时采用加权模型迭代滤波，L2 消费 L3 的 BMA 预测分布；校准期采用联合推断，一次性确定模型权重与状态。模型不确定性在 L3 内部消化，L2 保持独立级地位。</p>
 
-<p><strong>REVER：伦理护栏</strong>。REVER的任务是在AI拟人化交互场景中，从架构上防止情感依赖和欺骗性交互。它回答“在保证功能效用的前提下，如何设计伦理上安全的AI系统”。REVER的核心设计包括：非人格性公理（AI不得声称有感受、有自我）、依赖雷达（实时量化用户依赖分数）、四道伦理门控和透明层（可审计日志）。REVER不是独立于IODS和PSE的另一套语言，而是同一套语法在伦理维度的扩展应用——它将“结构伦理”从哲学原则转化为可执行的门控协议。（详见第25-26章。）</p>
+        <p>观测函数与动力学方程是整条管线的两个核心数学对象：</p>
 
-<p><strong>各核心组件的关系</strong>：IODS是<strong>静态地图（L0）</strong>，UNIP是<strong>神经观测接口（L1）</strong>，UBMP是<strong>行为标尺（L1）</strong>，PSE是<strong>动力学引擎（L1-L5）</strong>，REVER是<strong>安全护栏</strong>。前四者共享同一套M-R-D-S/G-M-A-R语法，使得描述、输入、预测和干预可以在同一个形式化框架内无缝衔接。</p>
+        \[ y = h(\Psi, E) + \varepsilon,\qquad \frac{d\Psi}{dt} = \sum_k w_k f_k(\Psi, E) \]
 
-<hr class="section-divider">
+        <p>前者把状态映射为读数，后者把状态推向未来。描述、解释、预测、控制四个目标，分别落在这两个对象的不同使用方式上。</p>
 
-<h2>3.3 知识基建：PCUI、PSA与PSL概览</h2>
+        <h2>3.4 双工程：知识治理五层＋计算执行六级</h2>
 
-<p>IODS（继承原 UPLP 定义功能）的知识基础设施借鉴了医学领域统一医学语言系统(UMLS)的成功经验，由三个组件构成。</p>
+        <p>PSE 有两套切法，同时成立、互不否定。知识治理工程管“我们知道什么、怎么分类、怎么修订”，按知识类型并列分箱，共五层：架构层、算法层、参数层、方法论层、协议层。计算执行工程管“信息怎么流动、怎么一步步算完”，按计算依赖串联分级，共六级：L0 到 L5。</p>
 
-<p><strong>PCUI：心理概念唯一标识符</strong>。PCUI为每个心理概念分配唯一的标准化编码，将所有流派对同一功能现象的术语映射到同一个规范条目。例如，CBT的“核心信念（无价值感）”、精神分析的“负性自我表征”、人本主义的“自我概念贬低”都被映射到同一个PCUI条目，其M-R-D-S坐标被标注为<code>M2-STR-R</code>。PCUI解决了心理学长期存在的同义词问题（不同术语同一现象）和一词多义问题（同一术语在不同流派中含义不同）。每个PCUI条目包含：规范定义、流派术语映射、M-R-D-S坐标、参数先验分布、版本号和证据等级标注。（详见第14章。）</p>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>维度</th>
+        <th>知识治理工程</th>
+        <th>计算执行工程</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>核心问题</td>
+        <td>我们知道什么？怎么分类、怎么治理？</td>
+        <td>信息怎么流动？怎么一步步算完？</td>
+        </tr>
+        <tr>
+        <td>组织原则</td>
+        <td>按知识类型并列分箱</td>
+        <td>按计算依赖串联分级</td>
+        </tr>
+        <tr>
+        <td>结构形态</td>
+        <td>架构层 / 算法层 / 参数层 / 方法论层 / 协议层</td>
+        <td>L0 本体 → L1 观测 → L2 估计 → L3 动力学 → L4 规划 → L5 执行</td>
+        </tr>
+        <tr>
+        <td>层间关系</td>
+        <td>并列互斥、联合覆盖，无时序依赖</td>
+        <td>单向依赖 + 局部耦合：L2-L3 双向，L5→L1 闭环</td>
+        </tr>
+        <tr>
+        <td>评价标准</td>
+        <td>概念清晰度、术语追溯、同行可评议性</td>
+        <td>契约闭合、参数可校准、预测可验证</td>
+        </tr>
+        <tr>
+        <td>相互供给</td>
+        <td>向下提供参数定义权与合法性来源</td>
+        <td>向上提供验证通道与经验反馈</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
 
-<p><strong>PSA：心理语义架构</strong>。PSA定义了PCUI概念之间的形式关系——模块依赖权重、级联路径模板、操作-组件映射（哪些G-M-A-R操作适用于哪些M-R-D-S组件）。PSA是UPLP的<strong>推理引擎</strong>：给定一个状态向量，PSA可以计算级联风险、识别枢纽节点、推荐优先干预靶点。PSA的依赖矩阵是PSE中MTT（心智拓扑理论）的输入。（详见第15章。）</p>
+        <p>IODS 是知识治理工程产出的核心工件，但不是治理工程本身。IODS 是本体，回答“有什么”；知识治理是制度，回答“怎么分类、怎么修订”；计算执行是引擎，在 IODS 划定的格子里跑信息。三者各归其位，不能把本体论地位泛化到整个五层。</p>
 
-<p><strong>PSL：心理专家词典</strong>。PSL提供自然语言到PCUI的映射接口。它包含：临床口语到PCUI的映射（“我心慌”→<code>M4-DSP-B↑</code>）、文化特定习语的映射（东亚文化中的“神经衰弱”→PCUI条目）、语境消歧规则（同一短语在不同上下文中映射到不同PCUI）。PSL使得MCT（心智编译理论）能够将非结构化的临床叙述编译为结构化的M-R-D-S状态向量。PSL是INTRE从学术语言下沉到临床应用的关键基础设施。（详见第15章。）</p>
+        <p>两条契约把双工程咬合。向下：每个符号之所以有意义，是因为 IODS 定义了模块与层级；参数的定义权在知识治理，计算执行只负责先验生成与后验计算。向上：概念与分类是否有效，最终由预测—干预效能裁决；临床校准数据反向为知识治理提供经验反馈。</p>
 
-<p>三者的关系可以类比为：PCUI是<strong>词典</strong>（概念的定义和编码），PSA是<strong>语法书</strong>（概念之间的关系规则），PSL是<strong>翻译器</strong>（自然语言到形式语言的转换接口）。</p>
+        <h2>3.5 31 个编号工程地图</h2>
 
-<hr class="section-divider">
+        <p>00–30 是 31 个工程编号，不是 31 套本体论。它们分属阅读、理论、论证、对接、验证、治理、计算、学科与端口九类工作；对外系统边界仍只有 IODS＋PSE 两个系统。</p>
 
-<h2>3.4 层级与开放：可修订性声明与版本演化</h2>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>编号</th>
+        <th>工程</th>
+        <th>一句话职责</th>
+        <th>类别</th>
+        </tr></thead>
+        <tbody>
+        <tr><td>00</td><td>阅读指南</td><td>入门路线、全局地图、概念注册表与同行评审简报</td><td>阅读</td></tr>
+        <tr><td>01</td><td>核心理论</td><td>核心纲要、IODS、PSE、G-M-A-R 等核心规范</td><td>理论</td></tr>
+        <tr><td>02</td><td>架构论证</td><td>从元公理到张量积兼容性的架构论证</td><td>论证</td></tr>
+        <tr><td>03</td><td>现象呈现层对接</td><td>变量范式概念与现象呈现层之间的接口、翻译与边界</td><td>对接</td></tr>
+        <tr><td>04</td><td>基质实现层对接</td><td>功能系统层与基质实现层的约束、预测与修正</td><td>对接</td></tr>
+        <tr><td>05</td><td>验证测试</td><td>压力测试、替代测试、证据分级与完备性边界</td><td>验证</td></tr>
+        <tr><td>06</td><td>格式治理</td><td>文档生产、命名、术语、证据标注与归档规范</td><td>治理</td></tr>
+        <tr><td>07</td><td>伦理引擎</td><td>伦理原则、依赖风险与拟人化交互治理</td><td>治理</td></tr>
+        <tr><td>08</td><td>导论教材</td><td>分册教材、附录与教学化呈现</td><td>阅读</td></tr>
+        <tr><td>09</td><td>建构方法</td><td>建构方法论、时机战略与学科规划</td><td>论证</td></tr>
+        <tr><td>10</td><td>对外探索（Merge）</td><td>学术雷达、外部趋势与机构情报</td><td>学科</td></tr>
+        <tr><td>11</td><td>概念操作化（CORE）</td><td>M1-M6 边界判卷与概念操作化检测</td><td>理论</td></tr>
+        <tr><td>12</td><td>内核重构（KREF）</td><td>六级管线重构、双工程定案与术语审计</td><td>计算</td></tr>
+        <tr><td>13</td><td>内部引用网络（ICN）</td><td>引用图谱、影响范围与断链检查</td><td>治理</td></tr>
+        <tr><td>14</td><td>学科对接（ENGRAM）</td><td>十六门学科教材与双范式对比学习模块</td><td>学科</td></tr>
+        <tr><td>15</td><td>对外传播与发表（IPDP）</td><td>论文、白皮书、对外传播与发表</td><td>学科</td></tr>
+        <tr><td>16</td><td>知识存档与版本工程（IKGV）</td><td>决策记录、版本总账、巡检与归档</td><td>治理</td></tr>
+        <tr><td>17</td><td>伦理管线嵌入（REVER）</td><td>G0–G5 六门控一回环与 EC 伦理约束</td><td>治理</td></tr>
+        <tr><td>18</td><td>DMD 迭代验证（DIVE）</td><td>默认模式调度疗法的迭代设计与实证验证</td><td>验证</td></tr>
+        <tr><td>19</td><td>智能体操作系统（AOSE）</td><td>跨基质 Agent OS 的装配与运行槽位</td><td>计算</td></tr>
+        <tr><td>20</td><td>意识共振（ICRE）</td><td>意识通达三条件、共振场与通道校准</td><td>理论</td></tr>
+        <tr><td>21</td><td>变量谱系先验（SEED）</td><td>用既有量表数据生成状态先验</td><td>计算</td></tr>
+        <tr><td>22</td><td>智能科学建构（ISCE）</td><td>公理语言、一般功能类与跨基质学科形态</td><td>学科</td></tr>
+        <tr><td>23</td><td>试探性试验（PE）</td><td>小规模试验、方法试探与治理试点</td><td>验证</td></tr>
+        <tr><td>24</td><td>方法学与资产（MAE）</td><td>流程、模板、方法学资产沉淀</td><td>治理</td></tr>
+        <tr><td>25</td><td>功能状态心理学学科体系（FSPE）</td><td>五大支柱学科的体系化建设</td><td>学科</td></tr>
+        <tr><td>26</td><td>硅基探针（SIPE）</td><td>硅基基质的测量、探针与读数</td><td>验证</td></tr>
+        <tr><td>27</td><td>智能科学呈现（INSP）</td><td>网站、可视化与对外呈现</td><td>学科</td></tr>
+        <tr><td>28</td><td>行为测量（UBMP）</td><td>行为端口、BHI 注册库与桥接参数</td><td>端口</td></tr>
+        <tr><td>29</td><td>语义编译（UPLP）</td><td>语义端口、PCUI 编码与语义似然</td><td>端口</td></tr>
+        <tr><td>30</td><td>神经接口（UNIP）</td><td>神经端口、NFI 映射与神经似然</td><td>端口</td></tr>
+        </tbody>
+        </table>
+        </div>
 
-<p>INTRE框架在设计上区分了不同层级的主张，并为每一层级设置了不同的修订门槛。这一设计防止了理论在面对反例时的两种病态反应：要么僵化地否认一切反例（教条主义），要么在每次反例后随意修改核心主张（机会主义）。</p>
+        <p>31 个编号的读法是“分工图”，不是“本体清单”。理论、论证、验证、治理各自解决不同问题；学科与端口工程把框架接到外部世界；28–30 三个端口工程是 PSE 感知层的工程线，端口本体规范仍在核心理论中，不因立工程而升为对外独立系统。</p>
 
-<p><strong>三层主张结构</strong>。INTRE的核心主张分为三个层级：</p>
+        <p>编号之间没有上下级本体关系。00 号不定义心理结构，30 号不产生独立于 PSE 的输出。贯穿全部编号的定义源是 IODS；贯穿全部计算的是 PSE 的 L1–L5。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>层级</th>
-<th>内容</th>
-<th>修订门槛</th>
-<th>示例</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**公理层**</td>
-<td>A0-A5：心智化智能体公理、N-S-R、模块化公理等</td>
-<td>范式级，需极强反例</td>
-<td>若N-S-R被证伪</td>
-</tr>
-<tr>
-<td>**架构层**</td>
-<td>M1-M6、R-D-S、G-M-A-R</td>
-<td>需三个独立领域系统性反例</td>
-<td>若发现不可归入M1-M6的新功能</td>
-</tr>
-<tr>
-<td>**参数与映射层**</td>
-<td>阈值、常数、权重、概念映射坐标</td>
-<td>常规科学活动</td>
-<td>M3-RES-D恢复速率校准</td>
-</tr>
-</tbody>
-</table>
-</div>
+        <h2>3.6 四目标映射</h2>
 
-<p><strong>版本演化与构念降级协议</strong>。INTRE采用分级构念状态管理体系：</p>
+        <p>四个目标不是四个口号，而是四级职责。描述、解释、预测、控制各自对应管线中的不同位置，混淆它们会让状态估计与动力学推演互相污染。</p>
 
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>状态</th>
-<th>含义</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**Normative Core**</td>
-<td>当前规范核心，参与主模型</td>
-</tr>
-<tr>
-<td>**Provisional Construct**</td>
-<td>暂定构念，理论上必要但实证未完成</td>
-</tr>
-<tr>
-<td>**Derived/Dependent Construct**</td>
-<td>派生构念，不宣称独立</td>
-</tr>
-<tr>
-<td>**Deprecated Construct**</td>
-<td>经强反例评估后被降级或进入历史附录</td>
-</tr>
-</tbody>
-</table>
-</div>
+        <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>目标</th>
+        <th>实现级</th>
+        <th>回答的问题</th>
+        <th>典型输出</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>描述</td>
+        <td>L2</td>
+        <td>当前心理状态是什么？</td>
+        <td>\(\Psi_t\) 后验、置信区间、分量读数</td>
+        </tr>
+        <tr>
+        <td>解释</td>
+        <td>L3</td>
+        <td>为什么状态是这样？哪些因素在驱动？</td>
+        <td>级联路径、驱动项分解、机制假设</td>
+        </tr>
+        <tr>
+        <td>预测</td>
+        <td>L3</td>
+        <td>如果不干预，未来会怎样？</td>
+        <td>未来状态分布、风险时点、轨迹区间</td>
+        </tr>
+        <tr>
+        <td>控制</td>
+        <td>L4 + L5</td>
+        <td>应该做什么？做了之后效果如何？</td>
+        <td>操作序列、成功概率、执行记录与反馈</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
 
-<p><strong>强反例触发条件</strong>。框架为核心主张设置了明确的强反例触发条件。例如：(1)若发现稳定、可重复、具增量预测力的新心理功能无法归入M1-M6，则模块工程覆盖充分性主张被挑战；(2)若发现新的不可由R/D/S组合描述的心理状态变化维度，则状态语法工程覆盖充分性被挑战；(3)若发现公认有效且不可被G-M-A-R分解的新干预机制，则操作语法工程覆盖充分性被挑战。（完整清单见第29章。）</p>
+        <p>描述与解释、预测分属 L2 与 L3，是管线切分的核心依据。L2 回答“现在是什么”，L3 回答“为什么”与“将怎样”。合并两级，会让状态估计误差直接传播到预测，也会让模型选择污染状态后验。控制横跨 L4 与 L5：L4 在约束下搜索方案，L5 执行并采集反馈。</p>
 
-<hr class="section-divider">
+        <p>四目标也是范式评估的中立尺。判断一套数学对象能承载什么，不看它有没有对方的构件，而看它在这四个目标上各自能做到什么精度、在什么条件下失效。状态范式在描述、解释、预测、控制上给出完整级映射；变量范式在描述与群体效应上强，在个体轨迹与约束下控制上承载有限。</p>
 
-<h2>3.5 主张治理：IET v3.0证据分类学</h2>
+        <p>本章的总图可以压成一条线：N-S-R 说明系统为何运行，M-R-P 说明结构如何组织，M1-M6 给出功能模块，R-D-S 把模块展开为 42 维状态，G-M-A-R 给出对应操作，IODS 固定 L0 定义，PSE 承担 L1–L5 计算，双工程分别治理知识与执行计算，四目标把各级职责钉在描述、解释、预测、控制上。</p>
 
-<p>INTRE最独特的元科学贡献之一，是其对理论主张进行系统化证据等级标注的治理协议——IET v3.0（INTRE证据分类学）。这一协议将理论主张分为八个等级，明确区分了定义、推导、事实、解释、预测、规范、证据和关系，防止将逻辑推导与经验验证混为一谈。</p>
-
-<p><strong>八级证据体系</strong>：</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr>
-<th>代码</th>
-<th>名称</th>
-<th>含义</th>
-<th>示例</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>**D**</td>
-<td>定义类</td>
-<td>框架内部的概念定义、公理、术语规定</td>
-<td>“M3-RES-D指意志模块的可调度资源”</td>
-</tr>
-<tr>
-<td>**L**</td>
-<td>推导类</td>
-<td>从公理或定义出发的逻辑推论</td>
-<td>“从R-D-S三维独立共存可推导出G-M-A-R四操作的正交性”</td>
-</tr>
-<tr>
-<td>**F**</td>
-<td>事实/历史规律类</td>
-<td>已有经验研究确认的事实</td>
-<td>“DMN与FPN在静息态下呈反相关”</td>
-</tr>
-<tr>
-<td>**X**</td>
-<td>解释类</td>
-<td>对现象提供机制性解释框架</td>
-<td>“反刍是M2-DSP-B失控导致的”</td>
-</tr>
-<tr>
-<td>**P**</td>
-<td>预测类</td>
-<td>产生可检验的前瞻性预测</td>
-<td>“M3-RES-D消耗速率在抑郁组比对照组高30%”</td>
-</tr>
-<tr>
-<td>**N**</td>
-<td>规范类</td>
-<td>方法论规范、工程协议、伦理准则</td>
-<td>“干预应遵循GATE→MODULATE→ALIGN序列”</td>
-</tr>
-<tr>
-<td>**E**</td>
-<td>证据类</td>
-<td>经实证检验且获得支持的发现</td>
-<td>“PSE-C校准后预测误差降低40%（预注册RCT）”</td>
-</tr>
-<tr>
-<td>**R**</td>
-<td>关系类</td>
-<td>概念之间、理论之间的映射或兼容性关系</td>
-<td>“依恋安全感映射到M4-RES-B和M2-STR-R的组合”</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>标注密度原则</strong>：IET v3.0不对每个句子进行标注，而是<strong>仅标注“铰链主张”</strong>——那些如果被证伪会显著影响框架核心结构的命题。目标密度为每千字符1-3个标签。非铰链位置依靠语言本身的诚实性（如使用“可以”“可能”“理论上”等限定词），避免标签过载。</p>
-
-<p><strong>分层治理的价值</strong>：IET v3.0使INTRE区别于那些将所有主张以同等确定性陈述的宏大理论。读者可以一眼看出：目前框架的大部分主张处于F级（与既有事实相容）或L级（逻辑推导），部分核心预测处于P级（有待检验），而E级（直接实证验证）的积累仍是未来的任务。这种透明性本身就是科学诚信的体现。</p>
-
-<p><strong>可证伪性声明</strong>：INTRE五条核心主张均被操作化为可检验的预测，并提供了具体的证伪路径。框架最脆弱的实证节点是M3-RES-D（意志资源）作为独立功能构念的存在性——其证伪需通过三通道收敛效度研究（生理指标、主观疲劳、行为表现的收敛性检验）。如果这一节点被证伪，RES-D的跨模块统一性将连锁崩塌，MODULATE操作的独立靶点将被动摇，但框架的其他部分（如STR三分法、DSP二分法）仍可能成立。框架预期自身的不完美，并内建了从这些证伪中学习、修正的演化机制。（完整可证伪性论述见第29章。）</p>
-
-<hr class="section-divider">
-
-<p><strong>本章小结</strong>：INTRE框架包含六大核心资产，按方法论/工程化/研究纲领分为三档：功能层定位属于第一档方法论资产，M-R-D-S和G-M-A-R属于第二档工程化资产，IODS与UPLP、PSE、UNIP属于第三档研究纲领资产。工程组件——IODS（L0 本体描述）与 PSE（L1-L5 计算引擎）是两大系统，UNIP（L1 神经输入）、UBMP（L1 行为测量）、UPLP（L1 语义编译）是 PSE 感知层三大端口——加上REVER伦理护栏（横跨L1-L5），形成从静态地图到语义编译、行为标尺、神经天线、动力学引擎的完整链路。IODS知识基础设施（PCUI、PSA、PSL）为跨流派翻译和临床编译提供了可操作的平台，UPLP则是接入这套语法的语义编译端口。框架的层级性和开放性通过三层主张结构、版本演化协议和强反例触发条件得到保障。IET v3.0证据分类学将理论主张的治理从哲学倡导转化为可执行的标注协议。五条核心主张均设有明确的证伪路径，框架最脆弱的节点是M3-RES-D的独立存在性。</p>
-
-<blockquote><p><strong>关键术语</strong>：IODS，UPLP，UNIP，UBMP，PSE，REVER，PCUI，PSA，PSL，IET v3.0，铰链主张，构念降级</p></blockquote>
-
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “IET证据治理是事后审计” → ✅ IET在主张提出时即标注证据等级，是事前的诚实声明。<br>- ❌ “UPLP只是一个概念字典” → ✅ UPLP（语义通道）通过PSA的推理系统（静态定义在 IODS，编译执行在 L1-S）、共识工程的质量控制、和逻辑指纹的差异治理，构成了完整的语义知识体系（见第14-17章）。<br>- ❌ “UNIP是脑机接口的另一种说法” → ✅ UNIP不是采集硬件或BCI系统，而是一个<strong>知识工程规范</strong>——它定义如何将神经信号标准化、特征化、映射为功能似然，对接PSE。</p></blockquote>
-
-<blockquote><p><strong>练习题</strong>：<br>1. 列举INTRE的六个核心资产并归入方法论/工程化/研究纲领三档。<br>2. 用IET v3.0八级体系为两个主张标注证据等级。<br>3. UNIP在管线重构前曾被定位为FLP四大基础设施之一（与UPLP、UBMP、PSE并列），管线重构后该定位已被“PSE感知层（L1）的输入端口”取代（01-M-00 §10.4）。你认为哪种定位更恰当？理由是什么？并说明UBMP作为行为输入端口补充了之前的什么缺口。</p></blockquote>
-
-</main>
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch02.html" class="nav-link prev">‹ 层次定位</a>
+        <div class="chapter-nav"><a href="ch02.html" class="nav-link prev">‹ 三层定位</a>
 <a href="ch04.html" class="nav-link next">范式批判 ›</a></div>
     </div>
 
@@ -333,7 +422,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

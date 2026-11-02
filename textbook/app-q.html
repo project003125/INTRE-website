@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>附录Q 观测端口—维度映射 · INTRE 导论教材</title>
+    <meta name="description" content="UPLP、UBMP、UNIP 三端口对 42 维的覆盖表。">
+    <meta property="og:title" content="附录Q 观测端口—维度映射">
+    <meta property="og:description" content="UPLP、UBMP、UNIP 三端口对 42 维的覆盖表。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-q.html">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-q.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="附录Q 观测端口—维度映射">
+    <meta name="twitter:description" content="UPLP、UBMP、UNIP 三端口对 42 维的覆盖表。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=14">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261031f">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body lang="zh">
+
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+    <nav class="toc-sidebar" id="tocSidebar">
+        <div class="toc-sidebar-header">
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+        </div>
+        <div class="toc-sidebar-list" id="tocSidebarList"></div>
+    </nav>
+
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    </button>
+
+    <div class="toc-overlay" id="tocOverlay"></div>
+
+<nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+        </div>
+    </div>
+
+    <main class="textbook-content" id="main-content">
+        <h1 class="chapter-title">附录Q 观测端口—维度映射</h1>
+
+<p>三个端口共用同一个 42 维观测空间，但可达维度不同。语义端口处理自然语言，行为端口处理量表、EMA 与数字表型，神经端口处理 EEG、fNIRS、PPG 等信号。每个端口都输出完整的 42 维观测块；无法覆盖的维度写无信息编码，不写零。</p>
+
+<p>覆盖评级分三档：完整，表示该端口有稳定输入类型可给出该维读数；部分，表示只能间接、稀疏或依赖单一工具覆盖；缺，表示当前没有对应输入，写入 y = 0.5、σ = 1/√12。评级描述的是端口能力，不是已完成的实测采集记录。</p>
+
+<h2>Q.1 三端口 × 42 维覆盖表</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>维度</th>
+<th>idx</th>
+<th>UPLP 语义</th>
+<th>UBMP 行为</th>
+<th>UNIP 神经</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>M1 具身</td><td>RES-D</td><td>1</td><td>完整</td><td>完整</td><td>部分</td></tr>
+<tr><td>M1 具身</td><td>RES-B</td><td>2</td><td>部分</td><td>部分</td><td>部分</td></tr>
+<tr><td>M1 具身</td><td>DSP-F</td><td>3</td><td>部分</td><td>部分</td><td>部分</td></tr>
+<tr><td>M1 具身</td><td>DSP-B</td><td>4</td><td>部分</td><td>部分</td><td>部分</td></tr>
+<tr><td>M1 具身</td><td>STR-R</td><td>5</td><td>部分</td><td>缺</td><td>缺</td></tr>
+<tr><td>M1 具身</td><td>STR-C</td><td>6</td><td>部分</td><td>缺</td><td>缺</td></tr>
+<tr><td>M1 具身</td><td>STR-S</td><td>7</td><td>完整</td><td>完整</td><td>部分</td></tr>
+
+<tr><td>M2 认知</td><td>RES-D</td><td>8</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M2 认知</td><td>RES-B</td><td>9</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M2 认知</td><td>DSP-F</td><td>10</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M2 认知</td><td>DSP-B</td><td>11</td><td>部分</td><td>部分</td><td>部分</td></tr>
+<tr><td>M2 认知</td><td>STR-R</td><td>12</td><td>完整</td><td>部分</td><td>缺</td></tr>
+<tr><td>M2 认知</td><td>STR-C</td><td>13</td><td>完整</td><td>缺</td><td>缺</td></tr>
+<tr><td>M2 认知</td><td>STR-S</td><td>14</td><td>完整</td><td>部分</td><td>缺</td></tr>
+
+<tr><td>M3 意志</td><td>RES-D</td><td>15</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M3 意志</td><td>RES-B</td><td>16</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M3 意志</td><td>DSP-F</td><td>17</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M3 意志</td><td>DSP-B</td><td>18</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M3 意志</td><td>STR-R</td><td>19</td><td>完整</td><td>缺</td><td>缺</td></tr>
+<tr><td>M3 意志</td><td>STR-C</td><td>20</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M3 意志</td><td>STR-S</td><td>21</td><td>完整</td><td>完整</td><td>缺</td></tr>
+
+<tr><td>M4 情绪</td><td>RES-D</td><td>22</td><td>部分</td><td>完整</td><td>部分</td></tr>
+<tr><td>M4 情绪</td><td>RES-B</td><td>23</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M4 情绪</td><td>DSP-F</td><td>24</td><td>完整</td><td>完整</td><td>部分</td></tr>
+<tr><td>M4 情绪</td><td>DSP-B</td><td>25</td><td>完整</td><td>完整</td><td>部分</td></tr>
+<tr><td>M4 情绪</td><td>STR-R</td><td>26</td><td>完整</td><td>部分</td><td>缺</td></tr>
+<tr><td>M4 情绪</td><td>STR-C</td><td>27</td><td>完整</td><td>缺</td><td>缺</td></tr>
+<tr><td>M4 情绪</td><td>STR-S</td><td>28</td><td>部分</td><td>部分</td><td>缺</td></tr>
+
+<tr><td>M5 言语</td><td>RES-D</td><td>29</td><td>完整</td><td>部分</td><td>缺</td></tr>
+<tr><td>M5 言语</td><td>RES-B</td><td>30</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M5 言语</td><td>DSP-F</td><td>31</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M5 言语</td><td>DSP-B</td><td>32</td><td>完整</td><td>部分</td><td>缺</td></tr>
+<tr><td>M5 言语</td><td>STR-R</td><td>33</td><td>完整</td><td>缺</td><td>缺</td></tr>
+<tr><td>M5 言语</td><td>STR-C</td><td>34</td><td>完整</td><td>部分</td><td>缺</td></tr>
+<tr><td>M5 言语</td><td>STR-S</td><td>35</td><td>完整</td><td>缺</td><td>缺</td></tr>
+
+<tr><td>M6 行为</td><td>RES-D</td><td>36</td><td>完整</td><td>完整</td><td>部分</td></tr>
+<tr><td>M6 行为</td><td>RES-B</td><td>37</td><td>部分</td><td>部分</td><td>缺</td></tr>
+<tr><td>M6 行为</td><td>DSP-F</td><td>38</td><td>完整</td><td>部分</td><td>部分</td></tr>
+<tr><td>M6 行为</td><td>DSP-B</td><td>39</td><td>部分</td><td>完整</td><td>部分</td></tr>
+<tr><td>M6 行为</td><td>STR-R</td><td>40</td><td>部分</td><td>缺</td><td>缺</td></tr>
+<tr><td>M6 行为</td><td>STR-C</td><td>41</td><td>部分</td><td>缺</td><td>缺</td></tr>
+<tr><td>M6 行为</td><td>STR-S</td><td>42</td><td>完整</td><td>完整</td><td>部分</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Q.2 覆盖统计</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>完整</th>
+<th>部分</th>
+<th>缺</th>
+<th>合计</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>UPLP 语义</td><td>24</td><td>18</td><td>0</td><td>42</td></tr>
+<tr><td>UBMP 行为</td><td>9</td><td>24</td><td>9</td><td>42</td></tr>
+<tr><td>UNIP 神经</td><td>0</td><td>18</td><td>24</td><td>42</td></tr>
+<tr><td>三端口合计</td><td>33</td><td>60</td><td>33</td><td>126</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>语义端口覆盖面最宽，因为语言能同时描述资源、调度与结构三类内容；它的弱项在需要精确量的维度，例如 M4-RES-B 与 M3-DSP-B，自述只能给间接线索。行为端口的强项在量表与日志能直接锚定的维度，例如 M4-DSP-B、M6-DSP-B 与各类节律序列；结构层的规则与连接缺少标准工具，缺口集中在这里。</p>
+
+<p>神经端口当前以部分覆盖为主，完整覆盖为 0。NFM 映射模型尚未完成训练与验证，多数维度只能给出方向性特征，不能给出稳定读数。M5 的言语产生有部分神经指标，M1 的节律与自主神经活动有部分指标；M2、M3 的结构层维度基本没有对应特征。</p>
+
+<h2>Q.3 缺口的读法</h2>
+
+<p>缺口不是空白表格，它直接影响 L2 融合权重。某维在三端口全部写无信息编码时，该维的后验由先验单独决定，不能被观测拉动。某维只有单端口部分覆盖时，σ 偏大，融合权重偏低。读覆盖表时先找“全缺维”，再找“单源维”，这两类维度是状态估计最脆弱的位置。</p>
+
+<p>补缺口有两条路径：给行为端口补结构层量表与数字表型协议，给神经端口补 NFM 映射模型。两条路径都不改变 42 维坐标系，只改变每个端口的可达范围。覆盖表随端口能力更新，不随病例更新。</p>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-p.html" class="nav-link prev">‹ 附录P</a>
+<a href="index.html" class="nav-link next">目录 ›</a></div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 导论教材</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
+        </div>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+
+    <script src="../shared/nav-toggle.js?v=20261101h"></script>
+    <script src="../shared/sidebar.js?v=20261031f"></script>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
+</body>
+</html>

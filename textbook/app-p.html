@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>附录P PSE 参数与假设台账 · INTRE 导论教材</title>
+    <meta name="description" content="26 条动力学假设的分组与参数三态统计。">
+    <meta property="og:title" content="附录P PSE 参数与假设台账">
+    <meta property="og:description" content="26 条动力学假设的分组与参数三态统计。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-p.html">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-p.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="附录P PSE 参数与假设台账">
+    <meta name="twitter:description" content="26 条动力学假设的分组与参数三态统计。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="textbook.css?v=14">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261031f">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body lang="zh">
+
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+
+    <nav class="toc-sidebar" id="tocSidebar">
+        <div class="toc-sidebar-header">
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+        </div>
+        <div class="toc-sidebar-list" id="tocSidebarList"></div>
+    </nav>
+
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    </button>
+
+    <div class="toc-overlay" id="tocOverlay"></div>
+
+<nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/" class="active">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <a href="index.html" class="back-link">← 返回目录</a>
+        </div>
+    </div>
+
+    <main class="textbook-content" id="main-content">
+        <h1 class="chapter-title">附录P PSE 参数与假设台账</h1>
+
+<p>PSE 的知识底座由两部分构成：26 条动力学假设定义“系统怎么演化”，340 余个参数定义“演化多快、多强、在什么条件下改变”。两者都不是经验定律，当前状态是理论设定与占位示例。本台账只报数，不把占位值升级成结论。</p>
+
+<h2>P.1 26 条假设分组</h2>
+
+<p>26 条假设按心智六论分为六族，条数分布为 4、3、6、5、4、4。编号中的 L1–L6 是六论族内序号，不是管线级 L0–L5，也不是 L3 内部层号。</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>理论族</th>
+<th>条数</th>
+<th>编号</th>
+<th>共同功能</th>
+<th>主要验证基础</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>心智编译论 MCT</td><td>4</td><td>L1.1–L1.4</td><td>语义编译、隐喻映射、信息缺失推断</td><td>信息论、贝叶斯网络、理论预测</td></tr>
+<tr><td>心智拓扑论 MTT</td><td>3</td><td>L2.1–L2.3</td><td>枢纽杠杆、模块耦合、结构深度与时长</td><td>图论、网络科学、时间复杂度</td></tr>
+<tr><td>心智动力论 MKT</td><td>6</td><td>L3.6、L3.7、L3.9、L3.14、L3.16、L3.17</td><td>消耗、恢复、阈值、相变、环境税与负荷</td><td>动力系统、非线性分岔、类比外推</td></tr>
+<tr><td>心智调度论 MDT</td><td>5</td><td>L4.1–L4.5</td><td>资源预算、干预 ROI、边际效用、依从性、相变窗口</td><td>凸优化、期望效用、概率链</td></tr>
+<tr><td>心智塑性论 MPT</td><td>4</td><td>L5.1–L5.4</td><td>屈服强度、能量预算、回弹硬化、基线迁移</td><td>材料类比、塑性理论</td></tr>
+<tr><td>心智生态论 MET</td><td>4</td><td>L6.1–L6.4</td><td>环境适配、迁移阈值、共同演化、生态位策略</td><td>生态学、博弈论</td></tr>
+<tr><td>合计</td><td>26</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>计数口径</th>
+<th>数量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>在册</td><td>26</td><td>六族总数，编号连续但 L3 号段有空号</td></tr>
+<tr><td>不进入 L3 右端式</td><td>7</td><td>L1.3、L1.4、L2.3、L5.1、L5.2、L6.2、L6.4</td></tr>
+<tr><td>可实现子集</td><td>19</td><td>26 减 7，按“是否作为 f<sub>k</sub> 出现在右端式”计</td></tr>
+<tr><td>引擎已实现右端函数</td><td>5</td><td>L3.6、L3.7、L3.9、L3.14、L3.16</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>P.2 验证状态分布</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>分类轴</th>
+<th>类别</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>验证基础</td><td>数学推导型</td><td>15</td><td>58%</td></tr>
+<tr><td>验证基础</td><td>物理规律型</td><td>10</td><td>38%</td></tr>
+<tr><td>验证基础</td><td>系统类比型</td><td>1</td><td>4%</td></tr>
+<tr><td>验证进度</td><td>预期可获 PSE-M 仿真一致性检验</td><td>19</td><td>73%</td></tr>
+<tr><td>验证进度</td><td>形式已定、参数分布需 PSE-C 锚定</td><td>7</td><td>27%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>两套分类的合计均为 26。验证基础的三分是旧汇总口径，逐条判据尚未全部在册；验证进度的读法是“预期可获”，不是“已经获得”。PSE-M 与 PSE-C 尚未实际运行，因此 19 与 7 都是待验证队列，不是完成数。</p>
+
+<h2>P.3 参数三态统计</h2>
+
+<p>参数总账约 340–370 个，分布在心智五库。已入引擎指参数包可被引擎读取，不等于已经验证；已临床校准指经过真实数据贝叶斯更新，当前为 0。</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>条数</th>
+<th>占比</th>
+<th>判据</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>已临床校准</td><td>0</td><td>0%</td><td>PSE-C 用真实数据完成后验更新</td><td>无校准记录</td></tr>
+<tr><td>已入引擎</td><td>33</td><td>约 9–10%</td><td>在 default_theta 参数包中可读取</td><td>含定义、仿真占位与纯占位</td></tr>
+<tr><td>理论推演、未入引擎</td><td>约 307–337</td><td>约 90%</td><td>五库总账减去已入引擎</td><td>精确值未核</td></tr>
+<tr><td>合计</td><td>约 340–370</td><td>100%</td><td>五库计数区间</td><td>精确值未核</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>引擎标签</th>
+<th>条数</th>
+<th>占比</th>
+<th>读法</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>PSE-M 仿真</td><td>10</td><td>30.30%</td><td>仿真类设定值，不是已跑仿真记录</td></tr>
+<tr><td>占位 PROXY</td><td>23</td><td>69.70%</td><td>中性值、哨兵值或无权威出处值</td></tr>
+<tr><td>L0 定义</td><td>0</td><td>0%</td><td>当前参数包无定义态标签</td></tr>
+<tr><td>合计</td><td>33</td><td>100%</td><td>机读枚举现势</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>标签里的“PSE-M 仿真”不等于仿真已经跑过。PSE-M 与 PSE-C 当前均为理论设计阶段，参数值仍属理论设定占位。23 条占位再切分：8 条进入计算，14 条被 k<sub>collapse</sub> = 0 中和，1 条为算法常数。进入计算的占位会影响读数，被中和的项在无其他输入时贡献为零。</p>
+
+<h2>P.4 五库计数</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>知识库</th>
+<th>中文名</th>
+<th>计数区间</th>
+<th>代表参数</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>SPMC-L</td><td>测量编译库</td><td>35–40</td><td>W<sub>生理</sub>、λ、τ<sub>记忆</sub></td></tr>
+<tr><td>SPSM-L</td><td>结构机制库</td><td>180–200</td><td>D[M4→M2]、k<sub>恢复</sub>、σ<sub>yield</sub></td></tr>
+<tr><td>SPER-L</td><td>环境识别库</td><td>45–50</td><td>Tax<sub>rate</sub>、ELI、适配度</td></tr>
+<tr><td>SPDC-L</td><td>调度控制库</td><td>35–40</td><td>认知负荷阈值、P<sub>GATE</sub></td></tr>
+<tr><td>SPOT-L</td><td>操作转化库</td><td>35–40</td><td>E<sub>yield</sub>、塑性变形率、自然衰减率</td></tr>
+<tr><td>合计</td><td>—</td><td>330–370</td><td>现行表述取约 340–370</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>五库区间逐项相加为 330–370，现行总账表述为约 340–370。两个数并列保留，精确总数未核。凡引用参数数量，须同时写出所取口径：总账区间、引擎枚举 33、还是某库的区间。</p>
+
+<h2>P.5 未核项</h2>
+
+<p>以下项目在本次台账中保持“未核”，不填推测值：参数精确总数与五库逐库精确计数；PSE-M 与 PSE-C 的现势运行记录；引擎右端函数的现势实现数；各条假设的参数分布现状。已核项为：26 条在册、7 条不入右端式、19 条可实现子集、引擎 33 条参数的标签分布。</p>
+    </main>
+
+    <div class="page-footer-nav">
+        <div class="chapter-nav"><a href="app-o.html" class="nav-link prev">‹ 附录O</a>
+<a href="app-q.html" class="nav-link next">附录Q ›</a></div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 导论教材</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLS</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
+        </div>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.querySelector('.textbook-content') || document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+
+    <script src="../shared/nav-toggle.js?v=20261101h"></script>
+    <script src="../shared/sidebar.js?v=20261031f"></script>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
+</body>
+</html>

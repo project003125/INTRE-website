@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第13章 流派生成：从语法空位到预测疗法 · INTRE 导论教材</title>
-    <meta name="description" content="INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的预测性流派。这是INTRE作为“理论引擎”的核心体现。">
-    <meta property="og:title" content="第13章 流派生成：从语法空位到预测疗法">
-    <meta property="og:description" content="INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的预测性流派。这是INTRE作为“理论引擎”的核心体现。">
+    <title>第13章 L1-S 语义感知：UPLP 与知识生产 · INTRE 导论教材</title>
+    <meta name="description" content="UPLP 五层编译流水线、PSA/PSL 三层知识架构、共识工程三阶段、逻辑指纹与语义似然微案例。">
+    <meta property="og:title" content="第13章 L1-S 语义感知：UPLP 与知识生产">
+    <meta property="og:description" content="UPLP 五层编译流水线、PSA/PSL 三层知识架构、共识工程三阶段、逻辑指纹与语义似然微案例。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch13.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch13.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第13章 流派生成：从语法空位到预测疗法">
-    <meta name="twitter:description" content="INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的预测性流派。这是INTRE作为“理论引擎”的核心体现。">
+    <meta name="twitter:title" content="第13章 L1-S 语义感知：UPLP 与知识生产">
+    <meta name="twitter:description" content="UPLP 五层编译流水线、PSA/PSL 三层知识架构、共识工程三阶段、逻辑指纹与语义似然微案例。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,321 +69,307 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第13章 流派生成：从语法空位到预测疗法</h1>
+        <h1 class="chapter-title">第13章 L1-S 语义感知：UPLP 与知识生产</h1>
 
-
-<blockquote><p><strong>学习目标</strong>：完成本章后你应能够：(1)描述流派生成语法的四步流程；(2)以DMD为例阐述预测性流派从空位识别到技术开发的全过程；(3)理解INTRE在流派生成中的角色边界；(4)描述预测性流派的四阶段验证路线图。</p></blockquote>
-
-<hr class="section-divider">
-
-<h2>13.1 生成语法：从M-R-D-S空位到新干预方案</h2>
-
-<p>INTRE不仅能够描述已有的心理治疗流派（归纳），还能够从自身的功能层语法出发，演绎出尚未被任何流派系统占据的<strong>预测性流派</strong>。这是INTRE作为“理论引擎”的核心体现。</p>
-
-<p><strong>流派生成的形式化条件</strong>。任意干预方案可表示为：<code>干预 = (靶点集T ⊆ M-R-D-S子单元，操作序列O = [o₁, o₂, ..., oₖ]，优先级约束C)</code>。一个<strong>流派</strong>被定义为一组具有一致理论内核的干预方案。从INTRE语法出发生成一个新流派，需满足：靶点特异性、操作一致性、区分度、完备性、可检验性。</p>
-
-<p><strong>“结构空位”作为生成起点</strong>。INTRE的42维状态空间中，那些在变量范式中未被独立识别、但被功能分解逻辑强制要求的子单元——即<strong>C类预测性子单元</strong>（如M6-RES-D行为启动能量、M3-DSP-B自动放弃倾向、M1-STR-C躯体-意义连接）——正是新流派生成的理想起点。每一个C类子单元都代表一个“未被开采的功能靶点”。</p>
-
-<p><strong>生成流程</strong>：</p>
-<ol>
-<li>选择候选靶点（从42个子单元中选取未被现有流派占据的组件）</li>
-<li>匹配原子操作（根据靶点类型选择合法操作）</li>
-<li>设计序列逻辑（按D-R-S深度序列或具体问题模型安排顺序）</li>
-<li>界定适应症（推导该靶点的功能失调会产生何种症状指纹）</li>
-<li>形成可检验预测（给出预注册可验证的假说，包括证伪条件）</li>
-<li>标注边界与风险</li>
-</ol>
-
-<blockquote><p><strong>INTRE不能替代临床创新</strong>。INTRE不会自动发明具体技术。它所做的是：<strong>指明哪个功能靶点值得开发技术、该靶点应匹配什么原子操作、验证该操作需要检验什么预测</strong>。具体的“如何做”仍然是人类治疗师的创造性工作。</p></blockquote>
-
-<p><strong>INTRE与已有流派的关系定位</strong>：INTRE生成的预测性流派不是为了“取代”CBT、ACT等已有实证支持的疗法，而是为了<strong>填补它们留下的功能空白</strong>。例如，CBT主要靶向STR-R（信念），ACT主要靶向DSP-B（认知融合），行为疗法主要靶向STR-S（行为序列），精神分析主要靶向STR-C（情感连接）。但仍有功能靶点未被任何主流流派系统占据——预测性流派正是对这些空位的回应。</p>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 复述 S1–S5 编译流水线；(2) 说明 PSL/PCUI/PSA 的分工；(3) 概括共识工程三阶段；(4) 用逻辑指纹判定解析差异；(5) 追踪一条主诉到语义似然。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>13.2 典范案例：默认模式调度疗法（DMD）</h2>
+<h2>13.1 五层编译流水线：S1–S5</h2>
 
-<blockquote><p><strong>同步说明</strong>：本节已按最新版 03-C-13（v2.0.0）同步——网络表述为三网络 + DMN 子系统 + 动态耦合；DMD-P2 拆分为 P2a/P2b/P2c；M1-DSP-F 取代 M3-DSP-F；删除"DMN-TPN 反相关作为组织原则"表述。</p></blockquote>
-
-<p>默认模式调度疗法(DMD)是INTRE生成的十个预测性流派中最具代表性的方案。它展示了一个流派如何从功能层空位出发，经由G-M-A-R操作设计，最终形成可检验的干预协议。</p>
-
-<p><strong>问题识别：反刍与担忧的功能层定位</strong>。反刍和担忧是跨诊断的常见症状。传统流派各有侧重：CBT关注内容，元认知疗法（Metacognitive Therapy，下文简称 MCT）关注元认知信念，ACT关注功能，正念关注态度。然而，它们都未能系统占据一个更基础的功能靶点：<strong>反刍进程本身作为一个调度过程</strong>。</p>
-
-<p>在INTRE框架中，反刍和担忧被定位为<strong>M2-DSP-B（认知后台调度）的失控激活</strong>——一个自动化的、持续运行的认知过程。问题不在于反刍的"内容"错了，而在于<strong>反刍这个进程的"播放开关"坏了</strong>——系统失去了关闭它的能力。当代神经框架下，DMN-TPN 简单反相关已非"功能组织原则"——Spreng (2012) 与 Sormaz 等 (2018) 已证伪；当代主流为 Menon 三网络（SN+CEN+DMN）+ Andrews-Hanna 子系统分割 + 动态重配置（Menon 2011/2023）。反刍的关键病理差异在于<strong>注意网络（VAN/SN）对 DMN 的门控耦合减弱</strong>（Chen 2025 待核验）。</p>
-
-<p><strong>核心洞察：从内容修正到调度门控</strong>。DMD的核心洞察：反刍和担忧在功能层上是"调度失衡"——DMN 与注意网络动态解耦合及其上游通路（DMD 主攻调度通路，不否定内容通路；双通道模型）。因此，DMD不直接处理信念内容（那是ALIGN的任务），而是直接训练个体快速切换注意通道的能力——即<strong>GATE– M2-DSP-B</strong>（抑制反刍进程）和<strong>GATE+ M1-DSP-F</strong>（激活感官前台）的联合操作。</p>
+<p>UPLP 是 PSE 感知层的语义输入端口。它把自然语言编译为语义似然，输出一个 42 维观测块。编译分五层，每层解决一个独立问题：文本如何成为可匹配单元，单元如何成为概念候选，候选如何落到坐标，坐标如何变成似然，似然如何封装成契约。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>对比维度</th>
-<th>传统 CBT</th>
-<th>DMD</th>
+<th>编号</th>
+<th>层名</th>
+<th>输入 → 输出</th>
+<th>核心动作</th>
+<th>典型失败</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>问题定位</td>
-<td>信念内容错误</td>
-<td>注意调度失衡（DMN 与注意网络动态解耦合）</td>
+<td>S1</td>
+<td>STP 语义文本预处理</td>
+<td>原始文本 → 结构化文本单元</td>
+<td>分词、实体识别、语境消歧、形态归一化</td>
+<td>否定范围误判、指代未消解</td>
 </tr>
 <tr>
-<td>干预目标</td>
-<td>改变想法内容</td>
-<td>改变注意通道</td>
+<td>S2</td>
+<td>SMT 语义词汇匹配</td>
+<td>文本单元 → PCUI 候选集</td>
+<td>词条匹配、共现修正、多候选置信度</td>
+<td>一词多义、跨流派同义</td>
 </tr>
 <tr>
-<td>核心操作</td>
-<td>ALIGN M2-STR-R</td>
-<td>GATE– M2-DSP-B + GATE+ M1-DSP-F</td>
+<td>S3</td>
+<td>SCM 语义坐标映射</td>
+<td>PCUI 候选 → 42 维坐标分布</td>
+<td>按条目坐标字段落到模块与层级</td>
+<td>坐标分散、维度稀疏</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>SCW 语义置信加权</td>
+<td>坐标分布 → 语义似然形状</td>
+<td>按编译确定性调制 σ_s</td>
+<td>歧义大时似然过尖</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>SLO 语义似然输出</td>
+<td>似然 → 观测块 {y_s, σ_s}</td>
+<td>按契约封装，未覆盖维写无信息编码</td>
+<td>维度重排、值域越界</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>DMD的G-M-A-R操作分解</strong>：</p>
+<p>S1 只产生候选单元，不产生语义判定。它处理分词、实体与指代，把“这半年心里堵得慌，脑子转不动”拆成带时间修饰与身体隐喻的单元。否定与不确定语气在这一层被标记，否则“没那么难受”会被误读为“难受”。</p>
+
+<p>S2 把单元匹配到 PSL-L 词条，产出多个 PCUI 候选。每个候选携带初始置信度；共现模式参与修正，例如“堵”与“胸口”共现时更偏向情绪调度，而不是躯体疾病。匹配不追求唯一，歧义本身被保留为信息。</p>
+
+<p>S3 把候选映射到 42 维坐标。单次语言观测通常只覆盖少数维度，例如只涉及 M4-DSP-B、M4-STR-C、M2-RES-D 与 M2-DSP-B。未覆盖维度不在这一层产生值，留待 S5 写成无信息编码。稀疏是语义观测的常态。</p>
+
+<p>S4 按编译确定性调制似然形状。候选唯一、坐标集中时，σ_s 小，似然尖锐；候选分散、隐喻歧义大时，σ_s 增大，似然平坦。σ_s 不是拍脑袋的置信标签，它是标准差的工程编码，直接决定该维在 L2 融合中的权重。</p>
+
+<p>S5 把似然封装为观测块。观测值落在 \([0,1]\)，不确定度落在 \([0,1/\sqrt{12}]\)；不可编译维度写 \(y=0.5\)、\(\sigma=1/\sqrt{12}\)。输出严格遵循统一契约，语义端口只能细化实现，不能改变输入类型、阶段划分或输出形式。</p>
+
+<p>五层流水线的阶段划分属于契约语义。实现可以替换分词器、匹配算法或映射模型，但不能把“置信加权”并进“坐标映射”，也不能把“似然输出”提前到“词汇匹配”。阶段划分保证每步的输入输出可检查，出错时能定位到层。</p>
+
+<hr class="section-divider">
+
+<h2>13.2 PSA/PSL：从词汇到语义推理</h2>
+
+<p>语义编译依赖三层静态知识。它们回答三个不同层级的问题：这个词在语境中指向什么，这个概念的唯一身份与坐标是什么，这些坐标之间允许什么关系。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>技术</th>
-<th>操作</th>
-<th>靶点</th>
-<th>临床实施</th>
+<th>层</th>
+<th>回答的问题</th>
+<th>核心内容</th>
+<th>编译中的角色</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>反刍觉察</td>
-<td>GATE+（监控）</td>
-<td>M2-DSP-B激活监测</td>
-<td>反刍日志</td>
+<td>PSL-L</td>
+<td>这个词在语境中指向什么？</td>
+<td>术语主表、语义映射、形态变体、上下文规则、多语言对齐</td>
+<td>自然语言 → PCUI 候选</td>
 </tr>
 <tr>
-<td>5-4-3-2-1感官锚定</td>
-<td>GATE+ M1-DSP-F, GATE– M2-DSP-B</td>
-<td>感官注意 vs 反刍进程</td>
-<td>说出看到5样、摸到4样、听到3样…</td>
+<td>PCUI-L</td>
+<td>这个概念的唯一身份与坐标是什么？</td>
+<td>编码、核心定义、坐标映射、多流派解释、干预指引</td>
+<td>PCUI → M-R-D-S 坐标</td>
 </tr>
 <tr>
-<td>计数法</td>
-<td>GATE–</td>
-<td>M2-DSP-B</td>
-<td>从100倒数减7</td>
-</tr>
-<tr>
-<td>身体锚定</td>
-<td>GATE+</td>
-<td>M1-DSP-F</td>
-<td>感受双脚踩地、呼吸进出</td>
-</tr>
-<tr>
-<td>"想法不是命令"规则</td>
-<td>ALIGN</td>
-<td>M2-STR-R</td>
-<td>建立"有这个想法≠必须跟随它"</td>
+<td>PSA-L</td>
+<td>这些坐标之间允许什么关系？</td>
+<td>坐标系、操作语法、结构约束、级联规则</td>
+<td>约束检查与合法组合</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>DMD的标准化协议</strong>（<strong>七个标准化模块</strong>·6-12次会话）：</p>
-<ul>
-<li><strong>觉察阶段（1-2次，对应模块 1）</strong>：心理教育（三网络+DMN子系统面向患者的简化表述，详见 03-C-13 v2.0.0 模块 1 心理教育"面向患者的简化表述"注），反刍日志记录；<strong>前置告知排除条件（DID/DPDR 等严重解离）</strong></li>
-<li><strong>替代技能训练阶段（3-8次，对应模块 2-5）</strong>：感官锚定（模块 2）、计数法/身体锚定等高级替代（模块 3）、提前切断——早期信号识别（模块 4）、睡前调度协议（模块 5）</li>
-<li><strong>内化与维持阶段（9-12次，对应模块 6-7）</strong>：内化"想法不是命令"规则 + <strong>模块 6 吸纳元认知疗法（MCT）元认知信念工作（识别/实验/CAS 教育）</strong>（详见模块 6 步骤表：步骤 2 元认知实验）+ 预防复发与生活方式整合（模块 7）</li>
-</ul>
+<p>三者构成一条从词汇到语义推理的链条，但“推理”不是自由生成。PSA 只提供约束，不允许编译席自行发明关系。一个主诉被映射为 M4-DSP-B 过度激活后，PSA 知道调度层持续运行消耗 RES-D，也知道 STR-C 可以把情绪与特定线索绑定；如果同一段叙述还报告“累得动不了”，编译结果就必须同时包含 M2-RES-D 与 M1-RES-D 的低值，并由跨层依赖检查其一致性。</p>
 
-<p><strong>DMD的神经科学基础（v1.3.0 同步）</strong>：</p>
-<p>当代主流为 <strong>Menon 三网络模型（SN+CEN+DMN）+ Andrews-Hanna 子系统分割（mPFC-PCC 核心子系统 / dmPFC-MTL 子系统）+ 动态重配置</strong>（Menon 2011/2023；Andrews-Hanna 2014）。"DMN-TPN 反相关"作为现象学观察仍部分成立，但作为<strong>功能组织原则已被 2020-2026 证据否定</strong>（Spreng 2012 / Sormaz 2018）。<strong>反刍的真正病理差异在注意网络（VAN/SN）对 DMN 的门控耦合</strong>（Chen 2025 待核验；Ghaznavi 2023）。DMD 的神经机制主张从 v1.3.x 的"训练 DMN-TPN 切换效率"更新为 <strong>"重塑 DMN 内部动态稳定性（hypostability 反义——反刍态 DMN 动态稳定性偏低，干预后状态方差增大 = 稳定性回升）+ 增强注意网络（VAN/SN）对 DMN 的门控耦合"</strong>。感官锚定不再仅是"激活 TPN 间接抑制 DMN"，而是以"加工模式转换（具体 vs 抽象，Watkins 2008/2009）+ 替代反刍进程的双重机制"起作用。</p>
+<p>PSA 的结构约束包括 6×6 模块依赖矩阵的存在性、STR 三分、三条跨层依赖公理、级联规则与六条动力学约束。它们在 L0 定义，在 L1-S 只读使用。编译不修改约束，也不为个案放宽约束；它只检查候选坐标是否落在合法配置内。级别更高的语义推理——例如从“反刍”推出“注意力资源被占用”——走的是级联模板，不是语言模型的自由联想。</p>
 
-<p><strong>DMD的可检验预测</strong>（详见 <code>03-C-13 v2.0.0 §六</code> / DMD-P2 修订提案 v1.0）：</p>
+<p>这套分工使语义端口可以被审计。每个输出坐标都能回溯到词条、PCUI 条目与约束检查记录；歧义体现在 σ_s，而不是藏在黑箱分数里。语义似然的强度来自可追溯的映射，不来自模型规模。</p>
 
-<blockquote><p><strong>预测体系结构修订</strong>：原表中"DMD-P2 探索性"已拆分为 <strong>DMD-P2a（行为主结局）/ DMD-P2b（神经机制）/ DMD-P2c（耦合检验）</strong> 三层结构；DMD-P1 由探索性升级为"假说性预估"+ SUDS 5/15/30min 测量；DMD-P3 / DMD-P4 / DMD-P5 各按 03-C-13 v2.0.0 EX-27/29/30 修订为分层预测 / 客观测量（眼动）/ 分层（含严重解离排除）。效果量符号统一为 Hedges g。</p></blockquote>
+<p>PSA 的约束检查不产生新坐标，它只排除非法组合。例如把 M4-DSP-B 标为高激活，同时把 M1-RES-D 标为满值，并不违反单维值域，却与“调度持续运行消耗资源”的跨层公理冲突；检查会要求补充解释或降低置信。语义推理的产出因此是“合法配置”，不是“听起来通顺的解释”。</p>
+
+<hr class="section-divider">
+
+<h2>13.3 共识工程三阶段</h2>
+
+<p>术语实例层由三阶段知识生产流水线供给。采集阶段 PCC-P 遵循广度优先：从理论文献、临床实践、社区与新兴来源、多语言来源四类输入采集概念原材料，经基础验证、唯一性、可信度、理论多样性与文化敏感性五重质量门初筛。它容忍适度噪声，目标是把覆盖面拉开，而不是在这一步做精确裁决。</p>
+
+<p>形式化编译阶段 PCF-P 遵循精度优先：跨流派编译席把原材料编译为 PCUI 草案，依次完成理论中立化、参数化定义、M-R-D-S 架构映射、多流派解释添加与逻辑一致性检查。每个概念由多个流派视角独立编译，再经跨流派共识与分窗终审；冲突按“同视角复窗、跨谱系加席、主理终裁”三级递进处理，异议结构化留存。</p>
+
+<p>验证阶段 PCV-P 遵循权威性优先：25–35 人的评议团按五重标准判定条目是否发布——流派覆盖至少四个、总体支持率不低于 80%、各流派内部不低于 60%、临床工作者不低于 70%、无原则性冲突。未达标的条目按支持率分级进入中等修订、重大修订、暂行存档或拒绝。通过验证的条目写入术语实例层，经词典加载接口进入编译缓存，后续观测生效。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>ID</th>
-<th>预测内容</th>
-<th>检验方法</th>
-<th>证伪条件</th>
-<th>层级</th>
+<th>阶段</th>
+<th>协议</th>
+<th>核心任务</th>
+<th>执行主体</th>
+<th>通过率目标</th>
+<th>产物</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>**DMD-P1**（假说性预估）</td>
-<td>单次感官锚定（5‑4‑3‑2‑1）后，反刍即刻中断成功率 **> 50%（实验室）或 > 35%（EMA）**，显著优于主动控制组。效应量期望 **Hedges g ≥ 0.30‑0.50**。**标注：5‑4‑3‑2‑1 无独立 RCT 校准，待行为实验验证**；SUDS 5/15/30min 三次采集</td>
-<td>实验室诱发反刍 + EMA 自然情境；设主动控制组</td>
-<td>成功率 < 30%（实验室）或与主动控制无差异（Hedges g < 0.20）</td>
-<td>L2</td>
+<td>采集</td>
+<td>PCC-P</td>
+<td>广度优先采集概念原材料</td>
+<td>采集器、复核席、终核席</td>
+<td>约 95%</td>
+<td>带元数据的概念原材料</td>
 </tr>
 <tr>
-<td>**DMD-P2a**（核心主结局）</td>
-<td>8 周 DMD 训练后，**反刍严重程度（RRS-Brooding 子量表）显著降低**——DMD 整体有效性的必要条件。接受阈值 **Hedges g ≥ 0.30**。**灰区处置（0.20–0.30）**：证据不足，转入 WP-D3 追加检验</td>
-<td>预注册 RCT；主结局 RRS-Brooding 减分；次要：RRS-Reflection、HAM-D</td>
-<td>主结局减分 Hedges g < 0.20；训练完成率 < 70%；严重不良事件率 > 5%</td>
-<td>L2</td>
+<td>形式化编译</td>
+<td>PCF-P</td>
+<td>把原材料编译为 PCUI 草案</td>
+<td>跨流派编译席</td>
+<td>约 60%</td>
+<td>标准化 PCUI 草案</td>
 </tr>
 <tr>
-<td>**DMD‑P2b**（机制预测）</td>
-<td>8 周 DMD 训练后，神经机制指标改善（三选一即可）：① DMN 核心子系统动态功能连接**稳定性回升**（hypostability 改善，状态方差增加 ≥5% 或 Hedges g ≥ 0.30）；② VAN/SN 对 DMN 的**门控耦合强度增加**（耦合系数变化 ≥ 0.10）；③ dmPFC 与 MTL 子系统的**功能分化提升**（分化指数 ≥ 0.05）</td>
-<td>任务态 fMRI rumination-distraction 范式 + sliding-window DCC + granger/动态贝叶斯 + 图论指标</td>
-<td>三指标 95% CI 均含 0 且 Hedges g < 0.20 → 修订为"行为有效但机制未明"；**不否定 DMD 整体**</td>
-<td>L2/L3</td>
-</tr>
-<tr>
-<td>**DMD‑P2c**（耦合检验·关键）</td>
-<td>P2b 神经参数变化与 P2a 行为改善之间存在**显著相关**——检验 INTRE "功能层中介于神经与现象"命题。**r > 0.30 为必要条件**；进一步要求 Hayes PROCESS 中介分析间接效应 CI 不含 0</td>
-<td>个体水平相关（Pearson r）；中介分析（Hayes PROCESS）</td>
-<td>r ≤ 0.30 或 p ≥ 0.05；或中介 CI 含 0 → **功能层独立中介命题失败**，修订为神经-行为解耦</td>
-<td>L2</td>
-</tr>
-<tr>
-<td>**DMD‑P3**（分层预测）</td>
-<td>8 周 DMD 改善反刍**不劣于 CBT**（非劣效边界 Hedges g = 0.25）。分层：DMD 在 RRS-Brooding 上等价于 CBT，在 RRS-Reflection 上**不优于** CBT。前提：CBT 组显著优于等待组</td>
-<td>预注册 RCT，N ≥ 128，非劣效 + 分层分析</td>
-<td>DMD 显著劣于 CBT（差值 > 5 分且 95% CI 下限 > 3）</td>
-<td>L2</td>
-</tr>
-<tr>
-<td>**DMD‑P4**</td>
-<td>DMD 的效果**不能被认知重构完全中介**；调度能力改善独立预测症状变化，**增量 R² ≥ 0.05**。**测量改用客观指标**：眼动注意脱离潜伏期 + fMRI 反刍任务态（替代自我报告 ACS）</td>
-<td>中介分析，控制信念改变（DAS）+ 眼动客观测量</td>
-<td>增量 R² < 0.05 或间接效应 > 80%</td>
-<td>L2</td>
-</tr>
-<tr>
-<td>**DMD‑P5**（分层预测）</td>
-<td>应用可行性：在高反刍 + **严重失眠**人群中，DMD 脱落率**可能高于正念**（分层反转假设）；在高反刍且无严重解离人群中，DMD 脱落率**低于正念**（绝对差值 ≥ 10%）。**纳入前提**：入组前**优先排除严重解离（DID, DPDR）**——入组筛查应包含解离量表（DES/DIS-Q）</td>
-<td>RCT 记录脱落率及原因分类；入组筛查含解离量表</td>
-<td>脱落率差异 < 5% 或方向与分层假设相反</td>
-<td>L3</td>
-</tr>
-<tr>
-<td>**DMD-P6**（新增 · 探索性）</td>
-<td>**子量表耦合预测**：DMD 后 RRS-Brooding 减分与 RRS-Reflection 减分比 **> 1.5**（brooding 反应更强）。承认子量表减分比存在方差与基线依赖——本指标为**探索性**而非确认性，需报告基线方差比对、使用对数变换后比值、报告 95% CI</td>
-<td>预注册 RCT 分层分析；对数变换后比值 ≥ ln(1.5) ≈ 0.405</td>
-<td>减分比 ≤ 1.5 或 95% CI 包含 ≤ 1.5</td>
-<td>L3（探索性）</td>
+<td>跨流派验证</td>
+<td>PCV-P</td>
+<td>按五重标准确立条目权威性</td>
+<td>25–35 人评议团</td>
+<td>约 75%</td>
+<td>可发布的 PCUI 条目</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>DMD的独特贡献</strong>：填补了现有流派均未系统占据的功能层靶点——<strong>注意调度过程本身</strong>(M2-DSP-B → M1-DSP-F 的门控转换)；与元认知疗法（MCT）形成"调度靶点 + 元认知信念靶点"的互补分工，三者（CBT-内容 / MCT-元认知 / DMD-调度）在模块 6 层叠合。适用人群："理性上知道但停不下来"者、对正念不耐受者、对 MCT 元信念负担与调度失衡双重靶点人群。禁忌症：急性自杀危机、需要深思的决策情境、<strong>严重解离（DID/DPDR，需入组前解离筛查）</strong>、精神病性障碍活跃期。</p>
+<p>三阶段是离线校准流程，不是运行时流程。它不参与实时编译，只在后台扩充与修正术语实例。运行时发现的新用法进入反馈队列，经三阶段评审后写入术语主表；这一写入属于数据驱动修订，不触发 L0 架构级审查。</p>
+
+<p>通过率目标是协议设计规范，不是实测统计。它说明各阶段预期会过滤掉多少不合格输入：采集容忍噪声，编译收紧标准，验证再把关。失败条目不会被丢弃，而是按支持率进入修订、存档或拒绝队列，异议记录保留，供后续复核。</p>
 
 <hr class="section-divider">
 
-<h2>13.3 其他流派：VRB、BIE、SPR与NCB简介</h2>
+<h2>13.4 逻辑指纹与解析差异治理</h2>
 
-<p>INTRE共生成了十个预测性流派，覆盖了从启动能量到数字边界、从叙事资本到算法厌恶等多个功能空位。以下为各流派的核心功能签名概览（完整映射见附录E）：</p>
+<p>同一概念经不同分析者解析，常出现术语、层级侧重与因果路径的差异。差异的根源是聚焦效应：任何单次解析都只采样完整结构的一个剖面。流程聚焦谈调度与资源消耗，结构聚焦谈信念与连接，资源聚焦谈能量与恢复。差异不是逻辑混乱，而是采样不完整。</p>
+
+<p>判定两份解析是否描述同一实体，依据四组逻辑指纹。资源、层级、操作三组指纹要求方向一致；模块指纹允许视角相对的角色分配，只要可归入已建立的多视角集合。标准指纹不是单个解析自带的属性，而是跨视角综合与专家共识建构的规范实体。</p>
 
 <div class="table-wrap">
 <table>
 <thead><tr>
-<th>流派</th>
-<th>全称</th>
-<th>核心靶点</th>
-<th>核心操作</th>
+<th>指纹</th>
+<th>判定问题</th>
+<th>取值形式</th>
+<th>示例</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>**SMI**</td>
-<td>躯体‑意义整合疗法</td>
-<td>M1-STR-C低 + M5-STR-C断裂</td>
-<td>RELINK M1-STR-C</td>
+<td>模块指纹</td>
+<td>涉及哪些模块，角色如何？</td>
+<td>多视角集合 {(Mi, role)}</td>
+<td>反刍：{(M2, 核心), (M4, 核心)}</td>
 </tr>
 <tr>
-<td>**NCB**</td>
-<td>叙事资本建设疗法</td>
-<td>M5-RES-B低</td>
-<td>MODULATE+ M5-RES-B</td>
+<td>资源指纹</td>
+<td>消耗或保护哪类资源，方向如何？</td>
+<td>{(RES-D, ±), (RES-B, ±)}</td>
+<td>反刍：{(RES-D, −)}</td>
 </tr>
 <tr>
-<td>**DMD**</td>
-<td>默认模式调度疗法</td>
-<td>M2-DSP-B高 + M1-DSP-F低</td>
-<td>GATE– M2-DSP-B</td>
+<td>层级指纹</td>
+<td>表现层与根源层是什么，因果方向如何？</td>
+<td>表现层、根源层、方向</td>
+<td>反刍：DSP-B ← {STR-C, STR-S}</td>
 </tr>
 <tr>
-<td>**VRB**</td>
-<td>意志资源预算疗法</td>
-<td>M3-RES-D低</td>
-<td>MODULATE+ M3-RES-D</td>
-</tr>
-<tr>
-<td>**SPR**</td>
-<td>社会疼痛重联疗法</td>
-<td>M4-STR-C排斥→痛苦高权重</td>
-<td>RELINK M4-STR-C</td>
-</tr>
-<tr>
-<td>**BIE**</td>
-<td>行为启动能量疗法</td>
-<td>M6-RES-D低</td>
-<td>GATE+ M6-DSP-F</td>
-</tr>
-<tr>
-<td>**AAR**</td>
-<td>算法厌恶重塑疗法</td>
-<td>M2-STR-R不透明→危险</td>
-<td>ALIGN M2-STR-R</td>
-</tr>
-<tr>
-<td>**CSC**</td>
-<td>集体自我连续疗法</td>
-<td>M5-STR-C集体-自我断裂</td>
-<td>RELINK M5-STR-C</td>
-</tr>
-<tr>
-<td>**TKE**</td>
-<td>时间知识扩展疗法</td>
-<td>M2-STR-S时间脚本僵化</td>
-<td>ALIGN M2-STR-S</td>
-</tr>
-<tr>
-<td>**DEB**</td>
-<td>数字环境边界疗法</td>
-<td>S-P数字侵入 + M3-STR-R缺失</td>
-<td>GATE– S-P数字输入</td>
+<td>操作指纹</td>
+<td>优先操作是什么，序列是否符合深度逻辑？</td>
+<td>有序操作列表</td>
+<td>反刍：[GATE−, MODULATE+, ALIGN/RELINK]</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p><strong>流派间的协同</strong>：这些预测性流派可以协同使用。例如，一个同时存在意志资源枯竭(M3-RES-D低)和启动困难(M6-RES-D低)的患者，可以先使用VRB进行资源预算管理，再使用BIE训练启动能量。INTRE的M-R-D-S坐标系使得这种跨流派的精准匹配成为可能。</p>
+<p>指纹体系必须可证伪，否则“所有差异都是合法视角”会变成封闭循环。错误解析有五条判据：完全遗漏公认核心模块；资源方向与标准完全相反；层级因果方向颠倒；操作序列违背由表及里的深度逻辑；模块角色与其余三组指纹产生系统性矛盾。任一触发即判为错误解析，退回重审。</p>
+
+<p>治理流程因此是“先采样、再对齐、后裁决”。单份解析不被要求覆盖全貌，但必须声明自己的聚焦视角；跨视角综合产出标准指纹；新解析按指纹比对进入合法集合或错误判据。差异被保留为剖面信息，而不是被强行抹平。</p>
+
+<p>指纹比对的实际用途有三项：合并同一概念的多份解析，检出明显错误的解析，给新条目确定多视角集合。它不用于判定“谁更正确”，因为标准指纹本身是共识建构物；它用于判定“是否可合并、是否需要退回”。</p>
 
 <hr class="section-divider">
 
-<h2>13.4 验证路线：从概念验证到RCT的五阶段</h2>
+<h2>13.5 与 L0、L2 的边界</h2>
 
-<p>预测性流派的提出不是终点，而是实证检验的起点。INTRE为每一个预测性流派设计了分层验证路线。</p>
+<p>语义端口对 L0 是强依赖，没有降级。没有 42 维坐标系，S3 不知道坐标映射的靶空间；没有 PSL-L 与 PCUI-L，S2 无法产出候选；没有结构约束，PSA 无法检查合法配置。词典加载是编译的运行前提，不是可选优化。</p>
 
-<p><strong>第一阶段：概念验证与原型开发（1-2年）</strong>：开发标准化治疗手册；培训治疗师；在小样本(N=10-20)中进行可行性测试。通过标准：脱落率<20%，无严重不良事件。</p>
+<p>语义端口对 L2 是供给关系。它输出 p(y_s|Ψ) 的观测编码，L2 负责融合与状态估计。语义端口不估计 Ψ，不预测演化，也不判断干预。语义衰减率 τ 校准的是“陈述何时生效、以何种权重计入当前观测”，属于观测时效处理，不是状态动力学。</p>
 
-<p><strong>第二阶段：单臂预实验与效应量估计（2-3年）</strong>：在N=30-50样本中评估初步效果。通过标准：效应量d > 0.5，改善在随访期维持。</p>
+<p>知识生产流水线不属 L0。它是有输入、处理、输出的工作流，归入 L1-S 的离线校准；L0 只保留词汇体系结构、编码格式与映射规则。这条边界同时服务修订隔离：术语实例可以快速增补，坐标系与编码规则保持慢速稳定。</p>
 
-<p><strong>第三阶段：预注册随机对照试验（3-5年）</strong>：比较预测性流派与已有实证流派（如CBT、ACT）的非劣效性或优效性。所有RCT必须在公开注册平台预注册。通过标准：非劣效边界d=0.25，或优效性p<0.05。</p>
+<p>语义模态不可用时，L2 把 p(y_s|Ψ) 视为常数，退化为行为加神经双通道融合。这是契约层的降级，不是语义端口内部的重试。恢复后从下一观测周期正常输出，不输出混合状态。</p>
 
-<p><strong>第四阶段：机制检验与边界条件探索（3-6年）</strong>：通过中介分析和双分离实验验证核心机制。通过标准：中介效应显著，双分离交互显著。</p>
-
-<p><strong>第五阶段：传播与实施研究（5-10年）</strong>：在真实临床环境中评估效果和成本效益。</p>
-
-<p><strong>INTRE生成流派的独特价值</strong>：(1)提供了流派生成的<strong>第一性原理依据</strong>——在当前功能层语法下推导出的预期空位；(2)提供了<strong>可检验的靶点机制</strong>——每个流派的预测不仅包括症状改善，还包括功能层靶点的变化；(3)内置了<strong>证伪条件</strong>——如果靶点指标不改善而症状改善，则流派的核心机制假设被削弱。</p>
+<p>语义端口还承担跨模态对齐服务。行为端口的观测函数锚定必须经语义端口确认；两个量表是否测量同一构念，由 PCUI 映射与编译结果判定。这个服务不改变行为端口的层归属，只为 B2 的桥接门控提供判据。</p>
 
 <hr class="section-divider">
 
-<p><strong>本章小结</strong>：INTRE的流派生成语法从42维状态空间中的C类预测性子单元出发，通过靶点选择、操作匹配、序列设计和可检验预测生成，演绎出尚未被现有流派系统占据的新干预方案。INTRE提供的是形式化框架和约束条件——它不会自动发明具体技术，但指明了哪个靶点值得开发、应匹配什么操作、需要检验什么预测。默认模式调度疗法(DMD)是这一生成能力的典范：它从“反刍是调度失控而非信念错误”的核心洞察出发，以GATE– M2-DSP-B和GATE+ M1-DSP-F为核心操作，给出了可检验的P级预测。其他预测性流派如VRB、BIE、SPR、DEB、NCB等分别填补了M3-RES-D、M6-RES-D、M4-STR-C、S-P数字系统、M5-RES-B等空位。预测性流派的验证路线图分为五个阶段，从概念验证到RCT再到传播实施，每个阶段都有明确的通过标准和证伪条件。INTRE的流派生成能力证明了它不仅是已有知识的收纳箱，更是一台能够生成新知识、新疗法的理论引擎。</p>
+<h2>13.6 一个主诉到语义似然的微案例</h2>
 
-<blockquote><p><strong>关键术语</strong>：流派生成语法，结构空位，DMD，预测性流派，验证路线图</p></blockquote>
+<p>一位 34 岁的来访者给出主诉：“这半年心里堵得慌，脑子转不动，晚上躺下就反复想白天说错的话。”以下数值为示意值，用于展示链路，不作为临床参数。</p>
 
-<blockquote><p><strong>常见误区</strong>：<br>- ❌ “INTRE能自动生成新疗法” → ✅ INTRE提供形式化框架和约束条件，指明靶点和操作匹配，但具体技术开发仍是人类治疗师的创造性工作。<br>- ❌ “DMD试图取代CBT” → ✅ DMD填补的是CBT等流派未系统占据的功能空位（注意调度过程本身），而不是替代CBT处理信念内容。</p></blockquote>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>文本片段</th>
+<th>S2 候选</th>
+<th>S3 坐标</th>
+<th>y 初值</th>
+<th>σ</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>心里堵得慌</td>
+<td>胸闷-郁结隐喻</td>
+<td>M4-DSP-B；M4-STR-C</td>
+<td>0.78；0.60</td>
+<td>0.18</td>
+</tr>
+<tr>
+<td>脑子转不动</td>
+<td>认知迟滞</td>
+<td>M2-RES-D；M2-DSP-F</td>
+<td>0.32；0.40</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>反复想白天说错的话</td>
+<td>反刍</td>
+<td>M2-DSP-B；M2-STR-S</td>
+<td>0.74；0.58</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td>这半年</td>
+<td>时程修饰</td>
+<td>不新增维度</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
 
-<blockquote><p><strong>练习题</strong>：<br>1. 从42维状态空间中识别一个你认为可能成为“结构空位”的子单元，并设计一个简要的流派生成方案。<br>2. DMD与CBT在反刍问题上的功能定位有何本质区别？<br>3. 如果一个预测性流派的核心预测在多个独立RCT中被证伪，按照INTRE的验证路线图应如何处理？</p></blockquote>
+<p>S1 标记“这半年”为持续时程，标记“转不动”为能力下降而非意愿拒绝。S2 把“堵”匹配到情绪调度隐喻，而不是心肺症状；把“反复想”匹配到反刍条目。S3 落出五个维度，其余 37 维保持空白。</p>
 
-</main>
+<p>S4 按歧义调 σ。“反复想”指向明确，σ 取 0.09；“堵”是文化隐喻，候选分散，σ 取 0.18。S5 把五个维度写成观测值，其余维度写 \(0.5\) 与 \(1/\sqrt{12}\)，形成 42 维观测块。</p>
+
+<p>L2 收到观测块后，用截断高斯核构造语义似然：</p>
+
+\[ p(y_s\mid \Psi) = \prod_i g\bigl(y_s[i];\ \Psi[i],\ \sigma_s[i]\bigr) \]
+
+<p>语义似然在 M4-DSP-B 与 M2-DSP-B 上较尖，在 M4-STR-C 上较平，在未覆盖维度上是常数。它与行为似然、神经似然相乘，再乘先验转移项，得到后验。语义通道的贡献是“把主诉转成带不确定度的坐标读数”，不是给出诊断。</p>
+
+<p>这个案例也显示编译的边界。主诉没有提到睡眠、食欲或社交，语义端口不会凭空补出 M1-RES-B 或 M5-STR-C 的观测；这些维度只能由行为量表、数字表型或神经信号补充。缺什么，就在融合中缺什么，不用猜测填满。</p>
+
+<p>当行为与神经通道同时在线时，语义通道的贡献会被自动加权。若行为量表覆盖了 M2-RES-D，而语义块在该维只有隐喻读数，L2 会用较小的 σ 压制语义噪声；若行为端口缺失，语义块就承担更多权重。权重不是固定的，由每次观测的 σ 决定。</p>
+
+    </main>
 
     <div class="page-footer-nav">
-        <div class="chapter-nav"><a href="ch12.html" class="nav-link prev">‹ 流派分解</a>
-<a href="ch14.html" class="nav-link next">概念标识 ›</a></div>
+        <div class="chapter-nav"><a href="ch12.html" class="nav-link prev">‹ PSE 总览</a>
+<a href="ch14.html" class="nav-link next">行为测量 ›</a></div>
     </div>
 
     <footer>
@@ -396,7 +382,7 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.1 (2026-06-10) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
 

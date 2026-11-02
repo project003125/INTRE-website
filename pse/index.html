@@ -3,260 +3,306 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>INTRE · PSE 心理系统工程引擎</title>
-    <meta name="description" content="PSE（心理系统工程引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
-    <meta property="og:title" content="PSE · 心理系统工程引擎 · INTRE">
-    <meta property="og:description" content="PSE（心理系统工程引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
+    <title>INTRE · PSE 心理系统计算引擎</title>
+    <meta name="description" content="PSE 心理系统计算引擎：L0 本体、L1 观测、L2 状态估计、L3 动力学、L4 规划、L5 执行。用一个模拟案例展示六级管线如何从主诉走到干预方案。">
+    <meta property="og:title" content="PSE · 心理系统计算引擎 · INTRE">
+    <meta property="og:description" content="PSE 心理系统计算引擎：L0 本体、L1 观测、L2 状态估计、L3 动力学、L4 规划、L5 执行。用一个模拟案例展示六级管线如何从主诉走到干预方案。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/pse/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PSE · 心理系统工程引擎 · INTRE">
-    <meta name="twitter:description" content="PSE（心理系统工程引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。">
+    <meta name="twitter:title" content="PSE · 心理系统计算引擎 · INTRE">
+    <meta name="twitter:description" content="PSE 心理系统计算引擎：L0 本体、L1 观测、L2 状态估计、L3 动力学、L4 规划、L5 执行。用一个模拟案例展示六级管线如何从主诉走到干预方案。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/pse/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
     <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
     <link rel="stylesheet" href="../shared/components.css?v=20261101h">
-  <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
     <style>
         html { scroll-behavior: smooth; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
 
-        .container {
-            padding: 2rem 2rem;
+        .pse-hero {
+            margin: 1rem 0 2.5rem;
+            padding: 2.4rem 2rem 2rem;
+            background: linear-gradient(180deg, var(--color-slate-100), var(--color-white));
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sm);
         }
-
-        /* 页面标题 */
-        h1 {
+        .eyebrow {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: .72rem;
+            letter-spacing: .12em;
+            color: var(--color-navy-600);
+            text-transform: uppercase;
+        }
+        .pse-hero h1 {
             font-family: var(--font-body);
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.35rem;
+            line-height: 1.25;
+            letter-spacing: -.02em;
             color: var(--color-slate-900);
-            margin: 1.5rem 0 0.4rem;
-            letter-spacing: -0.02em;
+            margin: .5rem 0 .6rem;
+        }
+        .lede {
+            max-width: 780px;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: var(--color-slate-700);
+            margin: 0 0 1rem;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: 1.4rem;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .75rem;
+            padding: .22rem .6rem;
+            border-radius: 999px;
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            background: var(--color-white);
+            color: var(--color-slate-700);
+        }
+        .pill.warn {
+            border-color: color-mix(in srgb, var(--color-amber-500) 40%, transparent);
+            color: var(--color-slate-700);
         }
 
-        .subhead {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            font-weight: 400;
+        /* 首屏技术路线图 */
+        .roadmap {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: .65rem;
+            margin: 1.6rem 0 .9rem;
+        }
+        .roadmap::before {
+            content: "";
+            position: absolute;
+            top: 13px;
+            left: 6%;
+            right: 6%;
+            height: 2px;
+            background: var(--color-slate-300);
+            z-index: 0;
+        }
+        .node {
+            position: relative;
+            z-index: 1;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sm);
+            padding: 1.1rem .85rem .9rem;
+            transition: border-color .2s ease, transform .2s ease;
+        }
+        .node:hover { border-color: var(--color-navy-400); transform: translateY(-2px); }
+        .node .dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--color-navy-600);
+            margin: 0 auto .7rem;
+            box-shadow: 0 0 0 4px var(--color-white);
+        }
+        .node .lvl {
+            display: block;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: .66rem;
+            letter-spacing: .08em;
+            color: var(--color-navy-600);
+            text-align: center;
+        }
+        .node h3 {
+            font-size: .95rem;
+            text-align: center;
+            margin: .15rem 0 .4rem;
+            padding: 0;
+            border: none;
+            color: var(--color-slate-900);
+        }
+        .node p {
+            font-size: .78rem;
+            line-height: 1.55;
             color: var(--color-slate-500);
-            margin-bottom: 2rem;
-            max-width: 900px;
+            text-align: center;
+            margin: 0 0 .55rem;
+        }
+        .node .out {
+            display: block;
+            font-size: .7rem;
+            text-align: center;
+            color: var(--color-slate-700);
+            padding-top: .5rem;
+            border-top: 1px dashed var(--color-slate-200);
+        }
+        .node.core { border-color: var(--color-navy-400); box-shadow: 0 6px 18px rgba(31,72,128,.08); }
+        .roadmap-foot {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .6rem;
+            font-size: .78rem;
+            color: var(--color-slate-500);
+        }
+        .roadmap-foot strong { color: var(--color-slate-700); }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
+        .btn-link {
+            display: inline-flex; align-items: center; gap: .45rem;
+            padding: .6rem 1rem; border-radius: var(--radius-sm);
+            background: var(--color-navy-600); color: var(--color-white);
+            font-size: .86rem; text-decoration: none;
+        }
+        .btn-link.ghost {
+            background: transparent; color: var(--color-navy-600);
+            border: var(--stroke-hairline) solid var(--color-navy-400);
         }
 
         .section-label {
             font-family: var(--font-body);
-            font-size: var(--text-xl, 1.5rem);
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--color-slate-700);
-            margin: 2.5rem 0 1rem;
+            margin: 2.8rem 0 1rem;
+            padding-bottom: .45rem;
             border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-            padding-bottom: 0.4rem;
-            padding-left: 0;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: .55rem;
         }
-
         .section-label i {
-            color: var(--color-navy-400);
-            font-size: 1rem;
-            background: var(--color-navy-600-bg);
+            color: var(--color-navy-600);
+            font-size: .95rem;
+            background: var(--color-navy-50, var(--color-slate-100));
             border-radius: 50%;
-            width: 2.2rem;
-            height: 2.2rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            width: 2rem; height: 2rem;
+            display: inline-flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
 
-        h3 {
-            font-family: var(--font-body);
-            font-size: var(--text-lg, 1.25rem);
-            font-weight: 600;
-            color: var(--color-slate-900);
-            margin: 1.8rem 0 1rem;
-            padding-bottom: 0.3rem;
-            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-        }
-
-        h4 {
-            font-family: var(--font-body);
-            font-size: var(--text-md, 1.125rem);
-            font-weight: 600;
-            color: var(--color-navy-400);
-            margin: 1.5rem 0 0.8rem;
-        }
-
-        .card {
-            background-color: var(--color-white);
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        /* 表格样式 */
-        .table-responsive {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: var(--radius-sm);
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            min-width: 600px;
-        }
-
-        .table th {
-            background-color: var(--color-navy-600);
-            color: var(--color-white);
-            font-weight: 600;
-            padding: 0.9rem 1rem;
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .table td {
-            padding: 0.9rem 1rem;
-            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
-            vertical-align: top;
-            background-color: var(--color-white);
-        }
-
-        .table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .table tbody tr:hover td {
-            background-color: var(--color-slate-100);
-        }
-
-        /* 网格布局 */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 1024px) {
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            h1 {
-                font-size: 1.9rem;
-            }
-            .subhead {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            .container { padding: 1.5rem; }
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 1.2rem; }
-            h1 { font-size: 1.6rem; }
-            .subhead { font-size: 0.95rem; }
-            .section-label { font-size: var(--text-lg, 1.25rem); }
-            .card { padding: 1rem; }
-        }
-
-        .info-box {
-            background-color: var(--color-slate-100);
-            border-radius: var(--radius-sm);
-            padding: 1.5rem;
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            margin: 1.5rem 0;
-        }
-
-        .code-block {
-            background-color: var(--color-slate-900);
-            color: var(--color-slate-200);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            line-height: 1.65;
-            overflow-x: auto;
-            margin: 1rem 0;
-            border: var(--stroke-hairline) solid rgba(255,255,255,0.05);
-        }
-
-        .badge {
-            background-color: var(--color-navy-400);
-            color: var(--color-white);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.2rem 0.6rem;
-            border-radius: var(--radius-pill);
-            margin-left: 0.5rem;
-            display: inline-block;
-        }
-
-        .phase-tag {
-            display: inline-block;
-            background-color: var(--color-navy-600);
-            color: var(--color-white);
-            padding: 0.3rem 1rem;
-            border-radius: var(--radius-pill);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* 案例卡片 */
-        .case-study {
+        /* 模拟走查 */
+        .demo-shell {
             background: var(--color-slate-100);
             border: var(--stroke-hairline) solid var(--color-slate-200);
             border-radius: var(--radius-sm);
-            padding: 2rem;
-            margin: 2rem 0;
+            padding: 1.4rem;
+        }
+        .demo-head { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .9rem; }
+        .demo-head h3 { margin: 0; border: none; padding: 0; font-size: 1.1rem; }
+        .sim-badge {
+            font-size: .72rem; padding: .18rem .55rem; border-radius: 999px;
+            background: color-mix(in srgb, var(--color-amber-500) 16%, transparent);
+            color: var(--color-slate-700);
+        }
+        .steps { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }
+        .step-btn {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: .74rem;
+            padding: .38rem .6rem;
+            border-radius: var(--radius-sm);
+            border: var(--stroke-hairline) solid var(--color-slate-300);
+            background: var(--color-white);
+            color: var(--color-slate-700);
+            cursor: pointer;
+        }
+        .step-btn.active { background: var(--color-navy-600); border-color: var(--color-navy-600); color: var(--color-white); }
+        .step-btn:focus-visible { outline: 2px solid var(--color-amber-500); outline-offset: 2px; }
+        .demo-panel { display: none; background: var(--color-white); border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); padding: 1.2rem 1.2rem 1.1rem; }
+        .demo-panel.active { display: block; }
+        .demo-panel h4 { margin: 0 0 .35rem; font-size: 1.02rem; color: var(--color-slate-900); }
+        .demo-panel .kicker { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .7rem; color: var(--color-navy-600); letter-spacing: .06em; }
+        .demo-panel p { color: var(--color-slate-700); line-height: 1.7; }
+        .demo-panel ul { margin: .4rem 0 .2rem 1.1rem; color: var(--color-slate-700); line-height: 1.7; }
+        .demo-nav { display: flex; justify-content: space-between; gap: .6rem; margin-top: .9rem; }
+        .demo-nav button {
+            padding: .45rem .85rem; border-radius: var(--radius-sm);
+            border: var(--stroke-hairline) solid var(--color-slate-300);
+            background: var(--color-white); color: var(--color-slate-700); cursor: pointer; font-size: .8rem;
+        }
+        .demo-nav button:disabled { opacity: .45; cursor: default; }
+
+        .mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .7rem; margin-top: .8rem; }
+        .mini-card { background: var(--color-slate-100); border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); padding: .8rem; }
+        .mini-card .tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .68rem; color: var(--color-navy-600); }
+        .mini-card p { font-size: .8rem; margin: .25rem 0 0; color: var(--color-slate-700); }
+
+        .meters { display: grid; gap: .55rem; margin-top: .6rem; }
+        .meter-row { display: grid; grid-template-columns: 8.5rem 1fr 4.2rem; align-items: center; gap: .6rem; font-size: .78rem; color: var(--color-slate-700); }
+        .meter-track { height: 8px; background: var(--color-slate-200); border-radius: 999px; overflow: hidden; }
+        .meter-fill { height: 100%; background: var(--color-navy-600); border-radius: 999px; }
+        .meter-fill.warn { background: var(--color-amber-500); }
+
+        .chart-wrap { margin-top: .8rem; border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); padding: .5rem; background: var(--color-white); }
+        .chart { width: 100%; height: auto; display: block; }
+        .chart .grid { stroke: var(--color-slate-200); stroke-width: 1; }
+        .chart .axis { fill: var(--color-slate-500); font-size: 9px; font-family: 'JetBrains Mono', monospace; }
+        .chart .base { fill: none; stroke: var(--color-amber-500); stroke-width: 2.4; }
+        .chart .plan { fill: none; stroke: var(--color-navy-600); stroke-width: 2.4; }
+        .chart .risk { fill: color-mix(in srgb, var(--color-amber-500) 12%, transparent); }
+        .legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .75rem; color: var(--color-slate-500); margin-top: .35rem; }
+        .legend i { display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: .3rem; }
+
+        .case-note {
+            margin-top: .8rem;
+            padding: .75rem .9rem;
+            border-left: 3px solid var(--color-amber-500);
+            background: color-mix(in srgb, var(--color-amber-500) 8%, transparent);
+            color: var(--color-slate-700);
+            font-size: .82rem;
+            line-height: 1.65;
+        }
+
+        .table-responsive { overflow-x: auto; margin-top: .6rem; border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); }
+        .table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .table th { background: var(--color-navy-600); color: var(--color-white); font-weight: 600; padding: .7rem .8rem; text-align: left; }
+        .table td { padding: .65rem .8rem; border-bottom: var(--stroke-hairline) solid var(--color-slate-200); background: var(--color-white); color: var(--color-slate-700); vertical-align: top; }
+        .table tr:last-child td { border-bottom: none; }
+        .table tr.chosen td { background: color-mix(in srgb, var(--color-navy-600) 7%, var(--color-white)); font-weight: 600; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 1.2rem 0; }
+        .card { background: var(--color-white); border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); padding: 1.1rem 1.1rem; }
+        .card h3 { margin: .1rem 0 .4rem; font-size: .98rem; color: var(--color-slate-900); }
+        .card p { font-size: .84rem; color: var(--color-slate-700); line-height: 1.65; margin: 0; }
+        .card a { display: inline-block; margin-top: .6rem; font-size: .78rem; color: var(--color-navy-600); text-decoration: none; }
+
+        .two-col { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin: 1rem 0; }
+        .boundary { border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: var(--radius-sm); padding: 1rem 1.1rem; background: var(--color-white); }
+        .boundary h3 { margin: 0 0 .45rem; font-size: .95rem; border: none; padding: 0; }
+        .boundary ul { margin: 0 0 0 1.1rem; padding: 0; color: var(--color-slate-700); font-size: .84rem; line-height: 1.75; }
+        .boundary.no { border-color: color-mix(in srgb, var(--color-amber-500) 40%, transparent); }
+
+        .readnext { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .6rem; }
+        .readnext a { font-size: .8rem; padding: .45rem .75rem; border: var(--stroke-hairline) solid var(--color-slate-300); border-radius: var(--radius-sm); color: var(--color-navy-600); text-decoration: none; background: var(--color-white); }
+
+        @media (max-width: 980px) {
+            .roadmap { grid-template-columns: repeat(3, minmax(0,1fr)); }
+            .roadmap::before { display: none; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 720px) {
+            .pse-hero { padding: 1.6rem 1.1rem; }
+            .pse-hero h1 { font-size: 1.75rem; }
+            .roadmap { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .mini-grid, .two-col { grid-template-columns: 1fr; }
+            .meter-row { grid-template-columns: 7rem 1fr 3.6rem; }
+            .demo-shell { padding: 1rem; }
         }
     </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "PSE · 心理系统工程引擎 · INTRE",
-  "description": "PSE（心理系统工程引擎）：INTRE 的计算引擎，基于心智六论的大规模蒙特卡罗仿真与贝叶斯校准。",
+  "headline": "PSE · 心理系统计算引擎 · INTRE",
+  "description": "PSE 心理系统计算引擎：L0 本体、L1 观测、L2 状态估计、L3 动力学、L4 规划、L5 执行。",
   "url": "https://project003125.github.io/INTRE-website/pse/",
-  "publisher": {'@type': 'Organization', 'name': 'INTRE', 'url': 'https://project003125.github.io/INTRE-website/'}
+  "publisher": {"@type": "Organization", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"}
 }
 </script>
 </head>
@@ -281,220 +327,254 @@
     </nav>
 
     <main id="main-content" class="container">
-        <h1>PSE</h1>
-        <div class="subhead">心理系统工程引擎 · 基于心智六论的大规模仿真引擎 <span class="channel-badge pse">计算引擎</span></div>
 
-        <div class="info-box">
-            <i class="fas fa-quote-left" aria-hidden="true" ></i>
-            PSE 将形式化描述转化为可计算的动力学系统 — 基于<strong>心智六论</strong>，通过 PSE‑M（蒙特卡罗仿真）与 PSE‑C（真实世界校准）预测心理状态演化。
-        </div>
+        <section class="pse-hero" aria-labelledby="pse-title">
+            <span class="eyebrow">PSE · 心理系统计算引擎</span>
+            <h1 id="pse-title">一次主诉，走完六级管线</h1>
+            <p class="lede">PSE 把心理系统的处理拆成六级：先在 L0 定义坐标与词汇，在 L1 接住语义、行为、神经三类观测，L2 估计当前状态，L3 推演未来轨迹，L4 搜索干预序列，L5 执行并把结果送回 L1。下面这张图是整条路线的最小版本。</p>
+            <div class="hero-meta">
+                <span class="pill"><i class="fas fa-cubes" aria-hidden="true"></i> L0–L5 六级管线</span>
+                <span class="pill">三端口输入</span>
+                <span class="pill">42 维状态</span>
+                <span class="pill warn">规范设计阶段 · 参数未临床校准</span>
+            </div>
 
-        <!-- 一、五层架构与心智六论 -->
-        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 一、心智六论 · PSE 的理论基础</h2>
+            <div class="roadmap" role="img" aria-label="PSE 六级管线技术路线图：L0 本体到 L5 执行">
+                <div class="node">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L0</span>
+                    <h3>本体</h3>
+                    <p>定义坐标系、词汇与结构约束</p>
+                    <span class="out">不运行 · 只定义</span>
+                </div>
+                <div class="node">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L1</span>
+                    <h3>观测</h3>
+                    <p>语义、行为、神经三端口接入</p>
+                    <span class="out">y<sub>t</sub> + 不确定度</span>
+                </div>
+                <div class="node core">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L2</span>
+                    <h3>状态估计</h3>
+                    <p>贝叶斯融合，得到当前状态后验</p>
+                    <span class="out">Ψ<sub>t</sub> · 42 维</span>
+                </div>
+                <div class="node core">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L3</span>
+                    <h3>动力学</h3>
+                    <p>推演未来轨迹、级联与风险时点</p>
+                    <span class="out">未来状态分布</span>
+                </div>
+                <div class="node">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L4</span>
+                    <h3>规划</h3>
+                    <p>在资源与伦理约束下搜索操作序列</p>
+                    <span class="out">序列 + 成功概率</span>
+                </div>
+                <div class="node">
+                    <div class="dot" aria-hidden="true"></div>
+                    <span class="lvl">L5</span>
+                    <h3>执行</h3>
+                    <p>执行方案，采集依从性与反馈</p>
+                    <span class="out">记录 → 回 L1</span>
+                </div>
+            </div>
+            <div class="roadmap-foot">
+                <span><strong>闭环：</strong>L5 执行记录回到 L1，下一次观测重新开始</span>
+                <span><strong>伦理：</strong>REVER 六门控一回环 G0–G5 + EC 横跨全链</span>
+            </div>
+            <div class="hero-actions">
+                <a class="btn-link" href="#demo">看一次模拟走查 <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                <a class="btn-link ghost" href="/INTRE-website/textbook/ch12.html">读教材第 12 章 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
 
-        <div class="grid-3">
-            <div class="card">
-                <h3><i class="fas fa-compass" aria-hidden="true"></i> MCT · 心智编译理论</h3>
-                <p><strong>Mental Compilation Theory</strong></p>
-                <p>将临床观测（主诉、量表）编译为 M-R-D-S 状态向量。解决“现象→形式化”的映射问题。</p>
-                <div class="code-block code-block-sm">主诉“疲惫不堪”→ M1-RES-D↓</div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> MTT · 心智拓扑理论</h3>
-                <p><strong>Mental Topology Theory</strong></p>
-                <p>描述 M-R-D-S 组件间的连接结构与因果网络。定义依赖强度矩阵 w_base。</p>
-                <div class="code-block code-block-sm">M1-RES-D → M3-RES-D: 0.8</div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-chart-line" aria-hidden="true"></i> MKT · 心智动力理论</h3>
-                <p><strong>Mental Kinetics Theory</strong></p>
-                <p>资源与状态的演化方程，包含存量-流量-结构动力学。定义速率常数 k。</p>
-                <div class="code-block code-block-sm">d(RES-D)/dt = k_rec - k_cons</div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-sliders-h" aria-hidden="true"></i> MDT · 心智调度理论</h3>
-                <p><strong>Mental Dispatch Theory</strong></p>
-                <p>干预优化的决策理论，将 G-M-A-R 操作映射为控制信号。优化干预序列。</p>
-                <div class="code-block code-block-sm">选择 MODULATE+ 时机</div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-dna" aria-hidden="true"></i> MPT · 心智塑性理论</h3>
-                <p><strong>Mental Plasticity Theory</strong></p>
-                <p>结构层（STR）的改变机制，描述学习与习惯化的速率。</p>
-                <div class="code-block code-block-sm">d(STR-R)/dt = η·Δ</div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-globe-asia" aria-hidden="true"></i> MET · 心智生态理论</h3>
-                <p><strong>Mental Ecology Theory</strong></p>
-                <p>环境-系统耦合模型，描述 S-P 外感架构如何影响内感状态。</p>
-                <div class="code-block code-block-sm">P-M1-RES-D+ 来自社会支持</div>
-            </div>
-        </div>
+        <h2 class="section-label"><i class="fas fa-play" aria-hidden="true"></i> 模拟走查：林晓的八周</h2>
 
-        <!-- 二、PSE 四阶段 -->
-        <h2 class="section-label"><i class="fas fa-sync-alt" aria-hidden="true"></i> 二、PSE 四阶段 · 从理论到临床</h2>
+        <div class="demo-shell" id="demo">
+            <div class="demo-head">
+                <h3>从主诉到下一轮观测</h3>
+                <span class="sim-badge">模拟数据 · 非临床结论</span>
+            </div>
+            <div class="steps" role="tablist" aria-label="管线步骤">
+                <button class="step-btn active" role="tab" aria-selected="true" data-step="0">L0 本体</button>
+                <button class="step-btn" role="tab" aria-selected="false" data-step="1">L1 观测</button>
+                <button class="step-btn" role="tab" aria-selected="false" data-step="2">L2 状态估计</button>
+                <button class="step-btn" role="tab" aria-selected="false" data-step="3">L3 动力学</button>
+                <button class="step-btn" role="tab" aria-selected="false" data-step="4">L4 规划</button>
+                <button class="step-btn" role="tab" aria-selected="false" data-step="5">L5 执行</button>
+            </div>
 
-        <div class="grid-4">
-            <div class="card card-center">
-                <div class="phase-tag">PSE-I</div>
-                <h3>理论注入</h3>
-                <p>将心智六论作为约束条件植入仿真引擎，定义状态空间与动力学方程。</p>
+            <div class="demo-panel active" role="tabpanel" aria-label="L0 本体">
+                <span class="kicker">L0 · ONTOLOGY</span>
+                <h4>先把“说什么”固定下来</h4>
+                <p>林晓，28 岁，产品经理。近三个月入睡困难、白天耗竭、对未来反复担忧。L0 不处理这些句子，只规定用哪套坐标描述它们：6 个功能模块 × 7 个状态维度，共 42 维。</p>
+                <div class="mini-grid">
+                    <div class="mini-card"><span class="tag">坐标</span><p>M1–M6 六模块；RES / DSP / STR 三轴七维</p></div>
+                    <div class="mini-card"><span class="tag">词汇</span><p>“入睡困难”落到 M1 资源与 M4 唤醒；不新造概念</p></div>
+                    <div class="mini-card"><span class="tag">边界</span><p>不新增维度；术语与结构约束在这一层固定</p></div>
+                </div>
+                <div class="case-note">这一层没有运行时。它只回答“用什么尺子量”，不回答“量出来是多少”。</div>
             </div>
-            <div class="card card-center">
-                <div class="phase-tag">PSE-M</div>
-                <h3>蒙特卡罗仿真</h3>
-                <p>运行千万级虚拟个体，遍历参数空间，生成心理状态演化的先验分布。</p>
-            </div>
-            <div class="card card-center">
-                <div class="phase-tag">PSE-P</div>
-                <h3>先验提取</h3>
-                <p>从仿真结果中提取参数分布、典型轨迹、临界点特征，构建先验知识库。</p>
-            </div>
-            <div class="card card-center">
-                <div class="phase-tag">PSE-C</div>
-                <h3>真实锚定</h3>
-                <p>用临床真实数据（量表、EMA）进行贝叶斯校准，更新后验参数。</p>
-            </div>
-        </div>
 
-        <div class="code-block">
-            // PSE-M 仿真伪代码示例<br>
-            for agent in 1..10^7:<br>
-            &nbsp;&nbsp;initialize M-R-D-S from prior distribution<br>
-            &nbsp;&nbsp;for t in 1..T:<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;apply dynamics equations (MKT)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;if intervention: apply G-M-A-R operation<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;record trajectory<br>
-            &nbsp;&nbsp;end<br>
-            end
-        </div>
-
-        <!-- 三、动力学方程与参数 -->
-        <h2 class="section-label"><i class="fas fa-square-root-variable" aria-hidden="true"></i> 三、动力学方程与参数</h2>
-
-        <div class="grid-2">
-            <div class="card">
-                <h3>资源演化方程</h3>
-                <p><strong>调度资源 RES-D</strong></p>
-                <p>d(RES-D)/dt = k_recovery · (RES-B - RES-D) - k_consumption · DSP-F</p>
-                <p><strong>基底资源 RES-B</strong></p>
-                <p>d(RES-B)/dt = k_basal_growth · (1 - RES-B/RES-B_max) - k_basal_decay · (RES-B - RES-D)⁺</p>
+            <div class="demo-panel" role="tabpanel" aria-label="L1 观测">
+                <span class="kicker">L1 · PERCEPTION</span>
+                <h4>三类观测同时进来</h4>
+                <p>同一周内，三个端口各给一组带不确定度的读数。它们不是三套结论，而是三组证据。</p>
+                <div class="mini-grid">
+                    <div class="mini-card"><span class="tag">UPLP · 语义</span><p>“最近总睡不好，白天撑不住，脑子停不下来。”</p></div>
+                    <div class="mini-card"><span class="tag">UBMP · 行为</span><p>入睡潜伏期 95 分钟；PHQ-9 = 12；日均步数下降 28%</p></div>
+                    <div class="mini-card"><span class="tag">UNIP · 神经</span><p>夜间心率变异性偏低（示例读数；在线层尚未实现）</p></div>
+                </div>
+                <p style="margin-top:.7rem"><strong>合并输出：</strong>结构化观测向量 y<sub>t</sub>，每个分量附不确定度。某个端口缺失时，该分量标为“无信息”，其余端口照常工作。</p>
             </div>
-            <div class="card">
-                <h3>关键参数</h3>
+
+            <div class="demo-panel" role="tabpanel" aria-label="L2 状态估计">
+                <span class="kicker">L2 · STATE ESTIMATION</span>
+                <h4>把三组证据合成一个当前状态</h4>
+                <p>L2 做贝叶斯融合，并与 L3 给出的转移先验迭代，得到 Ψ<sub>t</sub> 的后验分布。下图只展示六个关键分量，条形长度是后验均值，右侧是区间。</p>
+                <div class="meters">
+                    <div class="meter-row"><span>M1-RES-D 调度资源</span><div class="meter-track"><div class="meter-fill warn" style="width:28%"></div></div><span>28 ± 6</span></div>
+                    <div class="meter-row"><span>M1-RES-B 基底资源</span><div class="meter-track"><div class="meter-fill warn" style="width:42%"></div></div><span>42 ± 7</span></div>
+                    <div class="meter-row"><span>M3-DSP-F 前台调度</span><div class="meter-track"><div class="meter-fill warn" style="width:22%"></div></div><span>0.22 ± .05</span></div>
+                    <div class="meter-row"><span>M3-DSP-B 后台反刍</span><div class="meter-track"><div class="meter-fill" style="width:86%"></div></div><span>0.86 ± .04</span></div>
+                    <div class="meter-row"><span>M2-STR-R 规则刚性</span><div class="meter-track"><div class="meter-fill" style="width:78%"></div></div><span>0.78 ± .08</span></div>
+                    <div class="meter-row"><span>M4 唤醒 / 威胁</span><div class="meter-track"><div class="meter-fill" style="width:74%"></div></div><span>0.74 ± .07</span></div>
+                </div>
+                <div class="case-note">L2 不判断“她是什么病”，只回答“当前状态在哪、有多确定”。诊断标签不在这里产生。</div>
+            </div>
+
+            <div class="demo-panel" role="tabpanel" aria-label="L3 动力学">
+                <span class="kicker">L3 · DYNAMICS</span>
+                <h4>不干预会怎样，干预会怎样</h4>
+                <p>L3 用当前状态推演未来八周。红线是“不改变环境与行为”的基线，蓝线是“前两周先稳住调度、再恢复资源”的模拟轨迹。阴影区间标出风险时点。</p>
+                <div class="chart-wrap">
+                    <svg class="chart" viewBox="0 0 640 240" role="img" aria-label="八周资源轨迹模拟图">
+                        <line class="grid" x1="50" y1="40" x2="620" y2="40"/>
+                        <line class="grid" x1="50" y1="90" x2="620" y2="90"/>
+                        <line class="grid" x1="50" y1="140" x2="620" y2="140"/>
+                        <line class="grid" x1="50" y1="190" x2="620" y2="190"/>
+                        <line class="grid" x1="50" y1="40" x2="50" y2="190"/>
+                        <text class="axis" x="14" y="44">80</text>
+                        <text class="axis" x="14" y="94">60</text>
+                        <text class="axis" x="14" y="144">40</text>
+                        <text class="axis" x="14" y="194">20</text>
+                        <text class="axis" x="50" y="216">0 周</text>
+                        <text class="axis" x="215" y="216">2 周</text>
+                        <text class="axis" x="380" y="216">4 周</text>
+                        <text class="axis" x="545" y="216">8 周</text>
+                        <rect class="risk" x="380" y="40" width="90" height="150"/>
+                        <path class="base" d="M50,175 C120,185 180,195 250,198 C330,200 420,190 500,196 C560,200 600,202 620,203"/>
+                        <path class="plan" d="M50,175 C110,160 160,140 210,128 C280,110 340,96 420,84 C500,78 570,80 620,82"/>
+                    </svg>
+                </div>
+                <div class="legend"><span><i style="background:var(--color-amber-500)"></i>不干预基线</span><span><i style="background:var(--color-navy-600)"></i>先稳调度、再补资源</span><span>阴影：风险时点（第 4–6 周）</span></div>
+                <p style="margin-top:.6rem"><strong>这一步给出：</strong>未来状态分布、级联路径、风险时点，以及“若现在动手，哪一段最值得改”。</p>
+            </div>
+
+            <div class="demo-panel" role="tabpanel" aria-label="L4 规划">
+                <span class="kicker">L4 · PLANNING</span>
+                <h4>在约束下选一条序列</h4>
+                <p>L4 拿到预测轨迹后，在资源预算、操作组合规则与伦理门控下比较候选方案。下表是三条候选，选中的不是“效果最大”，而是“当前资源下最稳”。</p>
                 <div class="table-responsive">
                     <table class="table">
-                        <thead><tr><th>参数</th><th>取值范围</th><th>含义</th></tr></thead>
+                        <thead><tr><th>候选</th><th>前两周动作</th><th>八周成功概率</th><th>资源代价</th><th>取舍</th></tr></thead>
                         <tbody>
-                        <tr><td>k_recovery</td><td>0.1–0.3 /h</td><td>资源恢复速率</td></tr>
-                        <tr><td>k_consumption</td><td>0.05–0.2 /h</td><td>资源消耗速率</td></tr>
-                        <tr><td>τ_D</td><td>2–6 h</td><td>RES-D 时间常数</td></tr>
-                        <tr><td>τ_B</td><td>7–30 d</td><td>RES-B 时间常数</td></tr>
-                        <tr><td>w_base</td><td>0–1</td><td>依赖强度矩阵</td></tr>
+                            <tr class="chosen"><td>A · 先稳后补</td><td>GATE 抑制反刍 + MODULATE 补资源</td><td>0.62</td><td>低</td><td>先恢复可执行性，再谈结构改变</td></tr>
+                            <tr><td>B · 直接改信念</td><td>ALIGN 规则修正</td><td>0.48</td><td>中</td><td>资源不足时容易做不动</td></tr>
+                            <tr><td>C · 环境重联</td><td>RELINK + 环境调整</td><td>0.55</td><td>高</td><td>需要家庭与工作场景配合</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="case-note">方案 A 不是唯一正确解。它是在“当前资源 28/100、八周窗口、伦理约束”下的推荐解；换约束，排序会变。</div>
+            </div>
+
+            <div class="demo-panel" role="tabpanel" aria-label="L5 执行">
+                <span class="kicker">L5 · EXECUTION</span>
+                <h4>做下去，并把结果送回来</h4>
+                <p>执行层记录剂量、依从性、异常事件与阶段结果。它不是终点：每一次记录都要回到 L1，成为下一轮观测的一部分。</p>
+                <div class="mini-grid">
+                    <div class="mini-card"><span class="tag">第 1–2 周</span><p>依从率 85%；入睡潜伏期 95 → 70 分钟；无异常事件</p></div>
+                    <div class="mini-card"><span class="tag">第 3–4 周</span><p>资源后验 28 → 47；开始加入 1 次 ALIGN 会谈</p></div>
+                    <div class="mini-card"><span class="tag">第 8 周</span><p>潜伏期 40 分钟；反刍时长下降；进入维持期</p></div>
+                </div>
+                <div class="case-note">闭环：L5 的记录包回传 L1 → L2 重新估计 → L3 重算轨迹。一次走查结束，下一轮从新的观测开始。</div>
+            </div>
+
+            <div class="demo-nav">
+                <button type="button" id="demoPrev" disabled>上一步</button>
+                <button type="button" id="demoNext">下一步</button>
             </div>
         </div>
 
-        <!-- 四、王梅案例（PSE 应用示范） -->
-        <h2 class="section-label"><i class="fas fa-user-check" aria-hidden="true"></i> 四、案例：王梅 · 失眠与职业倦怠</h2>
-
-        <div class="case-study">
-            <h3>背景</h3>
-            <p>王梅，34岁，互联网项目经理。主诉：入睡困难（平均入睡时间>90分钟），白天精力枯竭，工作动机下降，自我否定加重。持续6个月。</p>
-
-            <h3>M-R-D-S 状态向量（基线）</h3>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead><tr><th>模块</th><th>状态</th></tr></thead>
-                    <tbody>
-                    <tr><td>M1-RES-D</td><td>25/100（严重枯竭）</td></tr>
-                    <tr><td>M1-RES-B</td><td>40/100（中度耗损）</td></tr>
-                    <tr><td>M2-STR-R</td><td>"我必须完美"，"休息是可耻的"</td></tr>
-                    <tr><td>M3-DSP-F</td><td>0.2（目标导向控制弱）</td></tr>
-                    <tr><td>M3-DSP-B</td><td>0.9（反刍自动化）</td></tr>
-                    <tr><td>M4</td><td>焦虑度 0.8，抑郁度 0.6</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>PSE-M 仿真预测</h3>
-            <p>运行 10,000 个虚拟"王梅"个体，参数空间采样自先验分布。结果显示：</p>
-            <ul class="list-indent-wide">
-                <li>若不干预，6个月内进入严重抑郁状态的概率：78%</li>
-                <li>临界点：RES-D < 20 持续 3 天 → 级联崩溃风险 +300%</li>
-                <li>杠杆点：M1-RES-D 恢复 → M3-DSP-F ↑ → M2-STR-R 可塑性 ↑</li>
-            </ul>
-
-            <h3>PSE-C 临床校准</h3>
-            <p>使用王梅的真实 EMA 数据（14天，每天5次）更新后验参数：</p>
-            <div class="code-block">
-                k_recovery (后验) = 0.12 /h [0.08, 0.16]<br>
-                k_consumption (后验) = 0.18 /h [0.14, 0.22]<br>
-                干预响应概率：睡眠限制 + 认知重构 → RES-D 提升概率 73%
-            </div>
-
-            <h3>干预序列（由 MDT 优化）</h3>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead><tr><th>阶段</th><th>操作</th><th>目标</th><th>预期效果</th></tr></thead>
-                    <tbody>
-                        <tr><td>第1-2周</td><td>GATE(DSP-B, -) + MODULATE(RES-D, +0.3)</td><td>抑制反刍，补充资源</td><td>RES-D ↑ 35→55</td></tr>
-                        <tr><td>第3-4周</td><td>ALIGN(STR-R, "休息是恢复")</td><td>修正信念</td><td>自我否定 ↓</td></tr>
-                        <tr><td>第5-8周</td><td>RELINK(STR-C, "工作失败"→"学习机会")</td><td>重构连接</td><td>心理弹性 ↑</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="info-box info-box-spaced">
-                <p><strong>结果</strong>：16周后，王梅 RES-D 恢复至 75，入睡时间 <30分钟，工作投入度回归正常水平。PSE 预测与真实轨迹相关系数 r=0.82。</p>
-            </div>
-        </div>
-
-        <!-- 五、PSE 协议体系 -->
-        <h2 class="section-label"><i class="fas fa-file-contract" aria-hidden="true"></i> 五、PSE 协议体系</h2>
-
-        <div class="grid-3">
-            <div class="card">
-                <h3>SID-P</h3>
-                <p><strong>系统集成诊断协议</strong> (L1)</p>
-                <p>融合内外信息，生成《系统优化蓝图》。</p>
-            </div>
-            <div class="card">
-                <h3>CLM-SP</h3>
-                <p><strong>因果循环建模子协议</strong> (L2)</p>
-                <p>识别主导回路与杠杆点，输出《系统动力模型》。</p>
-            </div>
-            <div class="card">
-                <h3>RCA-SP</h3>
-                <p><strong>根因分析溯源子协议</strong> (L2)</p>
-                <p>定位问题层级与根因，输出《集成问题定位图》。</p>
-            </div>
-            <div class="card">
-                <h3>LEV-SP</h3>
-                <p><strong>杠杆效益评估子协议</strong> (L2)</p>
-                <p>规划干预序列，输出《集成优化路径图》。</p>
-            </div>
-            <div class="card">
-                <h3>SSC-SP</h3>
-                <p><strong>系统概览扫描子协议</strong> (L2)</p>
-                <p>集成功能态势描述，输出《集成功能状态图》。</p>
-            </div>
-        </div>
-
-        <!-- 六、知识库支撑 -->
-        <h2 class="section-label"><i class="fas fa-book" aria-hidden="true"></i> 六、知识库支撑</h2>
-
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 六层各自回答什么</h2>
         <div class="table-responsive">
             <table class="table">
-                <thead><tr><th>知识库</th><th>全称</th><th>服务协议</th></tr></thead>
+                <thead><tr><th>层</th><th>它回答的问题</th><th>交付物</th><th>做不下去时</th></tr></thead>
                 <tbody>
-                    <tr><td>SPSM-L-A</td><td>因果路径库</td><td>提供模块间依赖强度矩阵 (SSC-SP)</td></tr>
-                    <tr><td>SPSM-L-B</td><td>动力参数库</td><td>提供速率常数、回路模板 (CLM-SP)</td></tr>
-                    <tr><td>SPSM-L-C</td><td>结构模板库</td><td>提供失调模式签名+干预大纲 (RCA-SP, LEV-SP)</td></tr>
+                    <tr><td><strong>L0 本体</strong></td><td>用什么坐标、词汇和结构描述</td><td>坐标系、词汇、约束</td><td>不适用（无运行时）</td></tr>
+                    <tr><td><strong>L1 观测</strong></td><td>现在能采集到什么证据</td><td>带不确定度的观测向量</td><td>缺失端口标“无信息”</td></tr>
+                    <tr><td><strong>L2 状态估计</strong></td><td>当前状态在哪、有多确定</td><td>42 维后验与协方差</td><td>退化为单模态最大后验</td></tr>
+                    <tr><td><strong>L3 动力学</strong></td><td>不干预会怎样、干预会怎样</td><td>轨迹分布、级联、风险时点</td><td>多模型加权，不假装唯一解</td></tr>
+                    <tr><td><strong>L4 规划</strong></td><td>在约束下先做什么、后做什么</td><td>操作序列、成功概率、时间窗</td><td>无可行解时退回保守方案</td></tr>
+                    <tr><td><strong>L5 执行</strong></td><td>做成了没有、下一步改什么</td><td>执行记录、依从性、反馈</td><td>中止并回滚到 L4 重规划</td></tr>
                 </tbody>
             </table>
+        </div>
+
+        <h2 class="section-label"><i class="fas fa-plug" aria-hidden="true"></i> 三个输入端口</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>UPLP · 语义</h3>
+                <p>把主诉、访谈与自由文本编译成语义似然。它处理“人怎么说”，不替人下诊断。</p>
+                <a href="/INTRE-website/uplp/">进入 UPLP 页面 →</a>
+            </div>
+            <div class="card">
+                <h3>UBMP · 行为</h3>
+                <p>接量表、EMA、睡眠与活动数据，输出行为似然。它处理“人怎么做、做了多少”。</p>
+                <a href="/INTRE-website/ubmp/">进入 UBMP 页面 →</a>
+            </div>
+            <div class="card">
+                <h3>UNIP · 神经</h3>
+                <p>接 EEG、fNIRS、PPG 等信号，输出神经似然。当前在线层尚未实现，缺失时按“无信息”处理。</p>
+                <a href="/INTRE-website/unip/">进入 UNIP 页面 →</a>
+            </div>
+        </div>
+
+        <h2 class="section-label"><i class="fas fa-compass" aria-hidden="true"></i> 能看到什么，不能看到什么</h2>
+        <div class="two-col">
+            <div class="boundary">
+                <h3>这套管线能给出</h3>
+                <ul>
+                    <li>当前状态的后验与不确定度</li>
+                    <li>未来数周到数月的轨迹分布与风险时点</li>
+                    <li>在资源与伦理约束下的候选干预序列</li>
+                    <li>执行后的反馈，以及下一轮如何修正</li>
+                </ul>
+            </div>
+            <div class="boundary no">
+                <h3>它不承诺</h3>
+                <ul>
+                    <li>不替代临床诊断与危机处置</li>
+                    <li>不在未校准参数上外推“疗效”</li>
+                    <li>不把模拟案例当成真实临床结果</li>
+                    <li>不把“算得出”当成“已经验证”</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-label"><i class="fas fa-arrow-right" aria-hidden="true"></i> 继续读</h2>
+        <div class="readnext">
+            <a href="/INTRE-website/textbook/ch12.html">教材第 12 章 · PSE 总览</a>
+            <a href="/INTRE-website/textbook/ch16.html">第 16 章 · L2 状态估计</a>
+            <a href="/INTRE-website/textbook/ch17.html">第 17 章 · L3 动力学</a>
+            <a href="/INTRE-website/textbook/ch18.html">第 18 章 · L4 规划</a>
+            <a href="/INTRE-website/textbook/ch19.html">第 19 章 · L5 执行</a>
+            <a href="/INTRE-website/rever/">REVER · 六门控一回环</a>
         </div>
     </main>
 
@@ -508,12 +588,42 @@
             <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
         </div>
         <div class="footer-meta">
-            <p>版本 v2.4 (2026-07-22) · CC0 1.0</p>
+            <p>版本 v3.0 (2026-11-02) · CC0 1.0</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var buttons = Array.prototype.slice.call(document.querySelectorAll('.step-btn'));
+            var panels = Array.prototype.slice.call(document.querySelectorAll('.demo-panel'));
+            var prev = document.getElementById('demoPrev');
+            var next = document.getElementById('demoNext');
+            var current = 0;
+
+            function show(i) {
+                current = Math.max(0, Math.min(panels.length - 1, i));
+                buttons.forEach(function (b, k) {
+                    b.classList.toggle('active', k === current);
+                    b.setAttribute('aria-selected', k === current ? 'true' : 'false');
+                });
+                panels.forEach(function (p, k) {
+                    p.classList.toggle('active', k === current);
+                });
+                prev.disabled = current === 0;
+                next.disabled = current === panels.length - 1;
+            }
+
+            buttons.forEach(function (b, k) {
+                b.addEventListener('click', function () { show(k); });
+            });
+            if (prev) prev.addEventListener('click', function () { show(current - 1); });
+            if (next) next.addEventListener('click', function () { show(current + 1); });
+        })();
+    </script>
+
     <script src="../shared/nav-toggle-20261102.js"></script>
-  <script src="../shared/domain-switch.js?v=20261101h"></script>
-<script src="/INTRE-website/shared/gate.js" defer></script>
-<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+    <script src="../shared/domain-switch.js?v=20261101h"></script>
+    <script src="/INTRE-website/shared/gate.js" defer></script>
+    <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
 </body>
 </html>

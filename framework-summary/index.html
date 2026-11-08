@@ -40,8 +40,21 @@
         .chip-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.1rem 0 0; }
         .chip-nav a { font-size:.85rem; font-weight:600; color:var(--color-navy-400,#3B5B8C); background:var(--color-navy-600-bg,rgba(59,91,140,.08)); border:1px solid var(--border-subtle); border-radius:999px; padding:.3rem .85rem; text-decoration:none; }
         .chip-nav a:hover { text-decoration:underline; }
+        /* —— 教材排版镜像（.essay 域·不含教材布局位移） —— */
+        .essay h2 { font-size:1.42rem; font-weight:600; color:var(--color-navy-950); margin:2.8rem 0 .95rem; line-height:1.35; letter-spacing:0; }
+        .essay h3 { font-size:1.08rem; font-weight:600; color:var(--color-slate-800); margin:2rem 0 .7rem; line-height:1.45; }
+        .essay p { margin:0 0 1.05rem; font-size:1rem; line-height:1.85; color:var(--color-slate-700); }
+        .essay strong { font-weight:600; color:var(--text); }
+        .essay blockquote { margin:1.4rem 0; padding:1rem 1.15rem; border-left:2px solid var(--color-navy-600); background:var(--color-slate-50); border-radius:var(--radius-md); border-top:var(--stroke-hairline) solid var(--color-slate-200); border-right:var(--stroke-hairline) solid var(--color-slate-200); border-bottom:var(--stroke-hairline) solid var(--color-slate-200); }
+        .essay blockquote p { margin:0; color:var(--color-slate-600); font-size:.94rem; }
+        .essay th { background:var(--color-slate-50); font-weight:600; text-align:left; padding:.62rem .8rem; border-bottom:1px solid var(--color-slate-200); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--color-slate-600); }
+        .essay td { padding:.55rem .8rem; border-bottom:var(--stroke-hairline) solid var(--color-slate-200); color:var(--color-slate-700); }
+        .essay tr:last-child td { border-bottom:none; }
+        .essay table { width:100%; border-collapse:collapse; font-size:.92rem; }
+        .table-wrap { overflow-x:auto; margin:1.1rem 0; }
+        .essay .epigraph p { font-size:1.02rem; }
+        .essay blockquote.epigraph { border-left-color:var(--color-amber-500,var(--color-navy-600)); }
         .essay .act-no { font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:.72rem; color:var(--color-navy-400,#3B5B8C); background:var(--color-navy-600-bg,rgba(59,91,140,.08)); border-radius:6px; padding:.18rem .55rem; margin-right:.55rem; white-space:nowrap; vertical-align:.12em; }
-        .essay h2 { border-bottom:1px solid var(--border-subtle); padding-bottom:.45rem; }
         details.refs { margin:1.6rem 0; border:1px solid var(--border-subtle); border-radius:10px; padding:.7rem 1rem; background:var(--bg-surface); }
         details.refs summary { cursor:pointer; font-weight:600; color:var(--color-navy-400,#3B5B8C); }
         .toc-item.active { background:var(--color-navy-600-bg,rgba(59,91,140,.1)); }
@@ -99,7 +112,7 @@
   <p class="subhead">五步陈述的完整论证——以洞穴隐喻为引，五幕推演为体：困于洞穴、看破影子、走出洞穴、洞穴之外、回望洞穴。</p>
   <nav class="chip-nav" aria-label="五幕目录"><a href="#act-1">第一幕</a><a href="#act-2">第二幕</a><a href="#act-3">第三幕</a><a href="#act-4">第四幕</a><a href="#act-5">第五幕</a><a href="#act-app">附录 A</a></nav>
 </section>
-<div class="essay textbook-content" id="essay-body">
+<div class="essay" id="essay-body">
 <h2 id="essay-abstract"><span class="act-no">摘要</span>本文主张</h2>
 <p>本文把当代心理学的三重困境——复制危机、构念膨胀、流派纷争——追认到同一个结构性根源：基本描述单位的错位。沿"目的论—认识论—方法论—本体论"四层溯源，并以三层论断（数值可求导性／变化率的系统语义／约束动力学承载）为判据轴，本文论证：变量仅是现象层的测量工具，其数学对象不承载功能层的系统动力学——这是承载边界，不是方法改进所能解决。为此，本文在神经层与现象层之间建构功能系统层：以 IODS 本体定义体系为顶层规范，以 M-R-D-S 状态语法与 G-M-A-R 操作语法重构心理系统，使其可计算化；其数学形式条件性地定位为非线性连续时间状态空间模型。该框架展现出双重理论效能：跨流派的统摄力——各流派的分歧呈现为干预靶点与操作层级之别；演绎生成力——由语法空位独立推导出新疗法 DMD。效度承诺严格分阶：逻辑层已自洽并以强反例协议划定可证伪边界，信度层经多席盲评内测（仅内部使用），实证层按预注册推进；取得实证数据前，不作任何临床效果承诺。</p>
 <p><strong>关键词</strong>：洞穴隐喻；变量范式；状态范式；三层论断；功能系统层；观测函数；范式分工</p>

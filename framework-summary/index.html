@@ -59,6 +59,15 @@
         details.refs summary { cursor:pointer; font-weight:600; color:var(--color-navy-400,#3B5B8C); }
         .toc-item.active { background:var(--color-navy-600-bg,rgba(59,91,140,.1)); }
         @media (min-width:1200px) and (max-width:1455px) { .container { padding-right: calc(728px - 50vw); } }
+        /* 目录栏可见性修复：教材基态 visibility:hidden 未在桌面档解除（其桌面走左侧章节栏），本页右栏需常显 */
+        @media (min-width:960px) {
+            .toc-sidebar { visibility:visible; transform:none; transition:none; box-shadow:none; }
+            .toc-sidebar::before { display:none; }
+            .toc-sidebar-header { display:none; }
+        }
+        @media (min-width:960px) and (max-width:1199px) {
+            .container { padding-right:232px; }
+        }
         .toc-item.active .title-text { color:var(--color-navy-600); font-weight:600; }
         .about-note { margin:2.2rem 0 0; padding:1rem 1.2rem; border:1px dashed var(--border-subtle); border-radius:10px; font-size:.85rem; color:var(--color-slate-500); }
     </style>

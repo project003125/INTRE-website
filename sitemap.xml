@@ -342,4 +342,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url><loc>https://project003125.github.io/INTRE-website/framework-summary/</loc><changefreq>monthly</changefreq></url>
 </urlset>

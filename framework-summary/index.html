@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>INTRE · 框架五步陈述（完整版）</title>
-    <meta name="description" content="INTRE 框架五步陈述完整版：研究背景与问题提出、理论缺口与分层反思、范式转移与形式化建构、理论生成力与跨学派兼容、效度承诺与检验路径。">
+    <meta name="description" content="INTRE 框架五步陈述完整版（文末附全文论证《走出洞穴》）：研究背景与问题提出、理论缺口与分层反思、范式转移与形式化建构、理论生成力与跨学派兼容、效度承诺与检验路径。">
     <meta property="og:title" content="INTRE · 框架五步陈述（完整版）">
     <meta property="og:description" content="从变量范式的承载边界到状态范式的形式化建构：研究背景、理论缺口、范式转移、理论生成力与效度承诺的完整五步陈述。">
     <meta property="og:type" content="article">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
     <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+    <link rel="stylesheet" href="../textbook/textbook.css?v=14">
   <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
     <style>
         html { scroll-behavior: smooth; }
@@ -31,10 +32,39 @@
         .fs-step p { margin:0; line-height:1.95; color:var(--text-body); }
         .fs-back { display:inline-block; margin-top:2rem; color:var(--color-navy-400,#3B5B8C); font-weight:600; text-decoration:none; }
         .fs-back:hover { text-decoration:underline; }
-            </style>
+        
+        .essay-divider { margin:3.5rem 0 1.2rem; padding-top:2.4rem; border-top:1px solid var(--border-subtle); }
+        .essay-title { font-size:1.5rem; font-weight:700; color:var(--color-slate-900); margin:.5rem 0 .4rem; letter-spacing:-0.02em; }
+        .fs-jump { display:inline-block; margin-top:.6rem; color:var(--color-navy-400,#3B5B8C); font-weight:600; text-decoration:none; }
+        .fs-jump:hover { text-decoration:underline; }
+        .chip-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.1rem 0 0; }
+        .chip-nav a { font-size:.85rem; font-weight:600; color:var(--color-navy-400,#3B5B8C); background:var(--color-navy-600-bg,rgba(59,91,140,.08)); border:1px solid var(--border-subtle); border-radius:999px; padding:.3rem .85rem; text-decoration:none; }
+        .chip-nav a:hover { text-decoration:underline; }
+        .essay .act-no { font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:.72rem; color:var(--color-navy-400,#3B5B8C); background:var(--color-navy-600-bg,rgba(59,91,140,.08)); border-radius:6px; padding:.18rem .55rem; margin-right:.55rem; white-space:nowrap; vertical-align:.12em; }
+        .essay h2 { border-bottom:1px solid var(--border-subtle); padding-bottom:.45rem; }
+        details.refs { margin:1.6rem 0; border:1px solid var(--border-subtle); border-radius:10px; padding:.7rem 1rem; background:var(--bg-surface); }
+        details.refs summary { cursor:pointer; font-weight:600; color:var(--color-navy-400,#3B5B8C); }
+        .toc-item.active { background:var(--color-navy-600-bg,rgba(59,91,140,.1)); }
+        .toc-item.active .title-text { color:var(--color-navy-600); font-weight:600; }
+        .about-note { margin:2.2rem 0 0; padding:1rem 1.2rem; border:1px dashed var(--border-subtle); border-radius:10px; font-size:.85rem; color:var(--color-slate-500); }
+    </style>
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="toc-sidebar" id="tocSidebar">
+        <div class="toc-sidebar-header">
+            <span class="toc-sidebar-title">目录</span>
+            <button class="toc-close-btn" id="tocCloseBtn" aria-label="关闭目录">&times;</button>
+        </div>
+        <div class="toc-sidebar-list" id="tocSidebarList"></div>
+    </nav>
+
+    <button class="toc-toggle-btn" id="tocToggleBtn" aria-label="打开目录">
+        <i class="fas fa-list" aria-hidden="true"></i> 目录
+    </button>
+
+    <div class="toc-overlay" id="tocOverlay"></div>
+
     <nav class="site-nav">
         <div class="nav-container">
             <a href="/INTRE-website/" class="nav-logo">INTRE</a>
@@ -56,13 +86,182 @@
         <header class="page-hero">
             <div class="page-eyebrow">FRAMEWORK IN FIVE STEPS</div>
             <h1>框架五步陈述（完整版）</h1>
-            <p class="subhead">从变量范式的承载边界，到状态范式的形式化建构，再到理论生成力与分阶效度承诺。</p>
+            <p class="subhead">从变量范式的承载边界，到状态范式的形式化建构，再到理论生成力与分阶效度承诺。<a class="fs-jump" href="#essay-full">↓ 阅读全文论证《走出洞穴》</a></p>
         </header>
         <section class="fs-step"><h2><span class="fs-no">第一步</span>研究背景与问题提出</h2><p>当代心理学深陷复制危机、构念膨胀与流派纷争：构念数量持续膨胀、概念边界持续模糊，学科知识难以累积，理论流派之间长期不可通约。前人虽在统计方法上不断修补，却未触及问题的根源——底层的本体论预设。</p></section>
         <section class="fs-step"><h2><span class="fs-no">第二步</span>理论缺口与分层反思</h2><p>沿“目的论—认识论—方法论—本体论”四个层面作溯源：目的论上，两套范式要回答的问题不同——变量范式以描述关系、解释方差、预测群体平均效应为目标，状态范式以刻画状态轨迹、解释生成机制、寻求最优干预为目标，目标先于方法；认识论上，变量范式的证据链在观测层内闭合，“什么算证据”由统计推断与构念效度证成，而干预语义要求生成机制、干预效能与约束三方共同证成；方法论上，前人虽在统计工具上持续修补——测量扩展、时序深化、推断升级——但工具精度在提升，被操作的对象未变；本体论上才是分岔点：传统变量范式的默认建模逻辑，常将构念直接预设为独立的因果节点。然而，变量仅是现象层的测量工具，其承载边界可由三层论断精确刻画：第一层，数值可求导性——两类范式均可通过，此层不构成范式区分；第二层，变化率的系统语义——变量范式所得变化率不对应任何功能部位，仅是“读数之间的关系”，此为分水岭；第三层，约束动力学承载——其约束作用于统计模型参数，既不锚定被控的功能状态，也与真实干预脱钩，此为能力边界落点。因此，构念不具备作为因果机制载体的独立性——这是数学对象的承载边界，不是改进方法所能解决的。</p></section>
         <section class="fs-step"><h2><span class="fs-no">第三步</span>范式转移与形式化建构</h2><p>为此，提出向“状态范式”的转移：在神经层与现象层之间，建构一个具备独立分析层级的功能系统层。它以 IODS 本体定义体系为顶层规范——42 维状态坐标系、心理专项词汇库、概念映射库与结构约束；以 M-R-D-S 状态语法（模块—资源—调度—结构）描述心理状态的结构与变化；以 G-M-A-R 操作语法（门控—调制—校准—重联）刻画干预操作，重构心理系统，使其可计算化。鉴于对心理功能的绝对完备分类不可达，本框架追求的是形式充分性，而非完备性。</p></section>
         <section class="fs-step"><h2><span class="fs-no">第四步</span>理论生成力与跨学派兼容</h2><p>该框架展现出双重理论效能。一是跨流派的统摄力：通过 G-M-A-R 操作矩阵，将 CBT、精神分析等实证流派的核心机制映射至功能层坐标——各流派的分歧由此呈现为干预靶点与操作层级之别，而非真理之争，流派纷争得以化解。二是演绎生成力：由框架的推导逻辑，独立推导出全新疗法 DMD。针对反刍、担忧等“后台进程过度激活”问题，其功能层定位是后台调度通道无法被前景通道有效门控的注意调度失衡；DMD 直接训练注意通道的切换能力，主攻调度通路、不否定内容通路——实现从“解释已知”走向“预测未知”。</p></section>
         <section class="fs-step"><h2><span class="fs-no">第五步</span>效度承诺与检验路径</h2><p>效度承诺严格分阶。逻辑层：理论已达成内部形式自洽，并以强反例协议划定了可证伪边界；条件性降级的判定人、复审周期、滞留判据与修正限度四要素已列入立法议程。信度层：构念体系的判卷信度已在多席 AI 盲评中通过内部检验。实证层：首个检验（DMD-P1）已按预注册标准冻结设计——被试内交叉、多次随访，正在推进伦理审查与平台注册；随机对照试验与多模态扩展属远期路径。取得实证数据前，不作任何临床效果承诺。</p></section>
+<section class="essay-divider" id="essay-full">
+  <div class="page-eyebrow">FULL ARGUMENT · 走出洞穴</div>
+  <h2 class="essay-title">走出洞穴：变量范式的本体论困境与状态范式的工程探索</h2>
+  <p class="subhead">五步陈述的完整论证——以洞穴隐喻为引，五幕推演为体：困于洞穴、看破影子、走出洞穴、洞穴之外、回望洞穴。</p>
+  <nav class="chip-nav" aria-label="五幕目录"><a href="#act-1">第一幕</a><a href="#act-2">第二幕</a><a href="#act-3">第三幕</a><a href="#act-4">第四幕</a><a href="#act-5">第五幕</a><a href="#act-app">附录 A</a></nav>
+</section>
+<div class="essay textbook-content" id="essay-body">
+<h2 id="essay-abstract"><span class="act-no">摘要</span>本文主张</h2>
+<p>本文把当代心理学的三重困境——复制危机、构念膨胀、流派纷争——追认到同一个结构性根源：基本描述单位的错位。沿"目的论—认识论—方法论—本体论"四层溯源，并以三层论断（数值可求导性／变化率的系统语义／约束动力学承载）为判据轴，本文论证：变量仅是现象层的测量工具，其数学对象不承载功能层的系统动力学——这是承载边界，不是方法改进所能解决。为此，本文在神经层与现象层之间建构功能系统层：以 IODS 本体定义体系为顶层规范，以 M-R-D-S 状态语法与 G-M-A-R 操作语法重构心理系统，使其可计算化；其数学形式条件性地定位为非线性连续时间状态空间模型。该框架展现出双重理论效能：跨流派的统摄力——各流派的分歧呈现为干预靶点与操作层级之别；演绎生成力——由语法空位独立推导出新疗法 DMD。效度承诺严格分阶：逻辑层已自洽并以强反例协议划定可证伪边界，信度层经多席盲评内测（仅内部使用），实证层按预注册推进；取得实证数据前，不作任何临床效果承诺。</p>
+<p><strong>关键词</strong>：洞穴隐喻；变量范式；状态范式；三层论断；功能系统层；观测函数；范式分工</p>
+<h2 id="act-1"><span class="act-no">第一幕</span>困于洞穴：三重困境与一个共同追问</h2>
+<h3>1.1 三重困境</h3>
+<p><strong>复制危机。</strong> Open Science Collaboration(2015) 对 100 项高影响力心理学研究的复现中，仅 36% 达到原始的统计显著性，而原始报告自身的显著率约为 97%（基数＝该 100 项研究的原始报告）。值得细分的是，复现失败并非一种形态：效应方向一致但强度显著缩水、换了测量工具后关系消失、换了人群后效应反转——三种形态需要分别解释。状态范式提供的理解是：压力→抑郁这类关系呈高度情境依赖性——同一"压力—抑郁"关联，在美国大学生样本（CES-D 纸笔）中 r=.42，在东亚职场样本（PHQ-9 在线）中可降至 .08。r 从 .42 到 .08，不一定是关系变了，可能是投影变了。（另一个放大器：96% 的研究样本来自 WEIRD 人群、仅占世界人口的 12%——Henrich et al., 2010。）</p>
+<p><strong>构念膨胀。</strong> PsycTests 数据库收录约 27,000 个量表，其中 56% 未被任何论文引用(A fragmented field, 2025)。它的生成机制可以逐步重构：一个构念先有初始量表；随情境扩展出现青少年版、老年版、文化适配版；每个适配版本被赋予新名字并发表新论文；如此累积。三个名字，三个构念，三套文献。从 1 个构念滚到 27,000 个量表的动态，不是研究者喜欢造新词，而是没有一套独立于测量程序的坐标，只能靠命名来区分。</p>
+<p><strong>流派纷争。</strong> 心理学内部流派林立：CBT 的"自动负性思维"与精神分析的"防御机制"，能否互译？没有公认答案。知识呈"集市"而非"大厦"形态——新流派不断出现，旧流派未被整合或推翻。对照是生物学：分支虽多，分子层面仍有共同的基本坐标，跨分支的成果可以互译；心理学缺的正是这套坐标。而争论的各方共享同一个默认接受的前提——变量是合适的描述单位；彼此竞争的是「到底哪一类变量更关键」，而非「变量是否是合适的描述单位」(:241/:243)。</p>
+<h3>1.2 常识解释及其边界</h3>
+<p>对三重困境，学界流行三类解释：工具冗余（量表太多自然重复）、发表激励（可发表性优先于可解释性——王波, 2019）、方法缺陷（统计不够严密、样本量不足）。这些解释各有其效：方法改革确实减少了假阳性，开放科学确实提高了可信度。但它们留下一个未被回答的追问——<strong>即使方法完美、制度完美，三重困境会消失吗？</strong> 方法改革解决的是"假阳性"，解决不了"投影漂移"；两者是不同的问题。本文追问的正是后者：<strong>为什么心理学无法显式建模这种情境依赖？</strong></p>
+<h3>1.3 同一个洞穴</h3>
+<p>把三重困境放到知识生产链上看，它们各有链上产生位，却共享同一个结构性缺失——显式观测函数 h 的缺席：构念膨胀生于"构念化×工具工业"位（没有坐标统摄，只能造新名），复制危机生于"数据推断×发表制度"位（未建模投影漂移），流派纷争生于"构念化×消费再生产"位（没有翻译中介）。三个症状，一个根源。</p>
+<p>这正是柏拉图洞穴隐喻的用武之地。当应用于心理学的方法论困境时，它是一种<strong>具有分析效力的结构可类比</strong>：</p>
+<div class="table-wrap"><table><thead><tr><th>洞穴隐喻的要素</th><th>本体论地位</th><th>心理学的对应维度</th><th>科学哲学含义</th></tr></thead><tbody>
+<tr><td><strong>真实物体</strong></td><td>被假设的真实成因</td><td>心理系统的功能结构（M-R-D-S 组件及其动力学）</td><td>真实的因果机制</td></tr>
+<tr><td><strong>光源</strong></td><td>照亮物体的动力</td><td>环境输入与约束条件（S-P 系统参数）</td><td>外部条件</td></tr>
+<tr><td><strong>墙上影子</strong></td><td>物体的二维投影</td><td>量表分数、行为频率、自我报告</td><td>观测数据</td></tr>
+<tr><td><strong>囚徒</strong></td><td>被锁链限制的观察者</td><td>心理学研究者</td><td>认识的局限性</td></tr>
+<tr><td><strong>锁链</strong></td><td>认识的根本限制</td><td>方法论约束（无法直接观测心理机制）</td><td>当前技术条件的限制</td></tr>
+</tbody></table></div>
+<p>隐喻是单向类比：M-R-D-S 并非终极实体，只是功能层的一种描述方案。隐喻的核心洞见在于：<strong>真实物体与影子之间是映射关系，而非等价关系</strong>。同一个功能组件（如 M4-STR-C 中的"安全依恋表征破损"）在不同测量接口上产生截然不同的投影：依恋量表上读作"焦虑型依恋"，自尊量表上读作"自我否定"，社交焦虑量表上读作"回避倾向"——变量范式将其视为三个独立变量，状态范式将其重新描述为同一组件在不同接口上的投影读数。由此确立三个对位关系：量表分数之于功能状态，犹如影子之于实体；变量间的统计关系，犹如影子间的几何关系；环境与情境参数，犹如光源的角度与强度。第二幕起"影子"一律表述为"观测数据"，"实体"表述为"功能状态（Ψ）"，"光源"表述为"环境与情境参数"——隐喻完成使命后自然退场。</p>
+<blockquote class="quote"><p>变量范式在<strong>现象层规律描述</strong>上具有不可否认的价值（正如天文学早期对视运动规律的记录）。本文的批评焦点不在于它"描述了影子"，而在于它<strong>将现象层的共变模式误认为对生成机制的直接刻画</strong>，而未承认从观测数据反推机制所必需的<strong>逆问题建模</strong>。</p></blockquote>
+<h2 id="act-2"><span class="act-no">第二幕</span>看破影子：理论缺口与分层反思</h2>
+<h3>2.1 四层溯源</h3>
+<p>沿"目的论—认识论—方法论—本体论"作分层溯源。<strong>目的论</strong>上，两套范式要回答的问题不同：变量范式以描述关系、解释方差、预测群体平均效应为目标；状态范式以刻画状态轨迹、解释生成机制、寻求最优干预为目标——目标先于方法。<strong>认识论</strong>上，变量范式的证据链在观测层内闭合，"什么算证据"由统计推断与构念效度证成；而干预语义要求生成机制、干预效能与约束三方共同证成。<strong>方法论</strong>上，前人在统计工具上持续修补——测量扩展、时序深化、推断升级——但工具精度在提升，被操作的对象未变。<strong>本体论</strong>上才是分岔点：传统变量范式的默认建模逻辑，常将构念直接预设为独立的因果节点：构念由观测协方差定义，却在路径图中充当因果源汇，路径系数被读作因果强度，干预决策由此直接导出。这一步跨越了因果语义的门槛——协方差结构是观测层面的依赖关系，不携带"改动谁、世界如何变化"的干预语义。同一构念换工具即漂移，变化率不对应功能部位，约束不锚定被控状态——因果主张在现象层读数上无账本可对。把"自我效能感低导致拖延"读作因果，与把"温度计的水银柱下降导致水结冰"读作因果，处在同一逻辑位置。</p>
+<h3>2.2 判据轴：三层论断</h3>
+<p>变量范式是否真的"做不了系统动力学"？这需要一个可判定的标尺，而非修辞。三层论断给出这个标尺：</p>
+<p><strong>第一层：数值可求导性——双方均通过。</strong> 变量范式的动态工具（DSEM、交叉滞后、潜状态空间模型）与 Ψ 均可求导：读数序列可差分，隐状态可递推估计。此层双方均通过，不构成范式区分，不可据此低估变量范式的动态建模能力。</p>
+<p><strong>第二层：变化率的系统语义——分水岭。</strong> 区分点不在"能不能求导"，在"求导出来的变化率是否对应功能架构中的具体部位"。变量范式的隐状态可以变、可以估、可以求导，但其身份是"为解释观测协方差而假设的共同原因"——变化率无功能语义、无账本可对；Ψ 的每个分量对应 RES 存量／DSP 流量／STR 结构参数的具体角色，变化率可对账。可判定程序三条同时满足(J1-J3)：<strong>J1</strong> 独立于观测的定义（身份不随测量工具改变——隐状态由观测协方差定义，换量表即漂移；Ψ 由功能架构定义，换量表仅 h 参数变）；<strong>J2</strong> 系统动力学角色（在状态方程中承担明确的存量/流量/结构角色）；<strong>J3</strong> 干预靶点对应（变化可对应可执行的干预操作——隐状态无靶点合法性映射；Ψ 有）。</p>
+<p><strong>第三层：约束动力学承载——能力边界落点。</strong> 判据不是"有无任何约束"，而是<strong>系统有没有显式受约束的被控状态量，且约束能否与可施加的干预耦合</strong>——通用控制论口径，不依赖任一方的构件命名。变量范式标准工具链的约束作用于统计模型参数：既不在被控状态量上成立，也与干预脱钩；状态范式的约束绑定在功能分量上，并与靶点合法性耦合(J4-J5)。</p>
+<p><strong>三层合判</strong>：第一层不分胜负；第二层分出"变化率有无系统语义"——变量范式止步于此；第三层决定"能否承载轨迹预测、级联路径、风险时点与操作序列"。<strong>这是有/无之别，不是好/差之别。</strong> 三层判据判定的是承载范围之别，非工具优劣；批判对象仅限"用第二层工具承担第三层任务"的越界用法。故结论是：构念作为因果机制载体缺乏独立性——这是数学对象的承载边界，不是方法改进所能解决的。</p>
+<h3>2.3 变量的四个层面：基本单位本身指代不清</h3>
+<p>"变量是基本单位"这一主张还有更深一层问题：<strong>"变量"一词统摄四个层面</strong>——理论构念（构想出来的）、量表分数（测量得到的）、潜变量（计算得到的）、因果节点（假设出来的）。四层各自的核心逻辑不同，却共用一个名字。以一个标准实验为例（"CBT 能否降低抑郁"）：研究者提出"抑郁→认知重构"的理论构念，编制或选用 PHQ-9 施测，经因子分析算出潜变量得分，最后在路径图中把"抑郁"画为因果节点——四步之间各有一次跳跃，每次跳跃都依赖一个未论证的假设（量表分数→潜变量：共变结构即真实维度；潜变量→理论构念：统计因子即理论实体；理论构念→因果节点：假设实体可承载因果力）。这四步跳跃在心理学实践中被视为自动的、无需论证。而判据很清楚：<strong>没有任何一层同时满足「独立于测量程序」与「是数据」</strong>。</p>
+<p>问题的精确形态在前提层："变量"本身指代不清，比"该选哪个变量"更根本。缺的是一整层——一个学科若没有独立于测量程序的状态概念，它的所有术语就只能在"测量前—测量中—测量后—因果假设"四个位置之间滑动。状态范式的入场点正在于此：量表分数→观测 y（保留）；潜变量→观测函数 h 的参数（重新定位）；理论构念→Ψ 分量（重新定义）；因果节点→G-M-A-R 靶点（重新锚定）。</p>
+<h3>2.4 哲学承诺轴：K1-K5</h3>
+<p>两套范式共享实证主义底色，其分野沿五个哲学承诺层级逐一对照。<strong>K 系编号交代</strong>：K 取自库恩（Kuhn）的首字母——K0 为库恩的范式概念本身（"范式＝特定科学共同体共享的学科基质"），是 K1-K5 的身份元层，两套范式皆在其内成立（库恩诊断见 2.6）；K1-K5 为五个哲学承诺层级，由浅入深：K1 实证主义（知识从何而来）→K2 操作主义（概念如何定义）→K3 变量实在论（基本单位是什么）→K4 因果推断假设（因果对象是什么）→K5 构念定义·法则网络（理论如何组织）。五层对位如下：</p>
+<div class="table-wrap"><table><thead><tr><th>层次</th><th>变量范式</th><th>状态范式</th><th>关系类型</th><th>矛盾地位</th></tr></thead><tbody>
+<tr><td><strong>K1</strong> 实证主义</td><td>"可观察"——可被量表分数、行为频率、自我报告捕捉</td><td>"可检验"——预测-干预效能＋接受神经层约束（硬/软/兼容性信号）</td><td>同一原则的不同外延</td><td>次要矛盾</td></tr>
+<tr><td><strong>K2</strong> 操作主义</td><td>概念的意义＝测量它的操作（"智力"＝智力测验所测到的东西）；留下操作-构念循环</td><td>概念的意义＝功能架构中的因果角色；保留"可操作化"精神，换定义来源</td><td>次要矛盾（K3 前奏）</td></tr>
+<tr><td><strong>K3</strong> 变量实在论</td><td>变量/潜变量是真实存在的心理属性，具有因果力；基本单位＝变量</td><td>功能组件是功能因果网络中的角色实体；基本单位＝功能状态 Ψ</td><td><strong>换基本单位</strong></td><td><strong>主要矛盾——根节点</strong></td></tr>
+<tr><td><strong>K4</strong> 因果推断假设</td><td>潜在结果、可忽略性、DAG；节点＝变量；核心对象＝处理效应</td><td>状态演化＋干预算子；do(G-M-A-R) 作用于 Ψ；核心对象＝状态演化与干预靶点</td><td>换因果对象</td><td>次要矛盾（由 K3 决定）</td></tr>
+<tr><td><strong>K5</strong> 构念定义·法则网络</td><td>构念通过理论网络中的位置定义；网络＝变量关系网</td><td>功能架构＋观测函数 h：D 矩阵、STR 三分、级联规则、六条动力学约束＋y=h(Ψ,E)+ε</td><td>换网络类型</td><td>次要矛盾（由 K3 决定）</td></tr>
+</tbody></table></div>
+<p>K3 之所以是根节点，经得起反向检查：基本单位的挑战不能追溯到任何其他挑战——本体论立场是它的表达，描述层级是它的表达，范式基质包含它的选择；三候选上游逐一排除后，<strong>K3 是双范式对比的逻辑起点</strong>。而一旦选定基本单位，下游三重改写随之定形：测量变成"从观测反解状态"，统计变成"状态如何演化"，因果变成"干预哪里改变轨迹"。</p>
+<h3>2.5 极限成就的实例：温忠麟与"接近因果"</h3>
+<p>温忠麟(2017)及其团队(Wen et al., 2024)为中介效应、调节效应等统计模型奠定了理论基础。<strong>影响关系</strong>被定义为满足因果关系前两个准则的变量关系：共变准则与方向性准则；<strong>因果关系</strong>还需排他解释准则。为方向性获得支持，Wen et al.(2024) 提出八条理据：时间顺序、可解释性反向测试、客体-主体关系、属性稳定性、理论或文献支持、生活经验和常识、类比推理、交叉滞后分析。用影子几何学转述，八条理据有一个共同特征：<strong>它们依赖研究者预设的理论框架，而非数据本身包含的因果信息</strong>——时间顺序可能反映光源的照射角度；交叉滞后分析可能把影子的几何变化规律与光源旋转导致的投影变化相混淆。</p>
+<p>温忠麟的一句表述："作为研究者，应当尽可能选择相关性较高的影响关系进行研究……以得到<strong>比较接近因果</strong>的影响关系。"这个"接近"的中间状态，在逻辑上呈现出变量范式描述边界的一种诚实反映。他对"代理因素""虚假效应""重叠影响"的精细分类与九种共同作用类型（独立影响、调节作用、重叠影响、代理影响、部分中介、完全中介、虚假效应等），可视为<strong>变量范式内部的极限成就</strong>：在影子之间没有真正因果的前提下，把影子之间的几何关系描述得尽可能清楚——仅凭这些描述，难以直接回答系统内部的动力学问题（资源消耗速率、级联路径权重、结构塑性窗口）。</p>
+<p>对这项工作的历史定位，本文给三重意义：<strong>学术诚实性</strong>——用最严密的逻辑指出了"接近因果"的逻辑边界；<strong>范式危机的症状显现</strong>——"代理因素""虚假效应"这些概念的必要性，反而提示基本单位可能存在问题；<strong>范式讨论条件的澄清者</strong>——其边界表述使范式转换的讨论条件清晰化(本文解读)。变量范式在其最成熟的自我修正形态下依然留下承载边界：不承载独立于观测程序的功能层状态描述语法。</p>
+<h3>2.6 历史坐标：库恩的晚期危机与拉卡托斯的解剖刀</h3>
+<p>库恩(1962)对"危机"的界定是结构化的：研究活动在技术层面持续精进，但理论层面的收益呈现边际递减。对照当下：反常累积（36% 复现率演变为对基本单位的持续质疑）、辅助假设增生（为解释效应不稳定性引入的概念不断增多——复制失败未迫使研究者放弃原有对象观，反而引入新调节变量）、技术精细化与理论停滞并存（统计方法日趋精密，构念体系持续碎片化）。四方向压力之下，当前心理学更接近危机的晚期阶段。</p>
+<p>库恩诊断了危机；拉卡托斯的科学研究纲领方法论解释了<strong>为什么保护带修正救不了它</strong>。变量范式的硬核可分解为四条命题（H1-H4）：心理现象可分解为变量；变量间存在可估计的关系；测量工具是研究心理现象的合法入口；统计推断是因果识别的主要工具——任何一条被否定，变量范式即不存在。数十年的修正史全部发生在保护带：潜变量实在性→工具主义/网络理论；CTT→IRT；可忽略性→IV/RDD/DID/PSM；单点操作定义→法则网络(Cronbach &amp; Meehl, 1955)。每次保护带扩展都让变量范式暂时看起来"更强了"，于是硬核问题被推迟。这就是<strong>循环式失败</strong>与<strong>收敛式失败</strong>的区别：前者（节点本体不清、构念膨胀）是硬核层的概念性失败，保护带修正无法解决；后者（状态范式自己的逆问题、参数校准）是保护带层的技术性失败，可以逐步逼近。变量范式的演化史——行为主义(华生, 1913)→操作主义(布里奇曼, 1927)→认知革命(乔姆斯基批判行为主义, 1959)→统计革命→因果革命(鲁宾 1974／珀尔 2000)——正是"在同一硬核上不断叠加保护带"的过程。</p>
+<h3>2.7 当代方法的检验：最强形态仍不完成本体映射</h3>
+<p>一个必须正面回应的反驳是：前述批判是否只针对较弱版本？当代方法早已不是横截面问卷加逐步回归。本文构造并回应其<strong>最强形态</strong>。先按三类精细化策略定位：</p>
+<div class="table-wrap"><table><thead><tr><th>精细化策略</th><th>典型形态</th><th>作用层面</th><th>定位</th></tr></thead><tbody>
+<tr><td>测量模态扩展</td><td>多模态联合测量（行为—生理—神经）</td><td>K2 操作主义</td><td>丰富操作定义；概念仍由测量操作界定</td></tr>
+<tr><td>时间结构深化</td><td>RI-CLPM、密集纵向（EMA）、DSEM</td><td>K5 法则网络</td><td>精细标定变量在时间网络中的位置；仍属观测层时间序列结构</td></tr>
+<tr><td>推断工具升级</td><td>机器学习、因果图模型、计算精神病学（RL／DDM）、超大样本</td><td>K1／K4</td><td>提升识别强度；计算精神病学已触及任务局部的生成机制，但缺统一功能层坐标系、仍困于任务局部</td></tr>
+</tbody></table></div>
+<p>再按方法逐项给出承载判词与对接位：</p>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>它做到了</th><th>三层判据落点</th><th>对接位</th></tr></thead><tbody>
+<tr><td>测量模型（CFA/IRT/SEM）</td><td>测量结构精密化、跨群体可比</td><td>因子模型 y=λη+ε 是潜变量到指标的映射，不等同于状态到观测的生成映射</td><td>为 h 提供校准来源</td></tr>
+<tr><td>实验／RCT／准实验</td><td>处理效应识别</td><td>识别"是否有效"，不分解"哪个成分、哪个靶点、什么路径"</td><td>检验特定 G-M-A-R 操作的因果效力</td></tr>
+<tr><td>图因果框架（Pearl）</td><td>因果假设透明化</td><td>节点本体不清：可答"若节点和边成立效应是否可识别"，不答"节点是什么"</td><td>为 PSA 依赖矩阵提供结构约束</td></tr>
+<tr><td>密集纵向／DSEM</td><td>个体内动态、高频观测</td><td>高频影像仍需生成模型：无显式 h 时捕捉的是观测层时序结构</td><td>贝叶斯状态估计的递推观测材料</td></tr>
+<tr><td>症状网络</td><td>现象节点激活结构</td><td>横截面网络的边＝共变关系，不承载级联传导的方向与阈值；LPA 判卡：亚组识别≠动力学相变</td><td>功能靶点发现的现象层线索</td></tr>
+<tr><td>计算精神病学</td><td>局部生成机制建模</td><td>参数任务局部：学习率、决策阈值跨任务功能身份不稳定</td><td>局部生成模型收编进统一坐标系的机制资源</td></tr>
+<tr><td>因果机器学习</td><td>高维效应估计与异质性发现</td><td>特征空间仍是现象变量时，结构变迁后外推失效</td><td>状态估计与个体化校准的估计引擎</td></tr>
+<tr><td>多模态／数字表型</td><td>更多观测接口</td><td>更多接口仍需统一生成模型解释读数为何共同出现</td><td>增强状态反解的信息量</td></tr>
+<tr><td>开放科学</td><td>观测规律可信度</td><td>制度面收窄研究者自由度，不改变描述对象</td><td>状态范式实证化的制度前提</td></tr>
+</tbody></table></div>
+<p>判准一句话：<strong>不同源，可映射，不可互换。</strong> 这些方法在数学来源上并非同族（状态空间／图模型／生成模型／测量模型），能否为状态范式所用，不取决于是否与 Ψ 同源，而取决于能否映射到功能坐标。这一层成就可概括为"动态的影子几何学"：影子动起来了，几何也做得极精；但它描述的是观测数据的运动，不是功能实体的演化——它实现了变量的时序动态化，却缺乏显式的功能语义与物理／动力学约束。</p>
+<p><strong>实用主义反驳的正面回应</strong>：既然变量范式"有用"，为何还要换基本单位？本文回应是<strong>划定论证的适用域</strong>：第一，靶子校准——本文论证目标是"可表达性"：变量范式对 h 的缺席是"语法中无位置"的原则性缺席，状态范式的 h 是"语法中有位置、待填充"的阶段性未实例化；至于"何者更有效"属可检验问题，本文不作裁决。第二，短期有效不等于稳定累积——未建模 h 时，观测读数随情境参数漂移。第三，干预精确性——若底层系统状态未变，现象层干预难以产生持久改变；状态范式的可兑现形态是为干预提供更精确的靶点。第四，条件句收尾——"变量范式能持续稳定累积观测层知识"这一前提正在被削弱，且可回溯检验（§5.2 的可检验预测）。本段只回应"为何值得换"，不宣称"已经更优"。</p>
+<h2 id="act-3"><span class="act-no">第三幕</span>走出洞穴：范式转移与形式化建构</h2>
+<h3>3.1 新的基本单位：功能系统层</h3>
+<p>状态范式的基本动作是：在神经层与现象层之间，建构一个具备独立分析层级的功能系统层。它的合法性由约束功能主义界定：功能描述是<strong>自主的</strong>——不可被神经描述替代；但<strong>非独立的</strong>——必须接受神经实现的物理边界约束。"神经层标记物理可实现性边界，但不定义功能描述的真值"。功能层的多重实现性有层级梯度：水→氢氧结合只有一条路径；飞行→羽毛、膜翅、皮膜、滑翔鳍多种实现但同受空气动力学与代谢约束；认知功能→神经实现的多重性最高，但约束同样存在，例如 M1-RES-D 恢复速率不能超出代谢极限、连接重塑时间常数不能脱离突触可塑性已知范围。功能层的合法性取决于预测-干预效能，而非本体论地位；其数学形式条件性地定位为<strong>非线性连续时间状态空间模型</strong>（若该前提失败，状态范式的 h 将从"阶段性未实例化"降级为"原则性无法实例化"，承诺随之失效；失效条件见 §5.2）。</p>
+<h3>3.2 双语法：IODS、M-R-D-S 与 G-M-A-R</h3>
+<p>该层以 <strong>IODS 本体定义体系</strong>为顶层规范——42 维状态坐标系、心理专项词汇库（PSL-L）、心理概念统一映射库（PCUI-L）与结构约束。42 维由 6 模块 × 7 维度张量积构成：M1 具身（物理基座与能量引擎）、M2 认知（建模引擎与知识库）、M3 意志（中央调度器）、M4 情绪（价值评估中心）、M5 言语（符号接口与社会连接）、M6 行为（外部执行器）——此为工程判断，非神经解剖实体；每模块由资源（RES-D/RES-B）、调度（DSP-F/DSP-B）、结构（STR-R/STR-C/STR-S）七维描述。三层的正交性在功能定义层面："RES 描述有什么，DSP 描述怎么变，STR 描述谁让变"——不承诺测量数据中的不相关（系统动力学使数据中往往呈现相关）。STR 三分的独立性可由图灵机一行讲清：STR-R＝规则表、STR-C＝纸带、STR-S＝读写头移动协议。</p>
+<p><strong>42 维不是任意选取</strong>。降维必然性检验给出反事实竞争框架：12 维精简版丧失双重区分力，干预靶点随之迷失——意志瘫痪分不清 M3-RES-D 枯竭与 M3-STR-C 价值脱钩，拖延分不清四种机制分型，而这两个区分正对应不同的干预操作。42 维不是冗余参数，而是工程精度的必要代价；每个维度的增设都与特定的诊断区分或干预逻辑直接挂钩。</p>
+<p><strong>操作语法 G-M-A-R</strong>（门控—调制—校准—重联）刻画干预：GATE 通道开关（合法靶点：DSP＋STR-S 激活面）、MODULATE 数量调节（RES）、ALIGN 规则修正（STR-R）、RELINK 联系重构（STR-C）。语法二字有硬边：GATE STR-R、GATE STR-C、MODULATE RES-B、MODULATE STR、ALIGN STR-C、RELINK STR-R、RELINK STR-S 均为非法组合（靶点合法性矩阵）；RES-D 像"现金"可直接存取，RES-B 像"信用"需长期结构建设——故"MODULATE RES-B"不合法。演化受六条动力学约束：资源流守恒、恢复不对称、级联阈值、改变耗时、弹性回滞、系统-环境耦合——它们是结构规律的操作化表述，非动力学方程本身；方程层另有 26 条动力学假设。</p>
+<p>在引入观测函数之前，必须澄清一个常被混淆的范畴区分：<strong>"语法中无位置"与"语法中有位置但未填充"是两类性质完全不同的缺席</strong>。变量范式对 h 的缺席是原则性的——其基本描述单位（变量）被定义为观测本身，生成问题在变量范式的语法中不可表达；状态范式对 h 的未完成则是阶段性的——观测函数 y_t = h(Ψ_t, E_t) + ε_t 在语法中已有形式位置，只是参数尚未填充。前者是语法结构问题，后者是工程进展问题；未填的槽位与不存在的槽位不是同一个问题。<strong>风险转移声明</strong>：状态范式并未把原则性风险转嫁给变量范式——它的风险依然在自己身上，只是位置从"语法可否提出 h"（已解决，可表达）移到了"h 的前提是否成立"（可检验，D1b）。这一转移不是风险消灭，而是风险的可检验化。</p>
+<p><strong>案例锚定一（拖延）</strong>：M3-RES-D（意志资源）的消耗速率取决于任务压力 E 与恢复参数 θ；当消耗率持续大于恢复率（恢复不对称假设），系统将在数日内逼近功能崩溃临界阈值——M6-DSP-B（自动化逃避行为）接管控制权，表现为拖延行为的急剧增加。</p>
+<p><strong>案例锚定二（S-001，十四天双范式并行）</strong>：同一来访者（32 岁，主诉失眠、反刍、情绪低落），变量范式侧 DSEM 给出系数表（睡眠→反刍 −0.32，反刍→情绪 0.41，睡眠→情绪 −0.08 n.s.）；状态范式侧经三端口采集反解 Ψ 轨迹——M1-RES-D 第 5 天跌破 0.25 阈值，级联路径 M1-RES-D↓→M3-RES-D↓→M3-DSP-F 门控失效→M2-DSP-B↑→M4-DSP-B↑，风险时点第 4-5 天。<strong>能力边界五问</strong>（两套结论的分野最直观处）：</p>
+<div class="table-wrap"><table><thead><tr><th>能力边界五问</th><th>变量范式</th><th>状态范式</th></tr></thead><tbody>
+<tr><td>谁先谁后（睡眠↔情绪）</td><td>系数方向可估，因果方向存疑</td><td>级联路径 M1-RES-D↓→M3-RES-D↓→门控失效→M2-DSP-B↑</td></tr>
+<tr><td>未来七天状态</td><td>不能判断</td><td>可仿真 Ψ 轨迹分布</td></tr>
+<tr><td>风险时点</td><td>不能判断</td><td>第 4-5 天（M1-RES-D 跌破 0.25 阈值）</td></tr>
+<tr><td>先动哪里</td><td>不能判断</td><td>可排 G-M-A-R 序列（先补 M1-RES-D）</td></tr>
+<tr><td>资源不够能否做 S 层操作</td><td>不能判断</td><td>能判断（RES-D&lt;0.40 不做）</td></tr>
+</tbody></table></div>
+<h3>3.3 观测、逆问题与工程承载</h3>
+<p>状态范式现阶段对变量范式产出的依赖，须区分两种性质：<strong>观测依赖</strong>（取其测量产物——量表、因子结构、效应量、相关矩阵）不构成循环；<strong>本体依赖</strong>（取其本体假设——变量是独立实体）才构成循环。牛顿对第谷的依赖是观测依赖：第谷的观测数据独立于牛顿理论。状态范式只取测量产物、明确拒绝其本体假设——测量产物与本体假设可以分离：一个量表的因子结构是经验事实，不因其编制者信奉变量本体论而失效。测量总公式对照一行即见换地基：CTT 把测量问题化为"真分数＋随机误差"（X = T + E），状态范式化为"状态＋观测函数＋逆问题"（y = h(Ψ, E) + ε）；贝叶斯参数估计 P(θ|Data) 对位于状态估计 p(Ψ_t|y_{1:t})，MCMC 对位于卡尔曼/粒子滤波。</p>
+<p>从观测数据反推系统状态在数学上属<strong>逆问题</strong>，其三性质——病态性、解的不唯一性、对先验信息的强依赖性——是数学性质，不是工程缺陷。解法按噪声类型分派：线性高斯用卡尔曼滤波，非线性用扩展/无迹卡尔曼滤波，非高斯用粒子滤波。先验信息的合理来源恰是变量范式数十年积累的稳健规律：因子结构提供 h 的初始形式，元分析效应量提供状态方程参数的先验均值与方差，相关矩阵提供耦合强度先验——即作为 PSE-C 贝叶斯校准循环的冷启动先验。预测精度可从 PSE-M 仿真先验的约 70% 提升至 PSE-C 临床锚定后的 87%。可辨识性无地面真值可依，可行的是三条间接验证路径：多模态一致性、L3 预测精度反推、临床专家交叉校准——这些间接路径不构成完全独立验证，但在无地面真值的系统中是当前最佳方案。</p>
+<p>把工程面收拢为管线一句话：L0 本体定义坐标系→L1 三端口观测（UPLP 语义／UBMP 行为／UNIP 神经，各出似然 p(y|Ψ)）→L2 贝叶斯状态估计→L3 动力学（26 条假设、BMA 模型选择）→L4 规划→L5 执行，闭环反馈回 L1。状态范式预知并承认以下四笔工程代价，并列明其还账路径：</p>
+<div class="table-wrap"><table><thead><tr><th>代价</th><th>承认了吗</th><th>还账路径</th></tr></thead><tbody>
+<tr><td>逆问题（反解病态）</td><td>承认</td><td>先验约束＋滤波递推＋多模态缓解</td></tr>
+<tr><td>高维（42 维）</td><td>承认</td><td>降维必然性检验（§3.2）；"坐标虚设"风险入镜像清单（§5.4）</td></tr>
+<tr><td>参数校准（340+）</td><td>承认</td><td>PSE-M→PSE-C 两级锚定（P2i-m）；约 27% 参数仍待临床锚定</td></tr>
+<tr><td>可辨识性</td><td>承认</td><td>三条间接路径（见上文）；BMA 权重退化处理尚未设计</td></tr>
+</tbody></table></div>
+<p><strong>工程落地四阶段</strong>：先验整合 → 小样本高密度采集与滤波验证 → 干预验证 → 多中心校准，四阶段递进，每阶段以前一阶段的收敛为闸门。</p>
+<h3>3.4 光源入模：环境即 E(t)</h3>
+<p>变量范式把环境当作需要控制的混淆；状态范式把环境当作驱动状态演化的时变输入 E(t)——dΨ/dt = Σ w_k·f_k(Ψ, E(t), θ_k) 中的 E(t) 由 S-P 环境参照系承载。光源角度一变，影子的形状就变——复现危机的根源，在状态范式中成为可建模项：换样本→Ψ 的分布变化；换工具→h 的参数变化；换实施→h 的情境依赖变化。S-P 不改变操作语法的定义，但作为战略上下文注入器调制 G-M-A-R 操作的执行优先级、时序与风险阈值。</p>
+<h2 id="act-4"><span class="act-no">第四幕</span>洞穴之外：理论生成力与跨学派兼容</h2>
+<h3>4.1 统摄力：流派分歧＝干预靶点之别</h3>
+<p>状态范式展现的第一重理论效能是<strong>跨流派的统摄力</strong>：通过 G-M-A-R 操作矩阵，把各流派的核心机制映射至功能层坐标：</p>
+<div class="table-wrap"><table><thead><tr><th>流派技术</th><th>G-M-A-R 转译</th></tr></thead><tbody>
+<tr><td>暴露疗法</td><td>GATE− M4-DSP-B＋RELINK M4-STR-C</td></tr>
+<tr><td>CBT 认知重构</td><td>ALIGN M2-STR-R＋GATE− M2-DSP-B</td></tr>
+<tr><td>正念呼吸</td><td>GATE− M2-DSP-B＋GATE+ M1-DSP-F</td></tr>
+<tr><td>精神分析移情分析</td><td>RELINK M4-STR-C</td></tr>
+<tr><td>人本主义无条件积极关注</td><td>RELINK M4-STR-C</td></tr>
+<tr><td>行为主义系统脱敏</td><td>GATE− M4-DSP-B＋MODULATE+ M1-RES-D</td></tr>
+</tbody></table></div>
+<p>映射揭示的是<strong>收敛</strong>：六个流派在 RELINK 操作（STR-C 修正）作为最深层、最持久的改变机制上达成收敛；十个流派中有八个将因果权重赋予治疗关系；主要靶向 STR-R 的流派（CBT、叙事、积极心理学）与主要靶向 STR-C 的流派（精神动力学、人本主义、创伤聚焦）由此区分开来；D-R-S 干预深度序列隐含于跨流派的多阶段治疗方案中。跨学派转译揭示：在理论分歧之下存在真实的功能收敛——功能层捕获了心理系统的真实结构特征。各流派的分歧由此呈现为干预靶点与操作层级之别，而非真理之争。</p>
+<p>有损翻译限定：系统式与叙事式流派运作于更高层的关系结构，对其的映射是有损翻译，作启发性功能类比使用；语义漂移是这种损耗的常态——"焦虑"作为量表得分绑定测量操作，作为 M4-DSP-B 高唤醒＋M2-STR-R 威胁偏向＋M1-RES-D 下降绑定功能角色（示例性定义），前者译入后者是有损重构。反向翻译成本更高：Ψ 后验→新潜变量丢失生成机制，靶点效应→处理效应丢失分解性——"变量范式只能问这个处理包是否有效，不能问哪个操作有效、作用于哪个靶点"。不对称性的根源：变量范式的测量产物是本体论中立的（可被任何范式使用），状态范式的状态估计是本体论负载的。</p>
+<h3>4.2 生成力：DMD——由语法空位生成的疗法</h3>
+<p>第二重理论效能是<strong>演绎生成力</strong>。流派×操作矩阵中的语法空位，可以生成既有流派清单上没有的疗法。默认模式调度疗法（DMD）即其一：针对反刍、担忧等"后台进程过度激活"问题，其功能层定位是 <strong>M2-DSP-B（后台调度通道）无法被 M1-DSP-F（前景通道）有效门控的注意调度失衡</strong>。DMD 主攻调度通路（感官锚定、调度替代、门控训练），不否定内容通路——干预通路可概括为"双通道模型"：调度通路主攻，内容通路交由 ALIGN 类操作处理。这与既有流派的可比项清楚：起效速度上，CBT 需 4-6 次会谈建立信念修正，DMD 单次练习即可感受反刍下降；对信念的依赖上，前者必须修正信念，后者不依赖信念修正；可检验预测上，DMD 携带 P1-P6 编号预测清单（P1 被试内交叉主实验＋P2a/b/c 机制检验＋P3-P6 扩展预测）。实现从"解释已知"走向"预测未知"。</p>
+<h3>4.3 操作协同与干预逻辑</h3>
+<p>操作的联合使用有协同机制：ALIGN 为 RELINK 提供认知容器，RELINK 为 ALIGN 提供体验证据，GATE 为 MODULATE 创造条件，MODULATE 为 GATE 提供资源——协同效应是系统动力学的自然涌现，而非操作定义的失效。D→R→S 序列铁律有其控制论依据：如同在系统振荡未衰减时强行注入新信号，极易导致干预失败或二次创伤；故急性危机中最严格，高功能系统中可并行推进。</p>
+<p>干预逻辑的对照由此定型：</p>
+<div class="table-wrap"><table><thead><tr><th>范式</th><th>对中介模型的信念</th><th>干预方案</th><th>干预逻辑</th></tr></thead><tbody>
+<tr><td><strong>变量范式</strong></td><td>教养方式→效能感↓→拖延</td><td>认知重构，"你要相信自己"</td><td>操纵观测输出（现象层干预）</td></tr>
+<tr><td><strong>状态范式</strong></td><td>效能感是读数，不是实体</td><td>MODULATE+ M1-RES-D→GATE− M6-DSP-B→RELINK M4-STR-C（仅 M3-RES-D&gt;50 时启动）</td><td>调节系统状态（功能层干预）</td></tr>
+</tbody></table></div>
+<p>如果底层系统状态未变，现象层干预难以产生持久改变；先恢复资源、再阻断逃避、最后重构连接，观测接口上可能会重新出现较高的自我效能感读数——在此框架下，这一变化被理解为系统状态改善后的伴随表现。</p>
+<h3>4.4 翻译成本与协作边界</h3>
+<p>两范式的整合分三层次：<strong>保护带整合</strong>已实现（变量范式成果作为观测输入与先验来源）；<strong>方法论整合</strong>部分实现（七阶段协作流程：现象层探索→功能层建模→参数初始化→密集采集→状态估计→因果识别→干预验证，每阶段两范式任务与交接物明确，各自基本单位不变）；<strong>本体论整合</strong>不可实现——硬核互斥，不能同时把"变量"和"功能状态 Ψ"当作基本单位。但硬核互斥不等于不可通约：两者通过观测函数 h 连接。变量范式的工具箱不是废铁，是零件库；变量范式学者的出路，是把零件库翻译成状态范式的装配图。在知识生产的宏观图景上：变量范式生产，状态范式消费其产出；变量范式链的回流是增殖性的（论文产生新构念需求），状态范式工程轴的回流是校正性的（运行数据修正参数与架构）。同时守住判定权分立：科学轴判真假，工程轴判符合；DMD 论文发表＝"成果被接受"，不等于"学科被建立"。</p>
+<h2 id="act-5"><span class="act-no">第五幕</span>回望洞穴：效度承诺与两范式分工</h2>
+<h3>5.1 效度分阶承诺</h3>
+<p>本文效度承诺严格分阶，并守一条权属铁律：证伪判据必须与主张同处一个认识论层级；"尚未被神经科学证伪"不等于"已被验证"；神经层数据只作"校准者"，不作"法官"——可强制修正参数，不可单独推翻概念主张。</p>
+<p><strong>逻辑层（L 级）</strong>：理论已达成内部形式自洽，并通过"强反例触发协议"明确可证伪边界——框架级可证伪条件五条：N-S-R 元公理反例、M1-M6 完备性反例、R-D-S 充分性反例、G-M-A-R 覆盖充分性反例、D→R-S 序列优先性反例；放弃条件由强反例触发协议（C1-C4）预先写明。理论评价自律原则已确立，条件性降级的四项设定要素（判定人、复审周期、滞留判据、修正限度）候后续立法。</p>
+<p><strong>信度层（内部证据·P 级）</strong>：初步的大模型多席盲评提供了判卷信度信号——主卷 R5（last_row_wins，1,065 题）κ_eff 0.704431、95%CI [0.6796, 0.7285]：0.70 点估计线已达、CI 下界 0.65 复合判据已达，预注册原线 0.75 未达；判定为 Preview（达标冻结版），仅内部使用，不作为分类效度声称，不作对外承重——AI 席一致性不构成效度证据。</p>
+<p><strong>实证层（E 级·在途）</strong>：DMD-P1 采用被试内交叉设计（预注册草案 v1.1.0，N=90~120×3 访，主结局为反刍中断自评 Hedges g≥0.30）检验动力学预测与靶点精度；随机对照试验与多模态扩展属远期路径。取得实证数据前，不作任何临床或应用效果承诺（自律原则第四条·即时自束）。</p>
+<h3>5.2 可检验预测与失效条件</h3>
+<p>状态范式接受严格检验。其作出的可检验预测包括：<strong>复现成功率与研究是否控制了关键 S-P 参数的稳定性正相关</strong>——若原研究在特定 S-P 条件下测得某效应而复制研究改变了这些条件，复现失败率将显著升高；反之严格复刻 S-P 参数则成功率应显著回升；这一预测可直接用现有复现研究数据回溯检验。它同时承诺：复现失败可以被分解——是状态真的变了，还是观测函数变了；"把 h 写出来"正是为了这个分解。</p>
+<p>失效条件预先写明：若功能层动力学前提（心理系统可建模为经典动态系统）失败或逆问题不可缓解，状态范式在预测/控制上的"可承载"降为"理论可承载但不可兑现"，比较结论需重写；若可辨识性三路径全部失败，分工结论需重写；若出现承载两套任务的第三套范式，本比较需扩展。自反性的退化情景亦预先登记：若任一还账分支长期失败，"技术性问题"将翻转为"概念性问题"，硬核（基本单位＝Ψ）进入受审状态——框架面临"降级为候选理论语言"的预注册退出条件，不以"骨架幸存"为由延期裁决。预先写明它，正是为了不让"保护带可修正"成为无限期豁免。它在复制风险上的账，和变量范式一样要靠实证还；区别只在：<strong>它把账本摊开了。</strong></p>
+<h3>5.3 分工而非替代</h3>
+<p>两套范式的最终关系是分工。其哲学基础是双层实在论：变量实在论在现象层有效，功能实在论在功能层有效；功能实在论承诺的是"功能层作为描述层级是实在的"，不是"每个功能组件的边界都是永恒正确"——M1-M6 的精确边界、42 维的具体维度数，是更强但也更脆弱的经验性资产，几乎必然会在实证校准中被修正。<strong>无须让步：两套范式各自在各自层面成立</strong>。</p>
+<p>分工的接触面在保护带：变量范式不追问"变量是否应被替换"，状态范式不主张"换回变量"——两条负面启发法对称成立；协作发生在保护带层，硬核层互不干涉。操作化地看，分工按场景定权重：群体流行病学调查、现象层规律发现→变量范式主场；个体化状态轨迹预测、干预序列规划、跨流派技术转译→状态范式主场；复现改革是变量范式链上最健康的部分——修可信度、不换单位。硬核互斥但范式可通约（整合三层次见 §4.4）；连接通道是观测函数 h。一句话收束：<strong>K3 是主要矛盾——换单位，不换大框架</strong>；这个分岔是历史的选择——所以它可以重新选择。</p>
+<h3>5.4 镜像风险：状态范式自己的账</h3>
+<p>走出洞穴不等于抵达真理。本文批判过的病，可能在自身身上以镜像形态重演，故预登记四项：<strong>坐标虚设</strong>——42 维"不能更少"未证"每一维有用"，维度越切越细、参数越列越多可能没有增量解释力，且更难察觉，因为它披着形式化的外衣；<strong>两前提失败</strong>——若 h 的情境依赖不可参数化，"把 h 写出来"退化为口号，状态范式只交付情境特异的局部模型集合；<strong>坐标内部多口径</strong>——"坐标统一"不等于"术语统一"，M1-M6 双语义（心理科学域／智能科学域）等待并轨；<strong>校准循环</strong>——相互验证可能变成相互循环。</p>
+<p>伦理维度同样先行登记：变量范式的伦理风险偏认知性（本质主义标签——"你是高焦虑者"被当作对一个人本质的描述而非对一组测量读数的描述；智力测验史上的种族等级论与优生学教训）；状态范式的风险偏关系性（持续追踪的"被观察的焦虑"、把来访者当"状态向量"而非"人"）；共同问题包括 Ψ 轨迹数据归谁、算法推荐的 G-M-A-R 序列致害时责任归谁。这些不因更换范式自动消失，需由治理规程承接（边界外维度不进入坐标系，但登记其存在）。</p>
+<h3>5.5 结语：走出洞穴的契机</h3>
+<p>温忠麟教授的工作，用严密逻辑建立了一套观测数据分类系统，同时呈现了系统的描述边界——"我们或许无法直接获得因果，只能尽可能接近"。病根在对象，不在方法。状态范式不在任何一个层面否定这项工作的价值，而是尝试吸纳它：承认变量研究在现象层的描述价值，将其重新定位为功能层系统在特定测量接口上的读数。</p>
+<p>回望第一幕的三组对位——影子之于实体、影子间的几何之于因果、光源之于情境参数——三组关系在第二至第四幕已全部兑换为形式化语言：观测函数 h、约束动力学、E(t) 驱动项。隐喻是脚手架；脚手架的使命，是让人不再需要它。</p>
+<blockquote class="quote"><p>本文的核心主张——心理现象的基本描述单位应从现象层的"变量"转向功能层的"系统状态"——并不依赖洞穴隐喻而成立。洞穴隐喻仅作教学入口与沟通脚手架，不作论证依据、不作合法性来源；其价值在于"翻译"。真正的工作，在第二至第四幕展开的形式化框架本身。</p></blockquote>
+<p>如果状态范式的假说成立，心理学正面临一个重新审视其基本描述单位的契机：复制危机提示观测数据的形态是情境依赖的；构念膨胀提示更多的观测标签难以逼近真实；流派纷争提示共享的基本描述单位本身可能才是问题所在。走出洞穴意味着：从研究"变量之间的统计关系"转向研究"心理系统的功能结构"；从"为观测数据制定统计定律"转向"理解生成这些观测数据的机制"。温忠麟教授的工作可以被视为对变量范式描述能力的一次系统性检验，为讨论范式转换提供了重要参照点；而 IODS 与 PSE 架构，则是在此基础上提出的一条尝试直接描述"系统状态"的探索性路径——一套包含状态描述语法（M-R-D-S）、操作指令集（G-M-A-R）、动力学方程与仿真校准管线的完整工程框架。在脑机接口技术成熟之前，这条路径必须从现有观测条件出发，以贝叶斯递推反解系统状态；当 BCI 最终能以毫秒级精度直接读取功能层状态时，逆问题将从核心工程挑战转变为历史遗留问题——那一刻将为检验状态范式提供前所未有的实证条件。</p>
+<h2 id="act-app"><span class="act-no">附录 A</span>「影子几何学」的结构映射与层级核定（L3）</h2>
+<blockquote class="quote"><p><strong>性质</strong>：本附录是第一幕「影子」隐喻的<strong>结构映射清单</strong>，用于说明该隐喻为何停在 L3、以及它与 L4 的边界在哪儿。依 `06-S-06` §7.11 与第五幕末注，隐喻与教学表<strong>不作论证依据</strong>；本附录不改变本文任何论证结论。</p><p><strong>来源</strong>：外部议案 `15-X-148`（2026-10-30 收录）＋审查件 `15-RPT-148`（F1–F9：成立 5／部分成立 2／不成立 2；采纳 A1／A2，修正 A3／A4，不采纳 A5／A6）。</p><p><strong>定级</strong>：<strong>L3（结构类比·强结构推理）</strong>。按 `09-A-11` §3.3（:226），L4 要求两域为「同一数学／逻辑定理的不同实例化」；本隐喻两域只共享「降维→信息损失→逆问题病态」这一<strong>一般原理</strong>，未共享同一形式定理，故未达 L4。</p></blockquote>
+<div class="table-wrap"><table><thead><tr><th>映射维度</th><th>源域（光学投影）</th><th>目标域（统计观测）</th><th>L3 结构对应（成立）</th><th>断裂点（未达 L4 之处）</th></tr></thead><tbody>
+<tr><td>本体与源头</td><td>三维实体</td><td>真实心理机制（功能状态 Ψ）</td><td>投影源：皆不可直接观测的生成结构</td><td>光学投影是确定性的几何映射；统计观测是概率测度与积分算子。原文未对实体作「波动方程」刻画，该说法系外部议案外推，不采</td></tr>
+<tr><td>变异因素</td><td>光源角度／强度／距离</td><td>情境、样本特征、混淆变量</td><td>致变因素：外部参数改变投影形态而不改变实体</td><td>光学参数改变投影方程；统计扰动改变条件分布，机制不同</td></tr>
+<tr><td>输出结果</td><td>二维影子及形变</td><td>量表分数、观测分布</td><td>投影结果：降维产物，受观测协议限制</td><td>信息损失的具体形式不同（几何遮挡 vs 抽样与噪声）</td></tr>
+<tr><td>内部关系</td><td>影子 A 与影子 B 的联动</td><td>变量间协方差／相关</td><td>投影层几何：低维现象空间的共变关系</td><td>相关系数＝夹角余弦仅在标准化后成立；投影重叠与协方差非同一代数对象</td></tr>
+<tr><td>操作与干预</td><td>裁剪墙上的影子</td><td>操纵问卷分数</td><td>干预失效：对投影的干预不改变实体</td><td>两条「无效」路径的机制不同（无因果传递 vs 无机制改变）</td></tr>
+<tr><td>测量不变性</td><td>换光源，影子变形</td><td>换量表，协方差漂移</td><td>不变性破裂：协议一变，现象层几何重组</td><td>逆问题病态的数学形态不同（投影不可逆 vs 估计不适定）</td></tr>
+</tbody></table></div>
+<blockquote class="quote"><p><strong>一句话</strong>：这张表说明「影子几何学」为什么强、强到什么程度（L3），也说明它为什么升不到 L4——两域共享的是一般原理，不是同一条定理。</p></blockquote>
+
+<details class="refs"><summary>参考文献（31 条）</summary><ol><li>Asparouhov, T., Hamaker, E. L., &amp; Muthén, B. (2018). Dynamic structural equation models. <em>Structural Equation Modeling</em>, 25(3), 359–388.</li><li>Borsboom, D. (2017). A network theory of mental disorders. <em>World Psychiatry</em>, 16(1), 5–13.</li><li>Borsboom, D., &amp; Cramer, A. O. J. (2013). Network analysis: An integrative approach to the structure of psychopathology. <em>Annual Review of Clinical Psychology</em>, 9, 91–121.</li><li>Brown, T. A. (2015). <em>Confirmatory factor analysis for applied research</em> (2nd ed.). Guilford Press.</li><li>Chernozhukov, V., Chetverikov, D., Demirer, M., Duflo, E., Hansen, C., Newey, W., &amp; Robins, J. (2018). Double/debiased machine learning for treatment and structural parameters. <em>The Econometrics Journal</em>, 21(1), C1–C68.</li><li>Embretson, S. E., &amp; Reise, S. P. (2000). <em>Item response theory for psychologists</em>. Lawrence Erlbaum.</li><li>Fisher, A. J., Medaglia, J. D., &amp; Jeronimus, B. F. (2018). Lack of group-to-individual generalizability is a threat to human subjects research. <em>Proceedings of the National Academy of Sciences</em>, 115(27), E6106–E6115.</li><li>Friston, K. (2010). The free-energy principle: A unified brain theory? <em>Nature Reviews Neuroscience</em>, 11(2), 127–138.</li><li>Hamaker, E. L., &amp; Wichers, M. (2017). No time like the present: Discovering the hidden dynamics in intensive longitudinal data. <em>Current Directions in Psychological Science</em>, 26(1), 10–15.</li><li>Hernán, M. A., &amp; Robins, J. M. (2016). Using big data to emulate a target trial when a randomized trial is not available. <em>American Journal of Epidemiology</em>, 183(8), 758–764.</li><li>Huys, Q. J. M., Maia, T. V., &amp; Frank, M. J. (2016). Computational psychiatry as a bridge from neuroscience to clinical applications. <em>Nature Neuroscience</em>, 19(3), 404–413.</li><li>Insel, T. R. (2017). Digital phenotyping: Technology for a new science of behavior. <em>JAMA</em>, 318(13), 1215–1216.</li><li>Molenaar, P. C. M. (2004). A manifesto on psychology as idiographic science: Bringing the person back into scientific psychology, this time forever. <em>Measurement: Interdisciplinary Research and Perspectives</em>, 2(4), 201–218.</li><li>Montague, P. R., Dolan, R. J., Friston, K. J., &amp; Dayan, P. (2012). Computational psychiatry. <em>Trends in Cognitive Sciences</em>, 16(1), 72–80.</li><li>Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., ... &amp; Yarkoni, T. (2015). Promoting an open research culture. <em>Science</em>, 348(6242), 1422–1425.</li><li>Onnela, J. P., &amp; Rauch, S. L. (2016). Harnessing smartphone-based digital phenotyping to enhance behavioral and mental health. <em>Neuropsychopharmacology</em>, 41(7), 1691–1696.</li><li>Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, 349(6251), aac4716.</li><li>Pearl, J. (2009). <em>Causality: Models, reasoning, and inference</em> (2nd ed.). Cambridge University Press.</li><li>Peters, J., Janzing, D., &amp; Schölkopf, B. (2017). <em>Elements of causal inference: Foundations and learning algorithms</em>. MIT Press.</li><li>Ratcliff, R., &amp; McKoon, G. (2008). The diffusion decision model: Theory and data for two-choice decision tasks. <em>Neural Computation</em>, 20(4), 873–922.</li><li>Rubin, D. B. (1974). Estimating causal effects of treatments in randomized and nonrandomized studies. <em>Journal of Educational Psychology</em>, 66(5), 688–701.</li><li>Shadish, W. R., Cook, T. D., &amp; Campbell, D. T. (2002). <em>Experimental and quasi-experimental designs for generalized causal inference</em>. Houghton Mifflin.</li><li>Spirtes, P., Glymour, C., &amp; Scheines, R. (2000). <em>Causation, prediction, and search</em> (2nd ed.). MIT Press.</li><li>Steegen, S., Tuerlinckx, F., Gelman, A., &amp; Vanpaemel, W. (2016). Increasing transparency through a multiverse analysis. <em>Perspectives on Psychological Science</em>, 11(5), 702–712.</li><li>Torous, J., &amp; Onnela, J. P. (2025). Delivering on the promise of digital twins. <em>Nature Mental Health</em>, 3, 1–4.</li><li>Vandenberg, R. J., &amp; Lance, C. E. (2000). A review and synthesis of the measurement invariance literature. <em>Organizational Research Methods</em>, 3(1), 4–70.</li><li>van der Laan, M. J., Polley, E. C., &amp; Hubbard, A. E. (2007). Super learner. <em>Statistical Applications in Genetics and Molecular Biology</em>, 6(1), Article 25.</li><li>van der Laan, M. J., &amp; Rose, S. (2011). <em>Targeted learning: Causal inference for observational and experimental data</em>. Springer.</li><li>Henrich, J., Heine, S. J., &amp; Norenzayan, A. (2010). The weirdest people in the world? <em>Behavioral and Brain Sciences</em>, 33(2-3), 61–83.</li><li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes. In I. Lakatos &amp; A. Musgrave (Eds.), <em>Criticism and the Growth of Knowledge</em> (pp. 91–196). Cambridge University Press.</li><li>王波 (2019). 转引自 03-A-11 :88（"可发表性"优先于"可解释性"）。</li></ol></details>
+</div>
+<div class="about-note">关于本文：本文为 INTRE 在册论文《走出洞穴》（五幕重构版 v2.1.1·2026-11-08）的对外阅读版；洞穴隐喻仅作教学入口，论证以形式化表述为准；效度承诺与证据分级见第五幕——取得实证数据前，不作任何临床效果承诺。</div>
         <a class="fs-back" href="/INTRE-website/"><i class="fas fa-arrow-left" aria-hidden="true"></i> 返回首页</a>
     </main>
 
@@ -82,6 +281,61 @@
 
     <script src="../shared/nav-toggle-20261102.js"></script>
   <script src="../shared/domain-switch.js?v=20261101h"></script>
+
+    <script>
+    (function () {
+        var ITEMS = [
+            ['essay-abstract', '摘要 · 本文主张', '0'],
+            ['act-1', '第一幕 · 困于洞穴', '1'],
+            ['act-2', '第二幕 · 看破影子', '2'],
+            ['act-3', '第三幕 · 走出洞穴', '3'],
+            ['act-4', '第四幕 · 洞穴之外', '4'],
+            ['act-5', '第五幕 · 回望洞穴', '5'],
+            ['act-app', '附录 A · 影子几何学', 'A']
+        ];
+        var list = document.getElementById('tocSidebarList');
+        if (list) {
+            var head = document.createElement('div');
+            head.className = 'toc-section-title';
+            head.textContent = '全文论证《走出洞穴》';
+            list.appendChild(head);
+            ITEMS.forEach(function (it) {
+                var a = document.createElement('a');
+                a.className = 'toc-item';
+                a.href = '#' + it[0];
+                a.innerHTML = '<span class="num">' + it[2] + '</span><span class="title-text">' + it[1] + '</span><i class="arrow fas fa-chevron-right" aria-hidden="true"></i>';
+                a.setAttribute('data-target', it[0]);
+                list.appendChild(a);
+            });
+        }
+        var sb = document.getElementById('tocSidebar'),
+            btn = document.getElementById('tocToggleBtn'),
+            ov = document.getElementById('tocOverlay'),
+            cb = document.getElementById('tocCloseBtn');
+        function open(e) { if (e) e.preventDefault(); sb.classList.add('open'); ov.classList.add('show'); document.body.classList.add('toc-open'); }
+        function close() { sb.classList.remove('open'); ov.classList.remove('show'); document.body.classList.remove('toc-open'); }
+        if (btn) btn.addEventListener('click', open);
+        if (cb) cb.addEventListener('click', close);
+        if (ov) ov.addEventListener('click', close);
+        list.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
+        var links = {};
+        list.querySelectorAll('.toc-item').forEach(function (a) { links[a.getAttribute('data-target')] = a; });
+        var obs = new IntersectionObserver(function (ents) {
+            ents.forEach(function (en) {
+                if (en.isIntersecting) {
+                    Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); });
+                    var a = links[en.target.id];
+                    if (a) a.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        ITEMS.forEach(function (it) {
+            var el = document.getElementById(it[0]);
+            if (el) obs.observe(el);
+        });
+    })();
+    </script>
+
 <script src="/INTRE-website/shared/gate.js" defer></script>
 <noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
 </body>

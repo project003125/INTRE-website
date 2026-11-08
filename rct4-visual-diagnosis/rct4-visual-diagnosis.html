@@ -267,7 +267,7 @@ sup a:hover{text-decoration:underline}
   <div class="sec-head"><span class="sec-no">01</span><h2>先对齐：我们在看什么</h2></div>
   <p class="sec-sub">三句话定位，确保后面的「丑」与「美」都落在同一坐标系上。</p>
   <div class="grid g3">
-    <div class="card"><span class="n">INTRE</span><h4>功能状态心理学框架</h4><p>在「神经层」与「现象层」之间建一个可计算的功能层，用 42 维状态向量 Ψ(t) 描述心理系统。网站是它的学院派知识入口，不是 SaaS 落地页。</p></div>
+    <div class="card"><span class="n">INTRE</span><h4 role="heading" aria-level="3">功能状态心理学框架</h4><p>在「神经层」与「现象层」之间建一个可计算的功能层，用 42 维状态向量 Ψ(t) 描述心理系统。网站是它的学院派知识入口，不是 SaaS 落地页。</p></div>
     <div class="card"><span class="n">intre-3d-hero</span><h4>1170vh 滚动叙事首页</h4><p>Three.js r160 单文件应用，四幕结构对应 INTRE 三层架构。负责用 2–3 分钟建立心智模型，与 2D 静态官网并列。</p></div>
     <div class="card"><span class="n">RCT4 = 第四幕</span><h4>「神经层」· 终幕永驻</h4><p>进度 p∈[0.80,1.0]，永不淡出。视觉主体 = 程序化脑 + 42 条纤维束 + 三通道粒子，叙事是「42 维状态向下扎根进神经回路」。</p></div>
   </div>
@@ -320,7 +320,7 @@ sup a:hover{text-decoration:underline}
   <div class="sec-head"><span class="sec-no">03</span><h2>顶级 DTI 的视觉语法</h2></div>
   <p class="sec-sub">从 Wedeen 2012 在 <em>Science</em> 上那张「纤维几何网格」<sup><a href="#cite-6">[6]</a></sup>，到 Human Connectome Project / Van Essen 2013 在 <em>Nature</em> 的 glass-brain tractography<sup><a href="#cite-7">[7]</a></sup>，顶尖期刊封面收敛出三条铁律。</p>
   <div class="grid g3">
-    <div class="card"><span class="ic">◐</span><span class="n">RULE 01</span><h4>纯黑场 + 体积辉光</h4><p>背景必须近纯黑，让纤维<strong>自发光</strong>。辉光不是装饰，是让「神经放电」可读的唯一手段——没有 Bloom，再亮的纤维也只是灰线。</p></div>
+    <div class="card"><span class="ic">◐</span><span class="n">RULE 01</span><h4 role="heading" aria-level="3">纯黑场 + 体积辉光</h4><p>背景必须近纯黑，让纤维<strong>自发光</strong>。辉光不是装饰，是让「神经放电」可读的唯一手段——没有 Bloom，再亮的纤维也只是灰线。</p></div>
     <div class="card"><span class="ic">≋</span><span class="n">RULE 02</span><h4>真 3D 丝状纤维</h4><p>美来自<strong>成千上万条有体积、有锥度、沿程发光的细丝</strong>，而非一张 2D 贴图。密度与方向编码色共同构成「织物质感」。</p></div>
     <div class="card"><span class="ic">○</span><span class="n">RULE 03</span><h4>幽灵壳只勾轮廓</h4><p>皮层/外壳是<strong>极淡的半透明冷烟</strong>，只做空气透视与边界，绝不抢戏。主角永远是壳内的纤维。</p></div>
   </div>
@@ -396,7 +396,7 @@ sup a:hover{text-decoration:underline}
 
   <div class="cause">
     <div class="loc">致命 · 辉光<br><code>L1123–1164</code></div>
-    <div class="body"><h4><span class="lvl lvl-fatal">致命</span>Bloom 后处理被整体禁用归档</h4>
+    <div class="body"><h4 role="heading" aria-level="3"><span class="lvl lvl-fatal">致命</span>Bloom 后处理被整体禁用归档</h4>
       <p>EffectComposer / UnrealBloomPass 因「白色蒙皮」根因被注释并归档，场景无任何后期与色调映射。</p>
       <p class="why">所有发光感只能靠 AdditiveBlending 伪造，高亮区（电流、注光、接驳闪光）无法溢出辉光，终幕彻底失去「神经放电」的张力——这是「丑」的头号元凶。</p></div>
   </div>
@@ -481,7 +481,7 @@ sup a:hover{text-decoration:underline}
   <p class="sec-sub">每条都给到 shader 片段 / 参数 / 行号定位，按「先救命、再提质、后打磨」排序。</p>
 
   <div class="rx">
-    <div class="top"><span class="id">RX-01</span><h4>把 Bloom 救回来（修根因，不要绕过）</h4><span class="lvl lvl-fatal">致命</span></div>
+    <div class="top"><span class="id">RX-01</span><h4 role="heading" aria-level="3">把 Bloom 救回来（修根因，不要绕过）</h4><span class="lvl lvl-fatal">致命</span></div>
     <div class="row"><span class="k">定位</span><span class="v"><code>L1123–1164</code> + <code>archive/2026-07-24/bloom-disabled/</code></span></div>
     <div class="row"><span class="k">根因</span><span class="v">「白色蒙皮」= 脑/aura 的 alpha 与 emissive 一起被 Bloom 阈值吃满，整屏泛白。</span></div>
     <div class="row"><span class="k">改法</span><span class="v">恢复 EffectComposer + UnrealBloomPass，但 <strong>只对纤维/信号/电流做选择性辉光</strong>：用 layers 或 emissive map 把脑皮层与 aura 排除在 bloom 输入之外；阈值 <code>threshold≈0.85</code>、<code>strength≈0.6</code>、<code>radius≈0.4</code>，并加 ACESFilmic 色调映射 + <code>outputColorSpace=SRGB</code>。</span></div>
@@ -551,7 +551,7 @@ sup a:hover{text-decoration:underline}
   <div class="timeline">
     <div class="phase a">
       <div class="ph">PHASE A · 救命（1–2 天）</div>
-      <h4>选择性 Bloom + 翻转主角 + DEC 重染</h4>
+      <h4 role="heading" aria-level="3">选择性 Bloom + 翻转主角 + DEC 重染</h4>
       <p>对应 RX-01 / 02 / 03。不动几何、不换模型，纯材质与后期调整，即可把「灰内脏球」变成「黑场里透光的纤维脑」。</p>
       <div class="stats"><span class="stat">成本 <b>低</b></span><span class="stat">收益 <b>极高</b></span><span class="stat">风险 <b>低</b></span></div>
     </div>

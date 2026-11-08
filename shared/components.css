@@ -893,6 +893,7 @@ hr {
   z-index: 2;
   text-align: center;
   max-width: 1040px;
+  min-width: 0; /* .hero 为 flex：窄视口下放行收缩，防 min-content 把内容撑出被裁（390 实测 404>345.6） */
 }
 .hero-eyebrow {
   display: inline-block;

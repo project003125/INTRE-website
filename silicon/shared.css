@@ -48,12 +48,20 @@
    .claim-en／.hero-en 实测 1.82px＝.14em）。 */
 /* 速览条按同一顶线排列：尾项一旦换行，flex 的 baseline 对齐会另起一条基线，
    六枚不再上缘齐平 ⇒ 显式 flex-start（单行时与 baseline 同结果，字档一致）。 */
-.glance { display:flex; flex-wrap:wrap; align-items:flex-start; gap:.6rem; margin-top:2.2rem; }
+.glance { display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:.6rem; margin-top:2.2rem; }
 .glance span { font-family:var(--font-mono); font-size:var(--text-xs);
                letter-spacing:var(--tracking-tech);
                border:var(--stroke-hairline) solid rgba(255, 255, 255, 0.18);
                background:rgba(255, 255, 255, 0.07); color:var(--color-white);
                padding:.34rem .7rem; border-radius:var(--radius-xs); }
+/* 单行放得下（≈>768px）时六枚两端对齐，与下方四格计数卡同宽缘；
+   ≤768px 起会换行，space-between 会把残行拉散 ⇒ 收回左对齐＋常规 gap。 */
+@media (max-width:768px) { .glance { justify-content:flex-start; } }
+
+/* 统计卡标签按语义单元折行：单元内禁断（防「结构 S」「重联」孤字尾行），
+   断点只落在「 · 」「 ↔ 」「 → 」分隔空位；balance 让两行配平（避免 3+1 尾行）。 */
+.stat-card .stat-label { text-wrap: balance; }
+.stat-card .stat-label .u { white-space:nowrap; }
 
 /* 内容宽度由 .container 收（与原站首页同一做法：hero 之后整段包一层 container） */
 .home-section .section-head + .layer-table { margin-top: 0.4rem; }

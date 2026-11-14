@@ -91,12 +91,14 @@ export function createHeroScene(canvas, options = {}) {
   let hovered = -1;
   let pointer = new THREE.Vector2(-4, -4);
   let parallax = { x: 0, y: 0 };
+  const parallaxTarget = { x: 0, y: 0 };
   let aimShift = 1.55;
   let aimYShift = 0;
   const fadeScale = [1, 1, 1, 1];
   const lookTarget = new THREE.Vector3(1.4, 0, 0);
   const aim = new THREE.Vector3(1.4, 0, 0);
   const camPos = new THREE.Vector3(...KF[0].pos);
+  const camTarget = new THREE.Vector3(...KF[0].pos);
   const raycaster = new THREE.Raycaster();
   const pointerNdc = new THREE.Vector2();
   const clock = new THREE.Clock();
@@ -163,7 +165,7 @@ export function createHeroScene(canvas, options = {}) {
       if (p <= KF[i + 1].p) {
         const span = KF[i + 1].p - KF[i].p;
         const t = span <= 0 ? 0 : (p - KF[i].p) / span;
-        camPos.set(
+        camTarget.set(
           KF[i].pos[0] + (KF[i + 1].pos[0] - KF[i].pos[0]) * t,
           KF[i].pos[1] + (KF[i + 1].pos[1] - KF[i].pos[1]) * t,
           KF[i].pos[2] + (KF[i + 1].pos[2] - KF[i].pos[2]) * t
@@ -182,6 +184,11 @@ export function createHeroScene(canvas, options = {}) {
     aim.x -= aimShift;
     aim.y += aimYShift;
 
+    const parallaxDamp = 1 - Math.exp(-dt * 0.01);
+    parallax.x += (parallaxTarget.x - parallax.x) * parallaxDamp;
+    parallax.y += (parallaxTarget.y - parallax.y) * parallaxDamp;
+    if (reduced) camPos.copy(camTarget);
+    else camPos.lerp(camTarget, 1 - Math.exp(-dt * 0.008));
     camera.position.set(camPos.x + parallax.x, camPos.y + parallax.y, camPos.z);
     const damping = 1 - Math.exp(-dt * 0.0055);
     lookTarget.lerp(aim, damping);
@@ -313,13 +320,15 @@ export function createHeroScene(canvas, options = {}) {
 
   const onPointerMove = event => {
     pointerNdc.set((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
-    parallax.x = -pointerNdc.x * 0.14;
-    parallax.y = pointerNdc.y * 0.1;
+    if (!reduced) {
+      parallaxTarget.x = -pointerNdc.x * 0.14;
+      parallaxTarget.y = pointerNdc.y * 0.1;
+    }
   };
   const onPointerLeave = () => {
     pointerNdc.set(-4, -4);
-    parallax.x = 0;
-    parallax.y = 0;
+    parallaxTarget.x = 0;
+    parallaxTarget.y = 0;
     hovered = -1;
     document.body.classList.remove('node-hovering');
   };

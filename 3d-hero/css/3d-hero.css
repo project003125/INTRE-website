@@ -281,7 +281,7 @@ body[data-active="1"] #act-1 .act-inner,
 body[data-active="2"] #act-2 .act-inner,
 body[data-active="3"] #act-3 .act-inner,
 body[data-active="4"] #act-4 .act-inner {
-  animation: act-in 0.6s cubic-bezier(0.22, 0.7, 0.25, 1) both;
+  animation: act-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .eyebrow {
@@ -322,15 +322,11 @@ body.force-text .visual-fallback { display: block; }
 h1 {
   font-family: var(--display);
   font-size: clamp(6.4rem, 15.5vw, 13rem);
-  font-weight: 500;
-  line-height: 0.78;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
   margin: 0 0 34px;
-  background: linear-gradient(120deg, #ffffff 8%, #cfe6ff 38%, #6ea9dd 72%, #3f7cb6 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 12px 60px rgba(70, 140, 210, 0.28));
+  color: #ffffff;
 }
 .hero-statement {
   font-size: clamp(1.2rem, 2vw, 1.85rem);
@@ -715,7 +711,7 @@ body.force-text .veil {
   .glass-panel { border-radius: 18px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   .hero-layout { align-items: center; }
   .hero-copy { padding-bottom: 0; }
-  h1 { font-size: clamp(5rem, 26vw, 6.4rem); letter-spacing: 0.04em; margin-bottom: 28px; }
+  h1 { font-size: clamp(5rem, 26vw, 6.4rem); letter-spacing: -0.03em; margin-bottom: 28px; }
   .hero-statement { font-size: 1.08rem; margin-bottom: 24px; }
   .hero-meta { gap: 14px; }
   .formula-chip { font-size: 0.68rem; gap: 12px; padding: 8px 12px; }

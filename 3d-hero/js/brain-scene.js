@@ -29,6 +29,9 @@ const COL = {
   amber: 0xffb648
 };
 
+// 六模块光谱：与 DOM 晶格列色同源（M1–M6）
+const MOD = [0x62c6ff, 0x43e0c8, 0xffb648, 0xff7d9c, 0xa78bfa, 0x9be15d];
+
 function smoothstep(a, b, x) {
   const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
   return t * t * (3 - 2 * t);
@@ -45,6 +48,8 @@ export function createHeroScene(canvas, options = {}) {
   renderer.setPixelRatio(baseDpr);
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
@@ -55,7 +60,7 @@ export function createHeroScene(canvas, options = {}) {
     try {
       composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
-      composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.5, 0.5, 0.66));
+      composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.85, 0.6, 0.6));
       composer.addPass(new OutputPass());
     } catch (error) {
       composer = null;
@@ -160,7 +165,7 @@ export function createHeroScene(canvas, options = {}) {
     dust.material.opacity = 0.22 + 0.28 * w[0];
   }
 
-  function updateCamera(p, w, dt = 16.7) {
+  function updateCamera(p, w, dt = 16.7, t = 0) {
     for (let i = 0; i < KF.length - 1; i++) {
       if (p <= KF[i + 1].p) {
         const span = KF[i + 1].p - KF[i].p;
@@ -189,7 +194,11 @@ export function createHeroScene(canvas, options = {}) {
     parallax.y += (parallaxTarget.y - parallax.y) * parallaxDamp;
     if (reduced) camPos.copy(camTarget);
     else camPos.lerp(camTarget, 1 - Math.exp(-dt * 0.008));
-    camera.position.set(camPos.x + parallax.x, camPos.y + parallax.y, camPos.z);
+    camera.position.set(
+      camPos.x + parallax.x + Math.sin(t * 0.11) * 0.05,
+      camPos.y + parallax.y + Math.sin(t * 0.083) * 0.04,
+      camPos.z + Math.sin(t * 0.13) * 0.06
+    );
     const damping = 1 - Math.exp(-dt * 0.0055);
     lookTarget.lerp(aim, damping);
     camera.lookAt(lookTarget);
@@ -208,9 +217,9 @@ export function createHeroScene(canvas, options = {}) {
       dummy.updateMatrix();
       lattice.nodes.setMatrixAt(i, dummy.matrix);
       lattice.halo.setMatrixAt(i, dummy.matrix);
-      const lit = i === hovered ? 1 : 0.82;
-      color.setRGB(0.4 * lit, 0.78 * lit, 1 * lit);
-      if (i === hovered) color.setHex(COL.amber);
+      const lit = i === hovered ? 1.4 : 0.95;
+      color.setHex(MOD[Math.floor(i / 7)]).multiplyScalar(lit);
+      if (i === hovered) color.setHex(COL.amber).multiplyScalar(1.4);
       lattice.nodes.setColorAt(i, color);
     }
     lattice.nodes.instanceMatrix.needsUpdate = true;
@@ -219,7 +228,7 @@ export function createHeroScene(canvas, options = {}) {
 
     const span = lattice.halfH * 2 + 0.5;
     lattice.scan.position.y = lattice.halfH + 0.25 - ((t * 0.32) % 1) * span;
-    lattice.scan.material.opacity = 0.12 + Math.sin(t * 1.4) * 0.05;
+    lattice.scan.material.opacity = 0.1 + Math.sin(t * 1.4) * 0.04;
 
     if (hovered >= 0) {
       const base = lattice.basePositions[hovered];
@@ -255,6 +264,12 @@ export function createHeroScene(canvas, options = {}) {
       hero.group.rotation.x = Math.sin(t * 0.22) * 0.06;
       hero.orbit.rotation.z = t * 0.16;
       hero.orbit.rotation.y = -t * 0.1;
+      hero.orbit2.rotation.z = -t * 0.12;
+      hero.inner.rotation.y = -t * 0.22;
+      hero.inner.rotation.z = t * 0.1;
+      hero.shell.scale.setScalar(1 + Math.sin(t * 0.9) * 0.025);
+      hero.nucleus.scale.setScalar(1.5 + Math.sin(t * 2.1) * 0.16);
+      dust.rotation.y = t * 0.01;
       phenomena.group.rotation.y = t * 0.10;
       phenomena.group.rotation.z = Math.sin(t * 0.06) * 0.1;
       phenomena.orbit.update(t);
@@ -272,7 +287,7 @@ export function createHeroScene(canvas, options = {}) {
       updateNodes(t);
     }
 
-    updateCamera(progress, w, dt);
+    updateCamera(progress, w, dt, t);
 
     if (lattice.group.visible && !reduced) {
       const hit = pick();
@@ -490,8 +505,21 @@ function makeCore(glowTex, lite) {
   }));
   group.add(vPoints);
 
+  const nucleus = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: glowTex, color: 0xffd9a0, transparent: true, opacity: 0.5,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  nucleus.scale.setScalar(1.5);
+  group.add(nucleus);
+
+  const inner = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(0.88, 0)),
+    new THREE.LineBasicMaterial({ color: COL.amber, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  group.add(inner);
+
   const halo = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: glowTex, color: 0x2b76bd, transparent: true, opacity: 0.36,
+    map: glowTex, color: 0x2f86d4, transparent: true, opacity: 0.42,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
   halo.scale.setScalar(4.6);
@@ -522,14 +550,44 @@ function makeCore(glowTex, lite) {
   orbit.rotation.x = 0.42;
   group.add(orbit);
 
-  const ringMaterial = new THREE.MeshBasicMaterial({ color: COL.beam, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false });
+  // 第二条轨道带：三通道色粒子，反向倾角
+  const orbit2Count = lite ? 90 : 200;
+  const orbit2Pos = new Float32Array(orbit2Count * 3);
+  const orbit2Col = new Float32Array(orbit2Count * 3);
+  const channelHues = [COL.uplp, COL.ubmp, COL.unip];
+  const bandColor = new THREE.Color();
+  for (let i = 0; i < orbit2Count; i++) {
+    const a = (i / orbit2Count) * Math.PI * 2;
+    const r = 2.75 + Math.cos(i * 2.3) * 0.1;
+    orbit2Pos[i * 3] = Math.cos(a) * r;
+    orbit2Pos[i * 3 + 1] = Math.cos(a * 2.2) * 0.22;
+    orbit2Pos[i * 3 + 2] = Math.sin(a) * r;
+    bandColor.setHex(channelHues[i % 3]);
+    orbit2Col[i * 3] = bandColor.r;
+    orbit2Col[i * 3 + 1] = bandColor.g;
+    orbit2Col[i * 3 + 2] = bandColor.b;
+  }
+  const orbit2Geo = new THREE.BufferGeometry();
+  orbit2Geo.setAttribute('position', new THREE.BufferAttribute(orbit2Pos, 3));
+  orbit2Geo.setAttribute('color', new THREE.BufferAttribute(orbit2Col, 3));
+  const orbit2 = new THREE.Points(orbit2Geo, new THREE.PointsMaterial({
+    map: glowTex, vertexColors: true, size: 0.055, transparent: true, opacity: 0.8,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+  }));
+  orbit2.rotation.x = -0.55;
+  group.add(orbit2);
+
+  const ringHues = [COL.beam, 0x43e0c8, COL.amber];
   [2.35, 2.75, 3.15].forEach((radius, index) => {
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.006, 6, 140), ringMaterial);
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, 0.006, 6, 140),
+      new THREE.MeshBasicMaterial({ color: ringHues[index], transparent: true, opacity: 0.22 - index * 0.05, blending: THREE.AdditiveBlending, depthWrite: false })
+    );
     ring.rotation.set(Math.PI / 2 + index * 0.35, index * 0.5, index * 0.22);
     group.add(ring);
   });
 
-  return { group, fades: registerFades(group), orbit };
+  return { group, fades: registerFades(group), orbit, orbit2, shell, inner, nucleus };
 }
 
 /* ---------------- 现象层：涡旋 ---------------- */
@@ -541,6 +599,8 @@ function makeVortex(glowTex, lite) {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
   const color = new THREE.Color();
+  const iceC = new THREE.Color(COL.ice);
+  const armHues = [0.45, 0.09, 0.6];
 
   for (let i = 0; i < count; i++) {
     const t = i / count;
@@ -551,7 +611,8 @@ function makeVortex(glowTex, lite) {
     positions[i * 3] = Math.cos(angle) * radius;
     positions[i * 3 + 1] = wave;
     positions[i * 3 + 2] = Math.sin(angle) * radius;
-    color.setHSL(0.57 - t * 0.05, 0.52 + t * 0.25, 0.36 + t * 0.34);
+    color.setHSL(armHues[i % 3], 0.62 + t * 0.2, 0.42 + t * 0.3);
+    color.lerp(iceC, t * 0.55);
     colors[i * 3] = color.r;
     colors[i * 3 + 1] = color.g;
     colors[i * 3 + 2] = color.b;
@@ -561,7 +622,7 @@ function makeVortex(glowTex, lite) {
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
   const points = new THREE.Points(geometry, new THREE.PointsMaterial({
-    map: glowTex, vertexColors: true, size: 0.068, transparent: true, opacity: 0.8,
+    map: glowTex, vertexColors: true, size: 0.075, transparent: true, opacity: 0.85,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
   group.add(points);
@@ -573,9 +634,16 @@ function makeVortex(glowTex, lite) {
   core.scale.setScalar(1.7);
   group.add(core);
 
+  const nucleus = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: glowTex, color: 0xffcf8a, transparent: true, opacity: 0.4,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  nucleus.scale.setScalar(0.9);
+  group.add(nucleus);
+
   const ring = new THREE.Mesh(
     new THREE.TorusGeometry(2.5, 0.007, 8, 180),
-    new THREE.MeshBasicMaterial({ color: COL.ice, transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.MeshBasicMaterial({ color: COL.ice, transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   group.add(ring);
 
@@ -591,18 +659,18 @@ function makeVortex(glowTex, lite) {
     orbs.push({ sprite, phase });
   });
 
-  // 三条旋臂丝带：给粒子云加一层可辨的"结构"
+  // 三条旋臂丝带：三通道色，低圈数保持可读
   const ribbons = [];
-  [[1.55, 0x8fd0ff, 0], [1.95, 0x5da2d8, 2.1], [2.3, 0x3d74a8, 4.2]].forEach(([radius, hex, phase]) => {
+  [[1.55, COL.uplp, 0], [1.95, COL.ubmp, 2.1], [2.3, COL.unip, 4.2]].forEach(([radius, hex, phase]) => {
     const pts = [];
-    for (let i = 0; i <= 220; i++) {
-      const a = (i / 220) * Math.PI * 6 + phase;
-      const r = radius + Math.sin(i * 0.22 + phase) * 0.16;
+    for (let i = 0; i <= 150; i++) {
+      const a = (i / 150) * Math.PI * 3.4 + phase;
+      const r = radius + Math.sin(i * 0.22 + phase) * 0.1;
       pts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a * 3 + phase) * 0.2, Math.sin(a) * r));
     }
     group.add(new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({ color: hex, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false })
+      new THREE.LineBasicMaterial({ color: hex, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, depthWrite: false })
     ));
   });
 
@@ -623,6 +691,7 @@ function makeVortex(glowTex, lite) {
       orbs.forEach(({ sprite, phase }) => {
         const angle = t * 0.35 + phase;
         sprite.position.set(Math.cos(angle) * orbitRadius, Math.sin(angle * 1.4) * 0.16, Math.sin(angle) * orbitRadius);
+        sprite.scale.setScalar(0.65 + Math.sin(t * 1.3 + phase) * 0.09);
       });
       pulses.forEach(({ sprite, phase }) => {
         const p = (t * 0.26 + phase) % 1;
@@ -657,23 +726,38 @@ function makeLattice(glowTex) {
   const halo = new THREE.InstancedMesh(haloGeo, haloMat, 42);
 
   const edges = [];
+  const edgeColors = [];
   const seams = [];
+  const ec = new THREE.Color();
+  const pushEdgeColor = hex => {
+    ec.setHex(hex).multiplyScalar(0.85);
+    edgeColors.push(ec.r, ec.g, ec.b);
+  };
   for (let col = 0; col < cols; col++) {
     for (let row = 0; row < rows; row++) {
       const x = (col - (cols - 1) / 2) * gapX;
       const y = ((rows - 1) / 2 - row) * gapY;
       const z = Math.sin(col * 0.9 + row * 0.55) * 0.11;
       basePositions[col * rows + row] = [x, y, z];
-      if (col < cols - 1) edges.push(x, y, z, x + gapX, y, z);
-      if (row < rows - 1) edges.push(x, y, z, x, y - gapY, z);
+      if (col < cols - 1) {
+        edges.push(x, y, z, x + gapX, y, z);
+        pushEdgeColor(MOD[col]);
+        pushEdgeColor(MOD[col + 1]);
+      }
+      if (row < rows - 1) {
+        edges.push(x, y, z, x, y - gapY, z);
+        pushEdgeColor(MOD[col]);
+        pushEdgeColor(MOD[col]);
+      }
       if (col < cols - 1 && row < rows - 1) seams.push(x, y, z, x + gapX, y - gapY, z);
     }
   }
 
   const edgeGeo = new THREE.BufferGeometry();
   edgeGeo.setAttribute('position', new THREE.Float32BufferAttribute(edges, 3));
+  edgeGeo.setAttribute('color', new THREE.Float32BufferAttribute(edgeColors, 3));
   group.add(new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({
-    color: 0x8fd0ff, transparent: true, opacity: 0.72, blending: THREE.AdditiveBlending, depthWrite: false
+    vertexColors: true, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false
   })));
 
   const seamGeo = new THREE.BufferGeometry();
@@ -692,17 +776,18 @@ function makeLattice(glowTex) {
       -halfW, halfH, 0, -halfW, halfH, -0.6, halfW, halfH, 0, halfW, halfH, -0.6,
       halfW, -halfH, 0, halfW, -halfH, -0.6, -halfW, -halfH, 0, -halfW, -halfH, -0.6
     ], 3)),
-    new THREE.LineBasicMaterial({ color: COL.beam, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.LineBasicMaterial({ color: COL.beam, transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   group.add(frame);
 
   group.add(nodes, halo);
 
   // 扫描光带 + 悬停光环 + 每列数据灯
-  const scan = new THREE.Mesh(
-    new THREE.PlaneGeometry(halfW * 2 - 0.2, 0.055),
-    new THREE.MeshBasicMaterial({ color: 0xa8dcff, transparent: true, opacity: 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
-  );
+  const scan = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: glowTex, color: 0xa8dcff, transparent: true, opacity: 0.12,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  scan.scale.set(halfW * 2 - 0.2, 0.5, 1);
   scan.position.z = 0.32;
   group.add(scan);
 
@@ -715,7 +800,7 @@ function makeLattice(glowTex) {
   const beacons = [];
   for (let col = 0; col < cols; col++) {
     const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
-      map: glowTex, color: 0x9fd2ff, transparent: true, opacity: 0.4,
+      map: glowTex, color: MOD[col], transparent: true, opacity: 0.4,
       blending: THREE.AdditiveBlending, depthWrite: false
     }));
     sprite.scale.setScalar(0.12);
@@ -733,7 +818,7 @@ function makeLattice(glowTex) {
     dummy.updateMatrix();
     nodes.setMatrixAt(i, dummy.matrix);
     halo.setMatrixAt(i, dummy.matrix);
-    tmpColor.setRGB(0.4, 0.78, 1);
+    tmpColor.setHex(MOD[Math.floor(i / 7)]);
     nodes.setColorAt(i, tmpColor);
   }
   nodes.instanceMatrix.needsUpdate = true;
@@ -754,9 +839,12 @@ function makeBrain(glowTex, lite) {
   const fill = new THREE.PointLight(0x7a6bff, 0.9, 4.2);
   fill.position.set(-1.2, 0.5, -0.9);
   group.add(fill);
+  const warm = new THREE.PointLight(0xffb648, 0.55, 4.5, 2);
+  warm.position.set(1.3, -0.5, 1.1);
+  group.add(warm);
 
   const aura = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: glowTex, color: 0x1d5f9f, transparent: true, opacity: 0.16,
+    map: glowTex, color: 0x2a6fc0, transparent: true, opacity: 0.14,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
   aura.scale.setScalar(7.6);
@@ -802,7 +890,7 @@ function makeBrain(glowTex, lite) {
 
   const cortex = new THREE.MeshStandardMaterial({
     color: 0x6fa6c8, emissive: 0x0b3356, emissiveIntensity: 0.38,
-    roughness: 0.72, metalness: 0.12, transparent: true, opacity: 0.22,
+    roughness: 0.55, metalness: 0.22, transparent: true, opacity: 0.22,
     depthWrite: false, side: THREE.DoubleSide
   });
   const cerebellum = new THREE.MeshStandardMaterial({
@@ -814,10 +902,10 @@ function makeBrain(glowTex, lite) {
     roughness: 0.88, transparent: true, opacity: 0.5, depthWrite: false
   });
   const shellMat = new THREE.MeshBasicMaterial({
-    color: COL.beam, wireframe: true, transparent: true, opacity: 0.09,
+    color: COL.beam, wireframe: true, transparent: true, opacity: 0.05,
     blending: THREE.AdditiveBlending, depthWrite: false
   });
-  const rimMat = fresnelMaterial(0x5aa8e8, 2.4, 0.36);
+  const rimMat = fresnelMaterial(0x5aa8e8, 2.4, 0.3);
   const rimViolet = fresnelMaterial(0x7f6bff, 3.4, 0.14);
 
   fetch('../assets/brain-anatomy.bin')
@@ -895,9 +983,9 @@ function makeBrain(glowTex, lite) {
       for (const j of [i, i + 1]) {
         positions.push(fiber.pts[j * 3], fiber.pts[j * 3 + 1], fiber.pts[j * 3 + 2]);
         const c = decFromTangent(fiber.tan[j * 3], fiber.tan[j * 3 + 1], fiber.tan[j * 3 + 2]);
-        color.setRGB(0.05 + c[0] * 0.8, 0.06 + c[1] * 0.72, 0.09 + c[2] * 0.85, THREE.SRGBColorSpace);
+        color.setRGB(0.06 + c[0] * 0.85, 0.07 + c[1] * 0.8, 0.1 + c[2] * 0.88, THREE.SRGBColorSpace);
         colors.push(color.r, color.g, color.b);
-        if (i % 4 === 0) sparks.push(fiber.pts[j * 3], fiber.pts[j * 3 + 1], fiber.pts[j * 3 + 2]);
+        if (i % 9 === 0 && j === i) sparks.push(fiber.pts[j * 3], fiber.pts[j * 3 + 1], fiber.pts[j * 3 + 2]);
       }
     }
   }
@@ -906,7 +994,7 @@ function makeBrain(glowTex, lite) {
   fiberGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   fiberGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const fiberLines = new THREE.LineSegments(fiberGeo, new THREE.LineBasicMaterial({
-    vertexColors: true, transparent: true, opacity: 0.62, depthWrite: false, blending: THREE.NormalBlending
+    vertexColors: true, transparent: true, opacity: 0.8, depthWrite: false, blending: THREE.NormalBlending
   }));
   fiberLines.renderOrder = 4;
   group.add(fiberLines);
@@ -914,7 +1002,7 @@ function makeBrain(glowTex, lite) {
   const sparkGeo = new THREE.BufferGeometry();
   sparkGeo.setAttribute('position', new THREE.Float32BufferAttribute(sparks, 3));
   const sparkPoints = new THREE.Points(sparkGeo, new THREE.PointsMaterial({
-    map: glowTex, color: COL.ice, size: 0.04, transparent: true, opacity: 0.4,
+    map: glowTex, color: COL.ice, size: 0.03, transparent: true, opacity: 0.25,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
   sparkPoints.renderOrder = 5;
@@ -961,7 +1049,7 @@ function makeBrain(glowTex, lite) {
   const sigGeo = new THREE.BufferGeometry();
   sigGeo.setAttribute('position', new THREE.BufferAttribute(sigPos, 3));
   const sigPoints = new THREE.Points(sigGeo, new THREE.PointsMaterial({
-    map: glowTex, color: 0xf2f9ff, size: 0.055, transparent: true, opacity: 0.75,
+    map: glowTex, color: 0xf2f9ff, size: 0.05, transparent: true, opacity: 0.6,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
   sigPoints.renderOrder = 7;
@@ -1006,5 +1094,20 @@ function makeDust(count, glowTex) {
     map: glowTex, color: 0x9fc9ef, size: 0.035, transparent: true, opacity: 0.5,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   }));
+
+  // 近景散景层：大颗粒低透明度，制造景深
+  const bokehCount = Math.round(count * 0.14);
+  const bokehPos = new Float32Array(bokehCount * 3);
+  for (let i = 0; i < bokehCount; i++) {
+    bokehPos[i * 3] = (rand() - 0.5) * 26;
+    bokehPos[i * 3 + 1] = (rand() - 0.5) * 16;
+    bokehPos[i * 3 + 2] = -0.5 - rand() * 6.5;
+  }
+  const bokehGeo = new THREE.BufferGeometry();
+  bokehGeo.setAttribute('position', new THREE.BufferAttribute(bokehPos, 3));
+  points.add(new THREE.Points(bokehGeo, new THREE.PointsMaterial({
+    map: glowTex, color: 0x7fb4e6, size: 0.16, transparent: true, opacity: 0.09,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+  })));
   return points;
 }

@@ -176,7 +176,7 @@ async function initScene() {
     const testCanvas = document.createElement('canvas');
     const gl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl');
     if (!gl) throw new Error('WebGL unavailable');
-    const { createHeroScene } = await import('./brain-scene.js?v=20261101a');
+    const { createHeroScene } = await import('./brain-scene.js?v=20261119a');
     sceneController = createHeroScene(document.querySelector('#scene'), {
       lite: params.has('lite'),
       reducedMotion,

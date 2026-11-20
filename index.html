@@ -71,6 +71,23 @@
             text-transform: uppercase;
             color: rgba(255,255,255,0.5);
         }
+        /* ---------- Hero 立场入口 ---------- */
+        .hero-def-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin: 0 auto 1.4rem;
+            padding-bottom: 2px;
+            color: rgba(255,255,255,0.82);
+            font-size: 0.92rem;
+            text-decoration: none;
+            border-bottom: var(--stroke-hairline) solid rgba(255,255,255,0.35);
+            transition: color var(--duration-fast) var(--ease-smooth), border-color var(--duration-fast) var(--ease-smooth);
+        }
+        .hero-def-link:hover {
+            color: #fff;
+            border-bottom-color: var(--color-amber-500);
+        }
 
         /* ---------- 章节垂直节奏 ---------- */
         .home-section { margin: 4rem 0; }
@@ -94,6 +111,49 @@
         .manifesto-quote p strong {
             color: var(--color-navy-600);
             font-weight: 600;
+        }
+
+        /* ---------- 范式分工面板 ---------- */
+        .defense-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1.8rem;
+            align-items: center;
+            padding: 1.8rem 2rem;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-left: 4px solid var(--color-amber-700);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xs);
+        }
+        .dp-kicker {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: var(--tracking-tech);
+            text-transform: uppercase;
+            color: var(--color-amber-700);
+            margin-bottom: 0.5rem;
+        }
+        .defense-copy h3 {
+            font-size: 1.28rem;
+            margin: 0 0 0.6rem;
+        }
+        .defense-copy p {
+            max-width: 720px;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--color-slate-700);
+        }
+        .defense-copy p + p { margin-top: 0.7rem; }
+        .defense-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        @media (max-width: 780px) {
+            .defense-panel { grid-template-columns: 1fr; }
+            .defense-cta { flex-direction: row; flex-wrap: wrap; }
         }
 
         /* ---------- 模块卡片网格 ---------- */
@@ -350,6 +410,11 @@
                 <span class="hero-cta-3d-sub">沉浸式功能层探索</span>
             </div>
 
+            <a class="hero-def-link" href="/INTRE-website/defense/">
+                变量范式守现象层，状态范式守功能层
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+
             <div class="hero-stats">
                 <div class="stat-card">
                     <span class="stat-num">42<span class="stat-unit">维</span></span>
@@ -405,10 +470,15 @@
 
     <div class="container">
 
-        <!-- ==================== MANIFESTO ==================== -->
-        <section class="home-section reveal" aria-label="宣言">
+        <!-- ==================== 核心观点 ==================== -->
+        <section class="home-section reveal" aria-label="核心观点">
+            <div class="section-head">
+                <span class="tech-label">Core Argument</span>
+                <h2>核心观点</h2>
+                <p class="section-sub">心理学缺少一门可计算的功能层语言——这是 INTRE 全部工作的起点。</p>
+            </div>
             <blockquote class="manifesto-quote">
-                <span class="tech-label">Manifesto · 我们的论点</span>
+                <span class="tech-label">Manifesto</span>
                 <p>心理学缺少一门<strong>可计算的功能层语言</strong>：主观体验难精确描述，神经信号难直接解读。INTRE 提出功能层<strong>问题空间</strong>，搭起系统动力学<strong>答案骨架</strong>——M-R-D-S 诊断状态，G-M-A-R 执行操作，<br>让<strong>描述可通约、解释达机制、预测到个体、干预中靶点</strong>。</p>
             </blockquote>
         </section>
@@ -438,6 +508,35 @@
             .overview-cta i:last-child{transition:transform .18s ease;}
             .overview-cta:hover i:last-child{transform:translateX(4px);}
             </style>
+        </section>
+
+        <!-- ==================== 范式分工 ==================== -->
+        <section class="home-section" aria-label="范式分工">
+            <div class="section-head reveal">
+                <span class="tech-label">Division of Labor</span>
+                <h2>范式分工</h2>
+                <p class="section-sub">变量范式守现象层，状态范式守功能层，两者经观测函数相连。</p>
+                <div class="head-rule" aria-hidden="true">
+                    <span class="rule-line"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-dot"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-line"></span>
+                </div>
+            </div>
+
+            <div class="defense-panel reveal">
+                <div class="defense-copy">
+                    <span class="dp-kicker">立场佐证件 · 03-A-10</span>
+                    <h3>为变量范式辩护</h3>
+                    <p>变量范式继续承担现象层的观测与检验，状态范式在功能层补充状态描述与干预语法。测量基础设施、概念驱动、因果验证、跨文化校准与低资源场景，是它在分工格局中的五类持久价值——判的是数学对象的承载边界，不是学者的高低。</p>
+                    <p>两套语言经观测函数相连：变量范式的量表、效应量与相关结构，对接为观测输入与校准先验。不是被取代，而是换了一个持续在用的位置。</p>
+                </div>
+                <div class="defense-cta">
+                    <a class="btn btn-primary" href="/INTRE-website/defense/">阅读专文 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a class="btn btn-outline" href="/INTRE-website/compare/">双范式对比</a>
+                </div>
+            </div>
         </section>
 
         <!-- ==================== 核心模块 ==================== -->
@@ -617,6 +716,7 @@
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-desc">功能状态心理学 (FSP) · 开放知识入口</p>
+        <p class="footer-desc">变量范式守现象层，状态范式守功能层，两者经观测函数相连。INTRE 受益于变量范式的测量与因果研究成果。</p>
 
         <div class="footer-sitemap">
             <div class="fs-col">
@@ -631,6 +731,7 @@
             <div class="fs-col">
                 <h4>Learn · 学习</h4>
                 <a href="/INTRE-website/textbook/">导论教材</a>
+                <a href="/INTRE-website/defense/">为变量范式辩护</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
             </div>
             <div class="fs-col">

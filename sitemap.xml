@@ -37,10 +37,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://project003125.github.io/INTRE-website/pse/flow.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://project003125.github.io/INTRE-website/rever/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://project003125.github.io/INTRE-website/defense/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://project003125.github.io/INTRE-website/glossary/</loc>

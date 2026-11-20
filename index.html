@@ -113,47 +113,12 @@
             font-weight: 600;
         }
 
-        /* ---------- 范式分工面板 ---------- */
-        .defense-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 1.8rem;
-            align-items: center;
-            padding: 1.8rem 2rem;
-            background: var(--color-white);
-            border: var(--stroke-hairline) solid var(--color-slate-200);
-            border-left: 4px solid var(--color-amber-700);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xs);
-        }
-        .dp-kicker {
-            display: block;
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            letter-spacing: var(--tracking-tech);
-            text-transform: uppercase;
-            color: var(--color-amber-700);
-            margin-bottom: 0.5rem;
-        }
-        .defense-copy h3 {
-            font-size: 1.28rem;
-            margin: 0 0 0.6rem;
-        }
-        .defense-copy p {
-            max-width: 720px;
-            font-size: 0.95rem;
-            line-height: 1.85;
-            color: var(--color-slate-700);
-        }
-        .defense-copy p + p { margin-top: 0.7rem; }
-        .defense-cta {
+        /* ---------- 章节动作行 ---------- */
+        .section-actions {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 0.6rem;
-        }
-        @media (max-width: 780px) {
-            .defense-panel { grid-template-columns: 1fr; }
-            .defense-cta { flex-direction: row; flex-wrap: wrap; }
+            margin-top: 1.2rem;
         }
 
         /* ---------- 模块卡片网格 ---------- */
@@ -516,26 +481,15 @@
                 <span class="tech-label">Division of Labor</span>
                 <h2>范式分工</h2>
                 <p class="section-sub">变量范式守现象层，状态范式守功能层，两者经观测函数相连。</p>
-                <div class="head-rule" aria-hidden="true">
-                    <span class="rule-line"></span>
-                    <span class="rule-tri"></span>
-                    <span class="rule-dot"></span>
-                    <span class="rule-tri"></span>
-                    <span class="rule-line"></span>
-                </div>
             </div>
-
-            <div class="defense-panel reveal">
-                <div class="defense-copy">
-                    <span class="dp-kicker">立场佐证件 · 03-A-10</span>
-                    <h3>为变量范式辩护</h3>
-                    <p>变量范式继续承担现象层的观测与检验，状态范式在功能层补充状态描述与干预语法。测量基础设施、概念驱动、因果验证、跨文化校准与低资源场景，是它在分工格局中的五类持久价值——判的是数学对象的承载边界，不是学者的高低。</p>
-                    <p>两套语言经观测函数相连：变量范式的量表、效应量与相关结构，对接为观测输入与校准先验。不是被取代，而是换了一个持续在用的位置。</p>
-                </div>
-                <div class="defense-cta">
-                    <a class="btn btn-primary" href="/INTRE-website/defense/">阅读专文 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    <a class="btn btn-outline" href="/INTRE-website/compare/">双范式对比</a>
-                </div>
+            <blockquote class="manifesto-quote reveal">
+                <span class="tech-label">Stance · 03-A-10</span>
+                <p>变量范式继续承担现象层的观测与检验，状态范式在功能层补充状态描述与干预语法。测量基础设施、概念驱动、因果验证、跨文化校准与低资源场景，是它在分工格局中的五类持久价值——判的是数学对象的承载边界，不是学者的高低。</p>
+                <p>两套语言经观测函数相连：变量范式的量表、效应量与相关结构，对接为观测输入与校准先验。不是被取代，而是换了一个持续在用的位置。</p>
+            </blockquote>
+            <div class="section-actions reveal">
+                <a class="btn btn-primary" href="/INTRE-website/defense/">阅读专文 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a class="btn btn-outline" href="/INTRE-website/compare/">双范式对比</a>
             </div>
         </section>
 

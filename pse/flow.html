@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>(function(){try{var t=localStorage.getItem("intre-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PSE 运转动画 · 一次主诉，走完六级管线 | INTRE</title>
+<meta name="description" content="90 秒动画：把 PSE 心理系统计算引擎想成一台车载导航——高精地图、三路传感器、本地 GPU、伦理护栏。以模拟案例林晓的八周演示 L0–L5 完整闭环。">
+<meta property="og:title" content="PSE 运转动画 · 一次主诉，走完六级管线 · INTRE">
+<meta property="og:description" content="车载导航类比：L0 地图、L1 三路传感器、L2 定位、L3 预判、L4 选路、L5 驾驶，REVER 全程护栏。模拟演示，非临床结论。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/pse/flow.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<style>
+:root{
+  --navy-800:#122F5C; --navy-700:#1A3866; --navy-600:#1F4880; --navy-500:#2A5DA0; --navy-400:#3B6FB5; --navy-200:#bdd0e8;
+  --slate-900:#0f172a; --slate-700:#334155; --slate-500:#64748b; --slate-300:#cbd5e1; --slate-200:#e2e8f0; --slate-100:#f1f5f9;
+  --amber-600:#D97706; --amber-500:#F59E0B; --amber-100:#FDE68A;
+  --ink:#e9eff9; --ink-dim:rgba(233,239,249,.66); --ink-faint:rgba(233,239,249,.4);
+  --stage:#071120; --panel:#0c1a2e; --panel-2:#101f36;
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --sans:'Inter','Noto Sans SC','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f4f7fb;color:#0f172a;font-family:var(--sans);line-height:1.6}
+a{color:var(--navy-600);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1120px;margin:0 auto;padding:1.1rem 1.5rem;flex-wrap:wrap}
+.brand{font-family:'Josefin Sans',var(--sans);font-weight:600;letter-spacing:.14em;font-size:1rem;color:var(--navy-800);text-decoration:none}
+.brand small{display:block;font-family:var(--sans);font-weight:400;letter-spacing:.02em;font-size:.7rem;color:var(--slate-500)}
+.top nav{display:flex;gap:1.1rem;font-size:.82rem;flex-wrap:wrap;align-items:center}
+.top nav a{color:var(--slate-700)}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;background:none;border:1px solid var(--slate-300);border-radius:999px;color:var(--slate-500);font-size:.9rem;line-height:1;cursor:pointer}
+.theme-toggle:hover{border-color:var(--navy-400);color:var(--navy-600)}
+.theme-toggle:focus-visible{outline:2px solid var(--navy-400);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem 4rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-600)}
+h1{font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.25;letter-spacing:-.02em;margin:.5rem 0 .6rem;color:var(--slate-900)}
+.lede{max-width:820px;color:var(--slate-700);margin:0 0 1.6rem;font-size:.98rem}
+
+/* ---------- player ---------- */
+.player{position:relative;border-radius:14px;overflow:hidden;background:var(--stage);box-shadow:0 24px 60px rgba(10,25,50,.28);border:1px solid rgba(18,47,92,.5);aspect-ratio:16/9;max-height:80vh;container-type:inline-size}
+.windshield{position:absolute;inset:0 0 68% 0;background:#03070f}
+.windshield canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.windshield::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 100%,transparent 40%,rgba(0,0,0,.45));pointer-events:none}
+.wipers{position:absolute;left:6%;right:6%;bottom:-4px;height:52%;pointer-events:none;opacity:.5}
+.wipers i{position:absolute;left:0;bottom:0;width:42%;height:3px;border-radius:3px;background:linear-gradient(90deg,rgba(10,14,22,.85),rgba(10,14,22,.2));transform-origin:0 50%;animation:wipe 4.4s ease-in-out infinite}
+.wipers i:nth-child(2){left:auto;right:0;transform-origin:100% 50%;animation-direction:reverse}
+@keyframes wipe{0%,62%{transform:rotate(-4deg)}70%,86%{transform:rotate(26deg)}96%,100%{transform:rotate(-4deg)}}
+.hud-badge{position:absolute;left:1rem;top:.8rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:#dbe7f7;background:rgba(9,20,38,.7);border:1px solid rgba(120,160,220,.35);padding:.22rem .6rem;border-radius:999px;backdrop-filter:blur(3px)}
+.hud-right{position:absolute;right:1rem;top:.8rem;font-family:var(--mono);font-size:.66rem;color:rgba(219,231,247,.65);letter-spacing:.06em}
+.rain-note{position:absolute;left:1rem;bottom:.6rem;font-family:var(--mono);font-size:.62rem;color:rgba(219,231,247,.4);letter-spacing:.08em}
+
+.screen{position:absolute;inset:32% 0 0 0;background:linear-gradient(180deg,#081426,#0a1930 55%,#081324);border-top:1px solid rgba(120,160,220,.22);overflow:hidden}
+.screen::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(120,160,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,220,.05) 1px,transparent 1px);background-size:34px 34px;pointer-events:none}
+.scene{position:absolute;inset:0 0 62px 0;padding:1.1rem 1.2rem .6rem;opacity:0;visibility:hidden;transition:opacity .45s ease}
+.scene.active{opacity:1;visibility:visible}
+.scene-body{height:100%;display:flex;gap:1rem}
+.subtitle{position:absolute;left:0;right:0;bottom:0;min-height:62px;display:flex;align-items:center;justify-content:center;padding:.5rem 1.4rem;background:linear-gradient(180deg,rgba(5,11,22,0),rgba(5,11,22,.9) 40%);text-align:center}
+.subtitle p{margin:0;color:#e9f0fa;font-size:clamp(.82rem,1.5vw,.98rem);max-width:860px}
+.progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(120,160,220,.14);z-index:5}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy-400),#7fb0e8)}
+.scene-num{position:absolute;right:1.1rem;bottom:.85rem;font-family:var(--mono);font-size:.62rem;color:rgba(219,231,247,.45);letter-spacing:.1em;z-index:6}
+
+/* ---------- shared scene atoms ---------- */
+.mono{font-family:var(--mono)}
+.dim{color:var(--ink-dim)}
+.tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:#9fc0e8;text-transform:uppercase}
+.card{background:rgba(16,31,54,.78);border:1px solid rgba(120,160,220,.22);border-radius:8px;padding:.7rem .8rem}
+.amber{color:var(--amber-100)}
+.footnote{font-family:var(--mono);font-size:.6rem;color:var(--ink-faint);letter-spacing:.02em}
+.rise{opacity:0;transform:translateY(8px)}
+.scene.active .rise{animation:rise .6s ease forwards}
+.scene.active .d1{animation-delay:.15s}.scene.active .d2{animation-delay:.3s}.scene.active .d3{animation-delay:.45s}.scene.active .d4{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* scene 1 */
+.boot{flex-direction:row;align-items:center;gap:1.4rem}
+.boot-left{display:grid;gap:.8rem;flex:0 0 300px;align-content:center}
+.boot-lines{font-size:clamp(.7rem,1.2vw,.82rem);color:#bcd3ef;display:grid;gap:.3rem}
+.boot-lines .ok{color:#8fd3a8}
+.idcard{display:flex;flex-direction:column;gap:.2rem;background:rgba(16,31,54,.8);border-left:3px solid var(--navy-400);border-radius:6px;padding:.65rem .85rem;color:var(--ink)}
+.idcard strong{font-size:.95rem}
+.idcard p{margin:0;font-size:.78rem;color:#cfe0f5}
+.grid42{flex:1;display:grid;grid-template-columns:auto repeat(7,1fr);gap:4px;align-content:center}
+.grid42 .h{font-family:var(--mono);font-size:.56rem;color:var(--ink-faint);text-align:center}
+.grid42 .m{font-family:var(--mono);font-size:.6rem;color:#9fc0e8;display:flex;align-items:center;padding-right:2px}
+.grid42 .c{height:clamp(14px,2.6vw,24px);border-radius:3px;background:rgba(120,160,220,.1);border:1px solid rgba(120,160,220,.12);opacity:0;transform:scale(.9)}
+.scene.active .grid42 .c{animation:cell .5s ease forwards;animation-delay:calc(var(--i)*18ms)}
+@keyframes cell{to{opacity:1;transform:none;background:rgba(59,111,181,.35);border-color:rgba(120,160,220,.4)}}
+
+/* scene 2 */
+.ports{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;align-content:start}
+.port{display:flex;flex-direction:column;gap:.5rem}
+.port .tag{font-size:.66rem}
+.port .tag em{font-style:normal;color:var(--amber-100);border:1px solid rgba(245,158,11,.45);border-radius:999px;padding:0 .35rem;margin-left:.3rem;font-size:.58rem}
+.quote{margin:0;font-size:clamp(.78rem,1.4vw,.9rem);color:#dfe9f7;line-height:1.7}
+.quote::before{content:"“";color:var(--navy-400)}
+.quote::after{content:"”";color:var(--navy-400)}
+.telemetry{display:flex;justify-content:space-between;font-size:.8rem;color:#cfe0f5;border-bottom:1px dashed rgba(120,160,220,.18);padding:.22rem 0}
+.telemetry b{font-family:var(--mono);color:var(--ink)}
+.lidar{position:relative;height:70px;border-radius:6px;background:radial-gradient(circle at 30% 50%,rgba(59,111,181,.45),rgba(10,20,38,.6) 60%);overflow:hidden;border:1px solid rgba(120,160,220,.2)}
+.lidar .sweep{position:absolute;inset:-40% -10%;background:conic-gradient(from 0deg at 30% 50%,rgba(140,190,255,.5),transparent 22%);animation:sweep 2.6s linear infinite}
+.lidar .half{position:absolute;inset:0 0 0 50%;background:rgba(5,10,20,.78);border-left:1px dashed rgba(150,170,200,.35)}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.merge{grid-column:1/-1;text-align:center;font-size:.74rem;color:#9fc0e8;letter-spacing:.04em;border-top:1px dashed rgba(120,160,220,.2);padding-top:.55rem}
+
+/* scene 3 */
+.estimate{display:grid;grid-template-columns:minmax(230px,.78fr) 1.22fr;gap:1.1rem;align-items:stretch}
+.map-mini{position:relative;background:rgba(10,22,40,.7);border:1px solid rgba(120,160,220,.18);border-radius:8px;overflow:hidden;min-height:160px}
+.map-mini svg{position:absolute;inset:0;width:100%;height:100%}
+.map-mini .footnote{position:absolute;left:.6rem;top:.5rem;font-size:.62rem}
+.ellipse{transform-origin:160px 130px;animation:shrink 2.2s ease-out forwards}
+@keyframes shrink{0%{transform:scale(1.7);opacity:.2}100%{transform:scale(1);opacity:1}}
+.gauges{display:grid;gap:.5rem;align-content:center}
+.gauge{display:grid;grid-template-columns:10.5rem 1fr 5.4rem;align-items:center;gap:.55rem;font-size:.76rem;color:#cfe0f5}
+.gauge .val{font-family:var(--mono);text-align:right;color:var(--ink);font-size:.78rem}
+.bar{height:7px;border-radius:99px;background:rgba(120,160,220,.14);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--navy-500),#6fa5e0);transition:width 1.3s ease}
+.scene.active .bar i{width:calc(var(--v)*100%)}
+.rulecard{grid-column:1/-1;display:flex;align-items:center;gap:.8rem;margin-top:.25rem;background:rgba(16,31,54,.55);border:1px solid rgba(120,160,220,.18);border-radius:8px;padding:.5rem .7rem}
+.rulecard .tag{display:block;font-size:.6rem}
+.rulecard .rule{margin:.1rem 0 0;font-size:.82rem;color:#e5eefb;flex:1}
+.rulecard .rule::before{content:"如果 ";color:var(--ink-faint)}
+.ring{width:62px;height:62px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:rgba(120,160,220,.16)}
+.ring .fg{stroke:#6fa5e0;stroke-linecap:round;stroke-dasharray:calc(var(--v)*100) 100;transition:stroke-dasharray 1.4s ease}
+.ring b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-size:.68rem;color:var(--ink);line-height:1.1}
+.ring b small{font-size:.5rem;color:var(--ink-faint)}
+.derived{font-family:var(--mono);font-size:.58rem;color:var(--amber-100);border:1px dashed rgba(245,158,11,.4);padding:.12rem .4rem;border-radius:999px;white-space:nowrap}
+
+/* scene 4 */
+.dynamics{flex-direction:column;gap:.5rem}
+.roadviz{flex:1;width:100%;min-height:0;min-width:0}
+.roadviz text{font-family:var(--mono);font-size:10px;fill:rgba(233,239,249,.55)}
+.roadviz .risk{animation:fadein 1s .6s both}
+.roadviz .scan{animation:scan 3.2s linear infinite}
+@keyframes scan{0%{transform:translateX(0)}100%{transform:translateX(150px)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;font-family:var(--mono);font-size:.66rem;color:#cfe0f5}
+.chips span{border:1px solid rgba(120,160,220,.25);border-radius:999px;padding:.16rem .6rem}
+
+/* scene 5 */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;align-content:center}
+.cand{display:flex;flex-direction:column;gap:.5rem;opacity:.55;transition:opacity .4s;padding:1rem 1rem .9rem}
+.scene.active .cand{opacity:1}
+.cand .tag{font-size:.68rem}
+.cand .stats{display:flex;align-items:baseline;gap:.5rem}
+.cand .stats b{font-family:var(--mono);font-size:1.3rem;color:var(--ink)}
+.cand .stats span{font-size:.7rem;color:#cfe0f5}
+.cand.picked{border-color:rgba(120,170,235,.65);box-shadow:0 0 0 1px rgba(120,170,235,.35),0 0 24px rgba(59,111,181,.25);position:relative}
+.cand.picked::after{content:"选中";position:absolute;right:.7rem;top:.7rem;font-family:var(--mono);font-size:.6rem;color:#0b1626;background:#8fc0f4;border-radius:3px;padding:.05rem .4rem;transform:rotate(6deg)}
+.cand p{margin:0;font-size:.78rem;color:#cfe0f5;line-height:1.6}
+.constraints{grid-column:1/-1;font-size:.66rem;color:var(--ink-faint)}
+
+/* scene 6 */
+.rever{flex-direction:column;justify-content:center;gap:1rem}
+.gates{display:flex;gap:.55rem;flex-wrap:wrap}
+.rail{height:2px;max-width:720px;width:100%;background:linear-gradient(90deg,rgba(245,158,11,0),rgba(245,158,11,.55),rgba(245,158,11,0));margin:-.35rem 0 .1rem}
+.gates span{font-family:var(--mono);font-size:.72rem;color:var(--amber-100);border:1px solid rgba(245,158,11,.4);border-radius:999px;padding:.24rem .8rem;background:rgba(245,158,11,.07);opacity:0}
+.scene.active .gates span{animation:rise .5s ease forwards;animation-delay:calc(var(--i)*140ms)}
+.verdict{display:grid;gap:.55rem;max-width:720px}
+.verdict div{display:flex;gap:.7rem;align-items:baseline;font-size:.8rem;color:#cfe0f5;border:1px solid rgba(120,160,220,.18);border-radius:6px;padding:.5rem .7rem;background:rgba(16,31,54,.6)}
+.verdict .mono{font-size:.6rem;border-radius:3px;padding:.02rem .4rem;flex:none}
+.verdict .reject .mono{background:rgba(245,158,11,.18);color:var(--amber-100)}
+.verdict .accept .mono{background:rgba(120,200,150,.16);color:#9fe0b5}
+
+/* scene 7 */
+.exec{display:grid;grid-template-columns:1.08fr .92fr;gap:1.1rem;align-content:center}
+.ops{display:grid;gap:.5rem}
+.op{display:flex;gap:.7rem;align-items:baseline;font-size:.8rem;border-left:2px solid rgba(120,160,220,.35);padding:.35rem .7rem;background:rgba(16,31,54,.55);border-radius:0 6px 6px 0;opacity:0;transform:translateX(-6px)}
+.scene.active .op{animation:slidein .5s ease forwards;animation-delay:calc(var(--i)*260ms)}
+@keyframes slidein{to{opacity:1;transform:none}}
+.op b{font-family:var(--mono);font-size:.68rem;color:#9fc0e8;letter-spacing:.05em}
+.op span{color:#cfe0f5}
+.log{font-size:.72rem;color:#cfe0f5;display:grid;gap:.4rem;align-content:center}
+.log div{border-bottom:1px dashed rgba(120,160,220,.16);padding-bottom:.3rem}
+.strslow{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.2rem}
+.slow{display:grid;gap:.28rem;font-size:.66rem;color:var(--ink-faint)}
+.slow .mini{height:7px;border-radius:99px;background:rgba(120,160,220,.12);overflow:hidden}
+.slow .mini i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5b7396,#8fa8cc);transition:width 6s cubic-bezier(.2,.6,.3,1)}
+.scene.active .slow .mini i{width:calc(var(--v)*100%)}
+
+/* scene 8 */
+.loop{display:grid;grid-template-columns:1.45fr 1fr;gap:1.2rem;align-items:center}
+.loopviz{min-width:0}
+.loopviz svg{width:100%;height:auto;display:block}
+.loopviz text{font-family:var(--mono);font-size:12px;fill:rgba(233,239,249,.75)}
+.loopviz .flow{stroke-dasharray:6 5;animation:dash 2.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-44}}
+.update{display:grid;gap:.5rem;font-size:.72rem;color:#cfe0f5}
+.update div{border-bottom:1px dashed rgba(120,160,220,.16);padding-bottom:.35rem}
+
+/* scene 9 */
+.anomaly{flex-direction:column;justify-content:center;gap:.9rem}
+.alert{display:flex;gap:.7rem;align-items:center;color:var(--amber-100);font-family:var(--mono);font-size:.74rem;border:1px solid rgba(245,158,11,.45);background:rgba(245,158,11,.08);border-radius:6px;padding:.5rem .8rem;letter-spacing:.03em}
+.alert i{font-style:normal;background:var(--amber-500);color:#1a1206;border-radius:3px;padding:0 .4rem;font-size:.6rem}
+.seq{display:flex;gap:.7rem;align-items:center;font-family:var(--mono);font-size:.76rem;color:#cfe0f5;flex-wrap:wrap}
+.seq span{border:1px solid rgba(120,160,220,.3);border-radius:999px;padding:.18rem .7rem}
+.anomaly .log{background:rgba(16,31,54,.55);border:1px solid rgba(120,160,220,.18);border-radius:8px;padding:.7rem .9rem}
+
+/* scene 10 */
+.ending{align-items:center;justify-content:center;text-align:center}
+.final{max-width:660px;background:rgba(255,255,255,.03);border:1px solid rgba(120,160,220,.18);border-radius:10px;padding:1.2rem 1.6rem}
+.final .mono{font-size:.66rem;letter-spacing:.1em;color:#9fb3cf}
+.final h2{font-size:clamp(1.1rem,2.6vw,1.6rem);color:#f2f7ff;margin:.4rem 0 .6rem}
+.slogan{font-size:.92rem;color:#e2ecf9;margin:0 0 .7rem}
+.bound{font-size:.64rem;color:var(--amber-100);letter-spacing:.04em}
+
+/* ---------- controls ---------- */
+.controls{display:flex;align-items:center;gap:.6rem;margin:1rem 0 1.4rem;flex-wrap:wrap}
+.controls button{font-family:var(--sans);font-size:.82rem;padding:.42rem .85rem;border-radius:6px;border:1px solid var(--slate-300);background:#fff;color:var(--slate-700);cursor:pointer}
+.controls button:hover{border-color:var(--navy-400);color:var(--navy-600)}
+.controls button.primary{background:var(--navy-600);border-color:var(--navy-600);color:#fff}
+.ticks{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.ticks button{font-family:var(--mono);font-size:.6rem;padding:.2rem .45rem;border-radius:4px;border:1px solid var(--slate-200);background:#fff;color:var(--slate-500);cursor:pointer}
+.ticks button.on{background:var(--navy-600);border-color:var(--navy-600);color:#fff}
+.kbd{font-size:.72rem;color:var(--slate-500)}
+
+/* ---------- below ---------- */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:0 0 1.6rem}
+.cards3 .card{background:#fff;border:1px solid var(--slate-200);color:var(--slate-700)}
+.cards3 h3{margin:0 0 .35rem;font-size:.86rem;color:var(--slate-900)}
+.cards3 p{margin:0;font-size:.8rem;line-height:1.7}
+details.story{background:#fff;border:1px solid var(--slate-200);border-radius:10px;padding:1rem 1.2rem;margin-bottom:2rem;overflow-x:auto}
+details.story summary{cursor:pointer;font-size:.9rem;color:var(--slate-900)}
+details.story table{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.76rem}
+details.story th,details.story td{border-bottom:1px solid var(--slate-200);padding:.45rem .5rem;text-align:left;vertical-align:top}
+details.story th{background:var(--slate-100);font-weight:600;color:var(--slate-900)}
+details.story td{color:var(--slate-700)}
+footer.site{border-top:1px solid var(--slate-200);padding-top:1.2rem;font-size:.76rem;color:var(--slate-500)}
+
+@media (max-width:900px){
+  .scene-body{flex-direction:column;overflow:auto}
+  .ports{grid-template-columns:1fr}
+  .estimate{grid-template-columns:1fr}
+  .plan{grid-template-columns:1fr}
+  .exec{grid-template-columns:1fr}
+  .loop{grid-template-columns:1fr}
+  .strslow{grid-template-columns:1fr}
+  .grid42{max-width:none}
+  .cards3{grid-template-columns:1fr}
+  .player{aspect-ratio:auto;max-height:none;height:auto;min-height:560px}
+  .windshield{position:relative;height:150px;inset:auto}
+  .screen{position:relative;inset:auto;height:auto;min-height:420px}
+  .scene{position:relative;inset:auto;min-height:420px;padding-bottom:70px}
+  .scene:not(.active){display:none}
+  .subtitle{position:relative;min-height:0}
+  .progress{position:relative}
+  .scene-num{display:none}
+}
+
+/* 定格模式（#幕数）：跳过入场动画与过渡，保证分享与截图稳定 */
+body.still .scene{transition:none !important}
+body.still .scene.active{opacity:1 !important;visibility:visible !important}
+body.still .rise, body.still .scene .op, body.still .grid42 .c, body.still .gates span{
+  opacity:1 !important; transform:none !important; animation:none !important;
+}
+body.still .bar i, body.still .ring .fg, body.still .slow .mini i{transition:none !important}
+body.still .bar i, body.still .slow .mini i{width:calc(var(--v)*100%)}
+body.still .ring .fg{stroke-dasharray:calc(var(--v)*100) 100}
+body.still .grid42 .c{background:rgba(59,111,181,.35);border-color:rgba(120,160,220,.4)}
+body.still .roadviz .risk{animation:none !important;opacity:1}
+body.still .roadviz .scan{animation:none !important;transform:translateX(70px)}
+body.still .wipers i{animation:none;transform:rotate(20deg)}
+
+/* ---------- 夜间：跟随站点 intre-theme；播放器本身已是暗场景，只调整页框 ---------- */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:#0A1424;color:#DCE6F2}
+html[data-theme="dark"] a{color:#8FB7E8}
+html[data-theme="dark"] .brand{color:#F1F6FB}
+html[data-theme="dark"] .brand small{color:#97A9BF}
+html[data-theme="dark"] .top nav a{color:#C7D5E6}
+html[data-theme="dark"] .theme-toggle{border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.78)}
+html[data-theme="dark"] .theme-toggle:hover{border-color:var(--amber-100);color:#fff}
+html[data-theme="dark"] .eyebrow{color:#8FB7E8}
+html[data-theme="dark"] h1{color:#F1F6FB}
+html[data-theme="dark"] .lede{color:#C7D5E6}
+html[data-theme="dark"] .player{border-color:rgba(143,183,232,.26);box-shadow:0 24px 60px rgba(0,0,0,.55)}
+html[data-theme="dark"] .controls button:not(.primary){background:#16263D;border-color:rgba(255,255,255,.12);color:#DCE6F2}
+html[data-theme="dark"] .controls button:not(.primary):hover{border-color:rgba(143,183,232,.5);color:#8FB7E8}
+html[data-theme="dark"] .ticks button{background:#16263D;border-color:rgba(255,255,255,.12);color:#97A9BF}
+html[data-theme="dark"] .ticks button.on{background:var(--navy-600);border-color:var(--navy-600);color:#fff}
+html[data-theme="dark"] .kbd{color:#97A9BF}
+html[data-theme="dark"] .cards3 .card{background:#101D31;border-color:rgba(255,255,255,.12);color:#C7D5E6}
+html[data-theme="dark"] .cards3 h3{color:#F1F6FB}
+html[data-theme="dark"] details.story{background:#101D31;border-color:rgba(255,255,255,.12)}
+html[data-theme="dark"] details.story summary{color:#F1F6FB}
+html[data-theme="dark"] details.story th,
+html[data-theme="dark"] details.story td{border-bottom-color:rgba(255,255,255,.1)}
+html[data-theme="dark"] details.story th{background:#16263D;color:#F1F6FB}
+html[data-theme="dark"] details.story td{color:#C7D5E6}
+html[data-theme="dark"] footer.site{border-top-color:rgba(255,255,255,.12);color:#97A9BF}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../">INTRE<small>功能状态心理学 · 开放知识入口</small></a>
+  <nav>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="切换到夜间模式" aria-pressed="false" title="夜间模式">☾</button>
+    <a href="./">PSE 总览</a>
+    <a href="../rever/">REVER</a>
+    <a href="../textbook/ch12.html">教材第 12 章</a>
+    <a href="https://github.com/project003125/INTRE-website">GitHub</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">PSE · 运转动画 · 模拟演示</div>
+  <h1>一次主诉，走完六级管线</h1>
+  <p class="lede">把 PSE 想成一台车载导航：预装高精地图，装着激光雷达与摄像头，用自己的 GPU 本地计算，全程受交规约束。车开一程，就是一次从观测到干预、再回到观测的闭环。案例为模拟数据，不构成临床结论。</p>
+
+  <div class="player" id="player" aria-label="PSE 运转流程动画">
+    <div class="windshield" aria-hidden="true">
+      <canvas id="roadCanvas"></canvas>
+      <div class="wipers"><i></i><i></i></div>
+      <div class="hud-badge" id="layerBadge">L0 · 本体</div>
+      <div class="hud-right mono">SIM · 林晓 · 28</div>
+      <div class="rain-note mono" id="weather">夜 · 雨 · 城市高架</div>
+    </div>
+
+    <div class="screen">
+      <!-- 01 -->
+      <section class="scene active" data-scene="0">
+        <div class="scene-body boot">
+          <div class="boot-left rise">
+            <div class="boot-lines mono">
+              <div>IODS // L0 ONTOLOGY — 无运行时</div>
+              <div class="ok">坐标系 6 模块 × 7 维度 = 42 ✓</div>
+              <div class="ok">词汇库 PSL-L ✓ &nbsp; 结构约束 ✓</div>
+              <div class="dim">“入睡困难” → M1 资源 · M4 唤醒；不新造概念</div>
+            </div>
+            <div class="idcard">
+              <span class="tag">SUBJECT · 模拟</span>
+              <strong>林晓 · 28 · 产品经理</strong>
+              <p>近三个月入睡困难、白天耗竭、对未来反复担忧</p>
+            </div>
+          </div>
+          <div class="grid42 rise d1" id="grid42"></div>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="scene" data-scene="1">
+        <div class="scene-body ports">
+          <div class="port card rise">
+            <span class="tag">UPLP · 语义</span>
+            <p class="quote">最近总睡不好，白天撑不住，脑子停不下来。</p>
+            <p class="footnote">编译 → M1 · M4 分量，附置信度</p>
+          </div>
+          <div class="port card rise d1">
+            <span class="tag">UBMP · 行为</span>
+            <div class="telemetry"><span>入睡潜伏期</span><b>95 min</b></div>
+            <div class="telemetry"><span>PHQ-9</span><b>12</b></div>
+            <div class="telemetry"><span>日均步数</span><b>−28%</b></div>
+          </div>
+          <div class="port card rise d2">
+            <span class="tag">UNIP · 神经 <em>未上线</em></span>
+            <div class="lidar"><div class="sweep"></div><div class="half"></div></div>
+            <p class="footnote">HRV 偏低（示例读数）· 半幅无信息</p>
+          </div>
+          <div class="merge mono rise d3">三路 → y<sub>t</sub> + σ<sub>t</sub> · 无信息位 = 0.5 ± 0.2887</div>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section class="scene" data-scene="2">
+        <div class="scene-body estimate">
+          <div class="map-mini card rise">
+            <svg viewBox="0 0 320 240" aria-hidden="true">
+              <path d="M-20 200 C 80 190 110 150 170 120 S 290 90 340 70" fill="none" stroke="rgba(120,160,220,.25)" stroke-width="26" stroke-linecap="round"/>
+              <path d="M-20 200 C 80 190 110 150 170 120 S 290 90 340 70" fill="none" stroke="rgba(31,72,128,.6)" stroke-width="2" stroke-dasharray="8 8"/>
+              <ellipse class="ellipse" cx="160" cy="130" rx="54" ry="34" fill="rgba(59,111,181,.18)" stroke="#6fa5e0" stroke-width="1.5"/>
+              <circle cx="160" cy="130" r="4" fill="#9fc0e8"/>
+            </svg>
+            <span class="footnote">定位环收缩：后验椭圆越小越确定 · 数据口径 0–1，资源表 0–100（0.28 ≈ 28/100）</span>
+          </div>
+          <div class="gauges rise d1">
+            <div class="gauge"><span class="lbl">M1-RES-D 调度资源</span><div class="bar"><i style="--v:.28"></i></div><span class="val">0.28 ± .06</span></div>
+            <div class="gauge"><span class="lbl">M1-RES-B 基底资源</span><div class="bar"><i style="--v:.42"></i></div><span class="val">0.42 ± .07</span></div>
+            <div class="gauge"><span class="lbl">M3-DSP-F 前台调度</span><div class="bar"><i style="--v:.22"></i></div><span class="val">0.22 ± .05</span></div>
+            <div class="gauge"><span class="lbl">M3-DSP-B 后台反刍</span><div class="bar"><i style="--v:.86"></i></div><span class="val">0.86 ± .04</span></div>
+            <div class="gauge"><span class="lbl">M4-DSP-B 自动威胁评估</span><div class="bar"><i style="--v:.74"></i></div><span class="val">0.74 ± .07</span></div>
+            <div class="gauge rulecard">
+              <div class="ring" style="--v:.78">
+                <svg viewBox="0 0 56 56" aria-hidden="true"><circle class="bg" cx="28" cy="28" r="24" pathLength="100"/><circle class="fg" cx="28" cy="28" r="24" pathLength="100"/></svg>
+                <b>0.78<small>±.08</small></b>
+              </div>
+              <div>
+                <span class="tag">M2-STR-R · 规则</span>
+                <p class="rule">加班才能证明自己</p>
+              </div>
+              <span class="derived">派生读数：规则主导度</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section class="scene" data-scene="3">
+        <div class="scene-body dynamics">
+          <svg class="roadviz rise" viewBox="0 0 900 300" aria-hidden="true">
+            <defs>
+              <linearGradient id="riskGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(245,158,11,.22)"/><stop offset="1" stop-color="rgba(245,158,11,.02)"/>
+              </linearGradient>
+            </defs>
+            <line x1="30" y1="250" x2="870" y2="250" stroke="rgba(120,160,220,.25)"/>
+            <g stroke="rgba(120,160,220,.14)">
+              <line x1="30" y1="250" x2="30" y2="256"/><line x1="240" y1="250" x2="240" y2="256"/>
+              <line x1="450" y1="250" x2="450" y2="256"/><line x1="660" y1="250" x2="660" y2="256"/>
+              <line x1="870" y1="250" x2="870" y2="256"/>
+            </g>
+            <text x="24" y="274">0</text><text x="234" y="274">2 周</text><text x="444" y="274">4 周</text><text x="654" y="274">6 周</text><text x="852" y="274">8 周</text>
+            <rect class="risk" x="520" y="70" width="260" height="180" fill="url(#riskGrad)" stroke="rgba(245,158,11,.35)" stroke-dasharray="5 5"/>
+            <text x="536" y="92" fill="rgba(253,230,138,.85)">风险时点 · 第 4–6 周</text>
+            <path class="scan" d="M520 70 V250" stroke="rgba(245,158,11,.5)" stroke-dasharray="3 4"/>
+            <path d="M30 235 C 210 232 330 215 470 185 S 690 135 870 118" fill="none" stroke="#D97706" stroke-width="3"/>
+            <path d="M30 235 C 200 220 300 170 400 140 S 640 105 870 100" fill="none" stroke="#6fa5e0" stroke-width="3"/>
+            <text x="40" y="46" fill="rgba(111,165,224,.95)">蓝线 · 先稳调度、再补资源</text>
+            <text x="40" y="62" fill="rgba(217,119,6,.95)">红线 · 不干预</text>
+          </svg>
+          <div class="chips">
+            <span>未来状态分布</span><span>级联路径</span><span>风险时点</span><span>哪一段最值得改</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="scene" data-scene="4">
+        <div class="scene-body plan">
+          <div class="cand card picked rise">
+            <span class="tag">A · 先稳后补</span>
+            <p>GATE 抑制反刍 ＋ MODULATE 补资源</p>
+            <div class="stats"><b>62%</b><span>八周成功概率 · 低代价</span></div>
+          </div>
+          <div class="cand card rise d1">
+            <span class="tag">B · 直接改信念</span>
+            <p>ALIGN 规则修正</p>
+            <div class="stats"><b>48%</b><span>中代价</span></div>
+          </div>
+          <div class="cand card rise d2">
+            <span class="tag">C · 环境重联</span>
+            <p>RELINK ＋ 环境调整</p>
+            <div class="stats"><b>55%</b><span>高代价</span></div>
+          </div>
+          <div class="constraints mono rise d3">约束：资源 0.28 / 1.00 · 八周窗口 · 伦理门控 —— 选最稳的，不选最炫的</div>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="scene" data-scene="5">
+        <div class="scene-body rever">
+          <div class="gates">
+            <span style="--i:0">G0</span><span style="--i:1">G1</span><span style="--i:2">G2</span><span style="--i:3">G3</span><span style="--i:4">G4</span><span style="--i:5">G5</span><span style="--i:6">EC</span>
+          </div>
+          <div class="rail" aria-hidden="true"></div>
+          <div class="verdict">
+            <div class="reject rise d2"><span class="mono">拦截</span>计划稿“全天压制反刍”——违背自主性与可执行性</div>
+            <div class="accept rise d3"><span class="mono">放行</span>改为“每晚 20 分钟担忧窗口”后通过（模拟示例）</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section class="scene" data-scene="6">
+        <div class="scene-body exec">
+          <div class="ops">
+            <div class="op" style="--i:0"><b>GATE</b><span>第 1–2 周 · 担忧窗口，抑制反刍</span></div>
+            <div class="op" style="--i:1"><b>MODULATE</b><span>睡眠卫生 · 白天小憩，补资源</span></div>
+            <div class="op" style="--i:2"><b>ALIGN</b><span>第 3–4 周 · 首次会谈，修规则</span></div>
+            <div class="op" style="--i:3"><b>RELINK</b><span>与主管协商，减少连轴会议</span></div>
+          </div>
+          <div class="log mono rise d2">
+            <div>W1–2 依从率 85% · 潜伏期 95 → 70 min</div>
+            <div>W3–4 资源 0.28 → 0.47 · ALIGN 会谈 ×1</div>
+            <div>记录：剂量 · 依从性 · 异常事件</div>
+          </div>
+          <div class="strslow rise d3">
+            <div class="slow"><span class="mono">STR-R 规则</span><div class="mini"><i style="--v:.78"></i></div><span>月级 · 缓动</span></div>
+            <div class="slow"><span class="mono">STR-C 连接</span><div class="mini"><i style="--v:.64"></i></div><span>月级 · 缓动</span></div>
+            <div class="slow"><span class="mono">STR-S 序列</span><div class="mini"><i style="--v:.42"></i></div><span>月级 · 缓动</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section class="scene" data-scene="7">
+        <div class="scene-body loop">
+          <div class="loopviz rise">
+            <svg viewBox="0 0 640 220" aria-hidden="true">
+              <g font-family="JetBrains Mono, monospace">
+                <rect x="20" y="70" width="92" height="44" rx="6" fill="rgba(16,31,54,.9)" stroke="rgba(120,160,220,.4)"/>
+                <text x="66" y="97" text-anchor="middle">L1 观测</text>
+                <rect x="142" y="70" width="92" height="44" rx="6" fill="rgba(16,31,54,.9)" stroke="rgba(120,160,220,.4)"/>
+                <text x="188" y="97" text-anchor="middle">L2 估计</text>
+                <rect x="264" y="70" width="92" height="44" rx="6" fill="rgba(16,31,54,.9)" stroke="rgba(120,160,220,.4)"/>
+                <text x="310" y="97" text-anchor="middle">L3 推演</text>
+                <rect x="386" y="70" width="92" height="44" rx="6" fill="rgba(16,31,54,.9)" stroke="rgba(120,160,220,.4)"/>
+                <text x="432" y="97" text-anchor="middle">L4 规划</text>
+                <rect x="508" y="70" width="92" height="44" rx="6" fill="rgba(16,31,54,.9)" stroke="rgba(120,160,220,.4)"/>
+                <text x="554" y="97" text-anchor="middle">L5 执行</text>
+                <g stroke="rgba(120,160,220,.5)" stroke-width="1.5">
+                  <line x1="112" y1="92" x2="142" y2="92"/><line x1="234" y1="92" x2="264" y2="92"/>
+                  <line x1="356" y1="92" x2="386" y2="92"/><line x1="478" y1="92" x2="508" y2="92"/>
+                </g>
+                <path class="flow" d="M554 114 V160 H66 V114" fill="none" stroke="#6fa5e0" stroke-width="2"/>
+                <text x="310" y="185" text-anchor="middle" fill="rgba(111,165,224,.9)">执行记录回传 · 下一轮从新观测开始</text>
+              </g>
+            </svg>
+          </div>
+          <div class="update mono rise d1">
+            <div>新观测：资源 0.47 ± .05</div>
+            <div>反刍 0.86 → 0.61</div>
+            <div>第 4–6 周风险区：收窄</div>
+            <div>屏幕自动刷新路线</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 -->
+      <section class="scene" data-scene="8">
+        <div class="scene-body anomaly">
+          <div class="alert rise"><i>ALERT</i>车道偏离 · 第 4 周突发加班周（模拟补写）</div>
+          <div class="seq rise d1"><span>中止</span>→<span>回滚 L4</span>→<span>重规划</span></div>
+          <div class="log mono rise d2">
+            <div>依从率 85% → 60% · 反刍回升 · HRV 走低</div>
+            <div>新方案：只保“担忧窗口 ＋ 睡眠优先”，降剂量</div>
+            <div>恢复上行：不硬开，先活下来</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="scene" data-scene="9">
+        <div class="scene-body ending">
+          <div class="final rise">
+            <div class="mono">第 8 周 · 维持期</div>
+            <h2>潜伏期 40 分钟 · 反刍时长下降</h2>
+            <p class="slogan">不承诺诊断，只承诺把“现在在哪、会去哪、先动哪一步”说清楚。</p>
+            <p class="bound mono">模拟数据 · 非临床结论 · 参数尚未临床校准</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="subtitle"><p id="subtitle">先有地图，才谈导航。L0 不发一条指令，只规定坐标与词汇。</p></div>
+      <div class="scene-num mono" id="sceneNum">01 / 10</div>
+      <div class="progress"><i id="progressBar"></i></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="btnPrev" aria-label="上一幕">◀ 上一幕</button>
+    <button id="btnPlay" class="primary" aria-label="播放或暂停">暂停</button>
+    <button id="btnNext" aria-label="下一幕">下一幕 ▶</button>
+    <button id="btnRestart" aria-label="重播">重播</button>
+    <span class="kbd">空格 播放/暂停 · ← → 切换</span>
+    <div class="ticks" id="ticks"></div>
+  </div>
+
+  <div class="cards3">
+    <div class="card"><h3>抽象层</h3><p id="capAbstract">车机预装高精地图：没有它，任何定位都无从谈起。</p></div>
+    <div class="card"><h3>具体案例（模拟）</h3><p id="capCase">档案卡：林晓，28 岁，产品经理；近三个月入睡困难、白天耗竭、反复担忧。</p></div>
+    <div class="card"><h3>读图约定</h3><p>蓝＝规划主线；琥珀＝风险与伦理护栏；灰＝无信息。数据口径 0–1（资源表另注 0–100 显示）。结构层读数为派生投影，规则原句另挂卡片。</p></div>
+  </div>
+
+  <details class="story">
+    <summary>完整分镜表（10 幕）</summary>
+    <table>
+      <thead><tr><th>幕</th><th>画面 · 导航类比</th><th>PSE 环节</th><th>具体案例（模拟）</th><th>关键字幕</th></tr></thead>
+      <tbody>
+        <tr><td>1 启动</td><td>高精地图加载，42 维坐标格点亮</td><td>L0 本体，无运行时</td><td>档案卡：林晓，28 岁，产品经理；入睡困难、白天耗竭、反复担忧</td><td>先有地图，才谈导航</td></tr>
+        <tr><td>2 感知</td><td>摄像头＋遥测＋雷达三路感知，雷达半幅无信息</td><td>L1 观测：UPLP／UBMP／UNIP → y_t + σ_t</td><td>原话一句；潜伏期 95 min、PHQ-9 = 12、步数 −28%；HRV 偏低（示例）</td><td>三路证据，不是三个结论</td></tr>
+        <tr><td>3 定位</td><td>定位环收缩，出现后验椭圆与仪表</td><td>L2 贝叶斯融合 → 42 维后验</td><td>资源 0.28、反刍 0.86；规则卡“加班才能证明自己”0.78（派生读数）</td><td>只回答在哪、多确定</td></tr>
+        <tr><td>4 预判</td><td>前方道路透视：红线冲风险区，蓝线分流</td><td>L3 推演轨迹、级联、风险时点</td><td>八周模拟；风险时点第 4–6 周</td><td>先看清，再动手</td></tr>
+        <tr><td>5 选路</td><td>三岔路口三候选，高亮 A</td><td>L4 约束下搜索操作序列</td><td>A 先稳后补 62%；B 改信念 48%；C 环境重联 55%；资源 0.28/1.00</td><td>选最稳的，不选最炫的</td></tr>
+        <tr><td>6 交规</td><td>琥珀护栏逐层亮起，越界路线被弹回</td><td>REVER 六门控一回环</td><td>“全天压制反刍”被拦，改“每晚 20 分钟担忧窗口”（模拟示例）</td><td>伦理不是终点检查，是全程护栏</td></tr>
+        <tr><td>7 驾驶</td><td>方向盘与油门执行四操作，日志滚动</td><td>L5 执行 G-M-A-R 序列</td><td>W1–2 依从 85%、潜伏期 95→70；W3–4 资源 0.28→0.47、ALIGN ×1；RELINK 协商减会</td><td>四个动作＝方向盘、油门、校准、改道</td></tr>
+        <tr><td>8 闭环</td><td>重新采样，椭圆收小，路线刷新</td><td>L5 记录回 L1 → L2 → L3</td><td>资源 0.47、反刍 0.86→0.61，风险区收窄</td><td>每一次记录，都是下一轮的观测</td></tr>
+        <tr><td>9 异常支路</td><td>车道偏离警报，中止并回滚路口</td><td>L5 中止 → 回滚 L4 重规划</td><td>第 4 周加班：依从 85→60%，改“担忧窗口＋睡眠优先”最小方案</td><td>开不下去就不硬开</td></tr>
+        <tr><td>10 收尾</td><td>雨停出隧道，车机淡出地图</td><td>全局：模拟与边界声明</td><td>第 8 周：潜伏期 40 分钟、反刍下降、进入维持期</td><td>不承诺诊断，只承诺说清楚三件事</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <footer class="site">
+    <p>本页为演示动画：数字取自站内模拟走查（林晓的八周），第 9 幕异常情节为演示补写；不构成临床诊断或疗效结论，参数尚未临床校准。</p>
+    <p><a href="./">返回 PSE 总览</a> · <a href="../rever/">REVER</a> · <a href="../textbook/ch12.html">教材第 12 章</a> · <a href="../">INTRE 首页</a> · CC0 1.0</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 42 维网格 ---------- */
+  var dims = ['RES-D','RES-B','DSP-F','DSP-B','STR-R','STR-C','STR-S'];
+  var mods = ['M1','M2','M3','M4','M5','M6'];
+  var grid = document.getElementById('grid42');
+  if (grid){
+    var html = '<span></span>' + dims.map(function(d){return '<span class="h">'+d+'</span>';}).join('');
+    var i = 0;
+    mods.forEach(function(m){
+      html += '<span class="m">'+m+'</span>';
+      dims.forEach(function(){ html += '<span class="c" style="--i:'+(i++)+'"></span>'; });
+    });
+    grid.innerHTML = html;
+  }
+
+  /* ---------- 场景数据 ---------- */
+  var scenes = [
+    {badge:'L0 · 本体', sub:'先有地图，才谈导航。L0 不发一条指令，只规定坐标与词汇。',
+     capA:'车机预装高精地图：没有它，任何定位都无从谈起。',
+     capC:'档案卡：林晓，28 岁，产品经理；近三个月入睡困难、白天耗竭、反复担忧。', dur:8000},
+    {badge:'L1 · 观测', sub:'三路证据，不是三个结论。雷达未上线——缺失就标“无信息”，不编读数。',
+     capA:'摄像头听人说话，遥测读车况，雷达扫环境；三路合成一张带置信度的感知帧。',
+     capC:'原话“最近总睡不好……”；潜伏期 95 分钟、PHQ-9 = 12、步数 −28%；HRV 偏低（示例读数）。', dur:9500},
+    {badge:'L2 · 状态估计', sub:'不告诉你“你是什么病”，只回答：现在在哪、有多确定。',
+     capA:'定位环收缩：后验椭圆越小越确定；给的是 42 维后验，不是诊断标签。',
+     capC:'资源 0.28、反刍 0.86；规则卡“加班才能证明自己”读数 0.78——标量只是派生投影。', dur:9500},
+    {badge:'L3 · 动力学', sub:'不开这一路会怎样、开了会怎样——先看清，再动手。',
+     capA:'导航透视未来路况：不干预的轨迹与改变后的轨迹，都算出来。',
+     capC:'八周模拟：不干预第 4–6 周风险升高；先稳调度、再补资源可提前分流。', dur:9500},
+    {badge:'L4 · 规划', sub:'选的不是最强解，是当前油量和时间窗下最稳的解。',
+     capA:'路口三选一：在资源预算、操作组合与伦理约束下比较候选路线。',
+     capC:'A 先稳后补 62% 低代价被选中；B 改信念 48%；C 环境重联 55% 高代价。', dur:9000},
+    {badge:'REVER · 伦理护栏', sub:'路再快，越过护栏的路线不存在——伦理不是终点检查，是全程护栏。',
+     capA:'交规常驻：车道保持、限速、礼让、紧急制动，逐层亮起并否决越界路线。',
+     capC:'“全天压制反刍”被拦——违背自主性与可执行性；改为“每晚 20 分钟担忧窗口”（模拟示例）。', dur:8500},
+    {badge:'L5 · 执行', sub:'四个动作不是四个概念，是方向盘、油门、校准和改道。',
+     capA:'自动驾驶执行：转方向、给油、校准、改道，并记录剂量与依从性。',
+     capC:'W1–2 依从 85%、潜伏期 95→70；W3–4 资源 0.28→0.47；RELINK 协商减少连轴会。', dur:11000},
+    {badge:'闭环 · 回 L1', sub:'执行不是终点。每一次记录，都是下一轮的观测。',
+     capA:'传感器重新采样，定位重算，路线自动刷新——导航不会停在一次规划上。',
+     capC:'新观测：资源 0.47、反刍 0.86→0.61；第 4–6 周风险区明显收窄。', dur:9000},
+    {badge:'异常支路 · 回滚', sub:'开不下去就不硬开：中止、回滚、重规划。',
+     capA:'车道偏离警报：降速、中止当前方案，退回路口重新选路。',
+     capC:'第 4 周突发加班：依从 85→60%、反刍回升；改“只保担忧窗口＋睡眠优先”后再上行（模拟补写）。', dur:9000},
+    {badge:'收尾 · 边界声明', sub:'它不承诺诊断，只承诺把“现在在哪、会去哪、先动哪一步”说清楚。模拟数据 · 非临床结论。',
+     capA:'雨停出隧道：这一程结束，下一程从新的观测开始。',
+     capC:'第 8 周：潜伏期 40 分钟、反刍时长下降、进入维持期。', dur:9500}
+  ];
+
+  var rainByScene = [0.95,1,0.95,0.9,0.85,0.8,0.7,0.6,0.95,0.05];
+  var dawnByScene = [0,0,0,0,0,0,0,0,0,1];
+  var weatherByScene = ['夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨 · 城市高架','夜 · 雨渐小','夜 · 雨 · 加班周','清晨 · 雨停'];
+
+  var els = Array.prototype.slice.call(document.querySelectorAll('.scene'));
+  var subtitle = document.getElementById('subtitle');
+  var badge = document.getElementById('layerBadge');
+  var sceneNum = document.getElementById('sceneNum');
+  var progressBar = document.getElementById('progressBar');
+  var capA = document.getElementById('capAbstract');
+  var capC = document.getElementById('capCase');
+  var ticks = document.getElementById('ticks');
+  var btnPrev = document.getElementById('btnPrev');
+  var btnNext = document.getElementById('btnNext');
+  var btnPlay = document.getElementById('btnPlay');
+  var btnRestart = document.getElementById('btnRestart');
+  var weather = document.getElementById('weather');
+
+  var cur = 0, playing = !reduceMotion, elapsed = 0, last = performance.now();
+
+  scenes.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = String(i+1).padStart(2,'0');
+    b.title = s.badge;
+    b.addEventListener('click', function(){ goTo(i, true); });
+    ticks.appendChild(b);
+  });
+  var tickBtns = Array.prototype.slice.call(ticks.children);
+
+  function goTo(i, manual){
+    cur = (i + scenes.length) % scenes.length;
+    elapsed = 0;
+    els.forEach(function(el, k){ el.classList.toggle('active', k === cur); });
+    var s = scenes[cur];
+    subtitle.textContent = s.sub;
+    badge.textContent = s.badge;
+    capA.textContent = s.capA;
+    capC.textContent = s.capC;
+    sceneNum.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(scenes.length).padStart(2,'0');
+    if (weather) weather.textContent = weatherByScene[cur] || '夜 · 雨 · 城市高架';
+    tickBtns.forEach(function(b, k){ b.classList.toggle('on', k === cur); });
+    progressBar.style.width = '0%';
+  }
+
+  function setPlaying(v){
+    playing = v;
+    btnPlay.textContent = v ? '暂停' : '播放';
+    last = performance.now();
+  }
+  btnPlay.addEventListener('click', function(){ setPlaying(!playing); });
+  btnPrev.addEventListener('click', function(){ goTo(cur - 1, true); });
+  btnNext.addEventListener('click', function(){ goTo(cur + 1, true); });
+  btnRestart.addEventListener('click', function(){ goTo(0, true); setPlaying(true); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    if (e.code === 'ArrowLeft') { goTo(cur - 1, true); e.preventDefault(); }
+    else if (e.code === 'ArrowRight') { goTo(cur + 1, true); e.preventDefault(); }
+    else if (e.code === 'Space') { setPlaying(!playing); e.preventDefault(); }
+  });
+
+  /* ---------- 画布：夜路 + 雨 ---------- */
+  var cv = document.getElementById('roadCanvas');
+  var ctx = cv ? cv.getContext('2d') : null;
+  var W = 0, H = 0, DPR = 1;
+  var rain = [];
+  function resize(){
+    if (!cv) return;
+    var r = cv.getBoundingClientRect();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.max(1, r.width); H = Math.max(1, r.height);
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    rain = [];
+    for (var i = 0; i < 170; i++) rain.push(newDrop(true));
+  }
+  function newDrop(anywhere){
+    return {
+      x: Math.random() * W,
+      y: anywhere ? Math.random() * H : -20,
+      v: 500 + Math.random() * 700,
+      l: 8 + Math.random() * 12,
+      a: .06 + Math.random() * .16
+    };
+  }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function draw(ts){
+    var dt = Math.min(0.05, (ts - last) / 1000);
+    last = ts;
+    if (!ctx) { requestAnimationFrame(draw); return; }
+    var rainAmt = rainByScene[cur] == null ? .8 : rainByScene[cur];
+    var dawn = dawnByScene[cur] || 0;
+    var t = ts / 1000;
+
+    // sky
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, 'rgb(' + Math.round(lerp(4, 34, dawn)) + ',' + Math.round(lerp(8, 30, dawn)) + ',' + Math.round(lerp(18, 44, dawn)) + ')');
+    g.addColorStop(1, 'rgb(' + Math.round(lerp(10, 66, dawn)) + ',' + Math.round(lerp(18, 58, dawn)) + ',' + Math.round(lerp(34, 76, dawn)) + ')');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+    var horizon = H * 0.44;
+    var cx = W / 2;
+    var vw = Math.max(6, W * 0.035);     // 消失点半宽
+    var bw = W * 0.8;                    // 底部半宽
+
+    function halfW(p){ var e = p * p; return vw + (bw - vw) * e; }
+
+    // road
+    ctx.beginPath();
+    ctx.moveTo(cx - vw, horizon);
+    ctx.lineTo(cx + vw, horizon);
+    ctx.lineTo(cx + bw, H);
+    ctx.lineTo(cx - bw, H);
+    ctx.closePath();
+    var rg = ctx.createLinearGradient(0, horizon, 0, H);
+    rg.addColorStop(0, 'rgba(20,26,38,.9)');
+    rg.addColorStop(1, 'rgba(8,10,16,.95)');
+    ctx.fillStyle = rg; ctx.fill();
+
+    // wet sheen
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(cx - vw, horizon);
+    ctx.lineTo(cx + vw, horizon);
+    ctx.lineTo(cx + bw, H);
+    ctx.lineTo(cx - bw, H);
+    ctx.closePath();
+    ctx.clip();
+    var sheen = ctx.createLinearGradient(cx, horizon, cx, H);
+    sheen.addColorStop(0, 'rgba(120,150,200,0)');
+    sheen.addColorStop(.7, 'rgba(120,150,200,.05)');
+    sheen.addColorStop(1, 'rgba(170,190,230,.10)');
+    ctx.fillStyle = sheen; ctx.fillRect(0, horizon, W, H - horizon);
+    ctx.restore();
+
+    // edges
+    ctx.strokeStyle = 'rgba(200,215,235,.28)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx - vw, horizon); ctx.lineTo(cx - bw, H);
+    ctx.moveTo(cx + vw, horizon); ctx.lineTo(cx + bw, H);
+    ctx.stroke();
+
+    // center dashes
+    var speed = 0.22;
+    ctx.strokeStyle = 'rgba(220,230,245,.5)';
+    for (var k = 0; k < 26; k++){
+      var p0 = ((k / 26) + (t * speed) % 1) % 1;
+      var p1 = Math.min(1, p0 + 0.03);
+      if (p0 >= 1) continue;
+      for (var lane = -1; lane <= 1; lane += 2){
+        var x0 = cx + lane * halfW(p0) / 3;
+        var x1 = cx + lane * halfW(p1) / 3;
+        var y0 = horizon + (H - horizon) * Math.pow(p0, 2.1);
+        var y1 = horizon + (H - horizon) * Math.pow(p1, 2.1);
+        ctx.lineWidth = Math.max(1, 3 * p0 * p0);
+        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+      }
+    }
+
+    // headlight pools
+    var lg1 = ctx.createRadialGradient(cx - W * .12, H, 4, cx - W * .12, H, H * .75);
+    lg1.addColorStop(0, 'rgba(255,240,205,.10)');
+    lg1.addColorStop(1, 'rgba(255,240,205,0)');
+    ctx.fillStyle = lg1; ctx.fillRect(0, 0, W, H);
+    var lg2 = ctx.createRadialGradient(cx + W * .12, H, 4, cx + W * .12, H, H * .75);
+    lg2.addColorStop(0, 'rgba(255,240,205,.10)');
+    lg2.addColorStop(1, 'rgba(255,240,205,0)');
+    ctx.fillStyle = lg2; ctx.fillRect(0, 0, W, H);
+
+    // rain
+    if (!reduceMotion){
+      ctx.strokeStyle = 'rgba(205,220,245,' + (0.55 * rainAmt) + ')';
+      ctx.lineWidth = 1;
+      for (var i = 0; i < rain.length; i++){
+        var d = rain[i];
+        d.y += d.v * dt;
+        d.x -= d.v * dt * 0.18;
+        if (d.y > H + 20 || d.x < -30){ rain[i] = newDrop(false); continue; }
+        if (i / rain.length > rainAmt) continue;
+        ctx.globalAlpha = d.a * (0.35 + rainAmt);
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x + 2, d.y + d.l);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // vignette
+    var vg = ctx.createRadialGradient(cx, H * .55, H * .2, cx, H * .55, Math.max(W, H) * .85);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(0,0,0,.5)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(draw);
+
+  /* ---------- 主循环 ---------- */
+  function loop(ts){
+    if (playing){
+      elapsed += Math.min(120, ts - (loop._t || ts));
+      var dur = scenes[cur].dur;
+      var pct = Math.min(1, elapsed / dur);
+      progressBar.style.width = (pct * 100).toFixed(2) + '%';
+      if (elapsed >= dur) goTo(cur + 1, false);
+    }
+    loop._t = ts;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  var hashScene = parseInt((location.hash || '').replace('#', ''), 10);
+  if (hashScene >= 1 && hashScene <= scenes.length){
+    document.body.classList.add('still');
+    goTo(hashScene - 1, true);
+    setPlaying(false);
+  } else {
+    goTo(0, false);
+    setPlaying(!reduceMotion);
+  }
+})();
+</script>
+<script>
+/* 与站点共用 intre-theme：进入时读同一键，点选后写回，其他标签页同步 */
+(function(){
+  "use strict";
+  var KEY = 'intre-theme';
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  function sync(){
+    var dark = root.getAttribute('data-theme') === 'dark';
+    btn.textContent = dark ? '☀' : '☾';
+    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    btn.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到夜间模式');
+    btn.title = dark ? '浅色模式' : '夜间模式';
+  }
+  btn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    sync();
+  });
+  window.addEventListener('storage', function(e){
+    if (e.key !== KEY) return;
+    root.setAttribute('data-theme', e.newValue === 'dark' ? 'dark' : 'light');
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

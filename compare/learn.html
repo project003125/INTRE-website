@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
+<script>(function(){try{var t=localStorage.getItem("intre-theme");if(t!=="dark"&&t!=="light"){var l=localStorage.getItem("intre-learn-theme-v1");try{l=JSON.parse(l)}catch(e){}t=(l==="dark")?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -5910,6 +5911,8 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
   const KEY_PROGRESS = "intre-learn-progress-v1";
+  /* 主题并入站点键 intre-theme（raw "light"/"dark"）；旧键仅作迁移兜底 */
+  const KEY_THEME_SITE = "intre-theme";
   const KEY_THEME = "intre-learn-theme-v1";
   const KEY_QUIZ = "intre-learn-quiz-v1";
 
@@ -5948,9 +5951,21 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
   };
 
   /* ---------- 主题 ---------- */
+  function readSiteTheme() {
+    try {
+      const raw = localStorage.getItem(KEY_THEME_SITE);
+      return raw === "dark" || raw === "light" ? raw : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
   function applyTheme(theme, persist = true) {
     document.documentElement.dataset.theme = theme;
-    if (persist) storage.set(KEY_THEME, theme);
+    if (persist) {
+      try { localStorage.setItem(KEY_THEME_SITE, theme); } catch (err) {}
+      storage.set(KEY_THEME, theme); // 兼容旧键，站点读 intre-theme
+    }
     const btn = $("#themeBtn");
     if (btn) {
       btn.setAttribute("aria-label", theme === "dark" ? "切换浅色主题" : "切换深色主题");
@@ -5970,14 +5985,20 @@ button.meta-pill:hover { border-color: var(--accent); color: var(--accent); }
   }
 
   function initTheme() {
-    const saved = storage.get(KEY_THEME, null);
-    applyTheme(saved || "light", false);
+    const saved = readSiteTheme() || storage.get(KEY_THEME, null);
+    applyTheme(saved === "dark" ? "dark" : "light", false);
     const btn = $("#themeBtn");
     if (btn) {
       btn.addEventListener("click", () => {
         applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
       });
     }
+    // 与站点其他页面/标签互通：任一页切换后，这里跟随
+    window.addEventListener("storage", (event) => {
+      if (event.key !== KEY_THEME_SITE) return;
+      const next = event.newValue === "dark" ? "dark" : "light";
+      if (document.documentElement.dataset.theme !== next) applyTheme(next, false);
+    });
   }
 
   /* ---------- Mermaid ---------- */

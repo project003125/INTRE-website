@@ -3,15 +3,15 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>INTRE · 功能状态心理学 (FSP)</title>
+    <title>INTRE</title>
     <meta name="description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
-    <meta property="og:title" content="INTRE · 功能状态心理学">
+    <meta property="og:title" content="INTRE">
     <meta property="og:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="INTRE · 功能状态心理学">
+    <meta name="twitter:title" content="INTRE">
     <meta name="twitter:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/">
     <!-- Google Fonts: Josefin Sans (Logo) + Inter (Body) + Noto Sans SC (中文) + JetBrains Mono (等宽) -->
@@ -59,6 +59,25 @@
         .hero-name-zh { white-space: nowrap; }
         .hero-name-en-wrap { white-space: nowrap; }
         .hero-name-sep { margin: 0 0.55rem; color: rgba(255,255,255,0.28); }
+        a.hero-name {
+            display: block;
+            text-decoration: none;
+        }
+        a.hero-name:hover .hero-name-en,
+        a.hero-name:hover .hero-name-zh,
+        a.hero-name:focus-visible .hero-name-en,
+        a.hero-name:focus-visible .hero-name-zh {
+            text-decoration: underline;
+            text-decoration-color: rgba(255,255,255,0.28);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.28em;
+        }
+        a.hero-name:focus-visible {
+            outline: 2px solid var(--color-amber-500);
+            outline-offset: 4px;
+        }
+        .footer-brand a { color: inherit; text-decoration: none; }
+        .footer-brand a:hover { color: var(--color-amber-500); }
         html[data-theme="dark"] .hero-name { color: rgba(255,255,255,0.52); }
         @media (max-width: 600px) {
             .hero-name {
@@ -389,6 +408,30 @@
             .fusion-formula code { font-size: 0.8rem; }
             .fusion-formula { padding: 1.1rem 1rem; }
         }
+
+        /* ---------- 夜间覆盖（方法卡 / 页面目录） ---------- */
+        html[data-theme="dark"] .method-card {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-raise);
+        }
+        html[data-theme="dark"] .method-card .mc-code { color: var(--color-amber-500); }
+        html[data-theme="dark"] .method-card:hover { box-shadow: var(--shadow-md); }
+
+        html[data-theme="dark"] .toc-rail {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-raise);
+        }
+        html[data-theme="dark"] .toc-current { color: var(--text-strong); }
+        html[data-theme="dark"] .toc-nav a:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--link);
+        }
+        html[data-theme="dark"] .toc-nav a[aria-current="true"] {
+            background: rgba(143, 183, 232, 0.14);
+            color: var(--link);
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -456,13 +499,13 @@
 
         <div class="hero-content">
             <h1 class="hero-title">INTRE<span class="accent-dot" aria-hidden="true"></span></h1>
-            <p class="hero-name">
+            <a class="hero-name" href="/INTRE-website/about/">
                 <span class="hero-name-en-wrap">
                     <span class="hero-name-en">Internal Regulation Engine</span>
                     <span class="hero-name-sep" aria-hidden="true">｜</span>
                 </span>
                 <span class="hero-name-zh">中文品牌名「慧执」</span>
-            </p>
+            </a>
             <div class="hero-sub">
                 <span class="hero-zh">连接现象与神经的形式化建模</span>
                 <span class="hero-divider" aria-hidden="true"></span>
@@ -887,7 +930,7 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="site-footer">
-        <div class="footer-brand">INTRE</div>
+        <div class="footer-brand"><a href="/INTRE-website/about/">INTRE</a></div>
         <p class="footer-desc">功能状态心理学 (FSP) · 开放知识入口</p>
         <p class="footer-desc">变量范式守现象层，状态范式守功能层，两者经观测函数相连。INTRE 受益于变量范式的测量与因果研究成果。</p>
 

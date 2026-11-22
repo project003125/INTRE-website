@@ -294,6 +294,76 @@
             .meter-row { grid-template-columns: 7rem 1fr 3.6rem; }
             .demo-shell { padding: 1rem; }
         }
+
+        /* ---------- 夜间覆盖：白色承载面与深蓝小字 ---------- */
+        html[data-theme="dark"] .pse-hero {
+            background: linear-gradient(180deg, var(--bg-surface-2), var(--bg-surface));
+        }
+        html[data-theme="dark"] .eyebrow { color: var(--link); }
+        html[data-theme="dark"] .pill {
+            background: var(--bg-surface-2);
+            border-color: var(--border-subtle);
+            color: var(--text-body);
+        }
+        html[data-theme="dark"] .node {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .node.core { border-color: var(--link); }
+        html[data-theme="dark"] .node .dot { box-shadow: 0 0 0 4px var(--bg-surface); }
+        html[data-theme="dark"] .node .lvl { color: var(--link); }
+        html[data-theme="dark"] .node h3 { color: var(--text-strong); }
+        html[data-theme="dark"] .node p { color: var(--text-muted); }
+        html[data-theme="dark"] .node .out {
+            color: var(--text-body);
+            border-top-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .demo-panel {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .demo-panel h4 { color: var(--text-strong); }
+        html[data-theme="dark"] .demo-panel .kicker { color: var(--link); }
+        html[data-theme="dark"] .demo-panel p,
+        html[data-theme="dark"] .demo-panel ul { color: var(--text-body); }
+        html[data-theme="dark"] .step-btn,
+        html[data-theme="dark"] .demo-nav button {
+            background: var(--bg-surface-2);
+            border-color: var(--border-subtle);
+            color: var(--text-body);
+        }
+        html[data-theme="dark"] .chart-wrap {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .chart .grid { stroke: var(--border-subtle); }
+        html[data-theme="dark"] .chart .axis { fill: var(--text-muted); }
+        html[data-theme="dark"] .chart .plan { stroke: var(--link); }
+        html[data-theme="dark"] .meter-fill { background: var(--link); }
+        html[data-theme="dark"] .table tr.chosen td {
+            background: color-mix(in srgb, var(--color-navy-500) 22%, var(--bg-surface));
+        }
+        html[data-theme="dark"] .boundary {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .boundary h3 { color: var(--text-strong); }
+        html[data-theme="dark"] .boundary ul { color: var(--text-body); }
+        html[data-theme="dark"] .readnext a {
+            background: var(--bg-surface-2);
+            border-color: var(--border-subtle);
+            color: var(--link);
+        }
+        html[data-theme="dark"] .btn-link.ghost {
+            color: var(--link);
+            border-color: rgba(143, 183, 232, 0.45);
+        }
+        html[data-theme="dark"] .mini-card .tag,
+        html[data-theme="dark"] .card a { color: var(--link); }
+        html[data-theme="dark"] .section-label i {
+            background: rgba(143, 183, 232, 0.14);
+            color: var(--link);
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -389,6 +459,7 @@
             </div>
             <div class="hero-actions">
                 <a class="btn-link" href="#demo">看一次模拟走查 <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                <a class="btn-link ghost" href="./flow.html">看 90 秒运转动画 <i class="fas fa-circle-play" aria-hidden="true"></i></a>
                 <a class="btn-link ghost" href="/INTRE-website/textbook/ch12.html">读教材第 12 章 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </section>
@@ -399,6 +470,7 @@
             <div class="demo-head">
                 <h3>从主诉到下一轮观测</h3>
                 <span class="sim-badge">模拟数据 · 非临床结论</span>
+                <a class="pill" href="./flow.html" style="margin-left:auto;text-decoration:none;">动画版：一次行车看完六级管线 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
             <div class="steps" role="tablist" aria-label="管线步骤">
                 <button class="step-btn active" role="tab" aria-selected="true" data-step="0">L0 本体</button>
@@ -472,7 +544,7 @@
                         <path class="plan" d="M50,175 C110,160 160,140 210,128 C280,110 340,96 420,84 C500,78 570,80 620,82"/>
                     </svg>
                 </div>
-                <div class="legend"><span><i style="background:var(--color-amber-500)"></i>不干预基线</span><span><i style="background:var(--color-navy-600)"></i>先稳调度、再补资源</span><span>阴影：风险时点（第 4–6 周）</span></div>
+                <div class="legend"><span><i style="background:var(--color-amber-500)"></i>不干预基线</span><span><i style="background:var(--link)"></i>先稳调度、再补资源</span><span>阴影：风险时点（第 4–6 周）</span></div>
                 <p style="margin-top:.6rem"><strong>这一步给出：</strong>未来状态分布、级联路径、风险时点，以及“若现在动手，哪一段最值得改”。</p>
             </div>
 

@@ -33,7 +33,8 @@ em.formal-def {
     --text: var(--color-slate-900);
     --link: var(--color-navy-600);
     --border: var(--color-slate-200);
-    --bg: var(--color-white);
+    /* 语义面：日间仍是纯白，夜间随 --bg-surface 转深（勿直接反相 --color-white） */
+    --bg: var(--bg-surface);
 }
 
 /* Scroll lock: 防止 TOC 面板打开时页面仍可滚动 */
@@ -959,3 +960,71 @@ body.toc-open {
 .summary-list li,.mistake-list li{margin:.35rem 0;line-height:1.85;}
 .summary-list li::marker,.mistake-list li::marker{color:#1F4880;}
 .mistake-list{font-style:normal;}
+
+/* ============================================
+   夜间覆盖（2026-11-22）
+   navy 系文字在深底上不可读，逐类提亮到既有 --link / --text-* 语义档；
+   日间声明全部保留。
+   ============================================ */
+html[data-theme="dark"] .toc-side-title,
+html[data-theme="dark"] .ts-title {
+    color: var(--text-strong);
+}
+html[data-theme="dark"] .toc-eyebrow,
+html[data-theme="dark"] .ts-eyebrow,
+html[data-theme="dark"] .chapter-nav-code,
+html[data-theme="dark"] .chapter-nav-link.active .chapter-nav-code {
+    color: var(--link);
+}
+html[data-theme="dark"] .toc-side-sub,
+html[data-theme="dark"] .ts-sub {
+    color: var(--text-muted);
+}
+html[data-theme="dark"] .toc-sidebar-list .toc-item {
+    color: var(--text-muted);
+}
+html[data-theme="dark"] .toc-sidebar-list .toc-item.toc-h2 {
+    color: var(--text-body);
+}
+html[data-theme="dark"] .toc-sidebar-list .toc-item:hover {
+    color: var(--link);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-subtle);
+}
+html[data-theme="dark"] .toc-sidebar-list .toc-item.active {
+    color: var(--link);
+    background: rgba(143, 183, 232, 0.14);
+    border-color: rgba(143, 183, 232, 0.24);
+}
+html[data-theme="dark"] .chapter-nav-link:hover {
+    color: var(--link);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-subtle);
+}
+html[data-theme="dark"] .chapter-nav-link.active {
+    color: var(--link);
+    background: rgba(143, 183, 232, 0.14);
+    border-color: rgba(143, 183, 232, 0.24);
+}
+html[data-theme="dark"] .toc-item .num { color: var(--link); }
+html[data-theme="dark"] .nav-link.next { color: var(--link); }
+html[data-theme="dark"] .nav-link.up { color: var(--text-muted); }
+html[data-theme="dark"] .summary-list li::marker,
+html[data-theme="dark"] .mistake-list li::marker {
+    color: var(--link);
+}
+html[data-theme="dark"] .toc-toggle-btn {
+    background: var(--bg-surface-2);
+    color: var(--link);
+    border-color: var(--border-subtle);
+}
+html[data-theme="dark"] .toc-toggle-btn:hover {
+    background: rgba(143, 183, 232, 0.14);
+    color: var(--link-hover);
+    border-color: rgba(143, 183, 232, 0.24);
+}
+html[data-theme="dark"] .toc-toggle-btn.is-open {
+    background: var(--color-navy-600);
+    color: var(--color-white);
+    border-color: var(--color-navy-600);
+}

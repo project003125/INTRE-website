@@ -56,6 +56,23 @@
 
         @media (max-width:768px) { .chapter-grid{grid-template-columns:1fr} .container{padding:1.5rem} h1{font-size:1.8rem} .subhead{font-size:.9rem} .section-label{font-size:var(--text-lg,1.25rem)} }
         @media (max-width:480px) { h1{font-size:1.4rem} .container{padding:1.2rem} .chapter-card{padding:.65rem .8rem} .chapter-card .ch-title{font-size:.82rem} }
+
+        /* ---------- 夜间覆盖（章节卡） ---------- */
+        html[data-theme="dark"] .chapter-card:hover {
+            background: var(--bg-surface-2);
+            border-color: var(--border-subtle);
+        }
+        html[data-theme="dark"] .chapter-card .ch-num {
+            background: rgba(143, 183, 232, 0.14);
+            color: var(--link);
+        }
+        html[data-theme="dark"] .card-link-icon { color: var(--link); }
+        html[data-theme="dark"] .chapter-card::after { background-color: var(--link); }
+        html[data-theme="dark"] .appendix-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--link);
+        }
+        html[data-theme="dark"] .appendix-item strong { color: var(--link); }
     </style>
 <script type="application/ld+json">
 {

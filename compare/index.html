@@ -34,6 +34,14 @@
         .dc-kicker { font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.12em; color:var(--color-amber-700, #b8860b); text-transform:uppercase; }
         .dc-title { font-size:1.06rem; font-weight:600; }
         .dc-desc { font-size:.86rem; line-height:1.65; color:var(--color-slate-600, #475569); }
+        /* 夜间：浅蓝立场卡在深底上会让继承的亮色正文完全消失 */
+        html[data-theme="dark"] .defense-card {
+            background: var(--bg-surface-2);
+            border-left-color: var(--color-amber-500);
+        }
+        html[data-theme="dark"] .defense-card .dc-title { color: var(--text-strong); }
+        html[data-theme="dark"] .defense-card .dc-desc { color: var(--text-muted); }
+        html[data-theme="dark"] .defense-card .dc-kicker { color: var(--color-amber-500); }
     </style>
 </head>
 <body lang="zh">

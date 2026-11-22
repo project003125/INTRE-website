@@ -2494,3 +2494,96 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb {
 html[data-theme="dark"] {
   scrollbar-color: rgba(255, 255, 255, 0.22) #0A1424;
 }
+
+/* ============================================================
+   夜间补丁 · 跨页组件（2026-11-22）
+   只加暗色覆盖，日间声明原样保留。
+   ============================================================ */
+
+/* 次级 CTA：半透明白底在深页上只剩灰块，navy 字仅 1.9:1 */
+html[data-theme="dark"] .btn-outline {
+  color: var(--link);
+  border-color: rgba(143, 183, 232, 0.50);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .btn-outline:hover {
+  color: var(--link-hover);
+  border-color: rgba(143, 183, 232, 0.70);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* 表格行悬停：暗色 .table td 特异性更高，原悬停高亮被静默压掉 */
+html[data-theme="dark"] .table tbody tr:hover td,
+html[data-theme="dark"] table tbody tr:hover td {
+  background-color: var(--bg-surface-2);
+}
+
+/* 移动端表格滑动提示：白药丸在夜间改微亮面 */
+html[data-theme="dark"] .table-responsive::after {
+  background: var(--bg-surface-2);
+  color: var(--text-muted);
+}
+
+/* 面包屑悬停：navy-600 深字落在深底上不可读 */
+html[data-theme="dark"] .breadcrumb-item a:hover {
+  color: var(--link);
+}
+
+/* 教材章节：桌面左栏 active 与移动端章节抽屉（<960px 使用） */
+html[data-theme="dark"] .textbook-sidebar-link:hover {
+  color: var(--link);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .textbook-sidebar-link.active {
+  color: var(--link);
+  background: rgba(143, 183, 232, 0.14);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer,
+html[data-theme="dark"] .textbook-sidebar-drawer-header {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer-title {
+  color: var(--text-strong);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer-link {
+  color: var(--text-body);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer-link:hover {
+  color: var(--link);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-subtle);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer-link:active {
+  color: var(--link);
+  background: rgba(143, 183, 232, 0.20);
+}
+
+html[data-theme="dark"] .textbook-sidebar-drawer-link.active {
+  color: var(--link);
+  background: rgba(143, 183, 232, 0.14);
+  border-color: rgba(143, 183, 232, 0.24);
+}
+
+html[data-theme="dark"] .textbook-sidebar-close {
+  background: var(--bg-surface-2);
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] .textbook-sidebar-toggle {
+  background: var(--bg-surface-2);
+  color: var(--link);
+  border-color: var(--border-subtle);
+}
+
+html[data-theme="dark"] .textbook-sidebar-toggle:hover {
+  background: rgba(143, 183, 232, 0.14);
+  color: var(--link-hover);
+}

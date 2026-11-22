@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INTRE · 关于名字</title>
+    <meta name="description" content="INTRE 的英文全称、中文品牌名「慧执」与功能状态心理学（FSP）的层级关系，以及对外统一写法与常见误用。">
+    <meta property="og:title" content="关于名字 · INTRE">
+    <meta property="og:description" content="INTRE 是项目缩写，慧执是中文品牌名，功能状态心理学（FSP）是所属学科与框架名；三个名字不在同一层。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/about/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="关于名字 · INTRE">
+    <meta name="twitter:description" content="INTRE 是项目缩写，慧执是中文品牌名，功能状态心理学（FSP）是所属学科与框架名；三个名字不在同一层。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/about/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <style>
+        .intro-box {
+            margin: 0 0 1.6rem;
+            padding: 1.1rem 1.25rem;
+            background: var(--color-navy-50, #eef3fa);
+            border-left: 4px solid var(--color-amber-700, #b8860b);
+            border-radius: var(--radius-sharp);
+        }
+        .intro-box p {
+            margin: 0 0 0.55rem;
+            color: var(--color-slate-700);
+            line-height: 1.75;
+        }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .section-lead {
+            max-width: 860px;
+            margin: 0 0 1.1rem;
+            color: var(--color-slate-600);
+            line-height: 1.75;
+        }
+
+        .name-table-wrap {
+            margin: 0 0 1.8rem;
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            background: var(--color-white);
+            box-shadow: var(--shadow-xs);
+            overflow: hidden;
+        }
+        .name-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            text-align: left;
+        }
+        .name-table th {
+            padding: 0.75rem 1rem;
+            background: var(--color-navy-600);
+            color: var(--color-white);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+        .name-table td {
+            padding: 0.95rem 1rem;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            vertical-align: top;
+            color: var(--color-slate-600);
+            line-height: 1.7;
+            word-break: break-word;
+        }
+        .name-table tr:last-child td { border-bottom: 0; }
+        .name-table th:nth-child(1),
+        .name-table td:nth-child(1) { width: 14%; }
+        .name-table th:nth-child(2),
+        .name-table td:nth-child(2) { width: 19%; }
+        .name-table th:nth-child(3),
+        .name-table td:nth-child(3) { width: 29%; }
+        .nt-level {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            color: var(--color-amber-700);
+            white-space: nowrap;
+        }
+        .nt-name {
+            display: block;
+            font-weight: 600;
+            color: var(--color-navy-700);
+        }
+        .nt-en {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--color-slate-600);
+        }
+        .nt-note { font-size: 0.86rem; }
+        .nt-note a {
+            color: var(--color-amber-700);
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+        }
+        .nt-note a:hover { color: var(--color-navy-700); }
+
+        .why {
+            max-width: 860px;
+            margin: 0 0 1.8rem;
+        }
+        .why p {
+            margin: 0 0 1rem;
+            color: var(--color-slate-600);
+            line-height: 1.85;
+        }
+        .why p:last-child { margin-bottom: 0; }
+        .why strong { color: var(--color-navy-700); }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1rem;
+            margin: 0 0 1.2rem;
+        }
+        .usage-card {
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sharp);
+            padding: 1.2rem 1.25rem;
+            box-shadow: var(--shadow-xs);
+        }
+        .usage-card h3 {
+            margin: 0 0 0.7rem;
+            font-size: 1.05rem;
+            color: var(--color-navy-700);
+        }
+        .usage-list {
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--color-slate-600);
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+        .usage-list li { margin-bottom: 0.5rem; }
+        .usage-list li:last-child { margin-bottom: 0; }
+        .usage-list strong { color: var(--color-navy-700); }
+        .usage-code {
+            font-family: var(--font-mono);
+            font-size: 0.8em;
+            background: var(--color-slate-50);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            padding: 0.08rem 0.3rem;
+            word-break: break-word;
+        }
+        .note {
+            max-width: 860px;
+            margin: 0 0 0.2rem;
+            padding: 0.75rem 1rem;
+            border-left: 3px solid var(--color-amber-500);
+            background: var(--color-slate-50);
+            color: var(--color-slate-700);
+            font-size: 0.86rem;
+            line-height: 1.75;
+        }
+        .page-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 2rem 0 1rem;
+        }
+
+        html[data-theme="dark"] .intro-box {
+            background: var(--bg-surface-2);
+            border-left-color: var(--color-amber-500);
+        }
+        html[data-theme="dark"] .intro-box p,
+        html[data-theme="dark"] .section-lead,
+        html[data-theme="dark"] .why p,
+        html[data-theme="dark"] .usage-list,
+        html[data-theme="dark"] .nt-note { color: var(--text-body); }
+        html[data-theme="dark"] .name-table-wrap,
+        html[data-theme="dark"] .usage-card {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-raise);
+        }
+        html[data-theme="dark"] .name-table td { border-bottom-color: var(--border-subtle); }
+        html[data-theme="dark"] .nt-name,
+        html[data-theme="dark"] .why strong,
+        html[data-theme="dark"] .usage-card h3,
+        html[data-theme="dark"] .usage-list strong { color: #8FB7E8; }
+        html[data-theme="dark"] .nt-en { color: rgba(220,230,242,0.72); }
+        html[data-theme="dark"] .usage-code {
+            background: rgba(255,255,255,0.06);
+            border-color: var(--border-subtle);
+            color: #DCE6F2;
+        }
+        html[data-theme="dark"] .note {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-body);
+        }
+
+        @media (max-width: 768px) {
+            .usage-grid { grid-template-columns: 1fr; }
+            .name-table thead { display: none; }
+            .name-table,
+            .name-table tbody,
+            .name-table tr,
+            .name-table td { display: block; width: 100%; }
+            .name-table tr {
+                padding: 0.9rem 1rem;
+                border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            }
+            .name-table tr:last-child { border-bottom: 0; }
+            .name-table td {
+                padding: 0.18rem 0;
+                border: 0;
+                width: 100%;
+            }
+            .name-table td:nth-child(1),
+            .name-table td:nth-child(2),
+            .name-table td:nth-child(3),
+            .name-table td:nth-child(4) { width: 100%; }
+            .name-table td::before {
+                content: attr(data-label) "  ";
+                display: inline-block;
+                min-width: 4.2em;
+                font-family: var(--font-mono);
+                font-size: 0.64rem;
+                letter-spacing: 0.08em;
+                color: var(--color-slate-500);
+            }
+            .name-table td:first-child::before { display: none; }
+            .name-table td:first-child { padding-bottom: 0.35rem; }
+            .nt-name { display: inline; }
+            .nt-en { display: inline; }
+            html[data-theme="dark"] .name-table tr { border-bottom-color: var(--border-subtle); }
+        }
+    </style>
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container">
+        <h1>关于名字</h1>
+        <div class="subhead">三个名字不在同一层：INTRE 是项目缩写，慧执是中文品牌名，功能状态心理学（FSP）是所属学科与框架名。先把层级分开，再谈用法。</div>
+
+        <div class="intro-box">
+            <p><strong>这一页只做一件事</strong></p>
+            <p>把名字的层级和对外写法说清楚。定义依据现有命名标准与核心纲要；不新增说法，也不扩展成额外定义。</p>
+        </div>
+
+        <div class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 01 · 三层名字</div>
+        <p class="section-lead">三层名字各有各的用法。下面的表把中文、英文和定位放在一起，避免把项目名、品牌名、学科名混成一层。</p>
+        <div class="name-table-wrap">
+            <table class="name-table">
+                <thead>
+                    <tr>
+                        <th>层级</th>
+                        <th>中文</th>
+                        <th>英文</th>
+                        <th>定位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="层级"><span class="nt-level">项目缩写</span></td>
+                        <td data-label="中文"><span class="nt-name">INTRE</span></td>
+                        <td data-label="英文"><span class="nt-en">Internal Regulation Engine</span></td>
+                        <td data-label="定位" class="nt-note">项目正式代号；不是学科名。</td>
+                    </tr>
+                    <tr>
+                        <td data-label="层级"><span class="nt-level">中文品牌名</span></td>
+                        <td data-label="中文"><span class="nt-name">慧执</span></td>
+                        <td data-label="英文"><span class="nt-en">—</span></td>
+                        <td data-label="定位" class="nt-note">中文品牌名；不是英文全称的意译。</td>
+                    </tr>
+                    <tr>
+                        <td data-label="层级"><span class="nt-level">学科／框架</span></td>
+                        <td data-label="中文"><span class="nt-name">功能状态心理学</span></td>
+                        <td data-label="英文"><span class="nt-en">Functional State Psychology（FSP）</span></td>
+                        <td data-label="定位" class="nt-note">所属学科与框架名；和 INTRE 不是同一层级，也不是 INTRE 的中文翻译。展开见<a href="/INTRE-website/textbook/">教材</a>。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-label"><i class="fas fa-quote-left" aria-hidden="true"></i> 02 · 为什么这么叫</div>
+        <div class="why">
+            <p>命名标准把英文全称正式定为 <strong>INTRE = Internal Regulation Engine</strong>，并把它标为项目正式代号；中文品牌名定为<strong>「慧执」</strong>。这是命名定型，不是对框架内容的追加定义。</p>
+            <p>「慧」对应知情意行四维认知，「执」对应「允执厥中」的结构调度观。这两个字是对名称的说明，不扩展成额外承诺。</p>
+            <p>「慧执」不是 Internal Regulation Engine 的意译。它与英文全称并列，构成同一项目的中英文名称；它不翻译英文，也不替代学科名。</p>
+        </div>
+
+        <div class="section-label"><i class="fas fa-pen-ruler" aria-hidden="true"></i> 03 · 怎么用</div>
+        <p class="section-lead">对外写作只需要记住下面几组写法：首次出现写全，后续用缩写，学科名单独写，品牌名带标签，缩写不拆字母。</p>
+        <div class="usage-grid">
+            <article class="usage-card">
+                <h3>统一写法</h3>
+                <ul class="usage-list">
+                    <li>中文正文首次出现：<span class="usage-code">INTRE（Internal Regulation Engine，项目正式代号；中文品牌名「慧执」）</span></li>
+                    <li>后续：<span class="usage-code">INTRE</span></li>
+                    <li>英文正文首次出现：<span class="usage-code">Internal Regulation Engine (INTRE)</span></li>
+                    <li>学科／框架：<span class="usage-code">功能状态心理学（Functional State Psychology, FSP）</span></li>
+                    <li>中文品牌名首次出现：写<span class="usage-code">中文品牌名「慧执」</span>，不要写<span class="usage-code">中文名：慧执</span>。</li>
+                </ul>
+            </article>
+            <article class="usage-card">
+                <h3>常见误用</h3>
+                <ul class="usage-list">
+                    <li><strong>把 INTRE 当学科名。</strong>INTRE 是项目／框架名；学科名是功能状态心理学（FSP）。</li>
+                    <li><strong>把 FLP 当现行英文。</strong>FLP 是功能层心理学的历史缩写；现行学科缩写是 FSP（Functional State Psychology）。也不要把 FSP 展开成 Functional Layer Psychology。</li>
+                    <li><strong>把缩写当五个词的逐字展开。</strong>只按命名标准写 Internal Regulation Engine，不自行给 I-N-T-R-E 每个字母配词。</li>
+                    <li><strong>把「慧执」当英文意译。</strong>它是中文品牌名，不是 Internal Regulation Engine 的意译。</li>
+                </ul>
+            </article>
+        </div>
+        <div class="note">「慧执」首次出现时，前面带「中文品牌名」四个字，后面不加英文翻译；它是名字，不是 FSP 的缩写。<span class="usage-code">INTRE = IODS + PSE</span> 是系统构成，不是名称展开，不要把它当缩写的解释。</div>
+
+        <div class="page-actions">
+            <a class="btn btn-primary" href="/INTRE-website/"><i class="fas fa-arrow-left" aria-hidden="true"></i> 返回首页</a>
+            <a class="btn btn-outline" href="/INTRE-website/glossary/">查看术语表</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 名字说明</p>
+        <p class="footer-desc">INTRE 是项目缩写，慧执是中文品牌名，功能状态心理学（FSP）是所属学科与框架名。</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>内容源：INTRE 名字说明 · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle-20261102.js"></script>
+    <script src="../shared/domain-switch.js?v=20261101h"></script>
+</body>
+</html>

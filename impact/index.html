@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INTRE · 状态范式与人文社科</title>
+    <meta name="description" content="状态范式与人文社科的学科接口：S-P 外部信号、M-R-D-S 内部状态、G-M-A-R 干预操作，以及按《研究生教育学科专业目录（2022年）》一级学科口径整理的 8 个学科落点与解释边界。">
+    <meta property="og:title" content="状态范式与人文社科 · INTRE">
+    <meta property="og:description" content="把状态范式对人文社科的作用收在接口上：三段公共语法、8 个一级学科落点与一条明确的解释边界。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/impact/">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="状态范式与人文社科 · INTRE">
+    <meta name="twitter:description" content="把状态范式对人文社科的作用收在接口上：三段公共语法、8 个一级学科落点与一条明确的解释边界。">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/impact/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <style>
+        .intro-box {
+            margin: 0 0 1.6rem;
+            padding: 1.1rem 1.25rem;
+            background: var(--color-navy-50, #eef3fa);
+            border-left: 4px solid var(--color-amber-700, #b8860b);
+            border-radius: var(--radius-sharp);
+        }
+        .intro-box p {
+            margin: 0 0 0.55rem;
+            color: var(--color-slate-700);
+            line-height: 1.75;
+        }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .section-lead {
+            max-width: 860px;
+            margin: 0 0 1.1rem;
+            color: var(--color-slate-600);
+            line-height: 1.75;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin: 0 0 1.2rem;
+        }
+        .method-card {
+            position: relative;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sharp);
+            padding: 1.2rem 1.2rem 1.25rem;
+            box-shadow: var(--shadow-xs);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .method-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-amber-500);
+        }
+        .method-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(31, 72, 128, .12);
+        }
+        .method-card .mc-code {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.12em;
+            color: var(--color-amber-700);
+            text-transform: uppercase;
+        }
+        .method-card h3 {
+            margin: 0.5rem 0 0.45rem;
+            font-size: 1.12rem;
+            color: var(--color-navy-600);
+        }
+        .method-card p {
+            margin: 0;
+            font-size: 0.86rem;
+            line-height: 1.7;
+            color: var(--color-slate-600);
+        }
+        .impact-example {
+            max-width: 860px;
+            margin: 1.1rem 0 0;
+            padding: 0.75rem 1rem;
+            border-left: 3px solid var(--color-amber-500);
+            background: var(--color-slate-50);
+            color: var(--color-slate-700);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.7;
+        }
+
+        .impact-matrix-wrap {
+            margin: 1.2rem 0 1.6rem;
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            background: var(--color-white);
+            box-shadow: var(--shadow-xs);
+        }
+        .impact-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .impact-matrix th {
+            padding: 0.8rem 1rem;
+            background: var(--color-navy-600);
+            color: var(--color-white);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-tech);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .impact-matrix th:nth-child(1) { width: 26%; }
+        .impact-matrix th:nth-child(2) { width: 22%; }
+        .impact-matrix th:nth-child(3) { width: 40%; }
+        .impact-matrix th:nth-child(4) { width: 12%; }
+        .impact-matrix td {
+            padding: 0.9rem 1rem;
+            border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            color: var(--color-slate-700);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            vertical-align: top;
+        }
+        .impact-matrix tbody tr:last-child td { border-bottom: 0; }
+        .impact-matrix tbody tr:hover td { background: var(--color-navy-50); }
+        .im-cat {
+            display: block;
+            margin-bottom: 0.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: var(--tracking-tech);
+            text-transform: uppercase;
+            color: var(--color-slate-500);
+        }
+        .im-name {
+            display: block;
+            color: var(--color-navy-600);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .im-code {
+            margin-right: 0.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--color-amber-700);
+        }
+        .im-tier {
+            display: inline-block;
+            min-width: 2.4rem;
+            padding: 0.12rem 0.5rem;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: center;
+        }
+        .im-tier.is-a { background: var(--color-navy-50); color: var(--color-navy-600); }
+        .im-tier.is-fx { background: rgba(245, 158, 11, 0.14); color: var(--color-amber-700); }
+        .impact-source {
+            margin: 0;
+            padding: 0.85rem 1rem;
+            border-top: var(--stroke-hairline) solid var(--color-slate-200);
+            background: var(--color-slate-50);
+            color: var(--color-slate-500);
+            font-size: 0.76rem;
+            line-height: 1.7;
+        }
+        .page-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 2rem 0 1rem;
+        }
+
+        html[data-theme="dark"] .intro-box {
+            background: var(--bg-surface-2);
+            border-left-color: var(--color-amber-500);
+        }
+        html[data-theme="dark"] .intro-box p { color: var(--text-body); }
+        html[data-theme="dark"] .section-lead { color: var(--text-body); }
+        html[data-theme="dark"] .method-card {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-raise);
+        }
+        html[data-theme="dark"] .method-card h3 { color: #8FB7E8; }
+        html[data-theme="dark"] .method-card p { color: var(--text-body); }
+        html[data-theme="dark"] .method-card .mc-code { color: var(--color-amber-500); }
+        html[data-theme="dark"] .impact-example {
+            background: var(--bg-surface-2);
+            color: var(--text-body);
+        }
+        html[data-theme="dark"] .impact-matrix-wrap {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-raise);
+        }
+        html[data-theme="dark"] .impact-matrix td {
+            color: var(--text-body);
+            border-bottom-color: var(--border-faint);
+        }
+        html[data-theme="dark"] .impact-matrix tbody tr:hover td { background: var(--bg-surface-2); }
+        html[data-theme="dark"] .im-name { color: #8FB7E8; }
+        html[data-theme="dark"] .im-tier.is-a { background: rgba(143, 183, 232, 0.14); color: #8FB7E8; }
+        html[data-theme="dark"] .im-tier.is-fx { background: rgba(245, 158, 11, 0.16); color: var(--color-amber-500); }
+        html[data-theme="dark"] .impact-source {
+            background: var(--bg-surface-2);
+            border-top-color: var(--border-subtle);
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 980px) {
+            .method-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .intro-box { padding: 0.95rem 1rem; }
+            .impact-matrix thead { display: none; }
+            .impact-matrix,
+            .impact-matrix tbody,
+            .impact-matrix tr,
+            .impact-matrix td { display: block; width: 100%; }
+            .impact-matrix tr {
+                padding: 0.9rem 1rem;
+                border-bottom: var(--stroke-hairline) solid var(--color-slate-200);
+            }
+            .impact-matrix tr:last-child { border-bottom: 0; }
+            .impact-matrix td { padding: 0.15rem 0; border: 0; }
+            .impact-matrix td::before {
+                content: attr(data-label);
+                display: block;
+                margin-bottom: 0.1rem;
+                font-family: var(--font-mono);
+                font-size: 0.6rem;
+                letter-spacing: var(--tracking-tech);
+                text-transform: uppercase;
+                color: var(--color-slate-500);
+            }
+            .impact-matrix td:first-child::before { display: none; }
+            .impact-matrix tbody tr:hover td { background: transparent; }
+            html[data-theme="dark"] .impact-matrix tr { border-bottom-color: var(--border-faint); }
+            html[data-theme="dark"] .impact-matrix tbody tr:hover td { background: transparent; }
+        }
+        @media (max-width: 480px) {
+            main h1 { font-size: 2rem; letter-spacing: -0.02em; }
+        }
+    </style>
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content" class="container">
+        <h1>状态范式与人文社科</h1>
+        <div class="subhead">SP 指状态范式整体（S-P → M-R-D-S → G-M-A-R）；S-P 只是其中的外部信号编码层。它不替代任何学科，只补上外部信号进入个体那一段。</div>
+
+        <div class="intro-box">
+            <p><strong>接口，不是成果总结</strong></p>
+            <p>首页已指出各学科共同的中间层缺口；这一页把它展开为三段公共语法、8 个一级学科落点与一条明确的解释边界。学科名称与代码依《研究生教育学科专业目录（2022年）》（学位〔2022〕15号）；GB/T 13745-2009 为科技统计分类，不作本页目录口径。</p>
+        </div>
+
+        <div class="section-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> 接口 · 三段公共语法</div>
+        <p class="section-lead">三段不是三个新理论，而是三种可对接的坐标：外部信号怎么编码，内部状态怎么描述，干预操作怎么组合。</p>
+        <div class="method-grid">
+            <article class="method-card">
+                <span class="mc-code">01 · S-P</span>
+                <h3>外部信号</h3>
+                <p>来源 × 作用方式；媒体框架、教学支架、价格信号进同一坐标系。</p>
+            </article>
+            <article class="method-card">
+                <span class="mc-code">02 · M-R-D-S</span>
+                <h3>内部状态</h3>
+                <p>资源 / 调度 / 结构三轴，42 维状态向量。</p>
+            </article>
+            <article class="method-card">
+                <span class="mc-code">03 · G-M-A-R</span>
+                <h3>干预操作</h3>
+                <p>门控 / 调制 / 校准 / 重联，跨学科干预的公共指令集。</p>
+            </article>
+        </div>
+        <p class="impact-example">议程设置：高频 S-P → M2-DSP-B 显著性权重上升 → 先 GATE− 限曝，再 ALIGN 建规则。</p>
+
+        <div class="section-label"><i class="fas fa-table-cells-large" aria-hidden="true"></i> 落点 · 八个一级学科</div>
+        <p class="section-lead">117 个一级学科不必都上首页。这里放 8 个可核对的落点：6 个 A 级（已有案例映射）＋ 2 个 F/X 级（只接描述性分支）；名称与代码依 2022 目录，门类只作眉标。</p>
+        <div class="impact-matrix-wrap">
+            <table class="impact-matrix">
+                <thead>
+                    <tr>
+                        <th scope="col">门类 / 一级学科</th>
+                        <th scope="col">被翻译的概念</th>
+                        <th scope="col">功能层落点</th>
+                        <th scope="col">证据档</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">02 经济学门类</span>
+                            <span class="im-name"><span class="im-code">0201</span>理论经济学</span>
+                        </td>
+                        <td data-label="被翻译的概念">价格信号 · 激励结构 · 损失厌恶</td>
+                        <td data-label="功能层落点">M3-STR-R 分配规则 · M3-RES-D 储量</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">03 法学门类</span>
+                            <span class="im-name"><span class="im-code">0301</span>法学</span>
+                        </td>
+                        <td data-label="被翻译的概念">规则内化 · 法律社会化 · 刑罚威慑</td>
+                        <td data-label="功能层落点">M3-STR-R 规则结构（仅法心理学／法律社会化分支）</td>
+                        <td data-label="证据档"><span class="im-tier is-fx">F/X</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">03 法学门类</span>
+                            <span class="im-name"><span class="im-code">0302</span>政治学</span>
+                        </td>
+                        <td data-label="被翻译的概念">政治社会化 · 政治极化 · 政党认同</td>
+                        <td data-label="功能层落点">M2-STR-R 认知 · M4-STR-C 认同 · M5-STR-R 叙事</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">03 法学门类</span>
+                            <span class="im-name"><span class="im-code">0303</span>社会学</span>
+                        </td>
+                        <td data-label="被翻译的概念">惯习 · 标签理论 · 社会认同</td>
+                        <td data-label="功能层落点">M2-STR-R 图式 · M3-STR-R 风险偏好 · M4-STR-C 归属</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">04 教育学门类</span>
+                            <span class="im-name"><span class="im-code">0401</span>教育学</span>
+                        </td>
+                        <td data-label="被翻译的概念">最近发展区（ZPD） · 认知负荷 · 脚手架</td>
+                        <td data-label="功能层落点">M2-DSP-F 资源 · M3-RES-D（ZPD 为 S-P×M-R-D-S 关系项）</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">05 文学门类</span>
+                            <span class="im-name"><span class="im-code">0503</span>新闻传播学</span>
+                        </td>
+                        <td data-label="被翻译的概念">议程设置 · 框架理论 · 培养理论</td>
+                        <td data-label="功能层落点">M2-DSP-B 显著性权重 · M2-STR-R 规则簇</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">06 历史学门类</span>
+                            <span class="im-name"><span class="im-code">0602</span>中国史</span>
+                        </td>
+                        <td data-label="被翻译的概念">心态史 · 历史行动者决策 · 口述史</td>
+                        <td data-label="功能层落点">M4-STR-C 情感归属 · M5-STR-R 叙事整合（候选映射）</td>
+                        <td data-label="证据档"><span class="im-tier is-fx">F/X</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="门类 / 一级学科">
+                            <span class="im-cat">12 管理学门类</span>
+                            <span class="im-name"><span class="im-code">1202</span>工商管理学</span>
+                        </td>
+                        <td data-label="被翻译的概念">激励 · 组织承诺 · 决策疲劳</td>
+                        <td data-label="功能层落点">M3-RES-D · M3-STR-R 规则退化</td>
+                        <td data-label="证据档"><span class="im-tier is-a">A</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="impact-source">学科口径：国务院学位委员会、教育部《研究生教育学科专业目录（2022年）》（学位〔2022〕15号）；GB/T 13745-2009 为科技统计分类，不作本页目录口径。证据档沿用既有学科清单的 A／F/X 判断，只在该格所列概念范围内成立。</p>
+        </div>
+
+        <div class="section-label"><i class="fas fa-border-none" aria-hidden="true"></i> 边界 · 先于雄心</div>
+        <blockquote class="manifesto-quote">
+            <p><strong>边界先于雄心：</strong>状态范式只解释个体内部转化，宏观结构、集体涌现与规范判断交还社会学、经济学、政治学与伦理学。这里的学科落点是候选接口，不是既成结论；证据目前只到 L/F/X——五学科概念兼容已过压力测试，P 级预测增益与 E 级干预增益尚未验证。</p>
+        </blockquote>
+
+        <div class="page-actions">
+            <a class="btn btn-primary" href="/INTRE-website/#impact"><i class="fas fa-arrow-left" aria-hidden="true"></i> 返回首页 · 状态范式与人文社科</a>
+            <a class="btn btn-outline" href="/INTRE-website/compare/">看双范式对照</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 状态范式与人文社科</p>
+        <p class="footer-desc">状态范式守个体内部转化，人文社科守各自的现象层与规范层；两者经接口语法相连。</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>内容源：状态范式与人文社科栏目 · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle-20261102.js"></script>
+    <script src="../shared/domain-switch.js?v=20261101h"></script>
+<script src="/INTRE-website/shared/gate.js" defer></script>
+<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+</body>
+</html>

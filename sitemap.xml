@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://project003125.github.io/INTRE-website/about/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://project003125.github.io/INTRE-website/iods/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>

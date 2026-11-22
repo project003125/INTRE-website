@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>走出洞穴 · 全文阅读版 v3.0.6</title>
+<meta name="description" content="03-A-07《走出洞穴：心理学变量范式的本体论困境与状态范式的工程探索》v3.0.6 全文阅读版，五幕结构，14 张表，15 条参考文献。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231D4A63'/%3E%3Cpath d='M16 6 L27 25 H5 Z' fill='%23F5F6F2' fill-opacity='.88'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F5F6F2;
+  --paper-2:#EDEFE9;
+  --band:#E9ECE6;
+  --ink:#16191B;
+  --ink-2:#3F474B;
+  --muted:#6B747A;
+  --rule:#D3D8D2;
+  --accent:#1D4A63;
+  --accent-soft:#E4EBEF;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,Georgia,"Times New Roman",serif;
+  --sans:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  --measure:42em;
+  --scale:1;
+}
+html[data-theme="dark"]{
+  --paper:#111416;
+  --paper-2:#171B1E;
+  --band:#1B2125;
+  --ink:#E5E7E3;
+  --ink-2:#BDC4C1;
+  --muted:#8A9499;
+  --rule:#2B3236;
+  --accent:#87B7CF;
+  --accent-soft:#1B2A32;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:calc(17.5px * var(--scale));
+  line-height:1.9;text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent-soft);color:var(--ink)}
+
+/* ---------- progress ---------- */
+.progress{position:fixed;inset:0 0 auto 0;height:2px;background:transparent;z-index:60}
+.progress i{display:block;height:2px;width:0;background:var(--accent);transition:width .12s linear}
+
+/* ---------- masthead ---------- */
+.masthead{position:relative;padding:34px 20px 26px;border-bottom:1px solid var(--rule);overflow:hidden}
+.masthead::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(29,74,99,.055) 1px,transparent 1px),linear-gradient(to bottom,rgba(29,74,99,.055) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,0));
+  opacity:.7;
+}
+html[data-theme="dark"] .masthead::before{opacity:.35}
+.mast-inner{position:relative;max-width:1100px;margin:0 auto}
+.mast-top{display:flex;align-items:center;gap:14px;font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;color:var(--muted)}
+.docid{color:var(--accent);font-weight:600;letter-spacing:.1em}
+.mast-kicker{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+h1{
+  margin:22px 0 10px;font-family:var(--serif);font-weight:600;
+  font-size:clamp(40px,7.4vw,74px);line-height:1.06;letter-spacing:.035em;
+}
+.sub{margin:0;font-size:clamp(15px,2vw,18.5px);line-height:1.7;color:var(--ink-2);letter-spacing:.06em;max-width:34em}
+.byline{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:0;font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.byline span{padding:0 12px;border-left:1px solid var(--rule)}
+.byline span:first-child{padding-left:0;border-left:0}
+.byline .strong{color:var(--ink-2)}
+
+/* ---------- layout ---------- */
+.page{max-width:1100px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:1040px){
+  .page{grid-template-columns:258px minmax(0,1fr);gap:44px;padding:0 28px}
+}
+
+/* ---------- rail / toc ---------- */
+.rail{
+  position:fixed;inset:0 auto 0 0;width:min(86vw,320px);z-index:80;
+  background:var(--paper);border-right:1px solid var(--rule);
+  padding:24px 20px 60px;overflow-y:auto;
+  transform:translateX(-101%);transition:transform .28s ease;
+}
+.rail.open{transform:none}
+@media (min-width:1040px){
+  .rail{position:sticky;top:0;align-self:start;transform:none;width:auto;height:100vh;
+    border-right:0;border-left:0;background:transparent;padding:40px 0 80px;overflow-y:auto;z-index:1}
+  .rail::after{content:"";position:absolute;top:40px;right:-28px;bottom:60px;width:1px;background:var(--rule)}
+}
+.rail-head{display:flex;align-items:baseline;gap:10px;font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--ink);margin-bottom:18px}
+.rail-head span{color:var(--muted);letter-spacing:.08em;font-size:11px}
+.toc{list-style:none;margin:0;padding:0;font-family:var(--sans);font-size:12.5px;line-height:1.55}
+.toc-item{margin:0 0 10px}
+.toc-item a{display:grid;grid-template-columns:1.9em minmax(0,1fr);align-items:baseline;color:var(--ink-2);text-decoration:none;padding:2px 0 2px 10px;border-left:2px solid transparent;transition:color .15s,border-color .15s}
+.toc-item a .toc-n{display:block;color:var(--muted);font-size:10.5px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.toc-item a .toc-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toc-item a:hover{color:var(--accent)}
+.toc-item a.active{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+.toc-item--act a{color:var(--ink);font-weight:600}
+.toc-sub{list-style:none;margin:4px 0 14px;padding:0 0 0 10px;border-left:1px solid var(--rule)}
+.toc-sub li{margin:1px 0}
+.toc-sub a{display:block;font-size:11.5px;color:var(--muted);padding:1px 0 1px 8px;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toc-sub a:hover,.toc-sub a.active{color:var(--accent);border-left-color:var(--accent-soft)}
+.rail-foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:11px;line-height:1.9;color:var(--muted)}
+.backdrop{position:fixed;inset:0;background:rgba(10,14,16,.42);z-index:70;opacity:0;pointer-events:none;transition:opacity .25s}
+.backdrop.on{opacity:1;pointer-events:auto}
+@media (min-width:1040px){.backdrop{display:none}}
+
+/* ---------- paper ---------- */
+.paper{max-width:var(--measure);padding:26px 0 40px;min-width:0}
+@media (min-width:720px){.paper{padding:44px 0 40px}}
+.paper h3,.paper h4,.paper h2{scroll-margin-top:24px}
+p{margin:.9em 0;text-indent:2em;text-align:justify}
+p+p{margin-top:.55em}
+em{font-style:italic}
+strong{font-weight:600;color:var(--ink)}
+
+/* chapters */
+.chapter{position:relative}
+.chapter--act{padding-top:64px}
+.act-num{
+  position:absolute;right:-6px;top:14px;font-family:var(--serif);font-weight:400;
+  font-size:clamp(86px,13vw,150px);line-height:.8;letter-spacing:.02em;
+  color:var(--accent);opacity:.13;user-select:none;pointer-events:none;
+}
+html[data-theme="dark"] .act-num{opacity:.22}
+.act-title{margin:0 0 1.2em}
+.act-label{
+  display:block;font-family:var(--sans);font-size:12px;font-weight:600;
+  letter-spacing:.3em;color:var(--accent);margin-bottom:14px;
+}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.6vw,33px);line-height:1.35;letter-spacing:.02em;margin:3.2em 0 1.1em;position:relative}
+.chapter:not(.chapter--act) h2{padding-top:1.5em;border-top:1px solid var(--rule)}
+.chapter:first-of-type h2{margin-top:1.1em}
+h3{font-family:var(--serif);font-weight:600;font-size:clamp(19px,2.4vw,21.5px);line-height:1.5;letter-spacing:.015em;margin:2.2em 0 .8em}
+h3::before{content:"";display:inline-block;width:.34em;height:.34em;margin-right:.62em;vertical-align:.14em;background:var(--accent);opacity:.42}
+h4{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.6;letter-spacing:.02em;color:var(--ink-2);margin:1.8em 0 .6em}
+h4::before{content:"";display:inline-block;width:14px;height:1px;margin-right:10px;vertical-align:.28em;background:var(--muted);opacity:.6}
+
+/* quote */
+blockquote{margin:1.8em 0;padding:2px 0 2px 18px;border-left:2px solid var(--accent);color:var(--ink-2);font-size:calc(15.5px * var(--scale));line-height:1.85}
+blockquote p{text-indent:0;margin:.35em 0}
+blockquote strong{color:var(--accent)}
+
+/* abstract */
+.chapter--abstract blockquote{background:var(--band);border:0;border-left:3px solid var(--accent);padding:16px 18px;color:var(--ink-2)}
+.chapter--abstract p{text-indent:0;margin:.75em 0}
+
+/* conclusion */
+.chapter--conclusion p{text-indent:0;font-size:calc(19px * var(--scale));line-height:1.85;padding:18px 0 0;border-top:2px solid var(--accent)}
+
+/* tables */
+.tw{overflow-x:auto;margin:2em 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-family:var(--sans);font-size:13px;line-height:1.65}
+th{background:var(--band);font-weight:600;text-align:left;color:var(--ink);letter-spacing:.02em}
+th,td{padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top;text-indent:0}
+th:first-child,td:first-child{min-width:5.6em}
+td{color:var(--ink-2)}
+td:first-child,th:first-child{font-weight:600;color:var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+.tw::-webkit-scrollbar{height:8px}
+.tw::-webkit-scrollbar-thumb{background:var(--rule);border-radius:0}
+
+/* lists */
+ul,ol{margin:1em 0;padding-left:1.7em}
+li{margin:.45em 0}
+li::marker{color:var(--accent)}
+ul li p,ol li p{text-indent:0;margin:0}
+
+/* refs */
+.chapter--refs ol{list-style:none;counter-reset:r;padding-left:0;font-size:calc(13.5px * var(--scale));line-height:1.75}
+.chapter--refs ol li{counter-increment:r;position:relative;padding-left:2.6em;margin:.85em 0;color:var(--ink-2);font-family:var(--serif);text-indent:0}
+.chapter--refs ol li::before{content:counter(r);position:absolute;left:0;top:.15em;color:var(--muted);font-family:var(--sans);font-size:11px;letter-spacing:.04em}
+.chapter--refs a.url{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft);word-break:break-all}
+
+/* log */
+.chapter--log table{font-size:12px;min-width:720px}
+.chapter--log td{line-height:1.7}
+
+/* hr */
+hr{border:0;height:1px;background:var(--rule);margin:3em 0}
+
+/* tail */
+.tail{margin-top:4em;padding-top:1.2em;border-top:1px solid var(--rule);font-family:var(--sans);font-size:11.5px;line-height:2;color:var(--muted);letter-spacing:.02em}
+.tail em{font-style:normal}
+
+/* ---------- catalog ---------- */
+.catalog{max-width:1100px;margin:0 auto;padding:40px 20px 96px}
+.catalog-box{border-top:2px solid var(--ink);padding-top:20px}
+.catalog-title{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--muted);margin:0 0 18px}
+.colophon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;font-family:var(--sans);font-size:12.5px;line-height:1.6}
+@media (min-width:700px){.colophon-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}}
+dt{color:var(--muted);font-size:11px;letter-spacing:.1em;margin-top:14px}
+dd{margin:2px 0 0;color:var(--ink-2);word-break:break-word}
+.fold{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
+.fold summary{cursor:pointer;font-family:var(--sans);font-size:12px;letter-spacing:.08em;color:var(--ink-2);padding:6px 0;list-style:none;display:flex;align-items:center;gap:10px}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::before{content:"";width:8px;height:8px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);transform:rotate(-45deg);transition:transform .2s;flex:none;margin-top:-3px}
+details[open] summary::before{transform:rotate(45deg);margin-top:-1px}
+.fold summary:hover{color:var(--accent)}
+.plain{list-style:none;margin:6px 0 0;padding:0;font-family:var(--sans);font-size:11.5px;line-height:1.9;color:var(--muted)}
+.plain li{padding:2px 0;word-break:break-all}
+.rev{list-style:none;counter-reset:x;padding:0;margin:8px 0 0;font-family:var(--sans);font-size:11.5px;line-height:1.85;color:var(--muted)}
+.rev li{counter-increment:x;position:relative;padding-left:2em;margin:.5em 0}
+.rev li::before{content:counter(x);position:absolute;left:0;top:0;color:var(--muted);opacity:.7;font-size:10px}
+
+/* ---------- dock ---------- */
+.dock{
+  position:fixed;right:14px;bottom:14px;z-index:90;display:flex;gap:2px;
+  background:var(--paper);border:1px solid var(--rule);padding:3px;
+}
+.dock button{
+  width:38px;height:38px;border:0;background:transparent;color:var(--ink-2);
+  font-family:var(--sans);font-size:12px;cursor:pointer;display:grid;place-items:center;
+  transition:background .15s,color .15s;
+}
+.dock button:hover{background:var(--band);color:var(--accent)}
+.dock button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+#tocBtn{display:none}
+@media (max-width:720px){
+  .dock{right:10px;bottom:10px}
+  .dock button{width:44px;height:44px}
+  #tocBtn{display:grid}
+  #printBtn{display:none}
+}
+.totop{
+  position:fixed;right:14px;bottom:66px;z-index:90;width:44px;height:44px;
+  border:1px solid var(--rule);background:var(--paper);color:var(--ink-2);cursor:pointer;
+  font-family:var(--sans);font-size:11px;letter-spacing:.08em;opacity:0;pointer-events:none;
+  transition:opacity .2s;
+}
+.totop.on{opacity:1;pointer-events:auto}
+.totop:hover{color:var(--accent)}
+@media (max-width:720px){.totop{bottom:66px}}
+
+/* ---------- reduced motion & print ---------- */
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{
+  :root{--paper:#fff;--ink:#000;--ink-2:#222;--rule:#bbb;--band:#f0f0f0;--accent:#123}
+  .progress,.dock,.totop,.rail,.backdrop,.masthead::before{display:none!important}
+  .page{display:block;max-width:none;padding:0}
+  .paper{max-width:none;padding:0}
+  body{font-size:10.5pt;line-height:1.75}
+  h2{break-after:avoid}
+  .chapter--act{break-before:page;padding-top:0}
+  .act-num{display:none}
+  .tw{overflow:visible;break-inside:auto}
+  table{min-width:0;font-size:9pt}
+  a{color:#000;text-decoration:none}
+  .catalog{page-break-before:always}
+}
+</style>
+<meta name="intre-version" content="v3.0.6">
+<meta property="og:title" content="走出洞穴 · 全文阅读版 v3.0.6">
+<meta property="og:description" content="走出洞穴 · 全文阅读版 v3.0.6：五幕结构、14 张表、15 条参考文献的完整阅读排版。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/03-a-07/read.html">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/03-a-07/read.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "走出洞穴 · 全文阅读版 v3.0.6", "description": "走出洞穴 · 全文阅读版 v3.0.6：五幕结构、14 张表、15 条参考文献的完整阅读排版。", "url": "https://project003125.github.io/INTRE-website/03-a-07/read.html", "isPartOf": {"@type": "WebPage", "name": "03-A-07 走出洞穴 · 多媒体专题"}, "publisher": {"@type": "Organization", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/"}}</script>
+</head>
+<body>
+<div id="intre-mm-bar" style="position:relative;z-index:2147483000;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;padding:8px 14px;background:#0a0c0f;color:#f4ece0;font:12px/1.5 -apple-system,'Segoe UI','Microsoft YaHei',sans-serif;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,.14)">
+<a href="./index.html" style="color:#f0b071;text-decoration:none;font-weight:600">← 返回 03-A-07 专题</a>
+<span style="opacity:.55">走出洞穴 · 多媒体版</span>
+<a href="./script.html" style="color:#9fd7d0;text-decoration:none">脚本与结构图 →</a>
+</div>
+
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="mast-top">
+      <span class="docid">03-A-07</span>
+      <span class="mast-kicker">INTRE · 03-现象层对接（PHENO）· 变量范式批判总纲件 · 正本</span>
+    </div>
+    <h1>走出洞穴</h1>
+    <p class="sub">心理学变量范式的本体论困境与状态范式的工程探索</p>
+    <div class="byline">
+      <span class="strong">v3.0.0</span>
+      <span>2026-11-12</span>
+      <span>五幕结构</span>
+      <span>全文 29,223 字 · 约 70 分钟</span>
+      <span>14 张表 · 16 条文献</span>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <aside class="rail" id="rail" aria-label="目次">
+    <div class="rail-head">目次 <span>五幕 · 十二节</span></div>
+    <ol class="toc">
+<li class="toc-item toc-item--plain"><a href="#s1" title="摘要"><span class="toc-n">01</span><span class="toc-t">摘要</span></a>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s2" title="〇、阅读导图"><span class="toc-n">02</span><span class="toc-t">〇、阅读导图</span></a>
+</li>
+<li class="toc-item toc-item--act"><a href="#s3" title="第一幕 · 困于洞穴：三重困境与一个共同追问"><span class="toc-n">03</span><span class="toc-t">第一幕 · 困于洞穴：三重困境与一个共同追问</span></a>
+<ul class="toc-sub">
+<li><a href="#s3-1">1.1 三重困境</a></li>
+<li><a href="#s3-2">1.2 三类常识解释及其边界</a></li>
+<li><a href="#s3-3">1.3 同一个洞穴</a></li>
+</ul>
+</li>
+<li class="toc-item toc-item--act"><a href="#s4" title="第二幕 · 看破影子：理论缺口与分层反思"><span class="toc-n">04</span><span class="toc-t">第二幕 · 看破影子：理论缺口与分层反思</span></a>
+<ul class="toc-sub">
+<li><a href="#s4-1">2.1 基本单位：定义与四条判据</a></li>
+<li><a href="#s4-2">2.2 &quot;变量&quot;的四层含义与三个子问题</a></li>
+<li><a href="#s4-3">2.3 四层 × 四判据：逐条判定</a></li>
+<li><a href="#s4-4">2.4 判据轴：三层论断（J1-J5）</a></li>
+<li><a href="#s4-5">2.5 最强反方：变量作为差异制造者</a></li>
+<li><a href="#s4-6">2.6 回应：差异制造者为何仍不是基本单位</a></li>
+<li><a href="#s4-7">2.7 一个完整案例：自我效能与拖延</a></li>
+<li><a href="#s4-8">2.8 哲学承诺轴：K1-K5</a></li>
+<li><a href="#s4-9">2.9 历史坐标：库恩的晚期危机与拉卡托斯</a></li>
+<li><a href="#s4-10">2.10 当代方法的检验：最强形态仍不完成本体映射</a></li>
+</ul>
+</li>
+<li class="toc-item toc-item--act"><a href="#s5" title="第三幕 · 走出洞穴：范式转移与形式化建构"><span class="toc-n">05</span><span class="toc-t">第三幕 · 走出洞穴：范式转移与形式化建构</span></a>
+<ul class="toc-sub">
+<li><a href="#s5-1">3.1 功能系统层：合法性从哪来</a></li>
+<li><a href="#s5-2">3.2 双语法：IODS、M-R-D-S 与 G-M-A-R</a></li>
+<li><a href="#s5-3">3.3 观测、逆问题与工程承载</a></li>
+<li><a href="#s5-4">3.4 光源入模：环境即 E(t)</a></li>
+</ul>
+</li>
+<li class="toc-item toc-item--act"><a href="#s6" title="第四幕 · 洞穴之外：理论生成力与跨学派兼容"><span class="toc-n">06</span><span class="toc-t">第四幕 · 洞穴之外：理论生成力与跨学派兼容</span></a>
+<ul class="toc-sub">
+<li><a href="#s6-1">4.1 统摄力：流派分歧如何变成靶点之别</a></li>
+<li><a href="#s6-2">4.2 生成力：DMD</a></li>
+<li><a href="#s6-3">4.3 翻译成本与分工</a></li>
+</ul>
+</li>
+<li class="toc-item toc-item--act"><a href="#s7" title="第五幕 · 回望洞穴：效度承诺与两范式分工"><span class="toc-n">07</span><span class="toc-t">第五幕 · 回望洞穴：效度承诺与两范式分工</span></a>
+<ul class="toc-sub">
+<li><a href="#s7-1">5.1 效度分阶：承诺到哪一层</a></li>
+<li><a href="#s7-2">5.2 可检验预测与失效条件</a></li>
+<li><a href="#s7-3">5.3 两套范式的分工</a></li>
+<li><a href="#s7-4">5.4 镜像风险与伦理边界</a></li>
+<li><a href="#s7-5">5.5 结语</a></li>
+</ul>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s8" title="附录 A：“影子几何学”的结构映射与层级核定（L3）"><span class="toc-n">08</span><span class="toc-t">附录 A：“影子几何学”的结构映射与层级核定（L3）</span></a>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s9" title="边界声明"><span class="toc-n">09</span><span class="toc-t">边界声明</span></a>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s10" title="参考文献"><span class="toc-n">10</span><span class="toc-t">参考文献</span></a>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s11" title="结论"><span class="toc-n">11</span><span class="toc-t">结论</span></a>
+</li>
+<li class="toc-item toc-item--plain"><a href="#s12" title="版本记录"><span class="toc-n">12</span><span class="toc-t">版本记录</span></a>
+</li>
+    </ol>
+    <div class="rail-foot">
+      03-A-07 · v3.0.0<br>
+      2026-11-12 定稿 · 2026-11-12 升正本<br>
+      阅读版据原文全文转排，未改一字。
+    </div>
+  </aside>
+
+  <article class="paper" id="top">
+<section class="chapter chapter--abstract"><h2 id="s1">摘要</h2>
+<p>本文论证心理学的基本描述单位应从现象层的变量转向功能层的系统状态。第一幕把复制危机、构念膨胀、流派纷争定位到知识生产链的不同环节，指出三者共用同一个缺失：显式观测函数 h。第二幕先给基本单位立四条判据——同一性、可组合、可干预、可通约——再逐层检查"变量"的四层含义，回应"变量作为差异制造者"的最强反方，说明变量不承载基本单位资格（四判据＋J1-J5）。第三幕给出功能层的另一套单位与语法：功能系统层、42 维状态语法、G-M-A-R 操作语法、逆问题与 E(t) 环境项。第四幕检验统摄力与生成力，并划清翻译成本。第五幕分阶承诺效度、写明可检验预测与失效条件，主张变量范式与状态范式分工。</p>
+<p><strong>关键词</strong>：变量范式；状态范式；基本单位；观测函数；功能系统层；范式分工</p>
+<blockquote>
+<p><strong>框架定位与致谢声明</strong></p>
+<p>变量范式是 INTRE 问题意识的重要来源之一：温忠麟等对变量间关系识别边界的持续澄清——把影响关系明确限定为有方向的相关、而不冒充因果（温忠麟等, 2024）——是本文的重要参照，也是变量范式描述能力范围最清晰的标定；同一问题意识亦来自学科经验压力与相邻学科的进展。INTRE 由此提出以状态为中心的功能系统层范式（简称状态范式），两套范式是分工：变量范式继续承担现象层的观测与检验，状态范式在功能层补充状态描述与干预语法，经观测函数相互连接。本框架亦受益于变量范式数十年积累的量表、效应量与相关结构——它们对接为观测输入与校准先验，获得一个持续在用的新位置；其价值面论证另具专文。</p>
+</blockquote>
+</section>
+<section class="chapter chapter--map"><h2 id="s2">〇、阅读导图</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>幕</th>
+<th>晶核步骤</th>
+<th>回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一 困于洞穴</td>
+<td>研究背景与问题提出</td>
+<td>三重困境为何共享同一根源？</td>
+</tr>
+<tr>
+<td>二 看破影子</td>
+<td>理论缺口与分层反思</td>
+<td>为何方法改进解决不了？</td>
+</tr>
+<tr>
+<td>三 走出洞穴</td>
+<td>范式转移与形式化建构</td>
+<td>新基本单位是什么、凭什么成立？</td>
+</tr>
+<tr>
+<td>四 洞穴之外</td>
+<td>理论生成力与跨学派兼容</td>
+<td>新范式能做成什么旧范式做不成的？</td>
+</tr>
+<tr>
+<td>五 回望洞穴</td>
+<td>效度承诺与检验路径</td>
+<td>承诺到哪、失效条件是什么、两范式如何分工？</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="chapter chapter--act"><div class="act-num" aria-hidden="true">I</div><h2 id="s3" class="act-title"><span class="act-label">第一幕</span>困于洞穴：三重困境与一个共同追问</h2>
+<p>当代心理学常被描述为同时遭遇三场危机：复现率低、构念膨胀、流派林立。通常的处置是分开治理——改进统计、精简量表、推动整合。本幕要说的是，这三件事有同一个来源，而这个来源不在方法层。三场危机各自指向同一个未回答的问题：心理学的基本描述单位是什么。方法可以修得更好，制度可以更严，但只要这个问题悬着，修补就只能在症状上移动。</p>
+<h3 id="s3-1">1.1 三重困境</h3>
+<h4>1.1.1 复制危机：复现率与投影漂移</h4>
+<p>Open Science Collaboration（2015）复现了 100 项 2008 年发表于三本顶刊的心理学研究。原始研究有 97% 报告了显著结果，复现中只有 36% 达到显著；平均效应量从 r=.403 降到 .197。</p>
+<p>这一格局不是单个项目的偶然。跨多项大规模复现项目的汇总分析给出同向结论：复现成功率系统性低于原始报告，效应量普遍缩水（Nosek et al., 2022）。本文不依赖某个具体百分比，只依赖这个方向。</p>
+<p>数字本身不解释原因。常见的解释是样本太小、p 值操纵、发表偏倚。这些都对，但都指向执行层面。更麻烦的是另一层：同一套关系，换一批人、换一支量表，读数会变。</p>
+<p>以抑郁为例。PHQ-9 在中德大学生样本之间只达到部分标量不变性，PHQ-15 的跨文化不变性则不成立（Zhou, Xu &amp; Rief, 2020）。不变性不成立，意味着同一份问卷在不同群体测到的不是同一个东西。此时复现失败有两种可能：关系真的不同，或者测量投影不同。变量范式通常只能报出前者，因为它没有工具去表达后者。</p>
+<h4>1.1.2 构念膨胀：量表的生成链</h4>
+<p>APA PsycTests 的整理分析显示，心理学积累了数以万计的量表与构念，其中绝大多数只用过一两次（Anvari et al., 2025; Elson et al., 2023）。这个数字背后有一条可以复述的生成链。</p>
+<p>一个构念先有初版量表。换到青少年群体，出青少年版；换到老年群体，出老年版；跨文化适配，再出一版。每出一版，就要一个新名字、一篇新论文。名字、构念、文献各自成三套，后来者要花很大力气才能判断两个名字是不是在说同一件事。</p>
+<p>研究者未必偏爱造词。没有一套独立于测量程序的坐标，除了命名，没有别的办法把差异标出来。构念膨胀因此不是学风问题，而是坐标缺位的副产品。</p>
+<h4>1.1.3 流派纷争：机制解释的缺位</h4>
+<p>CBT 讲"自动负性思维"，精神分析讲"防御机制"，两者能否互译，至今没有公认答案。新流派不断出现，旧的既未被整合，也未被推翻。</p>
+<p>更麻烦的是机制层面。对研究最充分的治疗家族 CBT，近年的系统梳理把被提出的机制归为三类——特定技术、联盟与期望这类跨流派过程、症状维度的中介——而证据现状是：三者仍被通称为“候选机制”，作者给出的建议仍是继续检验（Southward et al., 2024）。机制研究自身也还在等识别框架的更新：患者之间的特质差异与患者内部的状态变化长期混在一起分析，被认为正是机制证据难以累积的原因之一（Zilcha-Mano, 2021）。其中被研究得最充分的跨流派机制是联盟——恰好是各流派共享、而非哪个流派独有的部分。两件事放在一起，图景就清楚了：流派之间的差异，更多是干预靶点与操作层级之别，而不是各有各的真理。</p>
+<p>争论各方还共享同一个前提：变量是合适的描述单位。他们争的是哪一类变量更关键；变量该不该当描述单位，则不在争论范围内。这个前提从未被检验，却决定了整场争论的边界。</p>
+<h3 id="s3-2">1.2 三类常识解释及其边界</h3>
+<p>对三重困境，学界流行三类解释。工具冗余：量表太多，自然会重复。发表激励：可发表性压过可解释性（王波, 2019）。方法缺陷：统计不严、样本不够、推断过度。</p>
+<p>把三类解释放回知识生产链（见 §1.3.1），落点很清楚：工具冗余落在 3 工具化，发表激励落在 6 发表与评审，方法缺陷落在 5 数据推断。三者都在链条的中后段，都是单环修补。覆盖面也有限：工具冗余解释构念膨胀，发表激励与方法缺陷解释复制危机，三类都没有触及流派纷争。</p>
+<p>三类解释都抓住了一部分。方法改革确实压低了假阳性，开放科学也确实抬高了可信度。但它们绕开了一个问题：假如方法完美、制度也完美，这三重困境会消失吗？</p>
+<p>方法改革处理的是假阳性；投影漂移是另一件事。只要观测工具与情境参数的耦合没有被显式建模，换样本、换工具带来的读数变化，就无法与真实的关系变化区分开。制度可以逼出更透明的报告，却逼不出一条观测函数。</p>
+<p>所以本文问的不是"如何把研究做得更规范"，而是"心理学为什么无法把这种情境依赖显式地建模出来"。两个问题的答案不在同一层。</p>
+
+<p>三类解释各自成立，但都停在放大层。三重困境的根源不在这些因素本身，而在它们共同作用的那个形式条件：观测函数 h 缺位。缺 h 使状态与读数无法分离；其他因素只决定困境在哪里、以多强出现。即使发表偏倚、统计功效不足、激励结构与情境异质性都被解决，只要 h 不被写出，困境的结构条件仍在，改善停在缓解层。补 h 不保证困境消失，但它是触根的一步。</p>
+
+<table><thead><tr><th>层</th><th>内容</th><th>解决后的效果</th></tr></thead><tbody>
+<tr><td>根源层</td><td>观测函数 h 缺位，状态与读数尚未分离</td><td>未补 h 时，其余修补仅止于缓解</td></tr>
+<tr><td>放大层</td><td>发表偏倚、统计功效不足、激励结构、情境异质性</td><td>可降低显现强度，不触及根源条件</td></tr>
+<tr><td>触发层</td><td>测量工具、样本构成、分析决策</td><td>改变困境显现的时点与形态</td></tr>
+</tbody></table>
+
+<p>这条根源主张同样是可检验的：若其他因素被充分控制后，缺 h 不再产生可区分困境，或 h 已被写出、困境仍以同型出现，则"根源"降为并存条件。</p>
+
+<h3 id="s3-3">1.3 同一个洞穴</h3>
+<h4>1.3.1 知识生产链与三个位置</h4>
+<p>把三重困境放回知识生产链，各自的位置才看得清。心理学的知识生产大致经过七环：</p>
+<p>问题选择 → 构念化 → 工具化 → 取样与施测 → 数据推断 → 发表与评审 → 消费与再生产</p>
+<p>最后一环回流到第一环：教学、临床使用与后续立项，重新塑造下一轮的问题选择。链条不是流水线，环与环之间有反馈；但对定位症状来说，七个节点足够。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>环节</th>
+<th>主要产物</th>
+<th>依赖的关键假设</th>
+<th>假设不成立时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 问题选择</td>
+<td>研究议程</td>
+<td>该现象值得作为科学对象</td>
+<td>议题随资助与潮流漂移</td>
+</tr>
+<tr>
+<td>2 构念化</td>
+<td>构念与定义</td>
+<td>构念可由理论网络稳定指认</td>
+<td>同名异指，构念膨胀</td>
+</tr>
+<tr>
+<td>3 工具化</td>
+<td>量表、指标、计分</td>
+<td>工具测到的是构念本身</td>
+<td>工具成为构念的替代</td>
+</tr>
+<tr>
+<td>4 取样与施测</td>
+<td>样本与读数</td>
+<td>样本与情境不改变被测对象</td>
+<td>读数随情境漂移</td>
+</tr>
+<tr>
+<td>5 数据推断</td>
+<td>模型、效应量、检验</td>
+<td>读数之间的共变可读作机制</td>
+<td>共变被误读为因果</td>
+</tr>
+<tr>
+<td>6 发表与评审</td>
+<td>论文、报告、同行评价</td>
+<td>发表与否不筛选结果方向</td>
+<td>发表偏倚、文件抽屉</td>
+</tr>
+<tr>
+<td>7 消费与再生产</td>
+<td>教材、培训、临床方案</td>
+<td>各流派共享同一套描述语言</td>
+<td>流派各自繁殖，无法互译</td>
+</tr>
+</tbody>
+</table></div>
+<p>三个困境落在不同环节：</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>困境</th>
+<th>主发生位</th>
+<th>放大位</th>
+<th>在链上的表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>构念膨胀</td>
+<td>2 构念化 × 3 工具化</td>
+<td>6 发表与评审</td>
+<td>每换一个情境就新起名字、新编量表、新发论文</td>
+</tr>
+<tr>
+<td>复制危机</td>
+<td>4 取样与施测 × 5 数据推断</td>
+<td>6 发表与评审</td>
+<td>读数变化与关系变化分不开，复现失败无法归因</td>
+</tr>
+<tr>
+<td>流派纷争</td>
+<td>7 消费与再生产</td>
+<td>2 构念化 × 3 工具化</td>
+<td>各流派用各自词汇训练与执业，缺翻译中介</td>
+</tr>
+</tbody>
+</table></div>
+<p>三个困境落在不同环节，缺的是同一个东西：链条上没有任何一环负责把"状态"与"读数"分开。构念化给出名字，工具化给出读数，数据推断在读数之间找关系；从状态到读数的这一段，没有节点，也没有边。</p>
+<p>这正是下一节要说的观测函数 h。它不属于链条上的任何一环，但缺了它，每一环都只能在自己的层面上修补。</p>
+<h4>1.3.2 共享根源：显式观测函数 h</h4>
+<p>缺的是一个显式的观测函数 h。</p>
+<p>心理状态 Ψ 经由测量过程产生观测数据 y，这个过程的数学形式没有被写出来。缺了 h，量表分数就只能当作构念本身，情境参数就只能当作误差，跨群体的读数差异就只能记成"效应不同"。</p>
+<p>这不是说研究者不知道测量的存在。心理测量学对信度、效度、不变性有非常精细的处理。问题在于，这些处理停在观测层内部：它们判断一份量表测得稳不稳、可比不可比，却不提供一个从状态到观测的生成模型。没有生成模型，观测层内部的修补就无法回答"读数为什么变"。</p>
+<p>缺 h 也不等于没有理论。变量范式有理论、有模型、有预测。它缺的是一个能把"状态"与"读数"分开的中间层。这个中间层一旦缺席，三种症状就会同时出现：没有坐标，只能造名；没有 h，投影漂移不可归因；没有中介，流派之间无法翻译。</p>
+<blockquote>
+<p>变量范式在现象层的规律描述上有不可否认的价值。本文的批评在另一处：它把现象层的共变模式当成了对生成机制的直接刻画，而没有承认，从观测反推机制必须先做逆问题建模。</p>
+</blockquote>
+<h4>1.3.3 洞穴隐喻的结构映射</h4>
+<p>柏拉图洞穴的比喻在这里有用，因为它提供了一个结构上可类比的框架。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>洞穴隐喻的要素</th>
+<th>本体论地位</th>
+<th>心理学的对应维度</th>
+<th>科学哲学含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>真实物体</strong></td>
+<td>被假设的真实成因</td>
+<td>心理系统的功能结构（M-R-D-S 组件及其动力学）</td>
+<td>真实的因果机制</td>
+</tr>
+<tr>
+<td><strong>光源</strong></td>
+<td>照亮物体的动力</td>
+<td>环境输入与约束条件（S-P 系统参数）</td>
+<td>外部条件</td>
+</tr>
+<tr>
+<td><strong>墙上影子</strong></td>
+<td>物体的二维投影</td>
+<td>量表分数、行为频率、自我报告</td>
+<td>观测数据</td>
+</tr>
+<tr>
+<td><strong>囚徒</strong></td>
+<td>被锁链限制的观察者</td>
+<td>心理学研究者</td>
+<td>认识的局限性</td>
+</tr>
+<tr>
+<td><strong>锁链</strong></td>
+<td>认识的根本限制</td>
+<td>方法论约束（无法直接观测心理机制）</td>
+<td>当前技术条件的限制</td>
+</tr>
+</tbody>
+</table></div>
+<p>比喻是单向的。M-R-D-S 不是终极实体，只是功能层的一种描述方案。它要说明的事情只有一件：真实物体与墙上的影子是映射关系，不是等价关系。同一个功能组件，比如 M4-STR-C 上的"安全依恋表征破损"，换一个测量接口，读数就换一副面孔：依恋量表读作"焦虑型依恋"，自尊量表读作"自我否定"，社交焦虑量表读作"回避倾向"。变量范式会把它记成三个独立变量；状态范式会说，这是同一组件在三个接口上的三次投影。</p>
+<p>由此得到三组对位：量表分数之于功能状态，如同影子之于实体；变量之间的统计关系，如同影子之间的几何关系；环境与情境参数，如同光源的角度与强度。第二幕起，"影子"改称"观测数据"，"实体"改称"功能状态（Ψ）"，"光源"改称"环境与情境参数"。</p>
+<p>比喻的定级是 L3：两域共享"降维→信息损失→逆问题"这一一般原理，不共享同一条数学定理。它只作结构映射，不作论证依据。</p>
+<h4>1.3.4 从"缺 h"到"单位问题"</h4>
+<p>到这里，本幕的任务完成了一半。三重困境被收束为一个缺失：显式观测函数 h 的缺席。剩下的问题是，为什么这个缺失迟迟补不上。</p>
+<p>一个自然的回答是技术难度：逆问题病态、状态不可观测、参数太多。这些困难是真的，但不是最根本的。更根本的障碍在单位层。要写出 h，先得知道 h 的自变量是什么。如果基本单位是变量，h 的输入就是变量；而变量本身由测量定义，用测量定义的东西去解释测量，循环无法打开。只有先确认一个独立于测量程序的单位，h 才有一个可以站立的输入端。</p>
+<p>所以补 h 之前，必须先回答"变量是什么"。这不是概念洁癖，而是建模的前提。第二幕从这个问题开始：先给基本单位立四条判据，再逐层检查"变量"能否过关。</p>
+<hr />
+</section>
+<section class="chapter chapter--act"><div class="act-num" aria-hidden="true">II</div><h2 id="s4" class="act-title"><span class="act-label">第二幕</span>看破影子：理论缺口与分层反思</h2>
+<h3 id="s4-1">2.1 基本单位：定义与四条判据</h3>
+<p>在批评"变量充当基本单位"之前，需要先说清什么算基本单位。否则双方可能在同一个词上各说各话：一方指数据集里的一列，一方指理论中的构念，还有一方指因果图上的节点。</p>
+<p>本文把基本单位定义为：在一个理论内部不再分解、并且能承担描述与推断任务的最小指称对象。这个定义有两个限定。"不再分解"是相对于理论任务而言，不是形而上学意义上的不可分；只要继续切分不再带来新的区分力，它就算到了底。"能承担任务"则要求它能进入推理，而不只是能被命名。一个词可以指很多东西，但只有当它能稳定地进入关系、接受操作、被其他传统使用时，才够格当单位。</p>
+<p>据此，基本单位要过四道关。</p>
+<p><strong>同一性。</strong> 同一个单位，换一套测量工具、换一个样本、换一个时间点，仍然指同一个对象。这一条不要求读数不变，只要求指称不变：温度计从水银换成电子，温度还是温度；若换一支量表，"焦虑"就变成了另一个东西，那它就不是单位，而是某次测量的记号。</p>
+<p><strong>可组合。</strong> 单位之间能构成稳定的关系，并且这种关系可以写下来、可以复算。变量之间也能算相关，但相关只是观测层的共变；可组合要求的是能进入方程、图或序列，并在不同数据集上保持同一套组合规则。只能在某一个模型内成立的关系，不足以支撑单位地位。</p>
+<p><strong>可干预。</strong> 单位能对应可施加的操作，操作与单位之间有合法的映射。这一条最容易被忽略。一个量可以估、可以算，也可以画出很漂亮的轨迹，但如果找不到"动它"的方式，它在干预语义上就是空的。反过来，能干预也要求指得准：改的是这个单位，而不是它的某个测量代理。</p>
+<p><strong>可通约。</strong> 不同理论传统之间可以翻译，而且翻译不改变指称。若两个流派用同一个词指不同的东西，或用一个新词指同一个东西，彼此又无法建立对应，那么这些"单位"只能在各自的传统内使用，无法累积。可通约不等于可还原，它只要求存在一套共同坐标，使翻译的损失可以被标定。</p>
+<p>四道关不是形式条件，每一条都对应一种失败后果：同一性不过关，读数无法跨情境比较；可组合不过关，理论只能停在描述；可干预不过关，结论无法落到操作；可通约不过关，知识无法跨流派累积。四者也不互相替代：一个单位可以完全可组合却完全不可通约，也可以在单个传统内可干预、跨传统不可译。</p>
+<p>这四条判据不预设变量一定不合格。它们是关卡，不是判决；任何候选单位都可以拿来量，包括本文提出的功能状态。判据的作用，是把"基本单位"从立场之争变成可逐条检查的问题。</p>
+<p>四条与后文的判据轴直接对应：同一性对应 J1（独立于观测的定义），可组合对应 J2（系统动力学角色），可干预对应 J3、J4 与 J5（靶点对应、约束绑定与干预—约束耦合），可通约由第四幕的跨流派转译表承接。判据轴给的是判定程序，四判据给的是单位资格；两者是同一把尺子的两种用法。</p>
+<p>四条判据背后是三个更具体的子问题：语义、因果、本体。三者递进，次序在后一节展开。§2.2 拆解四层含义，§2.3 给出逐条判定，§2.4 再把判定收束为 J1-J5 的判据轴。</p>
+<h3 id="s4-2">2.2 "变量"的四层含义与三个子问题</h3>
+<p>四条判据要落到对象上，先得确认量的是哪一层。文献里的"变量"至少在四个位置出现，四层的身份条件并不相同。</p>
+<p>第一层是理论构念，比如"自我效能感""抑郁"。它由理论网络中的位置定义，不直接等于任何一次测量。Cronbach 与 Meehl（1955）把这个网络叫名义网络：一个构念的意义，来自它与其它构念、与观测指标之间的推论关系。身份条件因此是"同一网络内保持同一"；换一套理论，构念可能还在，指的东西已经变了。</p>
+<p>第二层是量表分数，某次施测得到的那个数。它的身份绑定在工具、指导语、样本和时点上。换一支量表、改一次指导语、换一个人群，分数就可能换一个含义。分数不是构念，它是构念经过一次测量之后的投影。</p>
+<p>第三层是潜变量，测量模型里为了解释指标共变而引入的隐变量。它的身份由模型与指标集共同决定。同一套指标可以拟合出不同的因子结构；同一个名称在不同测量模型下，未必是同一个变量。潜变量比量表分数抽象，但仍然带着模型的印记。</p>
+<p>第四层是因果节点，因果图上的一个端点。它的身份由建模者选择的变量集与图的假设决定。这一点常被忽略：同一组条件独立关系对应一个马尔可夫等价类，类内多个图在观测数据上不可区分，选哪一个要靠额外假设（Pearl, 2009）。节点不是从数据里长出来的，它是被建模者放进去的。</p>
+<p>四层共用一个名字，于是出现三种滑移。语义滑移：从构念滑到分数，再滑到节点，句子读起来连贯，指称已经换过两次。因果滑移：把观测层的共变直接读成干预语义。本体滑移：把测量模型里的隐变量当成独立存在的实体。这三种滑移让"变量"看起来是一个统一的东西，实际是四个身份条件不同的对象。</p>
+<p>有一处判断需要收紧。"没有任何一层同时满足独立于测量程序与是数据"这句话，要分层看。潜变量可以独立于某一支具体量表：多指标、跨组不变性、跨时间稳定性，都是让潜变量摆脱单一工具的经验手段。但它无法独立于全部测量程序，因为它的身份最终由指标集与模型共同给定。"独立于特定工具"是可达的经验成就，"独立于一切测量"是另一回事。把两者混在一起，会让人以为多指标就够了；多指标解决的是工具依赖，不解决单位身份。</p>
+<p>以一个标准实验为例。"CBT 能否降低抑郁"：研究者提出"抑郁→认知重构"的理论构念，编制或选用 PHQ-9 施测，经因子分析算出潜变量得分，最后在路径图中把"抑郁"画成因果节点。四步之间各有一次跳跃。量表分数到潜变量，假设共变结构就是真实维度；潜变量到理论构念，假设统计因子就是理论实体；理论构念到因果节点，假设该实体可以承载因果力。每一步都有代价，但四步常被当成一步：四个身份条件不同的对象，被同一个词串了起来。</p>
+<p>三个子问题由此分开。语义问题问指称：同一个词在四个位置上是不是同一个东西。因果问题问承载：观测层的协变结构能不能承担干预语义。本体问题问存在：构念是否独立于测量程序。三者有顺序。指称不清，后两问提不出来；因果承载不足，本体承诺没有落点；本体问题又反过来决定指称能否稳定。</p>
+<h3 id="s4-3">2.3 四层 × 四判据：逐条判定</h3>
+<p>把四层放到四条判据上，逐条量一遍。下表是理想类型的判定；实际研究常把几层混用，混用不改变判定，只让问题更难被发现。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>单位层</th>
+<th>同一性</th>
+<th>可组合</th>
+<th>可干预</th>
+<th>可通约</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>理论构念</td>
+<td>△ 依赖名义网络，跨理论漂移</td>
+<td>✗ 不进入方程，只作解释项</td>
+<td>△ 只能经假设的中介</td>
+<td>✗ 各流派定义不同</td>
+</tr>
+<tr>
+<td>量表分数</td>
+<td>✗ 换工具即换分</td>
+<td>△ 可作观测输入</td>
+<td>✗ 分数不是靶点</td>
+<td>✗ 量表间需桥接</td>
+</tr>
+<tr>
+<td>潜变量</td>
+<td>△ 模型内稳定，跨模型漂移</td>
+<td>✓ 可入状态空间或 DSEM</td>
+<td>△ 无靶点合法性映射</td>
+<td>✗ 测量模型不同即不可比</td>
+</tr>
+<tr>
+<td>因果节点</td>
+<td>✗ 由建模约定设定</td>
+<td>✓ 图内可组合</td>
+<td>△ 形式可 do，实体不可指认</td>
+<td>✗ 图不同则不可译</td>
+</tr>
+</tbody>
+</table></div>
+<p>失败的位置各不相同。构念败在可通约：同一名称在不同理论里指不同东西，翻译没有共同坐标。量表分数败在同一性：它的身份就是"某次测量"，换工具即换对象。潜变量过了可组合，却败在可通约与可干预：它能进入状态空间，但换一套测量模型就不可比，也无法直接对应靶点。因果节点过了可组合，败在同一性：节点由建模约定设定，同一批数据可以由不同的图表示。</p>
+<p>四条是合取，缺一即不合格，但后果不同。同一性失败最致命，因为另外三条都预设指称稳定；指称一旦漂移，可组合、可干预、可通约都失去对象。可通约失败最隐蔽，因为它在单个传统内部完全看不出来；一个流派可以内部高度自洽，跨出去就不可译。</p>
+<p>这张表不判"变量有没有用"。四层都可以作为观测层的派生单位使用：量表分数用于记录，潜变量用于估计，因果节点用于表达假设。表判的是"能不能当基本单位"。答案是没有一层四条全过。这不是说变量研究做得不好，而是说变量的位置在观测层，它承担记录与估计，不承担承载。</p>
+<p>判据若只用来判对方，就还是立场之争。§2.1 说过四判据包括本文提出的功能状态，现在用同一张表量一遍。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>单位</th>
+<th>同一性</th>
+<th>可组合</th>
+<th>可干预</th>
+<th>可通约</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能状态 Ψ</td>
+<td>✓ 由功能架构定义，换量表只改 h 的参数</td>
+<td>✓ 进入状态方程，承担 RES／DSP／STR 角色</td>
+<td>✓ 经靶点合法性矩阵对应 G-M-A-R</td>
+<td>△ 跨流派可译，关系层流派为有损翻译</td>
+</tr>
+</tbody>
+</table></div>
+<p>四格里有三格干净，一格带折扣。可通约不是 ✓：跨流派转译依赖第四幕的映射表，系统式与叙事式只能作有损翻译，译得过去，损失要标定。这一格说明 Ψ 在资格上过关，在兑现上还有欠账。</p>
+<p>这张表判的是资格，不是实证成立。四格无一是 ✗，只说明这个单位有资格被当作基本单位使用；它能不能真的承载机制，要靠轨迹预测与干预效能来证明（§5.2）。判据管入场，数据管成败。</p>
+<h3 id="s4-4">2.4 判据轴：三层论断（J1-J5）</h3>
+<p>四条判据需要可操作的判定程序。本节给出 J1-J5，并用它们重述三层论断。</p>
+<p>J1 独立于观测的定义：单位的身份不随测量工具改变。换量表、换样本、换时点，指称仍能对上。</p>
+<p>J2 系统动力学角色：单位在状态方程中承担明确角色——存量、流量或结构参数，而不是只作为相关矩阵的一列。</p>
+<p>J3 干预靶点对应：单位的变化能对应可执行的干预操作，且操作与单位之间有合法性映射；不是任何操作都能作用于任何单位。</p>
+<p>J4 约束绑定：约束作用在被控状态量上，而不是只作用在模型参数上。约束如果只调节拟合，不改变状态的可行域，它就不承载动力学。</p>
+<p>J5 干预—约束耦合：约束的收紧或放松，能改变干预的可行性与效果。J4 说约束落在哪里，J5 说约束与操作是否咬合。</p>
+<p>三层论断由此展开。</p>
+<p>第一层，数值可求导性。变量范式的动态工具——DSEM、交叉滞后、潜状态空间模型——都能求导：读数序列可差分，隐状态可递推估计。Ψ 也能。此层双方都过，不构成区分。这一层先排除一种容易的批评：不能说变量范式不会做动态，它早就会。</p>
+<p>第二层，变化率的系统语义。分水岭不在能不能求导，而在求导出来的变化率是否对应功能架构中的具体部位。变量范式的隐状态，身份是"为解释观测协方差而假设的共同原因"；它的变化率没有功能部位，换一套指标就换一套解释。Ψ 的每个分量对应 RES 存量、DSP 流量或 STR 结构参数，变化率可以对账。判据是 J1-J3。</p>
+<p>第三层，约束动力学承载。判据不是"有没有约束"，而是系统有没有显式受约束的被控状态量，且约束能否与可施加的干预耦合。变量范式标准工具链的约束，落在统计模型参数上：正则项、先验、识别约束，都不是被控状态量，也不与干预咬合。状态范式的约束绑定在功能分量上，并通过靶点合法性矩阵与操作耦合。判据是 J4-J5。</p>
+<p>三层合判：第一层不作高下判断；第二层分出变化率有无系统语义，变量范式至此不再前进（判据 J1-J3）；第三层判断能否承载轨迹预测、级联路径、风险时点与操作序列。这是承载范围之别，不是工具优劣。本文判定的对象仅限一种越界用法：用第二层的工具去承担第三层的任务。</p>
+<p>判据轴不是封闭的：若某套变量模型能同时满足 J1-J5——定义独立于工具、分量有动力学角色、变化对应靶点、约束绑在被控量上、约束与干预咬合——本文结论即不成立，须重写。目前没有见到这样的模型，但这是一个开放的检验口。</p>
+<h3 id="s4-5">2.5 最强反方：变量作为差异制造者</h3>
+<p>更强的反方意见是这一种。</p>
+<p>"你批评的是'变量是因果实体'，可很少有人这么主张。变量只是因果模型里的差异制造者：给一个变量一个取值，看另一个变量是否随之改变。这是干预主义因果论的标准表述（Woodward, 2003）。在图模型里，变量是节点，边是函数关系，do 算子定义得很清楚（Pearl, 2009）。构念实在论也不要求构念等于某次测量：一个测验有效，当且仅当所测属性存在，且属性的变化因果地产生测验结果的变化（Borsboom, Mellenbergh &amp; van Heerden, 2004）。按这个版本，变量既不必是机制，也不必是实体；它只需要在模型里承担差异制造者的角色。"</p>
+<p>这个版本比"变量有因果力"强得多。它至少能解释三件事：为什么变量模型能做出成功预测；为什么 do 算子可以形式化；为什么测量依赖不必然毁掉构念。若把争论对象设定为"认为变量是真实因果实体"，回应容易，但偏离主流。</p>
+<p>本文接受其中两点。其一，变量模型在观测层可以非常成功，这一点不需要否认。其二，构念可以独立于特定工具，多指标与测量不变性研究做的就是这件事。争点只剩一个：差异制造者是否足以充当基本单位。</p>
+<p>这个问法把争论从"变量是否真实"移到"变量是否够格"。够格与否，不靠本体论表态，靠四条判据。下一节按三条线索回应：节点的身份从哪来，跨工具还能不能对上，形式可干预是否等于实体可指认。</p>
+<h3 id="s4-6">2.6 回应：差异制造者为何仍不是基本单位</h3>
+<p>第一条针对同一性：节点身份由建模约定给定。同一组条件独立关系对应一个马尔可夫等价类，类内多个图在观测数据上不可区分；选哪一个，要靠额外假设——时间顺序、机制知识、简化偏好。也就是说，"哪个变量是原因"在数据之内无法完全决定。差异制造者成立的前提，是变量已经被指认；而"变量是什么"正是本文要问的。用差异制造者回答单位问题，等于把前提当结论。</p>
+<p>第二条针对可通约：跨工具不可通约。测量不变性是经验成就，不是默认。PHQ-9 在中德大学生样本之间只达到部分标量不变性，PHQ-15 的跨文化不变性则不成立（Zhou, Xu &amp; Rief, 2020）。不变性失败时，同一个变量名在不同群体指的不是同一个东西；此时"差异制造"的结论无法跨群体拼接。变量框架可以把不变性检验当作例行程序，但检验失败之后怎么办，框架本身不提供答案——它只能说"这两组不可比"，不能说"这个单位跨群体是什么"。</p>
+<p>第三条针对可干预：形式可干预不等于实体可指认。do(X=x) 只告诉你"若能把 X 设为 x，Y 会怎样"；它不告诉你 X 是什么，也不告诉你 X 能不能被设为 x。干预语义预设了单位的可指认性。变量框架把这一步留给研究者的实质判断，单位问题因此被移出理论之外，而不是被解决。</p>
+<p>变量范式内部最成熟的版本，也承认这条边界。温忠麟等（2024）把“影响关系”界定为有方向的相关关系，并把三者按包含关系排列：相关包含影响，影响包含因果。同一篇还告诫研究者，应当“尽可能选择相关性较高的影响关系进行研究”，并在设计、方法与统计各环节“尽可能控制无关变量，辨别代理影响因素并消除虚假效应，以得到比较接近因果的影响关系”。该文同时整理了为变量先后顺序找理据的八条途径：时间顺序、颠倒顺序看何者更易解释、客体影响主体、按属性稳定性排序、文献支持、生活经验、类比推理、交叉滞后。</p>
+<p>不是谦辞，而是对描述边界的准确标定。八条途径的共同点，是把方向判断交给先验组织：时间顺序不排除共同原因；交叉滞后在存在共同驱动时，会把光源的旋转记成影子的运动；何者更易解释，取决于采用哪套理论背景；属性稳定性本身需要不变性支撑（本文解读）。变量范式在此只宣称有方向的共变，不宣称因果——这是它在描述能力上的极限标定，也正好停在 J1 与 J3 之外。</p>
+<p>构念实在论在这里支持本文。若有效性要求属性因果地产生测量结果，那么属性必须先于测量被独立规定；这正是 J1。变量在观测层可以满足 J1 的弱版本——独立于某一支量表；很难满足强版本——独立于一切测量。差异制造者是一个好的观测层单位，不是基本单位。</p>
+<p>边界也要说清。以上三条不证明变量模型无效，也不证明状态范式已经合格。它们只说明：差异制造者版本没有回答单位问题，只是把它推迟了。状态范式是否合格，同样要过 J1-J5，这一点在第五幕的失效条件里写明。</p>
+<h3 id="s4-7">2.7 一个完整案例：自我效能与拖延</h3>
+<p>要看清"换单位"改变什么，需要一个完整案例。以下为结构示例：情境与读数取自常见临床场景，系数仅用于展示推理差异，不是实测数据。</p>
+<p>一位来访者主诉拖延。两周内每天三次 EMA，记录拖延程度、任务前焦虑、当晚睡眠；入组时施测一次自我效能感量表。</p>
+<p>变量路线的做法是：设 X＝自我效能感（量表分），M＝任务前焦虑（EMA 均值），Y＝拖延（行为延迟）。拟合一个简单中介模型，得到示例系数 a＝−.34，b＝.41，c′＝−.12。结论是：自我效能感通过任务前焦虑影响拖延，直接效应较小。干预建议随之而来：提升自我效能感，用认知重构、鼓励、成功经验积累。</p>
+<p>状态路线的做法是：同一批读数经三端口进入，反解 Ψ 轨迹。两周内出现两种可能的机制。其一是资源耗竭型：M3-RES-D 在第 4 天跌破阈值，任务前焦虑持续上升，随后骤降，M6-DSP-B 接管，拖延急剧增加。其二是价值脱钩型：M3-STR-C 的价值—行动连接减弱，焦虑曲线平稳，但启动延迟逐日延长。</p>
+<p>问题在于，这两种机制在变量模型里给出几乎相同的协方差结构。中介系数分不开它们：两条路径都能拟合出 a 为负、b 为正、c′ 偏小的结果。变量模型没有错，它在观测层把关系估得很准；它只是没有单位去承载"两种机制"的差别。</p>
+<p>状态模型用时间签名区分。资源耗竭型的关键是"上升—骤降"的拐点，以及拐点前后 RES-D 的斜率变化；价值脱钩型的关键是焦虑平稳而启动延迟单调延长，STR-C 的连接强度下降而 RES-D 仍在阈值之上。区分靠的不是新系数，而是分量轨迹的形状。</p>
+<p>干预随之分开。资源耗竭型先做 MODULATE+ M3-RES-D：降负荷、补资源、调恢复窗口；价值脱钩型做 RELINK M3-STR-C：重建价值与行动的连接，必要时配合 ALIGN M3-STR-R 修正规则；如果 M6-DSP-B 已经接管，先 GATE− 阻断自动化逃避，再谈其它。三套操作对应三个靶点，不是同一套建议的不同说法。</p>
+<p>这个示例说明三件事。同一分数可以对应不同状态，等分异态；同一状态可以读出不同分数，同态异分；单位选择改变干预靶点。变量模型在第一种情况下会给出一个平均化的结论，在第二种情况下会把测量差异记成个体差异。它不是错的，只是没有给机制留位置。</p>
+<p>这也是"换单位"的实际含义。不是换一套统计，不是把路径图改成状态空间图，而是换一套能承载机制差异的描述。描述换了，可问的问题才跟着换。</p>
+<h3 id="s4-8">2.8 哲学承诺轴：K1-K5</h3>
+<p>把争论放到哲学承诺层，可以先看一个更粗的分层：目的论、认识论、方法论、本体论。前三层是程度差异——问的问题不同，证据标准不同，工具精度不同；本体论才是分岔，因为它决定"基本单位是什么"。这一分岔在下面五层里落在 K3。</p>
+<p>K 取自库恩的首字母。K0 是库恩的范式概念本身——特定科学共同体共享的学科基质，两套范式都在其中成立。K1-K5 是五个承诺层级，由浅入深：K1 实证主义，知识从何而来；K2 操作主义，概念如何定义；K3 基本单位是什么；K4 因果对象是什么；K5 理论如何组织。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>变量范式</th>
+<th>状态范式</th>
+<th>关系</th>
+<th>地位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K1 实证主义</td>
+<td>可观察：量表分数、行为频率、自我报告</td>
+<td>可检验：预测—干预效能＋神经层约束</td>
+<td>同一原则的不同外延</td>
+<td>次要</td>
+</tr>
+<tr>
+<td>K2 操作主义</td>
+<td>概念的意义＝测量它的操作</td>
+<td>概念的意义＝功能架构中的因果角色</td>
+<td>换定义来源</td>
+<td>次要</td>
+</tr>
+<tr>
+<td>K3 基本单位</td>
+<td>变量／潜变量</td>
+<td>功能状态 Ψ</td>
+<td>换基本单位</td>
+<td>主要矛盾</td>
+</tr>
+<tr>
+<td>K4 因果对象</td>
+<td>变量间的处理效应</td>
+<td>状态演化与干预算子</td>
+<td>换因果对象</td>
+<td>由 K3 决定</td>
+</tr>
+<tr>
+<td>K5 理论组织</td>
+<td>变量关系网</td>
+<td>功能架构＋观测函数 h</td>
+<td>换网络类型</td>
+<td>由 K3 决定</td>
+</tr>
+</tbody>
+</table></div>
+<p>变量范式一侧的名称需要改准。多数变量研究者并不主张"变量具有因果力"，他们主张的是"变量足以承载因果推断"。K3 的分歧因此不该写成"变量实在论对功能实在论"，而应写成"变量作为基本单位的承诺"对"功能状态作为基本单位的承诺"。名称准确，争论才不偏。</p>
+<p>K3 是根节点，可以做一次反事实检查。若基本单位仍是变量，K4 的因果对象只能是变量间的效应，K5 的理论组织只能是变量网络；反过来，若单位是状态，因果对象变成状态演化与干预算子，理论组织变成功能架构加观测函数。K1 与 K2 两套范式共享，不构成分岔；K4 与 K5 的分歧由 K3 派生。换单位，下游三重改写随之定形：测量变成从观测反解状态，统计变成状态如何演化，因果变成干预哪里改变轨迹。</p>
+<h3 id="s4-9">2.9 历史坐标：库恩的晚期危机与拉卡托斯</h3>
+<p>库恩（1962）把危机界定为：技术层面持续精进，理论层面收益边际递减。对照当下心理学，反常累积、辅助假设增生、技术精细化与理论停滞并存，三条迹象都在。拉卡托斯解释了为什么保护带修正救不了它：变量范式的硬核是四条命题——心理现象可分解为变量、变量间存在可估计的关系、测量工具是合法入口、统计推断是主要工具；数十年的修正全部发生在保护带，潜变量实在性转向工具主义，CTT 转向 IRT，可忽略性转向 IV／RDD／DID／PSM，单点操作定义转向法则网络。每次扩展都让模型暂时更强，硬核问题被推迟。判断失败的类型，看失败的位置：改测量、改估计、改识别，都不改"变量是什么"，所以每次都成功，又每次都没有回答同一个问题。</p>
+<h3 id="s4-10">2.10 当代方法的检验：最强形态仍不完成本体映射</h3>
+<p>一个必须正面回应的质疑是：前述检查是否只针对较弱版本？当代方法早已不是横截面问卷加逐步回归。本节按三类精细化策略定位，再逐项给判词。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>精细化策略</th>
+<th>典型形态</th>
+<th>作用层面</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测量模态扩展</td>
+<td>多模态联合测量（行为—生理—神经）</td>
+<td>K2 操作主义</td>
+<td>丰富操作定义；概念仍由测量操作界定</td>
+</tr>
+<tr>
+<td>时间结构深化</td>
+<td>RI-CLPM、密集纵向 EMA、DSEM</td>
+<td>K5 法则网络</td>
+<td>精细标定变量在时间网络中的位置；仍属观测层时间序列结构</td>
+</tr>
+<tr>
+<td>推断工具升级</td>
+<td>机器学习、因果图模型、计算精神病学、超大样本</td>
+<td>K1／K4</td>
+<td>提升识别强度；计算精神病学已触及任务局部的生成机制，但缺统一功能层坐标系</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>它做到了</th>
+<th>三层判据落点</th>
+<th>对接位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测量模型（CFA/IRT/SEM）</td>
+<td>测量结构精密化、跨群体可比</td>
+<td>因子模型是潜变量到指标的映射，不等同于状态到观测的生成映射</td>
+<td>为 h 提供校准来源</td>
+</tr>
+<tr>
+<td>实验／RCT／准实验</td>
+<td>处理效应识别</td>
+<td>识别"是否有效"，不分解"哪个成分、哪个靶点、什么路径"</td>
+<td>检验特定 G-M-A-R 操作的因果效力</td>
+</tr>
+<tr>
+<td>图因果框架（Pearl）</td>
+<td>因果假设透明化</td>
+<td>节点本体不清：可答"若节点和边成立效应是否可识别"，不答"节点是什么"</td>
+<td>为 PSA 依赖矩阵提供结构约束</td>
+</tr>
+<tr>
+<td>密集纵向／DSEM</td>
+<td>个体内动态、高频观测；个体内中介可在该框架内估计（Fang et al., 2024）</td>
+<td>无显式 h 时捕捉的是观测层时序结构</td>
+<td>贝叶斯状态估计的递推观测材料</td>
+</tr>
+<tr>
+<td>症状网络</td>
+<td>现象节点激活结构</td>
+<td>横截面网络的边是共变，不承载级联方向与阈值；LPA 识别亚组，不是相变</td>
+<td>功能靶点发现的现象层线索</td>
+</tr>
+<tr>
+<td>计算精神病学</td>
+<td>局部生成机制建模</td>
+<td>参数任务局部：学习率、决策阈值跨任务功能身份不稳定</td>
+<td>局部生成模型可对接为统一坐标系的机制资源</td>
+</tr>
+<tr>
+<td>因果机器学习</td>
+<td>高维效应估计与异质性发现</td>
+<td>特征空间仍是现象变量时，结构变迁后外推失效</td>
+<td>状态估计与个体化校准的估计引擎</td>
+</tr>
+<tr>
+<td>多模态／数字表型</td>
+<td>更多观测接口</td>
+<td>更多接口仍需统一生成模型解释读数为何共同出现</td>
+<td>增强状态反解的信息量</td>
+</tr>
+<tr>
+<td>开放科学</td>
+<td>观测规律可信度</td>
+<td>制度面收窄研究者自由度，不改变描述对象</td>
+<td>状态范式实证化的制度前提</td>
+</tr>
+</tbody>
+</table></div>
+<p>表中有两行容易被读错。症状网络常被读成动力学转向，其实横截面的边是共变，不是传导；要谈相变，至少需要状态方程、阈值与时间序列。计算精神病学常被读成机制已经找到，其实它找到的是任务局部参数；这些参数在单一任务内稳定，跨任务的功能身份不稳定，可对接为统一坐标系的机制资源，不是统一坐标。</p>
+<p>判准可以写成一句：不同源，可映射，不可互换。这些方法在数学来源上并非同族，能否为状态范式所用，取决于能否映射到功能坐标，不取决于是否与 Ψ 同源。这一层成就可称为"动态的影子几何学"：影子动起来了，几何也做得极精，但描述的是观测数据的运动，不是功能实体的演化。这是定位，不是否定。</p>
+<hr />
+</section>
+<section class="chapter chapter--act"><div class="act-num" aria-hidden="true">III</div><h2 id="s5" class="act-title"><span class="act-label">第三幕</span>走出洞穴：范式转移与形式化建构</h2>
+<p>第二幕按四条判据检查变量的基本单位资格，结论是在 J1-J5 尺度上变量不承载该资格；本幕给出功能层的单位方案：功能系统层是什么，凭什么成立，用什么语法描述，观测上如何反解，环境如何进入。</p>
+<h3 id="s5-1">3.1 功能系统层：合法性从哪来</h3>
+<h4>3.1.1 为什么需要中间层</h4>
+<p>功能系统层不是新增一个实体，而是新增一个描述层级。神经层描述实现：哪些环路、哪些递质、哪些时间常数。现象层描述体验与报告：焦虑、低落、拖延。两层之间缺一个中间层，用来描述系统当前处于什么状态、这些状态如何演化、哪些操作能改变演化。</p>
+<p>这一层的必要性不靠哲学宣言，靠两个工作需求。跨实现的可迁移性：同一功能规律应当能在不同的神经实现、不同的测量接口下保持可读。干预的可计算性：干预方案需要对象，对象必须是可指认、可比较、可操作的状态量。神经层给不出前者，现象层给不出后者。</p>
+<h4>3.1.2 独立而受约束：三类约束信号</h4>
+<p>功能层的独立性，指它可以用自己的词汇与规律陈述，不必逐句翻译成神经语言。受约束，指它的可容许状态不是任意的：实现层会排除一部分功能模型。把"受约束"说成"要接受物理边界"太粗，约束其实分三类，强度与响应都不同。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>信号</th>
+<th>内容</th>
+<th>对功能层说什么</th>
+<th>功能层的响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬约束</td>
+<td>已确立的定量物理边界（传导速度、突触延迟、代谢时间常数）</td>
+<td>此路不通</td>
+<td>直接修正参数边界，不等新实验</td>
+</tr>
+<tr>
+<td>软约束</td>
+<td>当前测量工具的信效度极限</td>
+<td>此处暂测不准</td>
+<td>加宽估计区间，优先开发原生工具，标注不确定性</td>
+</tr>
+<tr>
+<td>兼容性信号</td>
+<td>两套独立推导在特定点上的结构对应</td>
+<td>此处可能切中关节</td>
+<td>归档，增强信心，不改真值</td>
+</tr>
+</tbody>
+</table></div>
+<p>三类信号的区分，防的是两种误判。把兼容性信号当硬约束，一遇反例就以为核心概念被推翻；把硬约束当理论失败，一碰边界就以为整个框架错了。前者把信心当证据，后者把边界当反例。</p>
+<p>约束的响应分三层：参数层最快，硬约束与软约束进来就更新后验；模型层中速，要跨任务、跨样本的残差持续同向才改模型形式；概念层最慢，只有系统性偏差才动核心划分。分层之后，功能层不会因一次噪声改概念，也不会对系统性偏差视而不见。</p>
+<p>一个例子。M1-RES-D 的恢复速率可以写成功能层的参数，不必说明它对应哪条通路；但它的取值范围受代谢极限约束，这是硬约束，违反即需修正，不必等新实验。功能描述给出形式，实现层给出边界。</p>
+<p>一句话概括方向：神经层标记"不可能"，不定义"正确"。它排除物理上走不通的路径；剩下哪条路在功能上成立，仍由功能层的预测与干预效能来判。功能层的自主空间，就在硬约束之上、软约束之内；多重实现度越高，这块空间越大。</p>
+<h4>3.1.3 自主空间的大小：多重实现梯度</h4>
+<p>约束之上是自主空间。空间大小取决于两件事：可容许实现的数量，以及这些实现共享的约束强度。</p>
+<p>水→氢氧结合，路径基本唯一，约束最强，自主空间几乎为零。飞行→羽毛、膜翅、皮膜、滑翔鳍，实现多样，但都要满足升力、重量与代谢约束，自主空间中等。认知功能→神经实现的多重性最高，约束仍在：恢复速率不能超出代谢极限，连接重塑的时间常数不能脱离突触可塑性的已知范围，自主空间最大。</p>
+<p>梯度说明空间大小，不说明独立性的有无。实现越多、共享约束越弱，自主空间越大，边界始终存在。</p>
+<h4>3.1.4 合法性判据与数学形式</h4>
+<p>功能层的合法性由预测—干预效能判定，不由本体论地位判定。一个功能模型是否成立，看它能否给出可检验的轨迹预测，能否把预测转成有效的干预靶点。两件事做不到，本体论上再自洽也不够。</p>
+<p>数学形式条件性地定位为非线性连续时间状态空间模型：状态随时间连续演化，观测是状态的函数，干预作用于状态或参数。这个定位是条件性的。若心理系统不能被建模为经典动态系统，或逆问题不可缓解，功能层就从阶段性未实例化降为原则性无法实例化，承诺随之失效。失效条件在第五幕预先写明。</p>
+<h3 id="s5-2">3.2 双语法：IODS、M-R-D-S 与 G-M-A-R</h3>
+<h4>3.2.1 42 维坐标：6×7 的来源</h4>
+<p>42 维来自 6 模块 × 7 维度。六个模块是 M1 具身、M2 认知、M3 意志、M4 情绪、M5 言语、M6 行为；七个维度是资源二分（RES-D 可调度／RES-B 基底）、调度二分（DSP-F 前景／DSP-B 后台）、结构三分（STR-R 规则／STR-C 连接／STR-S 序列）。</p>
+<p>有两点要说明。模块划分是工程判断，不是神经解剖实体；它按功能角色切分，便于诊断与干预，不声称与脑区一一对应。维度之间在功能定义层面正交：RES 描述有什么，DSP 描述怎么变，STR 描述谁让变。正交是定义层面的，不承诺测量数据里不相关；系统动力学恰恰会让数据呈现相关。七个维度内部，STR 三分的独立性可由图灵机一行讲清：STR-R 是规则表，STR-C 是纸带，STR-S 是读写头的移动协议；三者不可互相还原。</p>
+<h4>3.2.2 降维必然性：12 维反事实</h4>
+<p>42 维不是任意选取，也不是数学意义上的最小集。它的最小性相对于诊断区分而言：少于这些维度，某些干预上重要的区分会被合并。</p>
+<p>一个反事实检验：把坐标压到 12 维，意志瘫痪分不清 M3-RES-D 枯竭与 M3-STR-C 价值脱钩，拖延分不清资源耗竭、价值脱钩、调度接管与序列断裂。两组区分对应不同操作——补资源、重建连接、阻断调度——维度一少，操作并成一束，靶点随之丢失。</p>
+<p>所以 42 维是工程精度的代价，不是冗余参数。每个维度的增设都要能指认一个诊断区分或一个干预逻辑；指认不出来的，应当在后续版本中被删掉。</p>
+<h4>3.2.3 操作语法与靶点合法性</h4>
+<p>操作语法 G-M-A-R 有四类操作：GATE 通道开关、MODULATE 数量调节、ALIGN 规则修正、RELINK 联系重构。四类操作不任意作用于七个维度，靶点合法性由类型匹配决定。</p>
+<p>匹配规则可以写成四条。GATE 作用于可开关的通道与序列结构，即 DSP 与 STR-S 的激活面；它改变进程是否启动，不改变资源存量。MODULATE 作用于可调度的资源数量，即 RES-D；它改变可用量，不改变规则。ALIGN 作用于规则结构 STR-R。RELINK 作用于连接结构 STR-C。</p>
+<p>按这四条，非法组合可以推出来，不必逐个记。GATE STR-R 非法，规则不是通道，没有开关；GATE STR-C 非法，连接不是激活面；MODULATE STR 非法，结构不是数量；ALIGN STR-C 非法，连接不是规则；RELINK STR-R 非法，规则不是连接；RELINK STR-S 非法，序列不是连接。MODULATE RES-B 也非法，理由不同：RES-B 是基底容量，只能经结构过程缓慢改变，不能像 RES-D 那样直接调度。用"现金与信用"的比喻也可以；判据仍是类型匹配。</p>
+<p>语法之外还有一层约束。六条动力学约束是操作语法的边界条件：资源流守恒，RES 总量不能凭空增加，MODULATE 只能搬移或延缓耗散；恢复不对称，消耗快于恢复，补资源因此有时间下限；级联阈值，M1-RES-D 跌破阈值后，上游的结构类操作一并失效；改变耗时，结构类操作生效慢于资源类；弹性回滞，撤除干预后状态不原路返回；系统—环境耦合，E(t) 的变动改变阈值穿越的时点。</p>
+<p>这六条同时是 J4 与 J5 的实例。约束都作用在被控状态量上，不是拟合参数上的正则项，这是 J4；每一条都限定某类操作的可行窗口——MODULATE 受守恒与恢复不对称约束，RELINK 受改变耗时约束，GATE 受级联阈值约束，这是 J5。约束与操作咬合，才有“什么时候能做、能做多少”的判断。</p>
+<h4>3.2.4 两类缺席与风险转移</h4>
+<p>两类缺席要分清。变量范式对 h 的缺席是原则性的：它的基本描述单位被定义为观测本身，生成问题在语法中没有位置。状态范式对 h 的未完成是阶段性的：y_t = h(Ψ_t, E_t) + ε_t 已经有形式位置，只是参数尚未填充。前者是语法结构问题，后者是工程进展问题。</p>
+<p>风险随之转移，但没有消失。状态范式的风险从"能否提出 h"（已解决，可表达）移到"h 的前提是否成立"（可检验）。风险仍在状态范式自己身上，只是变得可检验。</p>
+<p>两个层级各锚一例。机制层：拖延的消耗速率取决于任务压力 E 与恢复参数 θ；消耗率持续大于恢复率时，系统在数日内逼近崩溃阈值，M6-DSP-B 接管控制权，表现为拖延急剧增加。个案层：S-001，变量范式侧 DSEM 给出系数表，状态范式侧经三端口反解 Ψ 轨迹，M1-RES-D 第 5 天跌破 0.25 阈值，级联路径为 M1-RES-D↓→M3-RES-D↓→M3-DSP-F 门控失效→M2-DSP-B↑→M4-DSP-B↑，风险时点第 4-5 天。0.25 是崩溃阈值；S 层操作的准入门槛另设为 0.40，两者不是同一个数。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>能力边界五问</th>
+<th>变量范式</th>
+<th>状态范式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谁先谁后（睡眠↔情绪）</td>
+<td>系数方向可估，因果方向存疑</td>
+<td>级联路径可指认</td>
+</tr>
+<tr>
+<td>未来七天状态</td>
+<td>不能判断</td>
+<td>可仿真 Ψ 轨迹分布</td>
+</tr>
+<tr>
+<td>风险时点</td>
+<td>不能判断</td>
+<td>第 4-5 天（M1-RES-D 跌破阈值）</td>
+</tr>
+<tr>
+<td>先动哪里</td>
+<td>不能判断</td>
+<td>可排 G-M-A-R 序列</td>
+</tr>
+<tr>
+<td>资源不够能否做 S 层操作</td>
+<td>不能判断</td>
+<td>能判断（RES-D&lt;0.40 不做）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="s5-3">3.3 观测、逆问题与工程承载</h3>
+<h4>3.3.1 观测依赖与本体依赖</h4>
+<p>状态范式对变量范式产出的依赖，要分两种。观测依赖：取其测量产物——量表、因子结构、效应量、相关矩阵。本体依赖：取其本体假设——变量是独立实体。前者不构成循环，后者才构成。</p>
+<p>牛顿与第谷的类比：第谷的观测数据独立于牛顿理论，牛顿可以用它，不必接受第谷的宇宙论。状态范式同样只取测量产物，明确拒绝"变量是独立实体"的假设。测量产物与本体假设可以分离：一份量表的因子结构是经验事实，不因编制者信奉变量本体论而失效。</p>
+<p>测量总公式的对照一行可见：CTT 把测量问题化为真分数加随机误差（X = T + e）；状态范式化为状态、观测函数与逆问题（y = h(Ψ, E) + ε），其中 E 是环境项，与 CTT 的误差项 e 不是同一个符号所指。贝叶斯参数估计 P(θ|Data) 对位于状态估计 p(Ψ_t|y_{1:t})，MCMC 对位于卡尔曼或粒子滤波。</p>
+<h4>3.3.2 逆问题三性质与解法分派</h4>
+<p>从观测反推状态是逆问题，有三个数学性质：病态性、解不唯一、对先验依赖强。三者是数学性质，不是工程缺陷，换算法也不会消失。解法按噪声与非线性程度分派，滤波解决递推，先验解决欠定，两者合起来才有可用的后验。</p>
+<p>可辨识性没有地面真值可依。可行的是三条间接路径：多模态一致性、L3 预测精度反推、临床专家交叉校准。三条都不构成完全独立的验证，但在无地面真值的系统里，是当前能拿到的最好方案。</p>
+<h4>3.3.3 先验从哪来</h4>
+<p>先验不是凭空来的。变量范式数十年积累的测量产物，正好可以充当冷启动先验：因子结构给出 h 的初始形式；元分析效应量给出状态方程参数的先验均值与方差；相关矩阵给出耦合强度的先验。</p>
+<p>举一个通道。某量表的因子分析给出三个维度，维度间相关为 r；这三个维度先映射为 Ψ 的三个分量，相关矩阵转成耦合矩阵的先验，效应量转成参数区间。映射不必一次到位，PSE-C 校准循环会用新数据逐步修正。关键不是映射得多准，而是先验有出处、可追溯、可被数据推翻。</p>
+<h4>3.3.4 管线、四笔代价与工程阶段</h4>
+<p>工程面收拢为一条管线：L0 本体定义坐标系 → L1 三端口观测（UPLP 语义、UBMP 行为、UNIP 神经，各出似然 p(y|Ψ)）→ L2 贝叶斯状态估计 → L3 动力学（26 条假设、BMA 模型选择，见 01-M-03）→ L4 规划 → L5 执行，闭环反馈回 L1。</p>
+<p>四笔代价要摊开：逆问题用先验约束、滤波递推、多模态缓解；高维用降维必然性检验，"坐标虚设"进镜像清单；340+ 参数按 01-M-03 分 PSE-M 与 PSE-C 两级锚定，部分仍待临床锚定；可辨识性走三条间接路径，BMA 权重退化尚未设计。</p>
+<p>精度的说法要克制：校准会提升预测精度，幅度取决于数据密度与先验质量，目前没有可外推的实测值，本文不给具体百分比。工程落地分四阶段——先验整合、小样本高密度采集与滤波验证、干预验证、多中心校准，每阶段以前一阶段的收敛为闸门。</p>
+<h3 id="s5-4">3.4 光源入模：环境即 E(t)</h3>
+<h4>3.4.1 E(t) 在状态方程中的位置</h4>
+<p>变量范式把环境当作需要控制的混淆；状态范式把环境当作驱动状态演化的时变输入。位置写在方程里：dΨ/dt = Σ w_k·f_k(Ψ, E(t), θ_k)。E(t) 进入的是向量场，不是误差项；它改变轨迹的形状，而不只是抬高或压低读数。</p>
+<h4>3.4.2 与协变量、混淆项的区别</h4>
+<p>协变量与 E(t) 的区别，可以用一句判据分开：若一个量只改变估计值、不改变可行轨迹与干预时点，它是协变量；若它改变轨迹形状、阈值穿越时点或干预窗口，它是 E(t)。</p>
+<p>按这条判据，年龄、性别在多数模型里是协变量；工作负荷、社会支持、季节光照在具体系统里可以是 E(t)。同一个量在不同模型里可能换位，判据看它在方程中的角色，不看它的名字。</p>
+<p>S-P 环境参照系承载 E(t) 的分层：微系统、中系统、外系统、宏系统、时序系统、数字系统。分层用于定位，不同层对应不同时间尺度与不同干预入口。S-P 不改变操作语法的定义，只调制执行：它调整 G-M-A-R 操作的优先级、时序与风险阈值。同一个 RELINK，在社会支持高的环境里可以早做，在支持低的环境里要先补资源。语法管合法性，环境管时机。</p>
+<h4>3.4.3 一个最小示例</h4>
+<p>设某来访者的 M1-RES-D 恢复速率固定，工作负荷 E(t) 在前三天平稳，第四天起上升。负荷上升把消耗项的斜率抬高，阈值穿越从第 6 天提前到第 4 天，干预窗口随之缩短。同样的初始状态、同样的恢复参数，只因 E(t) 的轨迹不同，风险时点就不同。</p>
+<p>这个示例只展示结构，数值是示意，不是实测。它要说的事情只有一件：环境不是背景，它进方程。</p>
+<hr />
+</section>
+<section class="chapter chapter--act"><div class="act-num" aria-hidden="true">IV</div><h2 id="s6" class="act-title"><span class="act-label">第四幕</span>洞穴之外：理论生成力与跨学派兼容</h2>
+<p>第三幕给出功能层单位与语法。本幕回答两个问题：这套单位能否统摄既有流派，能否生成新东西；以及它与变量范式如何分工。</p>
+<h3 id="s6-1">4.1 统摄力：流派分歧如何变成靶点之别</h3>
+<h4>4.1.1 映射规则与合法性条件</h4>
+<p>把流派技术映射到 G-M-A-R，不是把术语换个写法。映射要满足三条条件。第一，技术有明确的操作目标，能说清它试图改变什么。第二，操作能对应到 G-M-A-R 的靶点类型，而不是靠类比附会。第三，映射依据来自该流派对改变机制的公开表述，不采其自我命名。</p>
+<p>三条不满足的，不进入映射表。关系层与意义层的技术，只能作有损翻译，不能当作等价转译；这一点在 §4.1.4 说明。</p>
+<h4>4.1.2 六流派映射表</h4>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>流派技术</th>
+<th>G-M-A-R 转译</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>暴露疗法</td>
+<td>GATE− M4-DSP-B＋RELINK M4-STR-C</td>
+</tr>
+<tr>
+<td>CBT 认知重构</td>
+<td>ALIGN M2-STR-R＋GATE− M2-DSP-B</td>
+</tr>
+<tr>
+<td>正念呼吸</td>
+<td>GATE− M2-DSP-B＋GATE+ M1-DSP-F</td>
+</tr>
+<tr>
+<td>精神分析移情分析</td>
+<td>RELINK M4-STR-C</td>
+</tr>
+<tr>
+<td>人本主义无条件积极关注</td>
+<td>RELINK M4-STR-C</td>
+</tr>
+<tr>
+<td>行为主义系统脱敏</td>
+<td>GATE− M4-DSP-B＋MODULATE+ M1-RES-D</td>
+</tr>
+</tbody>
+</table></div>
+<p>表的读法要克制。它说明这些技术可以被同一套操作语法描述，不说明它们已经被证明等价。等价需要效应证据，表只提供描述层面的对应。</p>
+<h4>4.1.3 收敛的判据</h4>
+<p>从表里能读出什么，取决于用什么判据。本文用三条：同一操作在多个流派中独立出现；各流派的出现不是互相引用造成的；有效应证据支持该操作是改变的主要通道。</p>
+<p>按这三条重算。RELINK 在表中出现三次（暴露疗法、精神分析、人本主义），ALIGN 一次（CBT），GATE 三次（暴露疗法、正念、行为主义），MODULATE 一次（行为主义）。能说的是：三个流派在 RELINK 上重合，且这条重合有独立的临床传统支撑。不能说六个流派在 RELINK 上收敛；CBT 的主操作是 ALIGN，正念与行为主义的主操作是 GATE，暴露疗法则是 GATE 与 RELINK 并用。</p>
+<p>收敛因此是局部假说，不是既成事实。它值得进一步检验，但不能当作统摄力的既得证明。</p>
+<h4>4.1.4 有损翻译与不对称</h4>
+<p>系统式与叙事式流派运作于更高层的关系结构，映射到功能层是有损翻译，只能作启发性类比。语义漂移是常态："焦虑"作为量表得分绑定测量操作，作为 M4-DSP-B 高唤醒加 M2-STR-R 威胁偏向加 M1-RES-D 下降绑定功能角色；前者译入后者，是有损重构。</p>
+<p>反向翻译成本更高。Ψ 后验译回潜变量，丢失生成机制；靶点效应译回处理效应，丢失分解性。变量范式能问"这个处理包是否有效"，不能问"哪个操作有效、作用于哪个靶点"。不对称的根源在于：变量范式的测量产物本体论中立，可被任何范式使用；状态范式的状态估计本体论负载，译出去要连假设一起译。</p>
+<h3 id="s6-2">4.2 生成力：DMD</h3>
+<h4>4.2.1 空位生成的四步</h4>
+<p>第一，在流派乘操作的矩阵里找空格：某个操作类型与某个靶点组合，既有流派没有覆盖。第二，给空格一个功能定位，说明它对应哪种状态失衡。第三，组合出可执行的操作序列。第四，写出可检验预测，交给实验。</p>
+<p>四步里最难的是第二步。空格不等于有效靶点；定位错了，生成出来的疗法只是新瓶装旧酒。</p>
+<h4>4.2.2 DMD 的功能定位</h4>
+<p>默认模式调度疗法（DMD）来自一个空格：针对反刍、担忧这类后台进程过度激活的问题。它的功能定位是 M2-DSP-B 无法被 M1-DSP-F 有效门控的注意调度失衡。DMD 主攻调度通路，用感官锚定、调度替代、门控训练；内容通路交给 ALIGN 类操作处理。这是双通道模型，不是对内容疗法的否定。</p>
+<h4>4.2.3 可检验性</h4>
+<p>DMD 的价值不在它听起来新，而在它可被检验。它携带 P1-P6 编号预测：P1 为被试内交叉主实验，P2a/b/c 为机制检验，P3-P6 为扩展预测；预注册方案与当前状态另行存档。</p>
+<p>与既有流派比较，只比三项：靶点是否明确，是否依赖信念修正，预测是否可证伪。不比疗程长短；疗程数据受实施细节影响，单篇研究不足以支撑跨流派结论。</p>
+<h3 id="s6-3">4.3 翻译成本与分工</h3>
+<h4>4.3.1 整合的三层次</h4>
+<p>保护带整合已实现：变量范式的测量产物作为观测输入与先验来源。方法论整合部分实现：七阶段协作流程——现象层探索、功能层建模、参数初始化、密集采集、状态估计、因果识别、干预验证——每阶段两范式任务与交接物明确，各自基本单位不变。本体论整合不可实现：硬核互斥，不能同时把变量与功能状态当作基本单位。</p>
+<h4>4.3.2 翻译成本账</h4>
+<p>正向翻译有三类结果。可译：测量结构、效应量、相关矩阵，直接转为观测输入与先验。有损译：流派技术、关系层概念，保留启发价值，不保留等价性。不可译：本体假设，即"变量是独立实体"，明确拒绝。</p>
+<p>反向翻译的成本更高，原因在 §4.1.4 已说明。两边的成本不对称，不是翻译技巧问题，是本体论负载不同。</p>
+<h4>4.3.3 判定权分立与分工</h4>
+<p>两套范式的关系是分工。群体流行病学调查、现象层规律发现，变量范式主场；个体化状态轨迹预测、干预序列规划、跨流派技术转译，状态范式主场。</p>
+<p>判定权要分立。科学轴判真假，工程轴判符合；DMD 论文发表只说明成果被接受，不说明学科被建立。硬核互斥但范式可通约，连接通道是观测函数 h。用一句话说：换单位，不换大框架；变量范式继续生产观测知识，状态范式消费这些知识并给出机制描述。</p>
+<hr />
+</section>
+<section class="chapter chapter--act"><div class="act-num" aria-hidden="true">V</div><h2 id="s7" class="act-title"><span class="act-label">第五幕</span>回望洞穴：效度承诺与两范式分工</h2>
+<p>本幕收口四件事：承诺到哪一层，怎么检验，两套范式如何分工，以及这套框架自己的风险在哪。</p>
+<h3 id="s7-1">5.1 效度分阶：承诺到哪一层</h3>
+<p>本文的承诺分三层，不打包。</p>
+<p>先立一条权属规则：证伪判据必须与主张同处一个认识论层级；"尚未被神经科学证伪"不等于"已被验证"；神经层数据只作校准者，不作法官——可强制修正参数，不可单独推翻概念主张。</p>
+<p>逻辑层（L 级）：理论内部自洽，并以强反例协议划定可证伪边界。框架级可证伪条件五条：N-S-R 元公理反例、M1-M6 完备性反例、R-D-S 充分性反例、G-M-A-R 覆盖充分性反例、G-M-A-R 操作序列优先性反例。放弃条件由 C1-C4 预先写明。</p>
+<p>信度层（P 级，内部证据）：多席盲评给出判卷信度信号。主卷 κ_eff 0.7044，95%CI [0.680, 0.729]；现线 0.70 与 CI 下界 0.65 的复合判据已达，预注册原线 0.75 未达。判定为 Preview（达标冻结版），仅内部使用，不作分类效度声称，不作对外承重。AI 席一致性不构成效度证据。</p>
+<p>实证层（E 级，在途）：DMD-P1 采用被试内交叉设计，预注册草案已定，主结局为反刍中断自评，门槛 g≥0.30。随机对照与多模态扩展属远期路径。取得实证数据前，不作任何临床或应用效果承诺。</p>
+<h3 id="s7-2">5.2 可检验预测与失效条件</h3>
+<p>可检验的预测要写成能执行的形式，否则失效条件只是姿态。</p>
+<p>预测：复现成功率与研究是否控制关键 S-P 参数的稳定性正相关，且失败可以分解为状态变化与观测函数变化。执行方式：取现有复现项目的数据，对原研究与复现研究在样本、工具、情境上的差异逐项编码，检验差异大小与复现效应衰减的关系；分解靠测量不变性检验与密集纵向轨迹，不靠事后解释。若二者无关，或分解不可行，这条预测失败。</p>
+<p>失效条件预先写明。其一，若经典动态系统前提失败，或逆问题不可缓解，状态范式在预测与控制上的"可承载"降为"理论可承载但不可兑现"，比较结论需重写；若可辨识性三路径也全部失败，分工结论需重写。其二，若出现能同时承载两套任务的第三套范式，本比较需扩展。</p>
+<p>自反性的退化情景也预先登记：若任一还账分支长期失败，"技术性问题"将翻转为"概念性问题"，硬核（基本单位＝Ψ）进入受审状态，框架按预注册退出条件降级为候选理论语言，不以"骨架幸存"为由延期裁决。预先写明，是为了不让"保护带可修正"成为无限期豁免。</p>
+<h3 id="s7-3">5.3 两套范式的分工</h3>
+<p>变量范式（以变量为中心的现象呈现层范式）以变量为单位，承担现象层的观测、测量与检验；状态范式（以状态为中心的功能系统层范式）以功能状态向量为单位，在功能层补充状态描述与干预语法。两者各守其层，经观测函数 y = h(Ψ, E) + ε 相连：变量范式的量表、效应量与相关结构，对接为观测输入与校准先验。其哲学基础是双层实在论：变量实在论在现象层有效，功能实在论在功能层有效。功能实在论承诺的是"功能层作为描述层级是实在的"，不是"每个功能组件的边界都永恒正确"。</p>
+<p>分工的接触面在保护带：变量范式不追问"变量是否应被替换"，状态范式不主张"换回变量"，两条负面启发法对称成立；协作发生在保护带层，硬核层互不干涉。</p>
+<p>按场景定权重：群体流行病学调查、现象层规律发现，变量范式主场；个体化状态轨迹预测、干预序列规划、跨流派技术转译，状态范式主场。</p>
+<p>一句话收束：K3 是主要矛盾；换单位，不换大框架。这个分岔是历史的选择，所以它可以被重新选择。</p>
+<h3 id="s7-4">5.4 镜像风险与伦理边界</h3>
+<p>走出洞穴不等于抵达真理。本文判定过的问题，可能在自身身上以镜像形态重演，故预登记四项。坐标虚设：42 维"不能更少"未证"每一维有用"，维度越切越细、参数越列越多，可能没有增量解释力，且更难察觉，因为它披着形式化的外衣。两前提失败：若 h 的情境依赖不可参数化，"把 h 写出来"退化为口号。坐标内部多口径："坐标统一"不等于"术语统一"，M1-M6 的双语义等待并轨。校准循环：相互验证可能变成相互循环。</p>
+<p>伦理维度先行登记。变量范式的风险偏认知性：本质主义标签把"你是高焦虑者"当作对一个人本质的描述，而不是对一组测量读数的描述。状态范式的风险偏关系性：持续追踪会把来访者当"状态向量"，而不是"人"。两类风险都不因更换范式消失；Ψ 轨迹的归属、算法建议致害的责任，需由治理规程承接。</p>
+<h3 id="s7-5">5.5 结语</h3>
+<p>本文的核心主张——心理现象的基本描述单位应从现象层的变量转向功能层的系统状态——不依赖洞穴隐喻而成立。隐喻只作教学入口；真正的工作在第二至第四幕的形式化框架里。</p>
+<p>这个主张可以被证伪：若某套变量模型同时满足 J1-J5，或 §5.2 的失效条件被触发，结论即不成立。写到这里，能做的只有把可检验的部分交出去。</p>
+<p>从研究"变量之间的统计关系"转向研究"心理系统的功能结构"，是一条探索性路径。它是否成立，不取决于本文的论证是否漂亮，而取决于它能否在数据面前站住。</p>
+<hr />
+</section>
+<section class="chapter chapter--appendix"><h2 id="s8">附录 A：“影子几何学”的结构映射与层级核定（L3）</h2>
+<blockquote>
+<p><strong>性质</strong>：本附录是第一幕“影子”隐喻的结构映射清单，用于说明该隐喻为何停在 L3、以及它与 L4 的边界在哪儿。依 06-S-06 §7.11 与 §5.5 的隐喻划界，隐喻与教学表不作论证依据；本附录不改变本文任何论证结论。</p>
+<p><strong>来源</strong>：外部议案 15-X-148（2026-10-30 收录）＋审查件 15-RPT-148（F1–F9：成立 5／部分成立 2／不成立 2；采纳 A1／A2，修正 A3／A4，不采纳 A5／A6）。</p>
+<p><strong>定级</strong>：L3（结构类比·强结构推理）。按 09-A-11 §3.3，L4 要求两域为“同一数学／逻辑定理的不同实例化”；本隐喻两域只共享“降维→信息损失→逆问题病态”这一一般原理，未共享同一形式定理，故未达 L4。</p>
+</blockquote>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>映射维度</th>
+<th>源域（光学投影）</th>
+<th>目标域（统计观测）</th>
+<th>L3 结构对应（成立）</th>
+<th>断裂点（未达 L4 之处）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本体与源头</td>
+<td>三维实体</td>
+<td>真实心理机制（功能状态 Ψ）</td>
+<td>投影源：皆不可直接观测的生成结构</td>
+<td>光学投影是确定性的几何映射；统计观测是概率测度与积分算子</td>
+</tr>
+<tr>
+<td>变异因素</td>
+<td>光源角度／强度／距离</td>
+<td>情境、样本特征、混淆变量</td>
+<td>致变因素：外部参数改变投影形态而不改变实体</td>
+<td>光学参数改变投影方程；统计扰动改变条件分布，机制不同</td>
+</tr>
+<tr>
+<td>输出结果</td>
+<td>二维影子及形变</td>
+<td>量表分数、观测分布</td>
+<td>投影结果：降维产物，受观测协议限制</td>
+<td>信息损失的具体形式不同（几何遮挡 vs 抽样与噪声）</td>
+</tr>
+<tr>
+<td>内部关系</td>
+<td>影子 A 与影子 B 的联动</td>
+<td>变量间协方差／相关</td>
+<td>投影层几何：低维现象空间的共变关系</td>
+<td>相关系数＝夹角余弦仅在标准化后成立；投影重叠与协方差非同一代数对象</td>
+</tr>
+<tr>
+<td>操作与干预</td>
+<td>裁剪墙上的影子</td>
+<td>操纵问卷分数</td>
+<td>干预失效：对投影的干预不改变实体</td>
+<td>两条“无效”路径的机制不同（无因果传递 vs 无机制改变）</td>
+</tr>
+<tr>
+<td>测量不变性</td>
+<td>换光源，影子变形</td>
+<td>换量表，协方差漂移</td>
+<td>不变性破裂：协议一变，现象层几何重组</td>
+<td>逆问题病态的数学形态不同（投影不可逆 vs 估计不适定）</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>一句话</strong>：这张表说明“影子几何学”为什么强、强到什么程度（L3），也说明它为什么升不到 L4——两域共享的是一般原理，不是同一条定理。</p>
+</blockquote>
+<hr />
+</section>
+<section class="chapter"><h2 id="s9">边界声明</h2>
+<p><strong>适用范围</strong>：本文档以五幕结构展开——第一幕与第五幕使用洞穴隐喻引入问题并作收束复盘，第二至第四幕以形式化语言论证；隐喻仅作教学入口，不构成逻辑证明。</p>
+<p><strong>素材来源与状态</strong>：本稿为 v3.0.0 正本，2026-11-12 由五幕合并稿 draft.6 升入，替换 v2.2.2 正文；旧版归档于 99-归档。重写范围包括数据与引注核验（实证引注全部在 2020 后，逐条经原文或数据库核实）、第二幕基本单位论证重构、第四幕减法、Ψ×四判据自判与六条动力学约束回补。升正本为 D7 结构性重构，主理指令签发。</p>
+<p><strong>不适用范围</strong>：本文档不提供新的实证数据；形式化论证的完整推演见 03-A-14、03-A-19、03-A-22；跨基质扩展不在本文论域。</p>
+<p><strong>已知局限</strong>：洞穴隐喻可能因读者背景不同产生不同解读；其使用处均已标明不作论证依据，核心论证以第二至第四幕的形式化表述为准。</p>
+</section>
+<section class="chapter chapter--refs"><h2 id="s10">参考文献</h2>
+<ol>
+<li>Anvari, F., Alsalti, T., Oehler, L. A., Hussey, I., Elson, M., &amp; Lennartz, R. (2025). Defragmenting psychology. <em>Nature Human Behaviour</em>, 9, 836–839. <a class="url" href="https://doi.org/10.1038/s41562-025-02138-0" rel="noopener">https://doi.org/10.1038/s41562-025-02138-0</a></li>
+<li>Borsboom, D., Mellenbergh, G. J., &amp; van Heerden, J. (2004). The concept of validity. <em>Psychological Review</em>, 111(4), 1061–1071.</li>
+<li>Cronbach, L. J., &amp; Meehl, P. E. (1955). Construct validity in psychological tests. <em>Psychological Bulletin</em>, 52(4), 281–302.</li>
+<li>Elson, M., Hussey, I., Alsalti, T., &amp; Arslan, R. C. (2023). Psychological measures aren't toothbrushes. <em>Communications Psychology</em>, 1, 25. <a class="url" href="https://doi.org/10.1038/s44271-023-00026-9" rel="noopener">https://doi.org/10.1038/s44271-023-00026-9</a></li>
+<li>Fang, J., Wen, Z., &amp; Hau, K.-T. (2024). Mediation analyses of intensive longitudinal data with dynamic structural equation modeling. <em>Structural Equation Modeling</em>, 31(4), 728–741.</li>
+<li>Kuhn, T. S. (1962). <em>The structure of scientific revolutions</em>. University of Chicago Press.</li>
+<li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes. In I. Lakatos &amp; A. Musgrave (Eds.), <em>Criticism and the growth of knowledge</em> (pp. 91–196). Cambridge University Press.</li>
+<li>Nosek, B. A., Hardwicke, T. E., Moshontz, H., Allard, A., Corker, K. S., Dreber, A., ... &amp; Vazire, S. (2022). Replicability, robustness, and reproducibility in psychological science. <em>Annual Review of Psychology</em>, 73, 719–748. <a class="url" href="https://doi.org/10.1146/annurev-psych-020821-114157" rel="noopener">https://doi.org/10.1146/annurev-psych-020821-114157</a></li>
+<li>Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, 349(6251), aac4716.</li>
+<li>Pearl, J. (2009). <em>Causality: Models, reasoning, and inference</em> (2nd ed.). Cambridge University Press.</li>
+<li>Southward, M. W., Kushner, M. L., Terrill, D. R., &amp; Sauer-Zavala, S. (2024). A review of transdiagnostic mechanisms in cognitive-behavior therapy. <em>Psychiatric Clinics of North America</em>, 47(2), 343–354. <a class="url" href="https://doi.org/10.1016/j.psc.2024.02.003" rel="noopener">https://doi.org/10.1016/j.psc.2024.02.003</a></li>
+<li>Woodward, J. (2003). <em>Making things happen: A theory of causal explanation</em>. Oxford University Press.</li>
+<li>Zhou, Y., Xu, J., &amp; Rief, W. (2020). Are comparisons of mental disorders between Chinese and German students possible? An examination of measurement invariance for the PHQ-15, PHQ-9 and GAD-7. <em>BMC Psychiatry</em>, 20, 480.</li>
+<li>Zilcha-Mano, S. (2021). Toward personalized psychotherapy: The importance of the trait-like/state-like distinction for understanding therapeutic change. <em>American Psychologist</em>, 76(3), 516–528. <a class="url" href="https://doi.org/10.1037/amp0000629" rel="noopener">https://doi.org/10.1037/amp0000629</a></li>
+<li>王波. (2019). 变量心理学及其批判. <em>自然辩证法通讯</em>, 41(5), 12–18.</li>
+<li>温忠麟, 王一帆, 马鹏, 孟进. (2024). 变量之间的影响关系和多重影响因素的共同作用类型. <em>心理学报</em>, 56(10), 1462–1470. <a class="url" href="https://doi.org/10.3724/SP.J.1041.2024.01462" rel="noopener">https://doi.org/10.3724/SP.J.1041.2024.01462</a></li>
+</ol>
+<hr />
+</section>
+<section class="chapter chapter--conclusion"><h2 id="s11">结论</h2>
+<p>本文论证变量仅是现象层的测量工具，其数学对象不承载功能层系统动力学；这是承载边界而非方法改进可解，故需要独立的功能层描述语法。</p>
+</section>
+<section class="chapter chapter--log"><h2 id="s12">版本记录</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更说明</th>
+<th>变更者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v3.0.0</td>
+<td>2026-11-12</td>
+<td>结构性重构升正本：以五幕合并稿 draft.6 全文替换 v2.2.2 正文。五幕主线收束为「三重困境→缺 h→单位判据→四层判定与 Ψ 自判→最强反方回应→替代单位与语法→统摄/生成力→效度分阶与分工」；删除无出处数字与无源疗效对比；实证引注全部换至 2020 后并逐条核实（OSC 补 Nosek et al. 2022；不变性引 Zhou et al. 2020；构念膨胀引 Anvari et al. 2025；机制与共同因素引 Southward et al. 2024、Zilcha-Mano 2021；影响关系引温忠麟等 2024）。旧版 v2.2.2 归档于 99-归档（archived-2026-11-12）。判升 Major。</td>
+<td>general-261112</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.6</td>
+<td>2026-11-12</td>
+<td>引语溯源更正：PDF 全文比对确认「比较接近因果」一段出自温忠麟等（2024）《心理学报》56:10，2017《心理科学》零命中；恢复 draft.5 删去的引语并改挂 2024。同时登记正本 §2.5 与两份 HTML 的「温忠麟（2017）」误标，待收口同步。</td>
+<td>本窗</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.5</td>
+<td>2026-11-12</td>
+<td>温忠麟段重写：八条途径归属由 2017 更正为温忠麟等（2024，心理学报 56:10）；致谢声明同类引语一并更正；文献 16 换新，Fang et al. 2024 改挂 §2.10 避免成为装饰性文献；κ_eff 精度收敛。论证结论零改动。</td>
+<td>本窗</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.4</td>
+<td>2026-11-12</td>
+<td>通读校对九处：错字「单元」→「单位」；§4.1.3 GATE 计数两次→三次；§5.1 悬空 D→R→S 改为 G-M-A-R 序列优先性；§3.3.1 误差符号 E→e 避与环境项撞车；§3.2.4 澄清 0.25／0.40 两个阈值并把「两个案例」改为两个层级；§2.1 补 J4 映射；§2.3 删与 §2.2 重复段及「四判据全过」矛盾表述；§ 式交叉引用与引号体例统一。论证结论零改动。</td>
+<td>本窗</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.3</td>
+<td>2026-11-12</td>
+<td>引注换新：Kazdin（2007）／Wampold（2015）→ Southward et al.（2024）＋Zilcha-Mano（2021），两文卷页与 DOI 均已核实；「共同因素」表述改为 Southward 2024 实际支持的强度。论证结论零改动。</td>
+<td>本窗</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.2</td>
+<td>2026-11-12</td>
+<td>定向修订：补 Ψ×四判据判定表（可通约格标 △，明示资格过关而兑现欠账）；回补六条动力学约束并落实 J4-J5；补 Nosek et al. 2022 解除 OSC 单源；温忠麟段补「本文解读」归属；Kazdin／Wampold 标注为奠基综述、不引其数值；恢复框架定位与致谢声明、assets 与 01-M-03 登记、版本记录表。论证结论零改动。</td>
+<td>本窗</td>
+</tr>
+<tr>
+<td>v3.0.0-draft.1</td>
+<td>2026-11-12</td>
+<td>五幕重写候选稿首立：按「基本单位」主线重构五幕；删无出处数字与无源疗效对比；补 2025 年构念膨胀读数、测量不变性证据与最强反方回应。未并入正本。</td>
+<td>前一窗</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>本稿遵循 INTRE 文档生产标准与 IET v3.0 证据分类学；升正本与登记面同步候主理裁定。</em></p></section>
+
+    <footer class="tail">
+      本稿遵循 INTRE 文档生产标准与 IET v3.0 证据分类学；升正本与登记面同步候主理裁定。
+    </footer>
+  </article>
+</main>
+
+<section class="catalog">
+  <div class="catalog-box">
+    <p class="catalog-title">编目</p>
+    <dl class="colophon-grid">
+      <dt>文档编号</dt><dd>03-A-07</dd>
+      <dt>版本</dt><dd>v3.0.0</dd>
+      <dt>日期</dt><dd>2026-11-12</dd>
+      <dt>状态</dt><dd>final · 正本</dd>
+      <dt>决策层级</dt><dd>D7（结构性重构升正本·主理指令签发）</dd>
+      <dt>文档类型</dt><dd>argument · 架构论证</dd>
+      <dt>证据分类</dt><dd>IET v3.0</dd>
+      <dt>执笔窗</dt><dd>general-261112</dd>
+      <dt>所属层</dt><dd>03-现象层对接（PHENO）· 变量范式批判总纲件（正本）</dd>
+    </dl>
+<details class="fold"><summary>前置依赖 11 件</summary><ul class="plain"><li>03-A-07-走出洞穴：心理学变量范式的本体论困境与状态范式的工程探索-archived-2026-11-12.md</li>
+<li>03-A-07-走出洞穴：心理学变量范式的本体论困境与状态范式的工程探索-archived-2026-11-08.md</li>
+<li>03-A-14-R-D-S作为心理学统一量纲系统的理论框架与工程意义.md</li>
+<li>03-A-15-R-D-S从候选坐标系到实质量纲：技术条件与工程路径.md</li>
+<li>03-A-16-R-D-S的本体论前提：心理系统作为经典动态系统的合法性边界.md</li>
+<li>03-A-19-从观测到状态向量：R-D-S逆问题的算法路径与病态性缓解.md</li>
+<li>03-A-20-跨模块可通约性：同一量纲不同实例的实证判据与验证设计.md</li>
+<li>03-A-21-G-M-A-R干预映射的操作化与临床验证路径.md</li>
+<li>03-A-22-R-D-S与替代形式化路径的系统比较.md</li>
+<li>03-A-28-INTRE-学术答辩五步叙事框架.md</li>
+<li>01-M-03-PSE-心理系统计算引擎.md</li></ul></details>
+<details class="fold"><summary>配套资产 3 件</summary><ul class="plain"><li>03-A-07-走出洞穴-双范式对照讲解-v2.2.0-2026-11-22.html</li>
+<li>03-A-07-走出洞穴-脚本与结构图-v2.2.0-2026-11-22.html</li>
+<li>03-A-07-走出洞穴-SVG动画-v2.2.0-2026-11-22.html</li></ul></details>
+<details class="fold"><summary>修订沿革 8 条</summary><ol class="rev"><li>|</li>
+<li>v3.0.6 2026-11-22 正本同步批（D5）：同步 A-07 v3.0.6 的 15 处去对抗化、A02 归因分层与 06-S-17 分工表述；结论零改动。</li>
+<li>v3.0.0 2026-11-12 升正本：以五幕合并稿 draft.6 全文替换 v2.2.2 正文，主理指令签发（D7 结构性重构）。替换内容＝三轮独立评估后的定向修订（基本单位论证重构、Ψ×四判据自判、六条动力学约束回补、第四幕减法、引注全部换至 2020 后并逐条核实）；沿承 v2.2.2 的引注溯源更正。旧版 v2.2.2 归档于 99-归档（archived-2026-11-12）。保留原文「结论」段。资料包镜像已同步 v3.0.0；00-M-00／03 README／批次表因他窗在途（M）未动，待收口同批登记。</li>
+<li>v3.0.0-draft.6 2026-11-12 引语溯源更正：下载两篇原文 PDF 抽全文比对确认——「尽可能选择相关性较高的影响关系……以得到比较接近因果的影响关系」实出自温忠麟等（2024）《心理学报》56(10):1462–1470；2017《心理科学》40(1):200–208 全文对「接近因果」「相关性较高」「尽可能」三串零命中。draft.5 曾判「两文均未检出」，该判定有误，本版恢复引语并挂 2024。另查：正本 03-A-07 §2.5 与两份讲解 HTML 把该引语标为「温忠麟（2017）」，属误标；同日已随批更正（正本 v2.2.2 改归属并补文献 32–33、致谢去引号实指；HTML v2.0.0 更正 cite；06-S-17 两行订正），v1.0 旧版 HTML 属历史件不回改。</li>
+<li>v3.0.0-draft.5 2026-11-12 温忠麟段重写与精度收敛：原引「温忠麟（2017）」并把八条理据挂在 2017 一文，核实后八条途径实出自温忠麟等（2024）《心理学报》56(10):1462–1470，已改正；原引语「以得到比较接近因果的影响关系」在两文原文中均未检出，替换为该文可查原句「排他解释方面也难与实验媲美，因而通常只能得到影响关系」；致谢声明中同样无法溯源的引语一并改为经核实的内容表述；参考文献 16 由 2017《心理科学》换为 2024《心理学报》，Fang et al. 2024 因原引句删改而失去正文落点，改挂 §2.10 DSEM 行，避免出现装饰性文献；κ_eff 六位小数收敛为四位，CI 收敛为三位。</li>
+<li>v3.0.0-draft.4 2026-11-12 通读校对：改「单元问题」为「单位问题」；§4.1.3 GATE 计数由两次更正为三次（暴露疗法亦含 GATE，原计数与自表不符）；§5.1 悬空的 D→R→S 反例改为 G-M-A-R 操作序列优先性反例（该三字串已在 draft.1 的减法中删除，此处为残留引用）；§3.3.1 误差符号 E 与 E(t) 环境项撞车，改为小写 e；§3.2.4 澄清 0.25 崩溃阈值与 0.40 操作门槛之别、并修正「两个案例」为两个层级；§2.1 判据—判据轴映射补 J4；§2.3 删去与 §2.2 重复的三个子问题展开及自相矛盾的「四判据全过」表述；标题层级、交叉引用统一为 § 式、引号体例统一为中文双引号。</li>
+<li>v3.0.0-draft.3 2026-11-12 引注换新：§1.1.3 的 Kazdin（2007）与 Wampold（2015）替换为 Southward et al.（2024, Psychiatr Clin North Am 47:2, 卷页与 DOI 已核）与 Zilcha-Mano（2021, Am Psychol 76:3, 卷页与 DOI 已核）；「共同因素承担相当部分疗效」改写为 Southward 2024 实际支持的表述（联盟是研究最充分的跨流派机制之一）。全文文献已无 2020 前实证引注（Kuhn/Lakatos/Woodward/Pearl/Borsboom/Cronbach 为理论著作与经典文献，不受此约束）。论证结论零改动。</li>
+<li>v3.0.0-draft.2 2026-11-12 定向修订（三轮独立评估后）：①补「功能状态 Ψ×四判据」判定表，闭合 §2.1/§2.6 承诺但未交付的自我判定缺口；②回补六条动力学约束并落实 J4-J5 实例；③补 Nosek et al. 2022 解除 OSC 单源；④温忠麟段补「本文解读」归属；⑤恢复框架定位与致谢声明、assets 登记、版本记录表、01-M-03 依赖。正文论证结论零改动。</li>
+<li>v3.0.0-draft.1 2026-11-12 五幕重写候选稿：按「基本单位」主线重构第一至第五幕；删除无出处数字与无源疗效对比；补入 2025 年构念膨胀读数、测量不变性证据与最强反方回应。未并入正本，候主理审阅。</li></ol></details>
+  </div>
+</section>
+
+<div class="dock" role="toolbar" aria-label="阅读工具">
+  <button id="fsDown" title="缩小字号" aria-label="缩小字号">A−</button>
+  <button id="fsUp" title="放大字号" aria-label="放大字号">A+</button>
+  <button id="themeBtn" title="切换日间／夜间" aria-label="切换日间夜间">夜</button>
+  <button id="printBtn" title="打印或存为 PDF" aria-label="打印">印</button>
+  <button id="tocBtn" title="打开目次" aria-label="打开目次">目</button>
+</div>
+<button class="totop" id="totop" aria-label="回到顶部">顶</button>
+<div class="backdrop" id="backdrop"></div>
+
+<script>
+(function(){
+  var doc = document.documentElement;
+  var bar = document.getElementById('bar');
+  var totop = document.getElementById('totop');
+  var rail = document.getElementById('rail');
+  var backdrop = document.getElementById('backdrop');
+
+  /* progress + back to top */
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var h = doc.scrollHeight - doc.clientHeight;
+      bar.style.width = (h > 0 ? (doc.scrollTop / h) * 100 : 0) + '%';
+      totop.classList.toggle('on', doc.scrollTop > doc.clientHeight * 1.2);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* toc drawer */
+  function openRail(){ rail.classList.add('open'); backdrop.classList.add('on'); }
+  function closeRail(){ rail.classList.remove('open'); backdrop.classList.remove('on'); }
+  document.getElementById('tocBtn').addEventListener('click', function(){
+    rail.classList.contains('open') ? closeRail() : openRail();
+  });
+  backdrop.addEventListener('click', closeRail);
+  rail.addEventListener('click', function(e){
+    if(e.target.closest('a')) closeRail();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeRail(); });
+
+  /* font scale */
+  var scale = 1;
+  function applyScale(){ doc.style.setProperty('--scale', scale.toFixed(2)); }
+  document.getElementById('fsUp').addEventListener('click', function(){ scale = Math.min(1.16, scale + 0.06); applyScale(); });
+  document.getElementById('fsDown').addEventListener('click', function(){ scale = Math.max(0.88, scale - 0.06); applyScale(); });
+
+  /* theme */
+  var themeBtn = document.getElementById('themeBtn');
+  function setTheme(t){
+    doc.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '日' : '夜';
+    themeBtn.setAttribute('title', t === 'dark' ? '切回日间' : '切到夜间');
+    try{ localStorage.setItem('a07-theme', t); }catch(e){}
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('a07-theme'); }catch(e){}
+  setTheme(saved || 'light');
+  themeBtn.addEventListener('click', function(){
+    setTheme(doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* print */
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+  /* back to top */
+  totop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: 'smooth'});
+  });
+
+  /* scrollspy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var targets = links.map(function(a){
+    var id = a.getAttribute('href').slice(1);
+    return document.getElementById(id);
+  }).filter(Boolean);
+  var current = null;
+  function mark(){
+    var best = null, bestTop = 99999;
+    for(var i = 0; i < targets.length; i++){
+      var r = targets[i].getBoundingClientRect();
+      if(r.top - 120 <= 0 && Math.abs(r.top) < bestTop){ best = targets[i]; bestTop = Math.abs(r.top); }
+    }
+    if(best !== current){
+      if(current){ var old = document.querySelector('.toc a[href="#' + current.id + '"]'); if(old){ old.classList.remove('active'); var p = old.closest('li'); if(p){ var ss = p.querySelector('.toc-sub'); if(ss) ss.classList.remove('on'); } } }
+      var now = document.querySelector('.toc a[href="#' + best.id + '"]');
+      if(now){ now.classList.add('active'); }
+      current = best;
+    }
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(mark, {rootMargin:'-120px 0px -68% 0px', threshold:[0,1]});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+  window.addEventListener('scroll', function(){ if(!ticking) mark(); }, {passive:true});
+})();
+</script>
+</body>
+</html>

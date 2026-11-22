@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>INTRE · 功能状态心理学 (FSP)</title>
-    <meta name="description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta name="description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
     <meta property="og:title" content="INTRE · 功能状态心理学">
-    <meta property="og:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta property="og:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="INTRE · 功能状态心理学">
-    <meta name="twitter:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。">
+    <meta name="twitter:description" content="INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/">
     <!-- Google Fonts: Josefin Sans (Logo) + Inter (Body) + Noto Sans SC (中文) + JetBrains Mono (等宽) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +44,31 @@
             border-radius: 50%;
             margin-left: 0.45rem;
             vertical-align: super;
+        }
+
+        /* ---------- Hero 名称注 ---------- */
+        .hero-name {
+            margin: -0.35rem 0 1.15rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.52);
+            line-height: 1.6;
+        }
+        .hero-name-en,
+        .hero-name-zh { white-space: nowrap; }
+        .hero-name-en-wrap { white-space: nowrap; }
+        .hero-name-sep { margin: 0 0.55rem; color: rgba(255,255,255,0.28); }
+        html[data-theme="dark"] .hero-name { color: rgba(255,255,255,0.52); }
+        @media (max-width: 600px) {
+            .hero-name {
+                margin: -0.25rem 0 1rem;
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
+            }
+            .hero-name-en-wrap { display: block; }
+            .hero-name-zh { display: block; margin-top: 0.2rem; }
+            .hero-name-sep { margin-right: 0; }
         }
 
         /* ---------- Hero 3D 体验入口 ---------- */
@@ -371,7 +396,7 @@
       "@type": "WebSite",
       "name": "INTRE",
       "url": "https://project003125.github.io/INTRE-website/",
-      "description": "INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可描述、可仿真、可干预。",
+      "description": "INTRE（功能状态心理学 FSP）：连接现象与神经的形式化建模，提供 M-R-D-S 状态语法与 G-M-A-R 操作语法，使心理状态可计算、可仿真、可干预。",
       "publisher": {
         "@type": "Organization",
         "name": "INTRE",
@@ -430,14 +455,20 @@
         <div class="geo geo-circle" aria-hidden="true"></div>
 
         <div class="hero-content">
-            <span class="hero-eyebrow">功能状态心理学 · FSP</span>
             <h1 class="hero-title">INTRE<span class="accent-dot" aria-hidden="true"></span></h1>
+            <p class="hero-name">
+                <span class="hero-name-en-wrap">
+                    <span class="hero-name-en">Internal Regulation Engine</span>
+                    <span class="hero-name-sep" aria-hidden="true">｜</span>
+                </span>
+                <span class="hero-name-zh">中文品牌名「慧执」</span>
+            </p>
             <div class="hero-sub">
                 <span class="hero-zh">连接现象与神经的形式化建模</span>
                 <span class="hero-divider" aria-hidden="true"></span>
                 <span class="hero-en">Formal Modeling · Phenomenon ↔ Neuron</span>
             </div>
-            <p class="hero-tagline">让心理状态可描述、可仿真、可干预。</p>
+            <p class="hero-tagline">让心理状态可计算、可仿真、可干预。</p>
 
             <div class="hero-cta-3d">
                 <a href="3d-hero/pages/3d-hero.html" class="btn btn-amber">

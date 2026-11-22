@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/03-a-07/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -31,22 +31,57 @@
     </script>
     <style>
         .mm-main { padding: 7rem 0 4rem; }
-        .mm-hero { max-width: 880px; margin: 0 auto 2.6rem; text-align: center; }
+        .mm-hero { max-width: 900px; margin: 0 auto 2.4rem; text-align: center; }
         .mm-eyebrow { font-family: var(--font-mono, monospace); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--color-amber-600, #B45309); }
-        .mm-hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.18; color: var(--color-navy-950, #0B1F33); margin: .6rem 0 .8rem; letter-spacing: -.02em; }
-        .mm-hero p { color: var(--color-slate-600, #475569); font-size: 1.05rem; line-height: 1.9; margin: 0 auto; max-width: 760px; }
-        .mm-meta { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1.3rem; }
+        .mm-hero h1 { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif; font-size: clamp(2.5rem, 5.4vw, 3.9rem); line-height: 1.12; color: var(--color-navy-950, #0B1F33); margin: .55rem 0 .9rem; letter-spacing: .02em; font-weight: 700; }
+        .mm-hero p { color: var(--color-slate-600, #475569); font-size: 1.05rem; line-height: 1.9; margin: 0 auto; max-width: 720px; }
+        .mm-meta { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1.2rem; }
         .mm-meta span { font-family: var(--font-mono, monospace); font-size: .74rem; letter-spacing: .06em; color: var(--color-slate-600, #475569); border: 1px solid var(--color-slate-200, #E2E8F0); border-radius: 999px; padding: .3rem .75rem; background: var(--color-white, #fff); }
-        .mm-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; max-width: 980px; margin: 0 auto; }
-        .mm-card { display: flex; flex-direction: column; gap: .55rem; padding: 1.5rem 1.6rem; border: 1px solid var(--color-slate-200, #E2E8F0); border-radius: 16px; background: var(--color-white, #fff); box-shadow: var(--shadow-xs, 0 1px 2px rgba(0,0,0,.06)); text-decoration: none; color: inherit; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+
+        .mm-feature { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, .5fr); gap: 1.4rem; align-items: center; max-width: 980px; margin: 0 auto 1.2rem; padding: 2rem 2.2rem; border-radius: 20px; text-decoration: none; color: #F4ECE0; background: radial-gradient(120% 140% at 88% 8%, rgba(217,138,78,.32), transparent 58%), linear-gradient(135deg, #0A1A2B 0%, #102A43 55%, #16324F 100%); box-shadow: 0 18px 44px rgba(8,24,40,.22); transition: transform .2s ease, box-shadow .2s ease; }
+        .mm-feature:hover { transform: translateY(-3px); box-shadow: 0 24px 54px rgba(8,24,40,.3); }
+        .mm-feature:focus-visible, .mm-card:focus-visible { outline: 3px solid var(--color-amber-500, #F59E0B); outline-offset: 3px; }
+        .mm-feature .k { font-family: var(--font-mono, monospace); font-size: .72rem; letter-spacing: .16em; color: #F0B071; text-transform: uppercase; }
+        .mm-feature h2 { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif; font-size: clamp(1.5rem, 2.6vw, 2rem); margin: .45rem 0 .55rem; color: #FBF6EC; }
+        .mm-feature p { margin: 0; color: rgba(244,236,224,.72); line-height: 1.8; font-size: .95rem; }
+        .mm-feature .go { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem; color: #F0B071; font-weight: 600; font-size: .92rem; }
+        .mm-feature-art { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem; min-height: 150px; }
+        .mm-play { width: 84px; height: 84px; border-radius: 50%; border: 1px solid rgba(240,176,113,.55); display: flex; align-items: center; justify-content: center; background: rgba(240,176,113,.08); color: #F0B071; font-size: 1.5rem; }
+        .mm-runtime { font-family: var(--font-mono, monospace); font-size: .8rem; letter-spacing: .12em; color: rgba(244,236,224,.6); }
+
+        .mm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; max-width: 980px; margin: 0 auto; }
+        .mm-card { display: flex; flex-direction: column; gap: .5rem; padding: 1.45rem 1.5rem; border: 1px solid var(--color-slate-200, #E2E8F0); border-radius: 16px; background: var(--color-white, #fff); box-shadow: var(--shadow-xs, 0 1px 2px rgba(0,0,0,.06)); text-decoration: none; color: inherit; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
         .mm-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(15,38,64,.12); border-color: var(--color-amber-500, #F59E0B); }
-        .mm-card .k { font-family: var(--font-mono, monospace); font-size: .72rem; letter-spacing: .14em; color: var(--color-amber-600, #B45309); text-transform: uppercase; }
-        .mm-card h2 { font-size: 1.24rem; color: var(--color-navy-900, #102A43); margin: 0; }
-        .mm-card p { color: var(--color-slate-600, #475569); font-size: .94rem; line-height: 1.8; margin: 0; }
-        .mm-card .go { margin-top: .35rem; font-weight: 600; font-size: .9rem; color: var(--color-navy-600, #1D4A63); }
-        .mm-note { max-width: 980px; margin: 2.2rem auto 0; padding: 1.1rem 1.3rem; border: 1px dashed var(--color-slate-300, #CBD5E1); border-radius: 12px; color: var(--color-slate-600, #475569); font-size: .9rem; line-height: 1.85; }
+        .mm-card .k { font-family: var(--font-mono, monospace); font-size: .7rem; letter-spacing: .14em; color: var(--color-amber-600, #B45309); text-transform: uppercase; }
+        .mm-card h2 { font-size: 1.18rem; color: var(--color-navy-900, #102A43); margin: 0; }
+        .mm-card p { color: var(--color-slate-600, #475569); font-size: .9rem; line-height: 1.78; margin: 0; flex: 1; }
+        .mm-card .go { margin-top: .3rem; font-weight: 600; font-size: .88rem; color: var(--color-navy-600, #1D4A63); }
+
+        .mm-path { max-width: 980px; margin: 2rem auto 0; padding: 1.3rem 1.5rem; border-radius: 16px; background: var(--color-slate-50, #F8FAFC); border: 1px solid var(--color-slate-200, #E2E8F0); }
+        .mm-path h2 { font-size: .82rem; font-family: var(--font-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--color-slate-500, #64748B); margin: 0 0 .9rem; font-weight: 600; }
+        .mm-path-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .mm-path-row div { display: flex; flex-direction: column; gap: .2rem; }
+        .mm-path-row b { color: var(--color-navy-800, #16324F); font-size: .95rem; }
+        .mm-path-row span { color: var(--color-slate-600, #475569); font-size: .82rem; line-height: 1.6; }
+
+        .mm-note { max-width: 980px; margin: 1.4rem auto 0; padding: 1.1rem 1.3rem; border: 1px dashed var(--color-slate-300, #CBD5E1); border-radius: 12px; color: var(--color-slate-600, #475569); font-size: .9rem; line-height: 1.85; }
+        .mm-note p + p { margin-top: .55rem; }
         .mm-note strong { color: var(--color-navy-800, #16324F); }
-        @media (max-width: 760px) { .mm-grid { grid-template-columns: 1fr; } .mm-main { padding-top: 5.8rem; } }
+
+        @media (max-width: 860px) {
+            .mm-feature { grid-template-columns: 1fr; padding: 1.7rem 1.5rem; }
+            .mm-feature-art { flex-direction: row; min-height: 0; justify-content: flex-start; }
+            .mm-grid { grid-template-columns: 1fr; }
+            .mm-path-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .mm-main { padding-top: 5.8rem; }
+            .mm-hero h1 { font-size: 2.5rem; }
+            .mm-hero p { font-size: .98rem; }
+            .mm-feature { padding: 1.5rem 1.25rem; border-radius: 16px; }
+            .mm-play { width: 60px; height: 60px; font-size: 1.1rem; }
+            .mm-path-row { grid-template-columns: 1fr; gap: .7rem; }
+        }
     </style>
 </head>
 <body lang="zh">
@@ -74,23 +109,30 @@
         <header class="mm-hero">
             <div class="mm-eyebrow">03-A-07 · Media Suite</div>
             <h1>走出洞穴</h1>
-            <p>同一篇范式论证的四种进入方式：看动画、听讲解、读脚本、通读全文。四种路径内容同源，按场景自选。</p>
+            <p>同一篇范式论证的四种进入方式：看动画、看讲解、读脚本、通读全文。内容同源，按场景自选。</p>
             <div class="mm-meta">
                 <span>动画 15:17</span>
-                <span>五幕 · 28 节讲解</span>
+                <span>讲解 28 节</span>
                 <span>脚本 29 模块 · 142 句</span>
-                <span>全文 v3.0.6</span>
-                <span>2026-11-22</span>
+                <span>全文 16 条文献</span>
+                <span>源 v3.0.6</span>
             </div>
         </header>
 
-        <div class="mm-grid">
-            <a class="mm-card" href="animation.html" target="_blank" rel="noopener noreferrer">
+        <a class="mm-feature" href="animation.html" target="_blank" rel="noopener noreferrer">
+            <div>
                 <span class="k">Film · 动画</span>
                 <h2>五幕 SVG 动画</h2>
-                <p>15 分 17 秒逐句旁白与字幕，按幕跳转。新窗口打开；需启用 JavaScript。</p>
+                <p>15 分 17 秒逐句旁白与字幕，按幕跳转，适合第一次进入。新窗口打开；需启用 JavaScript。</p>
                 <span class="go">播放动画 <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-            </a>
+            </div>
+            <div class="mm-feature-art" aria-hidden="true">
+                <span class="mm-play"><i class="fas fa-play"></i></span>
+                <span class="mm-runtime">15:17 · 五幕</span>
+            </div>
+        </a>
+
+        <div class="mm-grid">
             <a class="mm-card" href="lecture.html">
                 <span class="k">Deck · 讲解</span>
                 <h2>双范式对照讲解</h2>
@@ -100,19 +142,29 @@
             <a class="mm-card" href="script.html">
                 <span class="k">Script · 脚本</span>
                 <h2>脚本与结构图</h2>
-                <p>五幕 29 个编号模块的逐句台词表、配音实测与结构总览，兼作动画的文本等价入口。</p>
+                <p>五幕 29 个编号模块的逐句台词表、配音实测与结构总览，也可作为动画的文字版。</p>
                 <span class="go">查看脚本 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             </a>
             <a class="mm-card" href="read.html">
                 <span class="k">Read · 全文</span>
                 <h2>全文阅读版</h2>
-                <p>v3.0.6 完整阅读排版：五幕结构、14 张表、15 条参考文献，适合逐节通读与引用核对。</p>
+                <p>阅读版 v3.1.0（源 v3.0.6）：五幕结构、14 张表、16 条参考文献，适合逐节通读与引用核对。</p>
                 <span class="go">开始阅读 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             </a>
         </div>
 
+        <section class="mm-path" aria-label="按时间选择阅读路径">
+            <h2>按时间选路径</h2>
+            <div class="mm-path-row">
+                <div><b>15 分钟</b><span>看动画，建立整体印象</span></div>
+                <div><b>30 分钟</b><span>看讲解，理解逐层对照</span></div>
+                <div><b>10 分钟</b><span>读脚本，核对关键句</span></div>
+                <div><b>70 分钟</b><span>通读全文，逐节引用</span></div>
+            </div>
+        </section>
+
         <div class="mm-note">
-            <p><strong>阅读提示。</strong>动画为视觉入口，脚本与结构图提供等价文本；只读或低带宽场景建议直接进入全文阅读版。全文版引用飞书字体 CDN，离线时回退到系统字体。</p>
+            <p><strong>阅读提示。</strong>动画为视觉入口，脚本提供文字版；只读或低带宽场景建议直接进入全文阅读版。全文版使用在线字体，离线时自动回退系统字体。</p>
             <p><strong>边界声明。</strong>本专题呈现理论论证与教学表达，不是临床指南。INTRE 处于建构期；取得实证证据前，不作任何临床或应用效果承诺。</p>
         </div>
     </main>
@@ -120,7 +172,7 @@
     <footer class="site-footer">
         <div class="footer-brand">INTRE</div>
         <p class="footer-desc">功能状态心理学 (FSP) · 03-A-07 多媒体专题</p>
-        <p class="footer-desc">源件：03-现象层对接（PHENO）· 03-A-07 v3.0.6；发布镜像由 E5-C 维护。</p>
+        <p class="footer-desc">内容源：03-A-07 v3.0.6 · 多媒体版</p>
         <div class="footer-links">
             <a href="/INTRE-website/">首页</a>
             <a href="/INTRE-website/framework-summary/">文字版完整论证</a>

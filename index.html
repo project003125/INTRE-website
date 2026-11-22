@@ -279,6 +279,80 @@
             font-style: italic;
         }
 
+        /* ---------- 建构方法论区块 ---------- */
+        .method-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .method-card {
+            position: relative;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sharp);
+            padding: 1.2rem 1.2rem 1.25rem;
+            box-shadow: var(--shadow-xs);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .method-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--color-amber-500); }
+        .method-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(31,72,128,.12); }
+        .method-card .mc-code { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; color: var(--color-amber-700); text-transform: uppercase; }
+        .method-card h3 { margin: 0.5rem 0 0.45rem; font-size: 1.12rem; color: var(--color-navy-600); }
+        .method-card p { margin: 0; font-size: 0.86rem; line-height: 1.7; color: var(--color-slate-600); }
+        .method-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-top: 1.2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--color-slate-500); }
+        .method-flow span { padding: 0.35rem 0.7rem; border: var(--stroke-hairline) solid var(--color-slate-200); border-radius: 999px; background: var(--color-white); }
+        .method-flow i { font-style: normal; color: var(--color-amber-600); }
+
+        /* ---------- 首页目录布局 ---------- */
+        .home-section { scroll-margin-top: 4.8rem; }
+        .home-layout { display: block; }
+        @media (min-width: 1240px) {
+            .container { max-width: 1360px; }
+            .nav-container { max-width: 1360px; }
+            .home-layout { display: grid; grid-template-columns: minmax(0, 1fr) 204px; gap: clamp(2rem, 4vw, 3.4rem); align-items: start; }
+        }
+
+        /* ---------- 滚动目录 ---------- */
+        .toc-rail {
+            display: none;
+            background: var(--color-white);
+            border: var(--stroke-hairline) solid var(--color-slate-200);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-xs);
+            padding: 1rem 0.9rem 1.1rem;
+        }
+        @media (min-width: 1240px) {
+            .toc-rail { display: block; position: sticky; top: 5.1rem; }
+        }
+        .toc-head { padding: 0 0.3rem 0.7rem; border-bottom: var(--stroke-hairline) solid var(--color-slate-200); }
+        .toc-kicker { display: block; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: var(--tracking-tech); text-transform: uppercase; color: var(--color-slate-500); }
+        .toc-current { display: block; margin-top: 0.2rem; font-size: 0.94rem; color: var(--color-navy-600); letter-spacing: -0.01em; }
+        .toc-progress { height: 2px; margin: 0.75rem 0.3rem 0.55rem; background: var(--color-slate-100); overflow: hidden; }
+        .toc-progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--color-navy-500), var(--color-amber-500)); }
+        .toc-nav { display: flex; flex-direction: column; gap: 0.1rem; }
+        .toc-nav a { position: relative; display: grid; grid-template-columns: 1.55rem minmax(0, 1fr); align-items: center; gap: 0.45rem; padding: 0.5rem 0.35rem 0.5rem 0.55rem; color: var(--color-slate-500); text-decoration: none; transition: background .18s ease, color .18s ease, transform .18s ease; }
+        .toc-nav a span { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; }
+        .toc-nav a b { font-size: 0.84rem; font-weight: 500; }
+        .toc-nav a::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 3px; background: transparent; }
+        .toc-nav a:hover { background: var(--color-slate-50); color: var(--color-navy-600); transform: translateX(-2px); }
+        .toc-nav a[aria-current="true"] { background: var(--color-navy-50); color: var(--color-navy-600); }
+        .toc-nav a[aria-current="true"]::before { background: var(--color-amber-500); }
+        .toc-nav a[aria-current="true"] b { font-weight: 600; }
+
+        /* ---------- 窄屏目录抽屉 ---------- */
+        .toc-fab { display: none; }
+        @media (max-width: 1239px) {
+            .toc-rail { display: none; position: fixed; right: 16px; bottom: 68px; top: auto; z-index: 120; width: min(230px, calc(100vw - 32px)); max-height: 66vh; overflow: auto; }
+            body.toc-open .toc-rail { display: block; }
+            .toc-fab {
+                display: inline-flex; align-items: center; gap: 0.45rem;
+                position: fixed; right: 16px; bottom: 16px; z-index: 121;
+                padding: 0.7rem 1rem; border: 0; border-radius: 999px;
+                background: var(--color-navy-600); color: #fff;
+                box-shadow: 0 6px 18px rgba(15,23,42,0.22);
+                font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            }
+            .toc-fab span { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; opacity: 0.75; }
+        }
+        @media (max-width: 980px) { .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 560px) { .method-grid { grid-template-columns: 1fr; } }
+
         /* ---------- 响应式 ---------- */
         @media (max-width: 768px) {
             .home-section { margin: 3rem 0; }
@@ -317,7 +391,8 @@
         { "@type": "WebPage", "name": "UNIP · 统一神经接口端口", "url": "https://project003125.github.io/INTRE-website/unip/" },
         { "@type": "WebPage", "name": "UBMP · 统一行为测量端口", "url": "https://project003125.github.io/INTRE-website/ubmp/", "description": "PSE 感知层 L1-B 行为输入端口；五层管道 B1-B5。" },
         { "@type": "WebPage", "name": "PSE · 心理系统工程引擎", "url": "https://project003125.github.io/INTRE-website/pse/" },
-        { "@type": "WebPage", "name": "REVER · 关系型 AI 伦理引擎", "url": "https://project003125.github.io/INTRE-website/rever/" }
+        { "@type": "WebPage", "name": "REVER · 关系型 AI 伦理引擎", "url": "https://project003125.github.io/INTRE-website/rever/" },
+        { "@type": "WebPage", "name": "建构方法论 · INTRE", "url": "https://project003125.github.io/INTRE-website/method/", "description": "09-M-01 阅读地图：CI 训练、双轨输入、双擎输出、五阶段建构史、贡献分层与 ANA 元方法。" }
       ]
     }
     </script>
@@ -430,9 +505,11 @@
     </section>
 
     <div class="container">
+        <div class="home-layout">
+        <div class="home-flow">
 
         <!-- ==================== 核心观点 ==================== -->
-        <section class="home-section reveal" aria-label="核心观点">
+        <section class="home-section reveal" id="argument" aria-label="核心观点">
             <div class="section-head">
                 <span class="tech-label">Core Argument</span>
                 <h2>核心观点</h2>
@@ -446,7 +523,7 @@
 
 
         <!-- ==================== 研究概述（五步陈述摘要） ==================== -->
-        <section class="home-section reveal" aria-label="研究概述">
+        <section class="home-section reveal" id="overview" aria-label="研究概述">
             <div class="section-head">
                 <span class="tech-label">Research Overview</span>
                 <h2>研究概述</h2>
@@ -475,7 +552,7 @@
         </section>
 
         <!-- ==================== 范式分工 ==================== -->
-        <section class="home-section" aria-label="范式分工">
+        <section class="home-section" id="division" aria-label="范式分工">
             <div class="section-head reveal">
                 <span class="tech-label">Division of Labor</span>
                 <h2>范式分工</h2>
@@ -489,6 +566,51 @@
             <div class="section-actions reveal">
                 <a class="btn btn-primary" href="/INTRE-website/defense/">阅读专文 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 <a class="btn btn-outline" href="/INTRE-website/compare/">双范式对比</a>
+            </div>
+        </section>
+
+        <!-- ==================== 建构方法论 ==================== -->
+        <section class="home-section" id="method" aria-label="建构方法论">
+            <div class="section-head reveal">
+                <span class="tech-label">Methodology · 09-M-01</span>
+                <h2>建构方法论</h2>
+                <p class="section-sub">从 CI 单独训练到 CI+AI 协同——输入双轨、输出双擎、证据制度兜底。</p>
+                <div class="head-rule" aria-hidden="true">
+                    <span class="rule-line"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-dot"></span>
+                    <span class="rule-tri"></span>
+                    <span class="rule-line"></span>
+                </div>
+            </div>
+            <div class="method-grid">
+                <article class="method-card reveal">
+                    <span class="mc-code">01 · 底层</span>
+                    <h3>CI 训练</h3>
+                    <p>结构分层、HDCC 高密度压缩、RealityOS：AI 协作之前先重塑认知底层。</p>
+                </article>
+                <article class="method-card reveal" data-delay="1">
+                    <span class="mc-code">02 · INPUT</span>
+                    <h3>Cognitec-2</h3>
+                    <p>JML 采矿、SML 构图，双轨交替，持续供给跨学科知识。</p>
+                </article>
+                <article class="method-card reveal" data-delay="2">
+                    <span class="mc-code">03 · OUTPUT</span>
+                    <h3>Constructec-2</h3>
+                    <p>EchoFrame 找问题，CrystalOps 做大做对，C6 管长期稳定演化。</p>
+                </article>
+                <article class="method-card reveal" data-delay="3">
+                    <span class="mc-code">04 · 免疫</span>
+                    <h3>IET</h3>
+                    <p>D/L/F/X/P/N/E/R 八级证据标签，把可证伪性制度化。</p>
+                </article>
+            </div>
+            <div class="method-flow reveal" aria-label="五阶段建构史">
+                <span>蓝图</span><i>→</i><span>系统动力学</span><i>→</i><span>分工策略</span><i>→</i><span>诊断映射</span><i>→</i><span>压力测试</span>
+            </div>
+            <div class="section-actions reveal">
+                <a class="btn btn-primary" href="/INTRE-website/method/">进入方法全景 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a class="btn btn-outline" href="/INTRE-website/method/#history">读建构史</a>
             </div>
         </section>
 
@@ -519,7 +641,7 @@
         </section>
 
         <!-- ==================== 核心模块 ==================== -->
-        <section class="home-section" aria-label="核心模块">
+        <section class="home-section" id="modules" aria-label="核心模块">
             <div class="section-head reveal">
                 <span class="tech-label">Core Modules</span>
                 <h2>核心模块</h2>
@@ -598,7 +720,7 @@
         </section>
 
         <!-- ==================== 三层架构 · 三通道融合 ==================== -->
-        <section class="home-section fusion-section reveal" aria-label="三层架构与三通道融合">
+        <section class="home-section fusion-section reveal" id="fusion" aria-label="三层架构与三通道融合">
             <div class="section-head">
                 <span class="tech-label">Architecture</span>
                 <h2>三层架构 · 三通道融合</h2>
@@ -678,7 +800,7 @@
         </section>
 
         <!-- ==================== 教材 CTA ==================== -->
-        <section class="home-section cta-section reveal" aria-label="导论教材">
+        <section class="home-section cta-section reveal" id="textbook" aria-label="导论教材">
             <div class="geo geo-circle" aria-hidden="true"></div>
             <span class="tech-label tech-label--amber">Textbook · 导论教材</span>
             <h3>从零开始理解 INTRE</h3>
@@ -688,7 +810,28 @@
             </a>
         </section>
 
+        </div><!-- /home-flow -->
+
+        <aside class="toc-rail" id="toc-rail" aria-label="页面目录">
+            <div class="toc-head">
+                <span class="toc-kicker">Index · 页面目录</span>
+                <strong class="toc-current" id="toc-current">核心观点</strong>
+            </div>
+            <div class="toc-progress" aria-hidden="true"><i id="toc-progress-fill"></i></div>
+            <nav class="toc-nav" aria-label="页面目录">
+                <a href="#argument"><span>01</span><b>核心观点</b></a>
+                <a href="#overview"><span>02</span><b>研究概述</b></a>
+                <a href="#division"><span>03</span><b>范式分工</b></a>
+                <a href="#method"><span>04</span><b>建构方法论</b></a>
+                <a href="#route"><span>05</span><b>硅启碳继</b></a>
+                <a href="#modules"><span>06</span><b>核心模块</b></a>
+                <a href="#fusion"><span>07</span><b>三层融合</b></a>
+                <a href="#textbook"><span>08</span><b>导论教材</b></a>
+            </nav>
+        </aside>
+        </div><!-- /home-layout -->
     </div>
+    <button class="toc-fab" id="toc-fab" type="button" aria-expanded="false" aria-controls="toc-rail">目录 <span id="toc-fab-label">01 / 08</span></button>
     </main>
 
     <!-- ==================== FOOTER ==================== -->
@@ -710,6 +853,7 @@
             <div class="fs-col">
                 <h4>Learn · 学习</h4>
                 <a href="/INTRE-website/textbook/">导论教材</a>
+                <a href="/INTRE-website/method/">建构方法论</a>
                 <a href="/INTRE-website/defense/">为变量范式辩护</a>
                 <a href="/INTRE-website/03-a-07/">走出洞穴 · 多媒体专题</a>
                 <a href="/INTRE-website/glossary/">术语表</a>
@@ -765,6 +909,74 @@
                 });
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             revealEls.forEach(function (el) { io.observe(el); });
+        }
+
+        /* ---------- 滚动目录 ---------- */
+        var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-nav a'));
+        var tocSections = tocLinks.map(function (a) {
+            return document.querySelector(a.getAttribute('href'));
+        }).filter(Boolean);
+        var tocCurrent = document.getElementById('toc-current');
+        var tocFill = document.getElementById('toc-progress-fill');
+        var tocFab = document.getElementById('toc-fab');
+        var tocFabLabel = document.getElementById('toc-fab-label');
+        var tocTick = false;
+
+        function syncToc() {
+            if (!tocSections.length) return;
+            var probe = window.scrollY + window.innerHeight * 0.34;
+            var current = tocSections[0];
+            tocSections.forEach(function (sec) {
+                if (sec.offsetTop <= probe) current = sec;
+            });
+            var activeLabel = '';
+            tocLinks.forEach(function (a, i) {
+                var on = a.getAttribute('href') === '#' + current.id;
+                if (on) {
+                    a.setAttribute('aria-current', 'true');
+                    activeLabel = a.querySelector('b').textContent;
+                    if (tocFabLabel) tocFabLabel.textContent = ('0' + (i + 1)).slice(-2) + ' / 08';
+                } else {
+                    a.removeAttribute('aria-current');
+                }
+            });
+            if (tocCurrent && activeLabel) tocCurrent.textContent = activeLabel;
+            var max = document.documentElement.scrollHeight - window.innerHeight;
+            if (tocFill) tocFill.style.width = (max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) * 100 : 0) + '%';
+        }
+
+        window.addEventListener('scroll', function () {
+            if (tocTick) return;
+            tocTick = true;
+            requestAnimationFrame(function () { tocTick = false; syncToc(); });
+        }, { passive: true });
+        window.addEventListener('resize', syncToc, { passive: true });
+        window.addEventListener('load', syncToc);
+        syncToc();
+
+        if (tocFab) {
+            tocFab.addEventListener('click', function () {
+                var open = document.body.classList.toggle('toc-open');
+                tocFab.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            tocLinks.forEach(function (a) {
+                a.addEventListener('click', function () {
+                    document.body.classList.remove('toc-open');
+                    tocFab.setAttribute('aria-expanded', 'false');
+                });
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    document.body.classList.remove('toc-open');
+                    tocFab.setAttribute('aria-expanded', 'false');
+                }
+            });
+            document.addEventListener('click', function (e) {
+                if (!document.body.classList.contains('toc-open')) return;
+                if (e.target.closest('.toc-rail') || e.target.closest('#toc-fab')) return;
+                document.body.classList.remove('toc-open');
+                tocFab.setAttribute('aria-expanded', 'false');
+            });
         }
 
         /* ---------- 状态空间星座动画 ---------- */

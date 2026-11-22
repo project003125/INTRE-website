@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>建构方法论 · INTRE</title>
+<meta name="description" content="从 CI 单独训练的认知底层，到 Cognitec-2 双轨输入、Constructec-2 双擎输出，再到五阶段建构史、贡献分层、ANA 元方法与 IET 内建免疫系统。">
+<meta property="og:title" content="建构方法论 · INTRE">
+<meta property="og:description" content="一张可交互的长图，读懂 09-M-01：CI 定方向，AI 展开结构，CI 裁定，证据制度兜底。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://project003125.github.io/INTRE-website/method/">
+<meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="建构方法论 · INTRE">
+<meta name="twitter:description" content="从 CI 认知底层到双轨输入、双擎输出、五阶段建构史与贡献分层。">
+<link rel="canonical" href="https://project003125.github.io/INTRE-website/method/">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "建构方法论 · INTRE",
+  "description": "从 CI 单独训练到 CI+AI 协同：输入双轨、输出双擎、五阶段建构史、贡献分层与 ANA 元方法。",
+  "url": "https://project003125.github.io/INTRE-website/method/",
+  "publisher": { "@type": "Organization", "name": "INTRE", "url": "https://project003125.github.io/INTRE-website/" }
+}
+</script>
+<meta name="version" content="1.1">
+<meta name="date" content="2026-11-22">
+<meta name="source" content="09-M-01 v2.1.0 final">
+<style>
+  :root{
+    --paper:#f4f0e7;
+    --surface:#fffdf8;
+    --surface-soft:#faf6ee;
+    --ink:#192622;
+    --ink-soft:#34423d;
+    --muted:#65716b;
+    --faint:#8a938d;
+    --rule:rgba(25,38,34,.14);
+    --rule-strong:rgba(25,38,34,.3);
+    --teal:#1f5b52;
+    --teal-deep:#173f39;
+    --teal-wash:#dfeae4;
+    --red:#b8543b;
+    --red-deep:#8f3d2a;
+    --red-wash:#f2e1d8;
+    --gold:#9a7335;
+    --gold-wash:#f0e6d2;
+    --blue:#3d5f7a;
+    --blue-wash:#e2e9ef;
+    --plum:#6b5068;
+    --plum-wash:#ece3eb;
+    --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+    --sans:"Inter","SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"JetBrains Mono","SFMono-Regular","Cascadia Code","Consolas",monospace;
+    --radius:16px;
+    --shadow:0 20px 60px rgba(49,40,29,.08),0 2px 8px rgba(49,40,29,.04);
+    --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;min-width:320px;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--red-wash)}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+
+  /* Global site nav */
+  .global-nav{position:sticky;top:0;z-index:60;background:#122F5C;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  .global-nav-inner{width:min(1180px,calc(100% - 32px));margin:0 auto;height:3.2rem;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .global-logo{font-family:"Josefin Sans",var(--sans);font-size:1.3rem;font-weight:600;letter-spacing:-.02em;color:#fff}
+  .global-links{display:flex;align-items:center;gap:.15rem;overflow-x:auto;scrollbar-width:none}
+  .global-links::-webkit-scrollbar{display:none}
+  .global-links a{padding:.45rem .6rem;border-radius:999px;font-size:.8rem;color:rgba(255,255,255,.72);white-space:nowrap;transition:background .2s,color .2s}
+  .global-links a:hover,.global-links a.active{background:rgba(255,255,255,.1);color:#fff}
+
+  /* Breadcrumb */
+  .method-crumb{display:flex;align-items:center;gap:8px;padding-top:18px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .method-crumb a{color:var(--teal)}
+  .method-crumb span{color:var(--faint)}
+
+  /* Chapter bar */
+  .chapter-bar{position:sticky;top:3.2rem;z-index:50;background:rgba(244,240,231,.94);border-bottom:1px solid var(--rule);backdrop-filter:blur(14px) saturate(130%)}
+  .chapter-inner{display:flex;align-items:center;gap:14px;min-height:46px}
+  .chapter-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--red-deep);text-transform:uppercase;flex:0 0 auto}
+  .chapter-nav{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none}
+  .chapter-nav::-webkit-scrollbar{display:none}
+  .chapter-nav a{padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);white-space:nowrap;transition:background .2s,color .2s}
+  .chapter-nav a:hover{background:var(--surface);color:var(--ink)}
+  .chapter-nav a[aria-current="true"]{background:var(--ink);color:var(--surface)}
+
+  .brand{display:flex;align-items:baseline;gap:10px;flex:0 0 auto}
+  .brand-mark{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:-.03em}
+  .brand-mark::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--red);margin-left:6px;vertical-align:middle}
+  .brand-sub{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+
+  /* Hero actions */
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .hero-actions a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid var(--rule-strong);transition:transform .2s,background .2s,color .2s}
+  .hero-actions a:hover{transform:translateY(-1px)}
+  .hero-actions .primary{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+  .hero-actions .ghost{background:var(--surface);color:var(--ink-soft)}
+
+  /* Section language */
+  .section{padding:72px 0;scroll-margin-top:118px}
+  .section-heading{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,380px);gap:32px;align-items:end;
+    border-bottom:1px solid var(--rule-strong);padding-bottom:22px;margin-bottom:32px;
+  }
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;margin:0 0 12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.19em;color:var(--red-deep);text-transform:uppercase;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red)}
+  .section-heading h2{
+    margin:0;font-family:var(--serif);font-weight:700;letter-spacing:-.03em;
+    font-size:clamp(28px,3.6vw,40px);line-height:1.18;
+  }
+  .section-lede{margin:0;color:var(--muted);font-size:14.5px;line-height:1.75;max-width:50ch}
+  .section-lede strong{color:var(--ink)}
+
+  /* Hero */
+  .hero{padding:76px 0 60px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:56px;align-items:center}
+  .hero h1{margin:0 0 22px;font-family:var(--serif);font-weight:700;font-size:clamp(38px,5.4vw,64px);line-height:1.1;letter-spacing:-.04em}
+  .hero h1 em{font-style:normal;color:var(--teal)}
+  .hero-lede{margin:0;max-width:56ch;color:var(--ink-soft);font-size:16.5px;line-height:1.8}
+  .hero-lede strong{font-weight:600}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);margin:36px 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .hero-stats div{padding:16px 12px 16px 0}
+  .hero-stats div + div{padding-left:16px;border-left:1px solid var(--rule)}
+  .hero-stats dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .hero-stats dd{margin:4px 0 0;font-family:var(--serif);font-size:28px;line-height:1;font-weight:700}
+  .hero-art{position:relative}
+  .sketch{
+    position:relative;padding:20px;border:1px solid var(--rule-strong);border-radius:20px;
+    background:linear-gradient(145deg,rgba(255,253,248,.95),rgba(250,246,238,.85));
+    box-shadow:var(--shadow);transform:rotate(1.2deg);
+  }
+  .sketch::before{content:"";position:absolute;inset:8px;border:1px dashed var(--rule);border-radius:14px;pointer-events:none}
+  .sketch-head{display:flex;justify-content:space-between;margin:0 4px 12px;font-family:var(--mono);font-size:9px;letter-spacing:.13em;color:var(--faint);text-transform:uppercase}
+  .sketch-row{display:flex;align-items:center;gap:10px;padding:9px 8px;border-bottom:1px solid rgba(25,38,34,.07)}
+  .sketch-row:last-child{border-bottom:0}
+  .sketch-row b{font-family:var(--mono);font-size:8px;color:var(--surface);background:var(--row,var(--teal));border-radius:3px;padding:2px 5px;min-width:34px;text-align:center}
+  .sketch-row span{font-family:var(--serif);font-size:12.5px;font-weight:700}
+  .sketch-row small{margin-left:auto;font-size:9px;color:var(--faint)}
+  .sketch-caption{margin:14px 4px 0;font-size:11px;color:var(--muted);line-height:1.6}
+  .sketch-caption strong{color:var(--ink)}
+
+  /* Primer */
+  .primer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+  .primer-card{position:relative;background:var(--surface);padding:24px 22px;min-height:190px;transition:background .25s}
+  .primer-card:hover{background:var(--surface-soft)}
+  .primer-card .num{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:.1em}
+  .primer-card h3{margin:16px 0 8px;font-family:var(--serif);font-size:21px;letter-spacing:-.02em;line-height:1.25}
+  .primer-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.75}
+  .primer-card .term{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--teal);text-transform:uppercase}
+
+  /* Cards & quotes */
+  .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .card{padding:22px 20px;border:1px solid var(--rule);border-radius:12px;background:var(--surface)}
+  .card h3{margin:0 0 6px;font-family:var(--serif);font-size:19px;letter-spacing:-.02em}
+  .card .step{margin:10px 0 0;font-family:var(--mono);font-size:11px;color:var(--teal-deep);letter-spacing:.04em}
+  .card p{margin:0;font-size:12.5px;line-height:1.7;color:var(--muted)}
+  .quote{
+    margin:0;padding:16px 20px;border-left:2px solid var(--gold);background:rgba(240,230,210,.5);
+    border-radius:0 8px 8px 0;font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-soft);
+  }
+  .quote strong{color:var(--ink)}
+  .note{
+    margin:16px 0 0;padding:14px 16px;border:1px dashed var(--rule-strong);border-radius:8px;
+    font-size:12.5px;line-height:1.75;color:var(--muted);background:rgba(250,246,238,.55);
+  }
+  .note strong{color:var(--ink-soft)}
+
+  /* Tables */
+  .table-shell{border:1px solid var(--rule-strong);border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+  .table-scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:640px;text-align:left}
+  th{padding:12px 16px;background:var(--surface-soft);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;font-weight:700}
+  td{padding:13px 16px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:12.5px;line-height:1.65;color:var(--ink-soft)}
+  tr:last-child td{border-bottom:0}
+  tbody tr{transition:background .18s}
+  tbody tr:hover{background:var(--surface-soft)}
+  td.k{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--ink)}
+  td.c{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--teal-deep);white-space:nowrap}
+
+  /* Chips */
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  .chip{
+    display:inline-flex;align-items:center;padding:4px 11px;border-radius:999px;
+    border:1px solid var(--rule);background:var(--surface);
+    font-family:var(--mono);font-size:11px;color:var(--ink-soft);
+  }
+  .chip b{color:var(--teal);margin-right:5px;font-weight:700}
+
+  /* Flow */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0}
+  .flow span{
+    display:inline-flex;align-items:center;padding:7px 13px;border:1px solid var(--rule);
+    border-radius:8px;background:var(--surface);font-family:var(--serif);font-size:13px;font-weight:700;
+  }
+  .flow i{font-style:normal;color:var(--faint);font-family:var(--mono);font-size:11px}
+
+  /* Tabs */
+  .tab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .tab-bar button{
+    padding:9px 16px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);
+    font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s;
+  }
+  .tab-bar button:hover{border-color:var(--teal);color:var(--teal)}
+  .tab-bar button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+  .tab-panel{display:none}
+  .tab-panel.is-active{display:block}
+  .tool-question{
+    margin:0 0 14px;padding:12px 16px;border-left:2px solid var(--gold);
+    background:var(--gold-wash);border-radius:0 6px 6px 0;
+    font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.5;
+  }
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:var(--rule-strong)}
+  .t-item{position:relative;padding:0 0 26px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item::before{
+    content:"";position:absolute;left:-27px;top:5px;width:11px;height:11px;border-radius:50%;
+    background:var(--surface);border:2px solid var(--blue);
+  }
+  .t-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+  .t-item h3{margin:4px 0 6px;font-family:var(--serif);font-size:20px;letter-spacing:-.02em}
+  .t-item p{margin:0;font-size:13px;line-height:1.75;color:var(--muted);max-width:76ch}
+  .t-item p strong{color:var(--ink-soft)}
+  .t-item table{margin-top:12px;min-width:520px}
+
+  /* ANA panel */
+  .ana{
+    margin-top:26px;border:1px solid rgba(184,84,59,.4);border-radius:var(--radius);
+    background:rgba(242,225,216,.35);padding:26px 26px 24px;
+  }
+  .ana .eyebrow{color:var(--red-deep)}
+  .ana h3{margin:0 0 8px;font-family:var(--serif);font-size:24px;letter-spacing:-.02em}
+  .ana > p{margin:0 0 16px;font-size:13.5px;line-height:1.75;color:var(--ink-soft);max-width:80ch}
+
+  /* Contribution layering */
+  .contrib{
+    margin-top:26px;border:1px solid rgba(31,91,82,.35);border-radius:var(--radius);
+    background:rgba(223,234,228,.35);padding:26px 26px 24px;
+  }
+  .contrib .eyebrow{color:var(--teal-deep)}
+  .contrib h3{margin:0 0 8px;font-family:var(--serif);font-size:24px;letter-spacing:-.02em}
+  .contrib > p{margin:0 0 16px;font-size:13.5px;line-height:1.75;color:var(--ink-soft);max-width:80ch}
+  .contrib .table-shell + .table-shell{margin-top:12px}
+
+  /* IET chips */
+  .iet-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+  .iet-cell{padding:14px 8px 12px;text-align:center;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+  .iet-cell b{display:block;font-family:var(--mono);font-size:18px;color:var(--red-deep)}
+  .iet-cell span{display:block;margin-top:4px;font-size:10.5px;color:var(--muted);line-height:1.4}
+
+  details.fold{border:1px solid var(--rule);border-radius:10px;background:var(--surface);margin-bottom:10px;overflow:hidden}
+  details.fold summary{
+    display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;list-style:none;user-select:none;
+    font-family:var(--serif);font-size:16px;font-weight:700;
+  }
+  details.fold summary::-webkit-details-marker{display:none}
+  details.fold summary:hover{background:var(--surface-soft)}
+  details.fold summary .mark{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted);transition:transform .2s}
+  details.fold[open] summary .mark{transform:rotate(45deg)}
+  details.fold .fold-body{padding:0 18px 18px;border-top:1px solid var(--rule);font-size:13px;line-height:1.75;color:var(--ink-soft)}
+  details.fold ol{margin:12px 0 0;padding-left:20px}
+  details.fold li{margin-bottom:8px}
+
+  /* Sources */
+  .source-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--rule-strong);border-radius:var(--radius);overflow:hidden;background:var(--rule)}
+  .source-card{display:flex;flex-direction:column;gap:7px;padding:20px;background:var(--surface)}
+  .source-type{font-family:var(--mono);font-size:9px;letter-spacing:.11em;color:var(--red);text-transform:uppercase}
+  .source-title{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:-.02em}
+  .source-meta{font-family:var(--mono);font-size:9px;color:var(--faint)}
+  .source-card p{margin:0;font-size:11.5px;line-height:1.65;color:var(--muted)}
+  .source-link{display:inline-flex;align-items:center;gap:5px;margin-top:auto;font-size:11px;color:var(--teal)}
+  .source-link svg{width:11px;height:11px}
+  .disclaimer{
+    margin-top:18px;padding:16px 18px;border-left:2px solid var(--red);
+    background:rgba(242,225,216,.44);font-size:12px;line-height:1.75;color:var(--muted);border-radius:0 7px 7px 0;
+  }
+  .disclaimer strong{color:var(--ink-soft)}
+
+  /* Footer */
+  .site-footer{border-top:1px solid var(--rule-strong);padding:30px 0 40px}
+  .footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footer-copy{margin:4px 0 0;font-size:11px;color:var(--muted)}
+  .footer-links{margin:10px 0 0;font-size:11.5px;color:var(--muted)}
+  .footer-links a{color:var(--teal)}
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:0 0 8px 0}
+  .skip-link:focus{left:0}
+  .footer-meta{font-family:var(--mono);font-size:9.5px;line-height:1.8;color:var(--faint);text-align:right}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(14px)}
+  .reveal.is-visible{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+
+  /* Responsive */
+  @media (max-width:1020px){
+    .hero{grid-template-columns:1fr;gap:36px}
+    .hero-art{max-width:540px}
+    .primer-grid{grid-template-columns:repeat(2,1fr)}
+    .card-grid{grid-template-columns:1fr 1fr}
+    .iet-grid{grid-template-columns:repeat(4,1fr)}
+    .section-heading{grid-template-columns:1fr;gap:14px}
+  }
+  @media (max-width:680px){
+    .wrap{width:calc(100% - 32px)}
+    .header-source{display:none}
+    .brand-sub{display:none}
+    .hero{padding:52px 0 44px}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .hero-stats div:nth-child(3){border-left:0;padding-left:0}
+    .primer-grid,.card-grid{grid-template-columns:1fr}
+    .iet-grid{grid-template-columns:repeat(2,1fr)}
+    .section{padding:54px 0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+  @media print{
+    .site-header,.tab-bar,.site-footer .footer-meta a{display:none!important}
+    body{background:#fff}
+    .tab-panel{display:block!important;margin-bottom:24px}
+    .section{padding:26px 0}
+    .sketch{transform:none}
+    details.fold{page-break-inside:avoid}
+    details.fold[open] summary .mark{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#top">跳到主要内容</a>
+
+<nav class="global-nav" aria-label="全站导航">
+  <div class="global-nav-inner">
+    <a href="/INTRE-website/" class="global-logo" aria-label="INTRE 首页">INTRE</a>
+    <div class="global-links">
+      <a href="/INTRE-website/">首页</a>
+      <a href="/INTRE-website/iods/">IODS</a>
+      <a href="/INTRE-website/uplp/">UPLP</a>
+      <a href="/INTRE-website/unip/">UNIP</a>
+      <a href="/INTRE-website/ubmp/">UBMP</a>
+      <a href="/INTRE-website/pse/">PSE</a>
+      <a href="/INTRE-website/rever/">REVER</a>
+      <a href="/INTRE-website/textbook/">教材</a>
+      <a href="/INTRE-website/compare/">对比</a>
+      <a href="/INTRE-website/method/" class="active" aria-current="page">方法论</a>
+      <a href="/INTRE-website/glossary/">术语表</a>
+    </div>
+  </div>
+</nav>
+
+<div class="chapter-bar">
+  <div class="wrap chapter-inner">
+    <span class="chapter-label">目录</span>
+    <nav class="chapter-nav" aria-label="章节导航">
+      <a href="#align">先对齐</a>
+      <a href="#position">定位</a>
+      <a href="#ci">训练</a>
+      <a href="#input">双轨</a>
+      <a href="#output">输出</a>
+      <a href="#path">路径</a>
+      <a href="#tools">工具</a>
+      <a href="#history">建构史</a>
+      <a href="#meta">元方法</a>
+      <a href="#ethics">免疫</a>
+      <a href="#sources">边界</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+
+  <div class="wrap method-crumb"><a href="/INTRE-website/">首页</a><span>/</span><a href="/INTRE-website/#method">建构方法论</a></div>
+
+  <section class="hero wrap">
+    <div>
+      <p class="eyebrow">09-M-01 · 建构方法论 · 2026-11-22</p>
+      <h1>建构背景与<em>方法论提炼</em></h1>
+      <p class="hero-lede">
+        <strong>CI 定方向与语境，AI 展开结构并可出框架级提案，CI 裁定，证据制度兜底。</strong>本图是 09-M-01 的交互附件：从 CI 单独训练的认知底层，到 Cognitec-2 双轨输入与 Constructec-2 双擎输出，再到五阶段建构史、贡献分层、ANA 元方法与 IET 内建免疫系统。
+      </p>
+      <dl class="hero-stats" aria-label="关键数字">
+        <div><dt>输入双轨</dt><dd>2</dd></div>
+        <div><dt>工具体系</dt><dd>3 阶</dd></div>
+        <div><dt>建构史</dt><dd>5 阶</dd></div>
+        <div><dt>证据等级</dt><dd>8 级</dd></div>
+      </dl>
+      <div class="hero-actions">
+        <a class="primary" href="/INTRE-website/">返回首页</a>
+        <a class="ghost" href="/INTRE-website/textbook/">进入导论教材</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="sketch">
+        <div class="sketch-head"><span>方法全景</span><span>Methodology</span></div>
+        <div class="sketch-row" style="--row:var(--teal)"><b>底层</b><span>CI 单独训练</span><small>结构分层 · HDCC · RealityOS</small></div>
+        <div class="sketch-row" style="--row:var(--gold)"><b>INPUT</b><span>Cognitec-2 双轨</span><small>JML 采矿 ⇄ SML 构图</small></div>
+        <div class="sketch-row" style="--row:var(--plum)"><b>OUTPUT</b><span>Constructec-2 双擎</span><small>晶核 → 结晶 → 投射</small></div>
+        <div class="sketch-row" style="--row:var(--blue)"><b>校验</b><span>压力测试与递归精炼</span><small>异常驱动 · ANA</small></div>
+        <div class="sketch-row" style="--row:var(--red)"><b>免疫</b><span>IET 证据分类学</span><small>D/L/F/X/P/N/E/R</small></div>
+        <p class="sketch-caption"><strong>底层可训练，输入双轨交替，输出人机分工，证据制度兜底。</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="align">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">01 · 先对齐</p>
+        <h2>四个词，读懂这份方法论</h2>
+      </div>
+      <p class="section-lede">不用先记住全部缩写。先分清<strong>谁在打地基、谁供给知识、谁展开结构、谁踩刹车</strong>，后面的细节就会自然归位。</p>
+    </div>
+    <div class="primer-grid reveal">
+      <article class="primer-card">
+        <span class="num">01</span>
+        <h3>CI 训练</h3>
+        <p>AI 协作之前，先系统性重塑人类认知底层：把语言当结构系统、把书压成思维、把生活当系统调优。</p>
+        <div class="term">Cognitive Individual · 底层重构</div>
+      </article>
+      <article class="primer-card">
+        <span class="num">02</span>
+        <h3>Cognitec-2</h3>
+        <p>持续运转的知识输入系统：跃迁式学习负责采矿，构架式学习负责构图，双轨交替供给跨学科知识。</p>
+        <div class="term">双态认知系统 · INPUT</div>
+      </article>
+      <article class="primer-card">
+        <span class="num">03</span>
+        <h3>Constructec-2</h3>
+        <p>双擎建构系统：CI 提出方向与最小结构晶核，AI 完成结构展开与盲区检测，并可提出框架级方案；人机协同外化为形式化文档。</p>
+        <div class="term">双擎建构系统 · OUTPUT</div>
+      </article>
+      <article class="primer-card">
+        <span class="num">04</span>
+        <h3>IET</h3>
+        <p>为每个主张预装证据等级标签，把可证伪性制度化——理论从信仰体系变为可攻击的工程蓝图。</p>
+        <div class="term">证据分类学 · 免疫系统</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="position">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">02 · 战略定位</p>
+        <h2>从百万分之一出发</h2>
+      </div>
+      <p class="section-lede">Project 003125 的命名不是自负，是<strong>冷酷的初始概率锚定</strong>——承认成功概率趋近于零，迫使每一步都用工程实践把概率往上推。</p>
+    </div>
+    <div class="reveal">
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>约束维度</th><th>退学决策的条件</th></tr></thead>
+            <tbody>
+              <tr><td class="k">技术条件</td><td>GPT 的出现使单人理论建构成为可能</td></tr>
+              <tr><td class="k">问题属性</td><td>重新定义学科底层语言，需要 15–20 年深度建构周期</td></tr>
+              <tr><td class="k">时间窗口</td><td>规训未深——未被既有范式内化到无法反思的程度</td></tr>
+              <tr><td class="k">体制节奏</td><td>3–5 年考核周期 vs 理论建构的长期性，结构性不匹配</td></tr>
+              <tr><td class="k">风险对冲</td><td>灰犀牛（旧范式必然贬值）＋ 溢出效应（方法论和能力可迁移）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="chips" aria-label="出发前的必要条件清单">
+        <span class="chip"><b>1</b>足够资金</span>
+        <span class="chip"><b>2</b>认知扎实</span>
+        <span class="chip"><b>3</b>身体健康</span>
+        <span class="chip"><b>4</b>心理韧性</span>
+        <span class="chip"><b>5</b>唯一的外部压力测试者</span>
+      </div>
+      <blockquote class="quote">退学不是逃避，是多重约束下的事后结构化分析。不等风来，<strong>在风来之前造船</strong>。</blockquote>
+    </div>
+  </section>
+
+  <section class="section wrap" id="ci">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">03 · CI 单独训练</p>
+        <h2>个体的认知底层重构</h2>
+      </div>
+      <p class="section-lede">在 AI 协作之前，先完成人类认知能力的系统性塑造——三套训练各管一层。</p>
+    </div>
+    <div class="card-grid reveal">
+      <article class="card">
+        <h3>结构分层训练</h3>
+        <p>以英语长难句为材料，建立三层修饰语拆解模型；每句话＝一棵语法语义结构树。</p>
+        <p class="step">产出：模块分层 · 语义楼层 · 眼界切换</p>
+      </article>
+      <article class="card">
+        <h3>HDCC 高密度压缩</h3>
+        <p>材料从概念 → 章节 → 书籍 → 多源整合递进，时间从 15 分钟压至 5 分钟。</p>
+        <p class="step">四步闭环：拆 → 构 → 压 → 忆</p>
+      </article>
+      <article class="card">
+        <h3>RealityOS 实时建构</h3>
+        <p>不是改掉坏习惯，而是像操作系统工程师一样重构生活内核；经典案例：泳裤×泳帽×眼镜的结构化分离。</p>
+        <p class="step">五步术：发现 BUG → 归因 → 结构反制 → 微调测试 → 固化升级</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="input">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">04 · Cognitec-2 双态认知系统</p>
+        <h2>双轨学习，持续供给知识</h2>
+      </div>
+      <p class="section-lede">JML 与 SML 不是先后关系，而是<strong>持续交替的双轨</strong>：一个采矿，一个构图。</p>
+    </div>
+    <div class="reveal">
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>维度</th><th>跃迁式学习（JML）</th><th>构架式学习（SML）</th></tr></thead>
+            <tbody>
+              <tr><td class="k">启动方式</td><td>以科研问题为起点</td><td>以知识结构为起点</td></tr>
+              <tr><td class="k">学习路径</td><td>非线性、高跳跃、问题导向</td><td>线性渐进、模块推进、框架导向</td></tr>
+              <tr><td class="k">优势</td><td>快速接触前沿、增强动机</td><td>理解上下文、形成迁移模型</td></tr>
+              <tr><td class="k">风险</td><td>容易形成「术语幻象」</td><td>容易陷入泛读、动机涣散</td></tr>
+              <tr><td class="k">作用时机</td><td>启动 / 探路 / 应急理解</td><td>深耕 / 体系化构建 / 长期迁移</td></tr>
+              <tr><td class="k">输出形态</td><td>「前沿地图」或「问题树」</td><td>「知识网络」或「框架图谱」</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-grid" style="margin-top:12px;grid-template-columns:1fr 1fr">
+        <article class="card">
+          <h3>AI 在 JML 中</h3>
+          <p>路径规划器、概念压缩器、跳跃代理人、前沿摘要器、自我修正提示器。</p>
+          <p class="step">核心角色：跨学科路径导师</p>
+        </article>
+        <article class="card">
+          <h3>AI 在 SML 中</h3>
+          <p>模块设计协助器、层级递进引导者、术语连结图生成器、可迁移性评估器、桥接内容反向推理器。</p>
+          <p class="step">核心角色：模块架构师与认知反馈系统</p>
+        </article>
+      </div>
+      <div class="note">
+        <strong>对 INTRE 的意义：</strong>N-S-R 元公理的提出需要跨学科视野。JML 使建构者快速「采矿」——从陌生领域抽取核心结构；SML 使其「构图」——把矿石熔炼为统一知识网络。晶核不是凭空出现的灵感，而是双轨学习长期运转后认知积累达到临界点的涌现：CI 提方向与最小骨架，AI 可出框架级提案，由 CI 裁定。
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="output">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">05 · Constructec-2 双擎建构系统</p>
+        <h2>为什么是 CI，而不是先组队</h2>
+      </div>
+      <p class="section-lede">核心命题：在早期跨学科系统创新阶段，<strong>具备跨学科理解与建构能力的个体（CI）比传统团队（CT）更可能率先提出结构性原型方案</strong>。</p>
+    </div>
+    <div class="reveal">
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>认知维度要素</th><th>跨学科个体（CI）</th><th>跨学科团队（CT）</th></tr></thead>
+            <tbody>
+              <tr><td class="k">信息表征一致性</td><td>内脑统一模型</td><td>跨脑翻译负担</td></tr>
+              <tr><td class="k">知识调用路径</td><td>内部随取跨域模型</td><td>外部协商调用慢</td></tr>
+              <tr><td class="k">假设调整 / 快速验证</td><td>可即时修改演化</td><td>需共识后决策</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note">
+        <strong>组织维度的团队协调困局：</strong>原型共识缺位（方向理解分歧）、最小公约数陷阱（为达成一致而结构趋简）、交流成本陡增（资源消耗于名词定义与优先级争议）。<strong>案例维度：</strong>牛顿、冯·诺依曼、香农的原型突破多是一脑之功；团队可放大成果，但提出结构雏形的关键阶段多依赖高密度个体认知。
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="path">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">06 · 路径比较</p>
+        <h2>CI · CT · CI+AI：不是优劣，是阶段适配</h2>
+      </div>
+      <p class="section-lede">三种模式按阶段取用：<strong>CI+AI 管原型提出（0→1），CT 管后期推广（1→N）</strong>。</p>
+    </div>
+    <div class="reveal">
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>阶段 / 维度</th><th>跨学科个体（CI）</th><th>跨学科团队（CT）</th><th>CI+AI</th></tr></thead>
+            <tbody>
+              <tr><td class="k">原型提出</td><td>极高创新力</td><td>分歧大</td><td>极高，AI 助推</td></tr>
+              <tr><td class="k">结构建构</td><td>中高</td><td>散点堆叠</td><td>高，AI 结构显化</td></tr>
+              <tr><td class="k">MVP 落地</td><td>较弱</td><td>高速执行</td><td>中高，降本提速</td></tr>
+              <tr><td class="k">早期验证</td><td>快速闭环</td><td>信息传导难</td><td>高，AI 协助分析</td></tr>
+              <tr><td class="k">可解释输出</td><td>难兼顾</td><td>分工明确</td><td>高，文档自动化</td></tr>
+              <tr><td class="k">传播 / 背书</td><td>弱品牌力</td><td>多渠道</td><td>中高，AI 助物料</td></tr>
+              <tr><td class="k">1→N 扩展</td><td>受限</td><td>可复制</td><td>需引入团队</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note">
+        <strong>战略含义：</strong>CI+AI 在原型提出与早期验证阶段占优；进入 1→N 扩展（同行反馈、实证验证、教学推广、社区建设）需引入 CT。这使方法论自身内置了一个阶段转换问题——项目当前的瓶颈不是理论层面，而是组织层面：何时以及如何从 CI+AI 切换到 CI+CT，且切换会引入全新的组织摩擦。
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="tools">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">07 · 三阶段工具体系</p>
+        <h2>探索 · 建构 · 验证，各有一件工具</h2>
+      </div>
+      <p class="section-lede">按问题所处阶段取用：<strong>EchoFrame 找问题，CrystalOps 做大做对，C6 让系统长期稳定演化</strong>。</p>
+    </div>
+    <div class="reveal">
+      <div class="tab-bar" role="tablist" aria-label="工具体系切换">
+        <button role="tab" aria-selected="true" aria-controls="tool-echo" id="tab-echo">探索期 · EchoFrame</button>
+        <button role="tab" aria-selected="false" aria-controls="tool-crystal" id="tab-crystal">建构期 · CrystalOps</button>
+        <button role="tab" aria-selected="false" aria-controls="tool-c6" id="tab-c6">验证期 · C6 Method</button>
+      </div>
+
+      <div class="tab-panel is-active" id="tool-echo" role="tabpanel" aria-labelledby="tab-echo">
+        <p class="tool-question">「问题是什么？有没有结构上的可能性？」</p>
+        <div class="chips" aria-label="六类启发式切口">
+          <span class="chip"><b>行为型</b>切口</span>
+          <span class="chip"><b>制度型</b>切口</span>
+          <span class="chip"><b>反常型</b>切口</span>
+          <span class="chip"><b>边界型</b>切口</span>
+          <span class="chip"><b>类比型</b>切口</span>
+          <span class="chip"><b>反设型</b>切口</span>
+        </div>
+        <div class="flow" aria-label="五引擎链路">
+          <span>启发</span><i>→</i><span>分类</span><i>→</i><span>显化</span><i>→</i><span>验证</span><i>→</i><span>攻防</span>
+        </div>
+        <div style="height:14px"></div>
+        <div class="table-shell">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>对手视角输入法</th><th>功能目标</th><th>应用核心</th></tr></thead>
+              <tbody>
+                <tr><td class="k">脱敏型</td><td>弱化主张者身份偏见</td><td>减少模型默认温和回应的保护效应</td></tr>
+                <tr><td class="k">引导型</td><td>强制激活结构判断</td><td>使系统从「同理」切换为「批判」模式</td></tr>
+                <tr><td class="k">反演型</td><td>快速反设 / 自我质疑</td><td>模拟外部挑战视角做压力测试</td></tr>
+                <tr><td class="k">脱身型</td><td>降低主观卷入压力</td><td>表达敏感观点时的心理缓冲壳</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="note"><strong>配套两法：</strong>实事求是法——把主张拉回「是否符合事实 / 可被验证 / 可被第三方检验」；对手视角输入法——把真实立场伪装成对手观点，触发系统严谨批判。</div>
+      </div>
+
+      <div class="tab-panel" id="tool-crystal" role="tabpanel" aria-labelledby="tab-crystal">
+        <p class="tool-question">「如何把一个好结构做大做对？」</p>
+        <div class="flow" aria-label="S×X×P 三段式">
+          <span>Seed · 晶核</span><i>→</i><span>Expansion · 结晶</span><i>→</i><span>Projection · 投射</span>
+        </div>
+        <div class="chips" style="margin-top:12px" aria-label="AI 四角色">
+          <span class="chip"><b>构建器</b></span>
+          <span class="chip"><b>镜像器</b></span>
+          <span class="chip"><b>挑战者</b></span>
+          <span class="chip"><b>适配器</b></span>
+        </div>
+        <div style="height:14px"></div>
+        <div class="table-shell">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>维度</th><th>传统使用方式</th><th>CrystalOps 模式</th></tr></thead>
+              <tbody>
+                <tr><td class="k">起点</td><td>Prompt 提问</td><td>结构晶核（最小骨架）</td></tr>
+                <tr><td class="k">目标</td><td>回答问题 / 生成文本</td><td>协作建构 / 系统成型</td></tr>
+                <tr><td class="k">过程控制</td><td>语言驱动，随机展开</td><td>结构驱动，路径清晰</td></tr>
+                <tr><td class="k">成果形态</td><td>文章、段落、脚本等</td><td>认知系统、行为协议、架构文档</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="note"><strong>三段式分工：</strong>Seed——CI 提出方向与最小结构骨架；框架级提案——AI 可提元架构方案、由 CI 裁定；Expansion——AI 完成结构展开、路径填充、盲区检测；Projection——人机协同外化为结构文档或协议。</div>
+      </div>
+
+      <div class="tab-panel" id="tool-c6" role="tabpanel" aria-labelledby="tab-c6">
+        <p class="tool-question">「如何让复杂系统在长期、高不确定性下稳定演化？」</p>
+        <div class="table-shell">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>6C 支柱</th><th>说明</th></tr></thead>
+              <tbody>
+                <tr><td class="c">Cognitive</td><td>聚焦认知建构——从假设设立到推理闭环</td></tr>
+                <tr><td class="c">Co-Creation</td><td>角色分化＋多元心智模拟实现内部博弈协同</td></tr>
+                <tr><td class="c">Control</td><td>内嵌节奏调控、情绪调压、腐蚀防御机制</td></tr>
+                <tr><td class="c">Challenge</td><td>主动构建红队攻击机制，避免自洽幻觉</td></tr>
+                <tr><td class="c">Clarity</td><td>所有结构具备文档性与路径可溯性</td></tr>
+                <tr><td class="c">Continuity</td><td>拒绝燃尽型推进，主张长期韧性建构</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="height:14px"></div>
+        <div class="table-shell">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>编号</th><th>角色</th><th>定位</th><th>LLM Copilot 职能</th></tr></thead>
+              <tbody>
+                <tr><td class="c">R1</td><td class="k">原创建构者</td><td>提出晶核 · 系统发明者</td><td>架构补全、前提发散、盲区检测</td></tr>
+                <tr><td class="c">R2</td><td class="k">辅助建构者</td><td>材料组织 · 工程手</td><td>分层结构提炼、MVP 拆解、验证路径生成</td></tr>
+                <tr><td class="c">R3</td><td class="k">第三旁观者</td><td>抽离反思 · 哲学镜像</td><td>前提冲突识别、语义偏移警报</td></tr>
+                <tr><td class="c">R4</td><td class="k">红队进攻者</td><td>强攻击假设 · 结构检察官</td><td>恶意攻击模拟、矛盾注入脚本</td></tr>
+                <tr><td class="c">R5</td><td class="k">现实融合者</td><td>界面适配 · 界面适配器</td><td>比喻设计、文化张力扫描</td></tr>
+                <tr><td class="c">R6</td><td class="k">节奏 / 记录官</td><td>推进节奏 · 时间指挥部</td><td>冷却机制生成、结构压缩快照</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="history">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">08 · 建构史</p>
+        <h2>五阶段演进、贡献分层与一个元方法</h2>
+      </div>
+      <p class="section-lede">先按事件看五阶段，再按归属看三层贡献；两套分期并行，互不替代。第五阶段沉淀出整套方法论中可独立教授与迁移的元技术。</p>
+    </div>
+    <div class="note reveal" style="margin-bottom:18px"><strong>叙事口径：</strong>本节只取时间、事件序列与贡献归属，不取评价性修辞。外部记录中「英雄之旅」「圣殿」「天才」「史诗」一类表述系 AI 写作风格，不具规范效力，可忽略；重工程推进，轻叙事美化。</div>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <span class="t-tag">Stage 1</span>
+        <h3>MRP 的蓝图与困境</h3>
+        <p>CI 独自提出 M1–M6 功能模块、R 调度链、P 剧本的宏观框架，提出时即已识别其价值。AI 在此阶段承担三项：直觉型确认、兼容性验证（试兼容各流派，判定至少达到粗糙的方向性兼容）、文稿整理与细化建议。核心矛盾：<strong>模块内部是黑箱</strong>——诊断只能到「某模块失调」，干预无法精准。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-tag">Stage 2</span>
+        <h3>系统动力学的引入</h3>
+        <p>从系统动力学引入 SFS 模型（Stock-Flow-Structure），试图解构 M3 意志模块，却陷入<strong>功能划分 vs 过程划分</strong>的僵局。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-tag">Stage 3 · 关键转折</span>
+        <h3>GEMINI 的分工策略</h3>
+        <p>AI 没有二选一，而是升维提出分工策略：<strong>SFS＝解释框架</strong>（诊断语言，回答「哪里出了问题」）；<strong>GARC/GMAR＝操作框架</strong>（干预语言，回答「我们能做什么」）。从本体论争论转向实用主义。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-tag">Stage 4 · 映射发现</span>
+        <h3>诊断与干预的映射</h3>
+        <p>发现 G-M-A-R 与 R-D-S 的结构性对应（记录称「尤里卡时刻」）——诊断和干预统一在同一框架下，从问题到解决方案是一条直线。</p>
+        <div class="table-shell">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>操作</th><th>作用对象</th><th>映射逻辑</th></tr></thead>
+              <tbody>
+                <tr><td class="c">GATE（门控）</td><td>DSP（调度）＋ STR-R（协议 / 资源结构）</td><td>控制过程</td></tr>
+                <tr><td class="c">MODULATE（调制）</td><td>RES（资源）</td><td>调节数量</td></tr>
+                <tr><td class="c">ALIGN（对齐）</td><td>STR-C（算法 / 连接结构）</td><td>修正规则</td></tr>
+                <tr><td class="c">RELINK（重联）</td><td>STR-S（拓扑 / 模式结构）</td><td>重塑连接</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="t-item">
+        <span class="t-tag">Stage 5</span>
+        <h3>压力测试与递归式精炼</h3>
+        <p>面对「安全感缺失无法通过 MODULATE 解决」的异常：概念重构区分 <strong>RES-D（易变存量 / 心理燃料）</strong>与 <strong>RES-B（刚性存量 / 心理资本）</strong>。定理从 V1.0（存量枯竭 → MODULATE）进化为 V2.0（RES-D 枯竭 → MODULATE；RES-B 枯竭 → ALIGN / RELINK / GATE ＋ MODULATE 辅助）。</p>
+      </div>
+    </div>
+
+    <div class="contrib reveal">
+      <p class="eyebrow">贡献分层 · 按归属而非按事件</p>
+      <h3>三阶段：谁决定了什么</h3>
+      <p>五阶段叙述记录「发生了什么」，本节记录「谁决定了什么」。两套分期并行，互不替代：第一阶段可述为「AI 尚未提供核心概念」；第二阶段起 AI 已有元架构层面的实质贡献。</p>
+      <div class="table-shell" style="box-shadow:none">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>阶段</th><th>目的</th><th>CI</th><th>AI</th><th>产物</th></tr></thead>
+            <tbody>
+              <tr><td class="k">一、正向立框</td><td>把心智当作由功能模块、调度逻辑与干预路径构成的系统</td><td>独自提出 M1–M6／R／P，识别其价值，发现黑箱困境</td><td>直觉型确认、兼容性验证、文稿整理与细化建议</td><td class="c">M-R-P</td></tr>
+              <tr><td class="k">二、危机突破</td><td>打穿黑箱：让模块内部可描述、可干预</td><td>提供系统论与控制论语境，设定可工程化方向，裁定命名与边界</td><td>引入系统动力学 SFS；提出解释／操作双轨分工；给出 GARC 四操作及与 SFS 的映射</td><td class="c">M-R-D-S／G-M-A-R</td></tr>
+              <tr><td class="k">三、反向定域</td><td>以层间切分反向锚定靶面：先定层，再定层内语法</td><td>提供软件／操作系统／硬件三层隐喻，选择「功能层」，定拓展名「功能系统层」，硅基路线将 N-S-R 升格为 G-S-R</td><td>提供多重候选表述</td><td class="c">三层架构＋G-S-R</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="table-shell" style="box-shadow:none">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>阶段</th><th>时间</th><th>参与模型</th></tr></thead>
+            <tbody>
+              <tr><td class="k">一、正向立框</td><td>2025-05-17 — 2025-06-08</td><td>GPT-4o</td></tr>
+              <tr><td class="k">二、危机突破</td><td>2025-10-19 — 2025-10-21</td><td>Gemini 2.5 Pro</td></tr>
+              <tr><td class="k">三、反向定域</td><td>2026-02-06</td><td>DeepSeek-V3.2、Gemini 3 Pro</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note" style="background:rgba(255,253,248,.65)"><strong>共同形状：</strong>CI 决定「问题在哪个层、朝哪个方向」，AI 在给定层内提供选项与结构，CI 从中裁定。外部记录称第二阶段为「五天历程」，属宽口径叙述（含准备与整理）；上表按三段实际主窗口计，日后引用以本表为准。作者身份是责任归属，不是对创造过程的独占——贡献共有，责任在 CI。</div>
+    </div>
+
+    <div class="ana reveal">
+      <p class="eyebrow">第五阶段的核心元方法</p>
+      <h3>原子需求分析（ANA）</h3>
+      <p>面对「G-M-A-R 是否真的完备？」这一最严峻质疑，回应方式不是举更多例子证明工具有效，而是<strong>改变问题的问法</strong>——从「我们的工具有用吗」转向「修复任何问题在逻辑上需要哪些不可再分的原子操作」。递归式精炼描述过程，ANA 描述其中<strong>最精妙的思维动作</strong>：从问题的逻辑空间反推工具的必要性。</p>
+      <div class="table-shell" style="box-shadow:none">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>步骤</th><th>动作</th><th>在 RES-D/RES-B 重构中的实例</th></tr></thead>
+            <tbody>
+              <tr><td class="c">1</td><td class="k">定位异常</td><td>MODULATE 对深层安全感枯竭无效</td></tr>
+              <tr><td class="c">2</td><td class="k">概念重构</td><td>区分「心理燃料」（RES-D，可直补）与「心理资本」（RES-B，需修工厂）</td></tr>
+              <tr><td class="c">3</td><td class="k">逻辑空间反推</td><td>修复 RES-B 枯竭在逻辑上需要：改变规则（ALIGN）＋重建连接（RELINK）＋控制进程（GATE）＋辅助供能（MODULATE）</td></tr>
+              <tr><td class="c">4</td><td class="k">工程完备性论证</td><td>四种操作意图<strong>在功能层干预空间内</strong>覆盖<strong>主要</strong>修复可能——覆盖边界由 V-21 类压力测试持续校准</td></tr>
+              <tr><td class="c">5</td><td class="k">定理升级</td><td>V1.0 → V2.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="meta">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">09 · 元方法论总结</p>
+        <h2>一张总览，一个定位，一条推广路径</h2>
+      </div>
+      <p class="section-lede">创新类型定位为<strong>「iPhone 式组合创新」</strong>：元素未必全新，但系统首次成立（F 级，检索范围限于作者已审查的文献）。</p>
+    </div>
+    <div class="reveal">
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>维度</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td class="k">起点</td><td>不做「做什么」的决策，先做边界条件与风险对冲推演</td></tr>
+              <tr><td class="k">认知供给</td><td>Cognitec-2 双轨学习（JML / SML）持续供给跨学科知识</td></tr>
+              <tr><td class="k">推进方式</td><td>晶核 → 递归式精炼（含 ANA）→ 压力测试 → 定理进化</td></tr>
+              <tr><td class="k">生产范式</td><td>CI+AI 协同：CI 负责语境、方向与最终裁决，AI 负责结构展开与框架级提案</td></tr>
+              <tr><td class="k">质量保障</td><td>IET 证据分类学 ＋ 红队攻击 ＋ 工作日志溯源审计</td></tr>
+              <tr><td class="k">哲学内核</td><td>约束功能主义 ＋ 工程收敛解 &gt; 本体论绝对真理</td></tr>
+              <tr><td class="k">诚实度</td><td>把理论的可证伪性制度化，而非模糊伪造权威</td></tr>
+              <tr><td class="k">可持续性</td><td>不依赖天才状态，依赖系统性稳推 → C6 长期韧性建构</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+      <div class="table-shell">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>推广阶段</th><th>主导模式</th><th>关键任务</th></tr></thead>
+            <tbody>
+              <tr><td class="k">0→1（已完成）</td><td class="c">CI+AI</td><td>核心晶核提出、结构展开、替代测试、教材化</td></tr>
+              <tr><td class="k">1→10（当前）</td><td class="c">CI+AI ＋ 外部审查</td><td>同行反馈、编码员盲评、预注册预测检验</td></tr>
+              <tr><td class="k">10→N（未来）</td><td class="c">CI+CT</td><td>实证验证（RCT）、测量工具开发、教学推广、社区建设</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+      <details class="fold">
+        <summary>可复现性评估（8 类要素）<span class="mark">＋</span></summary>
+        <div class="fold-body">
+          <div class="table-scroll">
+            <table style="min-width:520px">
+              <thead><tr><th>类别</th><th>可复现性</th><th>说明</th></tr></thead>
+              <tbody>
+                <tr><td class="k">方法论框架（EchoFrame / CrystalOps / C6）</td><td>高</td><td>有明确步骤和角色定义，任何人都可学习应用</td></tr>
+                <tr><td class="k">认知训练（CI / HDCC / RealityOS）</td><td>高</td><td>有训练材料和闭环流程，但需长期坚持</td></tr>
+                <tr><td class="k">INPUT 系统（双轨学习）</td><td>中高</td><td>跨学科采矿能力依赖个人积累</td></tr>
+                <tr><td class="k">风险控制思维</td><td>高</td><td>思维框架可学，具体资源需自己创造</td></tr>
+                <tr><td class="k">晶核提出能力（Seed）</td><td>中</td><td>可训练；高生成性水平依赖长期跨域输入与判断积累</td></tr>
+                <tr><td class="k">ANA 元方法</td><td>中高</td><td>逻辑空间反推可教授，应用判断力依赖实践</td></tr>
+                <tr><td class="k">执行刚性（9 个月输出）</td><td>中</td><td>可训练，但依赖个人习惯和毅力</td></tr>
+                <tr><td class="k">外部条件（GPT 时间点、家庭存款）</td><td>低</td><td>不可复现，但可寻找替代条件</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:12px"><strong>结论：</strong>8 类要素中 7 类（除外部条件外）在逻辑上可复现；「晶核提出能力」不依赖天赋预设，是 CI 训练＋双轨学习长期运转后的涌现，其生成性水平随积累提高。方法论的推广必须三者同传——Constructec-2 的操作步骤、Cognitec-2 的知识供给能力、CI 训练的认知底层重构，缺一不可。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section wrap" id="ethics" style="padding-bottom:24px">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">10 · 内建免疫系统</p>
+        <h2>IET 证据分类学与强反例协议</h2>
+      </div>
+      <p class="section-lede">INTRE 最独特的基础设施决策：为每一个主张预装证据等级标签，<strong>规定理论被修正或推翻的触发条件</strong>。</p>
+    </div>
+    <div class="iet-grid reveal" aria-label="IET 八级证据标签">
+      <div class="iet-cell"><b>D</b><span>定义</span></div>
+      <div class="iet-cell"><b>L</b><span>推导</span></div>
+      <div class="iet-cell"><b>F</b><span>事实</span></div>
+      <div class="iet-cell"><b>X</b><span>解释</span></div>
+      <div class="iet-cell"><b>P</b><span>预测</span></div>
+      <div class="iet-cell"><b>N</b><span>规范</span></div>
+      <div class="iet-cell"><b>E</b><span>实证</span></div>
+      <div class="iet-cell"><b>R</b><span>关系</span></div>
+    </div>
+    <div style="height:18px"></div>
+    <details class="fold reveal">
+      <summary>强反例触发协议（4 条）<span class="mark">＋</span></summary>
+      <div class="fold-body">
+        <ol>
+          <li><strong>CI+AI 范式主张的反例：</strong>若存在独立研究者在同等问题域中，不使用 CI+AI 协同而产出同等完整和自洽的形式化心理学框架，则「CI+AI 为建构功能层理论的最优范式」的主张被削弱。</li>
+          <li><strong>C6 六角色完备性的反例：</strong>若存在稳定的理论建构任务，其所需认知角色无法被 R1–R6 任意组合覆盖，则六角色矩阵的完备性需要扩展。</li>
+          <li><strong>IET 制度化效力的反例：</strong>若 INTRE 在核心失败条件触发时拒绝修改核心主张或以新标签回避证伪，则 IET 从「工程诚实工具」退化为「免疫策略」。</li>
+          <li><strong>阶段适配结论的反例：</strong>若存在 CI+AI 模式成功完成 1→N 扩展的案例，则「1→N 阶段需要引入 CT」的结论需要修正。</li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+  <section class="section wrap" id="sources" style="padding-top:36px">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">11 · 来源与边界</p>
+        <h2>这张图的文本底座</h2>
+      </div>
+      <p class="section-lede">本页是解释性可视化附件，不是权威定义，也不新增方法论主张。遇到冲突，以源文档为准。</p>
+    </div>
+    <div class="source-grid reveal">
+      <article class="source-card">
+        <span class="source-type">结构底座</span>
+        <div class="source-title">09-M-01 建构背景与方法论提炼</div>
+        <div class="source-meta">v2.1.0 final · 2026-11-22 帧</div>
+        <p>CI 训练、Cognitec-2、Constructec-2、路径比较、五阶段建构史与贡献分层、ANA 与 IET 的权威承载件；本页全部图文的抽取来源。</p>
+        <a class="source-link" href="/INTRE-website/#method">回到首页方法区块 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+      <article class="source-card">
+        <span class="source-type">延伸阅读</span>
+        <div class="source-title">导论教材</div>
+        <div class="source-meta">25 章＋附录 · INTRE</div>
+        <p>想从零系统读框架，可从导论教材进入；本页只作 09-M-01 的阅读地图。</p>
+        <a class="source-link" href="/INTRE-website/textbook/">进入教材 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+    </div>
+    <div class="disclaimer reveal">
+      <strong>边界声明：</strong>本页不替代 09-M-01 及其各源文档的详细论证；不构成对其他研究范式的比较性评价。源文档基于 AGENT YANG 的自述性建构过程，存在建构者偏倚；可复现性论断为逻辑推演（L 级），可教授性声明为 P 级预测。所有内容以源文档现势帧为准，本页渲染帧为 2026-11-22。
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <div class="brand"><span class="brand-mark">INTRE</span><span class="brand-sub">09-M-01 · 建构方法论</span></div>
+      <p class="footer-copy">从认知底层到晶核涌现的一张阅读地图。</p>
+      <p class="footer-links"><a href="/INTRE-website/">首页</a> · <a href="/INTRE-website/textbook/">教材</a> · <a href="/INTRE-website/glossary/">术语表</a></p>
+    </div>
+    <div class="footer-meta">
+      v1.1 · 2026-11-22<br>
+      结构底座 09-M-01 v2.1.0 final<br>
+      <a href="#top">回到开头 ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Tabs
+  var tabs = document.querySelectorAll('.tab-bar [role="tab"]');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p){ p.classList.remove('is-active'); });
+      tab.setAttribute('aria-selected','true');
+      var panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if(panel){ panel.classList.add('is-active'); }
+    });
+  });
+  // Reveal on scroll
+  var revealed = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    },{threshold:.12});
+    revealed.forEach(function(el){ io.observe(el); });
+  }else{
+    revealed.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+  // Chapter scrollspy
+  var chapterLinks = Array.prototype.slice.call(document.querySelectorAll('.chapter-nav a'));
+  var chapterSections = chapterLinks.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  var chapterTick = false;
+  function syncChapter(){
+    if(!chapterSections.length) return;
+    var probe = window.scrollY + 180;
+    var current = chapterSections[0];
+    chapterSections.forEach(function(sec){ if(sec.offsetTop <= probe) current = sec; });
+    chapterLinks.forEach(function(a){
+      if(a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current','true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', function(){
+    if(chapterTick) return;
+    chapterTick = true;
+    requestAnimationFrame(function(){ chapterTick = false; syncChapter(); });
+  }, {passive:true});
+  window.addEventListener('load', syncChapter);
+  syncChapter();
+})();
+</script>
+
+</body>
+</html>

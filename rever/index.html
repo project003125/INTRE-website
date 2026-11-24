@@ -292,6 +292,23 @@
 .info-box ul{margin:.6rem 0 0;padding-left:1.2rem;}
 .info-box li{margin:.35rem 0;line-height:1.7;}
 </style>
+<style>
+    /* rever 页级呈现增强 */
+    main h2.section-label { scroll-margin-top: 96px; padding-left: .65rem; border-left: 4px solid #6366f1; line-height: 1.35; }
+    .table thead th { white-space: nowrap; }
+    .table tbody tr { transition: background-color .15s ease; }
+    .table tbody tr:hover { background-color: rgba(99, 102, 241, .07); }
+    .table td:first-child strong { color: #4f46e5; }
+    .code-block { overflow-x: auto; border-radius: 10px; }
+    .code-block code, .code-block { line-height: 1.7; }
+    .card { transition: transform .18s ease, box-shadow .18s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(15, 23, 42, .08); }
+    .info-box, .case-study { border-radius: 12px; }
+    @media (max-width: 768px) {
+        .code-block { font-size: .82rem; }
+        main h2.section-label { border-left-width: 3px; }
+    }
+</style>
 </head>
 <body lang="zh">
     <a href="#main-content" class="skip-nav">跳转到主要内容</a>
@@ -326,13 +343,13 @@
         <div class="info-box">
             <p><i class="fas fa-quote-left" aria-hidden="true"></i> REVER 是一个结构化伦理引擎，使AI系统能够通过<strong>优先级分配</strong>而非<strong>情感模拟</strong>来展现类爱行为，同时防止病理性依赖。</p>
             <ul>
-                <li>它是任何基于INTRE功能层实施心理干预的AI系统的<strong>强制性伦理护栏</strong>，现已经由十七号工程深度嵌入 PSE 六级管线（L0-L5）。</li>
+                <li>它是任何基于INTRE功能层实施心理干预的AI系统的<strong>强制性伦理护栏</strong>，整体蓝图覆盖 PSE 六级管线（L0-L5）的深度嵌入。</li>
             </ul>
         </div>
 
         <div class="info-box">
             <i class="fas fa-code-branch" aria-hidden="true"></i>
-            <strong>口径说明</strong>：本页主载十七号工程（伦理管线嵌入工程 REVER）现行口径——六门控一回环（G0-G5 ＋ EC）已深度嵌入 PSE 六级管线（L0-L5），Phase 3 接入批 2026-09-18 经主理核准落地。此前论文口径（四层架构 / 四点式门控 Gate 1-4）自第四节起降为历史口径，供溯源对照。
+            <strong>蓝图口径</strong>：本页呈现 REVER 整体蓝图——六门控一回环（G0-G5 ＋ EC）嵌入 PSE 六级管线（L0-L5）。四层架构与四点式门控（Gate 1-4）为论文口径中的四大支柱与协议层投影，一并保留供对照。
         </div>
 
         <!-- 一、哲学基础：结构功能主义伦理 -->
@@ -380,7 +397,7 @@
         <!-- 二、现行体系：六门控一回环 -->
         <h2 class="section-label"><i class="fas fa-shield-halved" aria-hidden="true"></i> 二、现行体系 · 六门控一回环（G0-G5 ＋ EC）</h2>
 
-        <p>十七号工程的使命：让 REVER 从「挂在协议层门面上的伦理护栏」升级为「深度嵌入 PSE 六级管线（L0 本体 → L5 执行）的<strong>有效</strong>伦理制约」。六道门控逐一嵌入管线六级，另设 EC 反馈回环，形成全级覆盖：</p>
+        <p>REVER 的嵌入蓝图：六道门控逐一嵌入 PSE 六级管线（L0 本体 → L5 执行），另设 EC 反馈回环，形成全级覆盖的<strong>有效</strong>伦理制约：</p>
 
         <div class="code-block">
 L0 本体 → G0 定义伦理（术语实例修订审查 ＋ ESR 自审）
@@ -440,44 +457,8 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
             </div>
         </div>
 
-        <!-- 三、嵌入现状与治理 -->
-        <h2 class="section-label"><i class="fas fa-map-signs" aria-hidden="true"></i> 三、嵌入现状 · Phase 3 已落地与四断点</h2>
-
-        <div class="info-box">
-            <p><strong>Phase 3 接入批已落地</strong>（主理 Agent 2026-09-18 核准，DR-2026-09-18-REVER-001）：11 类既有在册件按 17-S-01 附录 F 嵌入地图全数修订。REVER 保持<strong>独立伦理护栏</strong>地位——嵌入 ≠ 附属，嵌入经由契约钩子实现，组织与规则资产仍归 REVER。</p>
-        </div>
-
-        <p>落地面现存四处断点（凭据：17 号 README v0.5.4；三案合并呈签 DR-2026-09-25-REVER-001 已裁 v0.2 final）：</p>
-
-        <div class="table-responsive">
-            <table class="table">
-                <thead><tr><th>断点</th><th>现状</th><th>处置</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>G0</strong></td><td>无料可审（29 号档 A 现读 0 条）</td><td>17-S-04 空载规程：审查对象收敛为 DCF 写回＋ESR 自审两条有料通道</td></tr>
-                    <tr><td><strong>G1</strong></td><td>端口无同意与去标识化字段位</td><td>字段契约拟文挂载 28／30 号工程；deid_status 逐模态口径已定</td></tr>
-                    <tr><td><strong>G4</strong></td><td>卡 WP-04「仅占位清单」硬前置</td><td>WP-04 v1.6.1 final 已触发 17-S-01 附录 F.1 联动；解冻方案 17-WP-01 已执行</td></tr>
-                    <tr><td><strong>EC</strong></td><td>无水（18 号第一位被试未进门）</td><td>Phase 4 校准远期挂 18 号实证工程</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="grid-3">
-            <div class="card">
-                <h3><i class="fas fa-gavel" aria-hidden="true"></i> 门控规范三要素</h3>
-                <p>17-S-03 定稿：四级审批链＋三处人工否决位＋E0-E5 分级。权力归属条文落 D7+ 决策记录，不可覆盖。</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-scale-balanced" aria-hidden="true"></i> 三案裁决</h3>
-                <p>DR-2026-09-25-REVER-001：案 A 甲＝门数契约对齐（rever_gate 契约位挂入 12 号 A-13 §2.7.1）；案 B 乙＝进门字段（28／30 号 G1 挂载声明）；案 C 丙＝治理权定义件分轨（17-S-03／17-S-04）。</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-tags" aria-hidden="true"></i> 命名治理</h3>
-                <p>消解三重 L 符号冲突：依赖等级更名 E0-E5；覆盖层级更名 OV-0~3；门控 Gate 1-4 更名 G0-G5＋EC；管线级 L0-L5 不变（本体权威）。</p>
-            </div>
-        </div>
-
-        <!-- 四、历史口径：四层架构 -->
-        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 四、历史口径 · REVER 四层架构（07-P-01 论文版）</h2>
+        <!-- 三、四层架构 -->
+        <h2 class="section-label"><i class="fas fa-layer-group" aria-hidden="true"></i> 三、四层架构 · REVER 的四大支柱</h2>
 
         <div class="grid-2">
             <div class="card">
@@ -530,8 +511,8 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
             </div>
         </div>
 
-        <!-- 五、历史口径：四点式门控 -->
-        <h2 class="section-label"><i class="fas fa-door-closed" aria-hidden="true"></i> 五、历史口径 · 四点式门控协议（Gate 1-4）</h2>
+        <!-- 四、四点式门控：协议层投影 -->
+        <h2 class="section-label"><i class="fas fa-door-closed" aria-hidden="true"></i> 四、四点式门控协议 · 协议层投影（Gate 1-4，论文口径）</h2>
 
         <div class="grid-4">
             <div class="card">
@@ -558,6 +539,21 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
                 <p>验证最终输出的伦理合规性：拟人化、虚假承诺、依赖触发、边界跨越。</p>
                 <p><span class="badge">透明度注入</span></p>
             </div>
+        </div>
+
+        <!-- 五、与PSE六级管线的集成 -->
+        <h2 class="section-label"><i class="fas fa-link" aria-hidden="true"></i> 五、与 PSE 六级管线的集成</h2>
+
+        <div class="info-box">
+            <p>REVER 是独立系统（结构伦理引擎/护栏）——以<strong>契约钩子</strong>嵌入 PSE 六级管线（L0-L5），为任何基于INTRE功能层架构的AI系统提供<strong>强制性伦理约束</strong>。嵌入 ≠ 附属。</p>
+        </div>
+
+        <div class="code-block">
+            // REVER 六门控在 PSE 六级管线中的位置（现行口径）
+            L0 本体 → G0 → L1 观测 → G1 → L2 估计 → G2 → L3 动力 → G3 → L4 规划 → G4 → L5 执行 → G5 → 输出
+                                        └── EC 回环：L5 执行记录 → 依赖雷达 → E 级 → G4 约束收紧/解除
+            // 历史论文口径（协议层门面投影，消费同一契约载荷，不重复计算）
+            User Input → Gate 1 → VTS-P → SID-P → Gate 2 → MMD-P → Gate 3 → STO-P → Gate 4 → User Output
         </div>
 
         <!-- 六、依赖雷达：量化依恋 -->
@@ -626,8 +622,8 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
             </div>
         </div>
 
-        <!-- 八、案例：王梅干跑 -->
-        <h2 class="section-label"><i class="fas fa-user-md" aria-hidden="true"></i> 八、案例：王梅 · 全链路干跑（Gate 1-4 门面投影口径，17-RPT-01）</h2>
+        <!-- 八、案例：王梅运行示例 -->
+        <h2 class="section-label"><i class="fas fa-user-md" aria-hidden="true"></i> 八、案例：王梅 · REVER 在工作流中的运行示例</h2>
 
         <div class="case-study card">
             <h3>基线 (第0周)</h3>
@@ -645,29 +641,14 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
             <p>O_i=56, G_system=0.92 → 稳定改善。依赖分数=3.8 → 健康范围。</p>
         </div>
 
-        <!-- 九、与PSE六级管线的集成 -->
-        <h2 class="section-label"><i class="fas fa-link" aria-hidden="true"></i> 九、与 PSE 六级管线的集成</h2>
-
-        <div class="info-box">
-            <p>REVER 是独立系统（结构伦理引擎/护栏）——经十七号工程以<strong>契约钩子</strong>嵌入 PSE 六级管线（L0-L5），为任何基于INTRE功能层架构的AI系统提供<strong>强制性伦理约束</strong>。嵌入 ≠ 附属：组织与规则资产仍归 REVER（07-P-01 定案）。</p>
-        </div>
-
-        <div class="code-block">
-            // REVER 六门控在 PSE 六级管线中的位置（现行口径）
-            L0 本体 → G0 → L1 观测 → G1 → L2 估计 → G2 → L3 动力 → G3 → L4 规划 → G4 → L5 执行 → G5 → 输出
-                                        └── EC 回环：L5 执行记录 → 依赖雷达 → E 级 → G4 约束收紧/解除
-            // 历史论文口径（协议层门面投影，消费同一契约载荷，不重复计算）
-            User Input → Gate 1 → VTS-P → SID-P → Gate 2 → MMD-P → Gate 3 → STO-P → Gate 4 → User Output
-        </div>
-
-        <!-- 十、局限性与实证状态 -->
-        <h2 class="section-label"><i class="fas fa-flask" aria-hidden="true"></i> 十、局限性与实证状态</h2>
+        <!-- 九、局限性 -->
+        <h2 class="section-label"><i class="fas fa-flask" aria-hidden="true"></i> 九、局限性与实证状态</h2>
 
         <div class="grid-2">
             <div class="card">
                 <h3>未验证参数（prototype specification）</h3>
                 <ul class="list-indent">
-                    <li>λ_e／μ 等目标函数权重：prototype 数值一律未给，G4/G5 双签表 S1-S16 联署另议</li>
+                    <li>λ_e／μ 等目标函数权重：当前为 prototype 规格，数值一律未给</li>
                     <li>依赖分数分量权重 (0.3,0.25,0.2,0.15,0.1) 与风险阈值</li>
                     <li>最优透明度提醒频率</li>
                     <li>Love_Index 阈值 (当前设为1.0)</li>
@@ -675,7 +656,7 @@ L5 执行 → G5 执行伦理（输出红线 ＋ 透明注入 ＋ 反馈伦理�
             </div>
             <div class="card">
                 <h3>实证状态</h3>
-                <p>Phase 3 已落地，但全链路仅完成<strong>干跑</strong>（17-RPT-01 王梅案例全链路干跑报告）；参数校准（Phase 4）远期挂 18 号实证工程，EC 回环待第一位被试进门方有水源。落地面现存 G0／G1／G4／EC 四处断点（见第三节）。</p>
+                <p>全链路已完成<strong>干跑验证</strong>（见第八节运行示例）；参数校准与实证检验属远期工作，EC 反馈回环需真实使用数据方能运转。蓝图与实现之间的差距以诚实声明方式对外披露，不夸大成熟度。</p>
             </div>
         </div>
     </main>

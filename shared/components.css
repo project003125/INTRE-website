@@ -1131,6 +1131,12 @@ hr {
 }
 
 /* 超窄屏收字距与内边距，让「行为 · 语义 · 神经」留在同一行 */
+@media (max-width: 480px) {
+  .stat-card .stat-label {
+    word-break: keep-all;
+  }
+}
+
 @media (max-width: 360px) {
   .stat-card {
     padding: 1.25rem 1rem 1.1rem;
@@ -1138,7 +1144,6 @@ hr {
   .stat-card .stat-label {
     font-size: 0.68rem;
     letter-spacing: 0.05em;
-    word-break: keep-all;
   }
 }
 

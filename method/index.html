@@ -99,6 +99,16 @@
   .chapter-nav a:hover{background:var(--surface);color:var(--ink)}
   .chapter-nav a[aria-current="true"]{background:var(--ink);color:var(--surface)}
 
+  /* 窄屏：两条横条都保持单行可滑，边缘做渐隐，避免链接被切断得像坏掉 */
+  @media (max-width:768px){
+    .global-nav-inner{width:calc(100% - 20px);gap:10px}
+    .global-logo{font-size:1.05rem;flex:0 0 auto}
+    .global-links{gap:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 20px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 20px),transparent 100%)}
+    .global-links a{padding:.4rem .5rem;font-size:.74rem}
+    .chapter-nav{flex-wrap:nowrap;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 18px),transparent)}
+    .chapter-nav a{flex:0 0 auto;padding:6px 8px}
+  }
+
   .brand{display:flex;align-items:baseline;gap:10px;flex:0 0 auto}
   .brand-mark{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:-.03em}
   .brand-mark::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--red);margin-left:6px;vertical-align:middle}
@@ -990,5 +1000,6 @@
 })();
 </script>
 
+    <script src="/INTRE-website/shared/table-scroll.js?v=20261127a" defer></script>
 </body>
 </html>

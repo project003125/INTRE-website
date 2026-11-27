@@ -59,8 +59,8 @@
    两域同受（碳基此前同样溢出 82px），非硅基单边改动。 */
 @media (max-width: 480px) {
   .nav-container { flex-wrap: wrap; height: auto; padding-top: .55rem; padding-bottom: .55rem; }
-  .domain-switch { order: 3; flex: 1 1 100%; margin-top: .5rem; justify-content: center; }
-  .domain-switch a { flex: 0 1 auto; white-space: normal; }
+  .domain-switch { order: 4; flex: 1 1 100%; margin-top: .5rem; justify-content: center; }
+  .domain-switch a { flex: 0 1 auto; white-space: normal; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; }
 }
 
 /* ---------- 硅基域＝只换颜色（06-S-05 §3.6 六档在册值） ----------

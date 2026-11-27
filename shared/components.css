@@ -98,7 +98,7 @@ nav.site-nav {
   .nav-links {
     display: none;
     position: absolute;
-    top: 3.2rem;
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -129,6 +129,78 @@ nav.site-nav {
   }
   .nav-logo .logo-text {
     display: none;
+  }
+}
+
+/* 移动端导航两行制：第一行品牌＋主题＋菜单，第二行域切换独占一行 */
+@media (max-width: 768px) {
+  nav.site-nav .nav-container {
+    height: auto;
+    min-height: 3.2rem;
+    flex-wrap: wrap;
+    padding: 0.3rem 0 0.45rem;
+    row-gap: 0.2rem;
+  }
+
+  nav.site-nav .nav-logo {
+    order: 1;
+    margin-right: auto;
+  }
+
+  nav.site-nav .theme-toggle {
+    order: 2;
+    margin: 0 0.3rem 0 0;
+  }
+
+  nav.site-nav .nav-toggle {
+    order: 3;
+  }
+
+  nav.site-nav .domain-switch {
+    order: 4;
+    flex: 1 1 100%;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+/* 窄屏触控目标：页脚与页内小链接补足高度，避免 14–21px 的误触 */
+@media (max-width: 768px) {
+  .footer-sitemap .fs-col a {
+    padding: 0.42rem 0;
+  }
+
+  .footer-links a,
+  .footer-meta a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+  }
+}
+
+/* 锚点跳转留出吸顶导航的高度，避免标题被压在导航下面 */
+[id] {
+  scroll-margin-top: 4.6rem;
+}
+
+@media (max-width: 768px) {
+  /* 选择器加 section 提升一级特异度，压过页面自带的 .home-section 值 */
+  [id],
+  section[id],
+  main [id] {
+    scroll-margin-top: 7.4rem;
+  }
+}
+
+/* 窄屏标题断行更均衡，避免末行只剩一两个字 */
+@media (max-width: 768px) {
+  h1,
+  h2,
+  .page-title,
+  .hero .hero-title,
+  .hero-zh,
+  .hero-tagline {
+    text-wrap: balance;
   }
 }
 
@@ -312,11 +384,15 @@ tbody tr:hover {
 }
 
 /* ===== 移动端表格滑动提示 (M6) ===== */
-.table-responsive {
+.table-responsive,
+.table-wrap,
+.vx-wrap {
   position: relative;
 }
 
-.table-responsive::after {
+.table-responsive::after,
+.table-wrap::after,
+.vx-wrap::after {
   content: '← 滑动查看 →';
   position: absolute;
   bottom: 0.5rem;
@@ -336,8 +412,20 @@ tbody tr:hover {
 /* 15 号扫尾批：提示仅在表格实际横向溢出时出现（.is-scrollable 由 nav-toggle.js 标注），
    不溢出的表格不再显示假提示；锚点改左侧＝滚动起点处可见 */
 @media (max-width: 768px) {
-  .table-responsive.is-scrollable::after {
+  .table-responsive.is-scrollable::after,
+  .table-wrap.is-scrollable::after,
+  .vx-wrap.is-scrollable::after {
     opacity: 1;
+  }
+
+  /* 给提示留出一条空行，避免盖住最后一行表内容 */
+  .table-wrap.is-scrollable,
+  .vx-wrap.is-scrollable {
+    padding-bottom: 1.5rem;
+  }
+  .table-wrap.is-scrollable::after,
+  .vx-wrap.is-scrollable::after {
+    bottom: 0.25rem;
   }
 }
 
@@ -568,6 +656,29 @@ hr {
   border-radius: var(--radius-sm);
   border: var(--stroke-hairline) solid var(--color-slate-200);
 }
+
+/* 教材与子页通用轻量容器：原先 .table-wrap 只有空壳、没有滚动能力，
+   窄屏表格被压到逐字竖排；此处补齐横滚与最小列宽 */
+.table-wrap {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.4rem 0;
+}
+.table-wrap > table { min-width: 100%; }
+.table-wrap th,
+.table-wrap td { min-width: 5rem; }
+
+/* 横滚条做薄，避免在手机上占掉一行高度 */
+.table-wrap::-webkit-scrollbar,
+.table-responsive::-webkit-scrollbar { height: 5px; }
+.table-wrap::-webkit-scrollbar-thumb,
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--color-slate-300);
+  border-radius: var(--radius-pill);
+}
+.table-wrap::-webkit-scrollbar-track,
+.table-responsive::-webkit-scrollbar-track { background: transparent; }
 
 .table {
   width: 100%;
@@ -951,6 +1062,21 @@ hr {
   text-transform: uppercase;
   color: rgba(255,255,255,0.5);
 }
+
+/* 窄屏收字距，避免「⇄ NEURON」被拆到两行 */
+@media (max-width: 480px) {
+  .hero-sub .hero-en {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-sub .hero-en {
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+}
 .hero-tagline {
   max-width: 700px;
   margin: 0 auto 2.1rem;
@@ -1002,6 +1128,18 @@ hr {
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
   line-height: 1.5;
+}
+
+/* 超窄屏收字距与内边距，让「行为 · 语义 · 神经」留在同一行 */
+@media (max-width: 360px) {
+  .stat-card {
+    padding: 1.25rem 1rem 1.1rem;
+  }
+  .stat-card .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    word-break: keep-all;
+  }
 }
 
 /* Hero 底部坐标条 —— 形式系统的签名 */
@@ -2521,6 +2659,12 @@ html[data-theme="dark"] table tbody tr:hover td {
 
 /* 移动端表格滑动提示：白药丸在夜间改微亮面 */
 html[data-theme="dark"] .table-responsive::after {
+  background: var(--bg-surface-2);
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] .table-wrap::after,
+html[data-theme="dark"] .vx-wrap::after {
   background: var(--bg-surface-2);
   color: var(--text-muted);
 }

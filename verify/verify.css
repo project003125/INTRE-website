@@ -42,6 +42,39 @@ html[data-theme="dark"] .vx-back:hover { color: var(--color-amber-500); }
 @media (max-width: 640px) {
     .vx-table { font-size: .82rem; }
     .vx-table th, .vx-table td { padding: .55rem .5rem; }
+    /* 三四列的表：给单元格保底宽度，整表交给 .vx-wrap 横滚 */
+    .vx-table:not(.vx-stack) th,
+    .vx-table:not(.vx-stack) td { min-width: 5.5rem; }
+
+    /* 四列以上的表：改成分行卡片，主结论列不再被挤到屏幕外（class 由 table-scroll.js 标注） */
+    .vx-table.vx-stack { display: block; font-size: .86rem; }
+    .vx-table.vx-stack thead { display: none; }
+    .vx-table.vx-stack tr {
+        display: block;
+        padding: .6rem .1rem .65rem;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .vx-table.vx-stack td {
+        display: flex;
+        align-items: flex-start;
+        gap: .55rem;
+        padding: .18rem 0;
+        border: 0;
+        line-height: 1.75;
+    }
+    .vx-table.vx-stack td::before {
+        content: attr(data-label);
+        flex: 0 0 4.2rem;
+        font-family: var(--font-mono);
+        font-size: .64rem;
+        letter-spacing: .06em;
+        color: var(--color-amber-700);
+        text-transform: uppercase;
+        line-height: 2.1;
+    }
+    .vx-table.vx-stack td:first-child { font-weight: 600; padding-top: .1rem; }
+    .vx-table.vx-stack td:first-child::before { content: none; }
+    html[data-theme="dark"] .vx-table.vx-stack td::before { color: var(--color-amber-500); }
 }
 
 .vx-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: .9rem; margin: 1.4rem 0 .6rem; }

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>附录L 架构速查 · INTRE 导论教材</title>
-    <meta name="description" content="从 N-S-R 到 IODS 与 PSE 的一页推导链。">
+    <meta name="description" content="从 N-S-R 到 IODS 与 PSCE 的一页推导链。">
     <meta property="og:title" content="附录L 架构速查">
-    <meta property="og:description" content="从 N-S-R 到 IODS 与 PSE 的一页推导链。">
+    <meta property="og:description" content="从 N-S-R 到 IODS 与 PSCE 的一页推导链。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/app-l.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/app-l.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="附录L 架构速查">
-    <meta name="twitter:description" content="从 N-S-R 到 IODS 与 PSE 的一页推导链。">
+    <meta name="twitter:description" content="从 N-S-R 到 IODS 与 PSCE 的一页推导链。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
-                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/pse/">PSCE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
                 <a href="/INTRE-website/compare/">对比</a>
@@ -93,14 +93,14 @@
 <tr><td>4</td><td>R-D-S</td><td>每个模块内部怎么描述状态</td><td>资源、调度、结构三层七维</td><td>6 × 7 = 42 维状态空间</td></tr>
 <tr><td>5</td><td>G-M-A-R</td><td>状态靠什么动作改变</td><td>门控、调制、校准、重联</td><td>四类原子操作与靶点约束</td></tr>
 <tr><td>6</td><td>IODS</td><td>用什么词、什么算合法</td><td>坐标、词汇、概念映射、结构约束</td><td>L0 定义与合法性边界</td></tr>
-<tr><td>7</td><td>PSE</td><td>这些定义怎么算起来</td><td>观测、估计、动力学、规划、执行</td><td>可运行的六级管线</td></tr>
+<tr><td>7</td><td>PSCE</td><td>这些定义怎么算起来</td><td>观测、估计、动力学、规划、执行</td><td>可运行的六级管线</td></tr>
 </tbody>
 </table>
 </div>
 
 <p>第 4 与第 5 步是并置关系，不是先后关系。R-D-S 给状态语法，G-M-A-R 给操作语法；一个回答“现在是什么状态”，一个回答“能改哪里”。两者共享同一套靶点约束：MODULATE 只碰资源，GATE 碰调度与序列，ALIGN 碰规则，RELINK 碰连接。没有这套并置，42 维只是一张读数表，四算子也只是四个动词。</p>
 
-<p>第 6 步把前五步的构件固化成定义，第 7 步把这些定义组织成计算流程。IODS 不运行，PSE 才运行；IODS 给命名空间与合法性，PSE 给观测、估计、预测与控制。对外边界因此是 IODS 加 PSE，而不是一堆并列系统。</p>
+<p>第 6 步把前五步的构件固化成定义，第 7 步把这些定义组织成计算流程。IODS 不运行，PSCE 才运行；IODS 给命名空间与合法性，PSCE 给观测、估计、预测与控制。对外边界因此是 IODS 加 PSCE，而不是一堆并列系统。</p>
 
 <h2>L.2 六级管线速查</h2>
 
@@ -129,7 +129,7 @@
 
 <h2>L.3 记忆顺序</h2>
 
-<p>先记循环，再记部件，再记状态，再记操作，最后记定义与计算。具体顺序：N-S-R 说明为什么有循环；M-R-P 说明循环靠什么部件；M1–M6 说明人类心智的分工；R-D-S 说明每个模块内部怎么描述；G-M-A-R 说明状态怎么改；IODS 把这些固化成定义；PSE 把定义跑成管线。七步连起来，才能从一句主诉走到一个可执行的操作序列。</p>
+<p>先记循环，再记部件，再记状态，再记操作，最后记定义与计算。具体顺序：N-S-R 说明为什么有循环；M-R-P 说明循环靠什么部件；M1–M6 说明人类心智的分工；R-D-S 说明每个模块内部怎么描述；G-M-A-R 说明状态怎么改；IODS 把这些固化成定义；PSCE 把定义跑成管线。七步连起来，才能从一句主诉走到一个可执行的操作序列。</p>
     </main>
 
     <div class="page-footer-nav">

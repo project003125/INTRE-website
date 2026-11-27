@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>第17章 L3 动力学：方程、参数、模型与校准 · INTRE 导论教材</title>
-    <meta name="description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
+    <meta name="description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSCE-I/M/P/C 四阶段完成校准。">
     <meta property="og:title" content="第17章 L3 动力学：方程、参数、模型与校准">
-    <meta property="og:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
+    <meta property="og:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSCE-I/M/P/C 四阶段完成校准。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch17.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch17.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="第17章 L3 动力学：方程、参数、模型与校准">
-    <meta name="twitter:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSE-I/M/P/C 四阶段完成校准。">
+    <meta name="twitter:description" content="L3 用 26 条动力学假设、340+ 参数与 BMA 加权方程把 Ψ_t 推演为未来状态分布，并通过 PSCE-I/M/P/C 四阶段完成校准。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
-                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/pse/">PSCE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
                 <a href="/INTRE-website/compare/">对比</a>
@@ -71,7 +71,7 @@
     <main class="textbook-content" id="main-content">
         <h1 class="chapter-title">第17章 L3 动力学：方程、参数、模型与校准</h1>
 
-<blockquote><p><strong>学习目标</strong>：(1) 写出 L3 主方程并解释四个符号；(2) 按六论分组统计 26 条动力学假设；(3) 说明 340+ 参数的五库分工与来源链；(4) 解释 BMA 权重、退化与异常触发；(5) 区分 PSE 四阶段校准的输入与产出。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：(1) 写出 L3 主方程并解释四个符号；(2) 按六论分组统计 26 条动力学假设；(3) 说明 340+ 参数的五库分工与来源链；(4) 解释 BMA 权重、退化与异常触发；(5) 区分 PSCE 四阶段校准的输入与产出。</p></blockquote>
 
 <h2>17.1 总方程：\(d\Psi/dt=\sum_k w_k f_k(\Psi,E,\theta_k)\)</h2>
 
@@ -139,10 +139,10 @@
 </tr></thead>
 <tbody>
 <tr><td>MCT 心智编译</td><td>4</td><td>L1.1–L1.4</td><td>L1-S 观测编译；其中 L1.3、L1.4 不入右端式</td><td>理论预测，待仿真检验</td></tr>
-<tr><td>MTT 心智拓扑</td><td>3</td><td>L2.1–L2.3</td><td>L2.1、L2.2 入 L3 方程子层；L2.3 属参数与积分标定</td><td>预期可获 PSE-M 一致性检验</td></tr>
+<tr><td>MTT 心智拓扑</td><td>3</td><td>L2.1–L2.3</td><td>L2.1、L2.2 入 L3 方程子层；L2.3 属参数与积分标定</td><td>预期可获 PSCE-M 一致性检验</td></tr>
 <tr><td>MKT 心智动力</td><td>6</td><td>L3.6、L3.7、L3.9、L3.14、L3.16、L3.17</td><td>L3 方程子层</td><td>预期可获仿真检验；L3.9 数学推导、L3.7 类比外推</td></tr>
 <tr><td>MDT 心智调度</td><td>5</td><td>L4.1–L4.5</td><td>L4 干预规划</td><td>L4.1、L4.2 部分验证；其余理论预测</td></tr>
-<tr><td>MPT 心智塑性</td><td>4</td><td>L5.1–L5.4</td><td>L5.3、L5.4 入 L3；L5.1、L5.2 为门控与预算约束</td><td>预期可获 PSE-M 一致性检验</td></tr>
+<tr><td>MPT 心智塑性</td><td>4</td><td>L5.1–L5.4</td><td>L5.3、L5.4 入 L3；L5.1、L5.2 为门控与预算约束</td><td>预期可获 PSCE-M 一致性检验</td></tr>
 <tr><td>MET 心智生态</td><td>4</td><td>L6.1–L6.4</td><td>L6.1、L6.3 构成 \(E(t)\) 驱动项；L6.2、L6.4 属决策选择</td><td>理论预测，待仿真检验</td></tr>
 </tbody>
 </table>
@@ -175,7 +175,7 @@
 </table>
 </div>
 
-<p>参数来源是一条五环节链：L0 定义参数是什么、落在哪个坐标上；PSE-M 仿真生成先验；L1 三模态观测提供真实世界证据；PSE-C 用贝叶斯更新得到后验；方程子层与模型选择子层消费后验。定义权、生成权、观测权、校准权、消费权分属不同环节，任何一环都不能替代另一环。</p>
+<p>参数来源是一条五环节链：L0 定义参数是什么、落在哪个坐标上；PSCE-M 仿真生成先验；L1 三模态观测提供真实世界证据；PSCE-C 用贝叶斯更新得到后验；方程子层与模型选择子层消费后验。定义权、生成权、观测权、校准权、消费权分属不同环节，任何一环都不能替代另一环。</p>
 
 <div class="table-wrap">
 <table>
@@ -187,9 +187,9 @@
 </tr></thead>
 <tbody>
 <tr><td>定义</td><td>参数是什么、在哪个坐标上</td><td>L0 本体</td><td>符号与语义约束</td></tr>
-<tr><td>先验生成</td><td>参数可能取什么值</td><td>PSE-M 仿真</td><td>先验分布</td></tr>
+<tr><td>先验生成</td><td>参数可能取什么值</td><td>PSCE-M 仿真</td><td>先验分布</td></tr>
 <tr><td>观测输入</td><td>真实世界的证据</td><td>L1 三模态端口</td><td>似然</td></tr>
-<tr><td>后验校准</td><td>先验与似然合成后验</td><td>PSE-C</td><td>后验分布</td></tr>
+<tr><td>后验校准</td><td>先验与似然合成后验</td><td>PSCE-C</td><td>后验分布</td></tr>
 <tr><td>消费</td><td>用参数跑预测</td><td>D1 方程子层与 D3 模型选择</td><td>加权预测分布</td></tr>
 </tbody>
 </table>
@@ -197,7 +197,7 @@
 
 <p>参数形态以社交恢复速率为例。设计形态是一个 Gamma 分布，均值约 0.35/h，标准差约 0.10，95% 区间覆盖 0.18 到 0.55/h；同一参数还带人格调制与环境调制规则，内向者的恢复速率乘 0.5，外向者乘 1.3，支持性社交环境再乘 1.2。这样的分层调制让“恢复速率”不再是一个全民通用的常数，而是随生态位变化的分布族。</p>
 
-<p>参数总量中约 88% 预期可以具备仿真先验，约 12% 集中在干预效果预测与临床资源约束，仍需真实临床数据锚定。这个比例是设计目标，不是已完成的事实；PSE-M 尚未实际运行，PSE-C 也没有真实数据。</p>
+<p>参数总量中约 88% 预期可以具备仿真先验，约 12% 集中在干预效果预测与临床资源约束，仍需真实临床数据锚定。这个比例是设计目标，不是已完成的事实；PSCE-M 尚未实际运行，PSCE-C 也没有真实数据。</p>
 
 <h2>17.4 D3 模型选择与 BMA</h2>
 
@@ -247,7 +247,7 @@
 
 <p>数值演化层不判断权重是否合理。它执行“给定权重的加权积分”；权重合理性属于模型选择子层的验证对象。这条分工让换积分算法与换退化策略互不触发。</p>
 
-<h2>17.6 D5 校准流程：PSE-I / M / P / C</h2>
+<h2>17.6 D5 校准流程：PSCE-I / M / P / C</h2>
 
 <p>校准是离线元流程，运行时不执行。四个阶段的顺序是理论注入、规模仿真、先验提取、临床锚定。每一阶段的产出是下一阶段的输入，任何一阶段缺失，后面的产出都只能是设计值。</p>
 
@@ -260,10 +260,10 @@
 <th>当前状态</th>
 </tr></thead>
 <tbody>
-<tr><td>PSE-I 理论注入</td><td>26 条动力学假设</td><td>仿真环境中的硬约束与更新规则</td><td>理论设计，未运行</td></tr>
-<tr><td>PSE-M 规模仿真</td><td>理论约束、差异化初始状态、生态位、压力脉冲</td><td>\(10^4\)–\(10^6\) 量级智能体的演化轨迹</td><td>理论设计，未运行</td></tr>
-<tr><td>PSE-P 先验提取</td><td>演化轨迹</td><td>各生态位下参数的概率分布</td><td>理论设计，未运行</td></tr>
-<tr><td>PSE-C 临床锚定</td><td>先验分布与真实临床数据</td><td>参数后验与模型权重后验</td><td>未执行，零实证数据</td></tr>
+<tr><td>PSCE-I 理论注入</td><td>26 条动力学假设</td><td>仿真环境中的硬约束与更新规则</td><td>理论设计，未运行</td></tr>
+<tr><td>PSCE-M 规模仿真</td><td>理论约束、差异化初始状态、生态位、压力脉冲</td><td>\(10^4\)–\(10^6\) 量级智能体的演化轨迹</td><td>理论设计，未运行</td></tr>
+<tr><td>PSCE-P 先验提取</td><td>演化轨迹</td><td>各生态位下参数的概率分布</td><td>理论设计，未运行</td></tr>
+<tr><td>PSCE-C 临床锚定</td><td>先验分布与真实临床数据</td><td>参数后验与模型权重后验</td><td>未执行，零实证数据</td></tr>
 </tbody>
 </table>
 </div>
@@ -287,14 +287,14 @@
 <tbody>
 <tr><td>理论推演</td><td>有方程形式与分布设计，无运行值</td><td>340+ 参数的设计框架；约 88% 预期可具仿真先验</td><td>只能说“设计”或“预期”</td></tr>
 <tr><td>已入引擎</td><td>代码中有占位值、常数或按证据仿真值，管线可运行</td><td>首役台账登记 29 项：占位 23、按证据仿真 5、常数 1</td><td>只能说“占位”或“待标定”</td></tr>
-<tr><td>已临床校准</td><td>经 PSE-C 用真实数据完成贝叶斯后验更新</td><td>0 项；PSE-C 未执行</td><td>不能说“已校准”</td></tr>
+<tr><td>已临床校准</td><td>经 PSCE-C 用真实数据完成贝叶斯后验更新</td><td>0 项；PSCE-C 未执行</td><td>不能说“已校准”</td></tr>
 </tbody>
 </table>
 </div>
 
 <p>三种状态的区分是审计要求，不是修辞分层。理论推演讲的是“这个参数应该长什么样”，已入引擎讲的是“代码现在拿什么值跑”，已临床校准讲的是“真实数据把后验拉到了哪里”。把三者混在一起，读者会误以为占位值已经获得经验支持；把三者完全分开，又能让每一条结论都落在可核查的位置上。</p>
 
-<p>未校准披露因此是常态，而不是例外。当前 L3 的全部动力学假设与参数都未完成临床校准，模型权重也只有设计口径。后续工作的优先级很清楚：先跑 PSE-M 建立仿真先验，再用真实数据完成 PSE-C 锚定，最后才谈预测精度的实测数字。</p>
+<p>未校准披露因此是常态，而不是例外。当前 L3 的全部动力学假设与参数都未完成临床校准，模型权重也只有设计口径。后续工作的优先级很清楚：先跑 PSCE-M 建立仿真先验，再用真实数据完成 PSCE-C 锚定，最后才谈预测精度的实测数字。</p>
     </main>
 
     <div class="page-footer-nav">

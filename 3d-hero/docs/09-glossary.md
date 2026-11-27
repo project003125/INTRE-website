@@ -120,7 +120,7 @@
 | UPLP | Unified Psychological Language Port | 统一心理语言端口（语义通道） | `06-S-05 §3.4` |
 | UNIP | Unified Neural Interface Port | 统一神经接口端口（神经通道） | `06-S-05 §3.4` |
 | UBMP | Unified Behavioral Measurement Port | 统一行为测量端口（行为通道） | `06-S-05 §3.4` |
-| PSE | Psychological System Engine | 心理系统计算引擎 | `06-S-05 §3.4` |
+| PSCE | Psychological System Computational Engine | 心理系统计算引擎 | `06-S-05 §3.4` |
 | REVER | REVER Ethical Engine | 伦理门控引擎 | `06-S-05 §3.4` |
 | 大地色 | Earth Tone | v2.3 起的 5 种通道色（饱和度低、向灰色偏移 15%） | `06-S-05 §3.4` |
 | 通道粒子 | Channel Particles | UPLP/UNIP/UBMP 沿 CatmullRom 曲线流动的点粒子 | `01-prd.md D36` |

@@ -70,7 +70,7 @@
 ### 2.1 全局外围
 
 - [ ] 顶栏 `#hud-top` 永驻显示（51px 高 / Navy 800 背景）
-- [ ] 顶栏 8 项导航对齐 2D 网站（首页 / UPLP / UNIP / UBMP / PSE / REVER / 教材 / 术语表）
+- [ ] 顶栏 8 项导航对齐 2D 网站（首页 / UPLP / UNIP / UBMP / PSCE / REVER / 教材 / 术语表）
 - [ ] 三层指示器 `#hud-rail` 永驻（3 圆点 + 标签）
 - [ ] 公式芯片 `#formula-chip` RCT1 可见 / 其他幕隐藏
 - [ ] 滚动提示 `#scroll-hint` p>0.05 淡出
@@ -198,7 +198,7 @@
 - [ ] "UPLP" → `/INTRE-website/uplp/`
 - [ ] "UNIP" → `/INTRE-website/unip/`
 - [ ] "UBMP" → `/INTRE-website/ubmp/`
-- [ ] "PSE" → `/INTRE-website/pse/`
+- [ ] "PSCE" → `/INTRE-website/pse/`
 - [ ] "REVER" → `/INTRE-website/rever/`
 - [ ] "教材" → `/INTRE-website/textbook/`
 - [ ] "术语表" → `/INTRE-website/glossary/`

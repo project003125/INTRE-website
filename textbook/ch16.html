@@ -53,7 +53,7 @@
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
-                <a href="/INTRE-website/pse/">PSE</a>
+                <a href="/INTRE-website/pse/">PSCE</a>
                 <a href="/INTRE-website/rever/">REVER</a>
                 <a href="/INTRE-website/textbook/" class="active">教材</a>
                 <a href="/INTRE-website/compare/">对比</a>
@@ -201,7 +201,7 @@ p(\Psi_t\mid\Psi_{t-1})=\sum_k w_k\,p_k(\Psi_t\mid\Psi_{t-1},\theta_k),\qquad \s
 
 <p>运行时，BMA 权重固定。L2 收到的是加权后的预测分布，看不到内部有几个候选方程，也不参与权重更新。候选方程族的增删、权重的重新估计都发生在 L3 内部；L2 的融合算法不感知模型集合的变化。这条隔离让换积分算法、换候选方程、换似然形式三件事互不阻塞。</p>
 
-<p>校准期是另一种模式。PSE-C 把模型权重、参数与状态序列放在同一次联合推断中，用真实数据重新确定各候选方程的后验权重。L2 在校准期提供历史状态估计序列，不改变自身的运行时行为；更新后的权重经 L3 的模型选择子层，在下一个运行时周期生效。</p>
+<p>校准期是另一种模式。PSCE-C 把模型权重、参数与状态序列放在同一次联合推断中，用真实数据重新确定各候选方程的后验权重。L2 在校准期提供历史状态估计序列，不改变自身的运行时行为；更新后的权重经 L3 的模型选择子层，在下一个运行时周期生效。</p>
 
 <div class="table-wrap">
 <table>
@@ -243,7 +243,7 @@ p(\Psi_t\mid\Psi_{t-1})=\sum_k w_k\,p_k(\Psi_t\mid\Psi_{t-1},\theta_k),\qquad \s
 <tbody>
 <tr><td>多模态一致性检验</td><td>通道之间是否失谐；融合或端口校准是否存在明显问题</td><td>不能发现三通道共享的系统性偏差</td></tr>
 <tr><td>L3 预测精度反推</td><td>估计质量是否长期劣化；后验作为初始条件是否可用</td><td>不能把 L2 误差与 L3 模型误差分开</td></tr>
-<tr><td>临床专家交叉校准</td><td>后验排序结构与临床判断是否一致；校准数据可服务 PSE-C</td><td>不能构成独立于框架的外部真值确证</td></tr>
+<tr><td>临床专家交叉校准</td><td>后验排序结构与临床判断是否一致；校准数据可服务 PSCE-C</td><td>不能构成独立于框架的外部真值确证</td></tr>
 </tbody>
 </table>
 </div>

@@ -20,7 +20,7 @@
 | UPLP | `/INTRE-website/uplp/` | 语义端口（L1-S）：语义编译流水线、PCUI 映射、PSA 标注体系、PSL 词汇库 |
 | UNIP | `/INTRE-website/unip/` | 神经通道：EEG/fNIRS/PPG 六层递进架构 |
 | UBMP | `/INTRE-website/ubmp/` | 行为通道：量表、EMA、数字表型三层管道 |
-| PSE | `/INTRE-website/pse/` | 计算引擎：蒙特卡罗仿真、贝叶斯校准 |
+| PSCE | `/INTRE-website/pse/` | 计算引擎：蒙特卡罗仿真、贝叶斯校准 |
 | REVER | `/INTRE-website/rever/` | 伦理门控：四层伦理架构、依赖雷达、四点式门控 |
 | 教材 | `/INTRE-website/textbook/` | 29 章正文 + 14 篇附录 |
 | 术语表 | `/INTRE-website/glossary/` | 概念检索，支持搜索 |
@@ -44,13 +44,13 @@
 ├── UPLP → /uplp/
 ├── UNIP → /unip/
 ├── UBMP → /ubmp/
-├── PSE → /pse/
+├── PSCE → /pse/
 ├── REVER → /rever/
 ├── 教材 → /textbook/
 └── 术语表 → /glossary/
 
 页脚 Sitemap（四列）
-├── Modules: UPLP / UNIP / UBMP / PSE / REVER
+├── Modules: UPLP / UNIP / UBMP / PSCE / REVER
 ├── Learn: 教材 / 术语表
 ├── Resources: GitHub / Zenodo × 3
 └── Framework: 状态语法 / 操作语法 / 证据标签（均指向术语表）
@@ -124,11 +124,11 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 |---|---|---|---|
 | INTRE 品牌标志 | 无链接 | → 首页 | `/INTRE-website/` |
 | 理论 | `#` | → 改为"首页" | `/INTRE-website/` |
-| 模块 | `#` | → 展开下拉子菜单 | UPLP/UNIP/UBMP/PSE/REVER |
+| 模块 | `#` | → 展开下拉子菜单 | UPLP/UNIP/UBMP/PSCE/REVER |
 | 教材 | `#` | → 教材首页 | `/INTRE-website/textbook/` |
 | 关于 | `#` | → 术语表 | `/INTRE-website/glossary/` |
 
-> **导航项语义说明**：2D 网站导航是"首页 / UPLP / UNIP / UBMP / PSE / REVER / 教材 / 术语表"，3D Hero 当前是"理论 / 模块 / 教材 / 关于"。建议对齐为 2D 的命名，或保留 3D 简化命名但链接指向正确目标。
+> **导航项语义说明**：2D 网站导航是"首页 / UPLP / UNIP / UBMP / PSCE / REVER / 教材 / 术语表"，3D Hero 当前是"理论 / 模块 / 教材 / 关于"。建议对齐为 2D 的命名，或保留 3D 简化命名但链接指向正确目标。
 
 #### 3.3.2 三通道图例（第四幕）
 
@@ -176,7 +176,7 @@ p(Ψₜ | y_{b,t}, y_{s,t}, y_{n,t}) ∝ p(y_b|Ψ) · p(y_s|Ψ) · p(y_n|Ψ) · 
 建议在 3D Hero 底部增加一个极简信息条，提供完整导航出口：
 
 ```
-INTRE · 功能状态心理学    UPLP · UNIP · UBMP · PSE · REVER    教材    术语表    GitHub
+INTRE · 功能状态心理学    UPLP · UNIP · UBMP · PSCE · REVER    教材    术语表    GitHub
 ```
 
 ---
@@ -283,7 +283,7 @@ INTRE · 功能状态心理学    UPLP · UNIP · UBMP · PSE · REVER    教材
 
 以下决策会影响执行，建议在开始前确认：
 
-1. **导航命名**：3D Hero 导航是保持"理论/模块/教材/关于"还是对齐 2D 的"首页/UPLP/UNIP/UBMP/PSE/REVER/教材/术语表"？
+1. **导航命名**：3D Hero 导航是保持"理论/模块/教材/关于"还是对齐 2D 的"首页/UPLP/UNIP/UBMP/PSCE/REVER/教材/术语表"？
 2. **"模块"下拉**：是否把"模块"做成 hover 下拉菜单，展开 5 个子模块链接？
 3. **部署方案**：3D Hero 部署到 GitHub Pages 的哪个路径？这决定链接用相对路径还是绝对路径。
 4. **指示器外链**：右侧三层指示器是否需要额外的外链按钮，还是仅保留滚动功能？

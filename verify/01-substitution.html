@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>替代测试 · 可验可驳 · INTRE</title>
+    <meta name="description" content="16 项核心组件遍历 320 个替代方案，0 个完全等价：判据是逻辑等价且经验更优，缺一不算替代。">
+    <meta property="og:title" content="拆得开，换不掉 · INTRE">
+    <meta property="og:description" content="16 项核心组件 × 20 个替代方案：320 次替换尝试，0 次等价。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://project003125.github.io/INTRE-website/verify/01-substitution.html">
+    <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://project003125.github.io/INTRE-website/verify/01-substitution.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared/brand.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/components.css?v=20261101h">
+    <link rel="stylesheet" href="../shared/domain-switch.css?v=20261101h">
+    <link rel="stylesheet" href="verify.css?v=20261127">
+</head>
+<body lang="zh">
+    <a href="#main-content" class="skip-nav">跳转到主要内容</a>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/INTRE-website/" class="nav-logo">INTRE</a>
+            <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="/INTRE-website/">首页</a>
+                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/uplp/">UPLP</a>
+                <a href="/INTRE-website/unip/">UNIP</a>
+                <a href="/INTRE-website/ubmp/">UBMP</a>
+                <a href="/INTRE-website/pse/">PSCE</a>
+                <a href="/INTRE-website/rever/">REVER</a>
+                <a href="/INTRE-website/textbook/">教材</a>
+                <a href="/INTRE-website/compare/">对比</a>
+                <a href="/INTRE-website/glossary/">术语表</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container">
+        <p class="crumb"><a href="/INTRE-website/#verify">可验可驳</a> / 01 替代测试</p>
+        <h1>拆得开，换不掉</h1>
+        <div class="subhead">16 项核心组件 × 20 个替代方案＝320 次替换尝试</div>
+
+        <p class="vx-lead">一个组件如果拆得开，就该能被别的东西换掉。给每一项核心组件各找 20 个替代方案——主流理论、统计模型、工程近似、纯逻辑重构——再看它们能否通过两道门槛。结果是：<strong>没有一次完全替代</strong>。</p>
+
+        <div class="vx-stats">
+            <div class="vx-stat"><span class="n">320</span><span class="l">替代方案总数（16 × 20）</span></div>
+            <div class="vx-stat"><span class="n">0<em>0%</em></span><span class="l">完全替代</span></div>
+            <div class="vx-stat"><span class="n">169<em>52.8%</em></span><span class="l">部分覆盖或互补</span></div>
+            <div class="vx-stat"><span class="n">151<em>47.2%</em></span><span class="l">替代失败</span></div>
+        </div>
+
+        <h2 class="vx-h2">两条门槛，缺一不算替代</h2>
+        <p class="vx-p"><strong>逻辑等价</strong>：替代方案要能承担原组件在同一层级上的全部职责，而不是只覆盖一部分。<strong>经验更优</strong>：在同等复杂度约束下，它要给出更好的诊断精度、干预指导或跨流派翻译能力。逻辑等价但经验更差是退步；经验更优但逻辑不等价，换掉的是别的东西。</p>
+
+        <h2 class="vx-h2">0 不是巧合</h2>
+        <p class="vx-p">所有被考察的方案都落在同一个工程约束里：在现象层与神经层之间，建一个功能上可操作的中间抽象层。要替代，就必须同时保住三件事——<strong>可计算、可干预、可跨流派翻译</strong>。320 次尝试里，保住一两件的很多，三件同时保住的没有。</p>
+
+        <h2 class="vx-h2">口径可复算</h2>
+        <div class="vx-wrap">
+            <table class="vx-table">
+                <thead><tr><th>口径</th><th>数值</th><th>说明</th></tr></thead>
+                <tbody>
+                    <tr><td>测试轮数</td><td>16 轮</td><td>每项核心组件一轮</td></tr>
+                    <tr><td>每轮方案数</td><td>20 个</td><td>方案合计＝16 × 20 ＝ 320</td></tr>
+                    <tr><td>完全替代</td><td>0 项</td><td>逻辑等价且经验更优者，零</td></tr>
+                    <tr><td>部分覆盖／互补</td><td>169 项</td><td>52.8%</td></tr>
+                    <tr><td>替代失败</td><td>151 项</td><td>47.2%</td></tr>
+                    <tr><td>自洽校验</td><td>169 ＋ 151 ＝ 320</td><td>与方案合计一致</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="vx-note"><b>边界：</b>本页结论是逻辑性质——在已考察的方案中，没有等价且更优者；它不构成经验有效性验证，也不宣称"唯一正确"。编号 5-9 的追加轮（100 项；两轮宽口径合计 420／0／209／211）属另一口径，单独承载，不并入本页数字。</div>
+
+        <p class="vx-src">原文：05-V-17-十六项核心组件替代测试结果总表 §一 总体统计、§二 最终裁决、边界声明</p>
+        <a class="vx-back" href="/INTRE-website/#verify"><i class="fas fa-arrow-left" aria-hidden="true"></i> 返回可验可驳</a>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">INTRE</div>
+        <p class="footer-watermark">功能状态心理学 (FSP) · 可验可驳</p>
+        <p class="footer-desc">拆得开，换不掉：十六项核心组件在替代测试中无一被完全取代。</p>
+        <div class="footer-links">
+            <a href="https://github.com/project003125/INTRE-website" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.18818607" target="_blank" rel="noopener noreferrer">PSE</a>
+            <a href="https://doi.org/10.5281/zenodo.18818307" target="_blank" rel="noopener noreferrer">UPLP</a>
+            <a href="https://doi.org/10.5281/zenodo.18820091" target="_blank" rel="noopener noreferrer">REVER</a>
+        </div>
+        <div class="footer-meta">
+            <p>内容源：05-V-17 替代测试 · CC0 1.0</p>
+        </div>
+    </footer>
+    <script src="../shared/nav-toggle-20261102.js"></script>
+    <script src="../shared/domain-switch.js?v=20261101h"></script>
+<script src="/INTRE-website/shared/gate.js" defer></script>
+<noscript data-intre-gate-noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#1F4880;color:#fff;text-align:center;padding:6px 10px;font-size:12px;z-index:9998;">本项目处于早期建构阶段，内容持续修订中；未启用 JavaScript 时门禁不可用，浏览即表示已知悉</div></noscript>
+</body>
+</html>

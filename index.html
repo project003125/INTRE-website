@@ -327,18 +327,29 @@
         .method-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .method-card {
             position: relative;
+            display: block;
             background: var(--color-white);
             border: var(--stroke-hairline) solid var(--color-slate-200);
             border-radius: var(--radius-sharp);
             padding: 1.2rem 1.2rem 1.25rem;
             box-shadow: var(--shadow-xs);
             transition: transform .2s ease, box-shadow .2s ease;
+            text-decoration: none;
+            color: inherit;
         }
         .method-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--color-amber-500); }
         .method-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(31,72,128,.12); }
+        .method-card:focus-visible { outline: 2px solid var(--color-amber-500); outline-offset: 3px; }
         .method-card .mc-code { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; color: var(--color-amber-700); text-transform: uppercase; }
         .method-card h3 { margin: 0.5rem 0 0.45rem; font-size: 1.12rem; color: var(--color-navy-600); }
         .method-card p { margin: 0; font-size: 0.86rem; line-height: 1.7; color: var(--color-slate-600); }
+        .method-card .mc-enter {
+            display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.85rem;
+            font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+            color: var(--color-amber-700);
+        }
+        .method-card .mc-enter i { font-size: 0.62rem; transition: transform .2s ease; }
+        .method-card:hover .mc-enter i { transform: translateX(3px); }
 
         /* ---------- 首页目录布局 ---------- */
         .home-section { scroll-margin-top: 4.8rem; }
@@ -431,61 +442,6 @@
         html[data-theme="dark"] .toc-nav a[aria-current="true"] {
             background: rgba(143, 183, 232, 0.14);
             color: var(--link);
-        }
-        /* ===== 03 展开：流派兼容（六只手，一头象） ===== */
-        .sb-panel {
-            margin-top: 1.15rem;
-            padding: 1.5rem clamp(1rem, 2.4vw, 1.9rem) 1.3rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-raise);
-        }
-        .sb-head { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.85rem; }
-        .sb-code {
-            font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--color-amber-700);
-        }
-        html[data-theme="dark"] .sb-code { color: var(--color-amber-500); }
-        .sb-head h3 { margin: 0; font-size: 1.32rem; font-weight: 700; color: var(--text-strong); }
-        .sb-head p {
-            margin: 0; font-size: 0.88rem; line-height: 1.75;
-            color: var(--text-muted); max-width: 58rem;
-        }
-        .sb-list {
-            list-style: none; margin: 0; padding: 0;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-            gap: 0 2.2rem;
-        }
-        .sb-list li {
-            display: grid; grid-template-columns: 9rem minmax(0, 1fr);
-            gap: 0.7rem; align-items: baseline;
-            padding: 0.5rem 0 0.55rem; border-top: 1px solid var(--border-subtle);
-        }
-        .sb-school { font-size: 0.82rem; font-weight: 600; line-height: 1.55; color: var(--text-strong); }
-        .sb-school .sb-pos {
-            display: block; font-family: var(--font-mono); font-weight: 400;
-            font-size: 0.61rem; letter-spacing: 0.05em; color: var(--color-amber-700);
-        }
-        html[data-theme="dark"] .sb-school .sb-pos { color: var(--color-amber-500); }
-        .sb-say { font-size: 0.84rem; line-height: 1.7; color: var(--text-muted); }
-        .sb-notes {
-            margin-top: 0.95rem; padding-top: 0.8rem;
-            border-top: 1px solid var(--border-subtle);
-            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem 2rem;
-        }
-        .sb-note { margin: 0; font-size: 0.84rem; line-height: 1.7; color: var(--text-muted); }
-        .sb-note b {
-            display: block; margin-bottom: 0.12rem;
-            font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em;
-            color: var(--color-amber-700);
-        }
-        html[data-theme="dark"] .sb-note b { color: var(--color-amber-500); }
-        @media (max-width: 900px) {
-            .sb-notes { grid-template-columns: 1fr; gap: 0.55rem; }
-        }
-        @media (max-width: 560px) {
-            .sb-list li { grid-template-columns: 1fr; gap: 0.12rem; }
         }
     </style>
     <script type="application/ld+json">
@@ -693,71 +649,34 @@
             </div>
 
             <div class="method-grid">
-                <article class="method-card reveal">
+                <a class="method-card reveal" href="/INTRE-website/verify/01-substitution.html">
                     <span class="mc-code">01 · 替代测试</span>
                     <h3>拆得开，换不掉</h3>
                     <p>16 项核心组件遍历 320 个替代方案，0 个完全等价。</p>
-                </article>
-                <article class="method-card reveal" data-delay="1">
+                    <span class="mc-enter">详读 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
+                <a class="method-card reveal" data-delay="1" href="/INTRE-website/verify/02-neural.html">
                     <span class="mc-code">02 · 神经兼容</span>
                     <h3>有标记物，不被还原</h3>
                     <p>42 个功能子单元中，约三分之一有独立神经标记物，另约三分之一仅碎片化证据。</p>
-                </article>
-                <article class="method-card reveal" data-delay="2">
+                    <span class="mc-enter">详读 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
+                <a class="method-card reveal" data-delay="2" href="/INTRE-website/verify/03-schools.html">
                     <span class="mc-code">03 · 流派分解</span>
-                    <h3>六流派＝靶点之别</h3>
-                    <p>六流派分解为干预靶点；由语法空位生成 DMD 等预测疗法。</p>
-                </article>
-                <article class="method-card reveal" data-delay="3">
+                    <h3>六只手，一头象</h3>
+                    <p>十流派各自摸到同一系统的一处；由语法空位生成 DMD 等预测疗法。</p>
+                    <span class="mc-enter">详读 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
+                <a class="method-card reveal" data-delay="3" href="/INTRE-website/verify/04-falsification.html">
                     <span class="mc-code">04 · 证伪条件</span>
                     <h3>先写失效，再谈结论</h3>
-                    <p>四条失效条件与四项自账先登记；还账长期失败即按预注册降为候选理论语言。</p>
-                </article>
-            </div>
-
-            <!-- 03 展开：流派兼容 -->
-            <div class="sb-panel reveal">
-                <div class="sb-head">
-                    <span class="sb-code">03 / 流派兼容</span>
-                    <h3>六只手，一头象</h3>
-                    <p>把象换成刘宇辰（教学案例 03-C-10，虚构）：六个流派各摸到他一处，那一处正是各自的干预靶点。描述都成立，各自也只是一处。</p>
-                </div>
-                <ul class="sb-list">
-                    <li>
-                        <span class="sb-school">认知行为 CBT<span class="sb-pos">M2-STR-R · ALIGN</span></span>
-                        <span class="sb-say">数学 62 分之后，“我很笨”成了每次失败都在加固的规则。</span>
-                    </li>
-                    <li>
-                        <span class="sb-school">精神动力<span class="sb-pos">STR-C · RELINK</span></span>
-                        <span class="sb-say">一催就紧张、转身关门：这是关系里学会的连接方式，不是性格。</span>
-                    </li>
-                    <li>
-                        <span class="sb-school">人本-体验<span class="sb-pos">M1-STR-C · RELINK</span></span>
-                        <span class="sb-say">凌晨两点的疲惫先于任何说法；被否定的感受存进身体。</span>
-                    </li>
-                    <li>
-                        <span class="sb-school">行为 / ABA<span class="sb-pos">S-P 环境 · GATE</span></span>
-                        <span class="sb-say">游戏随手可及、22:00 不断网，环境一直在按时发奖。</span>
-                    </li>
-                    <li>
-                        <span class="sb-school">接纳承诺 ACT<span class="sb-pos">DSP-B · GATE–</span></span>
-                        <span class="sb-say">“再玩一局就写”是自动化反应；回避把焦虑兑成一阵轻松。</span>
-                    </li>
-                    <li>
-                        <span class="sb-school">系统式<span class="sb-pos">S-P 家庭 · 重构</span></span>
-                        <span class="sb-say">母亲焦虑催出催促，催促催出关门，关门又加重焦虑。</span>
-                    </li>
-                </ul>
-                <div class="sb-notes">
-                    <p class="sb-note"><b>收敛</b>深层落在同一处：改写加权连接（RELINK）。精神动力、人本、行为等传统各自独立摸到它，不是协商口径。</p>
-                    <p class="sb-note"><b>空位</b>没人摸过的地方，语法会自己指认。状态×操作的空位已生成十个可检验的候选流派，DMD 在列。</p>
-                    <p class="sb-note"><b>兼容</b>不是把六派收编进一个体系，是让六派的话能互译、处方能按同一套顺序排、失效能分别登记。</p>
-                </div>
+                    <p>五条框架级失效条件与四项自账先登记；还账长期失败即按预注册降为候选理论语言。</p>
+                    <span class="mc-enter">详读 <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
             </div>
 
             <div class="section-actions reveal">
-                <a class="btn btn-primary" href="/INTRE-website/framework-summary/#act-5">读失效条件原文 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                <a class="btn btn-outline" href="/INTRE-website/compare/">双范式对比</a>
+                <a class="btn btn-primary" href="/INTRE-website/verify/">四条检验路径 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </section>
 

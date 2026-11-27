@@ -56,8 +56,10 @@
 // Shared navigation toggle script (M4)
 // Replaces inline onclick handlers with accessible JS
 // v2.4.3 — 断点回退 768px（P2-6a 修正：959px 导致平板横排导航折叠为汉堡菜单）
+// v2.4.4 — 断点改 1080px：768–1080 横排导航折行后被导航高度裁掉（顶到 nav 上沿），
+//          与 components.css 的遮罩/两行制规则保持同一条线
 (function() {
-    var MOBILE_MQ = '(max-width: 768px)';
+    var MOBILE_MQ = '(max-width: 1080px)';
     function isMobile() {
         return window.matchMedia(MOBILE_MQ).matches;
     }

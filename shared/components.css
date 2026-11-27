@@ -75,7 +75,8 @@ nav.site-nav {
   font-weight: 600;
 }
 
-/* 移动端汉堡菜单 — 桌面端隐藏，仅 ≤768px 显示（与 nav-toggle.js MOBILE_MQ 对齐） */
+/* 移动端汉堡菜单 — 桌面端隐藏，≤1080px 显示（与 nav-toggle.js MOBILE_MQ 对齐；
+   768–1080 区间横排导航会折行并被导航高度裁掉，故一并折叠） */
 .nav-toggle {
   display: none;
   background: none;
@@ -90,7 +91,7 @@ nav.site-nav {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .nav-toggle {
     display: block;
   }
@@ -132,8 +133,20 @@ nav.site-nav {
   }
 }
 
-/* 移动端导航两行制：第一行品牌＋主题＋菜单，第二行域切换独占一行 */
-@media (max-width: 768px) {
+/* 1081–1240：横排导航压缩间距，避免折行后被导航高度裁掉 */
+@media (min-width: 1081px) and (max-width: 1240px) {
+  nav.site-nav .nav-container {
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.76rem;
+  }
+}
+
+/* 窄屏导航两行制：第一行品牌＋主题＋菜单，第二行域切换独占一行 */
+@media (max-width: 1080px) {
   nav.site-nav .nav-container {
     height: auto;
     min-height: 3.2rem;

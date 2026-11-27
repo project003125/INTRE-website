@@ -17,3 +17,7 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+
+# 设计对照截图（本地证据，不入库）
+_font-lab/_shots/
+_redesign-demo/_shots/

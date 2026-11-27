@@ -177,6 +177,18 @@ nav.site-nav {
   }
 }
 
+/* 平板宽度的抽屉不做满屏：贴右侧、限宽、可滚动 */
+@media (min-width: 641px) and (max-width: 1080px) {
+  .nav-links {
+    left: auto;
+    right: 0.75rem;
+    width: 20rem;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+}
+
 /* 窄屏触控目标：页脚与页内小链接补足高度，避免 14–21px 的误触 */
 @media (max-width: 768px) {
   .footer-sitemap .fs-col a {

@@ -52,7 +52,7 @@ revision_notes: v2.0.2 英文全称按 06-S-02 术语对照表改为 Internal Re
 | `#act-1` 开场 | INTRE、功能层主张、Ψ(t) ∈ ℝ⁴² | 状态向量芯片深链术语表 |
 | `#act-2` 现象层 | 从无限到有限、三通道入口 | UPLP / UBMP / UNIP 相对链接 |
 | `#act-3` 功能层 | M1–M6 × RES-D…STR-S，42 节点 | 悬停、聚焦、点击显示详情；关闭或 Escape 清除 |
-| `#act-4` 神经层 | 半透明脑与 DTI 纤维 | DEC 图例；IODS / PSCE / 教材 / 术语表出口 |
+| `#act-4` 神经层 | 半透明脑与 DTI 纤维 | DEC 图例；PMFS / PSCE / 教材 / 术语表出口 |
 
 滚动是主导航；右侧 rail、数字键 1–4 与 URL hash 同步。hash 更新使用 `history.replaceState`，避免滚动时污染浏览历史。
 

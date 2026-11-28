@@ -49,7 +49,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/pmfs/">PMFS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -79,7 +79,7 @@
 
         <p>心理 AI 常被误解为一个更大的语言模型。语言模型擅长语义生成与对话组织，却不持有稳定心理状态，也不天然具备资源调度、结构约束与伦理门控。INTRE 把语言模型降为界面与推理内核，把状态、调度与约束放在模型之外。整机由 PSCE 内核、三端口、REVER 与 LLM 界面组成。</p>
 
-        <p>PSCE 内核承担 L0 至 L5 的管线。L0 由 IODS 定义 42 维坐标语义，L1 汇总三端口观测，L2 用 F1 至 F5 完成状态估计，L3 用 D1 至 D5 完成动力学预测，L4 用 P1 至 P5 完成规划，L5 用 E1 至 E5 完成执行。状态不是一段提示词，而是带协方差的向量 \(\Psi_t=(\mu_t,\Sigma_t)\)，42 维，按六个模块、每个模块七个维度组织。语言模型读不到完整后验，只能读经 G2 访问分级后的投影。</p>
+        <p>PSCE 内核承担 L0 至 L5 的管线。L0 由 PMFS 定义 42 维坐标语义，L1 汇总三端口观测，L2 用 F1 至 F5 完成状态估计，L3 用 D1 至 D5 完成动力学预测，L4 用 P1 至 P5 完成规划，L5 用 E1 至 E5 完成执行。状态不是一段提示词，而是带协方差的向量 \(\Psi_t=(\mu_t,\Sigma_t)\)，42 维，按六个模块、每个模块七个维度组织。语言模型读不到完整后验，只能读经 G2 访问分级后的投影。</p>
 
         <p>三个端口各管一类观测。UPLP 是 L1-S 语义端口，五层 S1 至 S5 把自然语言转成语义似然；UBMP 是 L1-B 行为端口，五层 B1 至 B5 把行为与数字表型转成行为似然；UNIP 是 L1-N 神经端口，六层 N1 至 N6 把神经生理信号转成神经似然。三路观测块进入 L1 汇总，再由 L2 融合为后验。任何单端口缺失，都输出无信息编码并显式声明，不用其他端口伪装。</p>
 
@@ -93,7 +93,7 @@
             <tbody>
                 <tr><td>界面层</td><td>LLM 与对话界面</td><td>语言理解、解释生成、交互编排</td><td>用户话语与界面事件；受约束的回复文本</td></tr>
                 <tr><td>端口层</td><td>UPLP、UBMP、UNIP</td><td>把语言、行为、神经信号转为三类似然</td><td>原始输入；42 维观测块与不确定度</td></tr>
-                <tr><td>本体层</td><td>IODS</td><td>定义 42 维坐标、术语与操作语法</td><td>本体定义；坐标索引与语义</td></tr>
+                <tr><td>本体层</td><td>PMFS</td><td>定义 42 维坐标、术语与操作语法</td><td>元语言；坐标索引与语义</td></tr>
                 <tr><td>估计与动力学层</td><td>PSCE L2、L3</td><td>融合观测、估计状态、预测轨迹</td><td>观测块；后验与未来状态分布</td></tr>
                 <tr><td>规划与执行层</td><td>PSCE L4、L5</td><td>装配约束、生成序列、执行与反馈</td><td>状态与轨迹；方案包与执行记录</td></tr>
                 <tr><td>伦理层</td><td>REVER G0–G5 + EC</td><td>逐级检查、审批、透明与回环</td><td>检查点载荷；判定、约束与审计引用</td></tr>

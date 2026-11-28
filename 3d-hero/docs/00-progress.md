@@ -138,7 +138,7 @@
 **I 字号阶梯：塌陷免疫 + 全站层级归位（主理人 2026-09-22 指出"现象层标题太小"）**
 - 根因不是比例：`--type-*` 全是裸 `var(--text-*)`，brand.css 一断（见 commit 3318301）整条阶梯 IACVT，`font-size` 退回继承 16px——幕标题与小标同为 16px，看起来就是"标题没放大"。现九档别名逐条加字面量兜底，实测把 brand.css 整条拦掉后 128/40/20/16/13/11.5 与正常档**逐字相同**，塌陷不再静默发生。
 - 页内并级修掉：`--type-mono` 原与 `--type-mono-xs` 同为 2xs（badge、公式芯片与调试遥测一个尺寸）→ 提到 `--text-xs`；节点详情内 `.nd-link`/`.nd-markers` 11.5→14（行动链接原低于正文），`.nd-code` 13→11.5；移动端 act-h2 原绕过别名层直写 `--text-2xl`，改回 `--type-h2` 单处定义；`.mb-close`/`.nd-close` 三处硬编码入梯。
-- 全站层级倒挂（子代理改、本窗逐条复核 diff 与实测）：六域页与 glossary、textbook 的 `.section-label`／`.section-heading` 是带序号＋图标＋下划线的**区块主标题**（非 eyebrow），原 16px 低于其自身 h3 18.4／h4 19.2 → 提到 `--text-xl` 24px，≤480px 档 20px；`shared/brand.css` h3 1.15rem→`--text-lg` 20px、各页 h4 1.2/1.05rem→`--text-md` 18px。iods 实测阶梯现为 h1 32 > 区块 24 > h3 20 > h4 18 > 正文 16，逐档单调。
+- 全站层级倒挂（子代理改、本窗逐条复核 diff 与实测）：六域页与 glossary、textbook 的 `.section-label`／`.section-heading` 是带序号＋图标＋下划线的**区块主标题**（非 eyebrow），原 16px 低于其自身 h3 18.4／h4 19.2 → 提到 `--text-xl` 24px，≤480px 档 20px；`shared/brand.css` h3 1.15rem→`--text-lg` 20px、各页 h4 1.2/1.05rem→`--text-md` 18px。pmfs 实测阶梯现为 h1 32 > 区块 24 > h3 20 > h4 18 > 正文 16，逐档单调。
 
 **J 幕内可点件全废 + 重看按钮卡死（交互面逐条实测）**
 - 严重度最高的一条：`.act { pointer-events: none }`（为的是面板不吞滚轮与拖拽）从未对框内控件放行，

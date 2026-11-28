@@ -3,17 +3,17 @@
 <head><script>(function(){try{var t=localStorage.getItem("intre-theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>第11章 IODS：L0 本体定义体系 · INTRE 导论教材</title>
-    <meta name="description" content="IODS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
-    <meta property="og:title" content="第11章 IODS：L0 本体定义体系">
-    <meta property="og:description" content="IODS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
+    <title>第11章 PMFS：L0 心理功能系统元语言 · INTRE 导论教材</title>
+    <meta name="description" content="PMFS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
+    <meta property="og:title" content="第11章 PMFS：L0 心理功能系统元语言">
+    <meta property="og:description" content="PMFS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://project003125.github.io/INTRE-website/textbook/ch11.html">
     <meta property="og:image" content="https://project003125.github.io/INTRE-website/assets/og-image.svg">
     <link rel="canonical" href="https://project003125.github.io/INTRE-website/textbook/ch11.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="第11章 IODS：L0 本体定义体系">
-    <meta name="twitter:description" content="IODS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
+    <meta name="twitter:title" content="第11章 PMFS：L0 心理功能系统元语言">
+    <meta name="twitter:description" content="PMFS 定义六级管线的坐标系、词汇、语法与结构约束；本章讲解四构件、PSL-L 五层词汇、PCUI-L 编码与架构级修订条件。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/pmfs/">PMFS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -69,19 +69,19 @@
     </div>
 
     <main class="textbook-content" id="main-content">
-        <h1 class="chapter-title">第11章 IODS：L0 本体定义体系</h1>
+        <h1 class="chapter-title">第11章 PMFS：L0 心理功能系统元语言</h1>
 
-<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 说明 L0 的位置与“无运行时”含义；(2) 列出 IODS 四构件及职责；(3) 复述 PSL-L 五层与 PCUI-L 编码；(4) 解释架构级修订四条件；(5) 划清本体与知识生产流水线的边界。</p></blockquote>
+<blockquote><p><strong>学习目标</strong>：完成本章后，你应能够：(1) 说明 L0 的位置与“无运行时”含义；(2) 列出 PMFS 四构件及职责；(3) 复述 PSL-L 五层与 PCUI-L 编码；(4) 解释架构级修订四条件；(5) 划清本体与知识生产流水线的边界。</p></blockquote>
 
 <hr class="section-divider">
 
-<h2>11.1 IODS 在六级管线中的位置</h2>
+<h2>11.1 PMFS 在六级管线中的位置</h2>
 
 <p>INTRE 的全部功能组织为一条六级管线：L0 本体 → L1 观测 → L2 状态估计 → L3 动力学 → L4 规划 → L5 执行。L0 的位置与其他五级不同。它不接收上游输入，也不产生运行时输出；它是整条管线共用的定义基底。</p>
 
 <p>L1 的观测向量、L2 的后验分布、L3 的微分方程、L4 的操作序列，都在这套定义上书写。符号“k_M4_社交”之所以有意义，是因为 L0 规定了 M4 是情绪模块、RES-B 是基底资源；表达式“GATE M4-DSP-B”之所以合法，是因为操作语法规定 GATE 可以作用于调度层。定义层不参与计算，却决定了什么可以被计算。</p>
 
-<p>“无运行时、无 API”是可检验的工程约束。IODS 不含分词器、编译器、融合器、积分器，也不暴露任何端点。它在各级启动时被加载为只读的命名空间。L1 的三个端口各有端点，L2 有融合循环，L3 有数值积分，L4 有序列搜索，L5 有执行记录；这些运行时活动都不属于 L0。</p>
+<p>“无运行时、无 API”是可检验的工程约束。PMFS 不含分词器、编译器、融合器、积分器，也不暴露任何端点。它在各级启动时被加载为只读的命名空间。L1 的三个端口各有端点，L2 有融合循环，L3 有数值积分，L4 有序列搜索，L5 有执行记录；这些运行时活动都不属于 L0。</p>
 
 <p>命名空间与合法性是两件事。命名空间回答“这个符号指什么”，合法性回答“这个表达能不能成立”。前者防止同名异义，后者防止非法组合。L1 只负责把观测写进坐标，L2 只负责在坐标上做推断；它们不需要也不应该重新解释“M4 是什么”。</p>
 
@@ -89,8 +89,8 @@
 <table>
 <thead><tr>
 <th>维度</th>
-<th>IODS 提供</th>
-<th>IODS 不提供</th>
+<th>PMFS 提供</th>
+<th>PMFS 不提供</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -117,13 +117,13 @@
 </table>
 </div>
 
-<p>L0 文档族由三份文档构成：IODS 承载坐标系、词汇、编码规则与结构约束；G-M-A-R 操作语法承载四种原子操作与靶点合法性矩阵；S-P 环境参照系承载内部/外部分类与环境负荷。三份文档同属架构级修订条件。本章展开 IODS，另两份按各自专题处理。</p>
+<p>L0 文档族由三份文档构成：PMFS 承载坐标系、词汇、编码规则与结构约束；G-M-A-R 操作语法承载四种原子操作与靶点合法性矩阵；S-P 环境参照系承载内部/外部分类与环境负荷。三份文档同属架构级修订条件。本章展开 PMFS，另两份按各自专题处理。</p>
 
 <hr class="section-divider">
 
 <h2>11.2 四构件：坐标系、词汇、语法、结构约束</h2>
 
-<p>IODS 的静态内容可归入四个构件。四个构件回答四个不同问题，缺一项都会使下游失去约束。</p>
+<p>PMFS 的静态内容可归入四个构件。四个构件回答四个不同问题，缺一项都会使下游失去约束。</p>
 
 <div class="table-wrap">
 <table>
@@ -379,7 +379,7 @@
 <td>编码体系、坐标系、映射规则</td>
 <td>构成性规则</td>
 <td>架构级，极慢</td>
-<td>IODS</td>
+<td>PMFS</td>
 </tr>
 <tr>
 <td>术语实例层</td>
@@ -400,7 +400,7 @@
 
 <h2>11.5 架构级修订条件</h2>
 
-<p>IODS 的全部内容采用架构级修订条件。只有出现满足四个条件的强反例，才允许修订；非强反例不动。四个条件是合取关系，不是四选一的清单。</p>
+<p>PMFS 的全部内容采用架构级修订条件。只有出现满足四个条件的强反例，才允许修订；非强反例不动。四个条件是合取关系，不是四选一的清单。</p>
 
 <div class="table-wrap">
 <table>
@@ -482,7 +482,7 @@
 
 <p>这条流水线不属于 L0。它具有工作流性质，与“不是系统、不需要运行时”的定位存在范畴矛盾。它的正确位置是 L1-S 语义端口的离线校准流程：为编译流水线持续供给和修正术语实例，经词典加载接口生效。L0 保留的是词汇体系结构、编码格式与映射规则这些静态定义。</p>
 
-<p>因此，IODS 不生产知识，它规定知识如何被表示。生产由 L1-S 的离线流程完成，运行由 L1-L5 完成。三者分工清楚：L0 定格式，L1-S 定词条，PSCE 定计算。L0 是管线中最小、最慢的一层，它的价值不在增量，而在让所有增量可比较、可累积、可合法组合。</p>
+<p>因此，PMFS 不生产知识，它规定知识如何被表示。生产由 L1-S 的离线流程完成，运行由 L1-L5 完成。三者分工清楚：L0 定格式，L1-S 定词条，PSCE 定计算。L0 是管线中最小、最慢的一层，它的价值不在增量，而在让所有增量可比较、可累积、可合法组合。</p>
 
     </main>
 

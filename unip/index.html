@@ -73,7 +73,7 @@
             <button class="nav-toggle" aria-label="菜单" aria-expanded="false" aria-controls="nav-menu">☰</button>
             <div class="nav-links" id="nav-menu">
                 <a href="/INTRE-website/">首页</a>
-                <a href="/INTRE-website/iods/">IODS</a>
+                <a href="/INTRE-website/pmfs/">PMFS</a>
                 <a href="/INTRE-website/uplp/">UPLP</a>
                 <a href="/INTRE-website/unip/" class="active">UNIP</a>
                 <a href="/INTRE-website/ubmp/">UBMP</a>
@@ -89,7 +89,7 @@
         <div class="subhead">统一神经接口端口 · PSCE 感知层 <strong>L1-N 神经模态输入端口</strong> <span class="channel-badge unip">神经通道</span> </div>
 
         <div class="info-box">
-            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UNIP 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（IODS 端口之一，归属 PSCE 感知层 L1）。</p>
+            <p><i class="fas fa-quote-left" aria-hidden="true"></i> UNIP 是 INTRE 新管线体系的 <strong>L1-N 神经模态输入端口</strong>（PMFS 端口之一，归属 PSCE 感知层 L1）。</p>
             <ul>
                 <li>它将原始神经信号（EEG、fNIRS、PPG、HRV 等）转换为神经似然 p(yₙ|Ψ) — 六层递进架构，每层回答一个独立问题，层间通过标准化协议通信。</li>
             </ul>
@@ -201,8 +201,8 @@
         </div>
 
         <div class="info-box">
-            <p><strong>定位：</strong>UNIP 与 UPLP（L1-S）、UBMP（L1-B）并列构成 IODS 三输入端口，经 PSCE 状态层（L2+）贝叶斯乘积融合：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前处于规范设计阶段，L4 与 L6 的工程实现为后续优先任务。</p>
-            <p style="margin-top:.6rem;"><strong>与 IODS 的关系：</strong>坐标系定义侧归 <a href="/INTRE-website/iods/">IODS</a>；UNIP 是观测侧——六层递进架构（NAP/SCL/NFD/NFM/NPL/RTE）把原始神经信号（EEG / fNIRS / PPG / HRV）转化为 42 维分布上的神经似然 p(y<sub>n</sub>|Ψ)，L4 映射的目标空间即 IODS 坐标系。</p>
+            <p><strong>定位：</strong>UNIP 与 UPLP（L1-S）、UBMP（L1-B）并列构成 PMFS 三输入端口，经 PSCE 状态层（L2+）贝叶斯乘积融合：p(y|Ψ) = p(y_b|Ψ)·p(y_s|Ψ)·p(y_n|Ψ)。当前处于规范设计阶段，L4 与 L6 的工程实现为后续优先任务。</p>
+            <p style="margin-top:.6rem;"><strong>与 PMFS 的关系：</strong>坐标系定义侧归 <a href="/INTRE-website/pmfs/">PMFS</a>；UNIP 是观测侧——六层递进架构（NAP/SCL/NFD/NFM/NPL/RTE）把原始神经信号（EEG / fNIRS / PPG / HRV）转化为 42 维分布上的神经似然 p(y<sub>n</sub>|Ψ)，L4 映射的目标空间即 PMFS 坐标系。</p>
         </div>
     </main>
 

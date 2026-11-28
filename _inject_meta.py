@@ -28,7 +28,7 @@ except Exception:
     pass
 
 ROOT = Path(__file__).parent
-PAGES = ["index", "iods", "uplp", "unip", "ubmp", "pse", "rever", "glossary", "textbook", "method"]
+PAGES = ["index", "pmfs", "uplp", "unip", "ubmp", "pse", "rever", "glossary", "textbook", "method"]
 
 # 出版社固定元数据（与主页 JSON-LD publisher 一致）
 PUBLISHER = {
